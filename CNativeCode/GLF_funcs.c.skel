@@ -1,0 +1,11 @@
+#include "OpenGL_misc.h"
+
+#include "gl4java_utils_glf_GLFFuncJNI.h"
+
+#include "jnitools.h"
+#include "glf.h"
+
+/**
+ * herein lies the native JAVA methods for the GLF functions.  
+ */
+
