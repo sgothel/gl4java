@@ -60,10 +60,10 @@ java13demos: $(JAVA13_CLASSES)
 java14demos: $(JAVA14_CLASSES)
 
 $(JAVA13_CLASSES)       : $(JAVA13_SOURCES)
-	$(JAVAC_13) -O -deprecation $^ | tee -a errors
+	$(JAVAC_13) $(JAVAC_13_FLAGS) $^ | tee -a errors
 
 $(JAVA14_CLASSES)       : $(JAVA14_SOURCES)
-	$(JAVAC_14) -O -deprecation $^ | tee -a errors
+	$(JAVAC_14) $(JAVAC_14_FLAGS) $^ | tee -a errors
 
 cleanup:
 	rm -f errors
