@@ -90,6 +90,7 @@ public class GLCanvas extends Canvas
 
     protected Dimension size = null;
     protected boolean mustResize = false;
+    protected boolean isInit = false;
 
     protected boolean needCvsDispose = false;
 
@@ -433,15 +434,14 @@ public class GLCanvas extends Canvas
 				          sharedGLContext );
 		}
 
-		if(glj!=null)
-		{
-			createOwnWindow = glj.isOwnWindowCreated();
-			doubleBuffer = glj.isDoubleBuffer();
-			stencilBits = glj.getStencilBitNumber();
-			accumSize = glj.getAccumSize();
-			stereoView = glj.isStereoView();
-			rgba = glj.isRGBA();
-		}
+		if(glj==null) return;
+
+		createOwnWindow = glj.isOwnWindowCreated();
+		doubleBuffer = glj.isDoubleBuffer();
+		stencilBits = glj.getStencilBitNumber();
+		accumSize = glj.getAccumSize();
+		stereoView = glj.isStereoView();
+		rgba = glj.isRGBA();
 
 		Color col = getBackground();
 		gl.glClearColor((float)col.getRed()/255.0f, 
@@ -484,6 +484,7 @@ public class GLCanvas extends Canvas
 
 		/* force a reshape, to be sure .. */
 	        mustResize = true;
+    		isInit = true;
 	} 
 
         sDisplay();
@@ -559,9 +560,7 @@ public class GLCanvas extends Canvas
      */ 
     public boolean cvsIsInit()
     {
-	if(glj!=null)
-		return glj.gljIsInit();
-	return false;
+	return isInit && glj!=null && glj.gljIsInit();
     }
 
     /**
@@ -652,10 +651,7 @@ public class GLCanvas extends Canvas
     {
         boolean ok = true;
 
-	if(!cvsIsInit())
-	{
-		return;
-	}
+	if(!cvsIsInit()) return;
 
 	if( mustResize )
 	{
@@ -930,6 +926,8 @@ public class GLCanvas extends Canvas
 		System.out.println("GLCanvas cvsDispose (doit="+
 			( (glj != null) && glj.gljIsInit() ) +")");
 	  
+	isInit = false;
+
 	removeComponentListener(this);
 	removeMouseListener(this);
 
