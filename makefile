@@ -268,6 +268,14 @@ $(FILES_MSW32.class): $(FILES_MSW32)
 	mkdir -p $(DEST_CLASSES_DIR)/${@D}
 	cp ${@D}/*.class $(DEST_CLASSES_DIR)/${@D}
 endif
+# Otherwise, if no MSJAVAC available, we still need to compile
+# GljMSJDirect to get GLContext to compile
+ifndef MSJAVAC
+FILES_MSW32       = $(PACKAGEDIR)/system/GljMSJDirect.java
+FILES_MSW32.class = $(patsubst %,$(DEST_CLASSES_DIR)/%,${FILES_MSW32:.java=.class})
+$(FILES_MSW32.class): $(FILES_MSW32)
+	$(JAVAC_13) -O -deprecation -d $(DEST_CLASSES_DIR) $^ | tee -a errors
+endif
 
 #
 # Files in all targets
