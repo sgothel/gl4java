@@ -4,6 +4,9 @@
  
 #include "jawt_misc.h"
  
+typedef jboolean JNICALL JAWT_GetAWT_fn_t(JNIEnv* env, JAWT* awt);
+static JAWT_GetAWT_fn_t *JAWT_GetAWT_fn = NULL;
+
 static JAWT     _awt ;
 static jboolean _awt_init = JNI_FALSE ;
 
@@ -12,6 +15,40 @@ static int  gdsi = 0;
 static int  gds  = 0;
 
 static jboolean jawtdebug  = JNI_FALSE;
+
+jboolean LIBAPIENTRY
+jawt_init (char* jawtLibName)
+{
+#ifdef _WIN32_ 
+  HMODULE lib = LoadLibrary(jawtLibName);
+  if (lib == NULL) {
+    printf("  jawt_init: LoadLibrary failed\n");
+    return JNI_FALSE;
+  }
+  JAWT_GetAWT_fn = (JAWT_GetAWT_fn_t*) GetProcAddress(lib, "_JAWT_GetAWT@8");
+  if (JAWT_GetAWT_fn == NULL) {
+    printf("  jawt_init: GetProcAddress failed\n");
+    return JNI_FALSE;
+  }
+  return JNI_TRUE;
+#endif
+
+#ifdef _X11_ 
+  void* lib = dlopen(jawtLibName, RTLD_LAZY | RTLD_GLOBAL);
+  if (lib == NULL) {
+    printf("  jawt_init: dlopen failed\n");
+    return JNI_FALSE;
+  }
+  JAWT_GetAWT_fn = (JAWT_GetAWT_fn_t*) dlsym(lib, "JAWT_GetAWT");
+  if (JAWT_GetAWT_fn == NULL) {
+    printf("  jawt_init: dlsym failed\n");
+    return JNI_FALSE;
+  }
+  return JNI_TRUE;
+#endif
+
+  return JNI_FALSE;
+}
 
 jboolean LIBAPIENTRY
 jawt_create_offscreen (JNIEnv *env, JAWTDataHolder **ppJData, jboolean verbose) 
@@ -130,7 +167,10 @@ jawt_open (JNIEnv *env, jobject component, JAWTDataHolder *pJData, jboolean verb
   if(_awt_init==JNI_FALSE)
   {
 	  _awt.version = JAWT_VERSION_1_3;
-  	  pJData->result = JAWT_GetAWT(env, &_awt);
+          if (JAWT_GetAWT_fn == NULL) {
+            return JNI_FALSE;
+          }
+  	  pJData->result = (*JAWT_GetAWT_fn)(env, &_awt);
 	  if(pJData->result==JNI_TRUE)
 	  {
 		 if(verbose)

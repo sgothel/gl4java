@@ -558,32 +558,28 @@ $(HOME_LIB_DIR)/$(LIBRARY3): $(FILES3.o)
 	$(MKEXP) $(LIBNAME3) $(FILES3.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME3) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES3.o) $(LIBS) -L$(JAVAOSLIB) \
-		 -ljawt
+	         $(FILES3.o) $(LIBS) -L$(JAVAOSLIB)
 
 $(HOME_LIB_DIR)/$(LIBRARY4): $(FILES4.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME4}.*
 	$(MKEXP) $(LIBNAME4) $(FILES4.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME4) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES4.o) $(LIBS) -L$(JAVAOSLIB) \
-		 -ljawt
+	         $(FILES4.o) $(LIBS) -L$(JAVAOSLIB)
 
 $(HOME_LIB_DIR)/$(LIBRARY3_NF): $(FILES3_NF.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME3_NF}.*
 	$(MKEXP) $(LIBNAME3_NF) $(FILES3_NF.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME3_NF) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES3_NF.o) $(LIBS) -L$(JAVAOSLIB) \
-		 -ljawt
+	         $(FILES3_NF.o) $(LIBS) -L$(JAVAOSLIB)
 
 $(HOME_LIB_DIR)/$(LIBRARY3_TST): $(FILES3_TST.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME3_TST}.*
 	$(MKEXP) $(LIBNAME3_TST) $(FILES3_TST.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME3_TST) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES3_TST.o) $(LIBS) -L$(JAVAOSLIB) \
-		 -ljawt
+	         $(FILES3_TST.o) $(LIBS) -L$(JAVAOSLIB)
 
 ######################################################################
 # NEEDED DEPENDENCYs FOR GENERATED FILES ...

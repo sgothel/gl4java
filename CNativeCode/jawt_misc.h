@@ -60,6 +60,9 @@
 	} JAWTDataHolder;
 	 
 	LIBAPI jboolean LIBAPIENTRY
+	jawt_init (char* jawtLibName); 
+
+	LIBAPI jboolean LIBAPIENTRY
 	jawt_create_offscreen (JNIEnv *env, JAWTDataHolder **ppJData, 
 			       jboolean verbose); 
 

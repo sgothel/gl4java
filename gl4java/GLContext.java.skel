@@ -10,8 +10,10 @@ import gl4java.jau.awt.WinHandleAccess;
 import java.awt.*;
 import java.applet.Applet;
 import java.awt.event.*;
+import java.io.*;
 import java.lang.reflect.*;
 import java.security.*;
+import java.util.*;
 
 /**
  * The base manager class for the OpenGL language mapping for Java !
@@ -811,20 +813,6 @@ public class GLContext extends Object
 	     AccessController.doPrivileged(new PrivilegedAction() {
 	      public Object run() 
 	      {
-		/* Try to load jawt.dll ahead of time to prevent
-		   problems on Sun JDK 1.3 and greater. Loading the
-		   version of the native library which uses JAWT
-		   causes run-time link errors if jre/lib/<arch> or
-		   jre/bin are not in $PATH. A more clean solution
-		   might be to explicitly look up the JAWT functions,
-		   but that would require looking up the full path to
-		   libjawt.so/jawt.dll, which is a pain as it's
-		   automatically done by the JDK's libraries. */
-		try {
-		    System.loadLibrary("jawt");
-		} catch (UnsatisfiedLinkError e) {
-		}
-
 		/* load libs */
 		int libNumber = 0;
 		String _libName = null ;
@@ -857,6 +845,12 @@ public class GLContext extends Object
 		for(libNumber=0; libNumber<f_libNames.length; libNumber++)
 			if(libLoaded[libNumber]==false) 
 				return new Boolean(false);
+		if (useJAWT()) {
+                        if (!loadJAWT()) {
+                          System.err.println("ERROR while loading jawt.dll/libjawt.so");
+                          return new Boolean(false);
+                        }
+		}
 		return new Boolean(true);
 	      }
 	     });
@@ -2154,7 +2148,56 @@ public class GLContext extends Object
      * which query if it uses the JDK 1.3 JAWT interface
      * to fetch the native window handle
      */
-    protected final native boolean useJAWT();
+    protected static final native boolean useJAWT();
+
+    private static String makeLibName(String name) {
+      int type = getNativeOSType();
+      if (type == OsWindoof) {
+        return name + ".dll";
+      } else if (type == OsX11) {
+        return "lib" + name + ".so";
+      } else {
+        throw new RuntimeException("Please port makeLibName to your platform");
+      }
+    }
+
+    private static final native boolean loadJAWT0(String name);
+
+    private static final String findInPath(String libpath, String libname) {
+      if (libpath == null) return null;
+      String pathsep = System.getProperty("path.separator");
+      String filesep = System.getProperty("file.separator");
+      StringTokenizer tok = new StringTokenizer(libpath, pathsep);
+      while (tok.hasMoreTokens()) {
+        String curEntry = tok.nextToken();
+        String path = curEntry + filesep + libname;
+        if (new File(path).exists()) {
+          return path;
+        }
+      }
+      return null;
+    }
+
+    /**
+     * Routine which causes jawt.dll/libjawt.so to be loaded if that is
+     * how the window handles are being obtained.
+     */
+    protected static final boolean loadJAWT() {
+      // Locate jawt.dll/libjawt.so by looking through
+      // java.library.path and sun.boot.library.path
+      String jawtName = makeLibName("jawt");
+      String libpath = findInPath(System.getProperty("java.library.path"), jawtName);
+      if (libpath == null) {
+        libpath = findInPath(System.getProperty("sun.boot.library.path"), jawtName);
+      }
+      if (libpath == null) {
+        System.err.println("Unable to locate " + jawtName);
+        System.err.println("  java.library.path = " + System.getProperty("java.library.path"));
+        System.err.println("  sun.boot.library.path = " + System.getProperty("sun.boot.library.path"));
+        return false;
+      }
+      return loadJAWT0(libpath);
+    }
 
     /**
      * native C function of GLJ Library,

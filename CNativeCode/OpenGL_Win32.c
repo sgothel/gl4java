@@ -47,11 +47,20 @@
 
 static jboolean verbose = JNI_FALSE;
 
+JNIEXPORT jboolean JNICALL Java_gl4java_GLContext_loadJAWT0
+(JNIEnv *env, jclass unused, jstring str)
+{
+  (void)env;
+  (void)unused;
+  (void)str;
+  return JNI_FALSE;
+}
+
 JNIEXPORT jboolean JNICALL
-Java_gl4java_GLContext_useJAWT( JNIEnv *env, jobject obj )
+Java_gl4java_GLContext_useJAWT( JNIEnv *env, jclass unused )
 {
     (void)env;
-    (void)obj;
+    (void)unused;
     return JNI_FALSE;
 }
 
