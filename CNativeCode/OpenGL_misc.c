@@ -76,12 +76,12 @@ char libGLUName[800] =
 #ifdef  J_GET_BOOL_FIELD_VAL
 	#undef  J_GET_BOOL_FIELD_VAL
 #endif
-#define J_GET_BOOL_FIELD_VAL(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "Z"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; else glCaps-> ## ATTRIBUTE_NAME = (int) ((*env)->GetBooleanField(env, capsObj, f ## ATTRIBUTE_NAME)); }
+#define J_GET_BOOL_FIELD_VAL(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "Z"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; else glCaps-> ATTRIBUTE_NAME = (int) ((*env)->GetBooleanField(env, capsObj, f ## ATTRIBUTE_NAME)); }
 
 #ifdef  J_SET_BOOL_FIELD_VAL
 	#undef  J_SET_BOOL_FIELD_VAL
 #endif
-#define J_SET_BOOL_FIELD_VAL(ATTRIBUTE_NAME) if(ok==JNI_TRUE && f ## ATTRIBUTE_NAME!=0) { (*env)->SetBooleanField(env, capsObj, f ## ATTRIBUTE_NAME, (jboolean) glCaps-> ## ATTRIBUTE_NAME); }
+#define J_SET_BOOL_FIELD_VAL(ATTRIBUTE_NAME) if(ok==JNI_TRUE && f ## ATTRIBUTE_NAME!=0) { (*env)->SetBooleanField(env, capsObj, f ## ATTRIBUTE_NAME, (jboolean) glCaps-> ATTRIBUTE_NAME); }
 
 #ifdef  J_GET_INT_FIELD
 	#undef  J_GET_INT_FIELD
@@ -91,12 +91,12 @@ char libGLUName[800] =
 #ifdef  J_GET_INT_FIELD_VAL
 	#undef  J_GET_INT_FIELD_VAL
 #endif
-#define J_GET_INT_FIELD_VAL(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "I"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; else glCaps-> ## ATTRIBUTE_NAME = (int) ((*env)->GetIntField(env, capsObj, f ## ATTRIBUTE_NAME)); }
+#define J_GET_INT_FIELD_VAL(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "I"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; else glCaps -> ATTRIBUTE_NAME = (int) ((*env)->GetIntField(env, capsObj, f ## ATTRIBUTE_NAME)); }
 
 #ifdef  J_SET_INT_FIELD_VAL
 	#undef  J_SET_INT_FIELD_VAL
 #endif
-#define J_SET_INT_FIELD_VAL(ATTRIBUTE_NAME) if(ok==JNI_TRUE && f ## ATTRIBUTE_NAME!=0) { (*env)->SetIntField(env, capsObj, f ## ATTRIBUTE_NAME, (jint) glCaps-> ## ATTRIBUTE_NAME); }
+#define J_SET_INT_FIELD_VAL(ATTRIBUTE_NAME) if(ok==JNI_TRUE && f ## ATTRIBUTE_NAME!=0) { (*env)->SetIntField(env, capsObj, f ## ATTRIBUTE_NAME, (jint) glCaps-> ATTRIBUTE_NAME); }
 
 #ifdef  J_GET_LONG_FIELD
 	#undef  J_GET_LONG_FIELD
@@ -107,12 +107,12 @@ char libGLUName[800] =
 #ifdef  J_GET_LONG_FIELD_VAL
 	#undef  J_GET_LONG_FIELD_VAL
 #endif
-#define J_GET_LONG_FIELD_VAL(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "J"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; else glCaps-> ## ATTRIBUTE_NAME = (long) ((*env)->GetLongField(env, capsObj, f ## ATTRIBUTE_NAME)); }
+#define J_GET_LONG_FIELD_VAL(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "J"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; else glCaps-> ATTRIBUTE_NAME = (long) ((*env)->GetLongField(env, capsObj, f ## ATTRIBUTE_NAME)); }
 
 #ifdef  J_SET_LONG_FIELD_VAL
 	#undef  J_SET_LONG_FIELD_VAL
 #endif
-#define J_SET_LONG_FIELD_VAL(ATTRIBUTE_NAME) if(ok==JNI_TRUE && f ## ATTRIBUTE_NAME!=0) { (*env)->SetLongField(env, capsObj, f ## ATTRIBUTE_NAME, (jlong) glCaps-> ## ATTRIBUTE_NAME); }
+#define J_SET_LONG_FIELD_VAL(ATTRIBUTE_NAME) if(ok==JNI_TRUE && f ## ATTRIBUTE_NAME!=0) { (*env)->SetLongField(env, capsObj, f ## ATTRIBUTE_NAME, (jlong) glCaps-> ATTRIBUTE_NAME); }
 
 jboolean LIBAPIENTRY javaGLCapabilities2NativeGLCapabilities 
 					     ( JNIEnv *env, 
