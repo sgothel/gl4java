@@ -382,6 +382,7 @@ FILES2.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
 			  $(CNATIVEDIR)/gltool.c	         \
 			  $(CNATIVEDIR)/glxtool.c	         \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
+			  $(CNATIVEDIR)/jawt_dummy.c	         \
 			  $(CNATIVEDIR)/jni12tools.c	         \
 			  $(CNATIVEDIR)/Tool_JNI12_funcs.c       \
 			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
@@ -489,10 +490,10 @@ FILES3_TST.o 		= ${FILES3_TST.c:.c=.o}
 
 # Main build rule
 $(FILES_13.class)           : $(FILES_13.java)
-	$(JAVAC_13) -O -deprecation -d $(DEST_CLASSES_DIR) $(FILES_13.java)
+	$(JAVAC_13) $(JAVAC_13_FLAGS) -d $(DEST_CLASSES_DIR) $(FILES_13.java)
 
 $(FILES_14.class)           : $(FILES_14.java)
-	$(JAVAC_14) -O -deprecation -d $(DEST_CLASSES_DIR) $(FILES_14.java)
+	$(JAVAC_14) $(JAVAC_14_FLAGS) -d $(DEST_CLASSES_DIR) $(FILES_14.java)
 
 x11			: cleanup gljni \
 	                  $(FILES_13.class) $(FILES_14.class) \
@@ -766,6 +767,7 @@ classcpy:
 		fi ; \
 		cp $$i $(DEST_CLASSES_DIR)/$$(dirname $$i) ; \
 	done 
+	mkdir -p $(DEST_CLASSES_DIR)/gl4java/utils/glf
 	cp -a gl4java/utils/glf/fonts $(DEST_CLASSES_DIR)/gl4java/utils/glf
 	echo classes copied
 	chmod -R 755 $(DEST_CLASSES_DIR)/gl4java
@@ -921,14 +923,14 @@ win2binpkg: pbinpkg java2binpkg
 #
 
 javacalldemos:
-	cd demos ; $(JAVAC_13) *.java
-	cd demos/GLFDemos ; $(JAVAC_13) *.java
-	cd demos/GLLandScape ; $(JAVAC_13) *.java
-	cd demos/HodglimsNeHe ; $(JAVAC_13) *.java
+	cd demos ; $(JAVAC_13) $(JAVAC_13_FLAGS) *.java
+	cd demos/GLFDemos ; $(JAVAC_13) $(JAVAC_13_FLAGS) *.java
+	cd demos/GLLandScape ; $(JAVAC_13) $(JAVAC_13_FLAGS) *.java
+	cd demos/HodglimsNeHe ; $(JAVAC_13) $(JAVAC_13_FLAGS) *.java
 	cd demos/MiscDemos ; $(MAKE)
-	cd demos/NVidia ; $(JAVAC_14) *.java
-	cd demos/RonsDemos ; $(JAVAC_13) *.java
-	cd demos/SwingDemos ; $(JAVAC_13) *.java
+	cd demos/NVidia ; $(JAVAC_14) $(JAVAC_14_FLAGS) *.java
+	cd demos/RonsDemos ; $(JAVAC_13) $(JAVAC_13_FLAGS) *.java
+	cd demos/SwingDemos ; $(JAVAC_13) $(JAVAC_13_FLAGS) *.java
 
 #
 # Archiv Section
