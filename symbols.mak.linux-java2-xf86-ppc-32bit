@@ -49,6 +49,12 @@ JAR 			= $(JDK13_HOME)/bin/jar
 JAVAC_13 		= $(JDK13_HOME)/bin/javac -classpath ".:$(THISDIR):$(THISDIR)/capsapi_classes.zip"
 #JAVAC_14 		=
 
+#JAVAC_13_FLAGS		= -O
+#JAVAC_14_FLAGS		= -O
+
+JAVAC_13_FLAGS		= -g -deprecation
+JAVAC_14_FLAGS		= -g -deprecation
+
 JAR_DESTS		= /usr/local/lib/jdk1.3.0-FCS-blackdown/jre/lib/ext \
 			  /usr/local/lib/j2sdk1.3.1/jre/lib/ext
 

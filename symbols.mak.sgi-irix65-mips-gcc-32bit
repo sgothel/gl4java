@@ -48,6 +48,12 @@ JAR 			= $(JDK13_HOME)/bin/jar
 JAVAC_13 		= $(JDK13_HOME)/bin/javac -classpath ".:$(THISDIR):$(THISDIR)/capsapi_classes.zip:$(THISDIR)/png.jar"
 #JAVAC_14 		=
 
+#JAVAC_13_FLAGS		= -O
+#JAVAC_14_FLAGS		= -O
+
+JAVAC_13_FLAGS		= -g -deprecation
+JAVAC_14_FLAGS		= -g -deprecation
+
 JAR_DESTS		= ${HOME}/jre/lib/ext
 
 

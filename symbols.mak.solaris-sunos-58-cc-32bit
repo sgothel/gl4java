@@ -18,6 +18,13 @@ JAVASHAREINC    	= $(JDK_HOME)/include
 JAVAOSINC  		= $(JDK_HOME)/include/solaris
 JAVAOSLIB  		= $(JDK_HOME)/jre/lib/$(ARCH)
 
+#JAVAC_13_FLAGS		= -O
+#JAVAC_14_FLAGS		= -O
+
+JAVAC_13_FLAGS		= -g -deprecation
+JAVAC_14_FLAGS		= -g -deprecation
+
+
 JAR_DESTS		= ${THISDIR}
 
 CC			= cc

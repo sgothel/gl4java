@@ -18,8 +18,8 @@ UNIXTYPE		= Linux-glibc2-xf86-x86
 #
 # AT LEAST JDK13_HOME MUST BE DEFINED !
 #
-JDK13_HOME		= /usr/local/lib/jdk1.3.1-FCS-blackdown
-JDK14_HOME		= /usr/local/lib/jdk1.4.0-sun
+JDK13_HOME		= /usr/local/lib/jdk1.3.1-02b-FCS-blackdown
+JDK14_HOME		= /usr/local/lib/jdk1.4.2_b28-sun
 JDK_HOME		= $(JDK14_HOME)
 
 JAVASHAREINC    	= $(JDK_HOME)/include
@@ -49,6 +49,12 @@ JAR 			= $(JDK13_HOME)/bin/jar
 JAVAC_13 		= $(JDK13_HOME)/bin/javac -classpath ".:$(THISDIR):$(THISDIR)/capsapi_classes.zip"
 JAVAC_14 		= $(JDK14_HOME)/bin/javac -classpath ".:$(THISDIR):$(THISDIR)/capsapi_classes.zip"
 
+#JAVAC_13_FLAGS		= -O
+#JAVAC_14_FLAGS		= -O
+
+JAVAC_13_FLAGS		= -g -deprecation
+JAVAC_14_FLAGS		= -g -deprecation
+
 JAR_DESTS		= /usr/local/lib/jdk1.2.2-FCS-blackdown/jre/lib/ext \
 			  /usr/local/lib/jdk1.3.0-FCS-blackdown/jre/lib/ext \
 			  /usr/local/lib/jdk1.3.1-FCS-blackdown/jre/lib/ext \
@@ -56,7 +62,8 @@ JAR_DESTS		= /usr/local/lib/jdk1.2.2-FCS-blackdown/jre/lib/ext \
 			  /usr/local/lib/jdk1.3.0_02-sun/jre/lib/ext \
 			  /usr/local/lib/jdk1.3.0-ibm/jre/lib/ext \
 			  /usr/local/lib/jdk1.3.1-sun/jre/lib/ext \
-			  /usr/local/lib/jdk1.4.0-sun/jre/lib/ext
+			  /usr/local/lib/jdk1.3.1-02b-FCS-blackdown/jre/lib/ext \
+			  /usr/local/lib/jdk1.4.2_b28-sun/jre/lib/ext 
 
 MAKE			= make
 CC			= gcc
