@@ -135,8 +135,16 @@ public class CFuncVariable
 
 		res+=typeJava;
 
-		for(j=0; j<arrayNumber; j++)
+		if(typeJava.equals("String"))
+			j=1;
+		else
+			j=0;
+
+		while(j<arrayNumber)
+		{
 			res+="[]";
+			j++;
+		}
 
 		return res;
 	}
@@ -151,12 +159,20 @@ public class CFuncVariable
 		int j;
 		String res = new String();
 
-		if(isVoid)
-			res+=typeJava;
-		else
-			res+="j"+typeJava;
+		if(typeJava.equals("String") && arrayNumber==1)
+		{
+			res+="jstring";
+			j=1;
+		} else {
+			if(isVoid)
+				res+=typeJava;
+			else
+				res+="j"+typeJava;
 
-		if(arrayNumber>0)
+			j=0;
+		}
+
+		if(arrayNumber>j)
 			res+="Array";
 
 		return res;

@@ -32,6 +32,7 @@
 # make javadoc		: unix (javadoc only)
 # make htmldocw32	: win32
 # make javadocw32	: win32 (javadoc only)
+# make doxygendoc	: doxygendoc
 #
 #
 # to put all together as an tar-gzip archive in the archive-dir, invoke:
@@ -97,8 +98,8 @@ CNATIVEDIR  		= CNativeCode
 # LIBRARY DEFINITION
 
 LIBMAJOR		= 2
-LIBMINOR		= 7
-LIBBUGFIX		= 2
+LIBMINOR		= 8
+LIBBUGFIX		= 0
 RELEASE                 = 0
 
 #
@@ -149,10 +150,14 @@ MK_GL4JAVA_JAR		= ( cd $(DEST_CLASSES_DIR) ; \
 				gl4java/utils/*.class \
 				gl4java/utils/textures \
 				gl4java/utils/glut/*.class \
+				gl4java/utils/glf/*.class \
 				gl4java/drawable ; \
 			    rm -f gl4java-glutfonts.jar ; \
 			    $(JAR) cf gl4java-glutfonts.jar \
 				gl4java/utils/glut/fonts ; \
+			    rm -f gl4java-glffonts.jar ; \
+			    $(JAR) cf gl4java-glffonts.jar \
+				gl4java/utils/glf/fonts ; \
 			    if [ ! -z "$(JAR_DESTS)" ] ; then \
 			        for i in $(JAR_DESTS); do \
 			    	    cp -av gl4java*.jar $$i ; done \
@@ -186,6 +191,12 @@ JAVA_C_MAP6_X11_FILE 	= X11SunJDK13GLDrawableFactory.java
 JAVA_C_MAP6_WIN32_FILE 	= Win32SunJDK13GLDrawableFactory.java
 
 JAVA_C_MAP6_MAC_FILE 	= MacSunJDK13GLDrawableFactory.java
+
+#lib GLFFunc 
+JAVA_C_MAP7_FILE 	= GLFFuncJNI.java
+
+#lib Tool 
+JAVA_C_MAP8_FILE 	= Tool.java
 
 FILES_GLUT_FONT.java = \
 		  $(PACKAGEDIR)/utils/glut/fonts/GLUTBitmapFont.java \
@@ -222,7 +233,7 @@ FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 	          $(PACKAGEDIR)/$(JAVA_C_MAP3_FILE) \
 	          $(PACKAGEDIR)/$(JAVA_C_MAP4_FILE) \
 	          $(PACKAGEDIR)/$(JAVA_C_MAP5_FILE) \
-		  $(PACKAGEDIR)/utils/Tool.java \
+		  $(PACKAGEDIR)/utils/$(JAVA_C_MAP8_FILE) \
 		  $(PACKAGEDIR)/utils/Test.java \
 		  $(PACKAGEDIR)/awt/GLCanvas.java   \
 		  $(PACKAGEDIR)/awt/GLAnimCanvas.java \
@@ -231,6 +242,9 @@ FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/swing/GLJPanel.java \
 		  $(PACKAGEDIR)/swing/GLAnimJPanel.java \
 		  $(PACKAGEDIR)/swing/SimpleGLJApplet1.java \
+		  $(PACKAGEDIR)/utils/glf/GLFEnum.java \
+		  $(PACKAGEDIR)/utils/glf/$(JAVA_C_MAP7_FILE) \
+		  $(PACKAGEDIR)/utils/glf/GLF.java \
 		  $(PACKAGEDIR)/utils/glut/GLUTEnum.java \
 		  $(PACKAGEDIR)/utils/glut/GLUTFunc.java \
 		  $(PACKAGEDIR)/utils/glut/GLUTFuncLightImpl.java \
@@ -282,9 +296,12 @@ FILES1.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
 			  $(CNATIVEDIR)/glxtool.c	         \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jnitools.c	         \
+			  $(CNATIVEDIR)/Tool_JNI_funcs.c         \
 			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
 			  $(CNATIVEDIR)/OpenGL_JauJNI_funcs.c    \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI_funcs.c   \
+			  $(CNATIVEDIR)/glf.c                    \
+			  $(CNATIVEDIR)/GLF_JNI_funcs.c          \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
 FILES2.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
@@ -294,9 +311,12 @@ FILES2.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
 			  $(CNATIVEDIR)/glxtool.c	         \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jni12tools.c	         \
+			  $(CNATIVEDIR)/Tool_JNI12_funcs.c       \
 			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
 			  $(CNATIVEDIR)/OpenGL_JauJNI12_funcs.c  \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI12_funcs.c \
+			  $(CNATIVEDIR)/glf.c                    \
+			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
 FILES3.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
@@ -308,9 +328,12 @@ FILES3.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/GLDrawableFactory_X11_SunJDK13.c \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jni12tools.c	         \
+			  $(CNATIVEDIR)/Tool_JNI12_funcs.c       \
 			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
 			  $(CNATIVEDIR)/OpenGL_JauJNI12_funcs.c  \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI12_funcs.c \
+			  $(CNATIVEDIR)/glf.c                    \
+			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
 FILES4.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
@@ -322,9 +345,12 @@ FILES4.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/GLDrawableFactory_X11_SunJDK13.c \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jni12tools.c	         \
+			  $(CNATIVEDIR)/Tool_JNI12_funcs.c       \
 			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
 			  $(CNATIVEDIR)/OpenGL_JauJNI12nf_funcs.c  \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI12nf_funcs.c \
+			  $(CNATIVEDIR)/glf.c                    \
+			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
 FILES5.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
@@ -336,9 +362,12 @@ FILES5.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/GLDrawableFactory_X11_SunJDK13.c \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jni12tools.c	         \
+			  $(CNATIVEDIR)/Tool_JNI12_funcs.c       \
 			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
 			  $(CNATIVEDIR)/OpenGL_JauJNI12tst_funcs.c  \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI12tst_funcs.c \
+			  $(CNATIVEDIR)/glf.c                    \
+			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
 
@@ -369,11 +398,17 @@ FILE.gen6.win32.h = $(CHEADERDIR)/$(PACKAGEDIR)_drawable_${JAVA_C_MAP6_WIN32_FIL
 
 FILE.gen6.mac.h = $(CHEADERDIR)/$(PACKAGEDIR)_drawable_${JAVA_C_MAP6_MAC_FILE:.java=.h}
 
+FILE.gen7.h     = $(CHEADERDIR)/$(PACKAGEDIR)_utils_glf_${JAVA_C_MAP7_FILE:.java=.h}
+
+FILE.gen8.h     = $(CHEADERDIR)/$(PACKAGEDIR)_utils_${JAVA_C_MAP8_FILE:.java=.h}
+
 FILES.gen   		= $(FILE.gen1.h) \
 			  $(FILE.gen2.h) \
 			  $(FILE.gen3.h) \
 			  $(FILE.gen4.h) \
-			  $(FILE.gen5.h)
+			  $(FILE.gen5.h) \
+			  $(FILE.gen7.h) \
+			  $(FILE.gen8.h)
 
 ######################################################################
 # SPECIFY ALL SUFFIX-RULES
@@ -425,7 +460,7 @@ mac			: cleanup gljni \
                           $(CNATIVEDIR)/winstuff.h 
 
 
-w32			: cleanupw32 gljni \
+w32			: cleanup gljni \
 	                  $(FILES_w32.class) \
 	                  $(FILES_msw32.class) \
 			  $(FILES.class) \
@@ -587,6 +622,26 @@ $(FILE.gen6.mac.h): $(PACKAGEDIR)/drawable/${JAVA_C_MAP6_MAC_FILE:.java=.class}
 	      $(PACKAGEDIR).drawable.${JAVA_C_MAP6_MAC_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
 
+$(CNATIVEDIR)/GLF_JNI12_funcs.o: ${FILE.gen7.h}
+
+$(CNATIVEDIR)/GLF_JNI_funcs.o: ${FILE.gen7.h}
+
+$(CNATIVEDIR)/Tool_JNI12_funcs.o: ${FILE.gen8.h}
+
+$(CNATIVEDIR)/Tool_JNI_funcs.o: ${FILE.gen8.h}
+
+$(FILE.gen7.h): $(PACKAGEDIR)/utils/glf/${JAVA_C_MAP7_FILE:.java=.class}
+	rm -f $(FILE.gen7.h)
+	$(JAVAH) -jni -d $(CHEADERDIR) \
+	      $(PACKAGEDIR).utils.glf.${JAVA_C_MAP7_FILE:.java=} 2>&1 \
+	| tee -a $(THISDIR)/errors
+
+$(FILE.gen8.h): $(PACKAGEDIR)/utils/${JAVA_C_MAP8_FILE:.java=.class}
+	rm -f $(FILE.gen8.h)
+	$(JAVAH) -jni -d $(CHEADERDIR) \
+	      $(PACKAGEDIR).utils.${JAVA_C_MAP8_FILE:.java=} 2>&1 \
+	| tee -a $(THISDIR)/errors
+
 $(CNATIVEDIR)/gltool.o:  $(CNATIVEDIR)/gltool.h \
                       $(CNATIVEDIR)/glxtool.h $(CNATIVEDIR)/glcaps.h \
 		      $(CNATIVEDIR)/gl-disp-var.hc   $(CNATIVEDIR)/glu-disp-fetch.hc \
@@ -697,6 +752,7 @@ classcpy:
 		fi ; \
 		cp $$i $(DEST_CLASSES_DIR)/$$(dirname $$i) ; \
 	done 
+	cp -a gl4java/utils/glf/fonts $(DEST_CLASSES_DIR)/gl4java/utils/glf
 	echo classes copied
 	chmod -R 755 $(DEST_CLASSES_DIR)/gl4java
 	$(MK_GL4JAVA_JAR)
@@ -715,6 +771,9 @@ htmldocw32: latexdoc javadocw32
 latexdoc: 
 	cd docs-src; UpdateHtml
 
+doxygendoc:
+	doxygen
+
 javadoc:
 	cd C2J; make htmldoc
 	$(JAVADOC) -J-Xmx64m -protected -d docs/html \
@@ -727,6 +786,7 @@ javadoc:
 		gl4java.drawable \
 		gl4java.drawable.utils \
 		gl4java.utils \
+		gl4java.utils.glf \
 		gl4java.utils.glut \
 		gl4java.utils.glut.fonts \
 		gl4java.utils.glut.fonts.data \
@@ -746,6 +806,7 @@ javadocw32:
 		gl4java.drawable \
 		gl4java.drawable.utils \
 		gl4java.utils \
+		gl4java.utils.glf \
 		gl4java.utils.glut \
 		gl4java.utils.glut.fonts \
 		gl4java.utils.glut.fonts.data \
@@ -767,6 +828,10 @@ java2binpkg: pbinpkg
 	cd $(DEST_CLASSES_DIR) ; \
 	zip -9 $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glutfonts-jar.zip gl4java-glutfonts.jar
 
+	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glffonts-jar.zip
+	cd $(DEST_CLASSES_DIR) ; \
+	zip -9 $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glffonts-jar.zip gl4java-glffonts.jar
+
 	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-classes.zip
 	cd $(DEST_CLASSES_DIR) ; \
 	zip -9r $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-classes.zip \
@@ -779,12 +844,18 @@ java2binpkg: pbinpkg
 		gl4java/drawable \
 		gl4java/utils/*.class \
 		gl4java/utils/textures \
+		gl4java/utils/glf/*.class \
 		gl4java/utils/glut/*.class
 
 	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glutfonts-classes.zip
 	cd $(DEST_CLASSES_DIR) ; \
 	zip -9r $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glutfonts-classes.zip \
 		gl4java/utils/glut/fonts
+
+	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glf-fonts.zip
+	cd $(DEST_CLASSES_DIR) ; \
+	zip -9r $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glf-fonts.zip \
+		gl4java/utils/glf/fonts
 
 	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-INSTALLER.zip
 	cd .. ; \

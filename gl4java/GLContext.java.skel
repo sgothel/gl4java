@@ -2648,6 +2648,8 @@ public class GLContext extends Object
                      " ("+getJVMVersionMajor()+"."+getJVMVersionMinor()+")"+
 		     ", Vendor: "+ getJVMVendor() + "\n" ;
 
+      gl4java.utils.glf.GLF glf = new gl4java.utils.glf.GLF();
+
       String info1= "GL4Java - LGPL-Version"                       + "\n" +
       	            "-------------------------------------------------\n" +
       	            "-------------------------------------------------\n" +
@@ -2671,6 +2673,13 @@ public class GLContext extends Object
 		    "Native-Library     : GL4Java.GLUFunc impl.       \n" +
 		    "            Version: "+glu.getNativeVersion() + "\n" +
 		    "            Vendor : "+glu.getNativeVendor()  + "\n" +
+      	            "-------------------------------------------------\n" +
+		    "Java-Class         : GL4Java.utils.glf.GLFFuncJNI  \n" +
+		    "          : Version: "+glf.getClassVersion()  + "\n" +
+		    "            Vendor : "+glf.getClassVendor()   + "\n" +
+		    "Native-Library     : GL4Javautils.glf..GLFFuncJNI  \n" +
+		    "            Version: "+glf.getNativeVersion() + "\n" +
+		    "            Vendor : "+glf.getNativeVendor()  + "\n" +
       	            "-------------------------------------------------\n" +
 		    "\n"+
 		    jvmstr +

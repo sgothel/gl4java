@@ -39,7 +39,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /FD /c
-# ADD CPP /nologo /MT /W3 /GX /O2 /I "d:\java2\include" /I "d:\java2\include\win32" /I "..\..\CCLassHeaders" /I "..\..\CNativeCode" /D "NO_VSNPRINTF" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WIN32_" /D "_MSVC_" /D "_MT" /D "_GL_DYNAMIC_BINDING_" /FD /c
+# ADD CPP /nologo /MT /W3 /GX /O2 /I "d:\jdk1.4\include" /I "d:\jdk1.4\include\win32" /I "..\..\CCLassHeaders" /I "..\..\CNativeCode" /D "NO_VSNPRINTF" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WIN32_" /D "_MSVC_" /D "_MT" /D "_GL_DYNAMIC_BINDING_" /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /o "NUL" /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /o "NUL" /win32
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
@@ -49,7 +49,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  ../libs/GL4JavaJauGljJNI.lib /nologo /subsystem:windows /dll /machine:I386 /out:"../libs/GL4JavaGljMSJDirect.dll"
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ../libs/GL4JavaJauGljJNI.lib /nologo /subsystem:windows /dll /machine:I386 /out:"../libs/GL4JavaGljMSJDirect.dll"
 # SUBTRACT LINK32 /pdb:none /incremental:yes /map /debug
 # Begin Target
 

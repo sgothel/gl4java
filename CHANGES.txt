@@ -1,12 +1,28 @@
 \begin{verbatim}
 
-Last Changes: 10th April  2001 (Version 2.7.1 - Release 0 )
+Last Changes: 19th June  2001 (Version 2.8.0 - PRE-Release 0 (CVS only) )
 Started:      July 1997 (Version 0)
 
 -----------------
 TOP  = NEW
 DOWN = OLD
 -----------------
+
+19th June  2001 (Version 2.8.0 - PRE-Release 0 (CVS only) )
+	o Added temporary native file access (secure, no filename passing)
+	  to gl4java.utils.Tool
+
+	o Added C2J: "const char *" -> "jstring"
+
+	o Added native integration of Roman Podobedov's GLF-Library:
+		package:    gl4java.utils.glf
+		main class: gl4java.utils.glf.GLF
+		demos:      demos/GLFDemos
+
+	  Now, a better font support is avaiable with this package !
+
+	o Fixed JDK 1.4 (beta) compatibility
+
 
 10th April  2001 (Version 2.7.2 - Release 0 )
 	o Added setup the glClearColor within GLCanvas/GLJPanel

@@ -5,11 +5,10 @@ JNIEXPORT jlong JNICALL
 Java_gl4java_drawable_X11SunJDK13GLDrawableFactory_glXChooseVisualID
 	(JNIEnv *env,
          jclass unused,
-	 jint screen,
-	 jlong display,
 	 jobject capsObj, jboolean verbose)
 {
-    Display *disp = (Display *) ( (PointerHolder)display );
+    Display *disp = NULL;
+    int screen = 0;
 
     XVisualInfo * visual=NULL;
     int visualAttribList[32];
@@ -34,6 +33,8 @@ Java_gl4java_drawable_X11SunJDK13GLDrawableFactory_glXChooseVisualID
        If running without this ugly thing,
        the derived SimpleGLAnimApplet1 get's an X11 async reply
        if the thing is initialized by the applet's init method !
+
+       jdk 1.4 does not support the getDisplay() method anyway ..
      */
     disp = XOpenDisplay( NULL );
     screen = DefaultScreen( disp );

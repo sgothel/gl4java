@@ -91,12 +91,6 @@
 		#endif
 	#endif
 
-	#ifndef USE_64BIT_POINTER
-		typedef int  PointerHolder;
-	#else
-		typedef long PointerHolder;
-	#endif
-
 	#ifdef _WIN32_
 		#ifndef NDEBUG
 			#define CHECK_WGL_ERROR(a,b,c) check_wgl_error(a,b,c)

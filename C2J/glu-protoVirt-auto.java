@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 2.1
+ * C2J Parser Version 2.2
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -110,7 +110,7 @@
 		int widthin,
 		int heightin,
 		int typein,
-		byte[] datain,
+		String datain,
 		int widthout,
 		int heightout,
 		int typeout,
@@ -674,4 +674,4 @@
 		long tobj
 	) ;
 
-/* C2J Parser Version 2.1:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.2:  Java program parsed successfully. */ 

@@ -32,7 +32,7 @@ public final String getClassVendor ( )
 { return "Jausoft - Sven Goethel Software Development"; }
 
 public final String getClassVersion ( ) 
-{ return "2.7.1.0"; }
+{ return "2.8.0.0"; }
 
 
 /**
@@ -143,7 +143,7 @@ public final native long  gluNewNurbsRenderer( );
 public final native long  gluNewTess( );
 
 /**
- * C2J Parser Version 2.1
+ * C2J Parser Version 2.2
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -254,7 +254,7 @@ public final native long  gluNewTess( );
 		int widthin,
 		int heightin,
 		int typein,
-		byte[] datain,
+		String datain,
 		int widthout,
 		int heightout,
 		int typeout,
@@ -818,7 +818,7 @@ public final native long  gluNewTess( );
 		long tobj
 	) ;
 
-/* C2J Parser Version 2.1:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.2:  Java program parsed successfully. */ 
 
 
 }

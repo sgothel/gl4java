@@ -9,26 +9,23 @@
 SHELL			= /bin/bash
 
 THISDIR 		= ${PWD}
-THISDIR_w32 		= Y:\\projects\\java\\GL4Java\\GL4Java
-HOME_LIB_DIR    	= //D/WINNT/system32
-DEST_CLASSES_DIR	= //D/classes-1.1.X
+THISDIR_w32 		= P:\\java\\GL4Java\\GL4Java
+HOME_LIB_DIR    	= //C/WIN98SE/system
+DEST_CLASSES_DIR	= /classes-1.1.X
 WIN32TYPE		= Win32-x86
 
-JDK_HOME		= //D/java2
-JDK_HOME_w32		= D:\\java2
+JDK_HOME		= //D/jdk1.3.1
+JDK_HOME_w32		= D:\\jdk1.3.1
 JAVASHAREINC    	= $(JDK_HOME)/include
 JAVAOSINC  		= $(JDK_HOME)/include/win32
 
-JAR_DESTS		= //D/java2/jre/lib/ext \
-			  //D/jdk1.2.2/jre/lib/ext \
-			  //D/jre1.3.0/lib/ext \
-			  //D/jre1.3.0_01/lib/ext \
-			  //D/Programme/Netscape/Communicator/Program/java/classes
+JAR_DESTS		= //D/jdk1.3.1/jre/lib/ext \
+			  //D/jdk1.4/jre/lib/ext
 
 CC			= gcc
 MKLIB 			= mklibs/mkslib.linux
 MKEXP 			= echo
-MSJAVAC 		= //D/MSJAVASDK/BIN/jvc -nomessage -x- -cp:p .\;$(THISDIR_w32)\;$(THISDIR_w32)\\CAPSAPI_CLASSES.ZIP
+MSJAVAC 		= //D/MSJVM/Bin/jvc -nomessage -x- -cp:p .\;$(THISDIR_w32)\;$(THISDIR_w32)\\CAPSAPI_CLASSES.ZIP
 JAVAC 			= $(JDK_HOME)/bin/javac -classpath ".;$(THISDIR_w32);$(THISDIR_w32)/CAPSAPI_CLASSES.ZIP"
 JAVADOC 		= $(JDK_HOME)/bin/javadoc
 JAVAH 			= $(JDK_HOME)/bin/javah

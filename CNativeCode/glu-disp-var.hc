@@ -27,7 +27,7 @@ GLUnurbsObj* (CALLBACK * disp__gluNewNurbsRenderer) ( void ) = NULL;
 
 GLUtesselator* (CALLBACK * disp__gluNewTess) ( void ) = NULL;
 /**
- * C2J Parser Version 2.1
+ * C2J Parser Version 2.2
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -113,4 +113,4 @@ GLUtesselator* (CALLBACK * disp__gluNewTess) ( void ) = NULL;
 
 	void (CALLBACK * disp__gluEndPolygon )(GLUtesselator *) = NULL;
 
-/* C2J Parser Version 2.1:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.2:  Java program parsed successfully. */ 

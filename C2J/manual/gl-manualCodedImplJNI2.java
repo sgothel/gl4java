@@ -8,7 +8,7 @@ public final String getClassVendor ( )
 { return "Jausoft - Sven Goethel Software Development"; }
 
 public final String getClassVersion ( ) 
-{ return "2.7.1.0"; }
+{ return "2.8.0.0"; }
 
 
 

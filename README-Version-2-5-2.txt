@@ -68,7 +68,9 @@ Experience:
 
  Win98/WinNT4.0(*):
 
-	 Command-Line JDK (1.1-1.3, sun):                                OK !
+	 Command-Line JDK (1.1-1.2.X, sun):                              OK !
+
+	 Command-Line JDK (1.3-1.4.X, sun):                              OK !
 		 Well, you have to start the java.exe from the
 		 <jdk-path>/jre/bin/java.exe
 		 Otherwise, the jawt.dll is not found !! BUG in JDK !!

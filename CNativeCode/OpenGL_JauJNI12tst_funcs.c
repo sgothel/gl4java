@@ -71,7 +71,7 @@ Java_gl4java_GLFuncJauJNI_glGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _gl_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _gl_lib_version_="2.7.1.0";
+static const char * _gl_lib_version_="2.8.0.0";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
@@ -86,7 +86,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 }
 
 /**
- * C2J Parser Version 2.1
+ * C2J Parser Version 2.2
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLFuncJauJNI ! 
@@ -23040,4 +23040,4 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 	}
 
-/* C2J Parser Version 2.1:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.2:  Java program parsed successfully. */ 

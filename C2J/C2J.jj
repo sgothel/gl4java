@@ -57,7 +57,7 @@ import java.util.*;
 
   public class C2J{
 
-    public static final String version = "C2J Parser Version 2.1" ;
+    public static final String version = "C2J Parser Version 2.2" ;
     public static final String vendor  = "Jausoft - Sven Goethel Software Development";
 
     public static final int EXPORT_JNI_JAVA        = 1;
@@ -954,6 +954,10 @@ void Pointer(CFuncVariable cfvar) : {}
 			{
 				cfvar.isGLUPtrObject=true;
 				return;
+			}
+		  	else if(cfvar.typeC.equals("char") && cfvar.isConst)
+			{
+				cfvar.typeJava  = "String";
 			}
 		  }
 		  cfvar.arrayNumber++;

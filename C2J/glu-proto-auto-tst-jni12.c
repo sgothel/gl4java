@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 2.1
+ * C2J Parser Version 2.2
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -407,7 +407,7 @@
 		jint widthin,
 		jint heightin,
 		jint typein,
-		jbyteArray datain,
+		jstring datain,
 		jint widthout,
 		jint heightout,
 		jint typeout,
@@ -415,23 +415,14 @@
 	{
 		jint ret;
 
-		jboolean isCopiedArray4 = JNI_FALSE;
-		jbyte *ptr4 = NULL;
-		static int isWarned4 = 0;
+		char *ptr4 = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jbyte *ptr8 = NULL;
 		static int isWarned8 = 0;
 
 		if ( disp__gluScaleImage == NULL ) return 0;
 
-		if(datain!=NULL)
-		{
-			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, datain, &isCopiedArray4);
-			if( isCopiedArray4 == JNI_TRUE && isWarned4==0 ) {
-				isWarned4=1;
-				printf("COPY by gluScaleImage arg: datain");
-			}
-		}
+		ptr4 = jnitoolsGetJavaString(env, datain);
 		if(dataout!=NULL)
 		{
 			ptr8 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, dataout, &isCopiedArray8);
@@ -452,10 +443,7 @@
 			(char *) ptr8
 		);
 
-		if(datain!=NULL)
-		{
-			(*env)->ReleasePrimitiveArrayCritical(env,  datain, ptr4, JNI_ABORT);
-		}
+		free(ptr4);
 		if(dataout!=NULL)
 		{
 			(*env)->ReleasePrimitiveArrayCritical(env,  dataout, ptr8, (isCopiedArray8 == JNI_TRUE)?0:JNI_ABORT);
@@ -2477,4 +2465,4 @@
 
 	}
 
-/* C2J Parser Version 2.1:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.2:  Java program parsed successfully. */ 

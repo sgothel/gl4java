@@ -232,7 +232,7 @@ jlong  LIBAPIENTRY GetCurrentGLContext()
           #ifdef _MAC_OS9_
                 return (jlong) aglGetCurrentContext();
           #else
-                return (jlong) disp__glXGetCurrentContext();   
+                return (jlong) ((PointerHolder)disp__glXGetCurrentContext());   
 	  #endif
         #endif
 }

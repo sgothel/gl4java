@@ -64,6 +64,8 @@ char * LIBAPIENTRY jnitoolsGetJavaString(JNIEnv *env, jstring jstr)
     jthrowable exc;
     char *result = 0;
 
+    if(jstr == NULL) return NULL;
+
     if(!isinit && init(env)) isinit=1;
 
     hab = (*env)->CallObjectMethod(env, jstr, String_getBytes_ID);

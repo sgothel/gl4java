@@ -30,6 +30,9 @@ public class gears extends SimpleGLAnimApplet1
 	public void init(boolean showGL)
 	{
 	super.init();
+	GLContext.gljNativeDebug = false;
+	GLContext.gljClassDebug = false;
+
         Dimension d = getSize();
 
         GLCapabilities caps = new GLCapabilities();

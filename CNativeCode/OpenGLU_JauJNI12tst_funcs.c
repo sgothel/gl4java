@@ -68,7 +68,7 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _glu_lib_version_="2.7.1.0";
+static const char * _glu_lib_version_="2.8.0.0";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLUFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
@@ -301,7 +301,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 }
 
 /**
- * C2J Parser Version 2.1
+ * C2J Parser Version 2.2
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -709,7 +709,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint widthin,
 		jint heightin,
 		jint typein,
-		jbyteArray datain,
+		jstring datain,
 		jint widthout,
 		jint heightout,
 		jint typeout,
@@ -717,23 +717,14 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 	{
 		jint ret;
 
-		jboolean isCopiedArray4 = JNI_FALSE;
-		jbyte *ptr4 = NULL;
-		static int isWarned4 = 0;
+		char *ptr4 = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jbyte *ptr8 = NULL;
 		static int isWarned8 = 0;
 
 		if ( disp__gluScaleImage == NULL ) return 0;
 
-		if(datain!=NULL)
-		{
-			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, datain, &isCopiedArray4);
-			if( isCopiedArray4 == JNI_TRUE && isWarned4==0 ) {
-				isWarned4=1;
-				printf("COPY by gluScaleImage arg: datain");
-			}
-		}
+		ptr4 = jnitoolsGetJavaString(env, datain);
 		if(dataout!=NULL)
 		{
 			ptr8 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, dataout, &isCopiedArray8);
@@ -754,10 +745,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 			(char *) ptr8
 		);
 
-		if(datain!=NULL)
-		{
-			(*env)->ReleasePrimitiveArrayCritical(env,  datain, ptr4, JNI_ABORT);
-		}
+		free(ptr4);
 		if(dataout!=NULL)
 		{
 			(*env)->ReleasePrimitiveArrayCritical(env,  dataout, ptr8, (isCopiedArray8 == JNI_TRUE)?0:JNI_ABORT);
@@ -2779,4 +2767,4 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 
 	}
 
-/* C2J Parser Version 2.1:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.2:  Java program parsed successfully. */ 

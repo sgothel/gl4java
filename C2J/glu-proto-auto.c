@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 2.1
+ * C2J Parser Version 2.2
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -336,7 +336,7 @@
 		jint widthin,
 		jint heightin,
 		jint typein,
-		jbyteArray datain,
+		jstring datain,
 		jint widthout,
 		jint heightout,
 		jint typeout,
@@ -344,16 +344,13 @@
 	{
 		jint ret;
 
-		jbyte *ptr4 = NULL;
+		char *ptr4 = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jbyte *ptr8 = NULL;
 
 		if ( disp__gluScaleImage == NULL ) return 0;
 
-		if(datain!=NULL)
-		{
-			ptr4 = (*env)->GetByteArrayElements(env, datain, 0);
-		}
+		ptr4 = jnitoolsGetJavaString(env, datain);
 		if(dataout!=NULL)
 		{
 			ptr8 = (*env)->GetByteArrayElements(env, dataout, &isCopiedArray8);
@@ -370,10 +367,7 @@
 			(char *) ptr8
 		);
 
-		if(datain!=NULL)
-		{
-			(*env)->ReleaseByteArrayElements(env,  datain, ptr4, JNI_ABORT);
-		}
+		free(ptr4);
 		if(dataout!=NULL)
 		{
 			(*env)->ReleaseByteArrayElements(env,  dataout, ptr8, (isCopiedArray8 == JNI_TRUE)?0:JNI_ABORT);
@@ -2148,4 +2142,4 @@
 
 	}
 
-/* C2J Parser Version 2.1:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.2:  Java program parsed successfully. */ 

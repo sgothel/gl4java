@@ -39,7 +39,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /FD /c
-# ADD CPP /nologo /MT /W3 /GX /O2 /I "d:\java2\include" /I "d:\java2\include\win32" /I "..\..\CCLassHeaders" /I "..\..\CNativeCode" /D "NO_VSNPRINTF" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WIN32_" /D "_MSVC_" /D "_MT" /D "_GL_DYNAMIC_BINDING_" /FD /c
+# ADD CPP /nologo /MT /W3 /GX /O2 /I "d:\jdk1.4\include" /I "d:\jdk1.4\include\win32" /I "..\..\CCLassHeaders" /I "..\..\CNativeCode" /D "NO_VSNPRINTF" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WIN32_" /D "_MSVC_" /D "_MT" /D "_GL_DYNAMIC_BINDING_" /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /o "NUL" /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /o "NUL" /win32
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
@@ -65,6 +65,14 @@ SOURCE=..\..\CNativeCode\glcaps.c
 # Begin Source File
 
 SOURCE=..\..\CNativeCode\GLDrawableFactory_Win32_SunJDK13.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\CNativeCode\glf.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\CNativeCode\GLF_JNI12_funcs.c
 # End Source File
 # Begin Source File
 
@@ -101,6 +109,10 @@ SOURCE=..\..\CNativeCode\OpenGL_Win32_jawt.c
 # Begin Source File
 
 SOURCE=..\..\CNativeCode\OpenGLU_JauJNI12_funcs.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\CNativeCode\Tool_JNI12_funcs.c
 # End Source File
 # Begin Source File
 

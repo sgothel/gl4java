@@ -39,7 +39,7 @@
     	GET_GL_PROCADDRESS("gluNewTess");
 
 /**
- * C2J Parser Version 2.1
+ * C2J Parser Version 2.2
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -165,4 +165,4 @@
 	disp__gluEndPolygon = (void (CALLBACK *)(GLUtesselator *))
 	  GET_GL_PROCADDRESS ("gluEndPolygon");
 
-/* C2J Parser Version 2.1:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.2:  Java program parsed successfully. */ 

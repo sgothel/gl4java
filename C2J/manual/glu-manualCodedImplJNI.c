@@ -33,7 +33,7 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _glu_lib_version_="2.7.1.0";
+static const char * _glu_lib_version_="2.8.0.0";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLUFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )

@@ -88,9 +88,17 @@ Be sure to have:
 			  call as root !
 
 
+Java2 Command-Line JDK (1.3-1.4.X, sun) on Win32:
+=================================================
+  Well, you have to start the java.exe from the
+  <jdk-path>/jre/bin/java.exe
+  Otherwise, the jawt.dll is not found !! BUG in JDK !!
+
+
+
 Java2-Plug-In, Appletviewer, Security:
 ======================================
-  Since GL4Java 2.7.1, the gl4java.jar file must resides within 
+  Since GL4Java 2.7.1, the gl4java*.jar files must resides within 
   the jre/lib/ext directory. In this case no special policy
   is needed for use GL4Java and you can skip this chapter !!
 

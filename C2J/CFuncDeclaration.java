@@ -493,7 +493,11 @@ public class CFuncDeclaration
 		{
 		  cfvar = (CFuncVariable) argList.elementAt(i);
 
-	          if( cfvar.arrayNumber>0 )
+		  if(cfvar.typeJava.equals("String") && cfvar.arrayNumber==1)
+		  {
+		    res += "\t\tchar *ptr" + i +
+				" = NULL;\n";
+	          } else if( cfvar.arrayNumber>0 )
 		  {
 
 		    jniCMethodBaseType = cfvar.getJniCMethodBaseType();
@@ -519,21 +523,17 @@ public class CFuncDeclaration
 
 	        res += "\n" ;
 
-		//
-		// Add the query if the native function pointer is != NULL
-		//
-		res += "\t\tif ( ";
-			
-		if(exportMode==C2J.EXPORT_JNI_C)
-			res += funcSpec.identifier; 
-		else
-			res += "disp__"+funcSpec.identifier;
+		if(exportMode==C2J.EXPORT_JNI_C_DYN)
+		{
+			//
+			// Add the query if the dynamic native function pointer is != NULL
+			//
+			res += "\t\tif ( disp__"+funcSpec.identifier+" == NULL ) return";
 
-		res += " == NULL ) return";
-
-		if(funcSpec.typeJava.equals("void")==false)
-			res += " 0";
-		res += ";\n\n";
+			if(funcSpec.typeJava.equals("void")==false)
+				res += " 0";
+			res += ";\n\n";
+		}
 
 		//
 		// Adding the JNI access Methods 
@@ -544,7 +544,12 @@ public class CFuncDeclaration
 		{
 		  cfvar = (CFuncVariable) argList.elementAt(i);
 
-	          if( cfvar.arrayNumber>0 )
+		  if(cfvar.typeJava.equals("String") && cfvar.arrayNumber==1)
+		  {
+		    res += "\t\tptr" + i + " = " +
+			   "jnitoolsGetJavaString(env, "+cfvar.identifier+
+			   ");\n";
+		  } else if( cfvar.arrayNumber>0 )
 		  {
 		    jniCMethodBaseType = cfvar.getJniCMethodBaseType();
 
@@ -650,7 +655,10 @@ public class CFuncDeclaration
 		{
 		  cfvar = (CFuncVariable) argList.elementAt(i);
 
-		  if( cfvar.arrayNumber>0 )
+		  if(cfvar.typeJava.equals("String") && cfvar.arrayNumber==1)
+		  {
+		    res += "\t\tfree(ptr"+i+");\n";
+		  } else if( cfvar.arrayNumber>0 )
 		  {
 		    jniCMethodBaseType = cfvar.getJniCMethodBaseType();
 

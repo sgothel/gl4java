@@ -19,12 +19,14 @@ all: C2J htmldoc gl2j gl2c
 gl2j: \
      ../gl4java/GLEnum.java \
      ../gl4java/GLUEnum.java \
+     ../gl4java/utils/glf/GLFEnum.java \
      ../gl4java/GLFunc.java \
      ../gl4java/GLFuncJauJNI.java \
      ../gl4java/GLFuncJauJNInf.java \
      ../gl4java/GLUFunc.java \
      ../gl4java/GLUFuncJauJNI.java \
-     ../gl4java/GLUFuncJauJNInf.java
+     ../gl4java/GLUFuncJauJNInf.java \
+     ../gl4java/utils/glf/GLFFuncJNI.java
 
 gl2c: \
      ../CNativeCode/gl-disp-var.h \
@@ -46,7 +48,9 @@ gl2c: \
      ../CNativeCode/OpenGLU_JauJNI_funcs.c \
      ../CNativeCode/OpenGLU_JauJNI12_funcs.c \
      ../CNativeCode/OpenGLU_JauJNI12nf_funcs.c \
-     ../CNativeCode/OpenGLU_JauJNI12tst_funcs.c
+     ../CNativeCode/OpenGLU_JauJNI12tst_funcs.c \
+     ../CNativeCode/GLF_JNI_funcs.c \
+     ../CNativeCode/GLF_JNI12_funcs.c 
 
 C2J.class: C2J.java CFuncVariable.class CFuncDeclaration.class
 
@@ -209,6 +213,21 @@ glu-enum-auto.java: glu-enum-auto.orig.h C2J.class
 	printf "\n\n}\n\n" >> ../gl4java/GLUEnum.java
 
 #
+# for java class gl4java.GLFEnum
+#
+glf-enum-auto.java: glf-enum-auto.orig.h C2J.class
+	java C2J jnijava gl4java_GLFEnum glf-enum-auto.orig.h > glf-enum-auto.java
+
+../gl4java/utils/glf/GLFEnum.java: warning.skel			     \
+			glf-enum-auto.java 		     \
+			manual/glf-enum-manualCoded.java
+	cat warning.skel 			\
+	    manual/glf-enum-manualCoded.java     \
+	    glf-enum-auto.java 			\
+	    > ../gl4java/utils/glf/GLFEnum.java
+	printf "\n\n}\n\n" >> ../gl4java/utils/glf/GLFEnum.java
+
+#
 # Common for gl4java.GLFuncJauJNI and gl4java.GLFuncJauJNInf
 # Here we create the final part !
 #
@@ -315,6 +334,24 @@ glu-protoVirt-auto.java: glu-proto-auto.java
 	    glu-proto-auto.java	 		\
 	    > ../gl4java/GLUFuncJauJNI.java
 	printf "\n\n}\n\n" >> ../gl4java/GLUFuncJauJNI.java
+
+#
+# for java class gl4java.utils.glf.GLFFuncJNI
+#
+# This class is the default implementation and is final -> security
+#
+glf-proto-auto.java: glf-proto-auto.orig.h C2J.class
+	java C2J -echo jnijavaf gl4java_utils_glf_GLF glf-proto-auto.orig.h \
+	> glf-proto-auto.java
+
+../gl4java/utils/glf/GLFFuncJNI.java: warning.skel				\
+			 manual/glf-manualCodedImplJNI.java 	\
+			 glf-proto-auto.java			
+	cat warning.skel 			\
+	    manual/glf-manualCodedImplJNI.java 	\
+	    glf-proto-auto.java	 		\
+	    > ../gl4java/utils/glf/GLFFuncJNI.java
+	printf "\n\n}\n\n" >> ../gl4java/utils/glf/GLFFuncJNI.java
 
 #
 # for java class gl4java.GLUFuncJauJNInf
@@ -426,6 +463,37 @@ glu-proto-auto-tst-jni12.c: glu-proto-auto.orig.h C2J.class
 	    glu-proto-auto-tst-jni12.c 			\
 	    > ../CNativeCode/OpenGLU_JauJNI12tst_funcs.c
 
+glf-proto-auto-jni.c: glf-proto-auto.orig.h C2J.class
+	java C2J -echo jnic gl4java_utils_glf_GLFFuncJNI glf-proto-auto.orig.h \
+	> glf-proto-auto-jni.c
+
+../CNativeCode/GLF_JNI_funcs.c: C2J.class 			   \
+			               warning.skel			   \
+			               ../CNativeCode/GLF_funcs.c.skel \
+			               manual/glf-manualCodedImplJNI.c	   \
+			               glf-proto-auto-jni.c
+	cat warning.skel 			\
+	    ../CNativeCode/GLF_funcs.c.skel \
+	    manual/glf-manualCodedImplJNI.c	\
+	    glf-proto-auto-jni.c 			\
+	    > ../CNativeCode/GLF_JNI_funcs.c
+
+
+glf-proto-auto-jni12.c: glf-proto-auto.orig.h C2J.class
+	java C2J -echo -jnic-criticalarray jnic gl4java_utils_glf_GLFFuncJNI glf-proto-auto.orig.h \
+	> glf-proto-auto-jni12.c
+
+../CNativeCode/GLF_JNI12_funcs.c: C2J.class 			   \
+			               warning.skel			   \
+			               ../CNativeCode/GLF_funcs.c.skel \
+			               manual/glf-manualCodedImplJNI.c	   \
+			               glf-proto-auto-jni12.c
+	cat warning.skel 			\
+	    ../CNativeCode/GLF_funcs.c.skel \
+	    manual/glf-manualCodedImplJNI.c	\
+	    glf-proto-auto-jni12.c 			\
+	    > ../CNativeCode/GLF_JNI12_funcs.c
+
 
 #
 # for native library gl4javaJauJNInf[32]
@@ -462,7 +530,10 @@ cleangl2j: clean
 	     gl-enum-auto.java \
 	     gl-protoVirt-auto.java \
 	     glu-enum-auto.java \
-	     glu-protoVirt-auto.java
+	     glu-protoVirt-auto.java \
+	     glf-enum-auto.java \
+	     glf-proto-auto.java
+
 
 cleangl2c: clean
 	rm -f \
@@ -478,7 +549,9 @@ cleangl2c: clean
 	     glu-disp-var-auto.h \
 	     gl-disp-var-auto.h \
 	     glu-disp-fetch-auto.hc \
-	     glu-disp-var-auto.hc
+	     glu-disp-var-auto.hc \
+	     glf-proto-auto-jni12.c \
+	     glf-proto-auto-jni.c
 
 cleangenfiles: clean
 	rm -f \
@@ -490,6 +563,7 @@ cleangenfiles: clean
 		../gl4java/GLUFunc.java \
 		../gl4java/GLUFuncJauJNI.java \
 		../gl4java/GLUFuncJauJNInf.java \
+	        ../gl4java/utils/glf/GLFFuncJNI.java \
 		../CNativeCode/OpenGL_JauJNI_funcs.c \
 		../CNativeCode/OpenGL_JauJNI12_funcs.c \
 		../CNativeCode/OpenGL_JauJNI12nf_funcs.c \
@@ -509,7 +583,9 @@ cleangenfiles: clean
 		../CNativeCode/glx-disp-fetch.hc \
 		../CNativeCode/wgl-disp-var.h \
 		../CNativeCode/wgl-disp-var.hc \
-		../CNativeCode/wgl-disp-fetch.hc
+		../CNativeCode/wgl-disp-fetch.hc \
+	        ../CNativeCode/GLF_JNI_funcs.c \
+	        ../CNativeCode/GLF_JNI12_funcs.c 
 
 cleanall: clean cleangl2c cleangl2j cleangenfiles cleanc2j
 	rm -f *.c *.class *.html

@@ -19,6 +19,12 @@
 		#define LIBAPI
 	#endif
 
+	#ifndef USE_64BIT_POINTER
+		typedef int  PointerHolder;
+	#else
+		typedef long PointerHolder;
+	#endif
+
 	typedef enum {
 		T_NOPE = 0,
 		T_VOID,
