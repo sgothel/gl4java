@@ -17,7 +17,7 @@
 
 	GLint (CALLBACK * disp__gluUnProject )(GLdouble, GLdouble, GLdouble, const GLdouble *, const GLdouble *, const GLint *, GLdouble *, GLdouble *, GLdouble *) = NULL;
 
-	GLint (CALLBACK * disp__gluScaleImage )(GLenum, GLsizei, GLsizei, GLenum, const char *, GLsizei, GLsizei, GLenum, char *) = NULL;
+	GLint (CALLBACK * disp__gluScaleImage )(GLenum, GLsizei, GLsizei, GLenum, const GLbyte *, GLsizei, GLsizei, GLenum, GLbyte *) = NULL;
 
 	GLint (CALLBACK * disp__gluBuild1DMipmaps )(GLenum, GLint, GLint, GLenum, GLenum, const void *) = NULL;
 

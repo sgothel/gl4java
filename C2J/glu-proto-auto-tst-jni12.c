@@ -397,7 +397,7 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluScaleImage ( GLenum format , GLsizei widthin , GLsizei heightin , GLenum typein , const char * datain , GLsizei widthout , GLsizei heightout , GLenum typeout , char * dataout ) ;
+   extern GLint gluScaleImage ( GLenum format , GLsizei widthin , GLsizei heightin , GLenum typein , const GLbyte * datain , GLsizei widthout , GLsizei heightout , GLenum typeout , GLbyte * dataout ) ;
  * </pre> 
  */
 	JNIEXPORT jint JNICALL
@@ -407,7 +407,7 @@
 		jint widthin,
 		jint heightin,
 		jint typein,
-		jstring datain,
+		jbyteArray datain,
 		jint widthout,
 		jint heightout,
 		jint typeout,
@@ -415,14 +415,23 @@
 	{
 		jint ret;
 
-		char *ptr4 = NULL;
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jbyte *ptr4 = NULL;
+		static int isWarned4 = 0;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jbyte *ptr8 = NULL;
 		static int isWarned8 = 0;
 
 		if ( disp__gluScaleImage == NULL ) return 0;
 
-		ptr4 = jnitoolsGetJavaString(env, datain);
+		if(datain!=NULL)
+		{
+			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, datain, &isCopiedArray4);
+			if( isCopiedArray4 == JNI_TRUE && isWarned4==0 ) {
+				isWarned4=1;
+				printf("COPY by gluScaleImage arg: datain");
+			}
+		}
 		if(dataout!=NULL)
 		{
 			ptr8 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, dataout, &isCopiedArray8);
@@ -436,14 +445,17 @@
 			(GLsizei) widthin,
 			(GLsizei) heightin,
 			(GLenum) typein,
-			(const char *) ptr4,
+			(const GLbyte *) ptr4,
 			(GLsizei) widthout,
 			(GLsizei) heightout,
 			(GLenum) typeout,
-			(char *) ptr8
+			(GLbyte *) ptr8
 		);
 
-		free(ptr4);
+		if(datain!=NULL)
+		{
+			(*env)->ReleasePrimitiveArrayCritical(env,  datain, ptr4, JNI_ABORT);
+		}
 		if(dataout!=NULL)
 		{
 			(*env)->ReleasePrimitiveArrayCritical(env,  dataout, ptr8, (isCopiedArray8 == JNI_TRUE)?0:JNI_ABORT);

@@ -24,9 +24,9 @@ extern GLint  gluUnProject( GLdouble winx, GLdouble winy,
                                       GLdouble *objz );
 extern GLint  gluScaleImage( GLenum format,
                                      GLsizei widthin, GLsizei heightin,
-                                     GLenum typein, const char *datain,
+                                     GLenum typein, const GLbyte *datain,
                                      GLsizei widthout, GLsizei heightout,
-                                     GLenum typeout, char *dataout );
+                                     GLenum typeout, GLbyte *dataout );
 extern GLint  gluBuild1DMipmaps( GLenum target, GLint components,
                                            GLint width, GLenum format,
                                            GLenum type, const void *data );

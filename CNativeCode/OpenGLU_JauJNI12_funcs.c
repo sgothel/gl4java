@@ -628,7 +628,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluScaleImage ( GLenum format , GLsizei widthin , GLsizei heightin , GLenum typein , const char * datain , GLsizei widthout , GLsizei heightout , GLenum typeout , char * dataout ) ;
+   extern GLint gluScaleImage ( GLenum format , GLsizei widthin , GLsizei heightin , GLenum typein , const GLbyte * datain , GLsizei widthout , GLsizei heightout , GLenum typeout , GLbyte * dataout ) ;
  * </pre> 
  */
 	JNIEXPORT jint JNICALL
@@ -638,7 +638,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint widthin,
 		jint heightin,
 		jint typein,
-		jstring datain,
+		jbyteArray datain,
 		jint widthout,
 		jint heightout,
 		jint typeout,
@@ -646,13 +646,16 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 	{
 		jint ret;
 
-		char *ptr4 = NULL;
+		jbyte *ptr4 = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jbyte *ptr8 = NULL;
 
 		if ( disp__gluScaleImage == NULL ) return 0;
 
-		ptr4 = jnitoolsGetJavaString(env, datain);
+		if(datain!=NULL)
+		{
+			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, datain, 0);
+		}
 		if(dataout!=NULL)
 		{
 			ptr8 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, dataout, &isCopiedArray8);
@@ -662,14 +665,17 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 			(GLsizei) widthin,
 			(GLsizei) heightin,
 			(GLenum) typein,
-			(const char *) ptr4,
+			(const GLbyte *) ptr4,
 			(GLsizei) widthout,
 			(GLsizei) heightout,
 			(GLenum) typeout,
-			(char *) ptr8
+			(GLbyte *) ptr8
 		);
 
-		free(ptr4);
+		if(datain!=NULL)
+		{
+			(*env)->ReleasePrimitiveArrayCritical(env,  datain, ptr4, JNI_ABORT);
+		}
 		if(dataout!=NULL)
 		{
 			(*env)->ReleasePrimitiveArrayCritical(env,  dataout, ptr8, (isCopiedArray8 == JNI_TRUE)?0:JNI_ABORT);

@@ -102,7 +102,7 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluScaleImage ( GLenum format , GLsizei widthin , GLsizei heightin , GLenum typein , const char * datain , GLsizei widthout , GLsizei heightout , GLenum typeout , char * dataout ) ;
+   extern GLint gluScaleImage ( GLenum format , GLsizei widthin , GLsizei heightin , GLenum typein , const GLbyte * datain , GLsizei widthout , GLsizei heightout , GLenum typeout , GLbyte * dataout ) ;
  * </pre> 
  */
 	public final native int gluScaleImage (
@@ -110,7 +110,7 @@
 		int widthin,
 		int heightin,
 		int typein,
-		String datain,
+		byte[] datain,
 		int widthout,
 		int heightout,
 		int typeout,

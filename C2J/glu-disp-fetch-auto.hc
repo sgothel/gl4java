@@ -23,7 +23,7 @@
 	disp__gluUnProject = (GLint (CALLBACK *)(GLdouble, GLdouble, GLdouble, const GLdouble *, const GLdouble *, const GLint *, GLdouble *, GLdouble *, GLdouble *))
 	  GET_GL_PROCADDRESS ("gluUnProject");
 
-	disp__gluScaleImage = (GLint (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, const char *, GLsizei, GLsizei, GLenum, char *))
+	disp__gluScaleImage = (GLint (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, const GLbyte *, GLsizei, GLsizei, GLenum, GLbyte *))
 	  GET_GL_PROCADDRESS ("gluScaleImage");
 
 	disp__gluBuild1DMipmaps = (GLint (CALLBACK *)(GLenum, GLint, GLint, GLenum, GLenum, const void *))
