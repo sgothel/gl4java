@@ -1,12 +1,31 @@
 \begin{verbatim}
 
-Last Changes: 5th April  2001 (Version 2.7.0 - Release 0 )
+Last Changes: 10th April  2001 (Version 2.7.1 - Release 0 )
 Started:      July 1997 (Version 0)
 
 -----------------
 TOP  = NEW
 DOWN = OLD
 -----------------
+
+10th April  2001 (Version 2.7.1 - Release 0 )
+	o Added a check for NULL Pointer.
+	  If the native GL/GLU function pointer are zero (may not exist),
+	  the jni wrapper function just return a dummy zero value.
+
+	o Added a "AccessController.doPrivileged" block for JVM's >= 1.2,
+	  within the native library loader method (gl4java.GLContext)
+	  and the drawable.*Factory* classes.
+
+	  No more extra java.policy entries are needed to run 
+	  gl4java applet's, if:
+	  	- using JVM >= 1.2
+		- gl4java.jar is installed properly within jre/lib/ext
+
+	o Added a template Installer script to run the GL4Java-Installer 
+	  as an application using a http proxy server.
+
+	o updated the *.txt files (docu)
 
 5th  April  2001 (Version 2.7.0 - Release 0 )
 	o Since 2.7.0 we do not link the OpenGL and GLU libraries

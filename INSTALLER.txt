@@ -32,15 +32,11 @@ The Web-Installer works for:
 	
 		jre/lib/security/java.policy
 	
-	file.
+	file for the GL4Java-Installer only !
 	
 	Here are the privileges for this purpose:
 	
-		http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/gl4java.policy
-	
-	or from this directory:
-	
-		demos/gl4java.policy
+	  http://www.jausoft.com/Files/Java/1.1.X/GL4Java/Installer/java.policy
 	
 
 Sven Goethel !

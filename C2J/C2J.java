@@ -3,7 +3,7 @@ import java.util.*;
 
   public class C2J implements C2JConstants {
 
-    public static final String version = "C2J Parser Version 2.0" ;
+    public static final String version = "C2J Parser Version 2.1" ;
     public static final String vendor  = "Jausoft - Sven Goethel Software Development";
 
     public static final int EXPORT_JNI_JAVA        = 1;

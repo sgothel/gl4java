@@ -3,6 +3,9 @@
 Since GL4Java Version 2.0.0 Release 1, 
 GL4Java do supports the Java2 plattform !
 
+Since GL4Java Version 2.7.1, 
+GL4Java do supports the privileges of the extension mechanism !
+
 Please read INSTALL.txt first !
 
 You may have many Java2 installation's, e.g.:
@@ -34,16 +37,11 @@ you must add privileges to your
 
 	jre/lib/security/java.policy
 
-file.
+file, to install GL4Java with the GL4Java Installer !
 
-Here are the privileges for this purpose:
+Here are the privileges for this purpose (installation only):
 
-	http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/gl4java.policy
-
-or from this directory:
-
-	demos/gl4java.policy
-
+	http://www.jausoft.com/Files/Java/1.1.X/GL4Java/Installer/java.policy
 
 
 Prerequisites
@@ -58,10 +56,6 @@ Be sure to have:
 		  For Windows32: Java2-Plug-In, Java2, JRE (prefered)
 
 			  c:/windows/system/GL4JavaGljMSJDirect.dll
-			  c:/windows/system/GL4JavaJauGLJNI.dll
-			  c:/windows/system/GL4JavaJauGLJNI12.dll
-			  c:/windows/system/GL4JavaJauGLUJNI.dll
-			  c:/windows/system/GL4JavaJauGLUJNI12.dll
 			  c:/windows/system/GL4JavaJauGljJNI.dll
 			  c:/windows/system/GL4JavaJauGljJNI12.dll
 			  c:/windows/system/GL4JavaJauGljJNI13.dll
@@ -69,25 +63,19 @@ Be sure to have:
 		  or 
 
 			  ./jre/bin/GL4JavaGljMSJDirect.dll
-			  ./jre/bin/GL4JavaJauGLJNI.dll
-			  ./jre/bin/GL4JavaJauGLJNI12.dll
-			  ./jre/bin/GL4JavaJauGLUJNI.dll
-			  ./jre/bin/GL4JavaJauGLUJNI12.dll
 			  ./jre/bin/GL4JavaJauGljJNI.dll
 			  ./jre/bin/GL4JavaJauGljJNI12.dll
 			  ./jre/bin/GL4JavaJauGljJNI13.dll
 
 		  For Unix: Java2-Plug-In, Java2, JRE (prefered)
 
-			  /usr/lib/libGL4JavaJauGLJNI12.so*
-			  /usr/lib/libGL4JavaJauGLUJNI12.so*
+			  /usr/lib/libGL4JavaJauGljJNI.so*
 			  /usr/lib/libGL4JavaJauGljJNI12.so*
 			  /usr/lib/libGL4JavaJauGljJNI13.so*
 
 		  or
 
-			  ./jre/lib/<machine>/libGL4JavaJauGLJNI12.so*
-			  ./jre/lib/<machine>/libGL4JavaJauGLUJNI12.so*
+			  ./jre/lib/<machine>/libGL4JavaJauGljJNI.so*
 			  ./jre/lib/<machine>/libGL4JavaJauGljJNI12.so*
 			  ./jre/lib/<machine>/libGL4JavaJauGljJNI13.so*
 
@@ -96,11 +84,18 @@ Be sure to have:
 
 			  Be sure to copy the linked lib-files also !
 
-			  After installation you may do a "ldconfig" call as root !
+			  After installation you may do a "ldconfig" 
+			  call as root !
 
 
 Java2-Plug-In, Appletviewer, Security:
 ======================================
+  Since GL4Java 2.7.1, the gl4java.jar file must resides within 
+  the jre/lib/ext directory. In this case no special policy
+  is needed for use GL4Java and you can skip this chapter !!
+
+  For GL4Java <= 2.7.0 only:
+
   To allow JAVA2's appletviewer and Plug-In using JNI native libs,
   just look at GL4Java/demo/Java2Applet.bat 
   (You have to change the GL4Java.policy file) !

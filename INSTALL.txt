@@ -14,21 +14,6 @@ WHERE DO YOU GET the current version of GL4Java ?
 	
 		- Run the demo's from the GL4Java Website
 	
-	you must add privileges to your 
-	
-		jre/lib/security/java.policy
-	
-	file.
-	
-	Here are the privileges for this purpose:
-	
-		http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/gl4java.policy
-	
-	or from this directory:
-	
-		demos/gl4java.policy
-	
-
   Manually for Unix, Windows, ...
   ================================
 	http://www.jausoft.com/Files/Java/1.1.X/GL4Java/
@@ -152,12 +137,6 @@ o Add gl4java.jar AND png.jar to your CLASSPATH (echo \$CLASSPATH)
 o If you use JAVA2 or JRE - copy gl4java.jar AND png.jar  to :
 		  ./jre/lib/ext/.
 
-o If you use JAVA2 Plug-In copy gl4java.jar AND png.jar to :
-		  ./jre/lib/.
-  (looks like a bug, because the Java2-PlugIn does not find
-   the gl4java.jar file in the ./jre/lib/ext directory )
-
-
         UNICE USERS NATIVE LIBRARY
         ============================
 
@@ -231,21 +210,6 @@ o You can now download the demos-archive GL4JavaX.Y.Z.R-demos.zip
 
   This will invoke the demo-manager !
 
-o To allow JAVA2's appletviewer using JNI native libs,
-  just look at GL4Java/demo/Java2Applet.bat 
-  (You have to change the gl4java.policy file) !
-
-  You can - of course - use your 'policytool',
-  which is shipped with JAVA2 !
-
-  To use the demo Applets for Java2-Plug-In from www.jausoft.com,
-  please add the following lines to your java.policy file:
-
-grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/-" {
-  permission java.security.AllPermission;
-};
-
-
 o You can check JAVA2-Plug-In with the Java-Applets-Html-File's
 	demos/glLogoCvsAppletJ2P.html
 	demos/glOlympicCvsAppletJ2P.html
@@ -280,6 +244,7 @@ Sven Goethel
 2nd September 1999
 16th Novemeber 1999
 7th March 2000
+10th April 2001
 
 
 ---------------------

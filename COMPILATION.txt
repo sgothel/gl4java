@@ -37,6 +37,11 @@ http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/binpkg/png-1.0a-jar.zip
             one's !!
 	    Please be sure to use a GLU Version >= 1.2 !!
 
+	    Well, a GLU 1.2 version is recommended, e,g, SGI's one.
+	    If you use Mesa's GLU version, you may have to add:
+	    	-DGLU_VERSION_1_2
+	    to your CFLAGS !
+
         (b) X11R6 (XFree86 works fine ;-) 3.6, or >= 4.0
 
         (c) Unix standard file-utilities (tar, gzip, ...)
@@ -214,21 +219,11 @@ If all goes well, just type e.g.:
 in this directory, 
 and you should see a demo manager for all the GL4Java demos we have written.
 
-To allow JAVA2's appletviewer or Java2-Plug-In using JNI native libs, 
-just look at GL4Java/demo/Java2Applet.bat 
-(You have to change the gl4java.policy file) !
-
-You can - of course - use your 'policytool', which is shipped with JAVA2 !
-To use the demo Applets for Java2-Plug-In from www.jausoft.com, please add the
-following lines to your java.policy file:
-	grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/-"
-	{
-	  permission java.security.AllPermission;
-	};
 You can also compare the totally native glut version against the java version.
 The glut versions do exist in the demos path also (under native).
 
 Sven Goethel
 2000-11-18
+10th April 2001
 
 \end{verbatim}

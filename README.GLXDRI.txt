@@ -1,6 +1,10 @@
 GL4Java is prepared for XFree86 4.0 & OpenGL/DRI
 ================================================
 
+Since GL4Java 2.7.1 and 2001 April 10,
+everything works fine !
+
+The following text is history ..
 
 ctx := OpenGL rendering context
 

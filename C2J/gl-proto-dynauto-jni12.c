@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 2.0
+ * C2J Parser Version 2.1
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLFuncJauJNI ! 
@@ -16,6 +16,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat c)
 	{
+
+		if ( disp__glClearIndex == NULL ) return;
 
 		disp__glClearIndex (
 			(GLfloat) c
@@ -38,6 +40,8 @@
 		jfloat alpha)
 	{
 
+		if ( disp__glClearColor == NULL ) return;
+
 		disp__glClearColor (
 			(GLclampf) red,
 			(GLclampf) green,
@@ -59,6 +63,8 @@
 		jint mask)
 	{
 
+		if ( disp__glClear == NULL ) return;
+
 		disp__glClear (
 			(GLbitfield) mask
 		);
@@ -76,6 +82,8 @@
 		JNIEnv *env, jobject obj,
 		jint mask)
 	{
+
+		if ( disp__glIndexMask == NULL ) return;
 
 		disp__glIndexMask (
 			(GLuint) mask
@@ -97,6 +105,8 @@
 		jboolean blue,
 		jboolean alpha)
 	{
+
+		if ( disp__glColorMask == NULL ) return;
 
 		disp__glColorMask (
 			(GLboolean) red,
@@ -120,6 +130,8 @@
 		jfloat ref)
 	{
 
+		if ( disp__glAlphaFunc == NULL ) return;
+
 		disp__glAlphaFunc (
 			(GLenum) func,
 			(GLclampf) ref
@@ -140,6 +152,8 @@
 		jint dfactor)
 	{
 
+		if ( disp__glBlendFunc == NULL ) return;
+
 		disp__glBlendFunc (
 			(GLenum) sfactor,
 			(GLenum) dfactor
@@ -159,6 +173,8 @@
 		jint opcode)
 	{
 
+		if ( disp__glLogicOp == NULL ) return;
+
 		disp__glLogicOp (
 			(GLenum) opcode
 		);
@@ -176,6 +192,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
+
+		if ( disp__glCullFace == NULL ) return;
 
 		disp__glCullFace (
 			(GLenum) mode
@@ -195,6 +213,8 @@
 		jint mode)
 	{
 
+		if ( disp__glFrontFace == NULL ) return;
+
 		disp__glFrontFace (
 			(GLenum) mode
 		);
@@ -212,6 +232,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat size)
 	{
+
+		if ( disp__glPointSize == NULL ) return;
 
 		disp__glPointSize (
 			(GLfloat) size
@@ -231,6 +253,8 @@
 		jfloat width)
 	{
 
+		if ( disp__glLineWidth == NULL ) return;
+
 		disp__glLineWidth (
 			(GLfloat) width
 		);
@@ -249,6 +273,8 @@
 		jint factor,
 		jshort pattern)
 	{
+
+		if ( disp__glLineStipple == NULL ) return;
 
 		disp__glLineStipple (
 			(GLint) factor,
@@ -270,6 +296,8 @@
 		jint mode)
 	{
 
+		if ( disp__glPolygonMode == NULL ) return;
+
 		disp__glPolygonMode (
 			(GLenum) face,
 			(GLenum) mode
@@ -290,6 +318,8 @@
 		jfloat units)
 	{
 
+		if ( disp__glPolygonOffset == NULL ) return;
+
 		disp__glPolygonOffset (
 			(GLfloat) factor,
 			(GLfloat) units
@@ -309,6 +339,8 @@
 		jbyteArray mask)
 	{
 		jbyte *ptr0 = NULL;
+
+		if ( disp__glPolygonStipple == NULL ) return;
 
 		if(mask!=NULL)
 		{
@@ -338,6 +370,8 @@
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 
+		if ( disp__glGetPolygonStipple == NULL ) return;
+
 		if(mask!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, mask, &isCopiedArray0);
@@ -364,6 +398,8 @@
 		jboolean flag)
 	{
 
+		if ( disp__glEdgeFlag == NULL ) return;
+
 		disp__glEdgeFlag (
 			(GLboolean) flag
 		);
@@ -382,6 +418,8 @@
 		jbooleanArray flag)
 	{
 		jboolean *ptr0 = NULL;
+
+		if ( disp__glEdgeFlagv == NULL ) return;
 
 		if(flag!=NULL)
 		{
@@ -412,6 +450,8 @@
 		jint height)
 	{
 
+		if ( disp__glScissor == NULL ) return;
+
 		disp__glScissor (
 			(GLint) x,
 			(GLint) y,
@@ -434,6 +474,8 @@
 		jdoubleArray equation)
 	{
 		jdouble *ptr1 = NULL;
+
+		if ( disp__glClipPlane == NULL ) return;
 
 		if(equation!=NULL)
 		{
@@ -465,6 +507,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 
+		if ( disp__glGetClipPlane == NULL ) return;
+
 		if(equation!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, equation, &isCopiedArray1);
@@ -492,6 +536,8 @@
 		jint mode)
 	{
 
+		if ( disp__glDrawBuffer == NULL ) return;
+
 		disp__glDrawBuffer (
 			(GLenum) mode
 		);
@@ -509,6 +555,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
+
+		if ( disp__glReadBuffer == NULL ) return;
 
 		disp__glReadBuffer (
 			(GLenum) mode
@@ -528,6 +576,8 @@
 		jint cap)
 	{
 
+		if ( disp__glEnable == NULL ) return;
+
 		disp__glEnable (
 			(GLenum) cap
 		);
@@ -545,6 +595,8 @@
 		JNIEnv *env, jobject obj,
 		jint cap)
 	{
+
+		if ( disp__glDisable == NULL ) return;
 
 		disp__glDisable (
 			(GLenum) cap
@@ -566,6 +618,8 @@
 		jboolean ret;
 
 
+		if ( disp__glIsEnabled == NULL ) return 0;
+
 		ret = (jboolean) disp__glIsEnabled (
 			(GLenum) cap
 		);
@@ -585,6 +639,8 @@
 		jint cap)
 	{
 
+		if ( disp__glEnableClientState == NULL ) return;
+
 		disp__glEnableClientState (
 			(GLenum) cap
 		);
@@ -602,6 +658,8 @@
 		JNIEnv *env, jobject obj,
 		jint cap)
 	{
+
+		if ( disp__glDisableClientState == NULL ) return;
 
 		disp__glDisableClientState (
 			(GLenum) cap
@@ -623,6 +681,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jboolean *ptr1 = NULL;
+
+		if ( disp__glGetBooleanv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -654,6 +714,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 
+		if ( disp__glGetDoublev == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -683,6 +745,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glGetFloatv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -714,6 +778,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 
+		if ( disp__glGetIntegerv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -741,6 +807,8 @@
 		jint mask)
 	{
 
+		if ( disp__glPushAttrib == NULL ) return;
+
 		disp__glPushAttrib (
 			(GLbitfield) mask
 		);
@@ -757,6 +825,8 @@
 	Java_gl4java_GLFuncJauJNI_glPopAttrib (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glPopAttrib == NULL ) return;
 
 		disp__glPopAttrib (
 		);
@@ -775,6 +845,8 @@
 		jint mask)
 	{
 
+		if ( disp__glPushClientAttrib == NULL ) return;
+
 		disp__glPushClientAttrib (
 			(GLbitfield) mask
 		);
@@ -791,6 +863,8 @@
 	Java_gl4java_GLFuncJauJNI_glPopClientAttrib (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glPopClientAttrib == NULL ) return;
 
 		disp__glPopClientAttrib (
 		);
@@ -810,6 +884,8 @@
 	{
 		jint ret;
 
+
+		if ( disp__glRenderMode == NULL ) return 0;
 
 		ret = (jint) disp__glRenderMode (
 			(GLenum) mode
@@ -831,6 +907,8 @@
 		jint ret;
 
 
+		if ( disp__glGetError == NULL ) return 0;
+
 		ret = (jint) disp__glGetError (
 		);
 
@@ -848,6 +926,8 @@
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glFinish == NULL ) return;
+
 		disp__glFinish (
 		);
 
@@ -863,6 +943,8 @@
 	Java_gl4java_GLFuncJauJNI_glFlush (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glFlush == NULL ) return;
 
 		disp__glFlush (
 		);
@@ -881,6 +963,8 @@
 		jint target,
 		jint mode)
 	{
+
+		if ( disp__glHint == NULL ) return;
 
 		disp__glHint (
 			(GLenum) target,
@@ -901,6 +985,8 @@
 		jdouble depth)
 	{
 
+		if ( disp__glClearDepth == NULL ) return;
+
 		disp__glClearDepth (
 			(GLclampd) depth
 		);
@@ -918,6 +1004,8 @@
 		JNIEnv *env, jobject obj,
 		jint func)
 	{
+
+		if ( disp__glDepthFunc == NULL ) return;
 
 		disp__glDepthFunc (
 			(GLenum) func
@@ -937,6 +1025,8 @@
 		jboolean flag)
 	{
 
+		if ( disp__glDepthMask == NULL ) return;
+
 		disp__glDepthMask (
 			(GLboolean) flag
 		);
@@ -955,6 +1045,8 @@
 		jdouble near_val,
 		jdouble far_val)
 	{
+
+		if ( disp__glDepthRange == NULL ) return;
 
 		disp__glDepthRange (
 			(GLclampd) near_val,
@@ -978,6 +1070,8 @@
 		jfloat alpha)
 	{
 
+		if ( disp__glClearAccum == NULL ) return;
+
 		disp__glClearAccum (
 			(GLfloat) red,
 			(GLfloat) green,
@@ -1000,6 +1094,8 @@
 		jfloat value)
 	{
 
+		if ( disp__glAccum == NULL ) return;
+
 		disp__glAccum (
 			(GLenum) op,
 			(GLfloat) value
@@ -1018,6 +1114,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
+
+		if ( disp__glMatrixMode == NULL ) return;
 
 		disp__glMatrixMode (
 			(GLenum) mode
@@ -1041,6 +1139,8 @@
 		jdouble near_val,
 		jdouble far_val)
 	{
+
+		if ( disp__glOrtho == NULL ) return;
 
 		disp__glOrtho (
 			(GLdouble) left,
@@ -1070,6 +1170,8 @@
 		jdouble far_val)
 	{
 
+		if ( disp__glFrustum == NULL ) return;
+
 		disp__glFrustum (
 			(GLdouble) left,
 			(GLdouble) right,
@@ -1096,6 +1198,8 @@
 		jint height)
 	{
 
+		if ( disp__glViewport == NULL ) return;
+
 		disp__glViewport (
 			(GLint) x,
 			(GLint) y,
@@ -1116,6 +1220,8 @@
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glPushMatrix == NULL ) return;
+
 		disp__glPushMatrix (
 		);
 
@@ -1132,6 +1238,8 @@
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glPopMatrix == NULL ) return;
+
 		disp__glPopMatrix (
 		);
 
@@ -1147,6 +1255,8 @@
 	Java_gl4java_GLFuncJauJNI_glLoadIdentity (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glLoadIdentity == NULL ) return;
 
 		disp__glLoadIdentity (
 		);
@@ -1165,6 +1275,8 @@
 		jdoubleArray m)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glLoadMatrixd == NULL ) return;
 
 		if(m!=NULL)
 		{
@@ -1193,6 +1305,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glLoadMatrixf == NULL ) return;
+
 		if(m!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, m, 0);
@@ -1220,6 +1334,8 @@
 	{
 		jdouble *ptr0 = NULL;
 
+		if ( disp__glMultMatrixd == NULL ) return;
+
 		if(m!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, m, 0);
@@ -1246,6 +1362,8 @@
 		jfloatArray m)
 	{
 		jfloat *ptr0 = NULL;
+
+		if ( disp__glMultMatrixf == NULL ) return;
 
 		if(m!=NULL)
 		{
@@ -1276,6 +1394,8 @@
 		jdouble z)
 	{
 
+		if ( disp__glRotated == NULL ) return;
+
 		disp__glRotated (
 			(GLdouble) angle,
 			(GLdouble) x,
@@ -1300,6 +1420,8 @@
 		jfloat z)
 	{
 
+		if ( disp__glRotatef == NULL ) return;
+
 		disp__glRotatef (
 			(GLfloat) angle,
 			(GLfloat) x,
@@ -1323,6 +1445,8 @@
 		jdouble z)
 	{
 
+		if ( disp__glScaled == NULL ) return;
+
 		disp__glScaled (
 			(GLdouble) x,
 			(GLdouble) y,
@@ -1344,6 +1468,8 @@
 		jfloat y,
 		jfloat z)
 	{
+
+		if ( disp__glScalef == NULL ) return;
 
 		disp__glScalef (
 			(GLfloat) x,
@@ -1367,6 +1493,8 @@
 		jdouble z)
 	{
 
+		if ( disp__glTranslated == NULL ) return;
+
 		disp__glTranslated (
 			(GLdouble) x,
 			(GLdouble) y,
@@ -1388,6 +1516,8 @@
 		jfloat y,
 		jfloat z)
 	{
+
+		if ( disp__glTranslatef == NULL ) return;
 
 		disp__glTranslatef (
 			(GLfloat) x,
@@ -1411,6 +1541,8 @@
 		jboolean ret;
 
 
+		if ( disp__glIsList == NULL ) return 0;
+
 		ret = (jboolean) disp__glIsList (
 			(GLuint) list
 		);
@@ -1430,6 +1562,8 @@
 		jint list,
 		jint range)
 	{
+
+		if ( disp__glDeleteLists == NULL ) return;
 
 		disp__glDeleteLists (
 			(GLuint) list,
@@ -1452,6 +1586,8 @@
 		jint ret;
 
 
+		if ( disp__glGenLists == NULL ) return 0;
+
 		ret = (jint) disp__glGenLists (
 			(GLsizei) range
 		);
@@ -1472,6 +1608,8 @@
 		jint mode)
 	{
 
+		if ( disp__glNewList == NULL ) return;
+
 		disp__glNewList (
 			(GLuint) list,
 			(GLenum) mode
@@ -1490,6 +1628,8 @@
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glEndList == NULL ) return;
+
 		disp__glEndList (
 		);
 
@@ -1506,6 +1646,8 @@
 		JNIEnv *env, jobject obj,
 		jint list)
 	{
+
+		if ( disp__glCallList == NULL ) return;
 
 		disp__glCallList (
 			(GLuint) list
@@ -1527,6 +1669,8 @@
 		jbyteArray lists)
 	{
 		jbyte *ptr2 = NULL;
+
+		if ( disp__glCallLists == NULL ) return;
 
 		if(lists!=NULL)
 		{
@@ -1552,6 +1696,8 @@
 	{
 		jshort *ptr2 = NULL;
 
+		if ( disp__glCallLists == NULL ) return;
+
 		if(lists!=NULL)
 		{
 			ptr2 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, lists, 0);
@@ -1575,6 +1721,8 @@
 		jintArray lists)
 	{
 		jint *ptr2 = NULL;
+
+		if ( disp__glCallLists == NULL ) return;
 
 		if(lists!=NULL)
 		{
@@ -1600,6 +1748,8 @@
 	{
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glCallLists == NULL ) return;
+
 		if(lists!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, lists, 0);
@@ -1623,6 +1773,8 @@
 		jdoubleArray lists)
 	{
 		jdouble *ptr2 = NULL;
+
+		if ( disp__glCallLists == NULL ) return;
 
 		if(lists!=NULL)
 		{
@@ -1648,6 +1800,8 @@
 	{
 		jboolean *ptr2 = NULL;
 
+		if ( disp__glCallLists == NULL ) return;
+
 		if(lists!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, lists, 0);
@@ -1671,6 +1825,8 @@
 		jlongArray lists)
 	{
 		jlong *ptr2 = NULL;
+
+		if ( disp__glCallLists == NULL ) return;
 
 		if(lists!=NULL)
 		{
@@ -1700,6 +1856,8 @@
 		jint base)
 	{
 
+		if ( disp__glListBase == NULL ) return;
+
 		disp__glListBase (
 			(GLuint) base
 		);
@@ -1718,6 +1876,8 @@
 		jint mode)
 	{
 
+		if ( disp__glBegin == NULL ) return;
+
 		disp__glBegin (
 			(GLenum) mode
 		);
@@ -1734,6 +1894,8 @@
 	Java_gl4java_GLFuncJauJNI_glEnd (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glEnd == NULL ) return;
 
 		disp__glEnd (
 		);
@@ -1752,6 +1914,8 @@
 		jdouble x,
 		jdouble y)
 	{
+
+		if ( disp__glVertex2d == NULL ) return;
 
 		disp__glVertex2d (
 			(GLdouble) x,
@@ -1773,6 +1937,8 @@
 		jfloat y)
 	{
 
+		if ( disp__glVertex2f == NULL ) return;
+
 		disp__glVertex2f (
 			(GLfloat) x,
 			(GLfloat) y
@@ -1792,6 +1958,8 @@
 		jint x,
 		jint y)
 	{
+
+		if ( disp__glVertex2i == NULL ) return;
 
 		disp__glVertex2i (
 			(GLint) x,
@@ -1813,6 +1981,8 @@
 		jshort y)
 	{
 
+		if ( disp__glVertex2s == NULL ) return;
+
 		disp__glVertex2s (
 			(GLshort) x,
 			(GLshort) y
@@ -1833,6 +2003,8 @@
 		jdouble y,
 		jdouble z)
 	{
+
+		if ( disp__glVertex3d == NULL ) return;
 
 		disp__glVertex3d (
 			(GLdouble) x,
@@ -1856,6 +2028,8 @@
 		jfloat z)
 	{
 
+		if ( disp__glVertex3f == NULL ) return;
+
 		disp__glVertex3f (
 			(GLfloat) x,
 			(GLfloat) y,
@@ -1877,6 +2051,8 @@
 		jint y,
 		jint z)
 	{
+
+		if ( disp__glVertex3i == NULL ) return;
 
 		disp__glVertex3i (
 			(GLint) x,
@@ -1900,6 +2076,8 @@
 		jshort z)
 	{
 
+		if ( disp__glVertex3s == NULL ) return;
+
 		disp__glVertex3s (
 			(GLshort) x,
 			(GLshort) y,
@@ -1922,6 +2100,8 @@
 		jdouble z,
 		jdouble w)
 	{
+
+		if ( disp__glVertex4d == NULL ) return;
 
 		disp__glVertex4d (
 			(GLdouble) x,
@@ -1947,6 +2127,8 @@
 		jfloat w)
 	{
 
+		if ( disp__glVertex4f == NULL ) return;
+
 		disp__glVertex4f (
 			(GLfloat) x,
 			(GLfloat) y,
@@ -1970,6 +2152,8 @@
 		jint z,
 		jint w)
 	{
+
+		if ( disp__glVertex4i == NULL ) return;
 
 		disp__glVertex4i (
 			(GLint) x,
@@ -1995,6 +2179,8 @@
 		jshort w)
 	{
 
+		if ( disp__glVertex4s == NULL ) return;
+
 		disp__glVertex4s (
 			(GLshort) x,
 			(GLshort) y,
@@ -2016,6 +2202,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glVertex2dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2044,6 +2232,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glVertex2fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -2070,6 +2260,8 @@
 		jintArray v)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glVertex2iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2098,6 +2290,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glVertex2sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -2124,6 +2318,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glVertex3dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2152,6 +2348,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glVertex3fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -2178,6 +2376,8 @@
 		jintArray v)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glVertex3iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2206,6 +2406,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glVertex3sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -2232,6 +2434,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glVertex4dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2260,6 +2464,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glVertex4fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -2287,6 +2493,8 @@
 	{
 		jint *ptr0 = NULL;
 
+		if ( disp__glVertex4iv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -2313,6 +2521,8 @@
 		jshortArray v)
 	{
 		jshort *ptr0 = NULL;
+
+		if ( disp__glVertex4sv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2342,6 +2552,8 @@
 		jbyte nz)
 	{
 
+		if ( disp__glNormal3b == NULL ) return;
+
 		disp__glNormal3b (
 			(GLbyte) nx,
 			(GLbyte) ny,
@@ -2363,6 +2575,8 @@
 		jdouble ny,
 		jdouble nz)
 	{
+
+		if ( disp__glNormal3d == NULL ) return;
 
 		disp__glNormal3d (
 			(GLdouble) nx,
@@ -2386,6 +2600,8 @@
 		jfloat nz)
 	{
 
+		if ( disp__glNormal3f == NULL ) return;
+
 		disp__glNormal3f (
 			(GLfloat) nx,
 			(GLfloat) ny,
@@ -2407,6 +2623,8 @@
 		jint ny,
 		jint nz)
 	{
+
+		if ( disp__glNormal3i == NULL ) return;
 
 		disp__glNormal3i (
 			(GLint) nx,
@@ -2430,6 +2648,8 @@
 		jshort nz)
 	{
 
+		if ( disp__glNormal3s == NULL ) return;
+
 		disp__glNormal3s (
 			(GLshort) nx,
 			(GLshort) ny,
@@ -2450,6 +2670,8 @@
 		jbyteArray v)
 	{
 		jbyte *ptr0 = NULL;
+
+		if ( disp__glNormal3bv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2478,6 +2700,8 @@
 	{
 		jdouble *ptr0 = NULL;
 
+		if ( disp__glNormal3dv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -2504,6 +2728,8 @@
 		jfloatArray v)
 	{
 		jfloat *ptr0 = NULL;
+
+		if ( disp__glNormal3fv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2532,6 +2758,8 @@
 	{
 		jint *ptr0 = NULL;
 
+		if ( disp__glNormal3iv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -2559,6 +2787,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glNormal3sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -2585,6 +2815,8 @@
 		jdouble c)
 	{
 
+		if ( disp__glIndexd == NULL ) return;
+
 		disp__glIndexd (
 			(GLdouble) c
 		);
@@ -2602,6 +2834,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat c)
 	{
+
+		if ( disp__glIndexf == NULL ) return;
 
 		disp__glIndexf (
 			(GLfloat) c
@@ -2621,6 +2855,8 @@
 		jint c)
 	{
 
+		if ( disp__glIndexi == NULL ) return;
+
 		disp__glIndexi (
 			(GLint) c
 		);
@@ -2638,6 +2874,8 @@
 		JNIEnv *env, jobject obj,
 		jshort c)
 	{
+
+		if ( disp__glIndexs == NULL ) return;
 
 		disp__glIndexs (
 			(GLshort) c
@@ -2657,6 +2895,8 @@
 		jbyte c)
 	{
 
+		if ( disp__glIndexub == NULL ) return;
+
 		disp__glIndexub (
 			(GLubyte) c
 		);
@@ -2675,6 +2915,8 @@
 		jdoubleArray c)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glIndexdv == NULL ) return;
 
 		if(c!=NULL)
 		{
@@ -2703,6 +2945,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glIndexfv == NULL ) return;
+
 		if(c!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, c, 0);
@@ -2729,6 +2973,8 @@
 		jintArray c)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glIndexiv == NULL ) return;
 
 		if(c!=NULL)
 		{
@@ -2757,6 +3003,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glIndexsv == NULL ) return;
+
 		if(c!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, c, 0);
@@ -2783,6 +3031,8 @@
 		jbyteArray c)
 	{
 		jbyte *ptr0 = NULL;
+
+		if ( disp__glIndexubv == NULL ) return;
 
 		if(c!=NULL)
 		{
@@ -2812,6 +3062,8 @@
 		jbyte blue)
 	{
 
+		if ( disp__glColor3b == NULL ) return;
+
 		disp__glColor3b (
 			(GLbyte) red,
 			(GLbyte) green,
@@ -2833,6 +3085,8 @@
 		jdouble green,
 		jdouble blue)
 	{
+
+		if ( disp__glColor3d == NULL ) return;
 
 		disp__glColor3d (
 			(GLdouble) red,
@@ -2856,6 +3110,8 @@
 		jfloat blue)
 	{
 
+		if ( disp__glColor3f == NULL ) return;
+
 		disp__glColor3f (
 			(GLfloat) red,
 			(GLfloat) green,
@@ -2877,6 +3133,8 @@
 		jint green,
 		jint blue)
 	{
+
+		if ( disp__glColor3i == NULL ) return;
 
 		disp__glColor3i (
 			(GLint) red,
@@ -2900,6 +3158,8 @@
 		jshort blue)
 	{
 
+		if ( disp__glColor3s == NULL ) return;
+
 		disp__glColor3s (
 			(GLshort) red,
 			(GLshort) green,
@@ -2921,6 +3181,8 @@
 		jbyte green,
 		jbyte blue)
 	{
+
+		if ( disp__glColor3ub == NULL ) return;
 
 		disp__glColor3ub (
 			(GLubyte) red,
@@ -2944,6 +3206,8 @@
 		jint blue)
 	{
 
+		if ( disp__glColor3ui == NULL ) return;
+
 		disp__glColor3ui (
 			(GLuint) red,
 			(GLuint) green,
@@ -2965,6 +3229,8 @@
 		jshort green,
 		jshort blue)
 	{
+
+		if ( disp__glColor3us == NULL ) return;
 
 		disp__glColor3us (
 			(GLushort) red,
@@ -2988,6 +3254,8 @@
 		jbyte blue,
 		jbyte alpha)
 	{
+
+		if ( disp__glColor4b == NULL ) return;
 
 		disp__glColor4b (
 			(GLbyte) red,
@@ -3013,6 +3281,8 @@
 		jdouble alpha)
 	{
 
+		if ( disp__glColor4d == NULL ) return;
+
 		disp__glColor4d (
 			(GLdouble) red,
 			(GLdouble) green,
@@ -3036,6 +3306,8 @@
 		jfloat blue,
 		jfloat alpha)
 	{
+
+		if ( disp__glColor4f == NULL ) return;
 
 		disp__glColor4f (
 			(GLfloat) red,
@@ -3061,6 +3333,8 @@
 		jint alpha)
 	{
 
+		if ( disp__glColor4i == NULL ) return;
+
 		disp__glColor4i (
 			(GLint) red,
 			(GLint) green,
@@ -3084,6 +3358,8 @@
 		jshort blue,
 		jshort alpha)
 	{
+
+		if ( disp__glColor4s == NULL ) return;
 
 		disp__glColor4s (
 			(GLshort) red,
@@ -3109,6 +3385,8 @@
 		jbyte alpha)
 	{
 
+		if ( disp__glColor4ub == NULL ) return;
+
 		disp__glColor4ub (
 			(GLubyte) red,
 			(GLubyte) green,
@@ -3132,6 +3410,8 @@
 		jint blue,
 		jint alpha)
 	{
+
+		if ( disp__glColor4ui == NULL ) return;
 
 		disp__glColor4ui (
 			(GLuint) red,
@@ -3157,6 +3437,8 @@
 		jshort alpha)
 	{
 
+		if ( disp__glColor4us == NULL ) return;
+
 		disp__glColor4us (
 			(GLushort) red,
 			(GLushort) green,
@@ -3178,6 +3460,8 @@
 		jbyteArray v)
 	{
 		jbyte *ptr0 = NULL;
+
+		if ( disp__glColor3bv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3206,6 +3490,8 @@
 	{
 		jdouble *ptr0 = NULL;
 
+		if ( disp__glColor3dv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -3232,6 +3518,8 @@
 		jfloatArray v)
 	{
 		jfloat *ptr0 = NULL;
+
+		if ( disp__glColor3fv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3260,6 +3548,8 @@
 	{
 		jint *ptr0 = NULL;
 
+		if ( disp__glColor3iv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -3286,6 +3576,8 @@
 		jshortArray v)
 	{
 		jshort *ptr0 = NULL;
+
+		if ( disp__glColor3sv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3314,6 +3606,8 @@
 	{
 		jbyte *ptr0 = NULL;
 
+		if ( disp__glColor3ubv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -3340,6 +3634,8 @@
 		jintArray v)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glColor3uiv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3368,6 +3664,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glColor3usv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -3394,6 +3692,8 @@
 		jbyteArray v)
 	{
 		jbyte *ptr0 = NULL;
+
+		if ( disp__glColor4bv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3422,6 +3722,8 @@
 	{
 		jdouble *ptr0 = NULL;
 
+		if ( disp__glColor4dv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -3448,6 +3750,8 @@
 		jfloatArray v)
 	{
 		jfloat *ptr0 = NULL;
+
+		if ( disp__glColor4fv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3476,6 +3780,8 @@
 	{
 		jint *ptr0 = NULL;
 
+		if ( disp__glColor4iv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -3502,6 +3808,8 @@
 		jshortArray v)
 	{
 		jshort *ptr0 = NULL;
+
+		if ( disp__glColor4sv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3530,6 +3838,8 @@
 	{
 		jbyte *ptr0 = NULL;
 
+		if ( disp__glColor4ubv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -3556,6 +3866,8 @@
 		jintArray v)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glColor4uiv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3584,6 +3896,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glColor4usv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -3610,6 +3924,8 @@
 		jdouble s)
 	{
 
+		if ( disp__glTexCoord1d == NULL ) return;
+
 		disp__glTexCoord1d (
 			(GLdouble) s
 		);
@@ -3627,6 +3943,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat s)
 	{
+
+		if ( disp__glTexCoord1f == NULL ) return;
 
 		disp__glTexCoord1f (
 			(GLfloat) s
@@ -3646,6 +3964,8 @@
 		jint s)
 	{
 
+		if ( disp__glTexCoord1i == NULL ) return;
+
 		disp__glTexCoord1i (
 			(GLint) s
 		);
@@ -3663,6 +3983,8 @@
 		JNIEnv *env, jobject obj,
 		jshort s)
 	{
+
+		if ( disp__glTexCoord1s == NULL ) return;
 
 		disp__glTexCoord1s (
 			(GLshort) s
@@ -3682,6 +4004,8 @@
 		jdouble s,
 		jdouble t)
 	{
+
+		if ( disp__glTexCoord2d == NULL ) return;
 
 		disp__glTexCoord2d (
 			(GLdouble) s,
@@ -3703,6 +4027,8 @@
 		jfloat t)
 	{
 
+		if ( disp__glTexCoord2f == NULL ) return;
+
 		disp__glTexCoord2f (
 			(GLfloat) s,
 			(GLfloat) t
@@ -3722,6 +4048,8 @@
 		jint s,
 		jint t)
 	{
+
+		if ( disp__glTexCoord2i == NULL ) return;
 
 		disp__glTexCoord2i (
 			(GLint) s,
@@ -3743,6 +4071,8 @@
 		jshort t)
 	{
 
+		if ( disp__glTexCoord2s == NULL ) return;
+
 		disp__glTexCoord2s (
 			(GLshort) s,
 			(GLshort) t
@@ -3763,6 +4093,8 @@
 		jdouble t,
 		jdouble r)
 	{
+
+		if ( disp__glTexCoord3d == NULL ) return;
 
 		disp__glTexCoord3d (
 			(GLdouble) s,
@@ -3786,6 +4118,8 @@
 		jfloat r)
 	{
 
+		if ( disp__glTexCoord3f == NULL ) return;
+
 		disp__glTexCoord3f (
 			(GLfloat) s,
 			(GLfloat) t,
@@ -3807,6 +4141,8 @@
 		jint t,
 		jint r)
 	{
+
+		if ( disp__glTexCoord3i == NULL ) return;
 
 		disp__glTexCoord3i (
 			(GLint) s,
@@ -3830,6 +4166,8 @@
 		jshort r)
 	{
 
+		if ( disp__glTexCoord3s == NULL ) return;
+
 		disp__glTexCoord3s (
 			(GLshort) s,
 			(GLshort) t,
@@ -3852,6 +4190,8 @@
 		jdouble r,
 		jdouble q)
 	{
+
+		if ( disp__glTexCoord4d == NULL ) return;
 
 		disp__glTexCoord4d (
 			(GLdouble) s,
@@ -3877,6 +4217,8 @@
 		jfloat q)
 	{
 
+		if ( disp__glTexCoord4f == NULL ) return;
+
 		disp__glTexCoord4f (
 			(GLfloat) s,
 			(GLfloat) t,
@@ -3900,6 +4242,8 @@
 		jint r,
 		jint q)
 	{
+
+		if ( disp__glTexCoord4i == NULL ) return;
 
 		disp__glTexCoord4i (
 			(GLint) s,
@@ -3925,6 +4269,8 @@
 		jshort q)
 	{
 
+		if ( disp__glTexCoord4s == NULL ) return;
+
 		disp__glTexCoord4s (
 			(GLshort) s,
 			(GLshort) t,
@@ -3946,6 +4292,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glTexCoord1dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3974,6 +4322,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glTexCoord1fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4000,6 +4350,8 @@
 		jintArray v)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glTexCoord1iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4028,6 +4380,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glTexCoord1sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4054,6 +4408,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glTexCoord2dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4082,6 +4438,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glTexCoord2fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4108,6 +4466,8 @@
 		jintArray v)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glTexCoord2iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4136,6 +4496,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glTexCoord2sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4162,6 +4524,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glTexCoord3dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4190,6 +4554,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glTexCoord3fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4216,6 +4582,8 @@
 		jintArray v)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glTexCoord3iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4244,6 +4612,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glTexCoord3sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4270,6 +4640,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glTexCoord4dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4298,6 +4670,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glTexCoord4fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4324,6 +4698,8 @@
 		jintArray v)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glTexCoord4iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4352,6 +4728,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glTexCoord4sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4379,6 +4757,8 @@
 		jdouble y)
 	{
 
+		if ( disp__glRasterPos2d == NULL ) return;
+
 		disp__glRasterPos2d (
 			(GLdouble) x,
 			(GLdouble) y
@@ -4398,6 +4778,8 @@
 		jfloat x,
 		jfloat y)
 	{
+
+		if ( disp__glRasterPos2f == NULL ) return;
 
 		disp__glRasterPos2f (
 			(GLfloat) x,
@@ -4419,6 +4801,8 @@
 		jint y)
 	{
 
+		if ( disp__glRasterPos2i == NULL ) return;
+
 		disp__glRasterPos2i (
 			(GLint) x,
 			(GLint) y
@@ -4438,6 +4822,8 @@
 		jshort x,
 		jshort y)
 	{
+
+		if ( disp__glRasterPos2s == NULL ) return;
 
 		disp__glRasterPos2s (
 			(GLshort) x,
@@ -4459,6 +4845,8 @@
 		jdouble y,
 		jdouble z)
 	{
+
+		if ( disp__glRasterPos3d == NULL ) return;
 
 		disp__glRasterPos3d (
 			(GLdouble) x,
@@ -4482,6 +4870,8 @@
 		jfloat z)
 	{
 
+		if ( disp__glRasterPos3f == NULL ) return;
+
 		disp__glRasterPos3f (
 			(GLfloat) x,
 			(GLfloat) y,
@@ -4503,6 +4893,8 @@
 		jint y,
 		jint z)
 	{
+
+		if ( disp__glRasterPos3i == NULL ) return;
 
 		disp__glRasterPos3i (
 			(GLint) x,
@@ -4526,6 +4918,8 @@
 		jshort z)
 	{
 
+		if ( disp__glRasterPos3s == NULL ) return;
+
 		disp__glRasterPos3s (
 			(GLshort) x,
 			(GLshort) y,
@@ -4548,6 +4942,8 @@
 		jdouble z,
 		jdouble w)
 	{
+
+		if ( disp__glRasterPos4d == NULL ) return;
 
 		disp__glRasterPos4d (
 			(GLdouble) x,
@@ -4573,6 +4969,8 @@
 		jfloat w)
 	{
 
+		if ( disp__glRasterPos4f == NULL ) return;
+
 		disp__glRasterPos4f (
 			(GLfloat) x,
 			(GLfloat) y,
@@ -4596,6 +4994,8 @@
 		jint z,
 		jint w)
 	{
+
+		if ( disp__glRasterPos4i == NULL ) return;
 
 		disp__glRasterPos4i (
 			(GLint) x,
@@ -4621,6 +5021,8 @@
 		jshort w)
 	{
 
+		if ( disp__glRasterPos4s == NULL ) return;
+
 		disp__glRasterPos4s (
 			(GLshort) x,
 			(GLshort) y,
@@ -4642,6 +5044,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glRasterPos2dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4670,6 +5074,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glRasterPos2fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4696,6 +5102,8 @@
 		jintArray v)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glRasterPos2iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4724,6 +5132,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glRasterPos2sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4750,6 +5160,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glRasterPos3dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4778,6 +5190,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glRasterPos3fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4804,6 +5218,8 @@
 		jintArray v)
 	{
 		jint *ptr0 = NULL;
+
+		if ( disp__glRasterPos3iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4832,6 +5248,8 @@
 	{
 		jshort *ptr0 = NULL;
 
+		if ( disp__glRasterPos3sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4858,6 +5276,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glRasterPos4dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4886,6 +5306,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glRasterPos4fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4913,6 +5335,8 @@
 	{
 		jint *ptr0 = NULL;
 
+		if ( disp__glRasterPos4iv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -4939,6 +5363,8 @@
 		jshortArray v)
 	{
 		jshort *ptr0 = NULL;
+
+		if ( disp__glRasterPos4sv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4969,6 +5395,8 @@
 		jdouble y2)
 	{
 
+		if ( disp__glRectd == NULL ) return;
+
 		disp__glRectd (
 			(GLdouble) x1,
 			(GLdouble) y1,
@@ -4992,6 +5420,8 @@
 		jfloat x2,
 		jfloat y2)
 	{
+
+		if ( disp__glRectf == NULL ) return;
 
 		disp__glRectf (
 			(GLfloat) x1,
@@ -5017,6 +5447,8 @@
 		jint y2)
 	{
 
+		if ( disp__glRecti == NULL ) return;
+
 		disp__glRecti (
 			(GLint) x1,
 			(GLint) y1,
@@ -5041,6 +5473,8 @@
 		jshort y2)
 	{
 
+		if ( disp__glRects == NULL ) return;
+
 		disp__glRects (
 			(GLshort) x1,
 			(GLshort) y1,
@@ -5064,6 +5498,8 @@
 	{
 		jdouble *ptr0 = NULL;
 		jdouble *ptr1 = NULL;
+
+		if ( disp__glRectdv == NULL ) return;
 
 		if(v1!=NULL)
 		{
@@ -5103,6 +5539,8 @@
 		jfloat *ptr0 = NULL;
 		jfloat *ptr1 = NULL;
 
+		if ( disp__glRectfv == NULL ) return;
+
 		if(v1!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v1, 0);
@@ -5141,6 +5579,8 @@
 		jint *ptr0 = NULL;
 		jint *ptr1 = NULL;
 
+		if ( disp__glRectiv == NULL ) return;
+
 		if(v1!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v1, 0);
@@ -5178,6 +5618,8 @@
 	{
 		jshort *ptr0 = NULL;
 		jshort *ptr1 = NULL;
+
+		if ( disp__glRectsv == NULL ) return;
 
 		if(v1!=NULL)
 		{
@@ -5218,6 +5660,8 @@
 	{
 		jbyte *ptr3 = NULL;
 
+		if ( disp__glVertexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5243,6 +5687,8 @@
 		jshortArray ptr)
 	{
 		jshort *ptr3 = NULL;
+
+		if ( disp__glVertexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5270,6 +5716,8 @@
 	{
 		jint *ptr3 = NULL;
 
+		if ( disp__glVertexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5295,6 +5743,8 @@
 		jfloatArray ptr)
 	{
 		jfloat *ptr3 = NULL;
+
+		if ( disp__glVertexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5322,6 +5772,8 @@
 	{
 		jdouble *ptr3 = NULL;
 
+		if ( disp__glVertexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5348,6 +5800,8 @@
 	{
 		jboolean *ptr3 = NULL;
 
+		if ( disp__glVertexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5373,6 +5827,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr3 = NULL;
+
+		if ( disp__glVertexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5406,6 +5862,8 @@
 	{
 		jbyte *ptr2 = NULL;
 
+		if ( disp__glNormalPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5429,6 +5887,8 @@
 		jshortArray ptr)
 	{
 		jshort *ptr2 = NULL;
+
+		if ( disp__glNormalPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5454,6 +5914,8 @@
 	{
 		jint *ptr2 = NULL;
 
+		if ( disp__glNormalPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5477,6 +5939,8 @@
 		jfloatArray ptr)
 	{
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glNormalPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5502,6 +5966,8 @@
 	{
 		jdouble *ptr2 = NULL;
 
+		if ( disp__glNormalPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5526,6 +5992,8 @@
 	{
 		jboolean *ptr2 = NULL;
 
+		if ( disp__glNormalPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5549,6 +6017,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr2 = NULL;
+
+		if ( disp__glNormalPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5582,6 +6052,8 @@
 	{
 		jbyte *ptr3 = NULL;
 
+		if ( disp__glColorPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5607,6 +6079,8 @@
 		jshortArray ptr)
 	{
 		jshort *ptr3 = NULL;
+
+		if ( disp__glColorPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5634,6 +6108,8 @@
 	{
 		jint *ptr3 = NULL;
 
+		if ( disp__glColorPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5659,6 +6135,8 @@
 		jfloatArray ptr)
 	{
 		jfloat *ptr3 = NULL;
+
+		if ( disp__glColorPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5686,6 +6164,8 @@
 	{
 		jdouble *ptr3 = NULL;
 
+		if ( disp__glColorPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5712,6 +6192,8 @@
 	{
 		jboolean *ptr3 = NULL;
 
+		if ( disp__glColorPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5737,6 +6219,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr3 = NULL;
+
+		if ( disp__glColorPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5770,6 +6254,8 @@
 	{
 		jbyte *ptr2 = NULL;
 
+		if ( disp__glIndexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5793,6 +6279,8 @@
 		jshortArray ptr)
 	{
 		jshort *ptr2 = NULL;
+
+		if ( disp__glIndexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5818,6 +6306,8 @@
 	{
 		jint *ptr2 = NULL;
 
+		if ( disp__glIndexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5841,6 +6331,8 @@
 		jfloatArray ptr)
 	{
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glIndexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5866,6 +6358,8 @@
 	{
 		jdouble *ptr2 = NULL;
 
+		if ( disp__glIndexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5890,6 +6384,8 @@
 	{
 		jboolean *ptr2 = NULL;
 
+		if ( disp__glIndexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5913,6 +6409,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr2 = NULL;
+
+		if ( disp__glIndexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5946,6 +6444,8 @@
 	{
 		jbyte *ptr3 = NULL;
 
+		if ( disp__glTexCoordPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -5971,6 +6471,8 @@
 		jshortArray ptr)
 	{
 		jshort *ptr3 = NULL;
+
+		if ( disp__glTexCoordPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5998,6 +6500,8 @@
 	{
 		jint *ptr3 = NULL;
 
+		if ( disp__glTexCoordPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -6023,6 +6527,8 @@
 		jfloatArray ptr)
 	{
 		jfloat *ptr3 = NULL;
+
+		if ( disp__glTexCoordPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6050,6 +6556,8 @@
 	{
 		jdouble *ptr3 = NULL;
 
+		if ( disp__glTexCoordPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -6076,6 +6584,8 @@
 	{
 		jboolean *ptr3 = NULL;
 
+		if ( disp__glTexCoordPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -6101,6 +6611,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr3 = NULL;
+
+		if ( disp__glTexCoordPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6133,6 +6645,8 @@
 	{
 		jbyte *ptr1 = NULL;
 
+		if ( disp__glEdgeFlagPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -6154,6 +6668,8 @@
 		jshortArray ptr)
 	{
 		jshort *ptr1 = NULL;
+
+		if ( disp__glEdgeFlagPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6177,6 +6693,8 @@
 	{
 		jint *ptr1 = NULL;
 
+		if ( disp__glEdgeFlagPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -6198,6 +6716,8 @@
 		jfloatArray ptr)
 	{
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glEdgeFlagPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6221,6 +6741,8 @@
 	{
 		jdouble *ptr1 = NULL;
 
+		if ( disp__glEdgeFlagPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -6243,6 +6765,8 @@
 	{
 		jboolean *ptr1 = NULL;
 
+		if ( disp__glEdgeFlagPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -6264,6 +6788,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr1 = NULL;
+
+		if ( disp__glEdgeFlagPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6295,6 +6821,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jbyte *ptr1 = NULL;
 
+		if ( disp__glGetPointerv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -6317,6 +6845,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
+
+		if ( disp__glGetPointerv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -6341,6 +6871,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 
+		if ( disp__glGetPointerv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -6363,6 +6895,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glGetPointerv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -6387,6 +6921,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 
+		if ( disp__glGetPointerv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -6410,6 +6946,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jboolean *ptr1 = NULL;
 
+		if ( disp__glGetPointerv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -6432,6 +6970,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jlong *ptr1 = NULL;
+
+		if ( disp__glGetPointerv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -6460,6 +7000,8 @@
 		jint i)
 	{
 
+		if ( disp__glArrayElement == NULL ) return;
+
 		disp__glArrayElement (
 			(GLint) i
 		);
@@ -6479,6 +7021,8 @@
 		jint first,
 		jint count)
 	{
+
+		if ( disp__glDrawArrays == NULL ) return;
 
 		disp__glDrawArrays (
 			(GLenum) mode,
@@ -6503,6 +7047,8 @@
 		jbyteArray indices)
 	{
 		jbyte *ptr3 = NULL;
+
+		if ( disp__glDrawElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -6530,6 +7076,8 @@
 	{
 		jshort *ptr3 = NULL;
 
+		if ( disp__glDrawElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, indices, 0);
@@ -6555,6 +7103,8 @@
 		jintArray indices)
 	{
 		jint *ptr3 = NULL;
+
+		if ( disp__glDrawElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -6582,6 +7132,8 @@
 	{
 		jfloat *ptr3 = NULL;
 
+		if ( disp__glDrawElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, indices, 0);
@@ -6607,6 +7159,8 @@
 		jdoubleArray indices)
 	{
 		jdouble *ptr3 = NULL;
+
+		if ( disp__glDrawElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -6634,6 +7188,8 @@
 	{
 		jboolean *ptr3 = NULL;
 
+		if ( disp__glDrawElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, indices, 0);
@@ -6659,6 +7215,8 @@
 		jlongArray indices)
 	{
 		jlong *ptr3 = NULL;
+
+		if ( disp__glDrawElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -6692,6 +7250,8 @@
 	{
 		jbyte *ptr2 = NULL;
 
+		if ( disp__glInterleavedArrays == NULL ) return;
+
 		if(pointer!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pointer, 0);
@@ -6715,6 +7275,8 @@
 		jshortArray pointer)
 	{
 		jshort *ptr2 = NULL;
+
+		if ( disp__glInterleavedArrays == NULL ) return;
 
 		if(pointer!=NULL)
 		{
@@ -6740,6 +7302,8 @@
 	{
 		jint *ptr2 = NULL;
 
+		if ( disp__glInterleavedArrays == NULL ) return;
+
 		if(pointer!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pointer, 0);
@@ -6763,6 +7327,8 @@
 		jfloatArray pointer)
 	{
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glInterleavedArrays == NULL ) return;
 
 		if(pointer!=NULL)
 		{
@@ -6788,6 +7354,8 @@
 	{
 		jdouble *ptr2 = NULL;
 
+		if ( disp__glInterleavedArrays == NULL ) return;
+
 		if(pointer!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pointer, 0);
@@ -6812,6 +7380,8 @@
 	{
 		jboolean *ptr2 = NULL;
 
+		if ( disp__glInterleavedArrays == NULL ) return;
+
 		if(pointer!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pointer, 0);
@@ -6835,6 +7405,8 @@
 		jlongArray pointer)
 	{
 		jlong *ptr2 = NULL;
+
+		if ( disp__glInterleavedArrays == NULL ) return;
 
 		if(pointer!=NULL)
 		{
@@ -6864,6 +7436,8 @@
 		jint mode)
 	{
 
+		if ( disp__glShadeModel == NULL ) return;
+
 		disp__glShadeModel (
 			(GLenum) mode
 		);
@@ -6883,6 +7457,8 @@
 		jint pname,
 		jfloat param)
 	{
+
+		if ( disp__glLightf == NULL ) return;
 
 		disp__glLightf (
 			(GLenum) light,
@@ -6906,6 +7482,8 @@
 		jint param)
 	{
 
+		if ( disp__glLighti == NULL ) return;
+
 		disp__glLighti (
 			(GLenum) light,
 			(GLenum) pname,
@@ -6928,6 +7506,8 @@
 		jfloatArray params)
 	{
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glLightfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -6959,6 +7539,8 @@
 		jintArray params)
 	{
 		jint *ptr2 = NULL;
+
+		if ( disp__glLightiv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -6992,6 +7574,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glGetLightfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -7024,6 +7608,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 
+		if ( disp__glGetLightiv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -7053,6 +7639,8 @@
 		jfloat param)
 	{
 
+		if ( disp__glLightModelf == NULL ) return;
+
 		disp__glLightModelf (
 			(GLenum) pname,
 			(GLfloat) param
@@ -7072,6 +7660,8 @@
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glLightModeli == NULL ) return;
 
 		disp__glLightModeli (
 			(GLenum) pname,
@@ -7093,6 +7683,8 @@
 		jfloatArray params)
 	{
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glLightModelfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -7123,6 +7715,8 @@
 	{
 		jint *ptr1 = NULL;
 
+		if ( disp__glLightModeliv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, 0);
@@ -7152,6 +7746,8 @@
 		jfloat param)
 	{
 
+		if ( disp__glMaterialf == NULL ) return;
+
 		disp__glMaterialf (
 			(GLenum) face,
 			(GLenum) pname,
@@ -7173,6 +7769,8 @@
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glMateriali == NULL ) return;
 
 		disp__glMateriali (
 			(GLenum) face,
@@ -7196,6 +7794,8 @@
 		jfloatArray params)
 	{
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glMaterialfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -7227,6 +7827,8 @@
 		jintArray params)
 	{
 		jint *ptr2 = NULL;
+
+		if ( disp__glMaterialiv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -7260,6 +7862,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glGetMaterialfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -7292,6 +7896,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 
+		if ( disp__glGetMaterialiv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -7321,6 +7927,8 @@
 		jint mode)
 	{
 
+		if ( disp__glColorMaterial == NULL ) return;
+
 		disp__glColorMaterial (
 			(GLenum) face,
 			(GLenum) mode
@@ -7340,6 +7948,8 @@
 		jfloat xfactor,
 		jfloat yfactor)
 	{
+
+		if ( disp__glPixelZoom == NULL ) return;
 
 		disp__glPixelZoom (
 			(GLfloat) xfactor,
@@ -7361,6 +7971,8 @@
 		jfloat param)
 	{
 
+		if ( disp__glPixelStoref == NULL ) return;
+
 		disp__glPixelStoref (
 			(GLenum) pname,
 			(GLfloat) param
@@ -7380,6 +7992,8 @@
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glPixelStorei == NULL ) return;
 
 		disp__glPixelStorei (
 			(GLenum) pname,
@@ -7401,6 +8015,8 @@
 		jfloat param)
 	{
 
+		if ( disp__glPixelTransferf == NULL ) return;
+
 		disp__glPixelTransferf (
 			(GLenum) pname,
 			(GLfloat) param
@@ -7420,6 +8036,8 @@
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glPixelTransferi == NULL ) return;
 
 		disp__glPixelTransferi (
 			(GLenum) pname,
@@ -7442,6 +8060,8 @@
 		jfloatArray values)
 	{
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glPixelMapfv == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -7474,6 +8094,8 @@
 	{
 		jint *ptr2 = NULL;
 
+		if ( disp__glPixelMapuiv == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, values, 0);
@@ -7504,6 +8126,8 @@
 		jshortArray values)
 	{
 		jshort *ptr2 = NULL;
+
+		if ( disp__glPixelMapusv == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -7536,6 +8160,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 
+		if ( disp__glGetPixelMapfv == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray1);
@@ -7566,6 +8192,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 
+		if ( disp__glGetPixelMapuiv == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray1);
@@ -7595,6 +8223,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
+
+		if ( disp__glGetPixelMapusv == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -7629,6 +8259,8 @@
 		jbyteArray bitmap)
 	{
 		jbyte *ptr6 = NULL;
+
+		if ( disp__glBitmap == NULL ) return;
 
 		if(bitmap!=NULL)
 		{
@@ -7670,6 +8302,8 @@
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jbyte *ptr6 = NULL;
 
+		if ( disp__glReadPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -7702,6 +8336,8 @@
 	{
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jshort *ptr6 = NULL;
+
+		if ( disp__glReadPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -7736,6 +8372,8 @@
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jint *ptr6 = NULL;
 
+		if ( disp__glReadPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -7768,6 +8406,8 @@
 	{
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jfloat *ptr6 = NULL;
+
+		if ( disp__glReadPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -7802,6 +8442,8 @@
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jdouble *ptr6 = NULL;
 
+		if ( disp__glReadPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -7835,6 +8477,8 @@
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jboolean *ptr6 = NULL;
 
+		if ( disp__glReadPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -7867,6 +8511,8 @@
 	{
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jlong *ptr6 = NULL;
+
+		if ( disp__glReadPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -7905,6 +8551,8 @@
 	{
 		jbyte *ptr4 = NULL;
 
+		if ( disp__glDrawPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -7932,6 +8580,8 @@
 		jshortArray pixels)
 	{
 		jshort *ptr4 = NULL;
+
+		if ( disp__glDrawPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -7961,6 +8611,8 @@
 	{
 		jint *ptr4 = NULL;
 
+		if ( disp__glDrawPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -7988,6 +8640,8 @@
 		jfloatArray pixels)
 	{
 		jfloat *ptr4 = NULL;
+
+		if ( disp__glDrawPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -8017,6 +8671,8 @@
 	{
 		jdouble *ptr4 = NULL;
 
+		if ( disp__glDrawPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -8045,6 +8701,8 @@
 	{
 		jboolean *ptr4 = NULL;
 
+		if ( disp__glDrawPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -8072,6 +8730,8 @@
 		jlongArray pixels)
 	{
 		jlong *ptr4 = NULL;
+
+		if ( disp__glDrawPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -8107,6 +8767,8 @@
 		jint type)
 	{
 
+		if ( disp__glCopyPixels == NULL ) return;
+
 		disp__glCopyPixels (
 			(GLint) x,
 			(GLint) y,
@@ -8131,6 +8793,8 @@
 		jint mask)
 	{
 
+		if ( disp__glStencilFunc == NULL ) return;
+
 		disp__glStencilFunc (
 			(GLenum) func,
 			(GLint) ref,
@@ -8150,6 +8814,8 @@
 		JNIEnv *env, jobject obj,
 		jint mask)
 	{
+
+		if ( disp__glStencilMask == NULL ) return;
 
 		disp__glStencilMask (
 			(GLuint) mask
@@ -8171,6 +8837,8 @@
 		jint zpass)
 	{
 
+		if ( disp__glStencilOp == NULL ) return;
+
 		disp__glStencilOp (
 			(GLenum) fail,
 			(GLenum) zfail,
@@ -8191,6 +8859,8 @@
 		jint s)
 	{
 
+		if ( disp__glClearStencil == NULL ) return;
+
 		disp__glClearStencil (
 			(GLint) s
 		);
@@ -8210,6 +8880,8 @@
 		jint pname,
 		jdouble param)
 	{
+
+		if ( disp__glTexGend == NULL ) return;
 
 		disp__glTexGend (
 			(GLenum) coord,
@@ -8233,6 +8905,8 @@
 		jfloat param)
 	{
 
+		if ( disp__glTexGenf == NULL ) return;
+
 		disp__glTexGenf (
 			(GLenum) coord,
 			(GLenum) pname,
@@ -8254,6 +8928,8 @@
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glTexGeni == NULL ) return;
 
 		disp__glTexGeni (
 			(GLenum) coord,
@@ -8277,6 +8953,8 @@
 		jdoubleArray params)
 	{
 		jdouble *ptr2 = NULL;
+
+		if ( disp__glTexGendv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8309,6 +8987,8 @@
 	{
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glTexGenfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, 0);
@@ -8339,6 +9019,8 @@
 		jintArray params)
 	{
 		jint *ptr2 = NULL;
+
+		if ( disp__glTexGeniv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8372,6 +9054,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 
+		if ( disp__glGetTexGendv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -8403,6 +9087,8 @@
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetTexGenfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8436,6 +9122,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 
+		if ( disp__glGetTexGeniv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -8466,6 +9154,8 @@
 		jfloat param)
 	{
 
+		if ( disp__glTexEnvf == NULL ) return;
+
 		disp__glTexEnvf (
 			(GLenum) target,
 			(GLenum) pname,
@@ -8487,6 +9177,8 @@
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glTexEnvi == NULL ) return;
 
 		disp__glTexEnvi (
 			(GLenum) target,
@@ -8510,6 +9202,8 @@
 		jfloatArray params)
 	{
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glTexEnvfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8541,6 +9235,8 @@
 		jintArray params)
 	{
 		jint *ptr2 = NULL;
+
+		if ( disp__glTexEnviv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8574,6 +9270,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glGetTexEnvfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -8606,6 +9304,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 
+		if ( disp__glGetTexEnviv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -8636,6 +9336,8 @@
 		jfloat param)
 	{
 
+		if ( disp__glTexParameterf == NULL ) return;
+
 		disp__glTexParameterf (
 			(GLenum) target,
 			(GLenum) pname,
@@ -8657,6 +9359,8 @@
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glTexParameteri == NULL ) return;
 
 		disp__glTexParameteri (
 			(GLenum) target,
@@ -8680,6 +9384,8 @@
 		jfloatArray params)
 	{
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glTexParameterfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8711,6 +9417,8 @@
 		jintArray params)
 	{
 		jint *ptr2 = NULL;
+
+		if ( disp__glTexParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8744,6 +9452,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glGetTexParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -8775,6 +9485,8 @@
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
+
+		if ( disp__glGetTexParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8809,6 +9521,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 
+		if ( disp__glGetTexLevelParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray3);
@@ -8842,6 +9556,8 @@
 	{
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
+
+		if ( disp__glGetTexLevelParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8880,6 +9596,8 @@
 	{
 		jbyte *ptr7 = NULL;
 
+		if ( disp__glTexImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr7 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -8913,6 +9631,8 @@
 		jshortArray pixels)
 	{
 		jshort *ptr7 = NULL;
+
+		if ( disp__glTexImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -8948,6 +9668,8 @@
 	{
 		jint *ptr7 = NULL;
 
+		if ( disp__glTexImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr7 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -8981,6 +9703,8 @@
 		jfloatArray pixels)
 	{
 		jfloat *ptr7 = NULL;
+
+		if ( disp__glTexImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9016,6 +9740,8 @@
 	{
 		jdouble *ptr7 = NULL;
 
+		if ( disp__glTexImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr7 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -9050,6 +9776,8 @@
 	{
 		jboolean *ptr7 = NULL;
 
+		if ( disp__glTexImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr7 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -9083,6 +9811,8 @@
 		jlongArray pixels)
 	{
 		jlong *ptr7 = NULL;
+
+		if ( disp__glTexImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9126,6 +9856,8 @@
 	{
 		jbyte *ptr8 = NULL;
 
+		if ( disp__glTexImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -9161,6 +9893,8 @@
 		jshortArray pixels)
 	{
 		jshort *ptr8 = NULL;
+
+		if ( disp__glTexImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9198,6 +9932,8 @@
 	{
 		jint *ptr8 = NULL;
 
+		if ( disp__glTexImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -9233,6 +9969,8 @@
 		jfloatArray pixels)
 	{
 		jfloat *ptr8 = NULL;
+
+		if ( disp__glTexImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9270,6 +10008,8 @@
 	{
 		jdouble *ptr8 = NULL;
 
+		if ( disp__glTexImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -9306,6 +10046,8 @@
 	{
 		jboolean *ptr8 = NULL;
 
+		if ( disp__glTexImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -9341,6 +10083,8 @@
 		jlongArray pixels)
 	{
 		jlong *ptr8 = NULL;
+
+		if ( disp__glTexImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9382,6 +10126,8 @@
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 
+		if ( disp__glGetTexImage == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -9410,6 +10156,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
+
+		if ( disp__glGetTexImage == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9440,6 +10188,8 @@
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 
+		if ( disp__glGetTexImage == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -9468,6 +10218,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
+
+		if ( disp__glGetTexImage == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9498,6 +10250,8 @@
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 
+		if ( disp__glGetTexImage == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -9527,6 +10281,8 @@
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jboolean *ptr4 = NULL;
 
+		if ( disp__glGetTexImage == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -9555,6 +10311,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
+
+		if ( disp__glGetTexImage == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9589,6 +10347,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 
+		if ( disp__glGenTextures == NULL ) return;
+
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -9618,6 +10378,8 @@
 	{
 		jint *ptr1 = NULL;
 
+		if ( disp__glDeleteTextures == NULL ) return;
+
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, 0);
@@ -9646,6 +10408,8 @@
 		jint texture)
 	{
 
+		if ( disp__glBindTexture == NULL ) return;
+
 		disp__glBindTexture (
 			(GLenum) target,
 			(GLuint) texture
@@ -9668,6 +10432,8 @@
 	{
 		jint *ptr1 = NULL;
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glPrioritizeTextures == NULL ) return;
 
 		if(textures!=NULL)
 		{
@@ -9712,6 +10478,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jboolean *ptr2 = NULL;
 
+		if ( disp__glAreTexturesResident == NULL ) return 0;
+
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, 0);
@@ -9751,6 +10519,8 @@
 		jboolean ret;
 
 
+		if ( disp__glIsTexture == NULL ) return 0;
+
 		ret = (jboolean) disp__glIsTexture (
 			(GLuint) texture
 		);
@@ -9776,6 +10546,8 @@
 		jbyteArray pixels)
 	{
 		jbyte *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9809,6 +10581,8 @@
 	{
 		jshort *ptr6 = NULL;
 
+		if ( disp__glTexSubImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -9840,6 +10614,8 @@
 		jintArray pixels)
 	{
 		jint *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9873,6 +10649,8 @@
 	{
 		jfloat *ptr6 = NULL;
 
+		if ( disp__glTexSubImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -9904,6 +10682,8 @@
 		jdoubleArray pixels)
 	{
 		jdouble *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9937,6 +10717,8 @@
 	{
 		jboolean *ptr6 = NULL;
 
+		if ( disp__glTexSubImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -9968,6 +10750,8 @@
 		jlongArray pixels)
 	{
 		jlong *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10010,6 +10794,8 @@
 	{
 		jbyte *ptr8 = NULL;
 
+		if ( disp__glTexSubImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -10045,6 +10831,8 @@
 		jshortArray pixels)
 	{
 		jshort *ptr8 = NULL;
+
+		if ( disp__glTexSubImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10082,6 +10870,8 @@
 	{
 		jint *ptr8 = NULL;
 
+		if ( disp__glTexSubImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -10117,6 +10907,8 @@
 		jfloatArray pixels)
 	{
 		jfloat *ptr8 = NULL;
+
+		if ( disp__glTexSubImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10154,6 +10946,8 @@
 	{
 		jdouble *ptr8 = NULL;
 
+		if ( disp__glTexSubImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -10190,6 +10984,8 @@
 	{
 		jboolean *ptr8 = NULL;
 
+		if ( disp__glTexSubImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -10225,6 +11021,8 @@
 		jlongArray pixels)
 	{
 		jlong *ptr8 = NULL;
+
+		if ( disp__glTexSubImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10266,6 +11064,8 @@
 		jint border)
 	{
 
+		if ( disp__glCopyTexImage1D == NULL ) return;
+
 		disp__glCopyTexImage1D (
 			(GLenum) target,
 			(GLint) level,
@@ -10297,6 +11097,8 @@
 		jint border)
 	{
 
+		if ( disp__glCopyTexImage2D == NULL ) return;
+
 		disp__glCopyTexImage2D (
 			(GLenum) target,
 			(GLint) level,
@@ -10326,6 +11128,8 @@
 		jint y,
 		jint width)
 	{
+
+		if ( disp__glCopyTexSubImage1D == NULL ) return;
 
 		disp__glCopyTexSubImage1D (
 			(GLenum) target,
@@ -10357,6 +11161,8 @@
 		jint height)
 	{
 
+		if ( disp__glCopyTexSubImage2D == NULL ) return;
+
 		disp__glCopyTexSubImage2D (
 			(GLenum) target,
 			(GLint) level,
@@ -10387,6 +11193,8 @@
 		jdoubleArray points)
 	{
 		jdouble *ptr5 = NULL;
+
+		if ( disp__glMap1d == NULL ) return;
 
 		if(points!=NULL)
 		{
@@ -10424,6 +11232,8 @@
 		jfloatArray points)
 	{
 		jfloat *ptr5 = NULL;
+
+		if ( disp__glMap1f == NULL ) return;
 
 		if(points!=NULL)
 		{
@@ -10465,6 +11275,8 @@
 		jdoubleArray points)
 	{
 		jdouble *ptr9 = NULL;
+
+		if ( disp__glMap2d == NULL ) return;
 
 		if(points!=NULL)
 		{
@@ -10511,6 +11323,8 @@
 	{
 		jfloat *ptr9 = NULL;
 
+		if ( disp__glMap2f == NULL ) return;
+
 		if(points!=NULL)
 		{
 			ptr9 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, points, 0);
@@ -10550,6 +11364,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 
+		if ( disp__glGetMapdv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray2);
@@ -10581,6 +11397,8 @@
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetMapfv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -10614,6 +11432,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 
+		if ( disp__glGetMapiv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray2);
@@ -10642,6 +11462,8 @@
 		jdouble u)
 	{
 
+		if ( disp__glEvalCoord1d == NULL ) return;
+
 		disp__glEvalCoord1d (
 			(GLdouble) u
 		);
@@ -10659,6 +11481,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat u)
 	{
+
+		if ( disp__glEvalCoord1f == NULL ) return;
 
 		disp__glEvalCoord1f (
 			(GLfloat) u
@@ -10678,6 +11502,8 @@
 		jdoubleArray u)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glEvalCoord1dv == NULL ) return;
 
 		if(u!=NULL)
 		{
@@ -10706,6 +11532,8 @@
 	{
 		jfloat *ptr0 = NULL;
 
+		if ( disp__glEvalCoord1fv == NULL ) return;
+
 		if(u!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, u, 0);
@@ -10733,6 +11561,8 @@
 		jdouble v)
 	{
 
+		if ( disp__glEvalCoord2d == NULL ) return;
+
 		disp__glEvalCoord2d (
 			(GLdouble) u,
 			(GLdouble) v
@@ -10753,6 +11583,8 @@
 		jfloat v)
 	{
 
+		if ( disp__glEvalCoord2f == NULL ) return;
+
 		disp__glEvalCoord2f (
 			(GLfloat) u,
 			(GLfloat) v
@@ -10772,6 +11604,8 @@
 		jdoubleArray u)
 	{
 		jdouble *ptr0 = NULL;
+
+		if ( disp__glEvalCoord2dv == NULL ) return;
 
 		if(u!=NULL)
 		{
@@ -10799,6 +11633,8 @@
 		jfloatArray u)
 	{
 		jfloat *ptr0 = NULL;
+
+		if ( disp__glEvalCoord2fv == NULL ) return;
 
 		if(u!=NULL)
 		{
@@ -10828,6 +11664,8 @@
 		jdouble u2)
 	{
 
+		if ( disp__glMapGrid1d == NULL ) return;
+
 		disp__glMapGrid1d (
 			(GLint) un,
 			(GLdouble) u1,
@@ -10849,6 +11687,8 @@
 		jfloat u1,
 		jfloat u2)
 	{
+
+		if ( disp__glMapGrid1f == NULL ) return;
 
 		disp__glMapGrid1f (
 			(GLint) un,
@@ -10874,6 +11714,8 @@
 		jdouble v1,
 		jdouble v2)
 	{
+
+		if ( disp__glMapGrid2d == NULL ) return;
 
 		disp__glMapGrid2d (
 			(GLint) un,
@@ -10903,6 +11745,8 @@
 		jfloat v2)
 	{
 
+		if ( disp__glMapGrid2f == NULL ) return;
+
 		disp__glMapGrid2f (
 			(GLint) un,
 			(GLfloat) u1,
@@ -10926,6 +11770,8 @@
 		jint i)
 	{
 
+		if ( disp__glEvalPoint1 == NULL ) return;
+
 		disp__glEvalPoint1 (
 			(GLint) i
 		);
@@ -10944,6 +11790,8 @@
 		jint i,
 		jint j)
 	{
+
+		if ( disp__glEvalPoint2 == NULL ) return;
 
 		disp__glEvalPoint2 (
 			(GLint) i,
@@ -10965,6 +11813,8 @@
 		jint i1,
 		jint i2)
 	{
+
+		if ( disp__glEvalMesh1 == NULL ) return;
 
 		disp__glEvalMesh1 (
 			(GLenum) mode,
@@ -10990,6 +11840,8 @@
 		jint j2)
 	{
 
+		if ( disp__glEvalMesh2 == NULL ) return;
+
 		disp__glEvalMesh2 (
 			(GLenum) mode,
 			(GLint) i1,
@@ -11013,6 +11865,8 @@
 		jfloat param)
 	{
 
+		if ( disp__glFogf == NULL ) return;
+
 		disp__glFogf (
 			(GLenum) pname,
 			(GLfloat) param
@@ -11032,6 +11886,8 @@
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glFogi == NULL ) return;
 
 		disp__glFogi (
 			(GLenum) pname,
@@ -11053,6 +11909,8 @@
 		jfloatArray params)
 	{
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glFogfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -11082,6 +11940,8 @@
 		jintArray params)
 	{
 		jint *ptr1 = NULL;
+
+		if ( disp__glFogiv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -11114,6 +11974,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glFeedbackBuffer == NULL ) return;
+
 		if(buffer!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, buffer, &isCopiedArray2);
@@ -11142,6 +12004,8 @@
 		jfloat token)
 	{
 
+		if ( disp__glPassThrough == NULL ) return;
+
 		disp__glPassThrough (
 			(GLfloat) token
 		);
@@ -11162,6 +12026,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
+
+		if ( disp__glSelectBuffer == NULL ) return;
 
 		if(buffer!=NULL)
 		{
@@ -11189,6 +12055,8 @@
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glInitNames == NULL ) return;
+
 		disp__glInitNames (
 		);
 
@@ -11205,6 +12073,8 @@
 		JNIEnv *env, jobject obj,
 		jint name)
 	{
+
+		if ( disp__glLoadName == NULL ) return;
 
 		disp__glLoadName (
 			(GLuint) name
@@ -11224,6 +12094,8 @@
 		jint name)
 	{
 
+		if ( disp__glPushName == NULL ) return;
+
 		disp__glPushName (
 			(GLuint) name
 		);
@@ -11240,6 +12112,8 @@
 	Java_gl4java_GLFuncJauJNI_glPopName (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glPopName == NULL ) return;
 
 		disp__glPopName (
 		);
@@ -11263,6 +12137,8 @@
 		jbyteArray indices)
 	{
 		jbyte *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -11294,6 +12170,8 @@
 	{
 		jshort *ptr5 = NULL;
 
+		if ( disp__glDrawRangeElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr5 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, indices, 0);
@@ -11323,6 +12201,8 @@
 		jintArray indices)
 	{
 		jint *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -11354,6 +12234,8 @@
 	{
 		jfloat *ptr5 = NULL;
 
+		if ( disp__glDrawRangeElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr5 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, indices, 0);
@@ -11383,6 +12265,8 @@
 		jdoubleArray indices)
 	{
 		jdouble *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -11414,6 +12298,8 @@
 	{
 		jboolean *ptr5 = NULL;
 
+		if ( disp__glDrawRangeElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, indices, 0);
@@ -11443,6 +12329,8 @@
 		jlongArray indices)
 	{
 		jlong *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -11485,6 +12373,8 @@
 	{
 		jbyte *ptr9 = NULL;
 
+		if ( disp__glTexImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -11522,6 +12412,8 @@
 		jshortArray pixels)
 	{
 		jshort *ptr9 = NULL;
+
+		if ( disp__glTexImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11561,6 +12453,8 @@
 	{
 		jint *ptr9 = NULL;
 
+		if ( disp__glTexImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -11598,6 +12492,8 @@
 		jfloatArray pixels)
 	{
 		jfloat *ptr9 = NULL;
+
+		if ( disp__glTexImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11637,6 +12533,8 @@
 	{
 		jdouble *ptr9 = NULL;
 
+		if ( disp__glTexImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -11675,6 +12573,8 @@
 	{
 		jboolean *ptr9 = NULL;
 
+		if ( disp__glTexImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -11712,6 +12612,8 @@
 		jlongArray pixels)
 	{
 		jlong *ptr9 = NULL;
+
+		if ( disp__glTexImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11759,6 +12661,8 @@
 	{
 		jbyte *ptr10 = NULL;
 
+		if ( disp__glTexSubImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -11798,6 +12702,8 @@
 		jshortArray pixels)
 	{
 		jshort *ptr10 = NULL;
+
+		if ( disp__glTexSubImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11839,6 +12745,8 @@
 	{
 		jint *ptr10 = NULL;
 
+		if ( disp__glTexSubImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -11878,6 +12786,8 @@
 		jfloatArray pixels)
 	{
 		jfloat *ptr10 = NULL;
+
+		if ( disp__glTexSubImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11919,6 +12829,8 @@
 	{
 		jdouble *ptr10 = NULL;
 
+		if ( disp__glTexSubImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -11959,6 +12871,8 @@
 	{
 		jboolean *ptr10 = NULL;
 
+		if ( disp__glTexSubImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -11998,6 +12912,8 @@
 		jlongArray pixels)
 	{
 		jlong *ptr10 = NULL;
+
+		if ( disp__glTexSubImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -12043,6 +12959,8 @@
 		jint height)
 	{
 
+		if ( disp__glCopyTexSubImage3D == NULL ) return;
+
 		disp__glCopyTexSubImage3D (
 			(GLenum) target,
 			(GLint) level,
@@ -12075,6 +12993,8 @@
 	{
 		jbyte *ptr5 = NULL;
 
+		if ( disp__glColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, table, 0);
@@ -12104,6 +13024,8 @@
 		jshortArray table)
 	{
 		jshort *ptr5 = NULL;
+
+		if ( disp__glColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -12135,6 +13057,8 @@
 	{
 		jint *ptr5 = NULL;
 
+		if ( disp__glColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, table, 0);
@@ -12164,6 +13088,8 @@
 		jfloatArray table)
 	{
 		jfloat *ptr5 = NULL;
+
+		if ( disp__glColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -12195,6 +13121,8 @@
 	{
 		jdouble *ptr5 = NULL;
 
+		if ( disp__glColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, table, 0);
@@ -12225,6 +13153,8 @@
 	{
 		jboolean *ptr5 = NULL;
 
+		if ( disp__glColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, 0);
@@ -12254,6 +13184,8 @@
 		jlongArray table)
 	{
 		jlong *ptr5 = NULL;
+
+		if ( disp__glColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -12292,6 +13224,8 @@
 	{
 		jbyte *ptr5 = NULL;
 
+		if ( disp__glColorSubTable == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -12321,6 +13255,8 @@
 		jshortArray data)
 	{
 		jshort *ptr5 = NULL;
+
+		if ( disp__glColorSubTable == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -12352,6 +13288,8 @@
 	{
 		jint *ptr5 = NULL;
 
+		if ( disp__glColorSubTable == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -12381,6 +13319,8 @@
 		jfloatArray data)
 	{
 		jfloat *ptr5 = NULL;
+
+		if ( disp__glColorSubTable == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -12412,6 +13352,8 @@
 	{
 		jdouble *ptr5 = NULL;
 
+		if ( disp__glColorSubTable == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -12442,6 +13384,8 @@
 	{
 		jboolean *ptr5 = NULL;
 
+		if ( disp__glColorSubTable == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -12471,6 +13415,8 @@
 		jlongArray data)
 	{
 		jlong *ptr5 = NULL;
+
+		if ( disp__glColorSubTable == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -12506,6 +13452,8 @@
 	{
 		jint *ptr2 = NULL;
 
+		if ( disp__glColorTableParameteriv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, 0);
@@ -12536,6 +13484,8 @@
 		jfloatArray params)
 	{
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glColorTableParameterfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -12569,6 +13519,8 @@
 		jint width)
 	{
 
+		if ( disp__glCopyColorSubTable == NULL ) return;
+
 		disp__glCopyColorSubTable (
 			(GLenum) target,
 			(GLsizei) start,
@@ -12594,6 +13546,8 @@
 		jint y,
 		jint width)
 	{
+
+		if ( disp__glCopyColorTable == NULL ) return;
 
 		disp__glCopyColorTable (
 			(GLenum) target,
@@ -12622,6 +13576,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 
+		if ( disp__glGetColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -12648,6 +13604,8 @@
 	{
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
+
+		if ( disp__glGetColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -12676,6 +13634,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 
+		if ( disp__glGetColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -12702,6 +13662,8 @@
 	{
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
+
+		if ( disp__glGetColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -12730,6 +13692,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 
+		if ( disp__glGetColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -12757,6 +13721,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 
+		if ( disp__glGetColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -12783,6 +13749,8 @@
 	{
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
+
+		if ( disp__glGetColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -12817,6 +13785,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glGetColorTableParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -12849,6 +13819,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 
+		if ( disp__glGetColorTableParameteriv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -12877,6 +13849,8 @@
 		jint mode)
 	{
 
+		if ( disp__glBlendEquation == NULL ) return;
+
 		disp__glBlendEquation (
 			(GLenum) mode
 		);
@@ -12897,6 +13871,8 @@
 		jfloat blue,
 		jfloat alpha)
 	{
+
+		if ( disp__glBlendColor == NULL ) return;
 
 		disp__glBlendColor (
 			(GLclampf) red,
@@ -12922,6 +13898,8 @@
 		jboolean sink)
 	{
 
+		if ( disp__glHistogram == NULL ) return;
+
 		disp__glHistogram (
 			(GLenum) target,
 			(GLsizei) width,
@@ -12942,6 +13920,8 @@
 		JNIEnv *env, jobject obj,
 		jint target)
 	{
+
+		if ( disp__glResetHistogram == NULL ) return;
 
 		disp__glResetHistogram (
 			(GLenum) target
@@ -12966,6 +13946,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
+
+		if ( disp__glGetHistogram == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -12996,6 +13978,8 @@
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 
+		if ( disp__glGetHistogram == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -13024,6 +14008,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
+
+		if ( disp__glGetHistogram == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -13054,6 +14040,8 @@
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 
+		if ( disp__glGetHistogram == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -13082,6 +14070,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
+
+		if ( disp__glGetHistogram == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -13112,6 +14102,8 @@
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jboolean *ptr4 = NULL;
 
+		if ( disp__glGetHistogram == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -13140,6 +14132,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
+
+		if ( disp__glGetHistogram == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -13175,6 +14169,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glGetHistogramParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -13207,6 +14203,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 
+		if ( disp__glGetHistogramParameteriv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -13237,6 +14235,8 @@
 		jboolean sink)
 	{
 
+		if ( disp__glMinmax == NULL ) return;
+
 		disp__glMinmax (
 			(GLenum) target,
 			(GLenum) internalformat,
@@ -13256,6 +14256,8 @@
 		JNIEnv *env, jobject obj,
 		jint target)
 	{
+
+		if ( disp__glResetMinmax == NULL ) return;
 
 		disp__glResetMinmax (
 			(GLenum) target
@@ -13280,6 +14282,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
+
+		if ( disp__glGetMinmax == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -13310,6 +14314,8 @@
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 
+		if ( disp__glGetMinmax == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -13338,6 +14344,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
+
+		if ( disp__glGetMinmax == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -13368,6 +14376,8 @@
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 
+		if ( disp__glGetMinmax == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -13396,6 +14406,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
+
+		if ( disp__glGetMinmax == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -13426,6 +14438,8 @@
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jboolean *ptr4 = NULL;
 
+		if ( disp__glGetMinmax == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -13454,6 +14468,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
+
+		if ( disp__glGetMinmax == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -13489,6 +14505,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glGetMinmaxParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -13520,6 +14538,8 @@
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
+
+		if ( disp__glGetMinmaxParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -13555,6 +14575,8 @@
 	{
 		jbyte *ptr5 = NULL;
 
+		if ( disp__glConvolutionFilter1D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, image, 0);
@@ -13584,6 +14606,8 @@
 		jshortArray image)
 	{
 		jshort *ptr5 = NULL;
+
+		if ( disp__glConvolutionFilter1D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -13615,6 +14639,8 @@
 	{
 		jint *ptr5 = NULL;
 
+		if ( disp__glConvolutionFilter1D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, image, 0);
@@ -13644,6 +14670,8 @@
 		jfloatArray image)
 	{
 		jfloat *ptr5 = NULL;
+
+		if ( disp__glConvolutionFilter1D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -13675,6 +14703,8 @@
 	{
 		jdouble *ptr5 = NULL;
 
+		if ( disp__glConvolutionFilter1D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, image, 0);
@@ -13705,6 +14735,8 @@
 	{
 		jboolean *ptr5 = NULL;
 
+		if ( disp__glConvolutionFilter1D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, image, 0);
@@ -13734,6 +14766,8 @@
 		jlongArray image)
 	{
 		jlong *ptr5 = NULL;
+
+		if ( disp__glConvolutionFilter1D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -13773,6 +14807,8 @@
 	{
 		jbyte *ptr6 = NULL;
 
+		if ( disp__glConvolutionFilter2D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, image, 0);
@@ -13804,6 +14840,8 @@
 		jshortArray image)
 	{
 		jshort *ptr6 = NULL;
+
+		if ( disp__glConvolutionFilter2D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -13837,6 +14875,8 @@
 	{
 		jint *ptr6 = NULL;
 
+		if ( disp__glConvolutionFilter2D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr6 = (jint *) (*env)->GetPrimitiveArrayCritical(env, image, 0);
@@ -13868,6 +14908,8 @@
 		jfloatArray image)
 	{
 		jfloat *ptr6 = NULL;
+
+		if ( disp__glConvolutionFilter2D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -13901,6 +14943,8 @@
 	{
 		jdouble *ptr6 = NULL;
 
+		if ( disp__glConvolutionFilter2D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr6 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, image, 0);
@@ -13933,6 +14977,8 @@
 	{
 		jboolean *ptr6 = NULL;
 
+		if ( disp__glConvolutionFilter2D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, image, 0);
@@ -13964,6 +15010,8 @@
 		jlongArray image)
 	{
 		jlong *ptr6 = NULL;
+
+		if ( disp__glConvolutionFilter2D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -13999,6 +15047,8 @@
 		jfloat params)
 	{
 
+		if ( disp__glConvolutionParameterf == NULL ) return;
+
 		disp__glConvolutionParameterf (
 			(GLenum) target,
 			(GLenum) pname,
@@ -14021,6 +15071,8 @@
 		jfloatArray params)
 	{
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glConvolutionParameterfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -14052,6 +15104,8 @@
 		jint params)
 	{
 
+		if ( disp__glConvolutionParameteri == NULL ) return;
+
 		disp__glConvolutionParameteri (
 			(GLenum) target,
 			(GLenum) pname,
@@ -14074,6 +15128,8 @@
 		jintArray params)
 	{
 		jint *ptr2 = NULL;
+
+		if ( disp__glConvolutionParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -14107,6 +15163,8 @@
 		jint width)
 	{
 
+		if ( disp__glCopyConvolutionFilter1D == NULL ) return;
+
 		disp__glCopyConvolutionFilter1D (
 			(GLenum) target,
 			(GLenum) internalformat,
@@ -14133,6 +15191,8 @@
 		jint width,
 		jint height)
 	{
+
+		if ( disp__glCopyConvolutionFilter2D == NULL ) return;
 
 		disp__glCopyConvolutionFilter2D (
 			(GLenum) target,
@@ -14162,6 +15222,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 
+		if ( disp__glGetConvolutionFilter == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -14188,6 +15250,8 @@
 	{
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
+
+		if ( disp__glGetConvolutionFilter == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -14216,6 +15280,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 
+		if ( disp__glGetConvolutionFilter == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -14242,6 +15308,8 @@
 	{
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
+
+		if ( disp__glGetConvolutionFilter == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -14270,6 +15338,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 
+		if ( disp__glGetConvolutionFilter == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -14297,6 +15367,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 
+		if ( disp__glGetConvolutionFilter == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -14323,6 +15395,8 @@
 	{
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
+
+		if ( disp__glGetConvolutionFilter == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -14357,6 +15431,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glGetConvolutionParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -14388,6 +15464,8 @@
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
+
+		if ( disp__glGetConvolutionParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -14425,6 +15503,8 @@
 	{
 		jbyte *ptr6 = NULL;
 		jbyte *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2D == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -14469,6 +15549,8 @@
 		jshort *ptr6 = NULL;
 		jshort *ptr7 = NULL;
 
+		if ( disp__glSeparableFilter2D == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr6 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, row, 0);
@@ -14511,6 +15593,8 @@
 	{
 		jint *ptr6 = NULL;
 		jint *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2D == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -14555,6 +15639,8 @@
 		jfloat *ptr6 = NULL;
 		jfloat *ptr7 = NULL;
 
+		if ( disp__glSeparableFilter2D == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr6 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, row, 0);
@@ -14597,6 +15683,8 @@
 	{
 		jdouble *ptr6 = NULL;
 		jdouble *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2D == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -14641,6 +15729,8 @@
 		jboolean *ptr6 = NULL;
 		jboolean *ptr7 = NULL;
 
+		if ( disp__glSeparableFilter2D == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, row, 0);
@@ -14683,6 +15773,8 @@
 	{
 		jlong *ptr6 = NULL;
 		jlong *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2D == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -14736,6 +15828,8 @@
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jbyte *ptr5 = NULL;
 
+		if ( disp__glGetSeparableFilter == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -14786,6 +15880,8 @@
 		jshort *ptr4 = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
+
+		if ( disp__glGetSeparableFilter == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -14838,6 +15934,8 @@
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jint *ptr5 = NULL;
 
+		if ( disp__glGetSeparableFilter == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -14888,6 +15986,8 @@
 		jfloat *ptr4 = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
+
+		if ( disp__glGetSeparableFilter == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -14940,6 +16040,8 @@
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 
+		if ( disp__glGetSeparableFilter == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -14990,6 +16092,8 @@
 		jboolean *ptr4 = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jboolean *ptr5 = NULL;
+
+		if ( disp__glGetSeparableFilter == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -15042,6 +16146,8 @@
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 
+		if ( disp__glGetSeparableFilter == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -15092,6 +16198,8 @@
 		jfloat alpha)
 	{
 
+		if ( disp__glBlendColorEXT == NULL ) return;
+
 		disp__glBlendColorEXT (
 			(GLclampf) red,
 			(GLclampf) green,
@@ -15113,6 +16221,8 @@
 		jfloat factor,
 		jfloat bias)
 	{
+
+		if ( disp__glPolygonOffsetEXT == NULL ) return;
 
 		disp__glPolygonOffsetEXT (
 			(GLfloat) factor,
@@ -15142,6 +16252,8 @@
 		jbyteArray pixels)
 	{
 		jbyte *ptr9 = NULL;
+
+		if ( disp__glTexImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -15181,6 +16293,8 @@
 	{
 		jshort *ptr9 = NULL;
 
+		if ( disp__glTexImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -15218,6 +16332,8 @@
 		jintArray pixels)
 	{
 		jint *ptr9 = NULL;
+
+		if ( disp__glTexImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -15257,6 +16373,8 @@
 	{
 		jfloat *ptr9 = NULL;
 
+		if ( disp__glTexImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -15294,6 +16412,8 @@
 		jdoubleArray pixels)
 	{
 		jdouble *ptr9 = NULL;
+
+		if ( disp__glTexImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -15333,6 +16453,8 @@
 	{
 		jboolean *ptr9 = NULL;
 
+		if ( disp__glTexImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -15370,6 +16492,8 @@
 		jlongArray pixels)
 	{
 		jlong *ptr9 = NULL;
+
+		if ( disp__glTexImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -15417,6 +16541,8 @@
 	{
 		jbyte *ptr10 = NULL;
 
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -15456,6 +16582,8 @@
 		jshortArray pixels)
 	{
 		jshort *ptr10 = NULL;
+
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -15497,6 +16625,8 @@
 	{
 		jint *ptr10 = NULL;
 
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -15536,6 +16666,8 @@
 		jfloatArray pixels)
 	{
 		jfloat *ptr10 = NULL;
+
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -15577,6 +16709,8 @@
 	{
 		jdouble *ptr10 = NULL;
 
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -15617,6 +16751,8 @@
 	{
 		jboolean *ptr10 = NULL;
 
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, 0);
@@ -15656,6 +16792,8 @@
 		jlongArray pixels)
 	{
 		jlong *ptr10 = NULL;
+
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -15701,6 +16839,8 @@
 		jint height)
 	{
 
+		if ( disp__glCopyTexSubImage3DEXT == NULL ) return;
+
 		disp__glCopyTexSubImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
@@ -15729,6 +16869,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
+
+		if ( disp__glGenTexturesEXT == NULL ) return;
 
 		if(textures!=NULL)
 		{
@@ -15759,6 +16901,8 @@
 	{
 		jint *ptr1 = NULL;
 
+		if ( disp__glDeleteTexturesEXT == NULL ) return;
+
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, 0);
@@ -15787,6 +16931,8 @@
 		jint texture)
 	{
 
+		if ( disp__glBindTextureEXT == NULL ) return;
+
 		disp__glBindTextureEXT (
 			(GLenum) target,
 			(GLuint) texture
@@ -15809,6 +16955,8 @@
 	{
 		jint *ptr1 = NULL;
 		jfloat *ptr2 = NULL;
+
+		if ( disp__glPrioritizeTexturesEXT == NULL ) return;
 
 		if(textures!=NULL)
 		{
@@ -15853,6 +17001,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jboolean *ptr2 = NULL;
 
+		if ( disp__glAreTexturesResidentEXT == NULL ) return 0;
+
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, 0);
@@ -15892,6 +17042,8 @@
 		jboolean ret;
 
 
+		if ( disp__glIsTextureEXT == NULL ) return 0;
+
 		ret = (jboolean) disp__glIsTextureEXT (
 			(GLuint) texture
 		);
@@ -15915,6 +17067,8 @@
 		jbyteArray ptr)
 	{
 		jbyte *ptr4 = NULL;
+
+		if ( disp__glVertexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -15944,6 +17098,8 @@
 	{
 		jshort *ptr4 = NULL;
 
+		if ( disp__glVertexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -15971,6 +17127,8 @@
 		jintArray ptr)
 	{
 		jint *ptr4 = NULL;
+
+		if ( disp__glVertexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16000,6 +17158,8 @@
 	{
 		jfloat *ptr4 = NULL;
 
+		if ( disp__glVertexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16027,6 +17187,8 @@
 		jdoubleArray ptr)
 	{
 		jdouble *ptr4 = NULL;
+
+		if ( disp__glVertexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16056,6 +17218,8 @@
 	{
 		jboolean *ptr4 = NULL;
 
+		if ( disp__glVertexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16083,6 +17247,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr4 = NULL;
+
+		if ( disp__glVertexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16118,6 +17284,8 @@
 	{
 		jbyte *ptr3 = NULL;
 
+		if ( disp__glNormalPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16143,6 +17311,8 @@
 		jshortArray ptr)
 	{
 		jshort *ptr3 = NULL;
+
+		if ( disp__glNormalPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16170,6 +17340,8 @@
 	{
 		jint *ptr3 = NULL;
 
+		if ( disp__glNormalPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16195,6 +17367,8 @@
 		jfloatArray ptr)
 	{
 		jfloat *ptr3 = NULL;
+
+		if ( disp__glNormalPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16222,6 +17396,8 @@
 	{
 		jdouble *ptr3 = NULL;
 
+		if ( disp__glNormalPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16248,6 +17424,8 @@
 	{
 		jboolean *ptr3 = NULL;
 
+		if ( disp__glNormalPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16273,6 +17451,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr3 = NULL;
+
+		if ( disp__glNormalPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16308,6 +17488,8 @@
 	{
 		jbyte *ptr4 = NULL;
 
+		if ( disp__glColorPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16335,6 +17517,8 @@
 		jshortArray ptr)
 	{
 		jshort *ptr4 = NULL;
+
+		if ( disp__glColorPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16364,6 +17548,8 @@
 	{
 		jint *ptr4 = NULL;
 
+		if ( disp__glColorPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16391,6 +17577,8 @@
 		jfloatArray ptr)
 	{
 		jfloat *ptr4 = NULL;
+
+		if ( disp__glColorPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16420,6 +17608,8 @@
 	{
 		jdouble *ptr4 = NULL;
 
+		if ( disp__glColorPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16448,6 +17638,8 @@
 	{
 		jboolean *ptr4 = NULL;
 
+		if ( disp__glColorPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16475,6 +17667,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr4 = NULL;
+
+		if ( disp__glColorPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16510,6 +17704,8 @@
 	{
 		jbyte *ptr3 = NULL;
 
+		if ( disp__glIndexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16535,6 +17731,8 @@
 		jshortArray ptr)
 	{
 		jshort *ptr3 = NULL;
+
+		if ( disp__glIndexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16562,6 +17760,8 @@
 	{
 		jint *ptr3 = NULL;
 
+		if ( disp__glIndexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16587,6 +17787,8 @@
 		jfloatArray ptr)
 	{
 		jfloat *ptr3 = NULL;
+
+		if ( disp__glIndexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16614,6 +17816,8 @@
 	{
 		jdouble *ptr3 = NULL;
 
+		if ( disp__glIndexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16640,6 +17844,8 @@
 	{
 		jboolean *ptr3 = NULL;
 
+		if ( disp__glIndexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16665,6 +17871,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr3 = NULL;
+
+		if ( disp__glIndexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16700,6 +17908,8 @@
 	{
 		jbyte *ptr4 = NULL;
 
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16727,6 +17937,8 @@
 		jshortArray ptr)
 	{
 		jshort *ptr4 = NULL;
+
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16756,6 +17968,8 @@
 	{
 		jint *ptr4 = NULL;
 
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16783,6 +17997,8 @@
 		jfloatArray ptr)
 	{
 		jfloat *ptr4 = NULL;
+
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16812,6 +18028,8 @@
 	{
 		jdouble *ptr4 = NULL;
 
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16840,6 +18058,8 @@
 	{
 		jboolean *ptr4 = NULL;
 
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16867,6 +18087,8 @@
 		jlongArray ptr)
 	{
 		jlong *ptr4 = NULL;
+
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -16901,6 +18123,8 @@
 	{
 		jboolean *ptr2 = NULL;
 
+		if ( disp__glEdgeFlagPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, 0);
@@ -16932,6 +18156,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jbyte *ptr1 = NULL;
 
+		if ( disp__glGetPointervEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -16954,6 +18180,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
+
+		if ( disp__glGetPointervEXT == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -16978,6 +18206,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 
+		if ( disp__glGetPointervEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -17000,6 +18230,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glGetPointervEXT == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -17024,6 +18256,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 
+		if ( disp__glGetPointervEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -17047,6 +18281,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jboolean *ptr1 = NULL;
 
+		if ( disp__glGetPointervEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -17069,6 +18305,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jlong *ptr1 = NULL;
+
+		if ( disp__glGetPointervEXT == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -17097,6 +18335,8 @@
 		jint i)
 	{
 
+		if ( disp__glArrayElementEXT == NULL ) return;
+
 		disp__glArrayElementEXT (
 			(GLint) i
 		);
@@ -17116,6 +18356,8 @@
 		jint first,
 		jint count)
 	{
+
+		if ( disp__glDrawArraysEXT == NULL ) return;
 
 		disp__glDrawArraysEXT (
 			(GLenum) mode,
@@ -17137,6 +18379,8 @@
 		jint mode)
 	{
 
+		if ( disp__glBlendEquationEXT == NULL ) return;
+
 		disp__glBlendEquationEXT (
 			(GLenum) mode
 		);
@@ -17155,6 +18399,8 @@
 		jint pname,
 		jfloat param)
 	{
+
+		if ( disp__glPointParameterfEXT == NULL ) return;
 
 		disp__glPointParameterfEXT (
 			(GLenum) pname,
@@ -17176,6 +18422,8 @@
 		jfloatArray params)
 	{
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glPointParameterfvEXT == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -17210,6 +18458,8 @@
 	{
 		jbyte *ptr5 = NULL;
 
+		if ( disp__glColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, table, 0);
@@ -17239,6 +18489,8 @@
 		jshortArray table)
 	{
 		jshort *ptr5 = NULL;
+
+		if ( disp__glColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -17270,6 +18522,8 @@
 	{
 		jint *ptr5 = NULL;
 
+		if ( disp__glColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, table, 0);
@@ -17299,6 +18553,8 @@
 		jfloatArray table)
 	{
 		jfloat *ptr5 = NULL;
+
+		if ( disp__glColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -17330,6 +18586,8 @@
 	{
 		jdouble *ptr5 = NULL;
 
+		if ( disp__glColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, table, 0);
@@ -17360,6 +18618,8 @@
 	{
 		jboolean *ptr5 = NULL;
 
+		if ( disp__glColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, 0);
@@ -17389,6 +18649,8 @@
 		jlongArray table)
 	{
 		jlong *ptr5 = NULL;
+
+		if ( disp__glColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -17427,6 +18689,8 @@
 	{
 		jbyte *ptr5 = NULL;
 
+		if ( disp__glColorSubTableEXT == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -17456,6 +18720,8 @@
 		jshortArray data)
 	{
 		jshort *ptr5 = NULL;
+
+		if ( disp__glColorSubTableEXT == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -17487,6 +18753,8 @@
 	{
 		jint *ptr5 = NULL;
 
+		if ( disp__glColorSubTableEXT == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -17516,6 +18784,8 @@
 		jfloatArray data)
 	{
 		jfloat *ptr5 = NULL;
+
+		if ( disp__glColorSubTableEXT == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -17547,6 +18817,8 @@
 	{
 		jdouble *ptr5 = NULL;
 
+		if ( disp__glColorSubTableEXT == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -17577,6 +18849,8 @@
 	{
 		jboolean *ptr5 = NULL;
 
+		if ( disp__glColorSubTableEXT == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -17606,6 +18880,8 @@
 		jlongArray data)
 	{
 		jlong *ptr5 = NULL;
+
+		if ( disp__glColorSubTableEXT == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -17643,6 +18919,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 
+		if ( disp__glGetColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17669,6 +18947,8 @@
 	{
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
+
+		if ( disp__glGetColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -17697,6 +18977,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 
+		if ( disp__glGetColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17723,6 +19005,8 @@
 	{
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
+
+		if ( disp__glGetColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -17751,6 +19035,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 
+		if ( disp__glGetColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17778,6 +19064,8 @@
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 
+		if ( disp__glGetColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17804,6 +19092,8 @@
 	{
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
+
+		if ( disp__glGetColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -17838,6 +19128,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__glGetColorTableParameterfvEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -17870,6 +19162,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 
+		if ( disp__glGetColorTableParameterivEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -17899,6 +19193,8 @@
 		jint count)
 	{
 
+		if ( disp__glLockArraysEXT == NULL ) return;
+
 		disp__glLockArraysEXT (
 			(GLint) first,
 			(GLsizei) count
@@ -17917,6 +19213,8 @@
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glUnlockArraysEXT == NULL ) return;
+
 		disp__glUnlockArraysEXT (
 		);
 
@@ -17933,6 +19231,8 @@
 		JNIEnv *env, jobject obj,
 		jint texture)
 	{
+
+		if ( disp__glActiveTextureARB == NULL ) return;
 
 		disp__glActiveTextureARB (
 			(GLenum) texture
@@ -17952,6 +19252,8 @@
 		jint texture)
 	{
 
+		if ( disp__glClientActiveTextureARB == NULL ) return;
+
 		disp__glClientActiveTextureARB (
 			(GLenum) texture
 		);
@@ -17970,6 +19272,8 @@
 		jint target,
 		jdouble s)
 	{
+
+		if ( disp__glMultiTexCoord1dARB == NULL ) return;
 
 		disp__glMultiTexCoord1dARB (
 			(GLenum) target,
@@ -17991,6 +19295,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1dvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18020,6 +19326,8 @@
 		jfloat s)
 	{
 
+		if ( disp__glMultiTexCoord1fARB == NULL ) return;
+
 		disp__glMultiTexCoord1fARB (
 			(GLenum) target,
 			(GLfloat) s
@@ -18040,6 +19348,8 @@
 		jfloatArray v)
 	{
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1fvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18069,6 +19379,8 @@
 		jint s)
 	{
 
+		if ( disp__glMultiTexCoord1iARB == NULL ) return;
+
 		disp__glMultiTexCoord1iARB (
 			(GLenum) target,
 			(GLint) s
@@ -18089,6 +19401,8 @@
 		jintArray v)
 	{
 		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1ivARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18118,6 +19432,8 @@
 		jshort s)
 	{
 
+		if ( disp__glMultiTexCoord1sARB == NULL ) return;
+
 		disp__glMultiTexCoord1sARB (
 			(GLenum) target,
 			(GLshort) s
@@ -18138,6 +19454,8 @@
 		jshortArray v)
 	{
 		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1svARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18168,6 +19486,8 @@
 		jdouble t)
 	{
 
+		if ( disp__glMultiTexCoord2dARB == NULL ) return;
+
 		disp__glMultiTexCoord2dARB (
 			(GLenum) target,
 			(GLdouble) s,
@@ -18189,6 +19509,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2dvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18219,6 +19541,8 @@
 		jfloat t)
 	{
 
+		if ( disp__glMultiTexCoord2fARB == NULL ) return;
+
 		disp__glMultiTexCoord2fARB (
 			(GLenum) target,
 			(GLfloat) s,
@@ -18240,6 +19564,8 @@
 		jfloatArray v)
 	{
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2fvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18270,6 +19596,8 @@
 		jint t)
 	{
 
+		if ( disp__glMultiTexCoord2iARB == NULL ) return;
+
 		disp__glMultiTexCoord2iARB (
 			(GLenum) target,
 			(GLint) s,
@@ -18291,6 +19619,8 @@
 		jintArray v)
 	{
 		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2ivARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18321,6 +19651,8 @@
 		jshort t)
 	{
 
+		if ( disp__glMultiTexCoord2sARB == NULL ) return;
+
 		disp__glMultiTexCoord2sARB (
 			(GLenum) target,
 			(GLshort) s,
@@ -18342,6 +19674,8 @@
 		jshortArray v)
 	{
 		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2svARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18373,6 +19707,8 @@
 		jdouble r)
 	{
 
+		if ( disp__glMultiTexCoord3dARB == NULL ) return;
+
 		disp__glMultiTexCoord3dARB (
 			(GLenum) target,
 			(GLdouble) s,
@@ -18395,6 +19731,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3dvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18426,6 +19764,8 @@
 		jfloat r)
 	{
 
+		if ( disp__glMultiTexCoord3fARB == NULL ) return;
+
 		disp__glMultiTexCoord3fARB (
 			(GLenum) target,
 			(GLfloat) s,
@@ -18448,6 +19788,8 @@
 		jfloatArray v)
 	{
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3fvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18479,6 +19821,8 @@
 		jint r)
 	{
 
+		if ( disp__glMultiTexCoord3iARB == NULL ) return;
+
 		disp__glMultiTexCoord3iARB (
 			(GLenum) target,
 			(GLint) s,
@@ -18501,6 +19845,8 @@
 		jintArray v)
 	{
 		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3ivARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18532,6 +19878,8 @@
 		jshort r)
 	{
 
+		if ( disp__glMultiTexCoord3sARB == NULL ) return;
+
 		disp__glMultiTexCoord3sARB (
 			(GLenum) target,
 			(GLshort) s,
@@ -18554,6 +19902,8 @@
 		jshortArray v)
 	{
 		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3svARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18586,6 +19936,8 @@
 		jdouble q)
 	{
 
+		if ( disp__glMultiTexCoord4dARB == NULL ) return;
+
 		disp__glMultiTexCoord4dARB (
 			(GLenum) target,
 			(GLdouble) s,
@@ -18609,6 +19961,8 @@
 		jdoubleArray v)
 	{
 		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4dvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18641,6 +19995,8 @@
 		jfloat q)
 	{
 
+		if ( disp__glMultiTexCoord4fARB == NULL ) return;
+
 		disp__glMultiTexCoord4fARB (
 			(GLenum) target,
 			(GLfloat) s,
@@ -18664,6 +20020,8 @@
 		jfloatArray v)
 	{
 		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4fvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18696,6 +20054,8 @@
 		jint q)
 	{
 
+		if ( disp__glMultiTexCoord4iARB == NULL ) return;
+
 		disp__glMultiTexCoord4iARB (
 			(GLenum) target,
 			(GLint) s,
@@ -18719,6 +20079,8 @@
 		jintArray v)
 	{
 		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4ivARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -18751,6 +20113,8 @@
 		jshort q)
 	{
 
+		if ( disp__glMultiTexCoord4sARB == NULL ) return;
+
 		disp__glMultiTexCoord4sARB (
 			(GLenum) target,
 			(GLshort) s,
@@ -18775,6 +20139,8 @@
 	{
 		jshort *ptr1 = NULL;
 
+		if ( disp__glMultiTexCoord4svARB == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr1 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, 0);
@@ -18790,4 +20156,4 @@
 		}
 	}
 
-/* C2J Parser Version 2.0:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.1:  Java program parsed successfully. */ 

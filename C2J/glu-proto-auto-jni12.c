@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 2.0
+ * C2J Parser Version 2.1
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -24,6 +24,8 @@
 		jdouble upy,
 		jdouble upz)
 	{
+
+		if ( disp__gluLookAt == NULL ) return;
 
 		disp__gluLookAt (
 			(GLdouble) eyex,
@@ -54,6 +56,8 @@
 		jdouble top)
 	{
 
+		if ( disp__gluOrtho2D == NULL ) return;
+
 		disp__gluOrtho2D (
 			(GLdouble) left,
 			(GLdouble) right,
@@ -77,6 +81,8 @@
 		jdouble zNear,
 		jdouble zFar)
 	{
+
+		if ( disp__gluPerspective == NULL ) return;
 
 		disp__gluPerspective (
 			(GLdouble) fovy,
@@ -104,6 +110,8 @@
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
+
+		if ( disp__gluPickMatrix == NULL ) return;
 
 		if(viewport!=NULL)
 		{
@@ -153,6 +161,8 @@
 		jdouble *ptr7 = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jdouble *ptr8 = NULL;
+
+		if ( disp__gluProject == NULL ) return 0;
 
 		if(modelMatrix!=NULL)
 		{
@@ -248,6 +258,8 @@
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jdouble *ptr8 = NULL;
 
+		if ( disp__gluUnProject == NULL ) return 0;
+
 		if(modelMatrix!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, modelMatrix, 0);
@@ -336,6 +348,8 @@
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jbyte *ptr8 = NULL;
 
+		if ( disp__gluScaleImage == NULL ) return 0;
+
 		if(datain!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, datain, 0);
@@ -387,6 +401,8 @@
 
 		jbyte *ptr5 = NULL;
 
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -419,6 +435,8 @@
 		jint ret;
 
 		jshort *ptr5 = NULL;
+
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -453,6 +471,8 @@
 
 		jint *ptr5 = NULL;
 
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -485,6 +505,8 @@
 		jint ret;
 
 		jfloat *ptr5 = NULL;
+
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -519,6 +541,8 @@
 
 		jdouble *ptr5 = NULL;
 
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -552,6 +576,8 @@
 
 		jboolean *ptr5 = NULL;
 
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -584,6 +610,8 @@
 		jint ret;
 
 		jlong *ptr5 = NULL;
+
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -626,6 +654,8 @@
 
 		jbyte *ptr6 = NULL;
 
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -660,6 +690,8 @@
 		jint ret;
 
 		jshort *ptr6 = NULL;
+
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -696,6 +728,8 @@
 
 		jint *ptr6 = NULL;
 
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr6 = (jint *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -730,6 +764,8 @@
 		jint ret;
 
 		jfloat *ptr6 = NULL;
+
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -766,6 +802,8 @@
 
 		jdouble *ptr6 = NULL;
 
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr6 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -800,6 +838,8 @@
 		jint ret;
 
 		jboolean *ptr6 = NULL;
+
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -836,6 +876,8 @@
 
 		jlong *ptr6 = NULL;
 
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr6 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -870,6 +912,8 @@
 		jint drawStyle)
 	{
 
+		if ( disp__gluQuadricDrawStyle == NULL ) return;
+
 		disp__gluQuadricDrawStyle (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) drawStyle
@@ -889,6 +933,8 @@
 		jlong quadObject,
 		jint orientation)
 	{
+
+		if ( disp__gluQuadricOrientation == NULL ) return;
 
 		disp__gluQuadricOrientation (
 			(GLUquadricObj *) (PointerHolder) quadObject,
@@ -910,6 +956,8 @@
 		jint normals)
 	{
 
+		if ( disp__gluQuadricNormals == NULL ) return;
+
 		disp__gluQuadricNormals (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) normals
@@ -929,6 +977,8 @@
 		jlong quadObject,
 		jboolean textureCoords)
 	{
+
+		if ( disp__gluQuadricTexture == NULL ) return;
 
 		disp__gluQuadricTexture (
 			(GLUquadricObj *) (PointerHolder) quadObject,
@@ -953,6 +1003,8 @@
 		jint slices,
 		jint stacks)
 	{
+
+		if ( disp__gluCylinder == NULL ) return;
 
 		disp__gluCylinder (
 			(GLUquadricObj *) (PointerHolder) qobj,
@@ -980,6 +1032,8 @@
 		jint stacks)
 	{
 
+		if ( disp__gluSphere == NULL ) return;
+
 		disp__gluSphere (
 			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) radius,
@@ -1004,6 +1058,8 @@
 		jint slices,
 		jint loops)
 	{
+
+		if ( disp__gluDisk == NULL ) return;
 
 		disp__gluDisk (
 			(GLUquadricObj *) (PointerHolder) qobj,
@@ -1032,6 +1088,8 @@
 		jdouble startAngle,
 		jdouble sweepAngle)
 	{
+
+		if ( disp__gluPartialDisk == NULL ) return;
 
 		disp__gluPartialDisk (
 			(GLUquadricObj *) (PointerHolder) qobj,
@@ -1062,6 +1120,8 @@
 		jfloat *ptr1 = NULL;
 		jfloat *ptr2 = NULL;
 		jint *ptr3 = NULL;
+
+		if ( disp__gluLoadSamplingMatrices == NULL ) return;
 
 		if(modelMatrix!=NULL)
 		{
@@ -1110,6 +1170,8 @@
 		jfloat value)
 	{
 
+		if ( disp__gluNurbsProperty == NULL ) return;
+
 		disp__gluNurbsProperty (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLenum) property,
@@ -1133,6 +1195,8 @@
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
+
+		if ( disp__gluGetNurbsProperty == NULL ) return;
 
 		if(value!=NULL)
 		{
@@ -1162,6 +1226,8 @@
 		jlong nobj)
 	{
 
+		if ( disp__gluBeginCurve == NULL ) return;
+
 		disp__gluBeginCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
@@ -1179,6 +1245,8 @@
 		JNIEnv *env, jobject obj,
 		jlong nobj)
 	{
+
+		if ( disp__gluEndCurve == NULL ) return;
 
 		disp__gluEndCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj
@@ -1207,6 +1275,8 @@
 		jfloat *ptr2 = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
+
+		if ( disp__gluNurbsCurve == NULL ) return;
 
 		if(knot!=NULL)
 		{
@@ -1248,6 +1318,8 @@
 		jlong nobj)
 	{
 
+		if ( disp__gluBeginSurface == NULL ) return;
+
 		disp__gluBeginSurface (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
@@ -1265,6 +1337,8 @@
 		JNIEnv *env, jobject obj,
 		jlong nobj)
 	{
+
+		if ( disp__gluEndSurface == NULL ) return;
 
 		disp__gluEndSurface (
 			(GLUnurbsObj *) (PointerHolder) nobj
@@ -1299,6 +1373,8 @@
 		jfloat *ptr4 = NULL;
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jfloat *ptr7 = NULL;
+
+		if ( disp__gluNurbsSurface == NULL ) return;
 
 		if(sknot!=NULL)
 		{
@@ -1352,6 +1428,8 @@
 		jlong nobj)
 	{
 
+		if ( disp__gluBeginTrim == NULL ) return;
+
 		disp__gluBeginTrim (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
@@ -1369,6 +1447,8 @@
 		JNIEnv *env, jobject obj,
 		jlong nobj)
 	{
+
+		if ( disp__gluEndTrim == NULL ) return;
 
 		disp__gluEndTrim (
 			(GLUnurbsObj *) (PointerHolder) nobj
@@ -1393,6 +1473,8 @@
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
+
+		if ( disp__gluPwlCurve == NULL ) return;
 
 		if(array!=NULL)
 		{
@@ -1427,6 +1509,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jbyte *ptr1 = NULL;
 
+		if ( disp__gluTessBeginPolygon == NULL ) return;
+
 		if(polygon_data!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, polygon_data, &isCopiedArray1);
@@ -1449,6 +1533,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
+
+		if ( disp__gluTessBeginPolygon == NULL ) return;
 
 		if(polygon_data!=NULL)
 		{
@@ -1473,6 +1559,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 
+		if ( disp__gluTessBeginPolygon == NULL ) return;
+
 		if(polygon_data!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, polygon_data, &isCopiedArray1);
@@ -1495,6 +1583,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
+
+		if ( disp__gluTessBeginPolygon == NULL ) return;
 
 		if(polygon_data!=NULL)
 		{
@@ -1519,6 +1609,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 
+		if ( disp__gluTessBeginPolygon == NULL ) return;
+
 		if(polygon_data!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, polygon_data, &isCopiedArray1);
@@ -1542,6 +1634,8 @@
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jboolean *ptr1 = NULL;
 
+		if ( disp__gluTessBeginPolygon == NULL ) return;
+
 		if(polygon_data!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, polygon_data, &isCopiedArray1);
@@ -1564,6 +1658,8 @@
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jlong *ptr1 = NULL;
+
+		if ( disp__gluTessBeginPolygon == NULL ) return;
 
 		if(polygon_data!=NULL)
 		{
@@ -1592,6 +1688,8 @@
 		jlong tobj)
 	{
 
+		if ( disp__gluTessBeginContour == NULL ) return;
+
 		disp__gluTessBeginContour (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
@@ -1615,6 +1713,8 @@
 		jdouble *ptr1 = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jbyte *ptr2 = NULL;
+
+		if ( disp__gluTessVertex == NULL ) return;
 
 		if(coords!=NULL)
 		{
@@ -1651,6 +1751,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jshort *ptr2 = NULL;
 
+		if ( disp__gluTessVertex == NULL ) return;
+
 		if(coords!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, coords, &isCopiedArray1);
@@ -1685,6 +1787,8 @@
 		jdouble *ptr1 = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
+
+		if ( disp__gluTessVertex == NULL ) return;
 
 		if(coords!=NULL)
 		{
@@ -1721,6 +1825,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__gluTessVertex == NULL ) return;
+
 		if(coords!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, coords, &isCopiedArray1);
@@ -1755,6 +1861,8 @@
 		jdouble *ptr1 = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
+
+		if ( disp__gluTessVertex == NULL ) return;
 
 		if(coords!=NULL)
 		{
@@ -1791,6 +1899,8 @@
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jboolean *ptr2 = NULL;
 
+		if ( disp__gluTessVertex == NULL ) return;
+
 		if(coords!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, coords, &isCopiedArray1);
@@ -1825,6 +1935,8 @@
 		jdouble *ptr1 = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jlong *ptr2 = NULL;
+
+		if ( disp__gluTessVertex == NULL ) return;
 
 		if(coords!=NULL)
 		{
@@ -1862,6 +1974,8 @@
 		jlong tobj)
 	{
 
+		if ( disp__gluTessEndContour == NULL ) return;
+
 		disp__gluTessEndContour (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
@@ -1879,6 +1993,8 @@
 		JNIEnv *env, jobject obj,
 		jlong tobj)
 	{
+
+		if ( disp__gluTessEndPolygon == NULL ) return;
 
 		disp__gluTessEndPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
@@ -1899,6 +2015,8 @@
 		jint which,
 		jdouble value)
 	{
+
+		if ( disp__gluTessProperty == NULL ) return;
 
 		disp__gluTessProperty (
 			(GLUtesselator *) (PointerHolder) tobj,
@@ -1922,6 +2040,8 @@
 		jdouble y,
 		jdouble z)
 	{
+
+		if ( disp__gluTessNormal == NULL ) return;
 
 		disp__gluTessNormal (
 			(GLUtesselator *) (PointerHolder) tobj,
@@ -1947,6 +2067,8 @@
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
+
+		if ( disp__gluGetTessProperty == NULL ) return;
 
 		if(value!=NULL)
 		{
@@ -1976,6 +2098,8 @@
 		jlong tobj)
 	{
 
+		if ( disp__gluBeginPolygon == NULL ) return;
+
 		disp__gluBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
@@ -1994,6 +2118,8 @@
 		jlong tobj,
 		jint type)
 	{
+
+		if ( disp__gluNextContour == NULL ) return;
 
 		disp__gluNextContour (
 			(GLUtesselator *) (PointerHolder) tobj,
@@ -2014,10 +2140,12 @@
 		jlong tobj)
 	{
 
+		if ( disp__gluEndPolygon == NULL ) return;
+
 		disp__gluEndPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
 
-/* C2J Parser Version 2.0:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.1:  Java program parsed successfully. */ 

@@ -520,6 +520,22 @@ public class CFuncDeclaration
 	        res += "\n" ;
 
 		//
+		// Add the query if the native function pointer is != NULL
+		//
+		res += "\t\tif ( ";
+			
+		if(exportMode==C2J.EXPORT_JNI_C)
+			res += funcSpec.identifier; 
+		else
+			res += "disp__"+funcSpec.identifier;
+
+		res += " == NULL ) return";
+
+		if(funcSpec.typeJava.equals("void")==false)
+			res += " 0";
+		res += ";\n\n";
+
+		//
 		// Adding the JNI access Methods 
 		// for Arrays ...
 		// THE ARGUMENT ACCESS

@@ -60,6 +60,9 @@ Java_gl4java_GLFuncJauJNI_glGetString ( JNIEnv *env, jobject obj,
 {
     const char * tmpString=0;
 
+    if ( disp__glGetString == NULL ) 
+    	return (*env)->NewStringUTF(env, _gl_n_a_string);
+
     tmpString = disp__glGetString ( /* jint */ name);
     if(tmpString==NULL)
     	tmpString=_gl_n_a_string;
@@ -68,7 +71,7 @@ Java_gl4java_GLFuncJauJNI_glGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _gl_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _gl_lib_version_="2.7.0.0";
+static const char * _gl_lib_version_="2.7.1.0";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
@@ -83,7 +86,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 }
 
 /**
- * C2J Parser Version 2.0
+ * C2J Parser Version 2.1
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLFuncJauJNI ! 
@@ -100,6 +103,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jfloat c)
 	{
+
+		if ( disp__glClearIndex == NULL ) return;
 
 		disp__glClearIndex (
 			(GLfloat) c
@@ -122,6 +127,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat alpha)
 	{
 
+		if ( disp__glClearColor == NULL ) return;
+
 		disp__glClearColor (
 			(GLclampf) red,
 			(GLclampf) green,
@@ -143,6 +150,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mask)
 	{
 
+		if ( disp__glClear == NULL ) return;
+
 		disp__glClear (
 			(GLbitfield) mask
 		);
@@ -160,6 +169,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint mask)
 	{
+
+		if ( disp__glIndexMask == NULL ) return;
 
 		disp__glIndexMask (
 			(GLuint) mask
@@ -181,6 +192,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean blue,
 		jboolean alpha)
 	{
+
+		if ( disp__glColorMask == NULL ) return;
 
 		disp__glColorMask (
 			(GLboolean) red,
@@ -204,6 +217,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat ref)
 	{
 
+		if ( disp__glAlphaFunc == NULL ) return;
+
 		disp__glAlphaFunc (
 			(GLenum) func,
 			(GLclampf) ref
@@ -224,6 +239,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint dfactor)
 	{
 
+		if ( disp__glBlendFunc == NULL ) return;
+
 		disp__glBlendFunc (
 			(GLenum) sfactor,
 			(GLenum) dfactor
@@ -243,6 +260,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint opcode)
 	{
 
+		if ( disp__glLogicOp == NULL ) return;
+
 		disp__glLogicOp (
 			(GLenum) opcode
 		);
@@ -260,6 +279,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
+
+		if ( disp__glCullFace == NULL ) return;
 
 		disp__glCullFace (
 			(GLenum) mode
@@ -279,6 +300,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mode)
 	{
 
+		if ( disp__glFrontFace == NULL ) return;
+
 		disp__glFrontFace (
 			(GLenum) mode
 		);
@@ -296,6 +319,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jfloat size)
 	{
+
+		if ( disp__glPointSize == NULL ) return;
 
 		disp__glPointSize (
 			(GLfloat) size
@@ -315,6 +340,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat width)
 	{
 
+		if ( disp__glLineWidth == NULL ) return;
+
 		disp__glLineWidth (
 			(GLfloat) width
 		);
@@ -333,6 +360,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint factor,
 		jshort pattern)
 	{
+
+		if ( disp__glLineStipple == NULL ) return;
 
 		disp__glLineStipple (
 			(GLint) factor,
@@ -354,6 +383,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mode)
 	{
 
+		if ( disp__glPolygonMode == NULL ) return;
+
 		disp__glPolygonMode (
 			(GLenum) face,
 			(GLenum) mode
@@ -373,6 +404,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat factor,
 		jfloat units)
 	{
+
+		if ( disp__glPolygonOffset == NULL ) return;
 
 		disp__glPolygonOffset (
 			(GLfloat) factor,
@@ -395,6 +428,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glPolygonStipple == NULL ) return;
 
 		if(mask!=NULL)
 		{
@@ -429,6 +464,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glGetPolygonStipple == NULL ) return;
+
 		if(mask!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, mask, &isCopiedArray0);
@@ -459,6 +496,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean flag)
 	{
 
+		if ( disp__glEdgeFlag == NULL ) return;
+
 		disp__glEdgeFlag (
 			(GLboolean) flag
 		);
@@ -479,6 +518,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jboolean *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glEdgeFlagv == NULL ) return;
 
 		if(flag!=NULL)
 		{
@@ -513,6 +554,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint height)
 	{
 
+		if ( disp__glScissor == NULL ) return;
+
 		disp__glScissor (
 			(GLint) x,
 			(GLint) y,
@@ -537,6 +580,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glClipPlane == NULL ) return;
 
 		if(equation!=NULL)
 		{
@@ -573,6 +618,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetClipPlane == NULL ) return;
+
 		if(equation!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, equation, &isCopiedArray1);
@@ -604,6 +651,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mode)
 	{
 
+		if ( disp__glDrawBuffer == NULL ) return;
+
 		disp__glDrawBuffer (
 			(GLenum) mode
 		);
@@ -621,6 +670,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
+
+		if ( disp__glReadBuffer == NULL ) return;
 
 		disp__glReadBuffer (
 			(GLenum) mode
@@ -640,6 +691,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint cap)
 	{
 
+		if ( disp__glEnable == NULL ) return;
+
 		disp__glEnable (
 			(GLenum) cap
 		);
@@ -657,6 +710,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint cap)
 	{
+
+		if ( disp__glDisable == NULL ) return;
 
 		disp__glDisable (
 			(GLenum) cap
@@ -678,6 +733,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean ret;
 
 
+		if ( disp__glIsEnabled == NULL ) return 0;
+
 		ret = (jboolean) disp__glIsEnabled (
 			(GLenum) cap
 		);
@@ -697,6 +754,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint cap)
 	{
 
+		if ( disp__glEnableClientState == NULL ) return;
+
 		disp__glEnableClientState (
 			(GLenum) cap
 		);
@@ -714,6 +773,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint cap)
 	{
+
+		if ( disp__glDisableClientState == NULL ) return;
 
 		disp__glDisableClientState (
 			(GLenum) cap
@@ -736,6 +797,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jboolean *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glGetBooleanv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -772,6 +835,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetDoublev == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -806,6 +871,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glGetFloatv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -842,6 +909,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetIntegerv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -873,6 +942,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mask)
 	{
 
+		if ( disp__glPushAttrib == NULL ) return;
+
 		disp__glPushAttrib (
 			(GLbitfield) mask
 		);
@@ -889,6 +960,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 	Java_gl4java_GLFuncJauJNI_glPopAttrib (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glPopAttrib == NULL ) return;
 
 		disp__glPopAttrib (
 		);
@@ -907,6 +980,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mask)
 	{
 
+		if ( disp__glPushClientAttrib == NULL ) return;
+
 		disp__glPushClientAttrib (
 			(GLbitfield) mask
 		);
@@ -923,6 +998,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 	Java_gl4java_GLFuncJauJNI_glPopClientAttrib (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glPopClientAttrib == NULL ) return;
 
 		disp__glPopClientAttrib (
 		);
@@ -942,6 +1019,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 	{
 		jint ret;
 
+
+		if ( disp__glRenderMode == NULL ) return 0;
 
 		ret = (jint) disp__glRenderMode (
 			(GLenum) mode
@@ -963,6 +1042,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint ret;
 
 
+		if ( disp__glGetError == NULL ) return 0;
+
 		ret = (jint) disp__glGetError (
 		);
 
@@ -980,6 +1061,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glFinish == NULL ) return;
+
 		disp__glFinish (
 		);
 
@@ -995,6 +1078,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 	Java_gl4java_GLFuncJauJNI_glFlush (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glFlush == NULL ) return;
 
 		disp__glFlush (
 		);
@@ -1013,6 +1098,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint target,
 		jint mode)
 	{
+
+		if ( disp__glHint == NULL ) return;
 
 		disp__glHint (
 			(GLenum) target,
@@ -1033,6 +1120,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble depth)
 	{
 
+		if ( disp__glClearDepth == NULL ) return;
+
 		disp__glClearDepth (
 			(GLclampd) depth
 		);
@@ -1050,6 +1139,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint func)
 	{
+
+		if ( disp__glDepthFunc == NULL ) return;
 
 		disp__glDepthFunc (
 			(GLenum) func
@@ -1069,6 +1160,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean flag)
 	{
 
+		if ( disp__glDepthMask == NULL ) return;
+
 		disp__glDepthMask (
 			(GLboolean) flag
 		);
@@ -1087,6 +1180,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble near_val,
 		jdouble far_val)
 	{
+
+		if ( disp__glDepthRange == NULL ) return;
 
 		disp__glDepthRange (
 			(GLclampd) near_val,
@@ -1110,6 +1205,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat alpha)
 	{
 
+		if ( disp__glClearAccum == NULL ) return;
+
 		disp__glClearAccum (
 			(GLfloat) red,
 			(GLfloat) green,
@@ -1132,6 +1229,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat value)
 	{
 
+		if ( disp__glAccum == NULL ) return;
+
 		disp__glAccum (
 			(GLenum) op,
 			(GLfloat) value
@@ -1150,6 +1249,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
+
+		if ( disp__glMatrixMode == NULL ) return;
 
 		disp__glMatrixMode (
 			(GLenum) mode
@@ -1173,6 +1274,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble near_val,
 		jdouble far_val)
 	{
+
+		if ( disp__glOrtho == NULL ) return;
 
 		disp__glOrtho (
 			(GLdouble) left,
@@ -1202,6 +1305,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble far_val)
 	{
 
+		if ( disp__glFrustum == NULL ) return;
+
 		disp__glFrustum (
 			(GLdouble) left,
 			(GLdouble) right,
@@ -1228,6 +1333,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint height)
 	{
 
+		if ( disp__glViewport == NULL ) return;
+
 		disp__glViewport (
 			(GLint) x,
 			(GLint) y,
@@ -1248,6 +1355,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glPushMatrix == NULL ) return;
+
 		disp__glPushMatrix (
 		);
 
@@ -1264,6 +1373,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glPopMatrix == NULL ) return;
+
 		disp__glPopMatrix (
 		);
 
@@ -1279,6 +1390,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 	Java_gl4java_GLFuncJauJNI_glLoadIdentity (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glLoadIdentity == NULL ) return;
 
 		disp__glLoadIdentity (
 		);
@@ -1299,6 +1412,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glLoadMatrixd == NULL ) return;
 
 		if(m!=NULL)
 		{
@@ -1333,6 +1448,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glLoadMatrixf == NULL ) return;
+
 		if(m!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, m, &isCopiedArray0);
@@ -1365,6 +1482,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glMultMatrixd == NULL ) return;
 
 		if(m!=NULL)
 		{
@@ -1399,6 +1518,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glMultMatrixf == NULL ) return;
+
 		if(m!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, m, &isCopiedArray0);
@@ -1432,6 +1553,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble z)
 	{
 
+		if ( disp__glRotated == NULL ) return;
+
 		disp__glRotated (
 			(GLdouble) angle,
 			(GLdouble) x,
@@ -1456,6 +1579,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat z)
 	{
 
+		if ( disp__glRotatef == NULL ) return;
+
 		disp__glRotatef (
 			(GLfloat) angle,
 			(GLfloat) x,
@@ -1479,6 +1604,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble z)
 	{
 
+		if ( disp__glScaled == NULL ) return;
+
 		disp__glScaled (
 			(GLdouble) x,
 			(GLdouble) y,
@@ -1500,6 +1627,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat y,
 		jfloat z)
 	{
+
+		if ( disp__glScalef == NULL ) return;
 
 		disp__glScalef (
 			(GLfloat) x,
@@ -1523,6 +1652,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble z)
 	{
 
+		if ( disp__glTranslated == NULL ) return;
+
 		disp__glTranslated (
 			(GLdouble) x,
 			(GLdouble) y,
@@ -1544,6 +1675,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat y,
 		jfloat z)
 	{
+
+		if ( disp__glTranslatef == NULL ) return;
 
 		disp__glTranslatef (
 			(GLfloat) x,
@@ -1567,6 +1700,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean ret;
 
 
+		if ( disp__glIsList == NULL ) return 0;
+
 		ret = (jboolean) disp__glIsList (
 			(GLuint) list
 		);
@@ -1586,6 +1721,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint list,
 		jint range)
 	{
+
+		if ( disp__glDeleteLists == NULL ) return;
 
 		disp__glDeleteLists (
 			(GLuint) list,
@@ -1608,6 +1745,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint ret;
 
 
+		if ( disp__glGenLists == NULL ) return 0;
+
 		ret = (jint) disp__glGenLists (
 			(GLsizei) range
 		);
@@ -1628,6 +1767,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mode)
 	{
 
+		if ( disp__glNewList == NULL ) return;
+
 		disp__glNewList (
 			(GLuint) list,
 			(GLenum) mode
@@ -1646,6 +1787,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glEndList == NULL ) return;
+
 		disp__glEndList (
 		);
 
@@ -1662,6 +1805,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint list)
 	{
+
+		if ( disp__glCallList == NULL ) return;
 
 		disp__glCallList (
 			(GLuint) list
@@ -1685,6 +1830,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jbyte *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glCallLists == NULL ) return;
 
 		if(lists!=NULL)
 		{
@@ -1716,6 +1863,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glCallLists == NULL ) return;
+
 		if(lists!=NULL)
 		{
 			ptr2 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, lists, &isCopiedArray2);
@@ -1745,6 +1894,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glCallLists == NULL ) return;
 
 		if(lists!=NULL)
 		{
@@ -1776,6 +1927,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glCallLists == NULL ) return;
+
 		if(lists!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, lists, &isCopiedArray2);
@@ -1805,6 +1958,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glCallLists == NULL ) return;
 
 		if(lists!=NULL)
 		{
@@ -1836,6 +1991,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glCallLists == NULL ) return;
+
 		if(lists!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, lists, &isCopiedArray2);
@@ -1865,6 +2022,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jlong *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glCallLists == NULL ) return;
 
 		if(lists!=NULL)
 		{
@@ -1898,6 +2057,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint base)
 	{
 
+		if ( disp__glListBase == NULL ) return;
+
 		disp__glListBase (
 			(GLuint) base
 		);
@@ -1916,6 +2077,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mode)
 	{
 
+		if ( disp__glBegin == NULL ) return;
+
 		disp__glBegin (
 			(GLenum) mode
 		);
@@ -1932,6 +2095,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 	Java_gl4java_GLFuncJauJNI_glEnd (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glEnd == NULL ) return;
 
 		disp__glEnd (
 		);
@@ -1950,6 +2115,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble x,
 		jdouble y)
 	{
+
+		if ( disp__glVertex2d == NULL ) return;
 
 		disp__glVertex2d (
 			(GLdouble) x,
@@ -1971,6 +2138,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat y)
 	{
 
+		if ( disp__glVertex2f == NULL ) return;
+
 		disp__glVertex2f (
 			(GLfloat) x,
 			(GLfloat) y
@@ -1990,6 +2159,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint x,
 		jint y)
 	{
+
+		if ( disp__glVertex2i == NULL ) return;
 
 		disp__glVertex2i (
 			(GLint) x,
@@ -2011,6 +2182,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort y)
 	{
 
+		if ( disp__glVertex2s == NULL ) return;
+
 		disp__glVertex2s (
 			(GLshort) x,
 			(GLshort) y
@@ -2031,6 +2204,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble y,
 		jdouble z)
 	{
+
+		if ( disp__glVertex3d == NULL ) return;
 
 		disp__glVertex3d (
 			(GLdouble) x,
@@ -2054,6 +2229,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat z)
 	{
 
+		if ( disp__glVertex3f == NULL ) return;
+
 		disp__glVertex3f (
 			(GLfloat) x,
 			(GLfloat) y,
@@ -2075,6 +2252,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint y,
 		jint z)
 	{
+
+		if ( disp__glVertex3i == NULL ) return;
 
 		disp__glVertex3i (
 			(GLint) x,
@@ -2098,6 +2277,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort z)
 	{
 
+		if ( disp__glVertex3s == NULL ) return;
+
 		disp__glVertex3s (
 			(GLshort) x,
 			(GLshort) y,
@@ -2120,6 +2301,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble z,
 		jdouble w)
 	{
+
+		if ( disp__glVertex4d == NULL ) return;
 
 		disp__glVertex4d (
 			(GLdouble) x,
@@ -2145,6 +2328,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat w)
 	{
 
+		if ( disp__glVertex4f == NULL ) return;
+
 		disp__glVertex4f (
 			(GLfloat) x,
 			(GLfloat) y,
@@ -2168,6 +2353,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint z,
 		jint w)
 	{
+
+		if ( disp__glVertex4i == NULL ) return;
 
 		disp__glVertex4i (
 			(GLint) x,
@@ -2193,6 +2380,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort w)
 	{
 
+		if ( disp__glVertex4s == NULL ) return;
+
 		disp__glVertex4s (
 			(GLshort) x,
 			(GLshort) y,
@@ -2216,6 +2405,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glVertex2dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2250,6 +2441,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glVertex2fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2282,6 +2475,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glVertex2iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2316,6 +2511,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glVertex2sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2348,6 +2545,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glVertex3dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2382,6 +2581,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glVertex3fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2414,6 +2615,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glVertex3iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2448,6 +2651,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glVertex3sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2480,6 +2685,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glVertex4dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2514,6 +2721,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glVertex4fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2546,6 +2755,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glVertex4iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2580,6 +2791,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glVertex4sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2612,6 +2825,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte nz)
 	{
 
+		if ( disp__glNormal3b == NULL ) return;
+
 		disp__glNormal3b (
 			(GLbyte) nx,
 			(GLbyte) ny,
@@ -2633,6 +2848,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble ny,
 		jdouble nz)
 	{
+
+		if ( disp__glNormal3d == NULL ) return;
 
 		disp__glNormal3d (
 			(GLdouble) nx,
@@ -2656,6 +2873,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat nz)
 	{
 
+		if ( disp__glNormal3f == NULL ) return;
+
 		disp__glNormal3f (
 			(GLfloat) nx,
 			(GLfloat) ny,
@@ -2677,6 +2896,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint ny,
 		jint nz)
 	{
+
+		if ( disp__glNormal3i == NULL ) return;
 
 		disp__glNormal3i (
 			(GLint) nx,
@@ -2700,6 +2921,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort nz)
 	{
 
+		if ( disp__glNormal3s == NULL ) return;
+
 		disp__glNormal3s (
 			(GLshort) nx,
 			(GLshort) ny,
@@ -2722,6 +2945,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glNormal3bv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2756,6 +2981,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glNormal3dv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2788,6 +3015,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glNormal3fv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -2822,6 +3051,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glNormal3iv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2855,6 +3086,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glNormal3sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2885,6 +3118,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble c)
 	{
 
+		if ( disp__glIndexd == NULL ) return;
+
 		disp__glIndexd (
 			(GLdouble) c
 		);
@@ -2902,6 +3137,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jfloat c)
 	{
+
+		if ( disp__glIndexf == NULL ) return;
 
 		disp__glIndexf (
 			(GLfloat) c
@@ -2921,6 +3158,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint c)
 	{
 
+		if ( disp__glIndexi == NULL ) return;
+
 		disp__glIndexi (
 			(GLint) c
 		);
@@ -2939,6 +3178,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort c)
 	{
 
+		if ( disp__glIndexs == NULL ) return;
+
 		disp__glIndexs (
 			(GLshort) c
 		);
@@ -2956,6 +3197,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jbyte c)
 	{
+
+		if ( disp__glIndexub == NULL ) return;
 
 		disp__glIndexub (
 			(GLubyte) c
@@ -2977,6 +3220,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glIndexdv == NULL ) return;
 
 		if(c!=NULL)
 		{
@@ -3011,6 +3256,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glIndexfv == NULL ) return;
+
 		if(c!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, c, &isCopiedArray0);
@@ -3043,6 +3290,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glIndexiv == NULL ) return;
 
 		if(c!=NULL)
 		{
@@ -3077,6 +3326,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glIndexsv == NULL ) return;
+
 		if(c!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, c, &isCopiedArray0);
@@ -3110,6 +3361,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glIndexubv == NULL ) return;
+
 		if(c!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, c, &isCopiedArray0);
@@ -3142,6 +3395,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte blue)
 	{
 
+		if ( disp__glColor3b == NULL ) return;
+
 		disp__glColor3b (
 			(GLbyte) red,
 			(GLbyte) green,
@@ -3163,6 +3418,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble green,
 		jdouble blue)
 	{
+
+		if ( disp__glColor3d == NULL ) return;
 
 		disp__glColor3d (
 			(GLdouble) red,
@@ -3186,6 +3443,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat blue)
 	{
 
+		if ( disp__glColor3f == NULL ) return;
+
 		disp__glColor3f (
 			(GLfloat) red,
 			(GLfloat) green,
@@ -3207,6 +3466,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint green,
 		jint blue)
 	{
+
+		if ( disp__glColor3i == NULL ) return;
 
 		disp__glColor3i (
 			(GLint) red,
@@ -3230,6 +3491,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort blue)
 	{
 
+		if ( disp__glColor3s == NULL ) return;
+
 		disp__glColor3s (
 			(GLshort) red,
 			(GLshort) green,
@@ -3251,6 +3514,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte green,
 		jbyte blue)
 	{
+
+		if ( disp__glColor3ub == NULL ) return;
 
 		disp__glColor3ub (
 			(GLubyte) red,
@@ -3274,6 +3539,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint blue)
 	{
 
+		if ( disp__glColor3ui == NULL ) return;
+
 		disp__glColor3ui (
 			(GLuint) red,
 			(GLuint) green,
@@ -3295,6 +3562,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort green,
 		jshort blue)
 	{
+
+		if ( disp__glColor3us == NULL ) return;
 
 		disp__glColor3us (
 			(GLushort) red,
@@ -3318,6 +3587,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte blue,
 		jbyte alpha)
 	{
+
+		if ( disp__glColor4b == NULL ) return;
 
 		disp__glColor4b (
 			(GLbyte) red,
@@ -3343,6 +3614,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble alpha)
 	{
 
+		if ( disp__glColor4d == NULL ) return;
+
 		disp__glColor4d (
 			(GLdouble) red,
 			(GLdouble) green,
@@ -3366,6 +3639,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat blue,
 		jfloat alpha)
 	{
+
+		if ( disp__glColor4f == NULL ) return;
 
 		disp__glColor4f (
 			(GLfloat) red,
@@ -3391,6 +3666,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint alpha)
 	{
 
+		if ( disp__glColor4i == NULL ) return;
+
 		disp__glColor4i (
 			(GLint) red,
 			(GLint) green,
@@ -3414,6 +3691,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort blue,
 		jshort alpha)
 	{
+
+		if ( disp__glColor4s == NULL ) return;
 
 		disp__glColor4s (
 			(GLshort) red,
@@ -3439,6 +3718,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte alpha)
 	{
 
+		if ( disp__glColor4ub == NULL ) return;
+
 		disp__glColor4ub (
 			(GLubyte) red,
 			(GLubyte) green,
@@ -3462,6 +3743,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint blue,
 		jint alpha)
 	{
+
+		if ( disp__glColor4ui == NULL ) return;
 
 		disp__glColor4ui (
 			(GLuint) red,
@@ -3487,6 +3770,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort alpha)
 	{
 
+		if ( disp__glColor4us == NULL ) return;
+
 		disp__glColor4us (
 			(GLushort) red,
 			(GLushort) green,
@@ -3510,6 +3795,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glColor3bv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3544,6 +3831,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glColor3dv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3576,6 +3865,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glColor3fv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3610,6 +3901,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glColor3iv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3642,6 +3935,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glColor3sv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3676,6 +3971,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glColor3ubv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3708,6 +4005,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glColor3uiv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3742,6 +4041,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glColor3usv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3774,6 +4075,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glColor4bv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3808,6 +4111,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glColor4dv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3840,6 +4145,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glColor4fv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3874,6 +4181,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glColor4iv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3906,6 +4215,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glColor4sv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -3940,6 +4251,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glColor4ubv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3972,6 +4285,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glColor4uiv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4006,6 +4321,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glColor4usv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4036,6 +4353,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble s)
 	{
 
+		if ( disp__glTexCoord1d == NULL ) return;
+
 		disp__glTexCoord1d (
 			(GLdouble) s
 		);
@@ -4053,6 +4372,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jfloat s)
 	{
+
+		if ( disp__glTexCoord1f == NULL ) return;
 
 		disp__glTexCoord1f (
 			(GLfloat) s
@@ -4072,6 +4393,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint s)
 	{
 
+		if ( disp__glTexCoord1i == NULL ) return;
+
 		disp__glTexCoord1i (
 			(GLint) s
 		);
@@ -4089,6 +4412,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jshort s)
 	{
+
+		if ( disp__glTexCoord1s == NULL ) return;
 
 		disp__glTexCoord1s (
 			(GLshort) s
@@ -4108,6 +4433,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble s,
 		jdouble t)
 	{
+
+		if ( disp__glTexCoord2d == NULL ) return;
 
 		disp__glTexCoord2d (
 			(GLdouble) s,
@@ -4129,6 +4456,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat t)
 	{
 
+		if ( disp__glTexCoord2f == NULL ) return;
+
 		disp__glTexCoord2f (
 			(GLfloat) s,
 			(GLfloat) t
@@ -4148,6 +4477,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint s,
 		jint t)
 	{
+
+		if ( disp__glTexCoord2i == NULL ) return;
 
 		disp__glTexCoord2i (
 			(GLint) s,
@@ -4169,6 +4500,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort t)
 	{
 
+		if ( disp__glTexCoord2s == NULL ) return;
+
 		disp__glTexCoord2s (
 			(GLshort) s,
 			(GLshort) t
@@ -4189,6 +4522,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble t,
 		jdouble r)
 	{
+
+		if ( disp__glTexCoord3d == NULL ) return;
 
 		disp__glTexCoord3d (
 			(GLdouble) s,
@@ -4212,6 +4547,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat r)
 	{
 
+		if ( disp__glTexCoord3f == NULL ) return;
+
 		disp__glTexCoord3f (
 			(GLfloat) s,
 			(GLfloat) t,
@@ -4233,6 +4570,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint t,
 		jint r)
 	{
+
+		if ( disp__glTexCoord3i == NULL ) return;
 
 		disp__glTexCoord3i (
 			(GLint) s,
@@ -4256,6 +4595,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort r)
 	{
 
+		if ( disp__glTexCoord3s == NULL ) return;
+
 		disp__glTexCoord3s (
 			(GLshort) s,
 			(GLshort) t,
@@ -4278,6 +4619,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble r,
 		jdouble q)
 	{
+
+		if ( disp__glTexCoord4d == NULL ) return;
 
 		disp__glTexCoord4d (
 			(GLdouble) s,
@@ -4303,6 +4646,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat q)
 	{
 
+		if ( disp__glTexCoord4f == NULL ) return;
+
 		disp__glTexCoord4f (
 			(GLfloat) s,
 			(GLfloat) t,
@@ -4326,6 +4671,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint r,
 		jint q)
 	{
+
+		if ( disp__glTexCoord4i == NULL ) return;
 
 		disp__glTexCoord4i (
 			(GLint) s,
@@ -4351,6 +4698,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort q)
 	{
 
+		if ( disp__glTexCoord4s == NULL ) return;
+
 		disp__glTexCoord4s (
 			(GLshort) s,
 			(GLshort) t,
@@ -4374,6 +4723,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glTexCoord1dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4408,6 +4759,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glTexCoord1fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4440,6 +4793,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glTexCoord1iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4474,6 +4829,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glTexCoord1sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4506,6 +4863,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glTexCoord2dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4540,6 +4899,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glTexCoord2fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4572,6 +4933,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glTexCoord2iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4606,6 +4969,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glTexCoord2sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4638,6 +5003,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glTexCoord3dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4672,6 +5039,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glTexCoord3fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4704,6 +5073,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glTexCoord3iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4738,6 +5109,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glTexCoord3sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4770,6 +5143,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glTexCoord4dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4804,6 +5179,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glTexCoord4fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4836,6 +5213,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glTexCoord4iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -4870,6 +5249,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glTexCoord4sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4901,6 +5282,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble y)
 	{
 
+		if ( disp__glRasterPos2d == NULL ) return;
+
 		disp__glRasterPos2d (
 			(GLdouble) x,
 			(GLdouble) y
@@ -4920,6 +5303,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat x,
 		jfloat y)
 	{
+
+		if ( disp__glRasterPos2f == NULL ) return;
 
 		disp__glRasterPos2f (
 			(GLfloat) x,
@@ -4941,6 +5326,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint y)
 	{
 
+		if ( disp__glRasterPos2i == NULL ) return;
+
 		disp__glRasterPos2i (
 			(GLint) x,
 			(GLint) y
@@ -4960,6 +5347,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort x,
 		jshort y)
 	{
+
+		if ( disp__glRasterPos2s == NULL ) return;
 
 		disp__glRasterPos2s (
 			(GLshort) x,
@@ -4981,6 +5370,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble y,
 		jdouble z)
 	{
+
+		if ( disp__glRasterPos3d == NULL ) return;
 
 		disp__glRasterPos3d (
 			(GLdouble) x,
@@ -5004,6 +5395,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat z)
 	{
 
+		if ( disp__glRasterPos3f == NULL ) return;
+
 		disp__glRasterPos3f (
 			(GLfloat) x,
 			(GLfloat) y,
@@ -5025,6 +5418,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint y,
 		jint z)
 	{
+
+		if ( disp__glRasterPos3i == NULL ) return;
 
 		disp__glRasterPos3i (
 			(GLint) x,
@@ -5048,6 +5443,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort z)
 	{
 
+		if ( disp__glRasterPos3s == NULL ) return;
+
 		disp__glRasterPos3s (
 			(GLshort) x,
 			(GLshort) y,
@@ -5070,6 +5467,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble z,
 		jdouble w)
 	{
+
+		if ( disp__glRasterPos4d == NULL ) return;
 
 		disp__glRasterPos4d (
 			(GLdouble) x,
@@ -5095,6 +5494,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat w)
 	{
 
+		if ( disp__glRasterPos4f == NULL ) return;
+
 		disp__glRasterPos4f (
 			(GLfloat) x,
 			(GLfloat) y,
@@ -5118,6 +5519,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint z,
 		jint w)
 	{
+
+		if ( disp__glRasterPos4i == NULL ) return;
 
 		disp__glRasterPos4i (
 			(GLint) x,
@@ -5143,6 +5546,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort w)
 	{
 
+		if ( disp__glRasterPos4s == NULL ) return;
+
 		disp__glRasterPos4s (
 			(GLshort) x,
 			(GLshort) y,
@@ -5166,6 +5571,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glRasterPos2dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -5200,6 +5607,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glRasterPos2fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5232,6 +5641,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glRasterPos2iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -5266,6 +5677,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glRasterPos2sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5298,6 +5711,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glRasterPos3dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -5332,6 +5747,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glRasterPos3fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5364,6 +5781,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glRasterPos3iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -5398,6 +5817,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glRasterPos3sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5430,6 +5851,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glRasterPos4dv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -5464,6 +5887,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glRasterPos4fv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5496,6 +5921,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glRasterPos4iv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -5530,6 +5957,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glRasterPos4sv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5563,6 +5992,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble y2)
 	{
 
+		if ( disp__glRectd == NULL ) return;
+
 		disp__glRectd (
 			(GLdouble) x1,
 			(GLdouble) y1,
@@ -5586,6 +6017,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat x2,
 		jfloat y2)
 	{
+
+		if ( disp__glRectf == NULL ) return;
 
 		disp__glRectf (
 			(GLfloat) x1,
@@ -5611,6 +6044,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint y2)
 	{
 
+		if ( disp__glRecti == NULL ) return;
+
 		disp__glRecti (
 			(GLint) x1,
 			(GLint) y1,
@@ -5634,6 +6069,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort x2,
 		jshort y2)
 	{
+
+		if ( disp__glRects == NULL ) return;
 
 		disp__glRects (
 			(GLshort) x1,
@@ -5662,6 +6099,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glRectdv == NULL ) return;
 
 		if(v1!=NULL)
 		{
@@ -5713,6 +6152,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glRectfv == NULL ) return;
+
 		if(v1!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v1, &isCopiedArray0);
@@ -5762,6 +6203,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glRectiv == NULL ) return;
 
 		if(v1!=NULL)
 		{
@@ -5813,6 +6256,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glRectsv == NULL ) return;
+
 		if(v1!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v1, &isCopiedArray0);
@@ -5862,6 +6307,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glVertexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -5893,6 +6340,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glVertexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5926,6 +6375,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glVertexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -5957,6 +6408,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glVertexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -5990,6 +6443,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glVertexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -6022,6 +6477,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glVertexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -6053,6 +6510,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glVertexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6092,6 +6551,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glNormalPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -6121,6 +6582,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jshort *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glNormalPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6152,6 +6615,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glNormalPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -6181,6 +6646,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glNormalPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6212,6 +6679,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glNormalPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -6242,6 +6711,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glNormalPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -6271,6 +6742,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jlong *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glNormalPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6310,6 +6783,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glColorPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -6341,6 +6816,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glColorPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6374,6 +6851,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glColorPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -6405,6 +6884,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glColorPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6438,6 +6919,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glColorPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -6470,6 +6953,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glColorPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -6501,6 +6986,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glColorPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6540,6 +7027,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glIndexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -6569,6 +7058,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jshort *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glIndexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6600,6 +7091,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glIndexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -6629,6 +7122,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glIndexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6660,6 +7155,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glIndexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -6690,6 +7187,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glIndexPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -6719,6 +7218,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jlong *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glIndexPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6758,6 +7259,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glTexCoordPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -6789,6 +7292,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glTexCoordPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6822,6 +7327,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glTexCoordPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -6853,6 +7360,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glTexCoordPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6886,6 +7395,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glTexCoordPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -6918,6 +7429,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glTexCoordPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -6949,6 +7462,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glTexCoordPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -6987,6 +7502,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glEdgeFlagPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -7014,6 +7531,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glEdgeFlagPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -7043,6 +7562,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glEdgeFlagPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -7070,6 +7591,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glEdgeFlagPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -7099,6 +7622,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glEdgeFlagPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -7127,6 +7652,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glEdgeFlagPointer == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -7154,6 +7681,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jlong *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glEdgeFlagPointer == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -7190,6 +7719,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetPointerv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -7217,6 +7748,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glGetPointerv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -7246,6 +7779,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetPointerv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -7273,6 +7808,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glGetPointerv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -7302,6 +7839,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetPointerv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -7330,6 +7869,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetPointerv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -7357,6 +7898,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jlong *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glGetPointerv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -7389,6 +7932,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint i)
 	{
 
+		if ( disp__glArrayElement == NULL ) return;
+
 		disp__glArrayElement (
 			(GLint) i
 		);
@@ -7408,6 +7953,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint first,
 		jint count)
 	{
+
+		if ( disp__glDrawArrays == NULL ) return;
 
 		disp__glDrawArrays (
 			(GLenum) mode,
@@ -7434,6 +7981,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glDrawElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -7467,6 +8016,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glDrawElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray3);
@@ -7498,6 +8049,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glDrawElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -7531,6 +8084,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glDrawElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray3);
@@ -7562,6 +8117,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glDrawElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -7595,6 +8152,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glDrawElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray3);
@@ -7626,6 +8185,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glDrawElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -7665,6 +8226,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glInterleavedArrays == NULL ) return;
+
 		if(pointer!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -7694,6 +8257,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jshort *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glInterleavedArrays == NULL ) return;
 
 		if(pointer!=NULL)
 		{
@@ -7725,6 +8290,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glInterleavedArrays == NULL ) return;
+
 		if(pointer!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -7754,6 +8321,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glInterleavedArrays == NULL ) return;
 
 		if(pointer!=NULL)
 		{
@@ -7785,6 +8354,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glInterleavedArrays == NULL ) return;
+
 		if(pointer!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -7815,6 +8386,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glInterleavedArrays == NULL ) return;
+
 		if(pointer!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -7844,6 +8417,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jlong *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glInterleavedArrays == NULL ) return;
 
 		if(pointer!=NULL)
 		{
@@ -7877,6 +8452,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mode)
 	{
 
+		if ( disp__glShadeModel == NULL ) return;
+
 		disp__glShadeModel (
 			(GLenum) mode
 		);
@@ -7896,6 +8473,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jfloat param)
 	{
+
+		if ( disp__glLightf == NULL ) return;
 
 		disp__glLightf (
 			(GLenum) light,
@@ -7918,6 +8497,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glLighti == NULL ) return;
 
 		disp__glLighti (
 			(GLenum) light,
@@ -7943,6 +8524,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glLightfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -7981,6 +8564,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glLightiv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -8017,6 +8602,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glGetLightfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8055,6 +8642,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetLightiv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -8088,6 +8677,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat param)
 	{
 
+		if ( disp__glLightModelf == NULL ) return;
+
 		disp__glLightModelf (
 			(GLenum) pname,
 			(GLfloat) param
@@ -8107,6 +8698,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glLightModeli == NULL ) return;
 
 		disp__glLightModeli (
 			(GLenum) pname,
@@ -8130,6 +8723,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glLightModelfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8166,6 +8761,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glLightModeliv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -8199,6 +8796,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat param)
 	{
 
+		if ( disp__glMaterialf == NULL ) return;
+
 		disp__glMaterialf (
 			(GLenum) face,
 			(GLenum) pname,
@@ -8220,6 +8819,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glMateriali == NULL ) return;
 
 		disp__glMateriali (
 			(GLenum) face,
@@ -8245,6 +8846,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glMaterialfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8283,6 +8886,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glMaterialiv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -8319,6 +8924,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glGetMaterialfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -8357,6 +8964,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetMaterialiv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -8390,6 +8999,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mode)
 	{
 
+		if ( disp__glColorMaterial == NULL ) return;
+
 		disp__glColorMaterial (
 			(GLenum) face,
 			(GLenum) mode
@@ -8409,6 +9020,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat xfactor,
 		jfloat yfactor)
 	{
+
+		if ( disp__glPixelZoom == NULL ) return;
 
 		disp__glPixelZoom (
 			(GLfloat) xfactor,
@@ -8430,6 +9043,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat param)
 	{
 
+		if ( disp__glPixelStoref == NULL ) return;
+
 		disp__glPixelStoref (
 			(GLenum) pname,
 			(GLfloat) param
@@ -8449,6 +9064,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glPixelStorei == NULL ) return;
 
 		disp__glPixelStorei (
 			(GLenum) pname,
@@ -8470,6 +9087,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat param)
 	{
 
+		if ( disp__glPixelTransferf == NULL ) return;
+
 		disp__glPixelTransferf (
 			(GLenum) pname,
 			(GLfloat) param
@@ -8489,6 +9108,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glPixelTransferi == NULL ) return;
 
 		disp__glPixelTransferi (
 			(GLenum) pname,
@@ -8513,6 +9134,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glPixelMapfv == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -8551,6 +9174,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glPixelMapuiv == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray2);
@@ -8588,6 +9213,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glPixelMapusv == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr2 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray2);
@@ -8624,6 +9251,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetPixelMapfv == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray1);
@@ -8659,6 +9288,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetPixelMapuiv == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray1);
@@ -8693,6 +9324,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glGetPixelMapusv == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -8733,6 +9366,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jbyte *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glBitmap == NULL ) return;
 
 		if(bitmap!=NULL)
 		{
@@ -8779,6 +9414,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glReadPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -8816,6 +9453,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jshort *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glReadPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -8855,6 +9494,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glReadPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -8892,6 +9533,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jfloat *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glReadPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -8931,6 +9574,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glReadPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -8969,6 +9614,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glReadPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -9006,6 +9653,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jlong *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glReadPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9050,6 +9699,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glDrawPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -9083,6 +9734,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glDrawPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9118,6 +9771,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glDrawPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -9151,6 +9806,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glDrawPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9186,6 +9843,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glDrawPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -9220,6 +9879,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glDrawPixels == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -9253,6 +9914,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glDrawPixels == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -9292,6 +9955,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint type)
 	{
 
+		if ( disp__glCopyPixels == NULL ) return;
+
 		disp__glCopyPixels (
 			(GLint) x,
 			(GLint) y,
@@ -9316,6 +9981,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mask)
 	{
 
+		if ( disp__glStencilFunc == NULL ) return;
+
 		disp__glStencilFunc (
 			(GLenum) func,
 			(GLint) ref,
@@ -9335,6 +10002,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint mask)
 	{
+
+		if ( disp__glStencilMask == NULL ) return;
 
 		disp__glStencilMask (
 			(GLuint) mask
@@ -9356,6 +10025,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint zpass)
 	{
 
+		if ( disp__glStencilOp == NULL ) return;
+
 		disp__glStencilOp (
 			(GLenum) fail,
 			(GLenum) zfail,
@@ -9376,6 +10047,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint s)
 	{
 
+		if ( disp__glClearStencil == NULL ) return;
+
 		disp__glClearStencil (
 			(GLint) s
 		);
@@ -9395,6 +10068,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jdouble param)
 	{
+
+		if ( disp__glTexGend == NULL ) return;
 
 		disp__glTexGend (
 			(GLenum) coord,
@@ -9418,6 +10093,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat param)
 	{
 
+		if ( disp__glTexGenf == NULL ) return;
+
 		disp__glTexGenf (
 			(GLenum) coord,
 			(GLenum) pname,
@@ -9439,6 +10116,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glTexGeni == NULL ) return;
 
 		disp__glTexGeni (
 			(GLenum) coord,
@@ -9464,6 +10143,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glTexGendv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -9502,6 +10183,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glTexGenfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -9538,6 +10221,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glTexGeniv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -9576,6 +10261,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetTexGendv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -9612,6 +10299,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glGetTexGenfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -9650,6 +10339,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetTexGeniv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -9684,6 +10375,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat param)
 	{
 
+		if ( disp__glTexEnvf == NULL ) return;
+
 		disp__glTexEnvf (
 			(GLenum) target,
 			(GLenum) pname,
@@ -9705,6 +10398,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glTexEnvi == NULL ) return;
 
 		disp__glTexEnvi (
 			(GLenum) target,
@@ -9730,6 +10425,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glTexEnvfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -9768,6 +10465,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glTexEnviv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -9804,6 +10503,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glGetTexEnvfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -9842,6 +10543,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetTexEnviv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -9876,6 +10579,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat param)
 	{
 
+		if ( disp__glTexParameterf == NULL ) return;
+
 		disp__glTexParameterf (
 			(GLenum) target,
 			(GLenum) pname,
@@ -9897,6 +10602,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glTexParameteri == NULL ) return;
 
 		disp__glTexParameteri (
 			(GLenum) target,
@@ -9922,6 +10629,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glTexParameterfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -9960,6 +10669,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glTexParameteriv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -9997,6 +10708,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetTexParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -10033,6 +10746,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glGetTexParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -10072,6 +10787,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetTexLevelParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray3);
@@ -10110,6 +10827,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetTexLevelParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -10154,6 +10873,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr7 = NULL;
 		static int isWarned7 = 0;
 
+		if ( disp__glTexImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr7 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -10193,6 +10914,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jshort *ptr7 = NULL;
 		static int isWarned7 = 0;
+
+		if ( disp__glTexImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10234,6 +10957,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr7 = NULL;
 		static int isWarned7 = 0;
 
+		if ( disp__glTexImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr7 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -10273,6 +10998,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jfloat *ptr7 = NULL;
 		static int isWarned7 = 0;
+
+		if ( disp__glTexImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10314,6 +11041,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr7 = NULL;
 		static int isWarned7 = 0;
 
+		if ( disp__glTexImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr7 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -10354,6 +11083,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr7 = NULL;
 		static int isWarned7 = 0;
 
+		if ( disp__glTexImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr7 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -10393,6 +11124,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jlong *ptr7 = NULL;
 		static int isWarned7 = 0;
+
+		if ( disp__glTexImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10442,6 +11175,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr8 = NULL;
 		static int isWarned8 = 0;
 
+		if ( disp__glTexImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -10483,6 +11218,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jshort *ptr8 = NULL;
 		static int isWarned8 = 0;
+
+		if ( disp__glTexImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10526,6 +11263,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr8 = NULL;
 		static int isWarned8 = 0;
 
+		if ( disp__glTexImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -10567,6 +11306,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jfloat *ptr8 = NULL;
 		static int isWarned8 = 0;
+
+		if ( disp__glTexImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10610,6 +11351,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr8 = NULL;
 		static int isWarned8 = 0;
 
+		if ( disp__glTexImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -10652,6 +11395,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr8 = NULL;
 		static int isWarned8 = 0;
 
+		if ( disp__glTexImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -10693,6 +11438,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jlong *ptr8 = NULL;
 		static int isWarned8 = 0;
+
+		if ( disp__glTexImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10739,6 +11486,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glGetTexImage == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -10772,6 +11521,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetTexImage == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10807,6 +11558,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glGetTexImage == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -10840,6 +11593,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetTexImage == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10875,6 +11630,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glGetTexImage == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -10909,6 +11666,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glGetTexImage == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -10942,6 +11701,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetTexImage == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -10981,6 +11742,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGenTextures == NULL ) return;
+
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -11016,6 +11779,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glDeleteTextures == NULL ) return;
+
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -11048,6 +11813,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint texture)
 	{
 
+		if ( disp__glBindTexture == NULL ) return;
+
 		disp__glBindTexture (
 			(GLenum) target,
 			(GLuint) texture
@@ -11074,6 +11841,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glPrioritizeTextures == NULL ) return;
 
 		if(textures!=NULL)
 		{
@@ -11129,6 +11898,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glAreTexturesResident == NULL ) return 0;
+
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -11176,6 +11947,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean ret;
 
 
+		if ( disp__glIsTexture == NULL ) return 0;
+
 		ret = (jboolean) disp__glIsTexture (
 			(GLuint) texture
 		);
@@ -11203,6 +11976,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jbyte *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glTexSubImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11242,6 +12017,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glTexSubImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -11279,6 +12056,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jint *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glTexSubImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11318,6 +12097,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glTexSubImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -11355,6 +12136,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jdouble *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glTexSubImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11394,6 +12177,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glTexSubImage1D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -11431,6 +12216,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jlong *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glTexSubImage1D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11479,6 +12266,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr8 = NULL;
 		static int isWarned8 = 0;
 
+		if ( disp__glTexSubImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -11520,6 +12309,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jshort *ptr8 = NULL;
 		static int isWarned8 = 0;
+
+		if ( disp__glTexSubImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11563,6 +12354,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr8 = NULL;
 		static int isWarned8 = 0;
 
+		if ( disp__glTexSubImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -11604,6 +12397,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jfloat *ptr8 = NULL;
 		static int isWarned8 = 0;
+
+		if ( disp__glTexSubImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11647,6 +12442,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr8 = NULL;
 		static int isWarned8 = 0;
 
+		if ( disp__glTexSubImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -11689,6 +12486,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr8 = NULL;
 		static int isWarned8 = 0;
 
+		if ( disp__glTexSubImage2D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr8 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -11730,6 +12529,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jlong *ptr8 = NULL;
 		static int isWarned8 = 0;
+
+		if ( disp__glTexSubImage2D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -11775,6 +12576,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint border)
 	{
 
+		if ( disp__glCopyTexImage1D == NULL ) return;
+
 		disp__glCopyTexImage1D (
 			(GLenum) target,
 			(GLint) level,
@@ -11806,6 +12609,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint border)
 	{
 
+		if ( disp__glCopyTexImage2D == NULL ) return;
+
 		disp__glCopyTexImage2D (
 			(GLenum) target,
 			(GLint) level,
@@ -11836,6 +12641,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint width)
 	{
 
+		if ( disp__glCopyTexSubImage1D == NULL ) return;
+
 		disp__glCopyTexSubImage1D (
 			(GLenum) target,
 			(GLint) level,
@@ -11865,6 +12672,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint width,
 		jint height)
 	{
+
+		if ( disp__glCopyTexSubImage2D == NULL ) return;
 
 		disp__glCopyTexSubImage2D (
 			(GLenum) target,
@@ -11898,6 +12707,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glMap1d == NULL ) return;
 
 		if(points!=NULL)
 		{
@@ -11941,6 +12752,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glMap1f == NULL ) return;
 
 		if(points!=NULL)
 		{
@@ -11988,6 +12801,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jdouble *ptr9 = NULL;
 		static int isWarned9 = 0;
+
+		if ( disp__glMap2d == NULL ) return;
 
 		if(points!=NULL)
 		{
@@ -12040,6 +12855,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr9 = NULL;
 		static int isWarned9 = 0;
 
+		if ( disp__glMap2f == NULL ) return;
+
 		if(points!=NULL)
 		{
 			ptr9 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, points, &isCopiedArray9);
@@ -12084,6 +12901,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetMapdv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray2);
@@ -12120,6 +12939,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glGetMapfv == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -12158,6 +12979,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetMapiv == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray2);
@@ -12190,6 +13013,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble u)
 	{
 
+		if ( disp__glEvalCoord1d == NULL ) return;
+
 		disp__glEvalCoord1d (
 			(GLdouble) u
 		);
@@ -12207,6 +13032,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jfloat u)
 	{
+
+		if ( disp__glEvalCoord1f == NULL ) return;
 
 		disp__glEvalCoord1f (
 			(GLfloat) u
@@ -12228,6 +13055,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glEvalCoord1dv == NULL ) return;
 
 		if(u!=NULL)
 		{
@@ -12262,6 +13091,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glEvalCoord1fv == NULL ) return;
+
 		if(u!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, u, &isCopiedArray0);
@@ -12293,6 +13124,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble v)
 	{
 
+		if ( disp__glEvalCoord2d == NULL ) return;
+
 		disp__glEvalCoord2d (
 			(GLdouble) u,
 			(GLdouble) v
@@ -12312,6 +13145,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat u,
 		jfloat v)
 	{
+
+		if ( disp__glEvalCoord2f == NULL ) return;
 
 		disp__glEvalCoord2f (
 			(GLfloat) u,
@@ -12334,6 +13169,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
+
+		if ( disp__glEvalCoord2dv == NULL ) return;
 
 		if(u!=NULL)
 		{
@@ -12368,6 +13205,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
+		if ( disp__glEvalCoord2fv == NULL ) return;
+
 		if(u!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, u, &isCopiedArray0);
@@ -12400,6 +13239,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble u2)
 	{
 
+		if ( disp__glMapGrid1d == NULL ) return;
+
 		disp__glMapGrid1d (
 			(GLint) un,
 			(GLdouble) u1,
@@ -12421,6 +13262,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat u1,
 		jfloat u2)
 	{
+
+		if ( disp__glMapGrid1f == NULL ) return;
 
 		disp__glMapGrid1f (
 			(GLint) un,
@@ -12446,6 +13289,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble v1,
 		jdouble v2)
 	{
+
+		if ( disp__glMapGrid2d == NULL ) return;
 
 		disp__glMapGrid2d (
 			(GLint) un,
@@ -12475,6 +13320,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat v2)
 	{
 
+		if ( disp__glMapGrid2f == NULL ) return;
+
 		disp__glMapGrid2f (
 			(GLint) un,
 			(GLfloat) u1,
@@ -12498,6 +13345,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint i)
 	{
 
+		if ( disp__glEvalPoint1 == NULL ) return;
+
 		disp__glEvalPoint1 (
 			(GLint) i
 		);
@@ -12516,6 +13365,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint i,
 		jint j)
 	{
+
+		if ( disp__glEvalPoint2 == NULL ) return;
 
 		disp__glEvalPoint2 (
 			(GLint) i,
@@ -12537,6 +13388,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint i1,
 		jint i2)
 	{
+
+		if ( disp__glEvalMesh1 == NULL ) return;
 
 		disp__glEvalMesh1 (
 			(GLenum) mode,
@@ -12562,6 +13415,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint j2)
 	{
 
+		if ( disp__glEvalMesh2 == NULL ) return;
+
 		disp__glEvalMesh2 (
 			(GLenum) mode,
 			(GLint) i1,
@@ -12585,6 +13440,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat param)
 	{
 
+		if ( disp__glFogf == NULL ) return;
+
 		disp__glFogf (
 			(GLenum) pname,
 			(GLfloat) param
@@ -12604,6 +13461,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jint param)
 	{
+
+		if ( disp__glFogi == NULL ) return;
 
 		disp__glFogi (
 			(GLenum) pname,
@@ -12627,6 +13486,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glFogfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -12662,6 +13523,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glFogiv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -12699,6 +13562,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glFeedbackBuffer == NULL ) return;
+
 		if(buffer!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, buffer, &isCopiedArray2);
@@ -12731,6 +13596,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat token)
 	{
 
+		if ( disp__glPassThrough == NULL ) return;
+
 		disp__glPassThrough (
 			(GLfloat) token
 		);
@@ -12752,6 +13619,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glSelectBuffer == NULL ) return;
 
 		if(buffer!=NULL)
 		{
@@ -12783,6 +13652,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glInitNames == NULL ) return;
+
 		disp__glInitNames (
 		);
 
@@ -12799,6 +13670,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint name)
 	{
+
+		if ( disp__glLoadName == NULL ) return;
 
 		disp__glLoadName (
 			(GLuint) name
@@ -12818,6 +13691,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint name)
 	{
 
+		if ( disp__glPushName == NULL ) return;
+
 		disp__glPushName (
 			(GLuint) name
 		);
@@ -12834,6 +13709,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 	Java_gl4java_GLFuncJauJNI_glPopName (
 		JNIEnv *env, jobject obj)
 	{
+
+		if ( disp__glPopName == NULL ) return;
 
 		disp__glPopName (
 		);
@@ -12859,6 +13736,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glDrawRangeElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -12896,6 +13775,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glDrawRangeElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr5 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray5);
@@ -12931,6 +13812,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glDrawRangeElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -12968,6 +13851,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glDrawRangeElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr5 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray5);
@@ -13003,6 +13888,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glDrawRangeElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -13040,6 +13927,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glDrawRangeElements == NULL ) return;
+
 		if(indices!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray5);
@@ -13075,6 +13964,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glDrawRangeElements == NULL ) return;
 
 		if(indices!=NULL)
 		{
@@ -13123,6 +14014,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr9 = NULL;
 		static int isWarned9 = 0;
 
+		if ( disp__glTexImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -13166,6 +14059,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jshort *ptr9 = NULL;
 		static int isWarned9 = 0;
+
+		if ( disp__glTexImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -13211,6 +14106,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr9 = NULL;
 		static int isWarned9 = 0;
 
+		if ( disp__glTexImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -13254,6 +14151,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jfloat *ptr9 = NULL;
 		static int isWarned9 = 0;
+
+		if ( disp__glTexImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -13299,6 +14198,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr9 = NULL;
 		static int isWarned9 = 0;
 
+		if ( disp__glTexImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -13343,6 +14244,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr9 = NULL;
 		static int isWarned9 = 0;
 
+		if ( disp__glTexImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -13386,6 +14289,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jlong *ptr9 = NULL;
 		static int isWarned9 = 0;
+
+		if ( disp__glTexImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -13439,6 +14344,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr10 = NULL;
 		static int isWarned10 = 0;
 
+		if ( disp__glTexSubImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -13484,6 +14391,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jshort *ptr10 = NULL;
 		static int isWarned10 = 0;
+
+		if ( disp__glTexSubImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -13531,6 +14440,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr10 = NULL;
 		static int isWarned10 = 0;
 
+		if ( disp__glTexSubImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -13576,6 +14487,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jfloat *ptr10 = NULL;
 		static int isWarned10 = 0;
+
+		if ( disp__glTexSubImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -13623,6 +14536,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr10 = NULL;
 		static int isWarned10 = 0;
 
+		if ( disp__glTexSubImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -13669,6 +14584,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr10 = NULL;
 		static int isWarned10 = 0;
 
+		if ( disp__glTexSubImage3D == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -13714,6 +14631,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jlong *ptr10 = NULL;
 		static int isWarned10 = 0;
+
+		if ( disp__glTexSubImage3D == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -13763,6 +14682,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint height)
 	{
 
+		if ( disp__glCopyTexSubImage3D == NULL ) return;
+
 		disp__glCopyTexSubImage3D (
 			(GLenum) target,
 			(GLint) level,
@@ -13796,6 +14717,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -13833,6 +14756,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -13868,6 +14793,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -13905,6 +14832,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -13940,6 +14869,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -13977,6 +14908,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -14012,6 +14945,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -14056,6 +14991,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorSubTable == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -14091,6 +15028,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorSubTable == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -14128,6 +15067,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorSubTable == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -14163,6 +15104,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorSubTable == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -14200,6 +15143,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorSubTable == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -14236,6 +15181,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorSubTable == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -14271,6 +15218,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorSubTable == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -14312,6 +15261,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glColorTableParameteriv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -14349,6 +15300,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glColorTableParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -14385,6 +15338,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint width)
 	{
 
+		if ( disp__glCopyColorSubTable == NULL ) return;
+
 		disp__glCopyColorSubTable (
 			(GLenum) target,
 			(GLsizei) start,
@@ -14410,6 +15365,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint y,
 		jint width)
 	{
+
+		if ( disp__glCopyColorTable == NULL ) return;
 
 		disp__glCopyColorTable (
 			(GLenum) target,
@@ -14438,6 +15395,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -14471,6 +15430,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -14502,6 +15463,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -14535,6 +15498,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -14566,6 +15531,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -14599,6 +15566,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetColorTable == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -14630,6 +15599,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetColorTable == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -14669,6 +15640,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetColorTableParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -14706,6 +15679,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetColorTableParameteriv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -14738,6 +15713,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mode)
 	{
 
+		if ( disp__glBlendEquation == NULL ) return;
+
 		disp__glBlendEquation (
 			(GLenum) mode
 		);
@@ -14758,6 +15735,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat blue,
 		jfloat alpha)
 	{
+
+		if ( disp__glBlendColor == NULL ) return;
 
 		disp__glBlendColor (
 			(GLclampf) red,
@@ -14783,6 +15762,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean sink)
 	{
 
+		if ( disp__glHistogram == NULL ) return;
+
 		disp__glHistogram (
 			(GLenum) target,
 			(GLsizei) width,
@@ -14803,6 +15784,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint target)
 	{
+
+		if ( disp__glResetHistogram == NULL ) return;
 
 		disp__glResetHistogram (
 			(GLenum) target
@@ -14828,6 +15811,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetHistogram == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -14863,6 +15848,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glGetHistogram == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -14896,6 +15883,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetHistogram == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -14931,6 +15920,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glGetHistogram == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -14964,6 +15955,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetHistogram == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -14999,6 +15992,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glGetHistogram == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -15032,6 +16027,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetHistogram == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -15072,6 +16069,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetHistogramParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -15109,6 +16108,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetHistogramParameteriv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -15143,6 +16144,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean sink)
 	{
 
+		if ( disp__glMinmax == NULL ) return;
+
 		disp__glMinmax (
 			(GLenum) target,
 			(GLenum) internalformat,
@@ -15162,6 +16165,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint target)
 	{
+
+		if ( disp__glResetMinmax == NULL ) return;
 
 		disp__glResetMinmax (
 			(GLenum) target
@@ -15187,6 +16192,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetMinmax == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -15222,6 +16229,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glGetMinmax == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -15255,6 +16264,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetMinmax == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -15290,6 +16301,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glGetMinmax == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -15323,6 +16336,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetMinmax == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -15358,6 +16373,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glGetMinmax == NULL ) return;
+
 		if(values!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -15391,6 +16408,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glGetMinmax == NULL ) return;
 
 		if(values!=NULL)
 		{
@@ -15431,6 +16450,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetMinmaxParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -15467,6 +16488,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glGetMinmaxParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -15508,6 +16531,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glConvolutionFilter1D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -15543,6 +16568,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glConvolutionFilter1D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -15580,6 +16607,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glConvolutionFilter1D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -15615,6 +16644,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glConvolutionFilter1D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -15652,6 +16683,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glConvolutionFilter1D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -15688,6 +16721,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glConvolutionFilter1D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -15723,6 +16758,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glConvolutionFilter1D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -15768,6 +16805,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glConvolutionFilter2D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -15805,6 +16844,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jshort *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glConvolutionFilter2D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -15844,6 +16885,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glConvolutionFilter2D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr6 = (jint *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -15881,6 +16924,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jfloat *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glConvolutionFilter2D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -15920,6 +16965,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glConvolutionFilter2D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr6 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -15957,6 +17004,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jboolean *ptr6 = NULL;
 		static int isWarned6 = 0;
+
+		if ( disp__glConvolutionFilter2D == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -15996,6 +17045,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jlong *ptr6 = NULL;
 		static int isWarned6 = 0;
 
+		if ( disp__glConvolutionFilter2D == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr6 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -16034,6 +17085,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat params)
 	{
 
+		if ( disp__glConvolutionParameterf == NULL ) return;
+
 		disp__glConvolutionParameterf (
 			(GLenum) target,
 			(GLenum) pname,
@@ -16058,6 +17111,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glConvolutionParameterfv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -16093,6 +17148,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint params)
 	{
 
+		if ( disp__glConvolutionParameteri == NULL ) return;
+
 		disp__glConvolutionParameteri (
 			(GLenum) target,
 			(GLenum) pname,
@@ -16117,6 +17174,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glConvolutionParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -16154,6 +17213,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint width)
 	{
 
+		if ( disp__glCopyConvolutionFilter1D == NULL ) return;
+
 		disp__glCopyConvolutionFilter1D (
 			(GLenum) target,
 			(GLenum) internalformat,
@@ -16180,6 +17241,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint width,
 		jint height)
 	{
+
+		if ( disp__glCopyConvolutionFilter2D == NULL ) return;
 
 		disp__glCopyConvolutionFilter2D (
 			(GLenum) target,
@@ -16209,6 +17272,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetConvolutionFilter == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -16242,6 +17307,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetConvolutionFilter == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -16273,6 +17340,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetConvolutionFilter == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -16306,6 +17375,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetConvolutionFilter == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -16337,6 +17408,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetConvolutionFilter == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -16370,6 +17443,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetConvolutionFilter == NULL ) return;
+
 		if(image!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -16401,6 +17476,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetConvolutionFilter == NULL ) return;
 
 		if(image!=NULL)
 		{
@@ -16440,6 +17517,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetConvolutionParameterfv == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -16476,6 +17555,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glGetConvolutionParameteriv == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -16521,6 +17602,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jbyte *ptr7 = NULL;
 		static int isWarned7 = 0;
+
+		if ( disp__glSeparableFilter2D == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -16577,6 +17660,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr7 = NULL;
 		static int isWarned7 = 0;
 
+		if ( disp__glSeparableFilter2D == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr6 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray6);
@@ -16631,6 +17716,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jint *ptr7 = NULL;
 		static int isWarned7 = 0;
+
+		if ( disp__glSeparableFilter2D == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -16687,6 +17774,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr7 = NULL;
 		static int isWarned7 = 0;
 
+		if ( disp__glSeparableFilter2D == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr6 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray6);
@@ -16741,6 +17830,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jdouble *ptr7 = NULL;
 		static int isWarned7 = 0;
+
+		if ( disp__glSeparableFilter2D == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -16797,6 +17888,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr7 = NULL;
 		static int isWarned7 = 0;
 
+		if ( disp__glSeparableFilter2D == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray6);
@@ -16851,6 +17944,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jlong *ptr7 = NULL;
 		static int isWarned7 = 0;
+
+		if ( disp__glSeparableFilter2D == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -16914,6 +18009,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glGetSeparableFilter == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -16981,6 +18078,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glGetSeparableFilter == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -17046,6 +18145,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glGetSeparableFilter == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -17113,6 +18214,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glGetSeparableFilter == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -17178,6 +18281,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glGetSeparableFilter == NULL ) return;
 
 		if(row!=NULL)
 		{
@@ -17245,6 +18350,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glGetSeparableFilter == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -17311,6 +18418,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glGetSeparableFilter == NULL ) return;
+
 		if(row!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -17373,6 +18482,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat alpha)
 	{
 
+		if ( disp__glBlendColorEXT == NULL ) return;
+
 		disp__glBlendColorEXT (
 			(GLclampf) red,
 			(GLclampf) green,
@@ -17394,6 +18505,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat factor,
 		jfloat bias)
 	{
+
+		if ( disp__glPolygonOffsetEXT == NULL ) return;
 
 		disp__glPolygonOffsetEXT (
 			(GLfloat) factor,
@@ -17425,6 +18538,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jbyte *ptr9 = NULL;
 		static int isWarned9 = 0;
+
+		if ( disp__glTexImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -17470,6 +18585,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr9 = NULL;
 		static int isWarned9 = 0;
 
+		if ( disp__glTexImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -17513,6 +18630,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jint *ptr9 = NULL;
 		static int isWarned9 = 0;
+
+		if ( disp__glTexImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -17558,6 +18677,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr9 = NULL;
 		static int isWarned9 = 0;
 
+		if ( disp__glTexImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -17601,6 +18722,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jdouble *ptr9 = NULL;
 		static int isWarned9 = 0;
+
+		if ( disp__glTexImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -17646,6 +18769,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr9 = NULL;
 		static int isWarned9 = 0;
 
+		if ( disp__glTexImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr9 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -17689,6 +18814,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jlong *ptr9 = NULL;
 		static int isWarned9 = 0;
+
+		if ( disp__glTexImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -17742,6 +18869,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr10 = NULL;
 		static int isWarned10 = 0;
 
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -17787,6 +18916,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jshort *ptr10 = NULL;
 		static int isWarned10 = 0;
+
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -17834,6 +18965,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr10 = NULL;
 		static int isWarned10 = 0;
 
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -17879,6 +19012,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jfloat *ptr10 = NULL;
 		static int isWarned10 = 0;
+
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -17926,6 +19061,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr10 = NULL;
 		static int isWarned10 = 0;
 
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -17972,6 +19109,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr10 = NULL;
 		static int isWarned10 = 0;
 
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
+
 		if(pixels!=NULL)
 		{
 			ptr10 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -18017,6 +19156,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jlong *ptr10 = NULL;
 		static int isWarned10 = 0;
+
+		if ( disp__glTexSubImage3DEXT == NULL ) return;
 
 		if(pixels!=NULL)
 		{
@@ -18066,6 +19207,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint height)
 	{
 
+		if ( disp__glCopyTexSubImage3DEXT == NULL ) return;
+
 		disp__glCopyTexSubImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
@@ -18095,6 +19238,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glGenTexturesEXT == NULL ) return;
 
 		if(textures!=NULL)
 		{
@@ -18131,6 +19276,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glDeleteTexturesEXT == NULL ) return;
+
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -18163,6 +19310,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint texture)
 	{
 
+		if ( disp__glBindTextureEXT == NULL ) return;
+
 		disp__glBindTextureEXT (
 			(GLenum) target,
 			(GLuint) texture
@@ -18189,6 +19338,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
+
+		if ( disp__glPrioritizeTexturesEXT == NULL ) return;
 
 		if(textures!=NULL)
 		{
@@ -18244,6 +19395,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glAreTexturesResidentEXT == NULL ) return 0;
+
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -18291,6 +19444,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean ret;
 
 
+		if ( disp__glIsTextureEXT == NULL ) return 0;
+
 		ret = (jboolean) disp__glIsTextureEXT (
 			(GLuint) texture
 		);
@@ -18316,6 +19471,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glVertexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -18351,6 +19508,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glVertexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -18384,6 +19543,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glVertexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -18419,6 +19580,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glVertexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -18452,6 +19615,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glVertexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -18487,6 +19652,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glVertexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -18520,6 +19687,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glVertexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -18561,6 +19730,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glNormalPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -18592,6 +19763,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glNormalPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -18625,6 +19798,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glNormalPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -18656,6 +19831,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glNormalPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -18689,6 +19866,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glNormalPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -18721,6 +19900,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glNormalPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -18752,6 +19933,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glNormalPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -18793,6 +19976,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glColorPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -18826,6 +20011,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glColorPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -18861,6 +20048,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glColorPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -18894,6 +20083,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glColorPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -18929,6 +20120,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glColorPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -18963,6 +20156,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glColorPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -18996,6 +20191,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glColorPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -19037,6 +20234,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glIndexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -19068,6 +20267,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glIndexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -19101,6 +20302,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glIndexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -19132,6 +20335,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glIndexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -19165,6 +20370,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glIndexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -19197,6 +20404,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glIndexPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -19228,6 +20437,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glIndexPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -19269,6 +20480,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -19302,6 +20515,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -19337,6 +20552,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -19370,6 +20587,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -19405,6 +20624,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -19439,6 +20660,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -19472,6 +20695,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
+
+		if ( disp__glTexCoordPointerEXT == NULL ) return;
 
 		if(ptr!=NULL)
 		{
@@ -19512,6 +20737,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glEdgeFlagPointerEXT == NULL ) return;
+
 		if(ptr!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -19548,6 +20775,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetPointervEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -19575,6 +20804,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glGetPointervEXT == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -19604,6 +20835,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetPointervEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -19631,6 +20864,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glGetPointervEXT == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -19660,6 +20895,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetPointervEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -19688,6 +20925,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glGetPointervEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -19715,6 +20954,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jlong *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glGetPointervEXT == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -19747,6 +20988,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint i)
 	{
 
+		if ( disp__glArrayElementEXT == NULL ) return;
+
 		disp__glArrayElementEXT (
 			(GLint) i
 		);
@@ -19766,6 +21009,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint first,
 		jint count)
 	{
+
+		if ( disp__glDrawArraysEXT == NULL ) return;
 
 		disp__glDrawArraysEXT (
 			(GLenum) mode,
@@ -19787,6 +21032,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint mode)
 	{
 
+		if ( disp__glBlendEquationEXT == NULL ) return;
+
 		disp__glBlendEquationEXT (
 			(GLenum) mode
 		);
@@ -19805,6 +21052,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint pname,
 		jfloat param)
 	{
+
+		if ( disp__glPointParameterfEXT == NULL ) return;
 
 		disp__glPointParameterfEXT (
 			(GLenum) pname,
@@ -19828,6 +21077,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glPointParameterfvEXT == NULL ) return;
 
 		if(params!=NULL)
 		{
@@ -19868,6 +21119,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -19903,6 +21156,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -19940,6 +21195,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -19975,6 +21232,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -20012,6 +21271,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -20048,6 +21309,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -20083,6 +21346,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -20127,6 +21392,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorSubTableEXT == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -20162,6 +21429,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorSubTableEXT == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -20199,6 +21468,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorSubTableEXT == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -20234,6 +21505,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorSubTableEXT == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -20271,6 +21544,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorSubTableEXT == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -20307,6 +21582,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
+		if ( disp__glColorSubTableEXT == NULL ) return;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -20342,6 +21619,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
+
+		if ( disp__glColorSubTableEXT == NULL ) return;
 
 		if(data!=NULL)
 		{
@@ -20384,6 +21663,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -20415,6 +21696,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -20448,6 +21731,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -20479,6 +21764,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -20512,6 +21799,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -20544,6 +21833,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
+		if ( disp__glGetColorTableEXT == NULL ) return;
+
 		if(table!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -20575,6 +21866,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
+
+		if ( disp__glGetColorTableEXT == NULL ) return;
 
 		if(table!=NULL)
 		{
@@ -20614,6 +21907,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetColorTableParameterfvEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -20651,6 +21946,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
+		if ( disp__glGetColorTableParameterivEXT == NULL ) return;
+
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -20684,6 +21981,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint count)
 	{
 
+		if ( disp__glLockArraysEXT == NULL ) return;
+
 		disp__glLockArraysEXT (
 			(GLint) first,
 			(GLsizei) count
@@ -20702,6 +22001,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj)
 	{
 
+		if ( disp__glUnlockArraysEXT == NULL ) return;
+
 		disp__glUnlockArraysEXT (
 		);
 
@@ -20718,6 +22019,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		JNIEnv *env, jobject obj,
 		jint texture)
 	{
+
+		if ( disp__glActiveTextureARB == NULL ) return;
 
 		disp__glActiveTextureARB (
 			(GLenum) texture
@@ -20737,6 +22040,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint texture)
 	{
 
+		if ( disp__glClientActiveTextureARB == NULL ) return;
+
 		disp__glClientActiveTextureARB (
 			(GLenum) texture
 		);
@@ -20755,6 +22060,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint target,
 		jdouble s)
 	{
+
+		if ( disp__glMultiTexCoord1dARB == NULL ) return;
 
 		disp__glMultiTexCoord1dARB (
 			(GLenum) target,
@@ -20778,6 +22085,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord1dvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -20811,6 +22120,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat s)
 	{
 
+		if ( disp__glMultiTexCoord1fARB == NULL ) return;
+
 		disp__glMultiTexCoord1fARB (
 			(GLenum) target,
 			(GLfloat) s
@@ -20833,6 +22144,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord1fvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -20866,6 +22179,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint s)
 	{
 
+		if ( disp__glMultiTexCoord1iARB == NULL ) return;
+
 		disp__glMultiTexCoord1iARB (
 			(GLenum) target,
 			(GLint) s
@@ -20888,6 +22203,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord1ivARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -20921,6 +22238,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort s)
 	{
 
+		if ( disp__glMultiTexCoord1sARB == NULL ) return;
+
 		disp__glMultiTexCoord1sARB (
 			(GLenum) target,
 			(GLshort) s
@@ -20943,6 +22262,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord1svARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -20977,6 +22298,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble t)
 	{
 
+		if ( disp__glMultiTexCoord2dARB == NULL ) return;
+
 		disp__glMultiTexCoord2dARB (
 			(GLenum) target,
 			(GLdouble) s,
@@ -21000,6 +22323,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord2dvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21034,6 +22359,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat t)
 	{
 
+		if ( disp__glMultiTexCoord2fARB == NULL ) return;
+
 		disp__glMultiTexCoord2fARB (
 			(GLenum) target,
 			(GLfloat) s,
@@ -21057,6 +22384,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord2fvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21091,6 +22420,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint t)
 	{
 
+		if ( disp__glMultiTexCoord2iARB == NULL ) return;
+
 		disp__glMultiTexCoord2iARB (
 			(GLenum) target,
 			(GLint) s,
@@ -21114,6 +22445,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord2ivARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21148,6 +22481,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort t)
 	{
 
+		if ( disp__glMultiTexCoord2sARB == NULL ) return;
+
 		disp__glMultiTexCoord2sARB (
 			(GLenum) target,
 			(GLshort) s,
@@ -21171,6 +22506,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord2svARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21206,6 +22543,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble r)
 	{
 
+		if ( disp__glMultiTexCoord3dARB == NULL ) return;
+
 		disp__glMultiTexCoord3dARB (
 			(GLenum) target,
 			(GLdouble) s,
@@ -21230,6 +22569,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord3dvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21265,6 +22606,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat r)
 	{
 
+		if ( disp__glMultiTexCoord3fARB == NULL ) return;
+
 		disp__glMultiTexCoord3fARB (
 			(GLenum) target,
 			(GLfloat) s,
@@ -21289,6 +22632,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord3fvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21324,6 +22669,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint r)
 	{
 
+		if ( disp__glMultiTexCoord3iARB == NULL ) return;
+
 		disp__glMultiTexCoord3iARB (
 			(GLenum) target,
 			(GLint) s,
@@ -21348,6 +22695,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord3ivARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21383,6 +22732,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort r)
 	{
 
+		if ( disp__glMultiTexCoord3sARB == NULL ) return;
+
 		disp__glMultiTexCoord3sARB (
 			(GLenum) target,
 			(GLshort) s,
@@ -21407,6 +22758,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord3svARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21443,6 +22796,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jdouble q)
 	{
 
+		if ( disp__glMultiTexCoord4dARB == NULL ) return;
+
 		disp__glMultiTexCoord4dARB (
 			(GLenum) target,
 			(GLdouble) s,
@@ -21468,6 +22823,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord4dvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21504,6 +22861,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jfloat q)
 	{
 
+		if ( disp__glMultiTexCoord4fARB == NULL ) return;
+
 		disp__glMultiTexCoord4fARB (
 			(GLenum) target,
 			(GLfloat) s,
@@ -21529,6 +22888,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord4fvARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21565,6 +22926,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jint q)
 	{
 
+		if ( disp__glMultiTexCoord4iARB == NULL ) return;
+
 		disp__glMultiTexCoord4iARB (
 			(GLenum) target,
 			(GLint) s,
@@ -21590,6 +22953,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
+
+		if ( disp__glMultiTexCoord4ivARB == NULL ) return;
 
 		if(v!=NULL)
 		{
@@ -21626,6 +22991,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort q)
 	{
 
+		if ( disp__glMultiTexCoord4sARB == NULL ) return;
+
 		disp__glMultiTexCoord4sARB (
 			(GLenum) target,
 			(GLshort) s,
@@ -21652,6 +23019,8 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
+		if ( disp__glMultiTexCoord4svARB == NULL ) return;
+
 		if(v!=NULL)
 		{
 			ptr1 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -21671,4 +23040,4 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 	}
 
-/* C2J Parser Version 2.0:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.1:  Java program parsed successfully. */ 

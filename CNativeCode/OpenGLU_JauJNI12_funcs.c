@@ -41,6 +41,9 @@ Java_gl4java_GLUFuncJauJNI_gluErrorString ( JNIEnv *env, jobject obj,
 {
     const char *tmpString=0;
 
+    if ( disp__gluErrorString == NULL ) 
+    	return (*env)->NewStringUTF(env, _glu_n_a_string);
+
     tmpString = disp__gluErrorString ( /* jint */ errorCode );
     if(tmpString==NULL)
     	tmpString=_glu_n_a_string;
@@ -54,6 +57,9 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
 {
     const char *tmpString=0;
 
+    if ( disp__gluGetString == NULL ) 
+    	return (*env)->NewStringUTF(env, _glu_n_a_string);
+
     tmpString = disp__gluGetString ( /* jint */ name);
     if(tmpString==NULL)
     	tmpString=_glu_n_a_string;
@@ -62,7 +68,7 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _glu_lib_version_="2.7.0.0";
+static const char * _glu_lib_version_="2.7.1.0";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLUFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
@@ -109,6 +115,8 @@ Java_gl4java_GLUFuncJauJNI_gluQuadricCallback( JNIEnv *env, jobject obj,
 			          jstring methodName, 
 				  jstring signature)
 {
+	if ( disp__gluQuadricCallback == NULL )  return;
+
 	switch(which)
 	{
 		case GLU_ERROR:
@@ -133,6 +141,8 @@ Java_gl4java_GLUFuncJauJNI_gluNurbsCallback( JNIEnv *env, jobject obj,
 			          jstring methodName, 
 				  jstring signature)
 {
+	if ( disp__gluNurbsCallback == NULL )  return;
+
 	switch(which)
 	{
 		case GLU_ERROR:
@@ -161,6 +171,8 @@ Java_gl4java_GLUFuncJauJNI_gluTessCallback( JNIEnv *env, jobject obj,
 				  jint arrayLen4,
 				  jint arrayLen5)
 {
+	if ( disp__gluTessCallback == NULL )  return;
+
 	switch(which)
 	{
 		case GLU_TESS_BEGIN:
@@ -238,6 +250,8 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteQuadric( JNIEnv *env, jobject obj,
 					     jlong qobj )
 {
+	if ( disp__gluDeleteQuadric == NULL )  return;
+
 	disp__gluDeleteQuadric((void *)((PointerHolder)qobj));
 	RemoveCallbackNodes((void *)((PointerHolder)qobj));
 }
@@ -246,6 +260,8 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteNurbsRenderer( JNIEnv *env, jobject obj,
 						   jlong nobj )
 {
+	if ( disp__gluDeleteNurbsRenderer == NULL )  return;
+
 	disp__gluDeleteNurbsRenderer((void *)((PointerHolder)nobj));
 	RemoveCallbackNodes((void *)((PointerHolder)nobj));
 }
@@ -254,6 +270,8 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 					  jlong tobj )
 {
+	if ( disp__gluDeleteTess == NULL )  return;
+
 	disp__gluDeleteTess((GLUtesselator *)((PointerHolder)tobj));
 	RemoveCallbackNodes((void *)((PointerHolder)tobj));
 }
@@ -261,23 +279,29 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewQuadric( JNIEnv *env, jobject obj)
 {
+	if ( disp__gluNewQuadric == NULL )  return 0;
+
 	return (jlong)((PointerHolder)disp__gluNewQuadric());
 }
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewNurbsRenderer( JNIEnv *env, jobject obj)
 {
+	if ( disp__gluNewNurbsRenderer == NULL )  return 0;
+
 	return (jlong)((PointerHolder)disp__gluNewNurbsRenderer());
 }
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 {
+	if ( disp__gluNewTess == NULL )  return 0;
+
 	return (jlong)((PointerHolder)disp__gluNewTess());
 }
 
 /**
- * C2J Parser Version 2.0
+ * C2J Parser Version 2.1
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -302,6 +326,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble upy,
 		jdouble upz)
 	{
+
+		if ( disp__gluLookAt == NULL ) return;
 
 		disp__gluLookAt (
 			(GLdouble) eyex,
@@ -332,6 +358,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble top)
 	{
 
+		if ( disp__gluOrtho2D == NULL ) return;
+
 		disp__gluOrtho2D (
 			(GLdouble) left,
 			(GLdouble) right,
@@ -355,6 +383,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble zNear,
 		jdouble zFar)
 	{
+
+		if ( disp__gluPerspective == NULL ) return;
 
 		disp__gluPerspective (
 			(GLdouble) fovy,
@@ -382,6 +412,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 	{
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
+
+		if ( disp__gluPickMatrix == NULL ) return;
 
 		if(viewport!=NULL)
 		{
@@ -431,6 +463,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble *ptr7 = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jdouble *ptr8 = NULL;
+
+		if ( disp__gluProject == NULL ) return 0;
 
 		if(modelMatrix!=NULL)
 		{
@@ -526,6 +560,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jdouble *ptr8 = NULL;
 
+		if ( disp__gluUnProject == NULL ) return 0;
+
 		if(modelMatrix!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, modelMatrix, 0);
@@ -614,6 +650,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jbyte *ptr8 = NULL;
 
+		if ( disp__gluScaleImage == NULL ) return 0;
+
 		if(datain!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, datain, 0);
@@ -665,6 +703,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 
 		jbyte *ptr5 = NULL;
 
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -697,6 +737,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint ret;
 
 		jshort *ptr5 = NULL;
+
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -731,6 +773,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 
 		jint *ptr5 = NULL;
 
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -763,6 +807,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint ret;
 
 		jfloat *ptr5 = NULL;
+
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -797,6 +843,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 
 		jdouble *ptr5 = NULL;
 
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -830,6 +878,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 
 		jboolean *ptr5 = NULL;
 
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -862,6 +912,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint ret;
 
 		jlong *ptr5 = NULL;
+
+		if ( disp__gluBuild1DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -904,6 +956,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 
 		jbyte *ptr6 = NULL;
 
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -938,6 +992,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint ret;
 
 		jshort *ptr6 = NULL;
+
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -974,6 +1030,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 
 		jint *ptr6 = NULL;
 
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr6 = (jint *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -1008,6 +1066,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint ret;
 
 		jfloat *ptr6 = NULL;
+
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -1044,6 +1104,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 
 		jdouble *ptr6 = NULL;
 
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr6 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -1078,6 +1140,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint ret;
 
 		jboolean *ptr6 = NULL;
+
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
 
 		if(data!=NULL)
 		{
@@ -1114,6 +1178,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 
 		jlong *ptr6 = NULL;
 
+		if ( disp__gluBuild2DMipmaps == NULL ) return 0;
+
 		if(data!=NULL)
 		{
 			ptr6 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, data, 0);
@@ -1148,6 +1214,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint drawStyle)
 	{
 
+		if ( disp__gluQuadricDrawStyle == NULL ) return;
+
 		disp__gluQuadricDrawStyle (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) drawStyle
@@ -1167,6 +1235,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong quadObject,
 		jint orientation)
 	{
+
+		if ( disp__gluQuadricOrientation == NULL ) return;
 
 		disp__gluQuadricOrientation (
 			(GLUquadricObj *) (PointerHolder) quadObject,
@@ -1188,6 +1258,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint normals)
 	{
 
+		if ( disp__gluQuadricNormals == NULL ) return;
+
 		disp__gluQuadricNormals (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) normals
@@ -1207,6 +1279,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong quadObject,
 		jboolean textureCoords)
 	{
+
+		if ( disp__gluQuadricTexture == NULL ) return;
 
 		disp__gluQuadricTexture (
 			(GLUquadricObj *) (PointerHolder) quadObject,
@@ -1231,6 +1305,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint slices,
 		jint stacks)
 	{
+
+		if ( disp__gluCylinder == NULL ) return;
 
 		disp__gluCylinder (
 			(GLUquadricObj *) (PointerHolder) qobj,
@@ -1258,6 +1334,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint stacks)
 	{
 
+		if ( disp__gluSphere == NULL ) return;
+
 		disp__gluSphere (
 			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) radius,
@@ -1282,6 +1360,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint slices,
 		jint loops)
 	{
+
+		if ( disp__gluDisk == NULL ) return;
 
 		disp__gluDisk (
 			(GLUquadricObj *) (PointerHolder) qobj,
@@ -1310,6 +1390,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble startAngle,
 		jdouble sweepAngle)
 	{
+
+		if ( disp__gluPartialDisk == NULL ) return;
 
 		disp__gluPartialDisk (
 			(GLUquadricObj *) (PointerHolder) qobj,
@@ -1340,6 +1422,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jfloat *ptr1 = NULL;
 		jfloat *ptr2 = NULL;
 		jint *ptr3 = NULL;
+
+		if ( disp__gluLoadSamplingMatrices == NULL ) return;
 
 		if(modelMatrix!=NULL)
 		{
@@ -1388,6 +1472,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jfloat value)
 	{
 
+		if ( disp__gluNurbsProperty == NULL ) return;
+
 		disp__gluNurbsProperty (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLenum) property,
@@ -1411,6 +1497,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
+
+		if ( disp__gluGetNurbsProperty == NULL ) return;
 
 		if(value!=NULL)
 		{
@@ -1440,6 +1528,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong nobj)
 	{
 
+		if ( disp__gluBeginCurve == NULL ) return;
+
 		disp__gluBeginCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
@@ -1457,6 +1547,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		JNIEnv *env, jobject obj,
 		jlong nobj)
 	{
+
+		if ( disp__gluEndCurve == NULL ) return;
 
 		disp__gluEndCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj
@@ -1485,6 +1577,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jfloat *ptr2 = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
+
+		if ( disp__gluNurbsCurve == NULL ) return;
 
 		if(knot!=NULL)
 		{
@@ -1526,6 +1620,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong nobj)
 	{
 
+		if ( disp__gluBeginSurface == NULL ) return;
+
 		disp__gluBeginSurface (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
@@ -1543,6 +1639,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		JNIEnv *env, jobject obj,
 		jlong nobj)
 	{
+
+		if ( disp__gluEndSurface == NULL ) return;
 
 		disp__gluEndSurface (
 			(GLUnurbsObj *) (PointerHolder) nobj
@@ -1577,6 +1675,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jfloat *ptr4 = NULL;
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jfloat *ptr7 = NULL;
+
+		if ( disp__gluNurbsSurface == NULL ) return;
 
 		if(sknot!=NULL)
 		{
@@ -1630,6 +1730,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong nobj)
 	{
 
+		if ( disp__gluBeginTrim == NULL ) return;
+
 		disp__gluBeginTrim (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
@@ -1647,6 +1749,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		JNIEnv *env, jobject obj,
 		jlong nobj)
 	{
+
+		if ( disp__gluEndTrim == NULL ) return;
 
 		disp__gluEndTrim (
 			(GLUnurbsObj *) (PointerHolder) nobj
@@ -1671,6 +1775,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
+
+		if ( disp__gluPwlCurve == NULL ) return;
 
 		if(array!=NULL)
 		{
@@ -1705,6 +1811,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jbyte *ptr1 = NULL;
 
+		if ( disp__gluTessBeginPolygon == NULL ) return;
+
 		if(polygon_data!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, polygon_data, &isCopiedArray1);
@@ -1727,6 +1835,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
+
+		if ( disp__gluTessBeginPolygon == NULL ) return;
 
 		if(polygon_data!=NULL)
 		{
@@ -1751,6 +1861,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 
+		if ( disp__gluTessBeginPolygon == NULL ) return;
+
 		if(polygon_data!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, polygon_data, &isCopiedArray1);
@@ -1773,6 +1885,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
+
+		if ( disp__gluTessBeginPolygon == NULL ) return;
 
 		if(polygon_data!=NULL)
 		{
@@ -1797,6 +1911,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 
+		if ( disp__gluTessBeginPolygon == NULL ) return;
+
 		if(polygon_data!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, polygon_data, &isCopiedArray1);
@@ -1820,6 +1936,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jboolean *ptr1 = NULL;
 
+		if ( disp__gluTessBeginPolygon == NULL ) return;
+
 		if(polygon_data!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, polygon_data, &isCopiedArray1);
@@ -1842,6 +1960,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jlong *ptr1 = NULL;
+
+		if ( disp__gluTessBeginPolygon == NULL ) return;
 
 		if(polygon_data!=NULL)
 		{
@@ -1870,6 +1990,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong tobj)
 	{
 
+		if ( disp__gluTessBeginContour == NULL ) return;
+
 		disp__gluTessBeginContour (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
@@ -1893,6 +2015,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble *ptr1 = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jbyte *ptr2 = NULL;
+
+		if ( disp__gluTessVertex == NULL ) return;
 
 		if(coords!=NULL)
 		{
@@ -1929,6 +2053,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jshort *ptr2 = NULL;
 
+		if ( disp__gluTessVertex == NULL ) return;
+
 		if(coords!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, coords, &isCopiedArray1);
@@ -1963,6 +2089,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble *ptr1 = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
+
+		if ( disp__gluTessVertex == NULL ) return;
 
 		if(coords!=NULL)
 		{
@@ -1999,6 +2127,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 
+		if ( disp__gluTessVertex == NULL ) return;
+
 		if(coords!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, coords, &isCopiedArray1);
@@ -2033,6 +2163,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble *ptr1 = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
+
+		if ( disp__gluTessVertex == NULL ) return;
 
 		if(coords!=NULL)
 		{
@@ -2069,6 +2201,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jboolean *ptr2 = NULL;
 
+		if ( disp__gluTessVertex == NULL ) return;
+
 		if(coords!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, coords, &isCopiedArray1);
@@ -2103,6 +2237,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble *ptr1 = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jlong *ptr2 = NULL;
+
+		if ( disp__gluTessVertex == NULL ) return;
 
 		if(coords!=NULL)
 		{
@@ -2140,6 +2276,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong tobj)
 	{
 
+		if ( disp__gluTessEndContour == NULL ) return;
+
 		disp__gluTessEndContour (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
@@ -2157,6 +2295,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		JNIEnv *env, jobject obj,
 		jlong tobj)
 	{
+
+		if ( disp__gluTessEndPolygon == NULL ) return;
 
 		disp__gluTessEndPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
@@ -2177,6 +2317,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint which,
 		jdouble value)
 	{
+
+		if ( disp__gluTessProperty == NULL ) return;
 
 		disp__gluTessProperty (
 			(GLUtesselator *) (PointerHolder) tobj,
@@ -2200,6 +2342,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble y,
 		jdouble z)
 	{
+
+		if ( disp__gluTessNormal == NULL ) return;
 
 		disp__gluTessNormal (
 			(GLUtesselator *) (PointerHolder) tobj,
@@ -2225,6 +2369,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 	{
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
+
+		if ( disp__gluGetTessProperty == NULL ) return;
 
 		if(value!=NULL)
 		{
@@ -2254,6 +2400,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong tobj)
 	{
 
+		if ( disp__gluBeginPolygon == NULL ) return;
+
 		disp__gluBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
@@ -2272,6 +2420,8 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong tobj,
 		jint type)
 	{
+
+		if ( disp__gluNextContour == NULL ) return;
 
 		disp__gluNextContour (
 			(GLUtesselator *) (PointerHolder) tobj,
@@ -2292,10 +2442,12 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong tobj)
 	{
 
+		if ( disp__gluEndPolygon == NULL ) return;
+
 		disp__gluEndPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
 
-/* C2J Parser Version 2.0:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.1:  Java program parsed successfully. */ 

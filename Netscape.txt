@@ -18,8 +18,8 @@ Be sure to have:
 		  ./Netcape/Communicator/Program/Java/classes/gl4java-glutfonts.jar
 
 		  ./Netcape/Communicator/Program/Java/bin/GL4JavaJauGljJNI.dll
-		  ./Netcape/Communicator/Program/Java/bin/GL4JavaJauGLJNI.dll
-		  ./Netcape/Communicator/Program/Java/bin/GL4JavaJauGLUJNI.dll
+		  ./Netcape/Communicator/Program/Java/bin/GL4JavaJauGljJNI12.dll
+		  ./Netcape/Communicator/Program/Java/bin/GL4JavaJauGljJNI13.dll
 
 
 UNIX (Linux/Solaris/...):
@@ -33,26 +33,9 @@ Be sure to have:
 The nativ libraries must be installed on a directory,
 which is in your LD_LIBRARY_PATH environment !!
 E.g.:
-		/usr/lib/libGL4JavaJauGLJNI.so
-		/usr/lib/libGL4JavaJauGLJNI.so.2
-		/usr/lib/libGL4JavaJauGLJNI.so.2.1
-		/usr/lib/libGL4JavaJauGLJNI.so.2.1.2
-		/usr/lib/libGL4JavaJauGLJNInf.so
-		/usr/lib/libGL4JavaJauGLJNInf.so.2
-		/usr/lib/libGL4JavaJauGLJNInf.so.2.1
-		/usr/lib/libGL4JavaJauGLJNInf.so.2.1.2
-		/usr/lib/libGL4JavaJauGLUJNI.so
-		/usr/lib/libGL4JavaJauGLUJNI.so.2
-		/usr/lib/libGL4JavaJauGLUJNI.so.2.1
-		/usr/lib/libGL4JavaJauGLUJNI.so.2.1.2
-		/usr/lib/libGL4JavaJauGLUJNInf.so
-		/usr/lib/libGL4JavaJauGLUJNInf.so.2
-		/usr/lib/libGL4JavaJauGLUJNInf.so.2.1
-		/usr/lib/libGL4JavaJauGLUJNInf.so.2.1.2
-		/usr/lib/libGL4JavaJauGljJNI.so
-		/usr/lib/libGL4JavaJauGljJNI.so.2
-		/usr/lib/libGL4JavaJauGljJNI.so.2.1
-		/usr/lib/libGL4JavaJauGljJNI.so.2.1.2
+		/usr/lib/libGL4JavaJauGljJNI.so*
+		/usr/lib/libGL4JavaJauGljJNI12.so*
+		/usr/lib/libGL4JavaJauGljJNI13.so*
 
 All symbolic links and the file itself,
 use "cp -a" to keep the symbolic links alive !

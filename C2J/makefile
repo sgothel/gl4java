@@ -423,7 +423,7 @@ glu-proto-auto-tst-jni12.c: glu-proto-auto.orig.h C2J.class
 	cat warning.skel 			\
 	    ../CNativeCode/OpenGLU_funcs.c.skel \
 	    manual/glu-manualCodedImplJNI.c	\
-	    glu-proto-auto-tst.c 			\
+	    glu-proto-auto-tst-jni12.c 			\
 	    > ../CNativeCode/OpenGLU_JauJNI12tst_funcs.c
 
 

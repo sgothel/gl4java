@@ -5,6 +5,7 @@ import java.lang.reflect.*;
 import java.util.*;
 import sun.awt.*;
 import gl4java.*;
+import java.security.*;
 
 public class Win32SunJDK13GLDrawableFactory 
 	extends SunJDK13GLDrawableFactory 
@@ -15,16 +16,37 @@ public class Win32SunJDK13GLDrawableFactory
 
     static {
         try {
-            getMaxConfigsMethod = 
-                sun.awt.Win32GraphicsDevice.class.
-                    getDeclaredMethod("getMaxConfigs",
-                                      new Class[] { Integer.TYPE });
+	   getMaxConfigsMethod = (Method)
+	     AccessController.doPrivileged(new PrivilegedAction() {
+	      public Object run() 
+	      {
+                try {
+			return
+			sun.awt.Win32GraphicsDevice.class.
+			    getDeclaredMethod("getMaxConfigs",
+					      new Class[] { Integer.TYPE });
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    throw new InternalError(e.toString());
+		}
+	      }});
+
             getMaxConfigsMethod.setAccessible(true);
 
-            getDefaultPixIDMethod = 
-                sun.awt.Win32GraphicsDevice.class.
-                    getDeclaredMethod("getDefaultPixID",
-                                      new Class[] { Integer.TYPE });
+            getDefaultPixIDMethod = (Method)
+	     AccessController.doPrivileged(new PrivilegedAction() {
+	      public Object run() 
+	      {
+                try {
+			return
+			sun.awt.Win32GraphicsDevice.class.
+			    getDeclaredMethod("getDefaultPixID",
+					      new Class[] { Integer.TYPE });
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    throw new InternalError(e.toString());
+		}
+	      }});
             getDefaultPixIDMethod.setAccessible(true);
         } catch (Exception e) {
             e.printStackTrace();

@@ -4,6 +4,7 @@ import java.awt.*;
 import gl4java.*;
 import gl4java.awt.*;
 import gl4java.swing.*;
+import java.security.*;
 
 /** <P> Provides a VM- and OS-independent mechanism for creating
     {@link gl4java.awt.GLAnimCanvas},
@@ -38,7 +39,7 @@ import gl4java.swing.*;
 public abstract class GLDrawableFactory {
 
   static {
-        GLContext.loadNativeLibraries(null, null, null);
+        GLContext.doLoadNativeLibraries(null, null, null);
   }
 
   private static GLDrawableFactory soleInstance;
@@ -47,7 +48,7 @@ public abstract class GLDrawableFactory {
       pattern). */
   public static GLDrawableFactory getFactory() {
 
-    GLContext.loadNativeLibraries(null, null, null);
+    GLContext.doLoadNativeLibraries(null, null, null);
 
     String jvmVendor = GLContext.getJVMVendor();
     boolean isIBMJvm = jvmVendor!=null && jvmVendor.indexOf("IBM")>=0 ;
@@ -73,7 +74,8 @@ public abstract class GLDrawableFactory {
 	         clazzName = 
 		     "gl4java.drawable.Win32SunJDK13GLDrawableFactory";
 		 break;
-	     case GLContext.OsMac:
+	     case GLContext.OsMac9:
+	     case GLContext.OsMacX:
 	         clazzName = 
 		   "gl4java.drawable.MacSunJDK13GLDrawableFactory";
 		 break;
@@ -88,12 +90,19 @@ public abstract class GLDrawableFactory {
 
 	   if(clazzName!=null)
 	   {
-		try {
-			soleInstance = (GLDrawableFactory) 
-				Class.forName(clazzName).newInstance();
-		} catch (Exception ex) {
-			System.out.println("GLDrawableFactory: could not create instance of: "+ clazzName + ", using DummyGLDrawableFactory");
-		}
+		  final String f_clazzName = clazzName;
+
+		  soleInstance = (GLDrawableFactory) 
+		     AccessController.doPrivileged(new PrivilegedAction() {
+		      public Object run() 
+		      {
+			try {
+				return Class.forName(f_clazzName).newInstance();
+			} catch (Exception ex) {
+				System.out.println("GLDrawableFactory: could not create instance of: "+ f_clazzName + ", using DummyGLDrawableFactory");
+			}
+			return null;
+		      }});
 	   }
         } 
 

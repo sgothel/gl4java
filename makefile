@@ -98,7 +98,7 @@ CNATIVEDIR  		= CNativeCode
 
 LIBMAJOR		= 2
 LIBMINOR		= 7
-LIBBUGFIX		= 0
+LIBBUGFIX		= 1
 RELEASE                 = 0
 
 #
@@ -632,7 +632,8 @@ cleanup: $(CHEADERDIR) archive binpkg
 	rm -f errors
 
 cleanupw32: cleanup Win32VC6/libs Win32VC6/temp
-
+	rm -rvf Win32VC6/libs/*
+	rm -fv `find Win32VC6 -name \*.plg -o -name \*.idb -o -name \*.opt -o -name \*.ncb`
 
 Win32VC6/libs:
 	mkdir -p Win32VC6/libs
@@ -663,11 +664,12 @@ cleannative:
 	cd demos/natives/x11 ; make clean
 
 # clean out the *.o files and machine generated files from javah
-clean: cleannative
+clean: cleannative cleanupw32
 	rm -f $(CHEADERDIR)/* errors gl4java/*~ CNativeCode/*~ \
 	      $(FILE.gen1.h) $(FILE.gen2.h) \
 	      $(FILE.gen3.h) $(FILE.gen4.h) $(FILE.gen5.h)
 	rm -f `find . -name \*.class`
+	rm -f `find . -name discrete.log`
 	cd demos ; make clean
 
 cleanhtmldoc:
@@ -788,8 +790,8 @@ java2binpkg: pbinpkg
 	cd .. ; \
 	zip -9 GL4Java/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-INSTALLER.zip \
 		GL4Java/Installer/GL4JInstaller.jar \
-		GL4Java/Installer/install.sh \
-		GL4Java/Installer/install.bat
+		GL4Java/Installer/install*.sh \
+		GL4Java/Installer/install*.bat
 		
 installer2binpkg: pbinpkg
 	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-installer.zip

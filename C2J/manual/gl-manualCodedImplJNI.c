@@ -10,6 +10,9 @@ Java_gl4java_GLFuncJauJNI_glGetString ( JNIEnv *env, jobject obj,
 {
     const char * tmpString=0;
 
+    if ( disp__glGetString == NULL ) 
+    	return (*env)->NewStringUTF(env, _gl_n_a_string);
+
     tmpString = disp__glGetString ( /* jint */ name);
     if(tmpString==NULL)
     	tmpString=_gl_n_a_string;
@@ -18,7 +21,7 @@ Java_gl4java_GLFuncJauJNI_glGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _gl_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _gl_lib_version_="2.7.0.0";
+static const char * _gl_lib_version_="2.7.1.0";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )

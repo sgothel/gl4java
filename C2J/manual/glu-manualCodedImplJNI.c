@@ -6,6 +6,9 @@ Java_gl4java_GLUFuncJauJNI_gluErrorString ( JNIEnv *env, jobject obj,
 {
     const char *tmpString=0;
 
+    if ( disp__gluErrorString == NULL ) 
+    	return (*env)->NewStringUTF(env, _glu_n_a_string);
+
     tmpString = disp__gluErrorString ( /* jint */ errorCode );
     if(tmpString==NULL)
     	tmpString=_glu_n_a_string;
@@ -19,6 +22,9 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
 {
     const char *tmpString=0;
 
+    if ( disp__gluGetString == NULL ) 
+    	return (*env)->NewStringUTF(env, _glu_n_a_string);
+
     tmpString = disp__gluGetString ( /* jint */ name);
     if(tmpString==NULL)
     	tmpString=_glu_n_a_string;
@@ -27,7 +33,7 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _glu_lib_version_="2.7.0.0";
+static const char * _glu_lib_version_="2.7.1.0";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLUFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
@@ -74,6 +80,8 @@ Java_gl4java_GLUFuncJauJNI_gluQuadricCallback( JNIEnv *env, jobject obj,
 			          jstring methodName, 
 				  jstring signature)
 {
+	if ( disp__gluQuadricCallback == NULL )  return;
+
 	switch(which)
 	{
 		case GLU_ERROR:
@@ -98,6 +106,8 @@ Java_gl4java_GLUFuncJauJNI_gluNurbsCallback( JNIEnv *env, jobject obj,
 			          jstring methodName, 
 				  jstring signature)
 {
+	if ( disp__gluNurbsCallback == NULL )  return;
+
 	switch(which)
 	{
 		case GLU_ERROR:
@@ -126,6 +136,8 @@ Java_gl4java_GLUFuncJauJNI_gluTessCallback( JNIEnv *env, jobject obj,
 				  jint arrayLen4,
 				  jint arrayLen5)
 {
+	if ( disp__gluTessCallback == NULL )  return;
+
 	switch(which)
 	{
 		case GLU_TESS_BEGIN:
@@ -203,6 +215,8 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteQuadric( JNIEnv *env, jobject obj,
 					     jlong qobj )
 {
+	if ( disp__gluDeleteQuadric == NULL )  return;
+
 	disp__gluDeleteQuadric((void *)((PointerHolder)qobj));
 	RemoveCallbackNodes((void *)((PointerHolder)qobj));
 }
@@ -211,6 +225,8 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteNurbsRenderer( JNIEnv *env, jobject obj,
 						   jlong nobj )
 {
+	if ( disp__gluDeleteNurbsRenderer == NULL )  return;
+
 	disp__gluDeleteNurbsRenderer((void *)((PointerHolder)nobj));
 	RemoveCallbackNodes((void *)((PointerHolder)nobj));
 }
@@ -219,6 +235,8 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 					  jlong tobj )
 {
+	if ( disp__gluDeleteTess == NULL )  return;
+
 	disp__gluDeleteTess((GLUtesselator *)((PointerHolder)tobj));
 	RemoveCallbackNodes((void *)((PointerHolder)tobj));
 }
@@ -226,18 +244,24 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewQuadric( JNIEnv *env, jobject obj)
 {
+	if ( disp__gluNewQuadric == NULL )  return 0;
+
 	return (jlong)((PointerHolder)disp__gluNewQuadric());
 }
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewNurbsRenderer( JNIEnv *env, jobject obj)
 {
+	if ( disp__gluNewNurbsRenderer == NULL )  return 0;
+
 	return (jlong)((PointerHolder)disp__gluNewNurbsRenderer());
 }
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 {
+	if ( disp__gluNewTess == NULL )  return 0;
+
 	return (jlong)((PointerHolder)disp__gluNewTess());
 }
 

@@ -17,12 +17,12 @@
               & \htmladdnormallink{OpenGL[tm] for Java[tm] (formerly gl4java)}{http://www.jausoft.com/gl4java/}\\[3mm]
 	      & Implementation Of A Native OpenGL-Interface \\
 	      & to Java, X-Window and Windows (95/NT)\\[3mm]
-	      & \emph{Version 2.4.0 Release 0}\\[5mm]
+	      & \emph{Version 2.7.1 Release 0}\\[5mm]
 	      & \htmladdnormallink{Sven Goethel}{mailto:gl4java@jausoft.com} \\[25mm] 
 	      & Jausoft - Sven Goethel Software development \\[25mm]
 %	      \hline \\[20mm]
 	      & 29. December 1997 (Diploma Thesis Closing)\\[50mm]
-	      & 7th March 2001 (Last Changes)
+	      & 10th April 2001 (Last Changes)
       \end{tabular}
       }
 \end{titlepage}
@@ -510,16 +510,18 @@ Next create the library, class-files and all is needed with (for Unix/X11):
 The Unix makefile-action does the complete creation :-)
 The default shared-library files for Unice's are :
 \begin{verbatim}
-	  	GLContext:	libGL4JavaJauGljJNI.so
-		GLFuncJauJNI:	libGL4JavaJauGLJNI.so
-		GLUFuncJauJNI:	libGL4JavaJauGLUJNI.so
+	  	JVM == 1.1:	libGL4JavaJauGljJNI.so
+
+		JVM == 1.2:	libGL4JavaJauGljJNI12.so
+
+		JVM >= 1.3:	libGL4JavaJauGljJNI13.so
 
 		This *.so files stands for the versions files
 		with all symbolic links, e.g.:
 
-		  libGL4JavaJauGljJNI.so     -> libGL4JavaJauGljJNI.so.2.1
-		  libGL4JavaJauGljJNI.so.2.1 -> libGL4JavaJauGljJNI.so.2.1.2
-		  libGL4JavaJauGljJNI.so.2.1.2
+		  libGL4JavaJauGljJNI.so     -> libGL4JavaJauGljJNI.so.2.7
+		  libGL4JavaJauGljJNI.so.2.7 -> libGL4JavaJauGljJNI.so.2.7.1
+		  libGL4JavaJauGljJNI.so.2.7.1
 			
 \end{verbatim}
 		
@@ -541,10 +543,14 @@ An additional C compiler invocation must be done (see \ref{WinCompile},
 page \pageref{WinCompile}) to create the 
 default shared-library files:
 \begin{verbatim}
-	  	GLContext     (SUN-JNI):	GL4JavaJauGljJNI.dll
-		GLFuncJauJNI  (SUN-JNI):	GL4JavaJauGLJNI.dll
-		GLUFuncJauJNI (SUN-JNI):	GL4JavaJauGLUJNI.dll
-	  	GLContext     (MS-JVM) :	GL4JavaGljMSJDirect.dll
+	  	JVM == 1.1:	GL4JavaJauGljJNI.dll
+
+		JVM == 1.2:	GL4JavaJauGljJNI12.dll
+
+		JVM >= 1.3:	GL4JavaJauGljJNI13.dll
+
+	  	MS-JVM:	        GL4JavaGljMSJDirect.dll + 
+		                GL4JavaJauGljJNI.dll
 \end{verbatim}
 
 To run GL4Java within MS-JVM and InternetExplorer, 
@@ -568,23 +574,6 @@ Next create the demos with.
    If all goes well, just type e.g.: 'java glDemosCvs'
    in this directory, and
    you should see a demo manager for all the GL4Java demos we have written.
-
-   To allow JAVA2's appletviewer or Java2-Plug-In using JNI native libs,
-   just look at GL4Java/demo/Java2Applet.bat 
-   (You have to change the gl4java.policy file) !
-
-   You can - of course - use your 'policytool',
-   which is shipped with JAVA2 !
-
-   To use the demo Applets for Java2-Plug-In from www.jausoft.com,
-   please add the following lines to your java.policy file:
-
-\begin{verbatim}
-	grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/-"
-	{
-	  permission java.security.AllPermission;
-	};
-\end{verbatim}
 
    You can also compare the totally native glut version 
    against the java version.

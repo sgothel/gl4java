@@ -22,7 +22,7 @@ public interface GLUEnum
 {
 
 /**
- * C2J Parser Version 2.0
+ * C2J Parser Version 2.1
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-enum-auto.orig.h . . .
  * Destination-Class: gl4java_GLUEnum ! 
@@ -134,7 +134,7 @@ public interface GLUEnum
 	public static final int GLU_EDGE_FLAG	= GLU_TESS_EDGE_FLAG;
 	public static final int GLU_END	= GLU_TESS_END;
 	public static final int GLU_ERROR	= GLU_TESS_ERROR;
-/* C2J Parser Version 2.0:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.1:  Java program parsed successfully. */ 
 
 
 }

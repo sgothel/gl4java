@@ -11,6 +11,7 @@ import java.awt.*;
 import java.applet.Applet;
 import java.awt.event.*;
 import java.lang.reflect.*;
+import java.security.*;
 
 /**
  * The base manager class for the OpenGL language mapping for Java !
@@ -642,8 +643,6 @@ public class GLContext extends Object
         if(gljClassDebug)
 	    System.out.println("GLContext.loadNativeLibraries will do it !");
 
-	String libNames[] = null;
-
         jvmVendor = java.lang.System.getProperty("java.vendor");
         jvmVersion = java.lang.System.getProperty("java.version");
 
@@ -699,6 +698,8 @@ public class GLContext extends Object
 	   osType = OsMac9;
 	else /* oops - lets guess unix/x11 :-) */
 	   osType = OsX11;
+
+	String libNames[] = null;
 
 	if( jvmVersionMajor>=2 ||
 	       ( jvmVersionMajor==1 && jvmVersionMinor>=4 )
@@ -773,6 +774,8 @@ public class GLContext extends Object
 	   useMSJDirect = false;
 	}
 
+	final String f_libNames[] = libNames;
+
 	if(isNetscapeJvm)
 	{
 	  System.out.println("Netscape JVM try to get Privileges");
@@ -796,41 +799,89 @@ public class GLContext extends Object
 	  }
 	}
 
-	/* load libs */
-	int libNumber = 0;
-	String _libName = null ;
-        boolean libLoaded[] = new boolean[libNames.length];
+	boolean ok;
 
-	for(libNumber=0; libNumber<libNames.length; libNumber++)
-	    libLoaded[libNumber]=false;
-
-	for(libNumber=0; libNumber<libNames.length; libNumber++)
+	if( jvmVersionMajor>=2 ||
+	    (jvmVersionMajor==1 && jvmVersionMinor>=2)
+	  )
 	{
-		do {
-		      try {
-			System.loadLibrary( libNames[libNumber] );  
-			libLoaded[libNumber]=true;
-			if(gljClassDebug)
-			{
-			    System.out.println("loaded native library: "+
-			    			libNames[libNumber]);
-			}
-		      } catch ( UnsatisfiedLinkError e) {
-			System.out.println
-			( "Sorry, can't find the library: "+
-			  libNames[libNumber]+"\n"+e );
-			
-			libNames[libNumber]=null; // stop trying ... :-(
-		      }
-		} while( libLoaded[libNumber]==false && 
-		         libNames[libNumber]!=null );
+	   Boolean ook = (Boolean)
+	     AccessController.doPrivileged(new PrivilegedAction() {
+	      public Object run() 
+	      {
+		/* load libs */
+		int libNumber = 0;
+		String _libName = null ;
+		boolean libLoaded[] = new boolean[f_libNames.length];
+
+		for(libNumber=0; libNumber<f_libNames.length; libNumber++)
+		    libLoaded[libNumber]=false;
+
+		for(libNumber=0; libNumber<f_libNames.length; libNumber++)
+		{
+			do {
+			      try {
+				System.loadLibrary( f_libNames[libNumber] );  
+				libLoaded[libNumber]=true;
+				if(gljClassDebug)
+				{
+				    System.out.println("loaded native library: "+
+							f_libNames[libNumber]);
+				}
+			      } catch ( UnsatisfiedLinkError e) {
+				System.out.println
+				( "Sorry, can't find the library: "+
+				  f_libNames[libNumber]+"\n"+e );
+				
+				f_libNames[libNumber]=null; // stop trying ... :-(
+			      }
+			} while( libLoaded[libNumber]==false && 
+				 f_libNames[libNumber]!=null );
+		}
+		for(libNumber=0; libNumber<f_libNames.length; libNumber++)
+			if(libLoaded[libNumber]==false) 
+				return new Boolean(false);
+		return new Boolean(true);
+	      }
+	     });
+	   ok = ook.booleanValue();  
+	} else
+	{
+		/* load libs */
+		int libNumber = 0;
+		String _libName = null ;
+		boolean libLoaded[] = new boolean[f_libNames.length];
+
+		for(libNumber=0; libNumber<f_libNames.length; libNumber++)
+		    libLoaded[libNumber]=false;
+
+		for(libNumber=0; libNumber<f_libNames.length; libNumber++)
+		{
+			do {
+			      try {
+				System.loadLibrary( f_libNames[libNumber] );  
+				libLoaded[libNumber]=true;
+				if(gljClassDebug)
+				{
+				    System.out.println("loaded native library: "+
+							f_libNames[libNumber]);
+				}
+			      } catch ( UnsatisfiedLinkError e) {
+				System.out.println
+				( "Sorry, can't find the library: "+
+				  f_libNames[libNumber]+"\n"+e );
+				
+				f_libNames[libNumber]=null; // stop trying ... :-(
+			      }
+			} while( libLoaded[libNumber]==false && 
+				 f_libNames[libNumber]!=null );
+		}
+		ok = true;
+		for(libNumber=0; libNumber<f_libNames.length; libNumber++)
+			if(libLoaded[libNumber]==false) { ok = false; break; }
 	}
 
-	for(libNumber=0; libNumber<libNames.length; libNumber++)
-	{
-		if(libLoaded[libNumber]==false) break;
-	}
-	if(libNumber==libNames.length) 
+	if(ok)
 	{
 		/**
 		 * load the GL/GLU libs natively first, so

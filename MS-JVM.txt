@@ -34,15 +34,20 @@ so you have the new directories:
 
 Delete the new directory C:\WINDOWS\Java\TRUSTLIB\META-INF !
 
-Then copy the native library (DLL) GL4JavaGljMSJDirect.dll
+Then copy the native libraries (DLL):
+
+	GL4JavaGljMSJDirect.dll
+	GL4JavaJauGljJNI.dll
+	GL4JavaJauGljJNI12.dll
+	GL4JavaJauGljJNI13.dll
+
 to C:\WINDOWS\SYSTEM[32]
 
-		  C:\WINDOWS\SYSTEM32\GL4JavaGljMSJDirect.dll (WINNT)
+		  C:\WINDOWS\SYSTEM32\ (WINNT)
 
 		  or
 
-		  C:\WINDOWS\SYSTEM\GL4JavaGljMSJDirect.dll   (WIN9X)
-
+		  C:\WINDOWS\SYSTEM\   (WIN9X)
 
 Notes:
 ======
@@ -59,15 +64,6 @@ Applets, Security:
 
 This Port to the MS-JVM is written by Ron Cemer
 and merged into the GL4Java official source tree by Sven Goethel.
-
-TODO:
-=====
-
-Support a better window update for the GL4Java OpenGL windows !
-
-Support query Double-Buffer and STEREO, like X11 !
-
-An Easy Installation Tool :-) That's Ron's sweating either. 
 
 \end{verbatim}
 

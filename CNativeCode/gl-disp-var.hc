@@ -6,7 +6,7 @@
 
 	const GLubyte *(CALLBACK * disp__glGetString )( GLenum name ) = NULL;
 /**
- * C2J Parser Version 2.0
+ * C2J Parser Version 2.1
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -886,4 +886,4 @@
 
 	void (CALLBACK * disp__glMultiTexCoord4svARB )(GLenum, const GLshort *) = NULL;
 
-/* C2J Parser Version 2.0:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.1:  Java program parsed successfully. */ 
