@@ -15,5 +15,5 @@ rm -f *.class GL4JInst.cab
 
 //D/MSJAVASDK/Bin/cabarc N GL4JInst.cab *.class
 # signcode -j javasign.dll -jp low -spc GL4JInst.spc -k GL4JInst GL4JInst.cab
-//D/MSJAVASDK/Bin/signcode -j javasign.dll -jp low -spc GL4JInstDemo.spc -v GL4JInstDemo.pvk GL4JInst.cab
+//D/MSJAVASDK/Bin/signcode -j javasign.dll -jp low -spc GL4JInst205.spc -v GL4JInst205.pvk GL4JInst.cab
 rm *.class

@@ -9,7 +9,7 @@
 SHELL			= /bin/bash
 
 THISDIR 		= ${PWD}
-THISDIR_w32 		= Y:\\projects\\java\\GL4Java
+THISDIR_w32 		= Y:\\projects\\java\\GL4Java\\GL4Java
 HOME_LIB_DIR    	= //D/WINNT/system32
 DEST_CLASSES_DIR	= //D/classes-1.1.X
 WIN32TYPE		= Win32-x86

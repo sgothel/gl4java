@@ -6,18 +6,18 @@
 --------------------Konfiguration: GL4JavaJauGLJNInf - Win32 Release--------------------
 </h3>
 <h3>Befehlszeilen</h3>
-Erstellen der temporären Datei  "D:\TEMP\RSP9C.tmp" mit Inhalten
+Erstellen der temporären Datei  "D:\TEMP\RSP2C.tmp" mit Inhalten
 [
 /nologo /MT /W3 /GX /O2 /I "d:\java2\include" /I "d:\java2\include\win32" /I "..\..\CCLassHeaders" /I "..\..\CNativeCode" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WIN32_" /D "_MSVC_" /D "_MT" /D "_GL_DYNAMIC_BINDING_" /Fo"../temp/" /Fd"../temp/" /FD /c 
-"Y:\PROJECTS\JAVA\GL4JAVA\CNativeCode\OpenGL_JauJNInf_dynfuncs.c"
+"P:\java\GL4Java\GL4Java\CNativeCode\OpenGL_JauJNInf_dynfuncs.c"
 ]
-Creating command line "cl.exe @D:\TEMP\RSP9C.tmp" 
-Erstellen der temporären Datei  "D:\TEMP\RSP9D.tmp" mit Inhalten
+Creating command line "cl.exe @D:\TEMP\RSP2C.tmp" 
+Erstellen der temporären Datei  "D:\TEMP\RSP2D.tmp" mit Inhalten
 [
 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib opengl32.lib ../libs/GL4JavaJauGljJNI.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"../libs/GL4JavaJauGLJNInf.pdb" /machine:I386 /out:"../libs/GL4JavaJauGLJNInf.dll" /implib:"../libs/GL4JavaJauGLJNInf.lib" 
-\PROJECTS\JAVA\GL4JAVA\WIN32VC6\temp\OpenGL_JauJNInf_dynfuncs.obj
+\java\GL4Java\GL4Java\Win32VC6\temp\OpenGL_JauJNInf_dynfuncs.obj
 ]
-Erstellen der Befehlzeile "link.exe @D:\TEMP\RSP9D.tmp"
+Erstellen der Befehlzeile "link.exe @D:\TEMP\RSP2D.tmp"
 <h3>Ausgabefenster</h3>
 Kompilierung läuft...
 OpenGL_JauJNInf_dynfuncs.c
