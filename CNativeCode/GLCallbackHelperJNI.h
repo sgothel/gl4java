@@ -54,10 +54,17 @@
 
 	LIBAPI CallbackNode * LIBAPIENTRY FindNextCallbackNodeOfCbObj(void *cb_obj);
 	LIBAPI CallbackNode * LIBAPIENTRY FindCallbackNode(GLenum which, jlong glx);
+	LIBAPI CallbackNode * LIBAPIENTRY FindCallbackNodeOfCurrentCbObj(GLenum which, jlong glx);
 
 	LIBAPI CallbackEntry * LIBAPIENTRY FindCallbackEntry(GLenum which, jlong glx);
+	LIBAPI CallbackEntry * LIBAPIENTRY FindCallbackEntryOfCurrentCbObj(GLenum which, jlong glx);
 
 	LIBAPI void  LIBAPIENTRY AddCallbackNode(JNIEnv * env, jobject jobj, 
+			      const char *methodName, const char *signature,
+			      int arrayLen1, int arrayLen2, int arrayLen3,
+		      	      int arrayLen4, int arrayLen5,
+			      void *cb_obj, GLenum which, jlong glx);
+	LIBAPI void  LIBAPIENTRY AddCallbackNodeForCbObj(JNIEnv * env, jobject jobj, 
 			      const char *methodName, const char *signature,
 			      int arrayLen1, int arrayLen2, int arrayLen3,
 		      	      int arrayLen4, int arrayLen5,

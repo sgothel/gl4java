@@ -34,13 +34,20 @@ Mar  2002 (Version 2.8.3 - CVS .. much TODO YET )
 	o wglDeleteContext is used right now, 
 	  Thanxs to Kenneth and ??
 
+	o Adding / Merging Pepijn Van Eeckhoudt's JVM <= 1.3 GC fixes
+
+	o Tesselation with NIO support 
+
+	o Improved native library loading 
+		- Unix: read dlerror
+
+	o Added MAKE macro to symbols.mak / makefile
+
+	o SGI Irix 6.5 may works now ..
 
 	o TODO: 
-		- Adding / Merging Pepijn Van Eeckhoudt's GC fixes
-		- Tesselation with NIO support 
 		- Textures with NIO support 
 		- Reviewing GL compatibility and support ..
-
 
 
 11th Dec  2001 (Version 2.8.2 - ReleaseCandidate 1 - 2.8.2.0)

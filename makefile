@@ -594,14 +594,14 @@ $(HOME_LIB_DIR)/$(LIBRARY3_TST): $(FILES3_TST.o)
 ######################################################################
 
 #tools			: 
-#	cd C2J ; make C2J
+#	cd C2J ; $(MAKE) C2J
 #
 
 gl2j			:
-	cd C2J ; make gl2j
+	cd C2J ; $(MAKE) gl2j
 
 gl2c			:
-	cd C2J ; make gl2c
+	cd C2J ; $(MAKE) gl2c
 
 $(PACKAGEDIR)/GLContext.java: makefile $(PACKAGEDIR)/GLContext.java.skel
 	sed -e 's/__SED_CLASS_VERSION__/\"$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)\"/g' \
@@ -713,8 +713,8 @@ cleanall: clean
 	for i in $$(find . -name \*.class) ; do \
 		rm -f $$i ; \
 	done
-	cd demos ; make clean
-	cd demos/natives/x11 ; make cleanall
+	cd demos ; $(MAKE) clean
+	cd demos/natives/x11 ; $(MAKE) cleanall
 
 clean: cleannative cleanupw32 cleanhtmldoc cleantemp
 
@@ -727,11 +727,11 @@ cleannative:
 	      $(HOME_LIB_DIR)/${LIBNAME3}.* $(HOME_LIB_DIR)/${LIBNAME3_NF}.* \
 	      $(HOME_LIB_DIR)/${LIBNAME3_TST}.* \
 	      $(CNATIVEDIR)/winstuff.h
-	cd demos/natives/x11 ; make clean
+	cd demos/natives/x11 ; $(MAKE) clean
 
 cleanupw32: cleanup Win32VC6/libs Win32VC6/temp
-	rm -rvf Win32VC6/libs/*
-	rm -fv `find Win32VC6 -name \*.plg -o -name \*.idb -o -name \*.opt -o -name \*.ncb`
+	rm -rf Win32VC6/libs/*
+	rm -f `find Win32VC6 -name \*.plg -o -name \*.idb -o -name \*.opt -o -name \*.ncb`
 
 cleanup: $(CHEADERDIR) archive binpkg
 	rm -f errors
@@ -742,7 +742,7 @@ cleantemp:
 	rm -f `find . -iname errors`
 	rm -f `find . -iname *.log`
 	rm -f `find . -iname *.tmp`
-	cd demos ; make clean
+	cd demos ; $(MAKE) clean
 
 cleanhtmldoc:
 	rm -rf doxygens/html
@@ -793,7 +793,7 @@ doxygendoc:
 	doxygen
 
 javadoc:
-	cd C2J; make htmldoc
+	cd C2J; $(MAKE) htmldoc
 	$(JAVADOC) -J-Xmx64m -protected -d docs/html \
 		-sourcepath "$(JDK_HOME)/lib/classes.zip:$(THISDIR):$(THISDIR)/demos" \
 		-author -version \
@@ -815,7 +815,7 @@ javadoc:
 		2>&1 | tee -a errors
 
 javadocw32:
-	cd C2J; make htmldoc
+	cd C2J; $(MAKE) htmldoc
 	$(JAVADOC) -protected -d docs\\html \
 		-sourcepath "$(THISDIR_w32);$(THISDIR_w32)\\demos" \
 		-author -version \
@@ -925,7 +925,7 @@ javacalldemos:
 	cd demos/GLFDemos ; $(JAVAC_13) *.java
 	cd demos/GLLandScape ; $(JAVAC_13) *.java
 	cd demos/HodglimsNeHe ; $(JAVAC_13) *.java
-	cd demos/MiscDemos ; make
+	cd demos/MiscDemos ; $(MAKE)
 	cd demos/NVidia ; $(JAVAC_14) *.java
 	cd demos/RonsDemos ; $(JAVAC_13) *.java
 	cd demos/SwingDemos ; $(JAVAC_13) *.java

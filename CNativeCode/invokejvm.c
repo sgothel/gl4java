@@ -43,6 +43,7 @@ int main(int argc, char ** argv)
 #endif
 #ifdef _X11_
      void * lib;
+     const char *err=NULL;
 #endif
      char ** myargv;
   
@@ -69,7 +70,9 @@ int main(int argc, char ** argv)
 	lib = dlopen (libname, RTLD_LAZY | RTLD_GLOBAL);
 	if (lib == NULL)
 	{
+                err=dlerror();
 		printf ("GLERROR: cannot access library %s\n", libname);
+                if(err!=NULL) printf("\t dlerror: %s\n", err);
 		exit(1);
 	}
 #endif

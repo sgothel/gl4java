@@ -11,7 +11,7 @@ void LIBAPIENTRY cbf_GLU_TESS_BEGIN (GLenum type)
 	jmethodID id=0;
 	CallbackEntry * cbe = NULL;
 
-	cbe = FindCallbackEntry(GLU_TESS_BEGIN, GetCurrentGLContext());
+	cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_BEGIN, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -47,7 +47,7 @@ void LIBAPIENTRY cbf_GLU_TESS_BEGIN_DATA (GLenum type, void *udata)
 	JavaBasicType jbt=0;
 	jarray arr=0;
 
-	CallbackEntry * cbe = FindCallbackEntry(GLU_TESS_BEGIN_DATA, GetCurrentGLContext());
+	CallbackEntry * cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_BEGIN_DATA, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -92,7 +92,7 @@ void LIBAPIENTRY cbf_GLU_TESS_EDGE_FLAG (GLboolean flag)
 	jclass oclass=0;
 	jmethodID id=0;
 
-	CallbackEntry * cbe = FindCallbackEntry(GLU_TESS_EDGE_FLAG, GetCurrentGLContext());
+	CallbackEntry * cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_EDGE_FLAG, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -125,7 +125,7 @@ void LIBAPIENTRY cbf_GLU_TESS_EDGE_FLAG_DATA (GLboolean flag, void *udata)
 	JavaBasicType jbt=0;
 	jarray arr=0;
 
-	CallbackEntry * cbe = FindCallbackEntry(GLU_TESS_EDGE_FLAG_DATA, GetCurrentGLContext());
+	CallbackEntry * cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_EDGE_FLAG_DATA, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -172,7 +172,7 @@ void LIBAPIENTRY cbf_GLU_TESS_VERTEX (void * vdata)
 	JavaBasicType jbt=0;
 	jarray arr=0;
 
-	CallbackEntry * cbe = FindCallbackEntry(GLU_TESS_VERTEX, GetCurrentGLContext());
+	CallbackEntry * cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_VERTEX, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -221,7 +221,7 @@ void LIBAPIENTRY cbf_GLU_TESS_VERTEX_DATA (void * vdata, void * udata)
 	JavaBasicType jbt1=0;
 	jarray arr1=0;
 
-	CallbackEntry * cbe = FindCallbackEntry(GLU_TESS_VERTEX_DATA, GetCurrentGLContext());
+	CallbackEntry * cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_VERTEX_DATA, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -271,7 +271,7 @@ void LIBAPIENTRY cbf_GLU_TESS_END (void)
 	jclass oclass=0;
 	jmethodID id=0;
 
-	CallbackEntry * cbe = FindCallbackEntry(GLU_TESS_END, GetCurrentGLContext());
+	CallbackEntry * cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_END, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -304,7 +304,7 @@ void LIBAPIENTRY cbf_GLU_TESS_END_DATA (void * udata)
 	JavaBasicType jbt=0;
 	jarray arr=0;
 
-	CallbackEntry * cbe = FindCallbackEntry(GLU_TESS_END_DATA, GetCurrentGLContext());
+	CallbackEntry * cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_END_DATA, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -349,7 +349,7 @@ void LIBAPIENTRY cbf_GLU_TESS_ERROR (GLenum errno)
 	jclass oclass=0;
 	jmethodID id=0;
 
-	CallbackEntry * cbe = FindCallbackEntry(GLU_TESS_ERROR, GetCurrentGLContext());
+	CallbackEntry * cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_ERROR, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -382,7 +382,7 @@ void LIBAPIENTRY cbf_GLU_TESS_ERROR_DATA (GLenum errno, void * udata)
 	JavaBasicType jbt=0;
 	jarray arr=0;
 
-	CallbackEntry * cbe = FindCallbackEntry(GLU_TESS_ERROR_DATA, GetCurrentGLContext());
+	CallbackEntry * cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_ERROR_DATA, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -438,7 +438,7 @@ void LIBAPIENTRY cbf_GLU_TESS_COMBINE (GLdouble coords[3], void *vdata[4],
 	void * combdata = NULL;
 	CallbackEntry * cbe = NULL;
 
-	cbe = FindCallbackEntry(GLU_TESS_COMBINE, GetCurrentGLContext());
+	cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_COMBINE, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{
@@ -530,7 +530,7 @@ void LIBAPIENTRY cbf_GLU_TESS_COMBINE_DATA (GLdouble coords[3], void *vdata[4],
 	jarray arr4=0;
 	void * combdata = NULL;
 
-	CallbackEntry * cbe = FindCallbackEntry(GLU_TESS_COMBINE_DATA, GetCurrentGLContext());
+	CallbackEntry * cbe = FindCallbackEntryOfCurrentCbObj(GLU_TESS_COMBINE_DATA, GetCurrentGLContext());
 
 	if(cbe==NULL)
 	{

@@ -58,6 +58,7 @@ JAR_DESTS		= /usr/local/lib/jdk1.2.2-FCS-blackdown/jre/lib/ext \
 			  /usr/local/lib/jdk1.3.1-sun/jre/lib/ext \
 			  /usr/local/lib/jdk1.4.0-sun/jre/lib/ext
 
+MAKE			= make
 CC			= gcc
 MKLIB 			= mklibs/mkslib.linux
 MKEXP 			= echo

@@ -130,6 +130,36 @@ CallbackNode * LIBAPIENTRY FindCallbackNode(GLenum which, jlong glx)
 				cbe->methodName, cbe->signature,
 				cbe->which, (long)(cbe->glx));
 
+			if( cbe->which == which && cbe->glx == glx ) 
+			  )
+				break;
+			cbn=cbn->next;
+		}
+	#else
+		while(cbn!=NULL && 
+		      (cbn->this->which!=which || cbn->this->glx!=glx )
+     		     )
+			cbn=cbn->next;
+	#endif
+
+	return cbn;
+}
+
+CallbackNode * LIBAPIENTRY FindCallbackNodeOfCurrentCbObj(GLenum which, jlong glx)
+{
+	CallbackNode * cbn = pCallbackNodeRoot;
+
+	#ifdef DEBUG
+		CallbackEntry * cbe = NULL;
+		printf("FindCallbackNode> which:=%d, glx:=%ld\n",
+			which, (long)glx);
+		while(cbn!=NULL)
+		{
+			cbe=cbn->this;
+			printf(" test cbe(%s %s): which:=%d, glx:=%ld\n",
+				cbe->methodName, cbe->signature,
+				cbe->which, (long)(cbe->glx));
+
 			if( cbe->which == which && cbe->glx == glx && 
 			    ((curCbObj == NULL) || (cbe->cb_obj == curCbObj)) 
 			  )
@@ -147,9 +177,17 @@ CallbackNode * LIBAPIENTRY FindCallbackNode(GLenum which, jlong glx)
 	return cbn;
 }
 
+
 CallbackEntry * LIBAPIENTRY FindCallbackEntry(GLenum which, jlong glx)
 {
 	CallbackNode * cbn = FindCallbackNode(which, glx);
+	if(cbn==NULL) return NULL;
+	return cbn->this;
+}
+
+CallbackEntry * LIBAPIENTRY FindCallbackEntryOfCurrentCbObj(GLenum which, jlong glx)
+{
+	CallbackNode * cbn = FindCallbackNodeOfCurrentCbObj(which, glx);
 	if(cbn==NULL) return NULL;
 	return cbn->this;
 }
@@ -164,7 +202,65 @@ void  LIBAPIENTRY AddCallbackNode(JNIEnv * env, jobject jobj,
 	CallbackNode * last_cbn = NULL;
 	CallbackEntry * cbe = NULL;
 
+	SetCurrentCallbackObject(cb_obj);
 	cbn = FindCallbackNode (which, glx);
+	if(cbn != NULL)
+	{
+		cbe = cbn->this;
+		CleanCallbackEntry(cbe);
+	} else {
+		cbe = calloc(1, sizeof(CallbackEntry));
+	}
+
+	cbe->env=env;
+	cbe->jobj= (*env)->NewGlobalRef(env, jobj);
+	if(methodName!=NULL)
+	{
+		cbe->methodName=calloc(strlen(methodName)+1, 1);
+		strcpy(cbe->methodName, methodName);
+	}
+	if(signature!=NULL)
+	{
+		cbe->signature=calloc(strlen(signature)+1, 1);
+		strcpy(cbe->signature, signature);
+	}
+	cbe->argListNumber= jnitoolsGetArgNumber(env, signature, cbe->methodName);
+	cbe->arrayLen1=arrayLen1;
+	cbe->arrayLen2=arrayLen2;
+	cbe->arrayLen3=arrayLen3;
+	cbe->arrayLen4=arrayLen4;
+	cbe->arrayLen5=arrayLen5;
+	cbe->cb_obj=cb_obj;
+	cbe->which=which;
+	cbe->glx=glx;
+
+	if(cbn == NULL)
+	{
+		cbn = calloc(1, sizeof(CallbackNode)); 
+		cbn->this = cbe;
+		last_cbn = LastCallbackNode();
+		if(last_cbn==NULL)
+			pCallbackNodeRoot=cbn;
+		else {
+			last_cbn->next=cbn;
+			cbn->prev=last_cbn;
+		}
+	}
+	DBG_PRINT_CBN("AddCallbackNode", cbn);
+}
+
+void  LIBAPIENTRY AddCallbackNodeForCbObj(JNIEnv * env, jobject jobj, 
+		      const char *methodName, const char *signature,
+		      int arrayLen1, int arrayLen2, int arrayLen3,
+		      int arrayLen4, int arrayLen5,
+		      void *cb_obj, GLenum which, jlong glx)
+{
+	CallbackNode * cbn = NULL;
+	CallbackNode * last_cbn = NULL;
+	CallbackEntry * cbe = NULL;
+
+	SetCurrentCallbackObject(cb_obj);
+	cbn = FindCallbackNodeOfCurrentCbObj (which, glx);
 	if(cbn != NULL)
 	{
 		cbe = cbn->this;

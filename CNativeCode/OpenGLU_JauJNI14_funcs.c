@@ -37,7 +37,7 @@
     glu-manualCodedImplJNI14.java
 */
 
-static const char _glu_n_a_string[] = "GLU-String not avaiable !";
+static const char _glu_n_a_string[] = "GLU-String not available !";
 
 static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
 static const char * _glu_lib_version_="2.8.3.0";
@@ -109,6 +109,31 @@ static void _AddCallbackNode(JNIEnv *env,
 	glx = GetCurrentGLContext();
 
 	AddCallbackNode(env, methodClassInstance, strMethodName, strSignature,
+			arrayLen1, arrayLen2, arrayLen3,
+			arrayLen4, arrayLen5,
+			(void *)((PointerHolder)qnt_obj), which, glx);
+	free(strMethodName);
+	free(strSignature);
+}
+                  
+static void _AddCallbackNodeForCbObj(JNIEnv *env,
+	                          jlong qnt_obj, jint which,
+			          jobject methodClassInstance, 
+			          jstring methodName, 
+				  jstring signature,
+				  jint arrayLen1,
+				  jint arrayLen2,
+				  jint arrayLen3,
+				  jint arrayLen4,
+				  jint arrayLen5)
+{
+	char * strMethodName = jnitoolsGetJavaString(env, methodName);
+	char * strSignature = jnitoolsGetJavaString(env, signature);
+	jlong glx=0;
+
+	glx = GetCurrentGLContext();
+
+	AddCallbackNodeForCbObj(env, methodClassInstance, strMethodName, strSignature,
 			arrayLen1, arrayLen2, arrayLen3,
 			arrayLen4, arrayLen5,
 			(void *)((PointerHolder)qnt_obj), which, glx);
@@ -248,7 +273,7 @@ Java_gl4java_GLUFunc14JauJNI_gluTessCallback( JNIEnv *env, jobject obj,
 		    jnitoolsThrowByName(env, "java/lang/IllegalArgumentException", "Wrong Callback-Function type (\"which\") !");
 		    return;
 	}
-	_AddCallbackNode(env,
+	_AddCallbackNodeForCbObj(env,
 			  tobj, which, methodClassInstance, methodName, 
 			  signature, 
 			  arrayLen1, arrayLen2, arrayLen3,
@@ -658,12 +683,12 @@ Java_gl4java_GLUFunc14JauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		if(location!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetDoubleArrayElements(env, location, 0);
-			RegisterArray(env, location, ptr1, MEMM_DOUBLE, MEMM_TESSELATOR);
+			RegisterArray(env, location, ptr1, T_DOUBLE_ARRAY, MEMM_TESSELATOR);
 		}
 		if(data!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetByteArrayElements(env, data, 0);
-			RegisterArray(env, data, ptr2, MEMM_BYTE, MEMM_TESSELATOR);
+			RegisterArray(env, data, ptr2, T_BYTE_ARRAY, MEMM_TESSELATOR);
 		}
 		SetCurrentCallbackObject((void *) (PointerHolder) tess);
 		disp__gluTessVertex (
@@ -687,12 +712,12 @@ Java_gl4java_GLUFunc14JauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		if(location!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetDoubleArrayElements(env, location, 0);
-			RegisterArray(env, location, ptr1, MEMM_DOUBLE, MEMM_TESSELATOR);
+			RegisterArray(env, location, ptr1, T_DOUBLE_ARRAY, MEMM_TESSELATOR);
 		}
 		if(data!=NULL)
 		{
 			ptr2 = (jshort *) (*env)->GetShortArrayElements(env, data, 0);
-			RegisterArray(env, data, ptr2, MEMM_SHORT, MEMM_TESSELATOR);
+			RegisterArray(env, data, ptr2, T_SHORT_ARRAY, MEMM_TESSELATOR);
 		}
 		SetCurrentCallbackObject((void *) (PointerHolder) tess);
 		disp__gluTessVertex (
@@ -716,12 +741,12 @@ Java_gl4java_GLUFunc14JauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		if(location!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetDoubleArrayElements(env, location, 0);
-			RegisterArray(env, location, ptr1, MEMM_DOUBLE, MEMM_TESSELATOR);
+			RegisterArray(env, location, ptr1, T_DOUBLE_ARRAY, MEMM_TESSELATOR);
 		}
 		if(data!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetIntArrayElements(env, data, 0);
-			RegisterArray(env, data, ptr2, MEMM_INT, MEMM_TESSELATOR);
+			RegisterArray(env, data, ptr2, T_INT_ARRAY, MEMM_TESSELATOR);
 		}
 		SetCurrentCallbackObject((void *) (PointerHolder) tess);
 		disp__gluTessVertex (
@@ -745,12 +770,12 @@ Java_gl4java_GLUFunc14JauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		if(location!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetDoubleArrayElements(env, location, 0);
-			RegisterArray(env, location, ptr1, MEMM_DOUBLE, MEMM_TESSELATOR);
+			RegisterArray(env, location, ptr1, T_DOUBLE_ARRAY, MEMM_TESSELATOR);
 		}
 		if(data!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetFloatArrayElements(env, data, 0);
-			RegisterArray(env, data, ptr2, MEMM_FLOAT, MEMM_TESSELATOR);
+			RegisterArray(env, data, ptr2, T_FLOAT_ARRAY, MEMM_TESSELATOR);
 		}
 		SetCurrentCallbackObject((void *) (PointerHolder) tess);
 		disp__gluTessVertex (
@@ -774,12 +799,12 @@ Java_gl4java_GLUFunc14JauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		if(location!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetDoubleArrayElements(env, location, 0);
-			RegisterArray(env, location, ptr1, MEMM_DOUBLE, MEMM_TESSELATOR);
+			RegisterArray(env, location, ptr1, T_DOUBLE_ARRAY, MEMM_TESSELATOR);
 		}
 		if(data!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetDoubleArrayElements(env, data, 0);
-			RegisterArray(env, data, ptr2, MEMM_DOUBLE, MEMM_TESSELATOR);
+			RegisterArray(env, data, ptr2, T_DOUBLE_ARRAY, MEMM_TESSELATOR);
 		}
 		SetCurrentCallbackObject((void *) (PointerHolder) tess);
 		disp__gluTessVertex (
@@ -803,12 +828,12 @@ Java_gl4java_GLUFunc14JauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		if(location!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetDoubleArrayElements(env, location, 0);
-			RegisterArray(env, location, ptr1, MEMM_DOUBLE, MEMM_TESSELATOR);
+			RegisterArray(env, location, ptr1, T_DOUBLE_ARRAY, MEMM_TESSELATOR);
 		}
 		if(data!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetBooleanArrayElements(env, data, 0);
-			RegisterArray(env, data, ptr2, MEMM_BOOLEAN, MEMM_TESSELATOR);
+			RegisterArray(env, data, ptr2, T_BOOLEAN_ARRAY, MEMM_TESSELATOR);
 		}
 		SetCurrentCallbackObject((void *) (PointerHolder) tess);
 		disp__gluTessVertex (
@@ -832,12 +857,12 @@ Java_gl4java_GLUFunc14JauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		if(location!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetDoubleArrayElements(env, location, 0);
-			RegisterArray(env, location, ptr1, MEMM_DOUBLE, MEMM_TESSELATOR);
+			RegisterArray(env, location, ptr1, T_DOUBLE_ARRAY, MEMM_TESSELATOR);
 		}
 		if(data!=NULL)
 		{
 			ptr2 = (jlong *) (*env)->GetLongArrayElements(env, data, 0);
-			RegisterArray(env, data, ptr2, MEMM_LONG, MEMM_TESSELATOR);
+			RegisterArray(env, data, ptr2, T_LONG_ARRAY, MEMM_TESSELATOR);
 		}
 		SetCurrentCallbackObject((void *) (PointerHolder) tess);
 		disp__gluTessVertex (
@@ -847,10 +872,10 @@ Java_gl4java_GLUFunc14JauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		);
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFunc14JauJNI_gluTessVertex__J_3DLjava_nio_Buffer_2 (
+	Java_gl4java_GLUFunc14JauJNI_gluTessVertex__JLjava_nio_DoubleBuffer_2Ljava_nio_Buffer_2 (
 		JNIEnv *env, jobject obj,
 		jlong tess,
-		jdoubleArray location,
+		jobject location,
 		jobject data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -859,6 +884,15 @@ Java_gl4java_GLUFunc14JauJNI_gluNewTess( JNIEnv *env, jobject obj)
 
 		if ( disp__gluTessVertex == NULL ) return;
 
+		if(location!=NULL)
+		{
+			ptr1 = (jdouble *) (*env)->GetDirectBufferAddress(env, location);
+			if (ptr1 == NULL) {
+				(*env)->ThrowNew(env, (*env)->FindClass(env, "java/lang/IllegalArgumentException"),
+					"Argument 1 was not a direct double buffer");
+				return ;
+			}
+		}
 		if(data!=NULL)
 		{
 			ptr2 = (*env)->GetDirectBufferAddress(env, data);
@@ -868,21 +902,12 @@ Java_gl4java_GLUFunc14JauJNI_gluNewTess( JNIEnv *env, jobject obj)
 				return ;
 			}
 		}
-		if(location!=NULL)
-		{
-			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, location, &isCopiedArray1);
-		}
 		SetCurrentCallbackObject((void *) (PointerHolder) tess);
 		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tess,
 			(GLdouble *) ptr1,
 			(GLvoid *) ptr2
 		);
-
-		if(location!=NULL)
-		{
-			(*env)->ReleasePrimitiveArrayCritical(env,  location, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
-		}
 	}
 
 /**

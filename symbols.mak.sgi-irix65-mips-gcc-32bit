@@ -4,28 +4,62 @@
 # and CC etc. on your system
 ######################################################################
 
-SHELL			= /usr/bin/bash
+SHELL			= /usr/sglocal/bin/bash
 
 THISDIR 		= ${PWD}
 HOME_LIB_DIR    	= ${HOME}/lib
 DEST_CLASSES_DIR	= ${HOME}/lib-java
 UNIXTYPE		= SGI-IRIX-65-mips
 
-JDK_HOME		= $(shell dirname $$(which java))/..
+#
+# JDK_HOME must point to the highest JDK being used,
+# e.g. to JDK14_HOME, if using JDK14, otherwise JDK13_HOME
+#
+# AT LEAST JDK13_HOME MUST BE DEFINED !
+#
+JDK13_HOME		= /usr/java
+#JDK14_HOME		=
+JDK_HOME		= $(JDK13_HOME)
+
 JAVASHAREINC    	= $(JDK_HOME)/include
 JAVAOSINC  		= $(JDK_HOME)/include/irix
+JAVAOSLIB  		= $(JDK_HOME)/jre/lib/mips
 
+JAVADOC 		= $(JDK_HOME)/bin/javadoc
+JAVAH 			= $(JDK_HOME)/bin/javah
+JAR 			= $(JDK13_HOME)/bin/jar
+
+# If MSJAVAC is specified on Win32 platforms, it will be used to
+# compile window system-specific files for the Microsoft VM. In order
+# to build a complete GL4Java distribution on Windows, MSJAVAC must be
+# specified.
+# MSJAVAC 		= //D/MSJVM/Bin/jvc -nomessage -x- -cp:p .\;$(THISDIR_w32)\;$(THISDIR_w32)\\CAPSAPI_CLASSES.ZIP
+
+# At least JAVAC_13 must be defined.
+# JAVAC_14 may be defined to create JDK 1.4 related things ..
+#
+# JAVAC_14 is being used to build the JDK 1.4 specific classes only
+#
+# JAVAC_13 is being used to build all JDK 1.1 - 1.3 related classes
+#
+# In order to build a complete GL4Java distribution on X11, Win32, and (once JDK 1.4 is available)
+# Macintosh, both JAVAC_13 and JAVAC_14 must be specified.
+#
+JAVAC_13 		= $(JDK13_HOME)/bin/javac -classpath ".:$(THISDIR):$(THISDIR)/capsapi_classes.zip:$(THISDIR)/png.jar"
+#JAVAC_14 		=
+
+JAR_DESTS		= ${HOME}/jre/lib/ext
+
+
+MAKE			= gmake
 CC			= gcc
 MKLIB 			= mklibs/mkslib.irix6.2-gcc
 MKEXP 			= echo
-JAVAC 			= $(JDK_HOME)/bin/javac -classpath ".:$(THISDIR):$(THISDIR)/capsapi_classes.zip"
-JAVAH 			= $(JDK_HOME)/bin/javah
-JAR                     = $(JDK_HOME)/bin/jar
 
 OGLINCDIR 		= /usr/include
 
-XINCDIR 		= /usr/include/X11
-XLIBDIR 		= /usr/lib/X11
+XINCDIR 		= /usr/include
+XLIBDIR 		= /usr/lib32
 
 MATHLIB 		= -lm
 

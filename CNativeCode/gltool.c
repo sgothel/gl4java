@@ -189,6 +189,9 @@ int LIBAPIENTRY loadGLLibrary (const char * libGLName, const char * libGLUName,
   Str255 errName;
   OSErr returnError=fragNoErr;
 #endif
+#ifdef _X11_
+  const char *err=NULL;
+#endif
 
   if(_glLibsLoaded) return 1;
 
@@ -237,7 +240,9 @@ int LIBAPIENTRY loadGLLibrary (const char * libGLName, const char * libGLUName,
   libHandleGL = dlopen (libGLName, RTLD_LAZY | RTLD_GLOBAL);
   if (libHandleGL == NULL)
   {
+      err=dlerror();
       printf ("GLERROR: cannot access OpenGL library %s\n", libGLName);
+      if(err!=NULL) printf("\t dlerror: %s\n", err);
       fflush (NULL);
       return 0;
   }
@@ -245,7 +250,9 @@ int LIBAPIENTRY loadGLLibrary (const char * libGLName, const char * libGLUName,
   libHandleGLU = dlopen (libGLUName, RTLD_LAZY | RTLD_GLOBAL);
   if (libHandleGLU == NULL)
   {
+      err=dlerror();
       printf ("GLERROR: cannot access GLU library %s\n", libGLUName);
+      if(err!=NULL) printf("\t dlerror: %s\n", err);
       fflush (NULL);
       return 0;
   }

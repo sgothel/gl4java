@@ -33,7 +33,16 @@
  * herein lies the native JAVA methods for the OpenGL functions.  
  */
 
+/** THIS IS A MANUAL CODED PART
+    glu-manualCodedImplJNI14.java
+*/
+
 static const char _glu_n_a_string[] = "GLU-String not available !";
+
+static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
+static const char * _glu_lib_version_="2.8.3.0";
+
+/* ---------------------------------------------------------------------- */
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLUFuncJauJNI_gluErrorString ( JNIEnv *env, jobject obj,
@@ -67,9 +76,6 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
     return (*env)->NewStringUTF(env, tmpString);   
 }
 
-static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _glu_lib_version_="2.8.3.0";
-
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLUFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
 {
@@ -100,6 +106,31 @@ static void _AddCallbackNode(JNIEnv *env,
 	glx = GetCurrentGLContext();
 
 	AddCallbackNode(env, methodClassInstance, strMethodName, strSignature,
+			arrayLen1, arrayLen2, arrayLen3,
+			arrayLen4, arrayLen5,
+			(void *)((PointerHolder)qnt_obj), which, glx);
+	free(strMethodName);
+	free(strSignature);
+}
+
+static void _AddCallbackNodeForCbObj(JNIEnv *env,
+	                          jlong qnt_obj, jint which,
+			          jobject methodClassInstance, 
+			          jstring methodName, 
+				  jstring signature,
+				  jint arrayLen1,
+				  jint arrayLen2,
+				  jint arrayLen3,
+				  jint arrayLen4,
+				  jint arrayLen5)
+{
+	char * strMethodName = jnitoolsGetJavaString(env, methodName);
+	char * strSignature = jnitoolsGetJavaString(env, signature);
+	jlong glx=0;
+
+	glx = GetCurrentGLContext();
+
+	AddCallbackNodeForCbObj(env, methodClassInstance, strMethodName, strSignature,
 			arrayLen1, arrayLen2, arrayLen3,
 			arrayLen4, arrayLen5,
 			(void *)((PointerHolder)qnt_obj), which, glx);
@@ -172,7 +203,7 @@ Java_gl4java_GLUFuncJauJNI_gluTessCallback( JNIEnv *env, jobject obj,
 				  jint arrayLen5)
 {
 	if ( disp__gluTessCallback == NULL )  return;
-
+	
 	switch(which)
 	{
 		case GLU_TESS_BEGIN:
@@ -239,7 +270,7 @@ Java_gl4java_GLUFuncJauJNI_gluTessCallback( JNIEnv *env, jobject obj,
 		    jnitoolsThrowByName(env, "java/lang/IllegalArgumentException", "Wrong Callback-Function type (\"which\") !");
 		    return;
 	}
-	_AddCallbackNode(env,
+	_AddCallbackNodeForCbObj(env,
 			  tobj, which, methodClassInstance, methodName, 
 			  signature, 
 			  arrayLen1, arrayLen2, arrayLen3,

@@ -2203,7 +2203,7 @@ public class GLContext extends Object
       if (libpath == null) {
         libpath = findInPath(System.getProperty("sun.boot.library.path"), jawtName0);
       } else if (gljClassDebug) {
-		System.err.println("Located: " + jawtName0 + ", within: java.library.path: "+
+		System.err.println("Located: " + jawtName0 + ": "+libpath+", within: java.library.path: "+
                                    System.getProperty("java.library.path"));
 		found = true;
       }
@@ -2222,7 +2222,7 @@ public class GLContext extends Object
 
       	      libpath = findInPath(System.getProperty("java.library.path"), jawtName1);
       } else if (gljClassDebug && !found) {
-		System.err.println("Located: " + jawtName0 + ", within: sun.boot.library.path: "+
+		System.err.println("Located: " + jawtName0 + ": "+libpath+", within: sun.boot.library.path: "+
                                    System.getProperty("sun.boot.library.path"));
 		found = true;
       }
@@ -2234,7 +2234,7 @@ public class GLContext extends Object
       if (libpath == null)  {
         libpath = findInPath(System.getProperty("sun.boot.library.path"), jawtName1);
       } else if (gljClassDebug && !found) {
-		System.err.println("Located: " + jawtName1 + ", within: java.library.path: "+
+		System.err.println("Located: " + jawtName1 + ": "+libpath+", within: java.library.path: "+
                                    System.getProperty("java.library.path"));
 		found = true;
       }
@@ -2246,7 +2246,7 @@ public class GLContext extends Object
         System.err.println("  sun.boot.library.path = " + System.getProperty("sun.boot.library.path"));
         return false;
       } else if (gljClassDebug && !found) {
-		System.err.println("Located: " + jawtName0 + ", within: sun.boot.library.path: "+
+		System.err.println("Located: " + jawtName0 + ": "+libpath+", within: sun.boot.library.path: "+
                                    System.getProperty("sun.boot.library.path"));
 		found = true;
       }

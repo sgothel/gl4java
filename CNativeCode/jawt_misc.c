@@ -36,7 +36,7 @@ jawt_init (char* jawtLibName)
 
   if ( hDLL_JAWT==NULL )
   {
-    printf("  jawt_init: LoadLibrary failed\n");
+    printf("  jawt_init: LoadLibrary failed: %s\n", jawtLibName);
     return JNI_FALSE;
   }
 
@@ -44,7 +44,8 @@ jawt_init (char* jawtLibName)
   	GetProcAddress(hDLL_JAWT, "_JAWT_GetAWT@8");
 
   if (JAWT_GetAWT_fn == NULL) {
-    printf("  jawt_init: GetProcAddress failed\n");
+    printf("  jawt_init: GetProcAddress failed: %s in %s\n",
+		"_JAWT_GetAWT@8", jawtLibName);
     return JNI_FALSE;
   }
   return JNI_TRUE;
@@ -52,19 +53,23 @@ jawt_init (char* jawtLibName)
 #endif
 
 #ifdef _X11_ 
+  const char *err=NULL;
 
   if ( libHandleJAWT == NULL )
 	  libHandleJAWT = dlopen(jawtLibName, RTLD_LAZY | RTLD_GLOBAL);
 
   if ( libHandleJAWT == NULL) {
-    printf("  jawt_init: dlopen failed\n");
+    err=dlerror();
+    printf("  jawt_init: dlopen failed: %s\n", jawtLibName);
+    if(err!=NULL) printf("  jawt_init: dlerror: %s\n", err);
     return JNI_FALSE;
   }
 
   JAWT_GetAWT_fn = (JAWT_GetAWT_fn_t*) dlsym(libHandleJAWT, "JAWT_GetAWT");
 
   if (JAWT_GetAWT_fn == NULL) {
-    printf("  jawt_init: dlsym failed\n");
+    printf("  jawt_init: dlsym failed: %s in %s\n", 
+	"JAWT_GetAWT", jawtLibName);
     return JNI_FALSE;
   }
 

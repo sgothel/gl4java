@@ -37,7 +37,7 @@ public void gluTessBeginPolygon ( long tess, Buffer data) ;
    extern void gluTessVertex ( GLUtesselator * tess , GLdouble * location , GLvoid * data ) ;
  * </pre> 
  */
-public void gluTessVertex ( long tess, double[] location, Buffer data) ;
+public void gluTessVertex ( long tess, DoubleBuffer location, Buffer data) ;
 
 
 public String gluErrorString ( int errorCode ) ;
