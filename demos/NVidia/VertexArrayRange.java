@@ -632,9 +632,18 @@ public class VertexArrayRange {
           loX.reset();
           hiX.reset();
 
-          // NOTE: we don't make the glVertexPointer/glNormalPointer
-          // call until this point because the semantics in the
-          // "fixed" implementation are that they copy data.
+          // NOTE: these calls are not safe because the OpenGL for
+          // Java implementation uses the JNI
+          // GetPrimitiveArrayCritical routine to fetch the arrays'
+          // storage. If a garbage collection occurs between or during
+          // the glVertexPointer and glDrawElements calls, the arrays
+          // may move, leading to incorrect data being drawn or
+          // possibly a crash. Future applications should always use
+          // java.nio direct buffers for the storage passed down to
+          // glVertexPointer and similar routines taking persistent
+          // pointers, regardless of whether an extension like
+          // NVidia's vertex array range is used. Direct buffers can
+          // be created with ByteBuffer.allocateDirect().
           gl.glVertexPointer(3, GL_FLOAT, 3 * SIZEOF_FLOAT, v);
           gl.glNormalPointer(GL_FLOAT, 3 * SIZEOF_FLOAT, n);
 
