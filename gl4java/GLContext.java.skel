@@ -694,12 +694,12 @@ public class GLContext extends Object
         isIBMJvm = jvmVendor!=null && jvmVendor.indexOf("IBM")>=0 ;
 
  	// Determine the OS
- 	osName = System.getProperty( "os.name" );
- 	if( osName.startsWith( "Wind" ) )
+        osName = System.getProperty( "os.name" ).toLowerCase();
+ 	if( osName.startsWith( "wind" ) )
 	   osType = OsWindoof;
- 	else if( osName.startsWith( "Mac OS X" ) )
+ 	else if( osName.startsWith( "darwin" ) )
 	   osType = OsMacX;
- 	else if( osName.startsWith( "Mac OS" ) )
+ 	else if( osName.startsWith( "mac os" ) )
 	   osType = OsMac9;
 	else /* oops - lets guess unix/x11 :-) */
 	   osType = OsX11;
@@ -2150,11 +2150,12 @@ public class GLContext extends Object
      */
     protected static final native boolean useJAWT();
 
-    private static String makeLibName(String name) {
+    private static String makeLibName(String name) 
+    {
       int type = getNativeOSType();
       if (type == OsWindoof) {
         return name + ".dll";
-      } else if (type == OsX11) {
+      } else if ( type == OsX11 || type == OsMacX ) {
         return "lib" + name + ".so";
       } else {
         throw new RuntimeException("Please port makeLibName to your platform");
