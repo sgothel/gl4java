@@ -347,9 +347,16 @@ jarray LIBAPIENTRY jnitoolsNativePtrArray2JavaArray (JNIEnv *env,
 						errText, arg);
 			return 0;
 	}
-	for(i=0; i<pointerNumber; i++)
+	for(i=0; data!=NULL && i<pointerNumber; i++)
+	{
+	    if(data[i]!=NULL)
+	    {
 		memcpy(buffer+i*setLenBytes,
 		       data[i], setLenBytes);
+	    } else {
+	        memset(buffer+i*setLenBytes, 0, setLenBytes);
+	    }
+	}
 
 	res = jnitoolsNativeArray2JavaArray (env, jbt, 
                                              buffer, dataArrayLen, 
@@ -366,6 +373,8 @@ void LIBAPIENTRY jnitoolsReleaseJavaArray2NativeArray (JNIEnv *env, jarray arr, 
 	void * arrdata = 0;
 
     	if(!isinit && init(env)) isinit=1;
+
+    	if(data==NULL) return;
 
 	if(len!=dataArrayLen)
 	{
@@ -440,6 +449,8 @@ void LIBAPIENTRY jnitoolsReleaseJavaArray2NativeArrayPtr (JNIEnv *env,
 
     	if(!isinit && init(env)) isinit=1;
 
+    	if(data==NULL) return;
+
 	if(len!=dataArrayLen)
 	{
 		jnitoolsThrowByName(env, "java/lang/IllegalArgumentException",
@@ -453,64 +464,72 @@ void LIBAPIENTRY jnitoolsReleaseJavaArray2NativeArrayPtr (JNIEnv *env,
 			arrdata = (unsigned char *) (*env)->GetBooleanArrayElements(env, (jbooleanArray)arr, 0);
 			setLenBytes = setLenElems * sizeof(jboolean);
 			for(i=0; i<pointerNumber; i++)
-				memcpy(data[i], arrdata+i*setLenBytes,
-				       setLenBytes);
+				if(data[i]!=NULL)
+					memcpy(data[i], arrdata+i*setLenBytes,
+					       setLenBytes);
 			(*env)->ReleaseBooleanArrayElements(env,(jbooleanArray)arr, (jboolean *)arrdata,JNI_ABORT);
 			break;
 		case T_BYTE_ARRAY:
 			arrdata = (unsigned char *) (*env)->GetByteArrayElements(env, (jbyteArray)arr, 0);
 			setLenBytes = setLenElems * sizeof(jbyte);
 			for(i=0; i<pointerNumber; i++)
-				memcpy(data[i], arrdata+i*setLenBytes,
-				       setLenBytes);
+				if(data[i]!=NULL)
+					memcpy(data[i], arrdata+i*setLenBytes,
+					       setLenBytes);
 			(*env)->ReleaseByteArrayElements(env,(jbyteArray)arr, (jbyte *)arrdata,JNI_ABORT);
 			break;
 		case T_CHAR_ARRAY:
 			arrdata = (unsigned char *) (*env)->GetCharArrayElements(env, (jcharArray)arr, 0);
 			setLenBytes = setLenElems * sizeof(jchar);
 			for(i=0; i<pointerNumber; i++)
-				memcpy(data[i], arrdata+i*setLenBytes,
-				       setLenBytes);
+				if(data[i]!=NULL)
+					memcpy(data[i], arrdata+i*setLenBytes,
+					       setLenBytes);
 			(*env)->ReleaseCharArrayElements(env,(jcharArray)arr, (jchar *)arrdata,JNI_ABORT);
 			break;
 		case T_SHORT_ARRAY:
 			arrdata = (unsigned char *) (*env)->GetShortArrayElements(env, (jshortArray)arr, 0);
 			setLenBytes = setLenElems * sizeof(jshort);
 			for(i=0; i<pointerNumber; i++)
-				memcpy(data[i], arrdata+i*setLenBytes,
-				       setLenBytes);
+				if(data[i]!=NULL)
+					memcpy(data[i], arrdata+i*setLenBytes,
+					       setLenBytes);
 			(*env)->ReleaseShortArrayElements(env,(jshortArray)arr, (jshort *)arrdata,JNI_ABORT);
 			break;
 		case T_INT_ARRAY:
 			arrdata = (unsigned char *) (*env)->GetIntArrayElements(env, (jintArray)arr, 0);
 			setLenBytes = setLenElems * sizeof(jint);
 			for(i=0; i<pointerNumber; i++)
-				memcpy(data[i], arrdata+i*setLenBytes,
-				       setLenBytes);
+				if(data[i]!=NULL)
+					memcpy(data[i], arrdata+i*setLenBytes,
+					       setLenBytes);
 			(*env)->ReleaseIntArrayElements(env,(jintArray)arr, (jint *)arrdata,JNI_ABORT);
 			break;
 		case T_LONG_ARRAY:
 			arrdata = (unsigned char *) (*env)->GetLongArrayElements(env, (jlongArray)arr, 0);
 			setLenBytes = setLenElems * sizeof(jlong);
 			for(i=0; i<pointerNumber; i++)
-				memcpy(data[i], arrdata+i*setLenBytes,
-				       setLenBytes);
+				if(data[i]!=NULL)
+					memcpy(data[i], arrdata+i*setLenBytes,
+					       setLenBytes);
 			(*env)->ReleaseLongArrayElements(env,(jlongArray)arr, (jlong *)arrdata,JNI_ABORT);
 			break;
 		case T_FLOAT_ARRAY:
 			arrdata = (unsigned char *) (*env)->GetFloatArrayElements(env, (jfloatArray)arr, 0);
 			setLenBytes = setLenElems * sizeof(jfloat);
 			for(i=0; i<pointerNumber; i++)
-				memcpy(data[i], arrdata+i*setLenBytes,
-				       setLenBytes);
+				if(data[i]!=NULL)
+					memcpy(data[i], arrdata+i*setLenBytes,
+					       setLenBytes);
 			(*env)->ReleaseFloatArrayElements(env,(jfloatArray)arr, (jfloat *)arrdata,JNI_ABORT);
 			break;
 		case T_DOUBLE_ARRAY:
 			arrdata = (unsigned char *) (*env)->GetDoubleArrayElements(env, (jdoubleArray)arr, 0);
 			setLenBytes = setLenElems * sizeof(jdouble);
 			for(i=0; i<pointerNumber; i++)
-				memcpy(data[i], arrdata+i*setLenBytes,
-				       setLenBytes);
+				if(data[i]!=NULL)
+					memcpy(data[i], arrdata+i*setLenBytes,
+					       setLenBytes);
 			(*env)->ReleaseDoubleArrayElements(env,(jdoubleArray)arr, (jdouble *)arrdata,JNI_ABORT);
 			break;
 		default:

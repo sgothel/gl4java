@@ -79,7 +79,7 @@ public class anti extends Applet
 		Dimension ps = applet.getPreferredSize();
 		f.setBounds(-100,-100,99,99);
 		f.setVisible(true);
-		f.setVisible(false);
+		//f.setVisible(false);
 		Insets i = f.getInsets();
 		f.setBounds(0,0,
 			    ps.width+i.left+i.right, 

@@ -347,9 +347,16 @@ jarray LIBAPIENTRY jnitoolsNativePtrArray2JavaArray (JNIEnv *env,
 						errText, arg);
 			return 0;
 	}
-	for(i=0; i<pointerNumber; i++)
+	for(i=0; data!=NULL && i<pointerNumber; i++)
+	{
+	    if(data[i]!=NULL)
+	    {
 		memcpy(buffer+i*setLenBytes,
 		       data[i], setLenBytes);
+	    } else {
+	        memset(buffer+i*setLenBytes, 0, setLenBytes);
+	    }
+	}
 
 	res = jnitoolsNativeArray2JavaArray (env, jbt, 
                                              buffer, dataArrayLen, 
@@ -367,6 +374,8 @@ void LIBAPIENTRY jnitoolsReleaseJavaArray2NativeArray (JNIEnv *env, jarray arr, 
 	void * arrdata = 0;
 
     	if(!isinit && init(env)) isinit=1;
+
+    	if(data==NULL) return;
 
 	if(len!=dataArrayLen)
 	{
@@ -429,6 +438,8 @@ void LIBAPIENTRY jnitoolsReleaseJavaArray2NativeArrayPtr (JNIEnv *env,
 
     	if(!isinit && init(env)) isinit=1;
 
+    	if(data==NULL) return;
+
 	if(len!=dataArrayLen)
 	{
 		jnitoolsThrowByName(env, "java/lang/IllegalArgumentException",
@@ -470,8 +481,10 @@ void LIBAPIENTRY jnitoolsReleaseJavaArray2NativeArrayPtr (JNIEnv *env,
 				                "%s(arg #%d): Type is not an array", errText, arg);
 	}
 	for(i=0; i<pointerNumber; i++)
-		memcpy(data[i], arrdata+i*setLenBytes,
-		       setLenBytes);
+		if(data[i]!=NULL)
+			memcpy(data[i], arrdata+i*setLenBytes,
+			       setLenBytes);
+
 	(*env)->ReleasePrimitiveArrayCritical(env,  arr, arrdata, JNI_ABORT);
 }
 

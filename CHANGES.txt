@@ -8,6 +8,16 @@ TOP  = NEW
 DOWN = OLD
 -----------------
 
+8th February  2001 (Version 2.5.1 - Release 0 )
+	o Bugfixed the JNI Tool Module Functions,
+	  which had a bug within the Callback Helper Functions
+	  for the GLU Callback Code !
+	  Now, all pointers are checked to non zero !
+	  Zero Pointers are now handled nice !
+	  Thanxs to Sahuc David, who found the case,
+	  where GLU Combined Callback creates an zero pointer within the 
+	  vertices array !
+
 18th November  2000 (Version 2.5.0 - Release 0 )
 	o Added this source tree to CVS at GL4Java.sourceforge.net !
 	  (the binary only directories:
