@@ -686,9 +686,9 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 			}
 		}
 
-		if ( ! disp__wglMakeCurrent( NULL, NULL ) )
+		if ( ! disp__wglMakeCurrent( thisWin, gc ) )
 		{
-			fprintf(stderr, "gljDestroy failed (free)\n");
+			fprintf(stderr, "gljDestroy failed (makeCurrent)\n");
 			fflush(stderr);
 		} 
 
