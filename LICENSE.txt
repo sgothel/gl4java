@@ -24,12 +24,10 @@ in the internet at http://www.gnu.org/copyleft/lgpl.html !
 
 If you like to contact the author use:
 
-Sven Goethel, Elpke 5, 33605 Bielefeld, Germany
+Sven Goethel
 email: sgoethel@jausoft.com
 web  : http://www.jausoft.com
-voice: +49-521-2399440
-fax  : +49-521-2399442
 
-Sven Goethel, 15 January 1999
+Sven Goethel, 15 January 1999, 27.06.2003, ..
 
 \end{verbatim}
