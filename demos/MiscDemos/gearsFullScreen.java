@@ -136,6 +136,7 @@ public class gearsFullScreen extends SimpleGLAnimApplet1
                              applet.canvas.getUseFpsSleep());
         }
 
+      mainFrame.setResizable(true);
       mainFrame.setSize(initWidth, initHeight);
       mainFrame.show();
       mainFrame.setLocation(0, 0);
@@ -143,22 +144,26 @@ public class gearsFullScreen extends SimpleGLAnimApplet1
       if (device.isFullScreenSupported()) {
         device.setFullScreenWindow(mainFrame);
         if (device.isDisplayChangeSupported()) {
-          device.setDisplayMode(newMode);
-        } else {
-          newMode = null;
-        }
-        final DisplayMode tmpMode = newMode;
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            public void run() {
-              if (tmpMode != null) {
-                try {
-                  device.setDisplayMode(origMode);
-                } catch (Exception e) {
+          if (newMode != null) {
+            device.setDisplayMode(newMode);
+          }
+          final DisplayMode tmpMode = newMode;
+          Runtime.getRuntime().addShutdownHook(new Thread() {
+              public void run() {
+                if (tmpMode != null) {
+                  try {
+                    device.setDisplayMode(origMode);
+                  } catch (Exception e) {
+                  }
                 }
+                device.setFullScreenWindow(null);
               }
-              device.setFullScreenWindow(null);
-            }
-          });
+            });
+        } else {
+          // Not much point in having a full-screen window in this case
+          device.setFullScreenWindow(null);
+          mainFrame.setSize(origMode.getWidth(), origMode.getHeight());
+        }
       }
         
       applet.start();
