@@ -23,7 +23,7 @@ public class gears extends SimpleGLAnimApplet1
 
         /* Initialize the applet */
 	static {
-		GLContext.gljNativeDebug = false;
+		GLContext.gljNativeDebug = true;
 		GLContext.gljThreadDebug = false;
 		GLContext.gljClassDebug = true;
 	}
@@ -31,6 +31,9 @@ public class gears extends SimpleGLAnimApplet1
 
 	public void init()
 	{
+		GLContext.gljNativeDebug = true;
+		GLContext.gljThreadDebug = false;
+		GLContext.gljClassDebug = true;
 	  init(false);
 	}
 

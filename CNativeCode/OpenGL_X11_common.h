@@ -30,7 +30,8 @@
    */
   LIBAPI int LIBAPIENTRY get_GC( Display *display, Window win, 
   			         XVisualInfo *visual,
-                                 GLXContext *gc, GLXContext gc_share);
+                                 GLXContext *gc, GLXContext gc_share,
+				 jboolean verbose );
   
   LIBAPI VisualGC LIBAPIENTRY findVisualGlX( Display *display, 
   			       Window rootWin,

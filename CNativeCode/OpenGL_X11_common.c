@@ -53,7 +53,8 @@
  *             be associated with the window
  */
 int LIBAPIENTRY get_GC( Display *display, Window win, XVisualInfo *visual,
-                        GLXContext *gc, GLXContext gc_share)
+                        GLXContext *gc, GLXContext gc_share,
+			jboolean verbose )
 {
     int trial = 2;
 
@@ -78,8 +79,17 @@ int LIBAPIENTRY get_GC( Display *display, Window win, XVisualInfo *visual,
         /* associated the context with the X window */
         if( glXMakeCurrent( display, win, *gc ) == False) {
 	    glXDestroyContext( display, *gc );
+            if(JNI_TRUE==verbose)
+	    {
+	      fprintf(stderr, "GL4Java: glXCreateContext  trial %p\n", *gc);
+	      fprintf(stderr, "GL4Java: glXDestroyContext trial %p\n", *gc);
+	    }
 	    continue;
-        } else return 0;
+        } else {
+	    if(JNI_TRUE==verbose)
+		fprintf(stderr, "GL4Java: glXCreateContext  sure %p\n", *gc);
+	    return 0;
+        }
     }
 
     return -2;
@@ -254,7 +264,7 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 
 	    if( *pOwnWin == JNI_TRUE && newWin!=0 &&
 	        (gc_ret=get_GC( display, newWin,
-			        vgc.visual, &(vgc.gc), shareWith)) == 0
+			        vgc.visual, &(vgc.gc), shareWith, verbose)) == 0
               )
 	    {
 		    vgc.success=1;
@@ -262,7 +272,7 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 	    }
 	    else if( vgc.visual!=NULL &&  *pOwnWin == JNI_FALSE && *pWin!=0 &&
 	             (gc_ret=get_GC( display, *pWin,
-			             vgc.visual, &(vgc.gc), shareWith)) == 0
+			             vgc.visual, &(vgc.gc), shareWith, verbose)) == 0
 	           )    
 	    {
 		    vgc.success=1;

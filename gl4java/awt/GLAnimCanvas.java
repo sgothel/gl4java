@@ -95,7 +95,7 @@ import java.lang.Math;
  * <p>
  * To use real fps settings, the following functions provides you to do so:
  * <pre>
-        <a href="GLAnimCanvas.html#setAnimateFps(double, int)">setAnimateFps</a>
+        <a href="GLAnimCanvas.html#setAnimateFps(double)">setAnimateFps</a>
         <a href="GLAnimCanvas.html#getMaxFps()">getMaxFps</a>
  * </pre>
  * Like the first animation run, this class renders a view frames (default 10)
@@ -103,7 +103,9 @@ import java.lang.Math;
  * <p>
  * You should overwrite the following methods for your needs:
  * <pre>
+        <a href="GLCanvas.html#init()">preInit - initialisation before creating GLContext</a>
         <a href="GLAnimCanvas.html#init()">init - 1st initialisation</a>
+        <a href="GLCanvas.html#doCleanup()">doCleanup - OGL cleanup prior to context deletion</a>
         <a href="GLAnimCanvas.html#display()">display - render one frame</a>
         <a href="GLCanvas.html#reshape(int, int)">reshape - to reshape (window resize)</a>
         <a href="GLAnimCanvas.html#ReInit()">ReInit - ReInitialisation after stop for setSuspended(false)</a>

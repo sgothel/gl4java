@@ -875,7 +875,11 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 	    if(ret==JNI_TRUE) 
 	    {
 	    	if(gc!=0)
+		{
+			if(JNI_TRUE==verbose)
+				fprintf(stderr, "GL4Java: glXDestroyContext sure %p\n", gc);
 			glXDestroyContext(disp, gc);
+		}
 	        if(pix!=0)
 		{
 		    if(win!=0)
