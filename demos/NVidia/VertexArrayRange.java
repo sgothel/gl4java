@@ -6,22 +6,36 @@ import gl4java.*;
 import gl4java.awt.*;
 import gl4java.drawable.*;
 
-/** <P> A port of NVidia's Vertex Array Range demonstration to OpenGL
-    for Java and the Java programming language. The current web site
-    for the demo (which does not appear to contain the original C++
-    source code for this demo) is <a href =
+/** <P> A port of NVidia's [tm] Vertex Array Range demonstration to
+    OpenGL[tm] for Java[tm] and the Java programming language. The
+    current web site for the demo (which does not appear to contain
+    the original C++ source code for this demo) is <a href =
     "http://developer.nvidia.com/view.asp?IO=Using_GL_NV_fence">here</a>. </P>
 
     <P> This demonstration requires the following:
 
     <ul>
-    <li> A JDK 1.4 implementation
-    <li> an NVidia-based card
+    <li> A JDK 1.4 implementation (Beta 3 or later)
+    <li> an NVidia GeForce-based card
     <li> a recent set of drivers
     </ul>
 
     </P>
-*/
+
+    <P> This demonstration illustrates the effective use of the
+    java.nio direct buffer classes in JDK 1.4 to access memory outside
+    of the Java garbage-collected heap, in particular that returned
+    from the NVidia-specific routine wglAllocateMemoryNV. This memory
+    region is used in conjunction with glVertexArrayRangeNV. </P>
+
+    <P> On a 750 MHz PIII with an SDRAM memory bus and a GeForce 256
+    running the Java HotSpot[tm] Client VM and OpenGL for Java 2.8,
+    this demonstration attains 90% of the speed of the compiled C++
+    code, with a frame rate of 27 FPS, compared to 30 FPS for the C++
+    version. On higher-end hardware (a dual 667 MHz PIII with RDRAM
+    and a GeForce 2) the demo currently attains between 65% and 75% of
+    C++ speed with the HotSpot Client and Server compilers,
+    respectively. </P> */
 
 public class VertexArrayRange {
   private boolean[] b = new boolean[256];
