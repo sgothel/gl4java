@@ -219,6 +219,8 @@ public class gearRenderer
             }
             gl.glEnd();
     
+            gl.glNormal3f(0.0f, 0.0f, -1.0f); // jau .. glxGears
+
             /* draw back face */
             gl.glBegin(GL_QUAD_STRIP);
             for (i = 0; i <= teeth; i++)
