@@ -1,0 +1,62 @@
+#include "gl4java_drawable_Win32SunJDK13GLDrawableFactory.h"
+#include "OpenGL_Win32_common.h"
+
+/* FIXME: extend to support multiple monitors on Win2K/98 */
+static HDC getScreenDC(int screen)
+{
+    return CreateDC("DISPLAY", NULL, NULL, NULL);
+}
+
+static void freeScreenDC(HDC dc)
+{
+    DeleteDC(dc);
+}
+
+
+JNIEXPORT jlong JNICALL Java_gl4java_drawable_Win32SunJDK13GLDrawableFactory_ChoosePixelFormatNum
+  (JNIEnv *env, jclass unused, jint screen, jobject capsObj, jboolean verbose)
+{
+    HDC dc;
+    PIXELFORMATDESCRIPTOR pfd;
+    jboolean ok;
+    GLCapabilities glCaps;
+    int nPixelFormat;
+
+    ok = javaGLCapabilities2NativeGLCapabilities ( env, capsObj, &glCaps );
+    if(JNI_TRUE!=ok)
+    {
+        fprintf(stderr,"GL4Java Win32DrawableFactory.ChoosePixelFormatNum ERROR: gl4java/GLCapabilities fields not accessible\n");
+	fflush(stderr);
+        return JNI_FALSE;
+    }
+
+    /* dc = getScreenDC(screen); */
+	dc = GetWindowDC(NULL);
+
+    setPixelFormatByGLCapabilities(&pfd, &glCaps, JNI_FALSE, dc);
+
+    if(JNI_TRUE==verbose)
+    {
+	    fprintf(stdout, "Win32DrawableFactory.ChoosePixelFormatNum: input capabilities:\n");
+	    printGLCapabilities ( &glCaps );
+    }
+
+    nPixelFormat = ChoosePixelFormat(dc, &pfd);
+
+    (void) setGLCapabilities (  dc, nPixelFormat, &glCaps );
+
+    if(JNI_TRUE==verbose)
+    {
+		fprintf(stdout,"Win32DrawableFactory.ChoosePixelFormatNum: writing capabilities to GLContext's java object\n");
+		printGLCapabilities ( &glCaps );
+		fflush(stdout);
+    }
+
+    (void) nativeGLCapabilities2JavaGLCapabilities
+                 (env, capsObj, &glCaps); 
+
+    /* freeScreenDC(dc); */
+	ReleaseDC(NULL, dc);
+    return (jlong)nPixelFormat;
+}
+

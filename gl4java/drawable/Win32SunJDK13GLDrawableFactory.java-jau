@@ -1,0 +1,47 @@
+package gl4java.drawable;
+
+import java.awt.*;
+import java.lang.reflect.*;
+import java.util.*;
+import sun.awt.*;
+import gl4java.*;
+
+public class Win32SunJDK13GLDrawableFactory 
+	extends SunJDK13GLDrawableFactory 
+{
+    public Win32SunJDK13GLDrawableFactory() {
+        // describeAllGraphicsConfigurations();
+    }
+
+    public GraphicsConfiguration
+        getGraphicsConfiguration(GLCapabilities capabilities,
+                                 GraphicsDevice device) {
+        // On Windows, ChoosePixelFormat does not work as desired; it
+        // shoehorns the given pixel format descriptor into what a
+        // particular window can render. Instead we enumerate all possible
+        // pixel formats for a given GraphicsDevice and try to find one
+        // matching the given capabilities. To do this we provide
+        // accessors which query the OpenGL-related properties of a
+        // GraphicsConfiguration. FIXME: should implement better selection
+        // algorithm; this one does not choose the most minimal.
+
+        Win32GraphicsDevice w32Device = (Win32GraphicsDevice) device;
+	int screen = w32Device.getScreen();
+
+        int nPixelFormat = (int) ChoosePixelFormatNum (screen,
+	                                        capabilities,
+						GLContext.gljNativeDebug);
+    
+        return Win32GraphicsConfig.getConfig(w32Device, nPixelFormat);
+    }
+
+    //----------------------------------------------------------------------
+    // Internals only below this point
+    //
+
+  // Needs to return an PixelFormatNumber can be wrapped in an
+  // X11GraphicsConfig object
+  static native long ChoosePixelFormatNum (int screen,
+                                        GLCapabilities capabilities, 
+					boolean verbose);
+}
