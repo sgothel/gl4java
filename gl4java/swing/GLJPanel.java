@@ -516,7 +516,7 @@ public class GLJPanel extends JPanel
 		    case GLContext.OsUnknown:
 		    default:
 	        	if(caps.getAlphaBits()>0)
-		    		awtFormat = BufferedImage.TYPE_4BYTE_ABGR;
+		    		awtFormat = BufferedImage.TYPE_INT_ARGB;
 	        	else
 		    		awtFormat = BufferedImage.TYPE_3BYTE_BGR;
 			break;

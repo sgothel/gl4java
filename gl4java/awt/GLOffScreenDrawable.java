@@ -438,7 +438,7 @@ public class GLOffScreenDrawable
 		    case GLContext.OsUnknown:
 		    default:
 	        	if(caps.getAlphaBits()>0)
-		    		awtFormat = BufferedImage.TYPE_4BYTE_ABGR;
+		    		awtFormat = BufferedImage.TYPE_INT_ARGB;
 	        	else
 		    		awtFormat = BufferedImage.TYPE_3BYTE_BGR;
 			break;
@@ -468,7 +468,7 @@ public class GLOffScreenDrawable
 			        if(GLContext.gljClassDebug)
 				System.out.println("awt=4BYTE_ABGR, gl=BGRA,UNSIGNED_INT_8_8_8_8");
 				glFormat = GL_BGRA;
-				glType   = GL_UNSIGNED_INT_8_8_8_8;
+				glType   = GL_UNSIGNED_BYTE;
 				glComps  = 4;
 			        dbByte   = (DataBufferByte)
 				           offImage.getRaster().getDataBuffer();
