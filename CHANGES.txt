@@ -11,6 +11,38 @@ DOWN = OLD
 kbr = Kenneth B. Russel
 jau = Sven Goethel
 
+Mar  2002 (Version 2.8.3 - CVS .. much TODO YET )
+	o GLAnimCanvas Policy (DEFINITION, NO CHANGE)
+		- GL Context is _only_ current, during all 
+		  display events !!!
+		- GL Context is "offline" while calling 
+			- preDisplay
+			- postDisplay
+
+	o GLCanvas cleanup & bugfix
+		- init, reshape calling for sure !
+		- better NULL checks ;-)
+
+	  Hopefully, this fixes the bug - NULL exception, while
+	  removing a GLCanvas from a Container and adding it again 
+	  to a Container !!
+
+	o libglx.so is no more lookup'ed with dlopen directly !
+	  Thanxs to "Ruderman, Dan" <Dan.Ruderman@disney.com> and
+	  Andy Ritger (nvidia).
+
+	o wglDeleteContext is used right now, 
+	  Thanxs to Kenneth and ??
+
+
+	o TODO: 
+		- Adding / Merging Pepijn Van Eeckhoudt's GC fixes
+		- Tesselation with NIO support 
+		- Textures with NIO support 
+		- Reviewing GL compatibility and support ..
+
+
+
 11th Dec  2001 (Version 2.8.2 - ReleaseCandidate 1 - 2.8.2.0)
 	o Added dynamic binding/loading of jawt (kbr)
 

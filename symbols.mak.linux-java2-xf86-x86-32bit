@@ -19,7 +19,7 @@ UNIXTYPE		= Linux-glibc2-xf86-x86
 # AT LEAST JDK13_HOME MUST BE DEFINED !
 #
 JDK13_HOME		= /usr/local/lib/jdk1.3.1-FCS-blackdown
-JDK14_HOME		= /usr/local/lib/jdk1.4.0-beta-sun
+JDK14_HOME		= /usr/local/lib/jdk1.4.0-sun
 JDK_HOME		= $(JDK14_HOME)
 
 JAVASHAREINC    	= $(JDK_HOME)/include
@@ -56,7 +56,7 @@ JAR_DESTS		= /usr/local/lib/jdk1.2.2-FCS-blackdown/jre/lib/ext \
 			  /usr/local/lib/jdk1.3.0_02-sun/jre/lib/ext \
 			  /usr/local/lib/jdk1.3.0-ibm/jre/lib/ext \
 			  /usr/local/lib/jdk1.3.1-sun/jre/lib/ext \
-			  /usr/local/lib/jdk1.4.0-beta-sun/jre/lib/ext
+			  /usr/local/lib/jdk1.4.0-sun/jre/lib/ext
 
 CC			= gcc
 MKLIB 			= mklibs/mkslib.linux

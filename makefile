@@ -104,8 +104,8 @@ CNATIVEDIR  		= CNativeCode
 
 LIBMAJOR		= 2
 LIBMINOR		= 8
-LIBBUGFIX		= 2
-RELEASE                 = 1
+LIBBUGFIX		= 3
+RELEASE                 = 0
 
 #
 # The demo release number

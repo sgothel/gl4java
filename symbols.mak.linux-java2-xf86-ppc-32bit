@@ -49,7 +49,8 @@ JAR 			= $(JDK13_HOME)/bin/jar
 JAVAC_13 		= $(JDK13_HOME)/bin/javac -classpath ".:$(THISDIR):$(THISDIR)/capsapi_classes.zip"
 #JAVAC_14 		=
 
-JAR_DESTS		= /usr/local/lib/jdk1.3.0-FCS-blackdown/jre/lib/ext
+JAR_DESTS		= /usr/local/lib/jdk1.3.0-FCS-blackdown/jre/lib/ext \
+			  /usr/local/lib/j2sdk1.3.1/jre/lib/ext
 
 CC			= gcc
 MKLIB 			= mklibs/mkslib.linux
