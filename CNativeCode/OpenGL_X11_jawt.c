@@ -125,17 +125,6 @@ Java_gl4java_GLContext_useJAWT( JNIEnv *env, jobject obj )
     return JNI_TRUE;
 }
 
-JNIEXPORT jboolean JNICALL
-Java_gl4java_GLContext_hasJAWTSurfaceChanged( JNIEnv *env, jobject obj,
-					      jlong thisWin )
-{
-    JAWTDataHolder * pData = (JAWTDataHolder *) ( (PointerHolder) thisWin );
-    (void)env;
-    (void)obj;
-
-    return (pData->lock & JAWT_LOCK_SURFACE_CHANGED) != 0 ;
-}
-
 /*
  * OpenGL_GLFrame_openOpenGL
  *
@@ -579,6 +568,82 @@ Java_gl4java_GLContext_gljResizeNative( JNIEnv *env, jobject obj,
 }
 
 JNIEXPORT jboolean JNICALL
+Java_gl4java_GLContext_hasJAWTSurfaceChanged( JNIEnv *env, jobject obj,
+					      jlong thisWin )
+{
+    JAWTDataHolder * pData = (JAWTDataHolder *) ( (PointerHolder) thisWin );
+    (void)env;
+    (void)obj;
+
+    return (pData->lock & JAWT_LOCK_SURFACE_CHANGED) != 0 ;
+}
+
+JNIEXPORT jboolean JNICALL
+Java_gl4java_GLContext_lockJAWT( JNIEnv *env, jobject obj,
+				     jobject canvas,
+				     jlong thisWin, jboolean verbose
+				    )
+{
+    jboolean ret = JNI_TRUE;
+    JAWTDataHolder * pData = (JAWTDataHolder *) ( (PointerHolder) thisWin );
+
+    if(pData==0)
+    {
+	fprintf(stderr, "GL4Java ERROR: LockAWT NO JAWT Holder exist ! (pData=%p, thisWin=%lX) ...\n", pData, (long)thisWin);
+	fflush(stderr);
+	return JNI_FALSE;
+    }
+
+    if(jawt_open(env, canvas, pData, verbose)==JNI_FALSE ||
+       pData->result==JNI_FALSE
+      )
+    {
+	  fprintf(stderr,"\nGL4Java ERROR: LockAWT could not open JAWT reference!\n");
+	  fflush(stderr);
+	  ret=JNI_FALSE;
+	  jawt_close_unlock(env, pData, JNI_FALSE);
+	  return ret;
+    }
+
+    if(jawt_lock(env, pData, JNI_FALSE, verbose)==JNI_FALSE ||
+       pData->result==JNI_FALSE
+      )
+    {
+         /* this can happen:
+	   if ( (pJData->lock & JAWT_LOCK_SURFACE_CHANGED) != 0 ) 
+
+	   In this case, we need a new GLXContext ...
+
+	   This has to be queried by the java class,
+	   while using the native method hasJAWTSurfaceChanged !
+          */
+	  if(verbose)
+	  {
+	     fprintf(stderr,"\nGL4Java ERROR: LockAWT could not lock JAWT reference!\n");
+	     fflush(stderr);
+	  }
+	  ret=JNI_FALSE;
+	  jawt_close_unlock(env, pData, JNI_FALSE);
+	  return ret;
+    }
+    return ret;
+}
+
+JNIEXPORT jboolean JNICALL
+Java_gl4java_GLContext_unlockJAWT( JNIEnv *env, jobject obj,
+				   jlong thisWin, jboolean verbose
+				    )
+{
+    jboolean ret = JNI_TRUE;
+    JAWTDataHolder * pData = (JAWTDataHolder *) ( (PointerHolder) thisWin );
+
+    jawt_close_unlock(env, pData, verbose);
+
+    return ret;
+}
+
+
+JNIEXPORT jboolean JNICALL
 Java_gl4java_GLContext_gljMakeCurrentNative( JNIEnv *env, jobject obj,
 					     jobject canvas,
 					     jlong disp,
@@ -592,14 +657,14 @@ Java_gl4java_GLContext_gljMakeCurrentNative( JNIEnv *env, jobject obj,
 
     if(pData==0)
     {
-	fprintf(stderr, "GL4Java ERROR: gljUse NO JAWT Holder exist ! (pData=%p, thisWin=%lX) ...\n", pData, (long)thisWin);
+	fprintf(stderr, "GL4Java ERROR: MakeCurrent NO JAWT Holder exist ! (pData=%p, thisWin=%lX) ...\n", pData, (long)thisWin);
 	fflush(stderr);
 	return JNI_FALSE;
     }
 
     if(glContext==0)
     {
-	fprintf(stderr, "GL4Java ERROR: gljUse NO actual GC was created ...\n");
+	fprintf(stderr, "GL4Java ERROR: MakeCurrent NO actual GC was created ...\n");
 	fflush(stderr);
 	return JNI_FALSE;
     }
@@ -682,24 +747,11 @@ Java_gl4java_GLContext_gljFreeNative( JNIEnv *env, jobject obj,
 	    }  
     }
 
-    jawt_close_unlock(env, pData, verbose);
+    if(pData!=NULL)
+	    jawt_close_unlock(env, pData, JNI_FALSE);
 
     return ret;
 }
-
-JNIEXPORT jboolean JNICALL
-Java_gl4java_GLContext_gljIsContextCurrentNative( JNIEnv *env, jobject obj,
-				      jlong glContext
-				    )
-{
-    GLXContext ctx = disp__glXGetCurrentContext();
-
-    if(ctx==(GLXContext)((PointerHolder)glContext))
-    	return JNI_TRUE;
-
-    return JNI_FALSE;
-}
-
 
 JNIEXPORT jboolean JNICALL
 Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
@@ -846,7 +898,7 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 	    }
     }
 
-    jawt_free_close_unlock(env, &pData, verbose);
+    jawt_free_close_unlock(env, &pData, JNI_FALSE);
 
     if(ret==JNI_TRUE) 
     {

@@ -131,7 +131,7 @@ import java.lang.Math;
  * 
  */
 public class GLAnimCanvas extends GLCanvas
-  implements Runnable
+  implements GLRunnable
 {
         /**
          * To support frames per scounds,
@@ -173,7 +173,7 @@ public class GLAnimCanvas extends GLCanvas
         protected boolean threadSuspended = false;
 
         static {
-	    if(GLContext.loadNativeLibraries(null, null, null)==false)
+	    if(GLContext.doLoadNativeLibraries(null, null, null)==false)
 	      System.out.println("GLAnimCanvas could not load def. native libs.");
         }
 
@@ -286,13 +286,11 @@ public class GLAnimCanvas extends GLCanvas
         {
         }
 
-        protected boolean useRepaint = true;
+        protected boolean useRepaint = false;
 
         protected boolean useFpsSleep = true;
 
         protected boolean useYield = true;
-
-        protected boolean useSDisplay = true;
 
         /**
          * The normal behavior is to use 'repaint'
@@ -310,7 +308,7 @@ public class GLAnimCanvas extends GLCanvas
          * @see gl4java.awt.GLCanvas#sDisplay
          * @see gl4java.awt.GLAnimCanvas#setUseFpsSleep
          */
-        public void setUseRepaint(boolean b)
+        public synchronized void setUseRepaint(boolean b)
         {
                 useRepaint = b;
         }
@@ -327,7 +325,7 @@ public class GLAnimCanvas extends GLCanvas
          * @see gl4java.awt.GLCanvas#sDisplay
          * @see gl4java.awt.GLAnimCanvas#setUseRepaint
          */
-        public void setUseFpsSleep(boolean b)
+        public synchronized void setUseFpsSleep(boolean b)
         {
 	     useFpsSleep = b;
         }
@@ -336,13 +334,6 @@ public class GLAnimCanvas extends GLCanvas
             Thread.yield() automatically -- use this to disable this */
         public void setUseYield(boolean b) {
           useYield = b;
-        }
-
-        /** The default behavior, if not using repaints, is to call
-            sDisplay() in the thread's main loop; set this to false to
-            call display() directly. */
-        public void setUseSDisplay(boolean val) {
-          useSDisplay = val;
         }
 
         public boolean getUseRepaint()
@@ -360,15 +351,19 @@ public class GLAnimCanvas extends GLCanvas
                 return useYield;
         }
 
-        public boolean getUseSDisplay()
-        {
-                return useSDisplay;
-        }
+	/**
+	 * Identifies this object with the given thread ..
+	 * If this object owns this thread, it must return true !
+	 */
+	public boolean ownsThread(Thread thread)
+	{
+		return killme!=null && killme==thread ;
+	}
 
-         /** 
-          *  HERE WE DO HAVE OUR RUNNING THREAD !
-          *  WE NEED STUFF LIKE THAT FOR ANIMATION ;-)
-          */
+        /** 
+         *  HERE WE DO HAVE OUR RUNNING THREAD !
+         *  WE NEED STUFF LIKE THAT FOR ANIMATION ;-)
+         */
         public void start() 
         {
             if(killme == null) 
@@ -409,11 +404,26 @@ public class GLAnimCanvas extends GLCanvas
 
         protected boolean shallWeRender = true;
         protected boolean isRunning     = false;
+        protected boolean forceGLFree   = false;
 
 	private long _fDelay = 0;
 	private long _fDelay_Frames = 10;
 	private boolean _fDelaySync=true;
 	private boolean _fDelayRun=false;
+
+         /** 
+          * Forcec this thread to release it's GLContext !
+	  * 
+	  * To ensure this, this thread enables itself,
+	  * and calls gljFree(true) to force the release !
+          *
+          * @see gl4java.awt.GLAnimCanvas#run
+          * @see gl4java.GLContext#gljMakeCurrent
+          */
+	public void freeGLContext()
+	{
+		forceGLFree=true;
+	}
 
          /** 
           *  The running loop for animations
@@ -428,10 +438,7 @@ public class GLAnimCanvas extends GLCanvas
 
 	    isRunning = true;
 
-            boolean firstRender = true;
-
             int numInitRetries = 1;
-            int numMakeCurrentRetries = 1;
 
 	    synchronized (this) {
 	    	globalThreadNumber++;
@@ -441,55 +448,53 @@ public class GLAnimCanvas extends GLCanvas
             {
 		  if(cvsIsInit())
 		  {
-                    if (firstRender) {
-                      if (!getAutoMakeContextCurrent()) {
-                        synchronized (this) {
-                          if (!glj.gljMakeCurrent()) {
-                            System.err.println("Error making context current (" +
-                                               numMakeCurrentRetries + ")...");
-                            ++numMakeCurrentRetries;
-                            try {
-                              Thread.currentThread().sleep(100);
-                            } catch (Exception e) {
-                            }
-                            continue;
-                          }
-                        }
-                        System.err.println("Context made current in AnimCanvas's thread");
-                      }
-                      firstRender = false;
-                    }
+		    // if another thread want's to do use do ..
+		    if(forceGLFree)
+		    {
+		        glj.gljFree(true);
+			forceGLFree=false;
+		        if(GLContext.gljThreadDebug)
+			    System.out.println("GLAnimCanvas: forceGLFree(1) - gljFree");
+		    } 
+		    else if (shallWeRender) 
+		    {
+		      /* DRAW THE TINGS .. */
+		      if(useRepaint)
+			    repaint();
+		      else 
+			    sDisplay();
 
-			  /* DRAW THE TINGS .. */
-			  if (shallWeRender) 
-			  {
-			      if(useRepaint)
-				      repaint();
-			      else { 
-                                if (useSDisplay) {
-                                  sDisplay();
-                                } else {
-                                  display();
-                                }
-                              }
-			  } else {
-                              synchronized (this) {
-				      threadSuspended=true;
-			      }
-			  }
+		      if(fps_isCounting) 
+			fps_frames++; 
 
-			  if(fps_isCounting) 
-				fps_frames++; 
+		    } else {
+		      synchronized (this) {
+		              glj.gljFree(true);
+			      threadSuspended=true;
+		      }
+		    }
 
 		  } else {
-                    System.err.println("Waiting for canvas to initialize (" +
-                                       numInitRetries + ")...");
-                    ++numInitRetries;
+		    if(GLContext.gljThreadDebug)
+		    {
+			    System.err.println("Waiting for canvas to initialize (" +
+					       numInitRetries + ")...");
+		    }
+		    ++numInitRetries;
                     try {
                       Thread.currentThread().sleep(100);
                     } catch (Exception e) {
                     }
                   }
+
+		  // if another thread want's to do use do ..
+		  if(forceGLFree)
+		  {
+		        glj.gljFree(true);
+			forceGLFree=false;
+		        if(GLContext.gljThreadDebug)
+			    System.out.println("GLAnimCanvas: forceGLFree(2) - gljFree");
+		  } 
 
 		  try {
 		       if(useFpsSleep)
@@ -516,6 +521,7 @@ public class GLAnimCanvas extends GLCanvas
 		       }
 
                        if (threadSuspended) {
+		           glj.gljFree(true);
                            stopFpsCounter();
                            synchronized (this) {
                                 while (threadSuspended)
@@ -526,10 +532,8 @@ public class GLAnimCanvas extends GLCanvas
 	          {}
             }
 
-            if (getAutoMakeContextCurrent()) {
-              if(glj!=null)
-                glj.gljFree(); // just to be sure ..
-            }
+            if(glj!=null)
+                glj.gljFree(true); // just to be sure .. force freeing the context
 
 	    synchronized (this) {
 	    	globalThreadNumber--;
@@ -550,7 +554,7 @@ public class GLAnimCanvas extends GLCanvas
           * @see gl4java.awt.GLAnimCanvas#isAlive
           * @see gl4java.awt.GLAnimCanvas#start
           */
-        public void setSuspended(boolean suspend)
+        public synchronized void setSuspended(boolean suspend)
         {
 		setSuspended(suspend, false);
         }
@@ -567,6 +571,7 @@ public class GLAnimCanvas extends GLCanvas
 	  * @param reInit   if true the ReInit will be called additionally,
 	  *                 where the user can set additional initialisations
 	  *
+          * @see gl4java.awt.GLAnimCanvas#ReInit
           * @see gl4java.awt.GLAnimCanvas#isAlive
           * @see gl4java.awt.GLAnimCanvas#start
           * @see gl4java.awt.GLAnimCanvas#run

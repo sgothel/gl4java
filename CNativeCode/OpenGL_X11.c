@@ -102,6 +102,32 @@ Java_gl4java_GLContext_hasJAWTSurfaceChanged( JNIEnv *env, jobject obj,
     return JNI_FALSE;
 }
 
+JNIEXPORT jboolean JNICALL
+Java_gl4java_GLContext_lockJAWT( JNIEnv *env, jobject obj,
+				 jobject canvas,
+				 jlong thisWin, jboolean verbose
+			       )
+{
+    (void) env;
+    (void) obj;
+    (void) canvas;
+    (void) thisWin;
+    (void) verbose;
+    return JNI_TRUE;
+}
+
+JNIEXPORT jboolean JNICALL
+Java_gl4java_GLContext_unlockJAWT( JNIEnv *env, jobject obj,
+				   jlong thisWin, jboolean verbose
+				 )
+{
+    (void) env;
+    (void) obj;
+    (void) thisWin;
+    (void) verbose;
+    return JNI_TRUE;
+}
+
 /*
  * OpenGL_GLFrame_openOpenGL
  *

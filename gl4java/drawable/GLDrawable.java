@@ -31,6 +31,61 @@ public interface GLDrawable
     public GLContext getGLContext();
 
     /**
+     *
+     * This is the rendering-method called by 
+     * e.g.: {@link gl4java.awt.GLCanvas#display} or by 
+     * {@link gl4java.GLThread#run}.
+     * 
+     * <p>
+     * The default implementation of display() sends 
+     * preDisplay, display and postDisplay events to
+     * all {@link gl4java.drawable.GLEventListener}s associated with this
+     * GLDrawable in the above order.
+     *
+     * <p>
+     * <pre>
+        reset timer for frame duration
+
+     	for_all(gl4java.drawable.GLEventListener)
+		SEND preDisplay
+
+	if( gljMakeCurrent() )
+	{
+		for_all(gl4java.drawable.GLEventListener)
+			SEND display
+		gljSwap()
+		gljFree()
+
+		for_all(gl4java.drawable.GLEventListener)
+			SEND postDisplay
+	}
+
+        stop timer for frame duration
+     * </pre>
+     *
+     * <p>
+     * If you use the subclassing model (as opposed to the
+     * GLEventListener model), your subclass will redefine this to
+     * perform its OpenGL drawing. In this case you MUST encapsulate
+     * your OpenGL calls within:
+     * <pre>
+    	- glj.gljMakeCurrent()
+		YOUR OpenGL commands here !
+    	- glj.gljFree()
+     * </pre>
+     *
+     * @return 		void
+     *
+     * @see gl4java.GLContext#gljMakeCurrent
+     * @see gl4java.GLContext#gljFree 
+     * @see gl4java.GLContext#gljSwap 
+     * @see gl4java.drawable.GLEventListener#preDisplay
+     * @see gl4java.drawable.GLEventListener#display
+     * @see gl4java.drawable.GLEventListener#postDisplay
+     */
+    public void display();
+
+    /**
      * the components listener's should be implemented also !
      * since JDK 1.1
      */

@@ -1,12 +1,37 @@
 \begin{verbatim}
 
-Last Changes: 19th June  2001 (Version 2.8.0 - PRE-Release 0 (CVS only) )
+Last Changes: 24th July 2001 (Version 2.8.0 - PRE-Release 1 (CVS only) )
 Started:      July 1997 (Version 0)
 
 -----------------
 TOP  = NEW
 DOWN = OLD
 -----------------
+
+24th July  2001 (Version 2.8.0 - PRE-Release 1 (CVS only) )
+	o Changed Kenneth's manual context switching optimization
+	  to an automatical optimization of context switching
+
+	  - introducing gl4java.GLRunnable
+	    as an interface for an animator gl4java.drawable.GLDrawable,
+	    e.g. gl4java.awt.GLAnimCanvas
+
+	  - no more flag setting stuff for optimized context switching
+
+	  - gljMakeCurrent/gljFree now handles the context switching.
+	  
+	    They now skip freeing the context, if:
+
+		- the component is a gl4java.GLRunnable
+
+		- the thread is not the AWT rendering thread
+
+		- the freeing is not forced
+
+	    Otherwise they behave as usual and do a real lock/unlock ..
+
+	    I have also added the JAWT lock/unlock calls, in the case,
+	    gljMakeCurrent/gljFree does not really lock/unlock the GL context.
 
 19th June  2001 (Version 2.8.0 - PRE-Release 0 (CVS only) )
 	o Added temporary native file access (secure, no filename passing)

@@ -224,6 +224,7 @@ FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/jau/awt/WinHandleAccess.java \
 		  $(PACKAGEDIR)/GL4JavaReflections.java \
 		  $(PACKAGEDIR)/GLCapabilities.java \
+		  $(PACKAGEDIR)/GLRunnable.java \
 		  $(PACKAGEDIR)/GLEnum.java \
 		  $(PACKAGEDIR)/GLUEnum.java \
 		  $(PACKAGEDIR)/GLFunc.java \
@@ -432,6 +433,9 @@ FILES.gen   		= $(FILE.gen1.h) \
 ######################################################################
 # SPECIFY ALL TARGETS -- MAIN TARGETS
 ######################################################################
+
+classes			: $(FILES.class) $(FILES_x11.class) \
+			  $(DEST_CLASSES_DIR)/gl4java.jar 
 
 x11			: cleanup gljni \
 	                  $(FILES.class) $(FILES_x11.class) \
@@ -719,7 +723,9 @@ cleannative:
 	cd demos/natives/x11 ; make clean
 
 # clean out the *.o files and machine generated files from javah
-clean: cleannative cleanupw32 cleanhtmldoc
+clean: cleannative cleanupw32 cleanhtmldoc cleantemp
+
+cleantemp:
 	rm -f $(CHEADERDIR)/* errors gl4java/*~ CNativeCode/*~ \
 	      $(FILE.gen1.h) $(FILE.gen2.h) \
 	      $(FILE.gen3.h) $(FILE.gen4.h) $(FILE.gen5.h)
@@ -853,9 +859,9 @@ java2binpkg: pbinpkg
 	zip -9r $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glutfonts-classes.zip \
 		gl4java/utils/glut/fonts
 
-	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glf-fonts.zip
+	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glffonts.zip
 	cd $(DEST_CLASSES_DIR) ; \
-	zip -9r $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glf-fonts.zip \
+	zip -9r $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glffonts.zip \
 		gl4java/utils/glf/fonts
 
 	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-INSTALLER.zip
@@ -903,9 +909,8 @@ javacalldemos:
 	cd demos/RonsDemos ; javac *.java
 	cd demos/SwingDemos ; javac *.java
 
-archivclean: pbinpkg
+archivclean: pbinpkg cleannative cleanupw32 cleantemp
 	if [ ! -e archive ] ; then mkdir archive ; fi
-	make clean
 
 archivdemos:
 	rm -f archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-demosV$(DEMORELEASE).zip
@@ -937,7 +942,7 @@ archivdoc:
 	rm -f archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-doc.zip
 	cd ..; \
 	zip -9r GL4Java/archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-doc.zip \
-		GL4Java/docs GL4Java/*.txt
+		GL4Java/docs GL4Java/doxygens GL4Java/*.txt
 	
 
 archiv: archivdemos archivsrc archivdoc

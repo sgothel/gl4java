@@ -16,7 +16,7 @@ if [ \( "$1" = "GL4Java" \) -o \( -z "$1" \) ] ; then
 	$LATEX GL4Java.tex
 	$LATEX GL4Java.tex
 	$DVIPS GL4Java.dvi
-	$DVIPDF -p a4 -r 600 GL4Java.dvi
+	$DVIPDF -p a4 -r 600 -z 9 GL4Java.dvi
 	mv GL4Java.pdf ../docs/.
 	$LATEX2HTML -html_version 4.0,table,math,i18n -prefix "glj_" \
 	            -show_section_numbers \

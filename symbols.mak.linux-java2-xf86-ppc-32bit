@@ -15,6 +15,9 @@ UNIXTYPE		= Linux-glibc2-xf86-ppc
 JDK_HOME		= $(shell dirname $$(which java))/..
 JAVASHAREINC    	= $(JDK_HOME)/include
 JAVAOSINC  		= $(JDK_HOME)/include/linux
+JAVAOSLIB  		= $(JDK_HOME)/jre/lib/ppc
+
+JAR_DESTS		= /usr/local/lib/jdk1.3.0-FCS-blackdown/jre/lib/ext
 
 CC			= gcc
 MKLIB 			= mklibs/mkslib.linux

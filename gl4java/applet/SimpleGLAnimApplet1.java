@@ -26,6 +26,7 @@ public class SimpleGLAnimApplet1 extends Applet
     public TextField textFps = null;
     public Checkbox checkUseRepaint = null;
     public Checkbox checkUseFpsSleep = null;
+    public Checkbox checkUseYield = null;
     public Button buttonReStart = null;
     
 
@@ -38,16 +39,10 @@ public class SimpleGLAnimApplet1 extends Applet
         setLayout(new BorderLayout());
 
 	Panel pan = new Panel();
-	pan.setLayout(new GridLayout(2,3));
+	pan.setLayout(new GridLayout(2,4));
 
 	buttonInfo = new Button("GL4Java");
 	pan.add(buttonInfo);
-
-	checkUseRepaint = new Checkbox("repaint", true);
-	pan.add(checkUseRepaint);
-
-	checkUseFpsSleep = new Checkbox("fps-sleep", true);
-	pan.add(checkUseFpsSleep);
 
 	buttonReStart = new Button("start/stop");
 	pan.add(buttonReStart);
@@ -58,20 +53,37 @@ public class SimpleGLAnimApplet1 extends Applet
 	textFps=new TextField("0000000000");
 	pan.add(textFps);
 
+	checkUseRepaint = new Checkbox("repaint", true);
+	pan.add(checkUseRepaint);
+
+	checkUseFpsSleep = new Checkbox("fps-sleep", true);
+	pan.add(checkUseFpsSleep);
+
+	checkUseYield = new Checkbox("yield", true);
+	pan.add(checkUseYield);
+
 	add("South",pan);
     }
 
+
+    public void setCheckButtons()
+    {
+        checkUseFpsSleep.setState(canvas.getUseFpsSleep());
+        checkUseRepaint.setState(canvas.getUseRepaint());
+        checkUseYield.setState(canvas.getUseYield());
+    }
 
     public void start()
     {
 	if(GLContext.gljClassDebug)
 		System.out.println("SGLApplet start ..");
-        checkUseFpsSleep.setState(canvas.getUseFpsSleep());
-        checkUseRepaint.setState(canvas.getUseRepaint());
 
+        setCheckButtons();
+    
 	buttonInfo.addMouseListener(this);
 	checkUseRepaint.addItemListener(this);
 	checkUseFpsSleep.addItemListener(this);
+	checkUseYield.addItemListener(this);
 	buttonReStart.addMouseListener(this);
 	buttonFps.addMouseListener(this);
         canvas.addMouseListener(this);
@@ -90,6 +102,7 @@ public class SimpleGLAnimApplet1 extends Applet
 	buttonInfo.removeMouseListener(this);
 	checkUseRepaint.removeItemListener(this);
 	checkUseFpsSleep.removeItemListener(this);
+	checkUseYield.removeItemListener(this);
 	buttonReStart.removeMouseListener(this);
 	buttonFps.removeMouseListener(this);
         canvas.removeMouseListener(this);
@@ -237,6 +250,16 @@ public class SimpleGLAnimApplet1 extends Applet
 			checkUseFpsSleep.getState());
 		}
 	}
+	if( comp.equals(checkUseYield ) )
+	{
+		if(canvas!=null)
+		{
+		  canvas.setUseYield(checkUseYield.getState());
+		  System.out.println("canvas uses Yield "+
+			checkUseYield.getState());
+		}
+	}
+        setCheckButtons();
     }
 
     public void actionPerformed(ActionEvent event) 

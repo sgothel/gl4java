@@ -6,6 +6,7 @@
 	#include <GL/glx.h>
 	#include <dlfcn.h>
 	#include "glxtool.h"
+        #include <unistd.h>
 #endif
 
 #ifdef _WIN32_
@@ -863,17 +864,17 @@ Java_gl4java_GLContext_gljTestGLProc (
 }
 
 
-JNIEXPORT jint JNICALL
+JNIEXPORT jlong JNICALL
 Java_gl4java_GLContext_gljGetCurrentContext( 
 	JNIEnv *env, jobject obj )
 {
 	#ifdef _WIN32_
-                return (jint) disp__wglGetCurrentContext();
+                return (jlong) ((PointerHolder)disp__wglGetCurrentContext());
         #else
           #ifdef _MAC_OS9_
-                return (jint) aglGetCurrentContext();
+                return (jlong) ((PointerHolder)aglGetCurrentContext());
           #else
-                return (jint) disp__glXGetCurrentContext();   
+                return (jlong) ((PointerHolder)disp__glXGetCurrentContext());   
 	  #endif
         #endif
 }

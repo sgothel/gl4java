@@ -30,8 +30,6 @@ public class gears extends SimpleGLAnimApplet1
 	public void init(boolean showGL)
 	{
 	super.init();
-	GLContext.gljNativeDebug = false;
-	GLContext.gljClassDebug = false;
 
         Dimension d = getSize();
 
@@ -57,6 +55,7 @@ public class gears extends SimpleGLAnimApplet1
 
 	        GLContext.gljNativeDebug = true;
 	        GLContext.gljClassDebug = true;
+	        GLContext.gljThreadDebug = true;
 
 		while(args.length>i)
 		{
@@ -93,7 +92,7 @@ public class gears extends SimpleGLAnimApplet1
 
 		if(perftest)
 			GLContext.gljClassDebug=true;
-		GLContext.loadNativeLibraries(gljLib, glLib, gluLib);
+		GLContext.doLoadNativeLibraries(gljLib, glLib, gluLib);
 		if(perftest)
 			GLContext.gljClassDebug=false;
 
@@ -121,6 +120,8 @@ public class gears extends SimpleGLAnimApplet1
 		{
 			applet.canvas.setUseFpsSleep(false);
 			applet.canvas.setUseRepaint(false);
+			applet.canvas.setUseYield(false);
+
 			System.out.println("useFpsSleep: "+
 				applet.canvas.getUseFpsSleep());
 			System.out.println("useRepaint: "+

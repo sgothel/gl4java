@@ -249,7 +249,7 @@ public class GLContext extends Object
     *
     * Each <Value> is dezimal !
     */
-    public final static String version             = __SED_CLASS_VERSION__ ;
+   public final static String version             = __SED_CLASS_VERSION__ ;
 
    /**
     * Flag's to enable/disable verbose Information.
@@ -392,6 +392,8 @@ public class GLContext extends Object
      * component, this component contains its heavy parent !
      */
     protected Component _compHeavy = null;
+
+    protected Thread awtThread = null;
 
    /**
     * Variable to tell is where windows or not (X11) 
@@ -1143,6 +1145,11 @@ public class GLContext extends Object
 		} else
 		  System.out.println("got empty Component");
 
+		awtThread = Thread.currentThread();
+
+	        if(gljThreadDebug)
+		     System.out.println("GLContext: locked awt-Thread: "+awtThread);
+
 		if(_comp!=null && _gr!=null)
 		{
 			int i = 0;
@@ -1169,6 +1176,7 @@ public class GLContext extends Object
 			  System.out.println("GLContext GLContext() failed");
 		}
     }
+
    /**
     *
     * Constructor
@@ -2187,8 +2195,72 @@ public class GLContext extends Object
 
    /**
     *
+    * gljIsCurrent checks 
+    * if the current Thread holds the GL context of this 
+    * GLContext instance !
+    *
+    * @return 		boolean
+    *
+    * @see gl4java.GLContext#gljIsRequested
+    * @see gl4java.GLContext#gljMakeCurrent
+    * @see gl4java.GLContext#getNativeGLContext
+    * @see gl4java.GLContext#gljGetCurrentContext
+    */ 
+   public synchronized final boolean gljIsCurrent()
+   {
+    	if ( ! isInitialized || !glEnabled )
+	    return false;
+
+	Thread thisThread = Thread.currentThread();
+
+        if (ctxThread!=null && ctxThread==thisThread && glContext==gljGetCurrentContext())
+	     return true;
+
+        return false;
+   }
+
+   /**
+    *
+    * gljIsRequested checks 
+    * if the this GLContext instance's native context
+    * is requested by another thread !
+    *
+    * @return 		boolean
+    *
+    * @see gl4java.GLContext#gljIsCurrent
+    * @see gl4java.GLContext#gljMakeCurrent
+    * @see gl4java.GLContext#getNativeGLContext
+    * @see gl4java.GLContext#gljGetCurrentContext
+    */ 
+   public synchronized final boolean gljIsRequested()
+   {
+    	if ( ! isInitialized || !glEnabled )
+	    return false;
+
+	Thread thisThread = Thread.currentThread();
+
+        if (nextThread!=null && nextThread!=thisThread)
+	     return true;
+
+        return false;
+   }
+
+   /**
+    *
     * gljMakeCurrent checks whether GL4Java is initializes 
     * AND makes the GL-Context current for this thread.
+    *
+    * <p>
+    *
+    * This functions now optimizes the context-switch !
+    *
+    * The context is changed, only if :
+    * <pre>
+    	- another thread has requested this context -> release it
+	  this gives the other thread a chance to get it ..
+
+	- this thread does not own the current context
+    * </pre>
     *
     * <p>
     *
@@ -2234,8 +2306,12 @@ public class GLContext extends Object
 	      * that the same thread enters this point twice,
 	      * before calling gljFree !
 	      */
-	     if (ctxThread!=null && ctxThread==thisThread)
-		     gljFree();
+	     if(gljThreadDebug && !dbgPrinted)
+	     {
+	         System.out.println("wait-current: "+thisThread+" for earmarked: "+nextThread);
+	         System.out.println("\tfreeing context force .. ctxThread="+ctxThread);
+	     }
+	     gljFree(true); // force freeing the context
 
 	     try {
 		  // wait till earmarked nextThread has its chance ..
@@ -2262,11 +2338,35 @@ public class GLContext extends Object
 		     System.out.println("\tctxThread="+ctxThread+", next="+nextThread);
 		     dbgPrinted=true;
 	     }
+             if( _comp instanceof GLRunnable )
+	     {
+	     	if ( ((GLRunnable)_comp).ownsThread(ctxThread) )
+		{
+			synchronized (_comp) {
+				((GLRunnable)_comp).freeGLContext();
+				((GLRunnable)_comp).notifyAll();
+			}
+			notifyAll();
+		        if(gljThreadDebug)
+				System.out.println("\tfreeGLContext -> "+ctxThread);
+		}
+	     }
 
 	     try {
 		  // wait for gljFree to release the GLXContext
 	          wait();
 	     } catch (InterruptedException e) { }
+	}
+
+	boolean result = false;
+
+	/* is this thread allready owning the context ? */
+        if ( ctxThread==thisThread )
+	{
+		result = lockJAWT(_comp, windowHandle, gljThreadDebug);
+		if(gljThreadDebug)
+		     System.out.println("MakeCurrent: "+thisThread+" no CTX change, allready own, lockJAWT: "+result);
+		return result;
 	}
 
 	ctxThread = thisThread ; // blocking asap ..
@@ -2275,10 +2375,10 @@ public class GLContext extends Object
 	{
 		if(nextThread==thisThread)
 		{
-		     System.out.println(thisThread+" <EarMarked Run>");
+		     System.out.println("MakeCurrent: "+thisThread+" <EarMarked Run>");
 		     System.out.println("\tctxThread="+ctxThread+", next:=NULL");
 	        } else {
-		     System.out.println(thisThread);
+		     System.out.println("MakeCurrent: "+thisThread);
 		     System.out.println("\tctxThread="+ctxThread+", next="+nextThread);
 		}
 	}
@@ -2289,8 +2389,8 @@ public class GLContext extends Object
         if(nextThread==thisThread)
 	     nextThread = null;
 
-        boolean result =  gljMakeCurrentNative( _comp, displayHandle, 
-	                                        windowHandle, glContext);
+        result =  gljMakeCurrentNative( _comp, displayHandle, 
+	                                windowHandle, glContext);
 
 	/**
 	 * If glXMakeCurrent failed, nobody holds this GLXContext ..
@@ -2346,16 +2446,23 @@ public class GLContext extends Object
     *
     * @deprecated The argument freeContextFirst is obsolete !
     */ 
-    public synchronized final boolean gljMakeCurrent(boolean freeContextFirst)
+    public final boolean gljMakeCurrent(boolean freeContextFirst)
     {
         return gljMakeCurrent();
     }
 
+    /**
+     * if using JAWT, this function handles the JAWT lock also
+     */
     private final static native boolean gljMakeCurrentNative(
     						Component canvas,
     						long disp, 
     					        long thisWin,
 					        long glContext);
+
+    private final static native boolean lockJAWT(
+    						Component canvas,
+    					        long thisWin, boolean verbose);
 
    /**
     *
@@ -2364,7 +2471,7 @@ public class GLContext extends Object
     *
     * @return 		int
     */ 
-    public final static native int gljGetCurrentContext();
+    public final static native long gljGetCurrentContext();
 
     /**
      *
@@ -2421,63 +2528,105 @@ public class GLContext extends Object
      *
      * This MUST be called at last in your display function !
      *
-     * @return 		void
+     * <p>
      *
+     * This functions now optimizes the context-switch !
+     *
+     * The context is changed, only if :
+     * <pre>
+    	- another thread has requested this context -> release it
+     * </pre>
+     *
+     * <p>
+     *
+     * @return 		boolean
+     *
+     * @see gl4java.GLContext#gljFree
+     * @see gl4java.GLContext#gljIsCurrent
+     * @see gl4java.GLContext#gljIsRequested
      * @see gl4java.GLContext#gljMakeCurrent
      * @see gl4java.GLContext#gljSwap
      * @see gl4java.awt.GLCanvas#display
      * @see gl4java.awt.GLCanvas#sDisplay
      */ 
-    public synchronized final boolean gljFree()
+    public final boolean gljFree()
+    {
+	return gljFree(false);
+    }
+
+    /**
+     *
+     * gljFree free´s the GL Context
+     *
+     * This MUST be called at last in your display function !
+     *
+     * <p>
+     *
+     * This functions now optimizes the context-switch !
+     *
+     * The context is changed, only if one of the following is true:
+     * <pre>
+    	- another thread has requested this context
+	- the force flag is true
+	- this thread is the AWT thread
+	- the component of this context does _not_ implement GLRunnable
+     * </pre>
+     * 
+     * <p>
+     *
+     * @return 		boolean
+     *
+     * @see gl4java.GLContext#gljIsCurrent
+     * @see gl4java.GLContext#gljIsRequested
+     * @see gl4java.GLContext#gljMakeCurrent
+     * @see gl4java.GLContext#gljSwap
+     * @see gl4java.GLRunnable#run
+     */ 
+    public synchronized final boolean gljFree(boolean force)
     {
     	if ( ! isInitialized ) return false;
 
+	boolean result = true;
 	Thread thisThread = Thread.currentThread();
-	boolean dbgPrinted = false;
+
+        if( thisThread == awtThread || (_comp instanceof GLRunnable) == false)
+		force=true;
 
 	/**
-	 * I do skip a lock for the gljFree semantics,
-	 * because:
-	 *	- to minimize a deadlock
-	 *	- believing that gljFree is semantically the last call ;-)
-	 *	- see above -> redundant
-	while (ctxThread!=null && ctxThread!=thisThread)
-	{
-	     if(gljThreadDebug && !dbgPrinted)
-	     {
-		     System.out.println("* wait: "+thisThread);
-		     System.out.println("\tctxThread="+ctxThread+", next="+nextThread);
-		     dbgPrinted=true;
-	     }
-
-	     try {
-		  // wait for gljMakeCurrent to lock the GLXContext
-	          wait();
-	     } catch (InterruptedException e) { }
-	}
-
-        if(gljThreadDebug)
-	{
-		System.out.println("*: "+thisThread);
-		System.out.println("\tctxThread="+ctxThread+", next="+nextThread);
-	}
+	 * only free the context, if another thread does 
+	 * request this context ...
+	 * or the force-flag is true
 	 */
-
-	
-        boolean result = 
-        		gljFreeNative ( _comp, displayHandle,
+        if ( force==true ||
+	     ( nextThread!=null && nextThread!=thisThread && ctxThread==thisThread )
+	   )
+	{
+        	result = gljFreeNative ( _comp, displayHandle,
 		                         windowHandle,
 		                         glContext);
-	ctxThread = null ;
-	notifyAll();
+		ctxThread = null ;
+		notifyAll();
+	        if(gljThreadDebug)
+		     System.out.println("gljFree: "+thisThread+" gljFreeNative result: "+result);
+	} else {
+    		result = unlockJAWT(windowHandle, false);
+		notifyAll();
+		if(gljThreadDebug)
+	     		System.out.println("gljFree: "+thisThread+" no CTX change, no requests, unlockJAWT: "+result);
+	}
 
 	return result;
     }
 
-     private final static native boolean gljFreeNative( Component canvas,
+    /**
+     * if using JAWT, this function handles the JAWT unlock also
+     */
+    private final static native boolean gljFreeNative( Component canvas,
      							long disp, 
     					                long thisWin,
 					                long glContext );
+
+    private final static native boolean unlockJAWT(long thisWin, boolean verbose);
 
     /**
      * swap method are for double buffering
