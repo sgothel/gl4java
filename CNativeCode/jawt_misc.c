@@ -30,7 +30,7 @@ jawt_create_offscreen (JNIEnv *env, JAWTDataHolder **ppJData, jboolean verbose)
   (*ppJData)->dsi_win_created		= 1;
   (*ppJData)->dsi_display		= NULL;
   (*ppJData)->dsi_display_created	= 1;
-  (*ppJData)->lock 			= 1;
+  (*ppJData)->lock 			= JAWT_LOCK_ERROR ;
   (*ppJData)->offScreen			= 1;
   (*ppJData)->result 			= JNI_TRUE;
 
@@ -224,10 +224,8 @@ jawt_lock (JNIEnv *env, JAWTDataHolder *pJData, jboolean ignoreSurfaceChanged,
 	     fprintf(stderr, "GL4Java-JAWT: lock failed -> JAWT_LOCK_SURFACE_CHANGED\n");
           fflush(stderr);
 	}
-	if(ignoreSurfaceChanged==JNI_TRUE)
+	if(ignoreSurfaceChanged==JNI_FALSE)
 	{
-	        pJData->lock = 0;
-	} else {
 		pJData->result = JNI_FALSE;
 		return pJData->result;
 	}
@@ -341,24 +339,26 @@ jawt_unlock (JNIEnv *env, JAWTDataHolder *pJData, jboolean verbose)
   pJData->dsi=0;
  
   // Unlock the drawing surface
-  pJData->ds->Unlock(pJData->ds);
-  exc = (*env)->ExceptionOccurred(env);
-  if(exc) {
+  if ( (pJData->lock & JAWT_LOCK_ERROR) == 0 )
+  {
+	pJData->ds->Unlock(pJData->ds);
+	exc = (*env)->ExceptionOccurred(env);
+	if(exc) 
+	{
           if(verbose)
           {
               fprintf(stderr, "GL4Java-JAWT: unlock failed -> unlock exception\n");
               fflush(stderr);
           }
-	  pJData->result = JNI_FALSE;
+		  pJData->result = JNI_FALSE;
           if(verbose)
-		  (*env)->ExceptionDescribe(env);
-	  (*env)->ExceptionClear(env);
-	  return pJData->result;
+			(*env)->ExceptionDescribe(env);
+		  (*env)->ExceptionClear(env);
+		  return pJData->result;
+	}
+	pJData->lock = 0;
   }
 
-
-  pJData->lock = 0;
- 
   return JNI_TRUE;
 }
 

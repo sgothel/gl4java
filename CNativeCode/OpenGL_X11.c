@@ -690,13 +690,13 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 			fprintf(stderr, "GL4Java: gljDestroy failed, GL context is 0\n");
 			fflush(stderr);
 		}
-		ret = JNI_FALSE;
 	    }
 	    glXMakeCurrent( disp, None, NULL );
 
 	    if(ret==JNI_TRUE) 
 	    {
-		glXDestroyContext(disp, gc);
+	    	if(gc!=0)
+			glXDestroyContext(disp, gc);
 	        if(pix!=0)
 	        {
 		    if(win!=0)

@@ -18,9 +18,15 @@ import gl4java.awt.GLAnimCanvas;
 import gl4java.applet.SimpleGLAnimApplet1;
 
 public class gears extends SimpleGLAnimApplet1 
+    implements MouseListener
 {
 
         /* Initialize the applet */
+	static {
+		GLContext.gljNativeDebug = false;
+		GLContext.gljThreadDebug = false;
+		GLContext.gljClassDebug = true;
+	}
 
 
 	public void init()
@@ -34,6 +40,7 @@ public class gears extends SimpleGLAnimApplet1
         Dimension d = getSize();
         canvas = new gearsCanvas(showGL, d.width, d.height);
         add("Center", canvas);
+            addMouseListener(this);
 	}
 
 
@@ -71,7 +78,7 @@ public class gears extends SimpleGLAnimApplet1
 			i++;
 		}
 
-		if(!perftest)
+		if(perftest)
 		{
 			GLContext.gljNativeDebug = false;
 			GLContext.gljThreadDebug = false;
@@ -101,9 +108,6 @@ public class gears extends SimpleGLAnimApplet1
 
 		gears applet = new gears();
 
-		applet.setSize(300, 300);
-		applet.init(true);
-
 		if(perftest)
 		{
 			applet.canvas.setUseFpsSleep(false);
@@ -117,14 +121,66 @@ public class gears extends SimpleGLAnimApplet1
 				applet.canvas.getUseFpsSleep());
 		}
 
-		applet.start();
-
 		mainFrame.add(applet);
-
-		mainFrame.pack();
+		applet.setSize(400,500);
+		applet.init();
+		applet.start();
+		Dimension ps = applet.getPreferredSize();
+		mainFrame.setBounds(-100,-100,99,99);
+		mainFrame.setVisible(true);
+		mainFrame.setVisible(false);
+		mainFrame.setVisible(true);
+		Insets is = mainFrame.getInsets();
+		mainFrame.setBounds(0,0,
+			    ps.width+is.left+is.right, 
+		            ps.height+is.top+is.bottom);
 		mainFrame.setVisible(true);
 	}
 
+        // Methods required for the implementation of MouseListener
+        public void mouseEntered( MouseEvent evt )
+        {
+		//System.out.println("mouse entered: ");
+		super.mouseEntered(evt);
+        }
+    
+        public void mouseExited( MouseEvent evt )
+        {
+		//System.out.println("mouse exit: ");
+		super.mouseExited(evt);
+        }
+    
+        public void mousePressed( MouseEvent evt )
+        {
+		//System.out.println("mouse pressed: ");
+		super.mousePressed(evt);
+        }
+    
+        public void mouseReleased( MouseEvent evt )
+        {
+		//System.out.println("mouse released: ");
+		super.mouseReleased(evt);
+        }
+    
+        public void mouseClicked( MouseEvent evt )
+        {
+		//System.out.println("mouse clicked: ");
+		super.mouseClicked(evt);
+
+            if ((evt.getModifiers() & evt.BUTTON2_MASK) != 0)
+            {
+	        System.out.println("stopping applet now .. (after 1s, restart)");
+		stop();
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e)
+		{ System.out.println("oops, somebody woke us up .."); }
+	        System.out.println("restarting applet now .. ");
+		canvas.setVisible(true);
+		start();
+            }
+        }
+    
 
         /* Local GLAnimCanvas extension class */
 
@@ -206,6 +262,7 @@ public class gears extends SimpleGLAnimApplet1
             addMouseMotionListener(this);
 
 	    T0=System.currentTimeMillis();
+            System.out.println("init ..");
         }
     
         public void doCleanup()
@@ -406,39 +463,43 @@ public class gears extends SimpleGLAnimApplet1
         // Methods required for the implementation of MouseListener
         public void mouseEntered( MouseEvent evt )
         {
+		//System.out.println("mouse entered cvs: ");
         }
     
         public void mouseExited( MouseEvent evt )
         {
+		//System.out.println("mouse exit cvs: ");
         }
     
         public void mousePressed( MouseEvent evt )
         {
+		//System.out.println("mouse pressed cvs: ");
             prevMouseX = evt.getX();
             prevMouseY = evt.getY();
             if ((evt.getModifiers() & evt.BUTTON3_MASK) != 0)
             {
                 mouseRButtonDown = true;
-                evt.consume();
             }
         }
     
         public void mouseReleased( MouseEvent evt )
         {
+		//System.out.println("mouse released cvs: ");
             if ((evt.getModifiers() & evt.BUTTON3_MASK) != 0)
             {
                 mouseRButtonDown = false;
-                evt.consume();
             }
         }
     
         public void mouseClicked( MouseEvent evt )
         {
+		//System.out.println("mouse clicked cvs: ");
         }
     
         // Methods required for the implementation of MouseMotionListener
         public void mouseDragged( MouseEvent evt )
         {
+		//System.out.println("mouse dragged: ");
             int x = evt.getX();
             int y = evt.getY();
 	    Dimension size = getSize();
@@ -452,11 +513,11 @@ public class gears extends SimpleGLAnimApplet1
 	    view_rotx += thetaX;
 	    view_roty += thetaY;
 
-            evt.consume();
         }
     
         public void mouseMoved( MouseEvent evt )
         {
+		//System.out.println("mouse moved: ");
         }
     }
 }

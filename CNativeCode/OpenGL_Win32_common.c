@@ -16,10 +16,6 @@
 
 #include "OpenGL_Win32_common.h"
 
-// Color Palette handle
-static HPALETTE hPalette = NULL;
-static HGLRC tempRC;
-
 
 HGLRC LIBAPIENTRY get_GC( HDC * hDC, jboolean doubleBuffer, 
 		jboolean stereo, jint stencilBits, HGLRC shareWith, 
@@ -31,8 +27,11 @@ HGLRC LIBAPIENTRY get_GC( HDC * hDC, jboolean doubleBuffer,
 	const char * text=0;
 	HDC hDCOrig = 0;
 
+	// Color Palette handle
+	HPALETTE hPalette = NULL;
+	HGLRC tempRC=0;
 
-        if( *hDC == 0 && !offScreenRenderer)
+    if( *hDC == 0 && !offScreenRenderer)
 		printf( "get_GC: Error, HDC is zero\n");
 
 	// Select the pixel format
@@ -98,7 +97,7 @@ void LIBAPIENTRY SetDCPixelFormat(HDC hDC, jboolean doubleBuffer,
     int nPixelFormat=0;
 	const char * text=0;
 
-    static PIXELFORMATDESCRIPTOR pfd = {
+    PIXELFORMATDESCRIPTOR pfd = {
 			sizeof(PIXELFORMATDESCRIPTOR),  // Size of this structure
 			1,                              // Version of this structure
 			0,								// will be defined later !!!!
@@ -164,11 +163,11 @@ HPALETTE LIBAPIENTRY GetOpenGLPalette(HDC hDC)
 {
     HPALETTE hRetPal = NULL;	// Handle to palette to be created
     PIXELFORMATDESCRIPTOR pfd;	// Pixel Format Descriptor
-    LOGPALETTE *pPal;			// Pointer to memory for logical palette
-    int nPixelFormat;			// Pixel format index
-    int nColors;				// Number of entries in palette
-    int i;						// Counting variable
-    BYTE RedRange,GreenRange,BlueRange;
+    LOGPALETTE *pPal=0;			// Pointer to memory for logical palette
+    int nPixelFormat=0;			// Pixel format index
+    int nColors=0;				// Number of entries in palette
+    int i=0;						// Counting variable
+    BYTE RedRange=0,GreenRange=0,BlueRange=0;
 							    // Range for each color entry (7,7,and 3)
 
 
@@ -357,8 +356,8 @@ GetTextualPixelFormatByPFD(PIXELFORMATDESCRIPTOR *ppfd, int format)
 
 const char * LIBAPIENTRY GetTextualPixelFormatByHDC(HDC hdc)
 {
-    PIXELFORMATDESCRIPTOR pfd, *ppfd;
-    int format;
+    PIXELFORMATDESCRIPTOR pfd, *ppfd=0;
+    int format=0;
 
     ppfd   = &pfd;
     format = PixelFormatDescriptorFromDc( hdc, ppfd );
@@ -369,45 +368,25 @@ const char * LIBAPIENTRY GetTextualPixelFormatByHDC(HDC hdc)
 /*****************************************************************/
 
 /* Struct used to manage color ramps */
-static struct colorIndexState {
+typedef struct {
     GLfloat amb[3];	/* ambient color / bottom of ramp */
     GLfloat diff[3];	/* diffuse color / middle of ramp */
     GLfloat spec[3];	/* specular color / top of ramp */
     GLfloat ratio;	/* ratio of diffuse to specular in ramp */
     GLint indexes[3];	/* where ramp was placed in palette */
-};
-#define NUM_COLORS (sizeof(colors) / sizeof(colors[0]))
-static struct colorIndexState colors[] = {
-    {
-        { 0.0F, 0.0F, 0.0F },
-        { 0.1F, 0.6F, 0.3F },
-        { 1.0F, 1.0F, 1.0F },
-        0.75F, { 0, 0, 0 },
-    },
-    {
-        { 0.0F, 0.0F, 0.0F },
-        { 0.0F, 0.2F, 0.5F },
-        { 1.0F, 1.0F, 1.0F },
-        0.75F, { 0, 0, 0 },
-    },
-    {
-        { 0.0F, 0.05F, 0.05F },
-        { 0.6F, 0.0F, 0.8F },
-        { 1.0F, 1.0F, 1.0F },
-        0.75F, { 0, 0, 0 },
-    },
-};
+} colorIndexState ;
 
+#define NUM_COLORS (sizeof(colors) / sizeof(colors[0]))
 
 void LIBAPIENTRY
 setupDIB(HDC hDCOrig, HDC hDC, HBITMAP * hBitmap, int width, int height)
 {
-    BITMAPINFO *bmInfo;
-    BITMAPINFOHEADER *bmHeader;
-    UINT usage;
-    VOID *base;
-    int bmiSize;
-    int bitsPerPixel;
+    BITMAPINFO *bmInfo=0;
+    BITMAPINFOHEADER *bmHeader=0;
+    UINT usage=0;
+    VOID *base=0;
+    int bmiSize=0;
+    int bitsPerPixel=0;
 	HBITMAP hOldBitmap=0;
 
     bmiSize = sizeof(*bmInfo);
@@ -526,12 +505,34 @@ void LIBAPIENTRY resizeDIB(HDC hDC, HBITMAP *hOldBitmap, HBITMAP *hBitmap)
 	*/
 }
 
-void LIBAPIENTRY setupPalette(HDC hDC)
+HPALETTE LIBAPIENTRY setupPalette(HDC hDC)
 {
+	HPALETTE hPalette = NULL;
     PIXELFORMATDESCRIPTOR pfd;
-    LOGPALETTE* pPal;
+    LOGPALETTE* pPal=0;
     int pixelFormat = GetPixelFormat(hDC);
-    int paletteSize;
+    int paletteSize=0;
+	colorIndexState colors[] = {
+		{
+			{ 0.0F, 0.0F, 0.0F },
+			{ 0.1F, 0.6F, 0.3F },
+			{ 1.0F, 1.0F, 1.0F },
+			0.75F, { 0, 0, 0 },
+	    },
+		{
+			{ 0.0F, 0.0F, 0.0F },
+			{ 0.0F, 0.2F, 0.5F },
+			{ 1.0F, 1.0F, 1.0F },
+			0.75F, { 0, 0, 0 },
+		},
+		{
+			{ 0.0F, 0.05F, 0.05F },
+			{ 0.6F, 0.0F, 0.8F },
+			{ 1.0F, 1.0F, 1.0F },
+			0.75F, { 0, 0, 0 },
+		},
+	};
+
 
     DescribePixelFormat(hDC, pixelFormat, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
 
@@ -539,11 +540,11 @@ void LIBAPIENTRY setupPalette(HDC hDC)
     ** Determine if a palette is needed and if so what size.
     */
     if (pfd.dwFlags & PFD_NEED_PALETTE) {
-	paletteSize = 1 << pfd.cColorBits;
+		paletteSize = 1 << pfd.cColorBits;
     } else if (pfd.iPixelType == PFD_TYPE_COLORINDEX) {
-	paletteSize = 4096;
+		paletteSize = 4096;
     } else {
-	return;
+		return NULL;
     }
 
     pPal = (LOGPALETTE*)
@@ -559,6 +560,8 @@ void LIBAPIENTRY setupPalette(HDC hDC)
 	int greenMask = (1 << pfd.cGreenBits) - 1;
 	int blueMask = (1 << pfd.cBlueBits) - 1;
 	int i;
+
+
 
 	for (i=0; i<paletteSize; ++i) {
 	    pPal->palPalEntry[i].peRed =
@@ -650,6 +653,8 @@ void LIBAPIENTRY setupPalette(HDC hDC)
 	SelectPalette(hDC, hPalette, FALSE);
 	RealizePalette(hDC);
     }
+
+	return hPalette;
 }
 
 

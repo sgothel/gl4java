@@ -39,6 +39,6 @@ LIBAPI void LIBAPIENTRY setupDIB(HDC hDCOrig, HDC hDC, HBITMAP * hBitmap,
 LIBAPI void LIBAPIENTRY resizeDIB(HDC hDC, HBITMAP *hOldBitmap, 
 		HBITMAP *hBitmap);
 
-LIBAPI void LIBAPIENTRY setupPalette(HDC hDC);
+LIBAPI HPALETTE LIBAPIENTRY setupPalette(HDC hDC);
 
 #endif

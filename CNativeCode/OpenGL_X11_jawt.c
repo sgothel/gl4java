@@ -164,7 +164,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
     jfieldID fglContext=0;
     jfieldID fstereoView=0, frgba=0, fstencilBits=0, 
              faccumSize=0, fownwind=0;
-    jfieldID fdoubleBuffer=0, foffScreenRenderer;
+    jfieldID fdoubleBuffer=0, foffScreenRenderer=0;
 
     jfieldID fcreatewinw = 0, fcreatewinh = 0;
     jfieldID fshareWith = 0;
@@ -183,10 +183,10 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
     Display * display = 0;
     Window rootwini  = 0;
     Window theWindow  = 0;
-    Pixmap pix;
+    Pixmap pix=0;
     jclass AwtComponent = (*env)->FindClass(env, "Ljava/awt/Component;");
 
-    int iValue, iValue1, iValue2, iValue3;
+    int iValue=0, iValue1=0, iValue2=0, iValue3=0;
 
     cls = (*env)->GetObjectClass(env, obj);
     if(cls==0) 
@@ -844,8 +844,15 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 	    fprintf(stderr, "GL4Java: gljDestroy lock failed\n");
 	    fflush(stderr);
 	}
-	jawt_close_unlock(env, pData, JNI_FALSE);
-    	return JNI_FALSE;
+	/**
+	 * we have to continue destroying the context !
+	 *
+	 * therefore, the show ain't over yet !
+	 *
+	    jawt_close_unlock(env, pData, JNI_FALSE);
+	    return JNI_FALSE;
+	 */  
+	pData->result=JNI_TRUE; // the force will be with us ;-) 
     }
 
     win = GET_USED_WINDOW(pData);
@@ -862,13 +869,13 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 			fprintf(stderr, "GL4Java: gljDestroy failed, GL context is 0\n");
 			fflush(stderr);
 		}
-		ret = JNI_FALSE;
 	    }
 	    glXMakeCurrent( disp, None, NULL );
 
 	    if(ret==JNI_TRUE) 
 	    {
-		glXDestroyContext(disp, gc);
+	    	if(gc!=0)
+			glXDestroyContext(disp, gc);
 	        if(pix!=0)
 		{
 		    if(win!=0)

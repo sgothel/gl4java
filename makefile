@@ -196,6 +196,8 @@ MK_GL4JAVA_JAR		= ( cd $(DEST_CLASSES_DIR) ; \
 			    rm -f gl4java-glutfonts.jar ; \
 			    $(JAR) cf gl4java-glutfonts.jar \
 				gl4java/utils/glut/fonts ; \
+			    for i in $(JAR_DESTS); do \
+			    	cp -av gl4java*.jar $$i ; done \
 			  )
 
 ######################################################################
@@ -394,9 +396,9 @@ FILES.gen   		= $(FILE.gen1.h) \
 
 .SUFFIXES 		: .java .class .h .c .o
 
-.class.h:
-	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${<F:.class=} 2>&1 \
-	| tee -a $(THISDIR)/errors
+#.class.h:
+#	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${<F:.class=} 2>&1 \
+#	| tee -a $(THISDIR)/errors
 
 .java.class:    
 	cd ${<D}; $(JAVAC) -O -deprecation ${<F} 2>&1 \
@@ -413,7 +415,8 @@ FILES.gen   		= $(FILE.gen1.h) \
 
 x11			: cleanup gljni \
 	                  $(FILES.class) $(FILES_x11.class) \
-			  makeJar \
+			  $(DEST_CLASSES_DIR)/gl4java.jar \
+			  $(FILES.gen) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY1) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY1b) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY1c) \
@@ -588,6 +591,7 @@ $(CNATIVEDIR)/OpenGL_X11.o: ${FILE.gen1.h}
 $(CNATIVEDIR)/OpenGL_misc.o: ${FILE.gen1.h}
 
 $(FILE.gen1.h): $(PACKAGEDIR)/${JAVA_C_MAP1_FILE}
+	rm -f $(FILE.gen1.h)
 	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP1_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
 
@@ -602,6 +606,7 @@ $(CNATIVEDIR)/OpenGL_JauJNI_dynfuncs.o: ${FILE.gen2.h} \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
 $(FILE.gen2.h): $(PACKAGEDIR)/${JAVA_C_MAP2_FILE}
+	rm -f $(FILE.gen2.h)
 	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP2_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
 
@@ -612,6 +617,7 @@ $(CNATIVEDIR)/OpenGLU_JauJNI_funcs.o: ${FILE.gen3.h} \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
 $(FILE.gen3.h): $(PACKAGEDIR)/${JAVA_C_MAP3_FILE}
+	rm -f $(FILE.gen3.h)
 	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP3_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
 
@@ -621,6 +627,7 @@ $(CNATIVEDIR)/OpenGL_JauJNInf_dynfuncs.o: ${FILE.gen4.h} \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
 $(FILE.gen4.h): $(PACKAGEDIR)/${JAVA_C_MAP4_FILE}
+	rm -f $(FILE.gen4.h)
 	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP4_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
 
@@ -630,6 +637,7 @@ $(CNATIVEDIR)/OpenGLU_JauJNInf_funcs.o: ${FILE.gen5.h} \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
 $(FILE.gen5.h): $(PACKAGEDIR)/${JAVA_C_MAP5_FILE}
+	rm -f $(FILE.gen5.h)
 	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP5_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
 
@@ -732,6 +740,9 @@ classcpy:
 	done 
 	echo classes copied
 	chmod -R 755 $(DEST_CLASSES_DIR)/gl4java
+	$(MK_GL4JAVA_JAR)
+
+$(DEST_CLASSES_DIR)/gl4java.jar: $(FILES.class)
 	$(MK_GL4JAVA_JAR)
 
 makeJar:
@@ -848,6 +859,7 @@ win2binpkg: pbinpkg java2binpkg
 	cd Win32VC6/libs ; zip -9 ../../binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(WIN32TYPE).zip \
 		GL4JavaGljMSJDirect.dll \
 		GL4JavaJauGljJNI.dll GL4JavaJauGljJNI12.dll \
+		GL4JavaJauGljJNI13.dll \
 		GL4JavaJauGLJNI.dll GL4JavaJauGLJNI12.dll \
 		GL4JavaJauGLUJNI.dll GL4JavaJauGLUJNI12.dll
 

@@ -93,16 +93,21 @@ __declspec(dllexport) void OGLWindowMsgPumpJDirect(void)
 		}
     }   /* OGLWindowMsgPumpJDirect() */
 
-__declspec(dllexport) void moveOGLWindowNativeJDirect(long _hdc, int x, int y, int width, int height)
+__declspec(dllexport) void moveOGLWindowNativeJDirect(int _hdc, int x, int y, int width, int height)
 	{
 	HWND hwnd, hwndParent;
-	HDC hdc = (HDC)((PointerHolder)_hdc);
+	HDC hdc = (HDC)_hdc;
     RECT rect;
     int parentx = 0, parenty = 0;
     int insetsleft = 0, insetstop = 0;
 
 	if (hdc != NULL)
 		{
+			/*
+			printf("move paras : x=%d, y=%d, w=%d, h=%d\n", 
+				x, y, width, height);
+			*/
+
 		if ((hwnd = WindowFromDC(hdc)) != NULL)
             {
             if ((hwndParent = GetParent(hwnd)) != NULL)
@@ -113,6 +118,15 @@ __declspec(dllexport) void moveOGLWindowNativeJDirect(long _hdc, int x, int y, i
                 }
             else
                 parentx = parenty = 0;
+
+			/*
+				printf("move parent pos: x=%d, y=%d\n", 
+					parentx, parenty);
+
+				printf("move finale exec : x=%d, y=%d, w=%d, h=%d\n", 
+					x-parentx,y-parenty,width,height);
+			*/
+
             MoveWindow(hwnd,x-parentx,y-parenty,width,height,TRUE);
             GetWindowRect(hwnd,&rect);
             insetsleft = rect.left-x;
@@ -123,11 +137,17 @@ __declspec(dllexport) void moveOGLWindowNativeJDirect(long _hdc, int x, int y, i
 		}
 	}	/* moveOGLWindowNativeJDirect() */
 
-__declspec(dllexport) long createOGLWindowNativeJDirect(long hwndParent, int x, int y, int width, int height)
+__declspec(dllexport) int createOGLWindowNativeJDirect(int hwndParent, int x, int y, int width, int height)
 	{
 	HWND hwnd;
     HDC hdc;
 
+		/*
+			printf("create window : x=%d, y=%d, w=%d, h=%d\n", 
+					x,y,width,height);
+
+			printf("parent window : %p\n", (HWND)hwndParent );
+		*/
 	if ((hwnd = CreateWindow
 		(CLASS_NAME,
 		 WINDOW_NAME,
@@ -136,7 +156,7 @@ __declspec(dllexport) long createOGLWindowNativeJDirect(long hwndParent, int x, 
 		 y,
 		 width,
 		 height,
-		 (HWND)((PointerHolder)hwndParent),
+		 (HWND)hwndParent,
 		 NULL,
 		 NULL,
 		 NULL)) == NULL)
@@ -146,14 +166,14 @@ __declspec(dllexport) long createOGLWindowNativeJDirect(long hwndParent, int x, 
 		return(0);
 		}
     hdc = GetDC(hwnd);
-    moveOGLWindowNativeJDirect((long)((PointerHolder)hdc), x, y, width, height);
-    return (long)((PointerHolder)hdc);
+    moveOGLWindowNativeJDirect((int)hdc, x, y, width, height);
+    return (int)hdc;
 	}	/* createOGLWindowNativeJDirect() */
 
-__declspec(dllexport) void destroyOGLWindowNativeJDirect(long _hdc)
+__declspec(dllexport) void destroyOGLWindowNativeJDirect(int _hdc)
 	{
 	HWND hwnd;
-	HDC hdc = (HDC)((PointerHolder)_hdc);
+	HDC hdc = (HDC)_hdc;
 
 	if (hdc != NULL)
 		{

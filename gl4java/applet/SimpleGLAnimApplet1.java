@@ -41,27 +41,21 @@ public class SimpleGLAnimApplet1 extends Applet
 	pan.setLayout(new GridLayout(2,3));
 
 	buttonInfo = new Button("GL4Java");
-	buttonInfo.addMouseListener(this);
 	pan.add(buttonInfo);
 
 	checkUseRepaint = new Checkbox("repaint", true);
-	checkUseRepaint.addItemListener(this);
 	pan.add(checkUseRepaint);
 
 	checkUseFpsSleep = new Checkbox("fps-sleep", true);
-	checkUseFpsSleep.addItemListener(this);
 	pan.add(checkUseFpsSleep);
 
 	buttonReStart = new Button("start/stop");
-	buttonReStart.addMouseListener(this);
 	pan.add(buttonReStart);
 
 	buttonFps = new Button("fps: ");
-	buttonFps.addMouseListener(this);
 	pan.add(buttonFps);
 
 	textFps=new TextField("0000000000");
-	textFps.addActionListener(this);
 	pan.add(textFps);
 
 	add("South",pan);
@@ -70,30 +64,60 @@ public class SimpleGLAnimApplet1 extends Applet
 
     public void start()
     {
+	if(GLContext.gljClassDebug)
+		System.out.println("SGLApplet start ..");
         checkUseFpsSleep.setState(canvas.getUseFpsSleep());
         checkUseRepaint.setState(canvas.getUseRepaint());
+
+	buttonInfo.addMouseListener(this);
+	checkUseRepaint.addItemListener(this);
+	checkUseFpsSleep.addItemListener(this);
+	buttonReStart.addMouseListener(this);
+	buttonFps.addMouseListener(this);
         canvas.addMouseListener(this);
+
+	canvas.setVisible(true);
+	canvas.repaint();
         canvas.start();
     }
 
 
     public void stop()
     {
-        canvas.stop();
+	if(GLContext.gljClassDebug)
+		System.out.println("SGLApplet stop ..");
+	buttonInfo.removeMouseListener(this);
+	checkUseRepaint.removeItemListener(this);
+	checkUseFpsSleep.removeItemListener(this);
+	buttonReStart.removeMouseListener(this);
+	buttonFps.removeMouseListener(this);
+        canvas.removeMouseListener(this);
+
+        canvas.cvsDispose();
     }
 
 
     public void destroy()
     {
+	if(GLContext.gljClassDebug)
+		System.out.println("SGLApplet destroy ..");
 	if(fInfo!=null)
 	{
 		fInfo.dispose();
 		fInfo=null;
 	}
-        canvas.stop();
         canvas.cvsDispose();
     }
 
+
+    protected void finalize()
+    	throws Throwable
+    {
+	if(GLContext.gljClassDebug)
+		System.out.println("SGLApplet finalize ..");
+	  
+	super.finalize();
+    }
 
     // Methods required for the implementation of MouseListener
     public void mouseEntered( MouseEvent evt )
@@ -118,12 +142,17 @@ public class SimpleGLAnimApplet1 extends Applet
     {
 	Component comp = evt.getComponent();
 
-	if ((evt.getModifiers() & evt.BUTTON3_MASK) != 0) 
+	System.out.println("SimpleApplet click: "+evt);
+
+	if ( ( (evt.getModifiers() & evt.BUTTON1_MASK) != 0 ) &&
+	     evt.getClickCount()==2 )
 	{
 	    if(comp instanceof GLAnimCanvas)
 	    {
 		GLAnimCanvas glcvs = (GLAnimCanvas)comp;
+		System.out.println("\n\nswitch requested: "+glcvs);
 		glcvs.cvsDispose();
+		System.out.println("\n\ndisposed: "+glcvs);
 
 		Container c = glcvs.getParent();
 		c.remove(glcvs);

@@ -78,8 +78,6 @@ public class GLCanvas extends Canvas
     protected Dimension size = null;
     protected boolean mustResize = false;
 
-    protected boolean cvsInitialized=false;
-
     protected boolean needCvsDispose = false;
 
     /**
@@ -196,9 +194,6 @@ public class GLCanvas extends Canvas
 
 	setSize(size);
 
-	/* to be able for RESIZE event's */
-	addComponentListener(this);
-	addMouseListener(this);
     }
 
     /**
@@ -291,10 +286,16 @@ public class GLCanvas extends Canvas
      */
     public synchronized final void paint( Graphics g )
     {
-	if(glj == null )
+	if(glj == null || (  !glj.gljIsInit()  && isGLEnabled() ) )
 	{
+		if(GLContext.gljClassDebug)
+			System.out.println("GLCanvas create GLContext (recreate="+
+				(glj != null) +")");
 		preInit();
-		glj = new GLContext ( this, gl, glu, 
+
+		if(glj!=null) glj=null;
+
+	        glj = new GLContext ( this, gl, glu, 
                                       createOwnWindow,
 		                      doubleBuffer, stereoView,
 				      rgba, stencilBits, accumSize,
@@ -339,9 +340,12 @@ public class GLCanvas extends Canvas
 		      System.out.println("no parent found for "+getName());
 		      System.out.flush();
 		}
-		if(glj!=null && glj.gljIsInit())
-			cvsInitialized=true;
+
+		/* to be able for RESIZE event's */
+		addComponentListener(this);
+		addMouseListener(this);
 	} 
+		   
 	sDisplay();
     }
 
@@ -407,7 +411,72 @@ public class GLCanvas extends Canvas
      */ 
     public boolean cvsIsInit()
     {
-    	return cvsInitialized;
+	if(glj!=null)
+		return glj.gljIsInit();
+	return false;
+    }
+
+    /**
+     * This function enables, disables the GL-Context !
+     * If false is given, the openGL renderer/context is 
+     * disabled and disconected (gljFree is called, if initialized) !
+     *
+     * If disabled, all GL Functions are disabled but the 
+     * Destroy & Free are not !
+     *
+     * @return 	boolean
+     *
+     * @see     gl4java.awt.GLCanvas#cvsDispose
+     * @see     gl4java.GLContext#setEnable
+     * @see     gl4java.GLContext#gljMakeCurrent
+     * @see     gl4java.GLContext#gljDestroy
+     * @see     gl4java.GLContext#gljFree
+     */ 
+    public void setGLEnabled(boolean b)
+    {
+	if(glj!=null)
+		glj.setEnabled(b);
+    }
+
+    /**
+     * This function enables, disables the GL-Context !
+     * If false is given, the openGL renderer/context is 
+     * disabled and disconected (gljFree is called, if initialized) !
+     *
+     * If disabled, all GL Functions are disabled but the 
+     * Destroy & Free are not !
+     *
+     * The Visible-Flag of this AWT Component is also set to the given value !
+     * The setVisible(boolean) method of Component is called !
+     *
+     * @return 	boolean
+     *
+     * @see     gl4java.awt.GLCanvas#cvsDispose
+     * @see     gl4java.GLContext#setEnable
+     * @see     gl4java.GLContext#gljMakeCurrent
+     * @see     gl4java.GLContext#gljDestroy
+     * @see     gl4java.GLContext#gljFree
+     */ 
+    public void setVisible(boolean b)
+    {
+	if(glj!=null)
+		glj.setEnabled(b);
+        super.setVisible(b);
+    }
+
+    /**
+     * This function queries, if the GL-Context is enabled !
+     *
+     * @return 	boolean
+     *
+     * @see	gl4java.GLContext#isEnabled
+     * @see     gl4java.GLContext#gljMakeCurrent
+     */ 
+    public boolean isGLEnabled()
+    {
+	if(glj!=null)
+		return glj.isEnabled();
+	return false;
     }
 
     protected long _f_dur = 0;
@@ -439,7 +508,9 @@ public class GLCanvas extends Canvas
 	long _s = System.currentTimeMillis();
 
 	if(!cvsIsInit())
+	{
 		return;
+	}
 
 	if( mustResize )
 	{
@@ -650,13 +721,24 @@ public class GLCanvas extends Canvas
       * cvsDispose implementation call this one !
       * 
       * This function calls gljDestroy of GLContext !
+      * The Visibility is set to false !
+      * The Enabled is set to false either !
+      *
+      * To bring this component back to live,
+      * you need call setVisible(true) !
       *
       * @see gl4java.GLContext#gljDestroy
       * @see gl4java.awt.GLCanvas#doCleanup
       */
     public void cvsDispose()
     {
-        cvsInitialized = false;
+	if(GLContext.gljClassDebug)
+		System.out.println("GLCanvas cvsDispose (doit="+
+			( (glj != null) && glj.gljIsInit() ) +")");
+	  
+	removeComponentListener(this);
+	removeMouseListener(this);
+
 	if (glj != null)
 	{
 		if (glj.gljIsInit())
@@ -672,13 +754,10 @@ public class GLCanvas extends Canvas
 			   context, so it all works out fine. */
 			try
 			{
-				glj.setEnabled(false); 
-
-				setVisible(false);
+			        setVisible(false);
 				doCleanup();
 
 				glj.gljDestroy();
-				glj = null;
         			needCvsDispose = false;
 			}
 			catch (Exception ex)
@@ -690,6 +769,36 @@ public class GLCanvas extends Canvas
 
 	// Setting glj to null will simply cause paint() to re-initialize.
 	// We don't want that to happen, so we will leave glj non-null.
+    }
+
+    /**
+     * does nothing than:
+     * 
+     * @see	gl4java.awt.GLCanvas#cvsDispose
+     */
+    protected void finalize()
+    	throws Throwable
+    {
+	if(GLContext.gljClassDebug)
+		System.out.println("GLCanvas finalize ..");
+	  
+        cvsDispose();
+	super.finalize();
+    }
+
+    /**
+     * does nothing than:
+     * 
+     * @see	gl4java.awt.GLCanvas#cvsDispose
+     *
+     * @deprecated Use cvsDispose instead, well finalize is also implemented
+     */
+    public void destroy()
+    {
+	if(GLContext.gljClassDebug)
+		System.out.println("GLCanvas destroy ..");
+	  
+        cvsDispose();
     }
 
     /**

@@ -578,7 +578,9 @@ public class GLContext extends Object
 						String gluLibName
 					      )
     {
+        System.out.println("GLContext.loadNativeLibraries ...");
         if(libsLoaded) return true;
+        System.out.println("GLContext.loadNativeLibraries will do it !");
 
 	String libNames[] = null;
 
@@ -1002,9 +1004,9 @@ public class GLContext extends Object
 	        if(gljClassDebug)
 		{
 			if(gljIsInit())
-			  System.out.println(">>> GLContext() succeded");
+			  System.out.println("GLContext GLContext() succeded");
 			else
-			  System.out.println(">>> GLContext() failed");
+			  System.out.println("GLContext GLContext() failed");
 		}
     }
 
@@ -1385,6 +1387,16 @@ public class GLContext extends Object
     }
 
     /**
+     * @see	gl4java.GLContext#gljDestroy   
+     */
+    protected void finalize()
+    	throws Throwable
+    {
+	gljDestroy();
+	super.finalize();
+    }
+
+    /**
      * Used to set the user given GLFunc implementation
      */
     public final void setGLFunc(GLFunc _gl) { gl = _gl; }
@@ -1552,7 +1564,7 @@ public class GLContext extends Object
 
 	try {
 	    if(gljClassDebug)
-	      System.out.println(">>> createGLContext");
+	      System.out.println("GLContext createGLContext");
  
           if(pData == 0)
 	  {
@@ -1714,7 +1726,7 @@ public class GLContext extends Object
 	}
 
 	if(gljClassDebug)
-	  System.out.println(">>> gljInit");
+	  System.out.println("GLContext gljInit");
 
         boolean ok;
 
@@ -1741,6 +1753,7 @@ public class GLContext extends Object
             throw new GL4JavaInitException ();
           } else {
 	    isInitialized = true;
+	    glEnabled=true;
 	    glContextNumber++;
 	}
     }
@@ -1757,6 +1770,12 @@ public class GLContext extends Object
 		System.err.println("GL4Java-MSJVM-Run: INTERNAL ERROR"); 
 		System.exit(0);
 	}
+
+	/*
+	System.out.println("OGL create win: x="+createwinx+", y="+createwiny+
+				", w="+createwinw+", h="+createwinh);
+	System.out.println("OGL create parent: "+pData);
+	*/
 
 	pData = gl4java.system.GljMSJDirect.createOGLWindowNative( 
 					      pData,
@@ -1900,6 +1919,8 @@ public class GLContext extends Object
 
     public final boolean gljCheckGL()
     {
+    	if ( ! isInitialized || !glEnabled ) return false;
+
 	int ec = gl.glGetError();
 
 	if(ec!=GLFunc.GL_NO_ERROR)
@@ -2125,6 +2146,8 @@ public class GLContext extends Object
      */ 
      public synchronized final boolean gljDestroy()
      {
+    	if ( ! isInitialized ) return false;
+
         boolean result = true;
 
         if (!gljDestroyNative(_comp)) 
@@ -2147,6 +2170,9 @@ public class GLContext extends Object
         isInitialized = false;
 	glContextNumber--;
 
+	if(gljClassDebug)
+	  System.out.println("GLContext destroyed (remaining ctx="+
+	  	glContextNumber+")");
         return result;
     }
 
@@ -2221,7 +2247,7 @@ public class GLContext extends Object
      */
     public final boolean gljSwap()
     {
-    	if ( ! isInitialized ) return false;
+    	if ( ! isInitialized || !glEnabled ) return false;
 
         return gljSwapNative( displayHandle,
 			      windowHandle,
@@ -2239,11 +2265,14 @@ public class GLContext extends Object
      * If false is given, the openGL renderer/context is 
      * disabled and disconected (gljFree is called, if initialized) !
      *
-     * If disabled, gljMakeCurrent returns always false !
+     * If disabled, all GL Functions are disabled but the 
+     * Destroy & Free are not !
      *
      * @return 	boolean
      *
      * @see     gl4java.GLContext#gljMakeCurrent
+     * @see     gl4java.GLContext#gljDestroy
+     * @see     gl4java.GLContext#gljFree
      */ 
     public void setEnabled(boolean b)
     {

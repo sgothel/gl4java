@@ -17,6 +17,13 @@ JAVASHAREINC    	= $(JDK_HOME)/include
 JAVAOSINC  		= $(JDK_HOME)/include/linux
 JAVAOSLIB  		= $(JDK_HOME)/jre/lib/i386
 
+JAR_DESTS		= /usr/local/lib/jdk1.3-blackdown/jre/lib/ext \
+			  /usr/local/lib/jdk1.3-ibm/jre/lib/ext \
+			  /usr/local/lib/jdk1.3-sun/jre/lib/ext \
+			  /usr/local/lib/jdk1.2-sun/jre/lib/ext \
+			  /usr/local/lib/j2re/lib/ext
+
+
 CC			= gcc
 MKLIB 			= mklibs/mkslib.linux
 MKEXP 			= echo

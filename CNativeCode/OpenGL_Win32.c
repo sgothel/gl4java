@@ -56,6 +56,16 @@ Java_gl4java_GLContext_useJAWT( JNIEnv *env, jobject obj )
 }
 
 JNIEXPORT jboolean JNICALL
+Java_gl4java_GLContext_hasJAWTSurfaceChanged( JNIEnv *env, jobject obj,
+					      jlong thisWin )
+{
+    (void)env;
+    (void)obj;
+    (void)thisWin;
+    return JNI_FALSE;
+}
+
+JNIEXPORT jboolean JNICALL
 Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 					jobject canvas)
 {
@@ -63,9 +73,9 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 
     jclass cls = 0;
     jfieldID fpixmapHandle=0;
-    jfieldID foffScreenRenderer;
+    jfieldID foffScreenRenderer=0;
     jfieldID faccumSize=0;
-    jfieldID fwindowHandle=0, fpData=0, fdoubleBuffer, fstereoView, fstencilBits;
+    jfieldID fwindowHandle=0, fpData=0, fdoubleBuffer=0, fstereoView=0, fstencilBits=0;
     jfieldID fverbose=0;
     jfieldID fglContext=0;
     jfieldID fshareWith=0;
@@ -77,12 +87,12 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 	jboolean jstereoView=JNI_FALSE;
 	jint jstencilBits=0;
     jint jaccumSize=0;
-    HDC thisWin;
-    HGLRC gc;
+    HDC thisWin=0;
+    HGLRC gc=0;
     HDC pData=0;
 	HGLRC shareWith=NULL;
     jint jcreatewinw = 0, jcreatewinh = 0;
-    HBITMAP pix;
+    HBITMAP pix=0;
 
     PIXELFORMATDESCRIPTOR pfd;
 
@@ -341,16 +351,17 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 	jboolean ret = JNI_TRUE;
 
 	jclass cls = 0;
-	jfieldID fwindowHandle=0, fpixmapHandle;
+	jfieldID fwindowHandle=0, fpixmapHandle=0;
 	jfieldID fglContext=0;
-    jfieldID foffScreenRenderer;
+    jfieldID foffScreenRenderer=0;
     jfieldID fownwind=0;
 
     jboolean jownwind = JNI_FALSE ;
     jboolean joffScreenRenderer=JNI_FALSE;
-    HBITMAP pix;
-	HDC thisWin;
-	HGLRC gc;
+    HBITMAP pix=0;
+	HDC thisWin=0;
+	HGLRC gc=0;
+
 
 	(void)canvas;
 
@@ -395,49 +406,49 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 	    else jownwind =(*env)->GetBooleanField(env, obj, fownwind);
     }
 
-
     if(ret==JNI_TRUE)
     {
 	    if ( gc == 0 )
 	    {
 	        if(JNI_TRUE==verbose)
 			{
-				fprintf(stderr, "gljDestroy failed, GL context is 0\n");
+				fprintf(stderr, "gljDestroy error, GL context is 0\n");
 				fflush(stderr);
 			}
-			ret = JNI_FALSE;
 		}
 
-		if ( ret==JNI_TRUE &&  ! wglMakeCurrent( NULL, NULL ) )
+		if ( ! wglMakeCurrent( NULL, NULL ) )
 		{
 			fprintf(stderr, "gljDestroy failed (free)\n");
 			fflush(stderr);
-			ret=JNI_FALSE;
-		} else if( ret == JNI_TRUE) {
-			wglDeleteContext(gc);
-		}
+		} 
 
-		if(joffScreenRenderer==JNI_TRUE)
+		if(ret==JNI_TRUE) 
 		{
-			if(pix!=0 && joffScreenRenderer==JNI_TRUE)
+			if(gc!=0)
+				wglDeleteContext(gc);
+
+			if(pix!=0)
 			{
-				DeleteObject(pix);
-				pix=0;
+			    if(thisWin!=0)
+				    DeleteDC(thisWin);
+			    thisWin=0;
+			    DeleteObject(pix);
+			    pix=0;
 			}
-			if(thisWin!=0 && 
-			   (joffScreenRenderer || jownwind) )
+			if(jownwind && thisWin!=0)
 			{
-				DeleteDC(thisWin);
-				thisWin=0;
+			    DeleteDC(thisWin);
+			    thisWin=0;
+			    jownwind=JNI_FALSE;
 			}
 		}
 	}
 
-    if(ret==JNI_TRUE)
-    {
-	    gc = 0;
-	    thisWin = 0;
-    }
+	gc = 0;
+	thisWin = 0;
+
+	ret=JNI_TRUE;
 
     if(ret==JNI_TRUE && fwindowHandle!=0) {
 	    (*env)->SetLongField(env, obj, fwindowHandle, (jlong)((PointerHolder)thisWin));
@@ -497,7 +508,14 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLContext_gljResizeNative( JNIEnv *env, jobject obj,
 	                                jboolean isOwnWindow,
 				        jlong disp, jlong thisWin,
-				        jlong width, jlong height)
+				        jint width, jint height)
 {
+	(void)isOwnWindow;
+	(void)disp;
+	(void)thisWin;
+	(void)width;
+	(void)height;
+
+	return;
 }
 

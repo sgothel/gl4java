@@ -22,6 +22,10 @@ package gl4java.system;
  * This is the same for gl4java.GLUFuncMSJDirect
  * and gl4java.GLFuncMSJDirect !
  *
+ *
+ * Because the JDirect cannot handle long-type argument mapping,
+ * we do convert them here to int-type :-(
+ *
  * @see gl4java.GLContext
  * @version 	1.00
  * @author      Ron Cemer, Sven Goethel
@@ -47,31 +51,31 @@ public class GljMSJDirect extends Object
     					          int x, int y, 
 						  int width, 
 						  int height)
-    { return createOGLWindowNativeJDirect(hwndParent, x,y, width, height); }
+    { return (long) createOGLWindowNativeJDirect((int)hwndParent, x,y, width, height); }
 
     /**
      * @dll.import("GL4JavaGljMSJDirect", auto)
      */
-    private static native long createOGLWindowNativeJDirect(long hwndParent, 
+    private static native int createOGLWindowNativeJDirect(int hwndParent, 
     					                  int x, int y, 
 							  int width, 
 							  int height);
 
     public static final void destroyOGLWindowNative(long hdc)
-    { destroyOGLWindowNativeJDirect(hdc); }
+    { destroyOGLWindowNativeJDirect((int)hdc); }
 
     /**
      * @dll.import("GL4JavaGljMSJDirect")
      */
-    private static native void destroyOGLWindowNativeJDirect(long hdc);
+    private static native void destroyOGLWindowNativeJDirect(int hdc);
 
     public static final void moveOGLWindowNative(long hdc, int x, int y, int width, int height)
-    { moveOGLWindowNativeJDirect(hdc, x, y, width, height); }
+    { moveOGLWindowNativeJDirect((int)hdc, x, y, width, height); }
 
     /**
      * @dll.import("GL4JavaGljMSJDirect")
      */
-    private static native void moveOGLWindowNativeJDirect(long hdc, int x, int y, int width, int height);
+    private static native void moveOGLWindowNativeJDirect(int hdc, int x, int y, int width, int height);
 
 }
 
