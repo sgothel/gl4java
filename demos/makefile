@@ -28,9 +28,4 @@ cleanall: clean
 	rm -f *.class ${C_APPL_FILES:.c=}
 	rm -f $(find . -name \*.o -o -name \*.exe )
 
-windllcpy:
-	cp /WIN_NT/system32/opengl32.dll .
-	cp /WIN_NT/system32/opengl.dll .
-	cp /WIN_NT/system32/gl4java.dll .
-	cp /WIN_NT/system32/gl4java32.dll .
 

@@ -1,6 +1,8 @@
 #include <string.h>
 #include "jnitools.h"
 
+#include "gltool.h"
+
 #ifdef __BUILTIN_VA_ARG_INCR
         /* Special stuff for the SunOS port ... */
         va_list __builtin_va_arg_incr = 0;
@@ -537,5 +539,6 @@ JNI_OnLoad(JavaVM * vm, void *reserved)
 JNIEXPORT void JNICALL
 JNI_OnUnload(JavaVM *vm, void *reserved)
 {
+	unloadGLLibrary();
 }
 

@@ -2,7 +2,7 @@
  * @(#) GL4JInst.java
  * @(#) author: Ronald B. Cemer, Sven Goethel
  * @(#) copyright: Copyright (c) 1999 Ronald B. Cemer under GNU GPL
- * @(#) version: 2.00
+ * @(#) version: 2.07
  */
 
 import java.applet.*;
@@ -24,7 +24,7 @@ public class GL4JInst
     static private final String gl4javaWWW = 
     			"http://www.jausoft.com/Files/Java/1.1.X/GL4Java/Installer";
 
-    static private final String version = "2.06a";
+    static private final String version = "2.07";
 
     static private final String cannot_install_title =
         "Cannot install GL4Java";
@@ -49,13 +49,14 @@ public class GL4JInst
     private String archive = null;
     private String gl4j_archive = null;
     private String glutfont_archive = null;
+    private String glffont_archive = null;
     private boolean install_opengl = false;
     private String opengl_archive = null;
     private String png_archive = null;
     private String gl_lib = null;
     private String glu_lib = null;
     private Vector lib_dir_list = null;
-    private String targetDirs[] = null;
+    private Vector targetDirs = null;
     private URL gl4javaURL = null;
     private URL sourceURL = null;
     private boolean initfailed = false;
@@ -73,6 +74,8 @@ public class GL4JInst
     FilelistGL4JArchiv fileGL4JArchiv= new FilelistGL4JArchiv();
     FilelistGLUTFontClasses fileGLUTFontClasses= new FilelistGLUTFontClasses();
     FilelistGLUTFontArchiv fileGLUTFontArchiv= new FilelistGLUTFontArchiv();
+    FilelistGLFFontClasses fileGLFFontClasses= new FilelistGLFFontClasses();
+    FilelistGLFFontArchiv fileGLFFontArchiv= new FilelistGLFFontArchiv();
     FilelistPNGClasses filePNGClasses= new FilelistPNGClasses();
     FilelistPNGArchiv filePNGArchiv= new FilelistPNGArchiv();
 
@@ -308,7 +311,7 @@ public class GL4JInst
                     "NT 4.0 service packs can be downloaded from:\n" +
                     "     www.microsoft.com/downloads\n";
             }
-            else if (mctrl.isMacOs)
+            else if (mctrl.isMacOs9)
             {
 	    	// TODO !!!
                 gl_lib = "GL.DLL";
@@ -352,7 +355,7 @@ public class GL4JInst
                 && (lib_dir_list != null)
                 && (lib_dir_list.size() > 0)   )
             {
-                if (!FileTool.libraryExists(mctrl,gl_lib,lib_dir_list))
+                if (null==FileTool.libraryExists(mctrl,gl_lib,lib_dir_list))
                 {
                     if (mctrl.isWin95)
                         install_opengl = true;
@@ -378,7 +381,7 @@ public class GL4JInst
                 && (lib_dir_list != null)
                 && (lib_dir_list.size() > 0)   )
             {
-                if (!FileTool.libraryExists(mctrl,glu_lib,lib_dir_list))
+                if (null==FileTool.libraryExists(mctrl,glu_lib,lib_dir_list))
                 {
                     if (mctrl.isWin95)
                         install_opengl = true;
@@ -414,7 +417,8 @@ public class GL4JInst
                 statustextarea.setText
                     (statustextarea.getText() +
                      "Native libraries will be installed to: " + 
-		        mctrl.browser_natives +"\n");
+		        mctrl.browser_natives +", and\n"+ 
+			mctrl.os_natives +"\n");
 		statustextarea.setCaretPosition(Integer.MAX_VALUE);
 
                 if (mctrl.isWin32)
@@ -427,15 +431,18 @@ public class GL4JInst
 		    {
 		    	gl4j_archive = fileGL4JClasses.getArchiv();
 			glutfont_archive = fileGLUTFontClasses.getArchiv();
+			glffont_archive = fileGLFFontClasses.getArchiv();
 		    	png_archive = filePNGClasses.getArchiv();
 		    } else {
 		    	gl4j_archive = fileGL4JArchiv.getArchiv();
 			glutfont_archive = fileGLUTFontArchiv.getArchiv();
+			glffont_archive = fileGLFFontArchiv.getArchiv();
 		    	png_archive = filePNGArchiv.getArchiv();
 		    }
                 } else {
 		    gl4j_archive = fileGL4JArchiv.getArchiv();
 		    glutfont_archive = fileGLUTFontArchiv.getArchiv();
+		    glffont_archive = fileGLFFontArchiv.getArchiv();
 		    png_archive = filePNGArchiv.getArchiv();
 		}
                 archive = osFileLists.getArchiv();
@@ -481,8 +488,8 @@ public class GL4JInst
 		    }
 		    if(ok)
 		    {
-			    targetDirs = new String[1];
-			    targetDirs[0] = mctrl.os_lib_dir;
+			    targetDirs = new Vector();
+			    targetDirs.addElement(mctrl.os_lib_dir);
 			    ok = FileTool.copyFilesFromZip 
 					(mctrl, sourceURL, targetDirs, statustextarea, bar);
 		    }
@@ -527,8 +534,8 @@ public class GL4JInst
 		    }
 		    if(ok)
 		    {
-			    targetDirs = new String[1];
-			    targetDirs[0] = mctrl.browser_classes;
+			    targetDirs = new Vector();
+			    targetDirs.addElement(mctrl.browser_classes);
 			    ok = FileTool.copyFilesFromZip 
 					(mctrl, sourceURL, targetDirs,statustextarea, bar);
 		    }
@@ -572,8 +579,54 @@ public class GL4JInst
 		    }
 		    if(ok)
 		    {
-			    targetDirs = new String[1];
-			    targetDirs[0] = mctrl.browser_classes;
+			    targetDirs = new Vector();
+			    targetDirs.addElement(mctrl.browser_classes);
+			    ok = FileTool.copyFilesFromZip 
+					(mctrl, sourceURL, targetDirs,statustextarea, bar);
+		    }
+		}
+
+                if (   ok
+		    && mctrl.installGLFFontSupport 
+                    && (glffont_archive != null)
+                    && (glffont_archive.length() > 0)   )
+                {
+		    if(!isAnApplet && !FileTool.fileExists(mctrl, glffont_archive)) 
+		    {
+			    statustextarea.setText
+			       (statustextarea.getText() +
+			       "Getting File(s): GL4Java GLF-FONT Java Classes\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
+
+                            ok = FileTool.copyFileFromDir(mctrl,
+    					         gl4javaURL,
+    				                 glffont_archive,  glffont_archive,
+				                 statustextarea);
+		    }
+		    if(ok)
+		    {
+			    statustextarea.setText
+			       (statustextarea.getText() +
+			       "Install GL4Java GLF-FONT Java Classes\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
+			    try
+			    {
+				sourceURL = new URL(codeBase,glffont_archive);
+			    }
+			    catch (Exception e)
+			    { 
+				ok=false;
+				statustextarea.setText
+				    (statustextarea.getText() +
+				     "File does not exist: "+codeBase+","+glffont_archive+" !\n");
+			        statustextarea.setCaretPosition(Integer.MAX_VALUE);
+			    }
+		    }
+
+		    if(ok)
+		    {
+			    targetDirs = new Vector();
+			    targetDirs.addElement(mctrl.browser_classes);
 			    ok = FileTool.copyFilesFromZip 
 					(mctrl, sourceURL, targetDirs,statustextarea, bar);
 		    }
@@ -616,8 +669,8 @@ public class GL4JInst
 		    }
 		    if(ok)
 		    {
-			    targetDirs = new String[1];
-			    targetDirs[0] = mctrl.browser_classes;
+			    targetDirs = new Vector();
+			    targetDirs.addElement(mctrl.browser_classes);
 			    ok = FileTool.copyFilesFromZip 
 					(mctrl, sourceURL, targetDirs,statustextarea, bar);
 		    }
@@ -660,8 +713,16 @@ public class GL4JInst
 		    }
 		    if(ok)
 		    {
-			    targetDirs = new String[1];
-			    targetDirs[0] = mctrl.browser_natives;
+			    targetDirs = new Vector();
+
+		    	    if(mctrl.browser_natives!=null && 
+			       mctrl.browser_natives.length()>0)
+				    targetDirs.addElement(mctrl.browser_natives);
+
+		    	    if(mctrl.os_natives!=null && 
+			       mctrl.os_natives.length()>0)
+				    targetDirs.addElement(mctrl.os_natives);
+
 			    ok = FileTool.copyFilesFromZip 
 					(mctrl, sourceURL, targetDirs,statustextarea, bar);
 		    }

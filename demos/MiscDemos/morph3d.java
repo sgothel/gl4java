@@ -199,8 +199,9 @@ public class morph3d extends SimpleGLAnimApplet1
 				}
 			);
 
-	        GLContext.gljNativeDebug = true;
-	        GLContext.gljClassDebug = true;
+	        GLContext.gljNativeDebug = false;
+	        GLContext.gljClassDebug = false;
+	        GLContext.gljThreadDebug = false;
 
 		morph3d applet = new morph3d();
 

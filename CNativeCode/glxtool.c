@@ -19,7 +19,8 @@
  * use fetch_GL_FUNCS (gltool.c) instead
  */
 void LIBAPIENTRY fetch_GLX_FUNCS (const char * libGLName, 
-			          const char * libGLUName, int force, int reload)
+			          const char * libGLUName, int force, int reload,
+				  int verbose)
 {
   static int _firstRun = 1;
 
@@ -31,7 +32,7 @@ void LIBAPIENTRY fetch_GLX_FUNCS (const char * libGLName,
       return;
   }
 
-  #define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (libGLName, libGLUName, (a), NULL, 1, 0);
+  #define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (libGLName, libGLUName, (a), NULL, verbose);
 
   #include "glx-disp-fetch.hc"
 
@@ -58,10 +59,10 @@ void LIBAPIENTRY fetch_GLX_FUNCS (const char * libGLName,
  *             be associated with the window
  */
 int LIBAPIENTRY get_GC( Display *display, Window win, XVisualInfo *visual,
-            GLXContext *gc, GLXContext gc_share,
+            GLXContext *gc, GLXContext gc_share, int tryDirect,
 	    int verbose )
 {
-    int trial = 2;
+    int trial = tryDirect?2:1;
 
     while(trial>0)
     {
@@ -233,7 +234,7 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 		    }
 	    }
 
-	    if(vgc.visual==NULL)
+	    if(vgc.visual==NULL && !offscreen )
 	    {
 	        vgc.visual = findVisualIdByFeature( &visualList, 
 				                      display, *pWin,
@@ -265,14 +266,21 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 		if(pix!=NULL && vgc.visual !=NULL)
 	    		*pix = XCreatePixmap( display, rootWin, width, height, 
 		                              vgc.visual->depth); 
+		        if(*pix==0)
+		        {
+			        fprintf(stderr, "GLINFO(%d): XCreatePixmap failed\n", j);
+			        fflush(stderr);
+				*pix=0;
+		        }
+
 		if(pix!=NULL && *pix!=0)
 		{
 	           *pWin = disp__glXCreateGLXPixmap( display,  vgc.visual, *pix );
 		   if(*pWin==0)
 		   {
+			fprintf(stderr, "GLINFO(%d): glXCreateGLXPixmap failed\n", j);
 		   	XFreePixmap(display, *pix);
 			*pix=0;
-			fprintf(stderr, "GLINFO(%d): glXCreateGLXPixmap failed\n", j);
 			fflush(stderr);
 		   }
 		} else {
@@ -295,7 +303,8 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 	    if( ownwin && newWin!=0 && 
 	        gc_ret==-100 /* just a poss. test stage */ &&
 	        (gc_ret=get_GC( display, newWin,
-			        vgc.visual, &(vgc.gc), shareWith, verbose)) == 0
+			        vgc.visual, &(vgc.gc), 
+				shareWith, 1, verbose)) == 0
               )
 	    {
 		    vgc.success=1;
@@ -303,7 +312,8 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 	    }
 	    else if( vgc.visual!=NULL &&  !ownwin && *pWin!=0 &&
 	             (gc_ret=get_GC( display, *pWin,
-			             vgc.visual, &(vgc.gc), shareWith, verbose)) == 0
+			             vgc.visual, &(vgc.gc), 
+				     shareWith, 1, verbose)) == 0
 	           )    
 	    {
 		    vgc.success=1;
@@ -486,7 +496,7 @@ XVisualInfo * LIBAPIENTRY findVisualIdByFeature( XVisualInfo ** visualList,
 
     if(XGetWindowAttributes(disp, win, &xwa) == 0)
     {
-	fprintf(stderr, "\nERROR while fetching XWindowAttributes\n");
+	fprintf(stderr, "\nERROR while fetching win XWindowAttributes\n");
 	fflush(stderr);
 	return 0;
     }

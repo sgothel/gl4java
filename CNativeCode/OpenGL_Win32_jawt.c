@@ -273,7 +273,6 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
           if(JNI_TRUE==verbose)
 	  {
              fprintf(stderr, "GL4Java: openOpen FindClass gl4java/GLCapabilities failed, cannot check glCaps object\n");
-	     (*env)->ExceptionDescribe(env);
              fflush(stderr);
 	  }
 	  (*env)->ExceptionClear(env);
@@ -323,7 +322,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 
     if(joffScreenRenderer==JNI_TRUE)
     {
-	glCaps.buffer=BUFFER_SINGLE;
+		glCaps.buffer=BUFFER_SINGLE;
     }
 
     if(JNI_TRUE==verbose && joffScreenRenderer==JNI_TRUE)
@@ -338,7 +337,6 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
           if(JNI_TRUE==verbose)
 	  {
              fprintf(stderr, "GL4Java: openOpen FindClass java/awt/Component failed, cannot check canvas object\n");
-	     (*env)->ExceptionDescribe(env);
              fflush(stderr);
 	  }
 	  (*env)->ExceptionClear(env);
@@ -347,7 +345,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
     exc=0;
 
     if(ret==JNI_TRUE) {
-	if (canvas == 0) 
+	if (canvas == 0 && joffScreenRenderer!=JNI_TRUE) 
 	{
 		ret= JNI_FALSE;
 		fprintf(stderr,"\nGL4Java ERROR: canvas == NULL !\n");

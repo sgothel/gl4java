@@ -359,11 +359,11 @@ public class GLJPanel extends JPanel
 			cvsDispose();
 		}
 		preInit();
-		glj = GLContext.createOffScreenCtx ( this, gl, glu, 
+		glj = GLContext.createOffScreenCtx ( gl, glu, 
 		                      stereoView,
 				      rgba, stencilBits, accumSize,
 				      sharedGLContext,
-				      offScrnSize
+				      getSize()
 				      );
 
 		if(glj!=null)
@@ -387,7 +387,7 @@ public class GLJPanel extends JPanel
 		                (float)col.getGreen()/255.0f, 
 		                (float)col.getBlue()/255.0f, 0.0f);
 		init();
-	        Dimension size = size=getSize();
+	        Dimension size = getSize();
 		reshape(size.width, size.height);
 
 		// fetch the top-level window ,
@@ -472,12 +472,7 @@ public class GLJPanel extends JPanel
 	if(mustResize)
 	{
 		mustResize=false;
-	        Dimension size = null;
-
-	        if(customOffScrnSize)
-	    	   size=offScrnSize;
-	        else 
-	    	   size=getSize();
+	        Dimension size = getSize();
 
 		reshape(size.width, size.height);
 		/*
@@ -496,12 +491,7 @@ public class GLJPanel extends JPanel
 		glj.gljCheckGL();
 	    }
 
-	    Dimension size = null;
-
-	    if(customOffScrnSize)
-	    	size=offScrnSize;
-	    else 
-	    	size=getSize();
+	    Dimension size = getSize();
 	    int w=size.width;
 	    int h=size.height;
 
@@ -512,10 +502,25 @@ public class GLJPanel extends JPanel
 	    {
 	        GLCapabilities caps = glj.getGLCapabilities();
 
-	        if(caps.getAlphaBits()>0)
-		    awtFormat = BufferedImage.TYPE_4BYTE_ABGR;
-	        else
-		    awtFormat = BufferedImage.TYPE_3BYTE_BGR;
+    		switch ( GLContext.getNativeOSType() )
+		{
+		    case GLContext.OsWindoof:
+	        	if(caps.getAlphaBits()>0)
+				awtFormat = BufferedImage.TYPE_INT_ARGB;
+	        	else
+				awtFormat = BufferedImage.TYPE_INT_RGB;
+			break;
+		    case GLContext.OsX11:
+		    case GLContext.OsMac9:
+		    case GLContext.OsMacX:
+		    case GLContext.OsUnknown:
+		    default:
+	        	if(caps.getAlphaBits()>0)
+		    		awtFormat = BufferedImage.TYPE_4BYTE_ABGR;
+	        	else
+		    		awtFormat = BufferedImage.TYPE_3BYTE_BGR;
+			break;
+		}
 
 	    	if(offImage!=null)
 			offImage.flush();
@@ -539,27 +544,27 @@ public class GLJPanel extends JPanel
 				break;
 			case BufferedImage.TYPE_4BYTE_ABGR:
 			        if(GLContext.gljClassDebug)
-				System.out.println("awt=4BYTE_ABGR, gl=BGRA,UNSIGNED_INT_8_8_8_8");
+				System.out.println("awt=4BYTE_ABGR, gl=BGRA,UNSIGNED_BYTE");
 				glFormat = GL_BGRA;
-				glType   = GL_UNSIGNED_INT_8_8_8_8;
+				glType   = GL_UNSIGNED_BYTE;
 				glComps  = 4;
 			        dbByte   = (DataBufferByte)
 				           offImage.getRaster().getDataBuffer();
 				break;
 			case BufferedImage.TYPE_INT_RGB:
 			        if(GLContext.gljClassDebug)
-				System.out.println("awt=INT_RGB, gl=BGRA,UNSIGNED_INT_8_8_8_8_REV");
+				System.out.println("awt=INT_RGB, gl=BGRA,UNSIGNED_BYTE");
 				glFormat = GL_BGRA;
-				glType   = GL_UNSIGNED_INT_8_8_8_8_REV;
+				glType   = GL_UNSIGNED_BYTE;
 				glComps  = 4;
 			        dbInt    = (DataBufferInt)
 				           offImage.getRaster().getDataBuffer();
 				break;
 			case BufferedImage.TYPE_INT_ARGB:
 			        if(GLContext.gljClassDebug)
-				System.out.println("awt=INT_ARGB, gl=BGRA,INT_8_8_8_8_REV");
+				System.out.println("awt=INT_ARGB, gl=BGRA,UNSIGNED_BYTE");
 				glFormat = GL_BGRA;
-				glType   = GL_UNSIGNED_INT_8_8_8_8_REV;
+				glType   = GL_UNSIGNED_BYTE;
 				glComps  = 4;
 			        dbInt    = (DataBufferInt)
 				           offImage.getRaster().getDataBuffer();

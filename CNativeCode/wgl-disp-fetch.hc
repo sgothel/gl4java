@@ -29,4 +29,9 @@
 	disp__wglShareLists = (BOOL  (CALLBACK *)(HGLRC, HGLRC))
         GET_GL_PROCADDRESS("wglShareLists");
 
+        /* NVidia support */
+        disp__wglAllocateMemoryNV = (void* (CALLBACK * )(int, float, float, float))
+        GET_GL_PROCADDRESS("wglAllocateMemoryNV");
 
+        disp__wglFreeMemoryNV     = (void  (CALLBACK * )(void*))
+        GET_GL_PROCADDRESS("wglFreeMemoryNV");

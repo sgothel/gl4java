@@ -8,3 +8,4 @@ public String getClassVendor ( )  ;
 public String getClassVersion ( ) ;
 
 public static final String[] GL_PROC_NAMES = {
+		"glAllocateMemoryNV", 

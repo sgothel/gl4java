@@ -31,6 +31,7 @@ public String getClassVendor ( )  ;
 public String getClassVersion ( ) ;
 
 public static final String[] GL_PROC_NAMES = {
+		"glAllocateMemoryNV", 
 /**
  * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development

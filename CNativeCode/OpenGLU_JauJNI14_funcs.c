@@ -33,7 +33,16 @@
  * herein lies the native JAVA methods for the OpenGL functions.  
  */
 
+/** THIS IS A MANUAL CODED PART
+    glu-manualCodedImplJNI14.java
+*/
+
 static const char _glu_n_a_string[] = "GLU-String not avaiable !";
+
+static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
+static const char * _glu_lib_version_="2.8.1.0";
+
+/* ---------------------------------------------------------------------- */
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLUFunc14JauJNI_gluErrorString ( JNIEnv *env, jobject obj,
@@ -67,9 +76,6 @@ Java_gl4java_GLUFunc14JauJNI_gluGetString ( JNIEnv *env, jobject obj,
     return (*env)->NewStringUTF(env, tmpString);   
 }
 
-static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _glu_lib_version_="2.8.0.8";
-
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLUFunc14JauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
 {
@@ -81,6 +87,9 @@ Java_gl4java_GLUFunc14JauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 {
     return (*env)->NewStringUTF(env, _glu_lib_version_);   
 }
+
+
+/* ---------------------------------------------------------------------- */
 
 static void _AddCallbackNode(JNIEnv *env,
 	                          jlong qnt_obj, jint which,

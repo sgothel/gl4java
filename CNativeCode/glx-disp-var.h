@@ -19,3 +19,6 @@ LIBAPI int (CALLBACK * disp__glXGetConfig) (Display *, XVisualInfo *, int, int *
 LIBAPI Bool (CALLBACK * disp__glXMakeCurrent) (Display *, GLXDrawable, GLXContext);
 LIBAPI void (CALLBACK * disp__glXSwapBuffers) (Display *, GLXDrawable);
 
+/* NVidia support */
+LIBAPI void* (CALLBACK * disp__glXAllocateMemoryNV)(int, float, float, float);
+LIBAPI void  (CALLBACK * disp__glXFreeMemoryNV)    (void*);

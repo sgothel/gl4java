@@ -186,7 +186,8 @@ int LIBAPIENTRY unloadGLLibrary ()
 
 }
 
-int LIBAPIENTRY loadGLLibrary (const char * libGLName, const char * libGLUName)
+int LIBAPIENTRY loadGLLibrary (const char * libGLName, const char * libGLUName, 
+                               int verbose)
 {
   const char *envGLName  = NULL;
   const char *envGLUName = NULL;
@@ -203,13 +204,15 @@ int LIBAPIENTRY loadGLLibrary (const char * libGLName, const char * libGLUName)
   if(envGLName!=NULL)
   {
   	libGLName = envGLName;
-	printf("GLTOOL: using env's GLTOOL_USE_GLLIB = %s\n", libGLName);
+	if(verbose)
+		printf("GLTOOL: using env's GLTOOL_USE_GLLIB = %s\n", libGLName);
   }
 
   if(envGLUName!=NULL)
   {
   	libGLUName = envGLUName;
-	printf("GLTOOL: using env's GLTOOL_USE_GLULIB = %s\n", libGLUName);
+	if(verbose)
+		printf("GLTOOL: using env's GLTOOL_USE_GLULIB = %s\n", libGLUName);
   }
 
 #ifdef _WIN32_
@@ -256,7 +259,8 @@ int LIBAPIENTRY loadGLLibrary (const char * libGLName, const char * libGLUName)
   libHandleGLX = dlopen ("libglx.so", RTLD_LAZY | RTLD_GLOBAL);
   if (libHandleGLX == NULL)
   {
-      printf ("GLINFO: cannot access GLX library libglx.so directly ...\n");
+      if(verbose)
+	      printf ("GLINFO: cannot access GLX library libglx.so directly ...\n");
       fflush (NULL);
   }
 
@@ -279,13 +283,16 @@ int LIBAPIENTRY loadGLLibrary (const char * libGLName, const char * libGLUName)
         }
 #endif
 
+  if(verbose)
+  {
 #ifdef _MAC_OSX_
-  printf ("GLINFO: loadGLLibrary - no special code implemented !\n");
+	  printf ("GLINFO: loadGLLibrary - no special code implemented !\n");
 #else
-  printf ("GLINFO: loaded OpenGL library %s!\n", libGLName);
-  printf ("GLINFO: loaded GLU    library %s!\n", libGLUName);
+	  printf ("GLINFO: loaded OpenGL library %s!\n", libGLName);
+	  printf ("GLINFO: loaded GLU    library %s!\n", libGLUName);
 #endif
-  fflush (NULL);
+	  fflush (NULL);
+  }
   
   _glLibsLoaded = 1;
 
@@ -294,7 +301,7 @@ int LIBAPIENTRY loadGLLibrary (const char * libGLName, const char * libGLUName)
 
 void * LIBAPIENTRY getGLProcAddressHelper 
 	(const char * libGLName, const char * libGLUName,
-         const char *func, int *method, int debug, int verbose)
+         const char *func, int *method, int verbose)
 {
   void * funcPtr = NULL;
   int lmethod;
@@ -302,7 +309,7 @@ void * LIBAPIENTRY getGLProcAddressHelper
 #ifdef _WIN32_
   static int __firstAccess = 1;
 
-  if(!loadGLLibrary (libGLName, libGLUName))
+  if(!loadGLLibrary (libGLName, libGLUName, verbose))
   	return NULL;
 
   if (disp__wglGetProcAddress == NULL && __firstAccess)
@@ -310,7 +317,7 @@ void * LIBAPIENTRY getGLProcAddressHelper
 	  disp__wglGetProcAddress = ( PROC  (CALLBACK *)(LPCSTR) )
       	GetProcAddress (hDLL_OPENGL32, "wglGetProcAddress");
 
-      if (disp__wglGetProcAddress != NULL /* && verbose */)
+      if (disp__wglGetProcAddress != NULL && verbose )
       {
 			printf ("GLINFO: found wglGetProcAddress in %s\n", libGLName);
 			fflush (NULL);
@@ -318,7 +325,7 @@ void * LIBAPIENTRY getGLProcAddressHelper
 
       if (disp__wglGetProcAddress == NULL)
       {
-	printf ("GLINFO: can't find wglGetProcAddress in %s\n", libGLName);
+		printf ("GLINFO: can't find wglGetProcAddress in %s\n", libGLName);
       }
   }
   __firstAccess = 0;
@@ -350,7 +357,7 @@ void * LIBAPIENTRY getGLProcAddressHelper
    */
   static int __firstAccess = 1;
 
-  if(!loadGLLibrary (libGLName, libGLUName))
+  if(!loadGLLibrary (libGLName, libGLUName, verbose))
   	return NULL;
 
   if (disp__glXGetProcAddress == NULL && __firstAccess)
@@ -458,7 +465,7 @@ void * LIBAPIENTRY getGLProcAddressHelper
 		static int firstTime = 1;
         #endif
  
-        if(!loadGLLibrary (libGLName, libGLUName))
+        if(!loadGLLibrary (libGLName, libGLUName, verbose))
   		return NULL;
 
 	c2pstrcpy ( funcName, func );
@@ -505,7 +512,7 @@ void * LIBAPIENTRY getGLProcAddressHelper
 
   if (funcPtr == NULL)
   {
-    if (debug || verbose)
+    if (verbose)
     {
       printf ("GLINFO: %s (%d): not implemented !\n", func, lmethod);
       fflush (NULL);
@@ -523,7 +530,8 @@ void * LIBAPIENTRY getGLProcAddressHelper
 
 
 void LIBAPIENTRY fetch_GL_FUNCS (const char * libGLName, 
-			         const char * libGLUName, int force, int reload)
+			         const char * libGLUName, int force, int reload, 
+				 int verbose)
 {
   static int _firstRun = 1;
 
@@ -536,11 +544,11 @@ void LIBAPIENTRY fetch_GL_FUNCS (const char * libGLName,
     if(!_firstRun)
       return;
 
-    if(!loadGLLibrary (libGLName, libGLUName))
+    if(!loadGLLibrary (libGLName, libGLUName, verbose))
       return;
   }
 
-  #define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (libGLName, libGLUName, (a), NULL, 0, 0);
+  #define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (libGLName, libGLUName, (a), NULL, verbose);
 
   #include "gl-disp-fetch.hc"
   #include "glu-disp-fetch.hc"
@@ -548,11 +556,11 @@ void LIBAPIENTRY fetch_GL_FUNCS (const char * libGLName,
   _firstRun=0;
 
 #ifdef _X11_
-  fetch_GLX_FUNCS (libGLName, libGLUName, force, reload);
+  fetch_GLX_FUNCS (libGLName, libGLUName, force, reload, verbose);
 #endif
 
 #ifdef _WIN32_
-  fetch_WGL_FUNCS (libGLName, libGLUName, force, reload);
+  fetch_WGL_FUNCS (libGLName, libGLUName, force, reload, verbose);
 #endif
 
 }

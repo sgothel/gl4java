@@ -41,3 +41,9 @@
     disp__glXSwapBuffers = (void (CALLBACK *) (Display *, GLXDrawable)) 
     	GET_GL_PROCADDRESS("glXSwapBuffers");
 
+    /* NVidia support */
+    disp__glXAllocateMemoryNV = (void* (CALLBACK * )(int, float, float, float))
+        GET_GL_PROCADDRESS("glXAllocateMemoryNV");
+
+    disp__glXFreeMemoryNV     = (void  (CALLBACK * )(void*))
+        GET_GL_PROCADDRESS("glXFreeMemoryNV");

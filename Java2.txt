@@ -55,29 +55,33 @@ Be sure to have:
 
 		  For Windows32: Java2-Plug-In, Java2, JRE (prefered)
 
-			  c:/windows/system/GL4JavaGljMSJDirect.dll
-			  c:/windows/system/GL4JavaJauGljJNI.dll
-			  c:/windows/system/GL4JavaJauGljJNI12.dll
-			  c:/windows/system/GL4JavaJauGljJNI13.dll
-
-		  or 
-
 			  ./jre/bin/GL4JavaGljMSJDirect.dll
 			  ./jre/bin/GL4JavaJauGljJNI.dll
 			  ./jre/bin/GL4JavaJauGljJNI12.dll
 			  ./jre/bin/GL4JavaJauGljJNI13.dll
+			  ./jre/bin/GL4JavaJauGljJNI14.dll
+
+		  or 
+
+			  c:/windows/system/GL4JavaGljMSJDirect.dll
+			  c:/windows/system/GL4JavaJauGljJNI.dll
+			  c:/windows/system/GL4JavaJauGljJNI12.dll
+			  c:/windows/system/GL4JavaJauGljJNI13.dll
+			  c:/windows/system/GL4JavaJauGljJNI14.dll
 
 		  For Unix: Java2-Plug-In, Java2, JRE (prefered)
-
-			  /usr/lib/libGL4JavaJauGljJNI.so*
-			  /usr/lib/libGL4JavaJauGljJNI12.so*
-			  /usr/lib/libGL4JavaJauGljJNI13.so*
-
-		  or
 
 			  ./jre/lib/<machine>/libGL4JavaJauGljJNI.so*
 			  ./jre/lib/<machine>/libGL4JavaJauGljJNI12.so*
 			  ./jre/lib/<machine>/libGL4JavaJauGljJNI13.so*
+			  ./jre/lib/<machine>/libGL4JavaJauGljJNI14.so*
+
+		  or
+
+			  /usr/lib/libGL4JavaJauGljJNI.so*
+			  /usr/lib/libGL4JavaJauGljJNI12.so*
+			  /usr/lib/libGL4JavaJauGljJNI13.so*
+			  /usr/lib/libGL4JavaJauGljJNI14.so*
 
 			  * => all symbolic links and the file itself,
 			       use "cp -a" to keep the symbolic links alive !

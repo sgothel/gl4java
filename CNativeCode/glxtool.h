@@ -29,7 +29,7 @@
   
 	LIBAPI int LIBAPIENTRY get_GC
 		( Display *display, Window win, XVisualInfo *visual,
-		    GLXContext *gc, GLXContext gc_share,
+                    GLXContext *gc, GLXContext gc_share, int tryDirect,
 		    int verbose );
 
         LIBAPI int LIBAPIENTRY setVisualAttribListByGLCapabilities( 
@@ -91,7 +91,8 @@
 	 */
 	LIBAPI void LIBAPIENTRY fetch_GLX_FUNCS 
 				(const char * libGLName, 
-					 const char * libGLUName, int force, int reload);
+					 const char * libGLUName, int force, 
+					 int reload, int verbose);
 
 	LIBAPI int LIBAPIENTRY x11gl_myErrorHandler(
 				  Display *pDisp, XErrorEvent *p_error);

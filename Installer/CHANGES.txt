@@ -12,12 +12,19 @@ This CHANGES starts with version 2.00 !
 
 GL4Java Installer 2.00 is based upon version 1.05, by Ron Cemer !
 
-Last Changes: 31. Dezember 2000 (Version 2.06a)
+Last Changes: 6th Dezember 2001 (Version 2.07)
 
 -----------------
 TOP  = new
 DOWN = old
 -----------------
+
+Dezember 6, 2001 (Version 2.07):
+
+	o The Installer now installs also:
+		- GLF Fonts
+		- The native libraries under JAVA_HOME/lib/<arch>, or
+		  JAVA_HOME/bin ! (checks where java.dll or libjava.so, resides)
 
 Dezember 31, 2000 (Version 2.06a):
 

@@ -35,6 +35,11 @@
 # make doxygendoc	: doxygendoc
 #
 #
+# to create all demos invoke
+#
+# make javacalldemos
+#
+#
 # to put all together as an tar-gzip archive in the archive-dir, invoke:
 #
 # make archiv
@@ -42,9 +47,9 @@
 #
 # for cleanup (without archive and binpkg !!) invoke:
 #
-# make clean		: only temp-files (java, native)
+# make clean		: only temp-files (native)
 # make cleannative	: only temp-files (native)
-# make cleanall		: all temp-,java-,and native-files
+# make cleanall		: all temp-,java-,class-,and native-files
 #
 # * ---------------
 # *
@@ -99,13 +104,13 @@ CNATIVEDIR  		= CNativeCode
 
 LIBMAJOR		= 2
 LIBMINOR		= 8
-LIBBUGFIX		= 0
-RELEASE                 = 8
+LIBBUGFIX		= 1
+RELEASE                 = 0
 
 #
 # The demo release number
 #
-DEMORELEASE		= 8
+DEMORELEASE		= 9
 
 LIBBASENAME1 		= GL4JavaJauGljJNI
 LIBNAME1 		= lib$(LIBBASENAME1)
@@ -316,6 +321,7 @@ FILES_13.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/awt/GLCanvas.java   \
 		  $(PACKAGEDIR)/awt/GLAnimCanvas.java \
 		  $(PACKAGEDIR)/awt/GLImageCanvas.java \
+		  $(PACKAGEDIR)/awt/GLOffScreenDrawable.java   \
 		  $(PACKAGEDIR)/applet/SimpleGLApplet1.java \
 		  $(PACKAGEDIR)/applet/SimpleGLAnimApplet1.java \
 		  $(PACKAGEDIR)/swing/GLJPanel.java \
@@ -341,7 +347,7 @@ FILES_13.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/drawable/GLDrawable.java   \
 		  $(PACKAGEDIR)/drawable/GLDrawableFactory.java   \
 		  $(PACKAGEDIR)/drawable/DummyGLDrawableFactory.java \
-		  $(PACKAGEDIR)/drawable/SunJDK13GLDrawableFactory.java
+		  $(PACKAGEDIR)/drawable/SunJDK13GLDrawableFactory.java 
 
 FILES_14.java 	= $(PACKAGEDIR)/GLFunc14.java \
 		  $(PACKAGEDIR)/GLUFunc14.java \
@@ -677,13 +683,6 @@ $(CNATIVEDIR)/GLUCallbackJNI.o: $(CNATIVEDIR)/jnitools.h \
 #
 ######################################################################
 
-cleanup: $(CHEADERDIR) archive binpkg
-	rm -f errors
-
-cleanupw32: cleanup Win32VC6/libs Win32VC6/temp
-	rm -rvf Win32VC6/libs/*
-	rm -fv `find Win32VC6 -name \*.plg -o -name \*.idb -o -name \*.opt -o -name \*.ncb`
-
 Win32VC6/libs:
 	mkdir -p Win32VC6/libs
 
@@ -700,7 +699,20 @@ binpkg:
 $(CHEADERDIR):
 	mkdir $(CHEADERDIR)
 
-# clean out the *.o files and machine generated files from javah
+#
+# Cleanup Section
+#
+
+cleanall: clean
+	rm -f $(FILES.class) $(FILES_JDK13.class) $(FILES_MSW32.class) 
+	for i in $$(find . -name \*.class) ; do \
+		rm -f $$i ; \
+	done
+	cd demos ; make clean
+	cd demos/natives/x11 ; make cleanall
+
+clean: cleannative cleanupw32 cleanhtmldoc cleantemp
+
 cleannative:
 	rm -f `find . -name \*~ -o -name \*.swp -o -name \*.bak -o -name \*.obj -o -name \*.o` \
 	      $(FILES1.o) $(FILES2.o) \
@@ -712,29 +724,33 @@ cleannative:
 	      $(CNATIVEDIR)/winstuff.h
 	cd demos/natives/x11 ; make clean
 
-# clean out the *.o files and machine generated files from javah
-clean: cleannative cleanupw32 cleanhtmldoc cleantemp
+cleanupw32: cleanup Win32VC6/libs Win32VC6/temp
+	rm -rvf Win32VC6/libs/*
+	rm -fv `find Win32VC6 -name \*.plg -o -name \*.idb -o -name \*.opt -o -name \*.ncb`
+
+cleanup: $(CHEADERDIR) archive binpkg
+	rm -f errors
 
 cleantemp:
-	rm -f $(CHEADERDIR)/* errors gl4java/*~ CNativeCode/*~ \
-	      $(FILES.gen)
-	rm -f `find . -name \*.class`
-	rm -f `find . -name discrete.log`
+	rm -f $(CHEADERDIR)/* errors $(FILES.gen)
+	rm -f `find . -name *~`
+	rm -f `find . -iname errors`
+	rm -f `find . -iname *.log`
+	rm -f `find . -iname *.tmp`
 	cd demos ; make clean
 
 cleanhtmldoc:
-	rm -rf doxygens/html
+	rm -rf docs/doxygens/html
 	rm -rf docs/html
 	rm -f docs/*.ps
+	rm -f docs/*.pdf
 
-cleanall: clean cleanhtmldoc
-	rm -f $(FILES.class) $(FILES_JDK13.class) $(FILES_MSW32.class) 
-	rm -f archive/GL4Java*
-	for i in $$(find . -name \*.class) ; do \
-		rm -f $$i ; \
-	done
-	cd demos ; make clean
-	cd demos/natives/x11 ; make cleanall
+archivclean: pbinpkg cleannative cleanupw32 cleantemp
+	if [ ! -e archive ] ; then mkdir archive ; fi
+
+#
+# Jar Section
+#
 
 # ... Copy all *.class files to DEST_CLASSES_DIR
 classcpy:
@@ -756,7 +772,11 @@ $(DEST_CLASSES_DIR)/gl4java.jar: $(FILES.class)
 makeJar:
 	$(MK_GL4JAVA_JAR)
 
-htmldoc: cleanhtmldoc javadoc latexdoc 
+#
+# Document Section
+#
+
+htmldoc: cleanhtmldoc javadoc doxygendoc latexdoc 
 	cp -Rf docs-src/images docs/html/.
 
 htmldocw32: latexdoc javadocw32
@@ -809,6 +829,10 @@ javadocw32:
 		gl4java.jau.awt.macintosh  \
 		2>&1 | tee -a errors
 
+#
+# BINPKG Section
+#
+
 pbinpkg:
 	if [ ! -e binpkg ] ; then mkdir binpkg ; fi
 
@@ -845,9 +869,9 @@ java2binpkg: pbinpkg
 	zip -9r $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glutfonts-classes.zip \
 		gl4java/utils/glut/fonts
 
-	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glffonts.zip
+	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glffonts-classes.zip
 	cd $(DEST_CLASSES_DIR) ; \
-	zip -9r $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glffonts.zip \
+	zip -9r $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-glffonts-classes.zip \
 		gl4java/utils/glf/fonts
 
 	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-INSTALLER.zip
@@ -887,16 +911,23 @@ win2binpkg: pbinpkg java2binpkg
 	cd Win32VC6/libs ; zip -9 ../../binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(WIN32TYPE)-tst.zip \
 		GL4JavaJauGljJNI13nf.dll GL4JavaJauGljJNI13tst.dll
 
-javacalldemos:
-	cd demos ; javac *.java
-	cd demos/GLLandScape ; javac *.java
-	cd demos/HodglimsNeHe ; javac *.java
-	cd demos/MiscDemos ; javac *.java
-	cd demos/RonsDemos ; javac *.java
-	cd demos/SwingDemos ; javac *.java
+#
+# Demos Section
+#
 
-archivclean: pbinpkg cleannative cleanupw32 cleantemp
-	if [ ! -e archive ] ; then mkdir archive ; fi
+javacalldemos:
+	cd demos ; $(JAVAC_13) *.java
+	cd demos/GLFDemos ; $(JAVAC_13) *.java
+	cd demos/GLLandScape ; $(JAVAC_13) *.java
+	cd demos/HodglimsNeHe ; $(JAVAC_13) *.java
+	cd demos/MiscDemos ; make
+	cd demos/NVidia ; $(JAVAC_14) *.java
+	cd demos/RonsDemos ; $(JAVAC_13) *.java
+	cd demos/SwingDemos ; $(JAVAC_13) *.java
+
+#
+# Archiv Section
+#
 
 archivdemos:
 	rm -f archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-demosV$(DEMORELEASE).zip
@@ -928,7 +959,10 @@ archivdoc:
 	rm -f archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-doc.zip
 	cd ..; \
 	zip -9r GL4Java/archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-doc.zip \
-		GL4Java/docs GL4Java/doxygens GL4Java/*.txt
+		GL4Java/docs GL4Java/*.txt \
+		GL4Java/demos/MiscDemos \
+		GL4Java/demos/NVidia \
+		GL4Java/demos/RonsDemos/*.java 
 
-archiv: archivdemos archivsrc archivdoc
+archiv: archivdemos archivdoc archivsrc
 

@@ -28,7 +28,8 @@
 	 */
 	LIBAPI void LIBAPIENTRY fetch_WGL_FUNCS 
 				(const char * libGLName, 
-					 const char * libGLUName, int force, int reload);
+					 const char * libGLUName, int force, 
+					 int reload, int verbose);
 
 
 	LIBAPI void LIBAPIENTRY setPixelFormatByGLCapabilities( 
@@ -38,8 +39,8 @@
 						HDC hdc);
 
 	// Set Pixel Format function - forward declaration
-	LIBAPI void LIBAPIENTRY SetDCPixelFormat(HDC hDC, GLCapabilities *glCaps,
-			int offScreenRenderer, int verbose);
+	LIBAPI void LIBAPIENTRY SetDCPixelFormat(HDC hDC, HDC oldHDC, GLCapabilities *glCaps,
+		                  int offScreenRenderer, int verbose);
 
 	LIBAPI HPALETTE LIBAPIENTRY GetOpenGLPalette(HDC hDC);
 
@@ -56,8 +57,8 @@
 	const char * LIBAPIENTRY GetTextualPixelFormatByPFD(
 			PIXELFORMATDESCRIPTOR *ppfd, int format);
 
-	LIBAPI void LIBAPIENTRY setupDIB(HDC hDCOrig, HDC hDC, HBITMAP * hBitmap, 
-			int width, int height);
+	LIBAPI void LIBAPIENTRY CreateCompatibleDIBDC 
+				(HDC *phDC, HBITMAP * hBitmap, int width, int height);
 
 	LIBAPI void LIBAPIENTRY resizeDIB(HDC hDC, HBITMAP *hOldBitmap, 
 			HBITMAP *hBitmap);

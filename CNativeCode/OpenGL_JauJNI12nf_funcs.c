@@ -71,7 +71,7 @@ Java_gl4java_GLFuncJauJNInf_glGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _gl_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _gl_lib_version_="2.8.0.8";
+static const char * _gl_lib_version_="2.8.1.0";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLFuncJauJNInf_getNativeVendor ( JNIEnv *env, jobject obj )

@@ -51,7 +51,7 @@ public class FileTool
 	return f.exists();
     }
 
-    public static final boolean libraryExists(MachineCtrl mctrl,
+    public static final String libraryExists(MachineCtrl mctrl,
     				  String libname, Vector libdirlist
                                  )
     {
@@ -73,7 +73,7 @@ public class FileTool
                 System.out.println
                 ("Netscape denied privileges, or a failure occurred.\n"+
                  "Here is the exception that was caught:\n"+e+"\n");
-		return false;
+		return null;
             }
         }
         else if (mctrl.isMicrosoftJvm)
@@ -91,7 +91,7 @@ public class FileTool
                 System.out.println
                 ("Microsoft VM denied privileges, or a failure occurred.\n"+
                  "Here is the exception that was caught:\n"+e+"\n");
-		return false;
+		return null;
             }
 	}
         if (mctrl.isUnix)
@@ -133,12 +133,12 @@ public class FileTool
 		    {
                         System.out.println
 			    ("File found: "+s + "/" + libname+"\n");
-                        return true;
+                        return s;
 		    }
                 }
             }
         }
-        return false;
+        return null;
     }
 
     /**
@@ -229,7 +229,7 @@ public class FileTool
     /**
       * Copy all files from the zip
       * or jar archive pointed to by zipURL to their
-      * corresponding destination given in targetDirs[] !
+      * corresponding destination given in targetDirs !
       *
       * The status window is updated with the name of the
       * source file being copied.
@@ -241,20 +241,20 @@ public class FileTool
       */
     public static final boolean copyFilesFromZip 
     					(MachineCtrl mctrl, 
-					 URL zipURL, String targetDirs[],
+					 URL zipURL, Vector targetDirs,
 					 TextArea statustextarea,
 					 ProgressBar bar
 					)
     {
         int i, j;
 	boolean ok = true;
-	int nFiles = targetDirs.length;
+	int nFiles = targetDirs.size();
         String srcFile = null;
         String destFiles[] = new String[nFiles];
         File dstfils[] = new File[nFiles];
         FileOutputStream fos[] = new FileOutputStream[nFiles];
 
-	if(targetDirs==null) return true;
+	if(targetDirs==null||nFiles==0) return true;
 
         if (mctrl.isNetscapeJvm)
         {
@@ -300,12 +300,14 @@ public class FileTool
 	  //
 	  // adding a trailing path-seperator, if needed !
 	  //
-	  if(targetDirs[i]!=null)
+	  if(targetDirs.elementAt(i)!=null)
 	  {
-        	targetDirs[i] = targetDirs[i].trim();
-        	if(targetDirs[i].indexOf('/', targetDirs[i].length()-1)<0)
-	    		targetDirs[i] += "/";
-		System.out.println("targetDir: "+targetDirs[i]);
+        	String targetDir = (String) targetDirs.elementAt(i);
+        	targetDir = targetDir.trim();
+        	if(targetDir.indexOf('/', targetDir.length()-1)<0)
+	    		targetDir += "/";
+		System.out.println("targetDir: "+targetDir);
+        	targetDirs.setElementAt(targetDir, i);
 	  }
 	}
 
@@ -350,7 +352,8 @@ public class FileTool
 
 		    for(i=0; ok && i<nFiles; i++)
 		    {
-			    destFiles[i] = targetDirs[i] + srcFile;
+	  		    String targetDir = (String) targetDirs.elementAt(i);
+			    destFiles[i] = targetDir + srcFile;
 			    dstfils[i] = new File(destFiles[i]);
 
 			    if (dstfils[i].exists())

@@ -1,5 +1,6 @@
 package gl4java.drawable;
 
+import java.awt.Dimension;
 import java.awt.event.*;
 import java.util.EventListener;
 
@@ -96,6 +97,40 @@ public interface GLDrawable
      * as soon as possible.
      */
     public void repaint();
+
+    /**
+     * This function returns, if everything is init: the GLContext,
+     * the and the users init function 
+     * This value is set in the paint method!
+     *
+     * @return 	boolean
+     *
+     * @see	gl4java.awt.GLCanvas#paint
+     * @see	gl4java.awt.GLCanvas#init
+     */ 
+    public boolean cvsIsInit();
+
+    /**
+      * You should call this before releasing/dispose this Window ! 
+      * Also you can overwrite this class,
+      * to dispose your own elements, e.g. a Frame etc. - 
+      * but be shure that you call
+      * cvsDispose implementation call this one !
+      * 
+      * This function calls gljDestroy of GLContext !
+      *
+      * Be sure to implement finalize,
+      * which should call this one !!
+      *
+      * @see gl4java.GLContext#gljDestroy
+      * @see gl4java.drawable.GLEventListener#cleanup
+      */
+    public void cvsDispose();
+
+    /**
+     * this function returns the current size of the object
+     */
+    public Dimension getSize();
 
     /**
      * the components listener's should be implemented also !

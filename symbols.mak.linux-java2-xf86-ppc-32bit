@@ -16,6 +16,8 @@ UNIXTYPE		= Linux-glibc2-xf86-ppc
 # JDK_HOME must point to the highest JDK being used,
 # e.g. to JDK14_HOME, if using JDK14, otherwise JDK13_HOME
 #
+# AT LEAST JDK13_HOME MUST BE DEFINED !
+#
 JDK13_HOME		= $(shell dirname $$(which java))/..
 #JDK14_HOME		=
 JDK_HOME		= $(JDK13_HOME)
@@ -26,7 +28,7 @@ JAVAOSLIB  		= $(JDK_HOME)/jre/lib/ppc
 
 JAVADOC 		= $(JDK_HOME)/bin/javadoc
 JAVAH 			= $(JDK_HOME)/bin/javah
-JAR 			= $(JDK_HOME)/bin/jar
+JAR 			= $(JDK13_HOME)/bin/jar
 
 # If MSJAVAC is specified on Win32 platforms, it will be used to
 # compile window system-specific files for the Microsoft VM. In order
@@ -52,10 +54,6 @@ JAR_DESTS		= /usr/local/lib/jdk1.3.0-FCS-blackdown/jre/lib/ext
 CC			= gcc
 MKLIB 			= mklibs/mkslib.linux
 MKEXP 			= echo
-JAVAC 			= $(JDK_HOME)/bin/javac -classpath ".:$(THISDIR):$(THISDIR)/capsapi_classes.zip"
-JAVADOC 		= $(JDK_HOME)/bin/javadoc
-JAVAH 			= $(JDK_HOME)/bin/javah
-JAR 			= $(JDK_HOME)/bin/jar
 
 OGLINCDIR 		= /usr/X11/include
 

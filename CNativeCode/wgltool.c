@@ -14,12 +14,27 @@
 
 #include "wgl-disp-var.hc"
 
+static void
+PrintMessage( const char *Format, ... )
+{
+    va_list ArgList;
+    char Buffer[256];
+
+    va_start(ArgList, Format);
+    vsprintf(Buffer, Format, ArgList);
+    va_end(ArgList);
+
+	fprintf(stderr, Buffer);
+}
+
+
 /**
  * do not call this one directly,
  * use fetch_GL_FUNCS (gltool.c) instead
  */
 void LIBAPIENTRY fetch_WGL_FUNCS (const char * libGLName, 
-			          const char * libGLUName, int force, int reload)
+			          const char * libGLUName, int force, int reload,
+				  int verbose)
 {
   static int _firstRun = 1;
 
@@ -30,11 +45,11 @@ void LIBAPIENTRY fetch_WGL_FUNCS (const char * libGLName,
     if(!_firstRun)
       return;
 
-    if(!loadGLLibrary (libGLName, libGLUName))
+    if(!loadGLLibrary (libGLName, libGLUName, verbose))
       return;
   }
 
-  #define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (libGLName, libGLUName, (a), NULL, 1, 0);
+  #define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (libGLName, libGLUName, (a), NULL, verbose);
 
 
   #include "wgl-disp-fetch.hc"
@@ -51,27 +66,40 @@ HGLRC LIBAPIENTRY get_GC( HDC * hDC, GLCapabilities *glCaps,
 
 {
 	const char * text=0;
-	HDC hDCOrig = 0;
 
 	// Color Palette handle
 	HPALETTE hPalette = NULL;
 	HGLRC tempRC=0;
+	HDC origHDC=0;
+	HDC screenWinHDC=0;
+
+    if( *hDC == 0 && offScreenRenderer)
+	{
+		screenWinHDC = GetWindowDC(NULL);
+		*hDC= screenWinHDC
+			;
+		if (*hDC == NULL) {
+			PrintMessage("GLERROR: Failed to fetch screen HDC ..\n");
+			exit(1);
+		}
+	}
+
+	origHDC = *hDC;
 
     if( *hDC == 0 && !offScreenRenderer)
-		printf( "get_GC: Error, HDC is zero\n");
+	{
+		fprintf( stderr, "GLERROR: get_GC: Error, HDC is zero\n");
+		fflush(stderr);
+		return NULL;
+	} 
 
 	// Select the pixel format
 	if(offScreenRenderer)
 	{
-		hDCOrig = *hDC;
-		*hDC = CreateCompatibleDC(hDCOrig);
-		// setupDIB(*hDC, pix, width, height);
-		setupDIB(hDCOrig, *hDC, pix, width, height);
-		/* SetDCPixelFormat(hDCOffScr, doubleBuffer, stereo, stencilBits, offScreenRenderer); */
-		/* setupPalette(hDC); USE MY PROC */
+		CreateCompatibleDIBDC(hDC, pix, width, height);
 	}
 
-	SetDCPixelFormat(*hDC, glCaps, offScreenRenderer, verbose);
+	SetDCPixelFormat(*hDC, origHDC, glCaps, offScreenRenderer, verbose);
 
 	// Create palette if needed
 	hPalette = GetOpenGLPalette(*hDC);
@@ -112,38 +140,59 @@ HGLRC LIBAPIENTRY get_GC( HDC * hDC, GLCapabilities *glCaps,
     if(verbose)
 			printf( "HGLRC (glContext) created: %p\n", tempRC );
 
+	if(screenWinHDC!=0)
+		ReleaseDC(NULL, screenWinHDC);
+
     return tempRC;
 }
 
 void LIBAPIENTRY setPixelFormatByGLCapabilities( 
 					PIXELFORMATDESCRIPTOR *pfd,
-				        GLCapabilities *glCaps,
+				    GLCapabilities *glCaps,
 					int offScreenRenderer,
 					HDC hdc)
 {
+	int bpp;
+	int colorBits;
 
-	int colorBits = glCaps->redBits + glCaps->greenBits + glCaps->blueBits;
+	colorBits = glCaps->redBits + glCaps->greenBits + glCaps->blueBits +
+				glCaps->alphaBits; 
+
+	bpp       = (hdc!=0)?GetDeviceCaps(hdc, BITSPIXEL):0;
 
 	pfd->nSize=sizeof(PIXELFORMATDESCRIPTOR); 
 	pfd->nVersion=1; 
-	pfd->dwFlags=PFD_SUPPORT_OPENGL | PFD_GENERIC_ACCELERATED; /* refined later */
-	pfd->iPixelType=0; 
-	pfd->cColorBits=0; 
+	pfd->dwFlags=PFD_SUPPORT_OPENGL | PFD_GENERIC_ACCELERATED;
+
+	pfd->cColorBits = bpp ;
+
+	pfd->cStencilBits = (glCaps->stencilBits>8)?glCaps->stencilBits:8;
+
 	pfd->cRedBits=0; 
-	pfd->cRedShift=0; 
 	pfd->cGreenBits=0; 
-	pfd->cGreenShift=0; 
 	pfd->cBlueBits=0; 
+
+	pfd->cRedShift=0; 
+	pfd->cGreenShift=0; 
 	pfd->cBlueShift=0; 
+
 	pfd->cAlphaBits=0; 
 	pfd->cAlphaShift=0; 
-	pfd->cAccumBits=0; 
-	pfd->cAccumRedBits=0; 
-	pfd->cAccumGreenBits=0; 
-	pfd->cAccumBlueBits=0; 
-	pfd->cAccumAlphaBits=0; 
-	pfd->cDepthBits=32; 
-	pfd->cStencilBits=0; 
+
+	pfd->cAccumBits=
+		glCaps->accumRedBits+glCaps->accumGreenBits+glCaps->accumBlueBits+
+		glCaps->accumAlphaBits;
+
+	if(pfd->cAccumBits>0)
+	{
+		pfd->cAccumRedBits=glCaps->accumRedBits;
+		pfd->cAccumGreenBits=glCaps->accumGreenBits; 
+		pfd->cAccumBlueBits=glCaps->accumBlueBits; 
+		pfd->cAccumAlphaBits=glCaps->accumAlphaBits; 
+	}
+
+	pfd->cDepthBits=glCaps->depthBits; 
+	pfd->cStencilBits=glCaps->stencilBits ; 
 	pfd->cAuxBuffers=0; 
 	pfd->iLayerType=PFD_MAIN_PLANE; 
 	pfd->bReserved=0; 
@@ -151,67 +200,79 @@ void LIBAPIENTRY setPixelFormatByGLCapabilities(
 	pfd->dwVisibleMask=0; 
 	pfd->dwDamageMask=0; 
  
+
     if(COLOR_RGBA == glCaps->color)
 		pfd->iPixelType=PFD_TYPE_RGBA; 
 	else
 		pfd->iPixelType=PFD_TYPE_COLORINDEX; 
 
     if(offScreenRenderer)
+	{
 		pfd->dwFlags |= PFD_DRAW_TO_BITMAP;           // Draw to Bitmap
-	else
+	} else {
 		pfd->dwFlags |= PFD_DRAW_TO_WINDOW;           // Draw to Window (not to bitmap)
-
+	}
 
     if(BUFFER_DOUBLE==glCaps->buffer)
 		pfd->dwFlags |= PFD_DOUBLEBUFFER ;  // Double buffered is optional
 
     if(STEREO_ON==glCaps->stereo)
 		pfd->dwFlags |= PFD_STEREO ;        // Stereo is optional
+	else
+		pfd->dwFlags |= PFD_STEREO_DONTCARE;
 
-    if(hdc!=NULL && GetDeviceCaps(hdc, BITSPIXEL)<colorBits)
-    	    pfd->cColorBits = GetDeviceCaps(hdc, BITSPIXEL);
-        else
-    pfd->cColorBits = (BYTE)colorBits;
-
-	pfd->cStencilBits = (BYTE) glCaps->stencilBits;
 }
 
 
-void LIBAPIENTRY SetDCPixelFormat(HDC hDC, GLCapabilities *glCaps,
+void LIBAPIENTRY SetDCPixelFormat(HDC hDC, HDC oldHDC, GLCapabilities *glCaps,
 		                  int offScreenRenderer, int verbose)
 {
     int nPixelFormat=-1;
+    int bitsPerPixel =0;
 	const char * text=0;
 
     PIXELFORMATDESCRIPTOR pfd ;
 
+    bitsPerPixel = GetDeviceCaps(hDC, BITSPIXEL);
+
+    if (bitsPerPixel == 0) 
+	{
+        PrintMessage("GLERROR: Failed, because fetched %dbpp from Device\n", bitsPerPixel);
+		exit(1);
+    } 
+
     if(verbose)
     {
-	fprintf(stdout, "GL4Java SetDCPixelFormat: input capabilities:\n");
-	printGLCapabilities ( glCaps );
+        fprintf(stdout, "GLINFO: fetched %dbpp from Device\n", bitsPerPixel);
+		fprintf(stdout, "GL4Java SetDCPixelFormat: input capabilities:\n");
+		printGLCapabilities ( glCaps );
     }
 
     if(glCaps->nativeVisualID>=0)
     {
-            if ( 0 < DescribePixelFormat( hDC, (int)(glCaps->nativeVisualID), 
-	                                  sizeof(pfd), &pfd ) )
+        if ( 0 < DescribePixelFormat( hDC, (int)(glCaps->nativeVisualID), 
+	                                  sizeof(pfd), &pfd ) 
+			)
 	    {
 	        nPixelFormat=(int)(glCaps->nativeVisualID);
-	        if(verbose)
-		{
-		  fprintf(stderr,"\n\nUSER found stored PIXELFORMAT number: %ld\n",
-		  	nPixelFormat);
-		  fflush(stderr);
-		}	
-	    } else {
-		  fprintf(stderr,"\n\nUSER no stored PIXELFORMAT number found !!\n");
-           nPixelFormat = -1;
-		  fflush(stderr);
-	    }
-	}
+			if(verbose)
+			{
+				fprintf(stderr,"\n\nUSER found stored PIXELFORMAT number: %ld\n",
+		  			nPixelFormat);
+				fflush(stderr);
+			}	
+		}
+	} else {
 
-    if(nPixelFormat<0)
+		if(verbose)
+		{
+		  fprintf(stderr,"\n\nUSER no stored PIXELFORMAT number found !!\n");
+		  fflush(stderr);
+		}
+
         setPixelFormatByGLCapabilities( &pfd, glCaps, offScreenRenderer, hDC);
+		nPixelFormat = ChoosePixelFormat(hDC, &pfd);
+	}
 
     if(verbose)
     {
@@ -224,20 +285,20 @@ void LIBAPIENTRY SetDCPixelFormat(HDC hDC, GLCapabilities *glCaps,
     // Choose a pixel format that best matches that described in pfd
     if( hDC == 0 )
 	    printf( "SetDCPixelFormat: Error, no HDC-Contex is given\n");
-    else if(nPixelFormat<0)
-	    nPixelFormat = ChoosePixelFormat(hDC, &pfd);
 
     if( nPixelFormat == 0 )
 	    printf( "SetDCPixelFormat: Error with PixelFormat\n" );
 
     // Set the pixel format for the device context
     if( SetPixelFormat(hDC, nPixelFormat, &pfd) == FALSE)
-	    printf( "setpixel failed\n" );
-    else {
-            (void) setGLCapabilities ( hDC, nPixelFormat, glCaps );
+	{
+        PrintMessage("GLERROR: SetDCPixelFormat setpixel failed\n" );
+		exit(1);
+    } else {
+        (void) setGLCapabilities ( hDC, nPixelFormat, glCaps );
 	    if(verbose)
 	    {
-	        fprintf(stdout, "GL4Java SetDCPixelFormat: used capabilities:\n");
+	        fprintf(stdout, "GLERROR SetDCPixelFormat: used capabilities:\n");
 	        printGLCapabilities ( glCaps );
 	    }
     }
@@ -320,20 +381,6 @@ HPALETTE LIBAPIENTRY GetOpenGLPalette(HDC hDC)
 }
 
 
-static void
-PrintMessage( const char *Format, ... )
-{
-    va_list ArgList;
-    char Buffer[256];
-
-    va_start(ArgList, Format);
-    vsprintf(Buffer, Format, ArgList);
-    va_end(ArgList);
-
-	fprintf(stderr, Buffer);
-}
-
-
 int LIBAPIENTRY
 PixelFormatDescriptorFromDc( HDC Dc, PIXELFORMATDESCRIPTOR *Pfd )
 {
@@ -394,7 +441,7 @@ GetTextualPixelFormatByPFD(PIXELFORMATDESCRIPTOR *ppfd, int format)
     strcat(buffer, line); sprintf(line,"  cAccumRedBits - %d\n", ppfd->cAccumRedBits);
     strcat(buffer, line); sprintf(line,"  cAccumGreenBits - %d\n", ppfd->cAccumGreenBits);
     strcat(buffer, line); sprintf(line,"  cAccumBlueBits - %d\n", ppfd->cAccumBlueBits);
-    strcat(buffer, line); sprintf(line,"  cAccumAlphaBits - %d\n", ppfd->cAccumAlphaBits);
+    strcat(buffer, line); sprintf(line,"  cAccumAlphaBits - %d (N.A.) \n", ppfd->cAccumAlphaBits);
     strcat(buffer, line); sprintf(line,"  cDepthBits - %d\n", ppfd->cDepthBits);
     strcat(buffer, line); sprintf(line,"  cStencilBits - %d\n", ppfd->cStencilBits);
     strcat(buffer, line); sprintf(line,"  cAuxBuffers - %d\n", ppfd->cAuxBuffers);
@@ -431,8 +478,8 @@ typedef struct {
 
 #define NUM_COLORS (sizeof(colors) / sizeof(colors[0]))
 
-void LIBAPIENTRY
-setupDIB(HDC hDCOrig, HDC hDC, HBITMAP * hBitmap, int width, int height)
+void LIBAPIENTRY CreateCompatibleDIBDC 
+		(HDC *phDC, HBITMAP * hBitmap, int width, int height)
 {
     BITMAPINFO *bmInfo=0;
     BITMAPINFOHEADER *bmHeader=0;
@@ -441,9 +488,17 @@ setupDIB(HDC hDCOrig, HDC hDC, HBITMAP * hBitmap, int width, int height)
     int bmiSize=0;
     int bitsPerPixel=0;
 	HBITMAP hOldBitmap=0;
+	HDC new_hDC;
+
+    bitsPerPixel = GetDeviceCaps(*phDC, BITSPIXEL);
+
+    if (bitsPerPixel == 0) 
+	{
+        PrintMessage("GLERROR: CreateCompatibleDIBDC Failed, because fetched %dbpp from ScreenDevice\n", bitsPerPixel);
+		exit(1);
+    }
 
     bmiSize = sizeof(*bmInfo);
-    bitsPerPixel = GetDeviceCaps(hDC, BITSPIXEL);
 
     switch (bitsPerPixel) {
     case 8:
@@ -477,7 +532,7 @@ setupDIB(HDC hDCOrig, HDC hDC, HBITMAP * hBitmap, int width, int height)
     switch (bitsPerPixel) {
     case 8:
 	bmHeader->biCompression = BI_RGB;
-	bmHeader->biSizeImage = 0;
+	bmHeader->biSizeImage = width * height ;
 	usage = DIB_PAL_COLORS;
 	// bmiColors is 256 WORD palette indices 
 	{
@@ -492,6 +547,7 @@ setupDIB(HDC hDCOrig, HDC hDC, HBITMAP * hBitmap, int width, int height)
     case 16:
 	bmHeader->biCompression = BI_RGB;
 	bmHeader->biSizeImage = 0;
+	bmHeader->biSizeImage = width * height * bitsPerPixel/8;
 	usage = DIB_RGB_COLORS;
 	// bmiColors is 3 WORD component masks 
 	{
@@ -506,56 +562,35 @@ setupDIB(HDC hDCOrig, HDC hDC, HBITMAP * hBitmap, int width, int height)
     case 32:
     default:
 	bmHeader->biCompression = BI_RGB;
-	bmHeader->biSizeImage = 0;
+	bmHeader->biSizeImage = width * height * bitsPerPixel/8;
 	usage = DIB_RGB_COLORS;
 	// bmiColors not used 
 	break;
     }
+	
+	*hBitmap = CreateDIBSection(*phDC, bmInfo, usage, &base, NULL, 0);
 
-    *hBitmap = CreateDIBSection(hDC, bmInfo, usage, &base, NULL, 0);
     if (*hBitmap == NULL) {
-	(void) MessageBox(WindowFromDC(hDC),
-		"Failed to create DIBSection.",
-		"OpenGL application error",
-		MB_ICONERROR | MB_OK);
-	exit(1);
+        PrintMessage("GLERROR: CreateCompatibleDIBDC Failed to create a %dbpp DIBSection\n", bitsPerPixel);
+		exit(1);
     }
 
-    hOldBitmap = SelectObject(hDC, *hBitmap);
+	new_hDC = CreateCompatibleDC(NULL); /* from Screen */
+
+    hOldBitmap = SelectObject(new_hDC, *hBitmap);
+	/*
 	if(hOldBitmap!=0)
 		DeleteObject(hOldBitmap);
+	*/
 
     free(bmInfo);
+
+	*phDC = new_hDC;
 }
-
-
-/*
-static void
-setupDIB(HDC hDCOrig, HDC hDC, HBITMAP * hBitmap, int width, int height)
-{
-	HBITMAP hOldBitmap=0;
-
-	*hBitmap = CreateCompatibleBitmap(  hDCOrig, width, height );
-    if (*hBitmap == NULL) {
-        fprintf(stderr,"Failed to create CreateCompatibleBitmap! \n");
-		fflush(stderr);
-		return;
-    }
-
-    hOldBitmap = SelectObject(hDC, *hBitmap);
-	if(hOldBitmap!=0)
-		DeleteObject(hOldBitmap);
-}
-*/
 
 
 void LIBAPIENTRY resizeDIB(HDC hDC, HBITMAP *hOldBitmap, HBITMAP *hBitmap)
 {
-	/*
-    SelectObject(hDC, *hOldBitmap);
-    DeleteObject(*hBitmap);
-    setupDIB(hDC, hBitmap);
-	*/
 }
 
 HPALETTE LIBAPIENTRY setupPalette(HDC hDC)
@@ -741,11 +776,12 @@ int LIBAPIENTRY setGLCapabilities ( HDC hdc,
     glCaps->redBits = pfd.cRedBits;
     glCaps->greenBits= pfd.cGreenBits;
     glCaps->blueBits=  pfd.cBlueBits;
-    /* glCaps->alphaBits= pfd.cAlphaBits; N.A. */
+    glCaps->alphaBits= pfd.cColorBits-(pfd.cRedBits+pfd.cGreenBits+pfd.cBlueBits);
     glCaps->accumRedBits = pfd.cAccumRedBits;
     glCaps->accumGreenBits= pfd.cAccumGreenBits;
     glCaps->accumBlueBits= pfd.cAccumBlueBits;
-    glCaps->accumAlphaBits= pfd.cAccumAlphaBits;
+    glCaps->accumAlphaBits= pfd.cAccumBits-
+							(pfd.cAccumRedBits+pfd.cAccumGreenBits+pfd.cAccumBlueBits);
 
     glCaps->nativeVisualID=nPixelFormat;
 

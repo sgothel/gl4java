@@ -16,6 +16,8 @@ UNIXTYPE		= Linux-glibc2-xf86-x86
 # JDK_HOME must point to the highest JDK being used,
 # e.g. to JDK14_HOME, if using JDK14, otherwise JDK13_HOME
 #
+# AT LEAST JDK13_HOME MUST BE DEFINED !
+#
 JDK13_HOME		= /usr/local/lib/jdk1.3.1-FCS-blackdown
 JDK14_HOME		= /usr/local/lib/jdk1.4.0-beta-sun
 JDK_HOME		= $(JDK14_HOME)
@@ -26,7 +28,7 @@ JAVAOSLIB  		= $(JDK_HOME)/jre/lib/i386
 
 JAVADOC 		= $(JDK13_HOME)/bin/javadoc
 JAVAH 			= $(JDK_HOME)/bin/javah
-JAR 			= $(JDK_HOME)/bin/jar
+JAR 			= $(JDK13_HOME)/bin/jar
 
 # If MSJAVAC is specified on Win32 platforms, it will be used to
 # compile window system-specific files for the Microsoft VM. In order

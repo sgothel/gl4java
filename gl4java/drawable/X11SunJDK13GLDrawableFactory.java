@@ -59,7 +59,7 @@ public class X11SunJDK13GLDrawableFactory
 
     public X11SunJDK13GLDrawableFactory() { }
 
-    GraphicsConfiguration
+    public GraphicsConfiguration
         getGraphicsConfiguration(GLCapabilities capabilities,
                                  GraphicsDevice device) 
     {

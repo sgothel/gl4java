@@ -14,4 +14,7 @@ HDC   (CALLBACK * disp__wglGetCurrentDC)(VOID) = NULL;
 BOOL  (CALLBACK * disp__wglMakeCurrent)(HDC, HGLRC) = NULL;
 BOOL  (CALLBACK * disp__wglShareLists)(HGLRC, HGLRC) = NULL;
 
+/* NVidia support */
+void* (CALLBACK * disp__wglAllocateMemoryNV)(int, float, float, float) = NULL;
+void  (CALLBACK * disp__wglFreeMemoryNV)    (void*)                    = NULL;
 

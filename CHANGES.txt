@@ -1,12 +1,61 @@
 \begin{verbatim}
 
-Last Changes: 6th Nov 2001 (Version 2.8.0 - PRE-Release 8 (CVS only) )
+Last Changes: 6th Dec 2001 (Version 2.8.1 - ReleaseCandidate 0 (2.8.1.0) )
 Started:      July 1997 (Version 0)
 
 -----------------
 TOP  = NEW
 DOWN = OLD
 -----------------
+
+6th Dec  2001 (Version 2.8.1 - ReleaseCandidate 0 - 2.8.1.0)
+
+	o Yep - that's the 1st release candidate since 2.7.1.0 ;-)
+
+	o Removed any printouts if not using a Debug flag _and_ if no error occures ..
+
+	o Added and checked the new 2.8 code ;-)
+
+	o Added: 
+		gl4java.drawable.GLDrawable.getSize() !!
+		gl4java.drawable.GLDrawable.cvsDispose() !!
+		gl4java.drawable.GLDrawable.cvsIsInit() !!
+
+	o Added gl4java.awt.GLOffScreenDrawable !!
+		- there are now 2 demos for Offscreen rendering !
+		- check demos/MiscDemos/gearsOffScreen2Tga.java
+		        demos/MiscDemos/gearsOffScreenDrawImage.java
+
+	o Fixed gl4java.swing.GLJPanel (win32 variant, unix one had no bug ..)
+
+	o Minor changes .., makefile, docs, faq, ..
+
+	o All libs/classes are has version 2.8.1.0 now !
+
+	o Better partitioning of the 14 native libraries, smaller footprint !
+
+	o Check NVidia's demo "demos/NVidia/VertexArrayRange.java",
+	  ported by Kenneth B. Russel,
+	  which uses the gl4java's new java.nio interface 
+	  and the new NVidia extensions !!
+
+	o The Installer now installs also:
+		- GLF Fonts
+		- The native libraries under JAVA_HOME/lib/<arch>, or
+		  JAVA_HOME/bin ! (checks where java.dll or libjava.so, resides)
+
+	o TODO (Reasons why this is still not a final Release):
+		- Win98se (maybe any Win32) memory leak of 2MB !!
+		  After you have started and stopped a little
+		  GL4Java thing, e.g. "java gl4java.GLContext -info",
+		  2MB of memory is lost each time .. ?!
+
+		  Or does this occure just on my machine .. ? HELP !
+
+		  Never saw this happen on my rock solid linux machine .. !
+
+		- Java2 1.4 Fullscreen support check .. ! HELP !
+			- check demos/MiscDemos/gearsFullScreen.java !
 
 6th Nov  2001 (Version 2.8.0 - PRE-Release 8 (CVS only) )
 	o BIG merge with Kenneth's JDK 1.4's java.nio Buffer's

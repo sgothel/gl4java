@@ -421,7 +421,7 @@ public class GLContext extends Object
     private static int    jvmVersionMinor = 1; // min. defaults
     private static String osName = null;
 
-    private static String jniEXTsuff = "";
+    private static String jniEXTsuff = null;
 
    /**
     * Get the native GL Context !
@@ -702,13 +702,11 @@ public class GLContext extends Object
 	else /* oops - lets guess unix/x11 :-) */
 	   osType = OsX11;
 
-	String libNames[] = null;
-
 	if( jvmVersionMajor>=2 ||
 	       ( jvmVersionMajor==1 && jvmVersionMinor>=4 )
 	  )
 	{
-		jniEXTsuff = "14";
+		jniEXTsuff="14";
 	}
 
 	else 
@@ -717,25 +715,21 @@ public class GLContext extends Object
 	    && !isIBMJvm && !isMicrosoftJvm 
 	  )
 	{
-		jniEXTsuff = "13";
+		jniEXTsuff="13";
 	}
 
 	else 
 
 	if( jvmVersionMajor==1 && jvmVersionMinor>=2 )
 	{
-		jniEXTsuff = "12";
+		jniEXTsuff="12";
 	}
 
 	else 
 
 	{
-		jniEXTsuff = "";
+		jniEXTsuff="";
 	}
-
-
-	if(gljLibName==null)
-	    gljLibName = defGljLib+jniEXTsuff;
 
 	if(nativeGLLibName==null)
 	{
@@ -761,11 +755,16 @@ public class GLContext extends Object
 		    nativeGLULibName = defNativeGLULibX11;
         }
 
+	if(gljLibName==null)
+	    gljLibName = defGljLib+jniEXTsuff;
+
+	String[] libNames = null;
+
 	if ( (osType==OsWindoof) && (isMicrosoftJvm) )
 	{
 	   // JDirect loads the GL libraries automatically,
 	   // so we don't have to.
-	   libNames = new String[2];
+           libNames = new String[2];
 	   libNames[0]= gljLibName;
 	   libNames[1]= defGljMSWinLib;
 	   useMSJDirect = true;
@@ -911,7 +910,8 @@ public class GLContext extends Object
 			(nativeGLLibName, nativeGLULibName, true)
 		  )
 		{
-			System.out.println("fetched GL/GLU functions succesfully !");
+			if(gljClassDebug)
+			   System.out.println("fetched GL/GLU functions succesfully !");
 			libsLoaded=true;
 		} else {
 			System.out.println("GL4Java-ERROR: can't fetch GL/GLU functions !");
@@ -1157,10 +1157,10 @@ public class GLContext extends Object
 			_gr = _compHeavy.getGraphics();
 			if(_gr==null)
 			  System.out.println("got empty Graphics");
-		} else
+		} else if(!offScreenRenderer)
 		  System.out.println("got empty Component");
 
-		if(_comp!=null && _gr!=null)
+		if( (_comp!=null && _gr!=null) || offScreenRenderer )
 		{
 			int i = 0;
 			do {
@@ -1560,7 +1560,6 @@ public class GLContext extends Object
     *
     * If a GLContext is fetched, it is current !
     *
-    * @param comp	  the users component for the gl-context
     * @param glf	  the users selected GLFunc implementation
     * @param glf	  the users selected GLUFunc implementation
     * @param _stereoView  the flag for the visual property
@@ -1571,7 +1570,7 @@ public class GLContext extends Object
     * @return             the created offscreen context
     */
     public final static GLContext createOffScreenCtx
-    		       ( Component comp, GLFunc glf, GLUFunc gluf, 
+    		       ( GLFunc glf, GLUFunc gluf, 
                          boolean _stereoView,
 		         boolean _rgba,
 		         int _stencilBits,
@@ -1579,7 +1578,7 @@ public class GLContext extends Object
 		         GLContext _sharedGLContext
                        )
     {
-    	return new GLContext(comp, glf, gluf, 
+    	return new GLContext(null, glf, gluf, 
 		      false /* _createOwnWindow */, 
 		      true /* offscreen renderer */,
 		      false /* _doubleBuffer */,
@@ -1601,7 +1600,6 @@ public class GLContext extends Object
     *
     * If a GLContext is fetched, it is current !
     *
-    * @param comp	  the users component for the gl-context
     * @param glf	  the users selected GLFunc implementation
     * @param glf	  the users selected GLUFunc implementation
     * @param _stereoView  the flag for the visual property
@@ -1613,7 +1611,7 @@ public class GLContext extends Object
     * @return             the created offscreen context
     */
     public final static GLContext createOffScreenCtx
-    		       ( Component comp, GLFunc glf, GLUFunc gluf, 
+    		       ( GLFunc glf, GLUFunc gluf, 
                          boolean _stereoView,
 		         boolean _rgba,
 		         int _stencilBits,
@@ -1622,7 +1620,7 @@ public class GLContext extends Object
     			 Dimension _offScrnSize
                        )
     {
-    	return new GLContext(comp, glf, gluf, 
+    	return new GLContext(null, glf, gluf, 
 		      false /* _createOwnWindow */, 
 		      true /* offscreen renderer */,
 		      false /* _doubleBuffer */,
@@ -1827,7 +1825,13 @@ public class GLContext extends Object
  
           if(pData == 0)
 	  {
-	    if ( useMSJDirect )
+	    if(offScreenRenderer)
+	    {
+	  	// nothing todo ..
+	        if(gljClassDebug)
+		  System.out.println("using OffScreen rendering ...");
+	    }
+	    else if ( useMSJDirect && g!=null )
 	    {
 	          if(gljClassDebug)
 			  System.out.println("using MSJDirect ...");
@@ -1999,7 +2003,7 @@ public class GLContext extends Object
 
         if( ! ok )
         {
-	    if ( useMSJDirect )
+	    if ( useMSJDirect && !offScreenRenderer)
 	    {
 		destroyWindow = true;
 		while (threadRunning)
@@ -2116,11 +2120,15 @@ public class GLContext extends Object
 
 	if(offScreenRenderer)
 	{
-		//JAU: TODO
+		/**
+	         * nothing to do here
+	         * 
+                 * we just have to recreate the whole bitmap and context
+		 */
 		return;
 	}
 
-	if ( useMSJDirect )
+        if ( useMSJDirect && !offScreenRenderer )
         {
 		try
 		{
@@ -2468,7 +2476,7 @@ public class GLContext extends Object
         // made current (at least with NVidia's drivers).
         if (firstContextMakeCurrent) {
           firstContextMakeCurrent = false;
-          gljFetchGLFunctions0(null, null, false, true);
+          gljFetchGLFunctions0(null, null, false, true, gljNativeDebug);
         }
 
 	return result;
@@ -2545,7 +2553,7 @@ public class GLContext extends Object
 	pixmapHandle = 0;
 
 
-	if ( useMSJDirect )
+        if ( useMSJDirect && !offScreenRenderer )
 	{
 		destroyWindow = false;
 		gl4java.system.GljMSJDirect.destroyOGLWindowNative( pData );
@@ -2750,26 +2758,29 @@ public class GLContext extends Object
      *
      * @see	gl4java.GLContext#doLoadNativeLibraries
      */
-    public final static native boolean gljFetchOSGLFunctions 
-			( String gllibname, String glulibname, boolean force );
     public final static boolean gljFetchGLFunctions(String gllibname,
                                                     String glulibname,
-                                                    boolean force) {
-      return gljFetchGLFunctions0(gllibname, glulibname, force, false);
+                                                    boolean force) 
+    {
+      return gljFetchGLFunctions0(gllibname, glulibname, force, false, gljNativeDebug);
     }
 
-    // This routine is used internally only. On Windows it appears
-    // that extensions only become visible once an OpenGL context is
-    // made current for the first time (at least with NVidia's
-    // drivers). To avoid making drastic changes to the code
-    // structure, we reload all of the OpenGL functions the first time
-    // a context is made current. (This could be made more efficient
-    // by only loading extensions' routines at this time.)
+    /**
+     * for example Windows it appears
+     * that extensions only become visible once an OpenGL context is
+     * made current for the first time (at least with NVidia's
+     * drivers). To avoid making drastic changes to the code
+     * structure, we reload all of the OpenGL functions the first time
+     * a context is made current. (This could be made more efficient
+     * by only loading extensions' routines at this time.)
+     *
+     * @see	gl4java.GLContext#gljFetchGLFunctions
+     */
     private volatile static boolean firstContextMakeCurrent = true;
-    private final static native boolean gljFetchGLFunctions0(String gllibname,
-                                                             String glulibname,
-                                                             boolean force,
-                                                             boolean reload);
+    private final static native boolean gljFetchGLFunctions0 (String gllibname,
+                                                              String glulibname,
+                                                              boolean force,
+                                                              boolean reload, boolean verbose);
 
     /**
      * This functions checks the existence of 

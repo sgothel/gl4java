@@ -16,15 +16,11 @@
 static char * defargs[] = { "-loadgljlibs", "gl4java.GLContext", "-info" };
 
 #ifdef _X11_
-static char * lib1name="libGL4JavaJauGljJNI13.so";
-static char * lib2name="libGL4JavaJauGLJNI12.so";
-static char * lib3name="libGL4JavaJauGLUJNI12.so";
+static char * libname="libGL4JavaJauGljJNI13.so";
 #endif
 
 #ifdef _WIN32_	 
-static char * lib1name="GL4JavaJauGljJNI13.DLL";
-static char * lib2name="GL4JavaJauGLJNI12.DLL";
-static char * lib3name="GL4JavaJauGLUJNI12.DLL";
+static char * libname="GL4JavaJauGljJNI13.DLL";
 #endif
 
 int main(int argc, char ** argv)
@@ -43,14 +39,10 @@ int main(int argc, char ** argv)
      int opt_num=0, i;
      int argidx=1;
 #ifdef _WIN32_	 
-     HMODULE lib1;
-     HMODULE lib2;
-     HMODULE lib3;
+     HMODULE lib;
 #endif
 #ifdef _X11_
-     void * lib1;
-     void * lib2;
-     void * lib3;
+     void * lib;
 #endif
      char ** myargv;
   
@@ -74,42 +66,18 @@ int main(int argc, char ** argv)
         printf("loading default gl4java libraries !\n");
      	argidx++;
 #ifdef _X11_
-	lib1 = dlopen (lib1name, RTLD_LAZY | RTLD_GLOBAL);
-	if (lib1 == NULL)
+	lib = dlopen (libname, RTLD_LAZY | RTLD_GLOBAL);
+	if (lib == NULL)
 	{
-		printf ("GLERROR: cannot access library %s\n", lib1name);
-		exit(1);
-	}
-	lib2 = dlopen (lib2name, RTLD_LAZY | RTLD_GLOBAL);
-	if (lib2 == NULL)
-	{
-		printf ("GLERROR: cannot access library %s\n", lib2name);
-		exit(1);
-	}
-	lib3 = dlopen (lib3name, RTLD_LAZY | RTLD_GLOBAL);
-	if (lib3 == NULL)
-	{
-		printf ("GLERROR: cannot access library %s\n", lib3name);
+		printf ("GLERROR: cannot access library %s\n", libname);
 		exit(1);
 	}
 #endif
 #ifdef _WIN32_
-    lib1 = LoadLibrary (lib1name);
-	if (lib1 == NULL)
+    lib = LoadLibrary (libname);
+	if (lib == NULL)
 	{
-		printf ("GLERROR: cannot access library %s\n", lib1name);
-		exit(1);
-	}
-	lib2 = LoadLibrary (lib2name);
-	if (lib2 == NULL)
-	{
-		printf ("GLERROR: cannot access library %s\n", lib2name);
-		exit(1);
-	}
-	lib3 = LoadLibrary (lib3name);
-	if (lib3 == NULL)
-	{
-		printf ("GLERROR: cannot access library %s\n", lib3name);
+		printf ("GLERROR: cannot access library %s\n", libname);
 		exit(1);
 	}
 #endif
@@ -204,38 +172,18 @@ int main(int argc, char ** argv)
      }
 
 #ifdef _X11_
-     if(lib1!=NULL)
+     if(lib!=NULL)
      {
-	      dlclose (lib1);
-	      lib1 = NULL;
-     }
-     if(lib2!=NULL)
-     {
-	      dlclose (lib2);
-	      lib2 = NULL;
-     }
-     if(lib3!=NULL)
-     {
-	      dlclose (lib3);
-	      lib3 = NULL;
+	      dlclose (lib);
+	      lib = NULL;
      }
 #endif
 
 #ifdef _WIN32_
-     if(lib1!=NULL)
+     if(lib!=NULL)
      {
-	      FreeLibrary(lib1);
-	      lib1 = NULL;
-     }
-     if(lib2!=NULL)
-     {
-	      FreeLibrary(lib2);
-	      lib2 = NULL;
-     }
-     if(lib3!=NULL)
-     {
-	      FreeLibrary(lib3);
-	      lib3 = NULL;
+	      FreeLibrary(lib);
+	      lib = NULL;
      }
 #endif
 

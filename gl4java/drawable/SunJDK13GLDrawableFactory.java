@@ -62,13 +62,18 @@ public abstract class SunJDK13GLDrawableFactory extends GLDrawableFactory {
                                     GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice());
   }
 
-    //----------------------------------------------------------------------
-    // Internals only below this point
-    //
+  /** Returns the GraphicsConfiguration most closely matching the
+      specified set of GLCapabilities and your given device !
+      Return null if there was no matching visual. 
 
-    /** The choice of the GraphicsDevice is not yet exported to
-        clients. */
-    abstract GraphicsConfiguration
+      @param capabilities  the requested set of OpenGL capabilities of
+                           the canvas
+      @param device        the used GraphicsDevice,
+      			   e.g. usefull for FullScreen mode !
+      @return a GraphicsConfiguration supporting the set of specified capabilities,
+      or null if there was no matching visual
+    */
+    public abstract GraphicsConfiguration
         getGraphicsConfiguration(GLCapabilities capabilities,
                                  GraphicsDevice device);
 }

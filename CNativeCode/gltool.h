@@ -143,12 +143,13 @@
 	LIBAPI int LIBAPIENTRY unloadGLLibrary (void);
 
 	LIBAPI int LIBAPIENTRY loadGLLibrary 
-        	(const char * libGLName, const char * libGLUName);
+        	(const char * libGLName, const char * libGLUName, int verbose);
 
 	LIBAPI void * LIBAPIENTRY getGLProcAddressHelper 
 		(const char * libGLName, const char * libGLUName,
-		 const char *func, int *method, int debug, int verbose);
+		 const char *func, int *method, int verbose);
 
         LIBAPI void LIBAPIENTRY fetch_GL_FUNCS 
-		(const char * libGLName, const char * libGLUName, int force, int reload);
+		(const char * libGLName, const char * libGLUName, int force, 
+		int reload, int verbose);
 #endif

@@ -21,17 +21,26 @@ public class MachineCtrl
     public Button buttonOk = null;
     public Button buttonCancel = null;
     public Button buttonFileClasses = null;
-    public Button buttonFileNatives = null;
+    public Button buttonFileNativesBrowser = null;
+    public Button buttonFileNativesOS = null;
     public TextField tf_browser_classes = null;
     public TextField tf_browser_natives = null;
+    public TextField tf_os_natives = null;
     public boolean installGLUTFontSupport = true;
+    public boolean installGLFFontSupport = true;
     private Checkbox checkboxInstallGLUTFontSupport = null;
+    private Checkbox checkboxInstallGLFFontSupport = null;
 
     // Values for replaceable strings:
     public String browser_classes = null;
     public String browser_natives = null;
+    public String os_natives      = null;
     public String os_dir 	  = null;   
     public String os_lib_dir 	  = null;
+
+    private String javalibdir=null;
+    private String java_lib=null;
+    private Vector javalibdir_list=null;
 
     // Java VM vendor and operating system stuff:
     public String  jvmVendor = null;
@@ -48,8 +57,8 @@ public class MachineCtrl
     public String osArch = null;
 	    public boolean isWin32 = false;
 	    public boolean isWin95 = false;
-	    public boolean isMacOs = false;
 	    public boolean isMacOs9 = false;
+	    public boolean isMacOsX = false;
 	    public boolean isUnix = false;
 	    public int unixFlavor = unixFlavor_Unknown;
 	    static public final int
@@ -58,7 +67,13 @@ public class MachineCtrl
 		unixFlavor_Solaris = 2,
 		unixFlavor_Aix = 3,
 		unixFlavor_Irix = 4,
-		unixFlavor_HPUX = 5;
+		unixFlavor_HPUX = 5,
+		unixFlavor_MacOsX = 6;
+	    public boolean isOsArchX86=false;
+            public boolean isOsArchPPC = false;
+            public boolean isOsArchSPARC = false;
+            public boolean isOsArchMIPS = false;
+            public boolean isOsArchPARISC = false;
 
     private String pathsep = null;
     private String filesep = null;
@@ -128,10 +143,10 @@ public class MachineCtrl
              && (osName.indexOf("windows 95") >= 0)
              && (osVersion.startsWith("4.0"))   );
 
-        isMacOs = osName.startsWith("mac os");
-	isMacOs9 = osVersion.startsWith("9.");
+	isMacOs9 = osName.startsWith("mac os") && osVersion.startsWith("9.");
+	isMacOsX = osName.startsWith("darwin");
 
-        isUnix  = ( (!isWin32) && (!isMacOs) );
+        isUnix  = ( (!isWin32) && (!isMacOs9) );
 
         pathsep = System.getProperty("path.separator");
         filesep = System.getProperty("file.separator");
@@ -148,12 +163,35 @@ public class MachineCtrl
                 unixFlavor = unixFlavor_Irix;
             else if (osName.indexOf("hp-ux") >= 0)
                 unixFlavor = unixFlavor_HPUX;
+            else if (osName.indexOf("darwin") >= 0)
+                unixFlavor = unixFlavor_MacOsX;
         }
+
+        if(osArch.indexOf("x86")>=0 || 
+           osArch.indexOf("i86")>=0 ||
+           osArch.indexOf("i786")>=0 || 
+           osArch.indexOf("i686")>=0 || 
+           osArch.indexOf("i586")>=0 || 
+           osArch.indexOf("i486")>=0 || 
+           osArch.indexOf("i386")>=0
+          ) isOsArchX86=true;
+	else
+            isOsArchX86=false;
+
+        isOsArchPPC = osArch.indexOf("ppc")>=0 || osArch.indexOf("powerpc")>=0;
+        isOsArchSPARC = osArch.indexOf("sparc")>=0;
+        isOsArchMIPS = osArch.indexOf("mips")>=0;
+        isOsArchPARISC = osArch.indexOf("ps_risc")>=0;
 
 	System.out.println("Machine Info:");
 	System.out.println("\tosName: "+osName);
 	System.out.println("\tosVersion: "+osVersion);
 	System.out.println("\tosArch: "+osArch);
+	System.out.println("\t\t isOsArchX86 ="+isOsArchX86);
+	System.out.println("\t\t isOsArchPPC ="+isOsArchPPC);
+	System.out.println("\t\t isOsArchSPARC ="+isOsArchSPARC);
+	System.out.println("\t\t isOsArchMIPS ="+isOsArchMIPS);
+	System.out.println("\t\t isOsArchPARISC ="+isOsArchPARISC);
 	System.out.println("");
 	System.out.println("jvmVendor: "+jvmVendor);
 	System.out.println("jvmVersion: "+jvmVersion+
@@ -359,11 +397,11 @@ public class MachineCtrl
                         len = ((Integer)m.invoke(kernel32,args)).intValue();
                         f = new File(new String(buf));
                         os_lib_dir = f.getAbsolutePath().replace('\\','/');
-                        browser_natives = os_lib_dir;
+                        os_natives = os_lib_dir;
                     }
                     catch (Exception e)
                     {
-                        browser_natives = null;
+                        os_natives = null;
 			System.out.println(e);
 			System.out.println("call to get the sys dir failed:\n"+ buf);
                     }
@@ -399,7 +437,7 @@ public class MachineCtrl
                     return false;
                 }
             }   // if (isWin32)
-            else if (isMacOs)
+            else if (isMacOs9)
             {
 // TODO: Add IE init here for browser_classes and browser_natives directories
 //       under MacOs.
@@ -414,8 +452,8 @@ public class MachineCtrl
         {
             if (isWin32)
             {
-                    // Find WINDOWS and WINDOWS\SYSTEM directories for Win9x,
-                    // or WINNT and WINNT\SYSTE23 directories for WinNT.
+                // Find WINDOWS and WINDOWS\SYSTEM directories for Win9x,
+                // or WINNT and WINNT\SYSTEM23 directories for WinNT.
                 Process proc = null;
                 String path = "";
                 try
@@ -556,6 +594,7 @@ public class MachineCtrl
 					    || (os_lib_dir.length()
 						< 1)   )
 					    os_lib_dir = thispath2;
+					    os_natives = os_lib_dir;
 				    }
                                 }
                             }
@@ -606,7 +645,7 @@ public class MachineCtrl
 
     	    String  jvmHome = java.lang.System.getProperty("java.home");
 
-            if ( (isWin32) || (isUnix) || (isMacOs) )
+            if ( (isWin32) || (isUnix) )
             {
 	        if(DEBUG)
 			System.out.println("find classpath ...");
@@ -688,30 +727,99 @@ public class MachineCtrl
                                         switch (unixFlavor)
                                         {
                                             case unixFlavor_Linux:
-                                                browser_natives = new String("/usr/lib");
+                                                os_natives = new String("/usr/lib");
                                                 break;
                                             case unixFlavor_Solaris:
-                                                browser_natives = new String("/usr/lib");
+                                                os_natives = new String("/usr/lib");
                                                 break;
                                             case unixFlavor_Aix:
-                                                browser_natives = new String("/usr/lib");
+                                                os_natives = new String("/usr/lib");
                                                 break;
                                             case unixFlavor_Irix:
-                                                browser_natives = new String("/usr/lib");
+                                                os_natives = new String("/usr/lib");
                                                 break;
                                         }
                                     }
-                                    else
-                                        browser_natives = thispath.substring(0,thispath.length()-7) + "bin";
+                                    else if(os_natives==null||os_natives.length()==0)
+                                        os_natives = thispath.substring(0,thispath.length()-7) + "bin";
                                     break;
                                 }
                             }
                         }
                     }
-                }
-            }   // if ( (isWin32) || (isUnix) || (isMacOs) )
+		    if(jvmHome!=null && jvmHome!="null")
+		    {
+		        if(isWin32)
+		        {
+			   if(isOsArchX86)
+			   {
+			   	browser_natives=jvmHome+"/bin";
+			   }
+			   java_lib="java.dll";
+		        }
+		        if(isUnix)
+		        {
+				if(unixFlavor==unixFlavor_Linux)
+				{
+				   if(isOsArchX86)
+				   {
+					browser_natives=jvmHome+"/lib/i386";
+				    } else if(isOsArchPPC)
+				    {
+					browser_natives=jvmHome+"/lib/ppc";
+				    }
+				} else if(unixFlavor==unixFlavor_Solaris)
+				{
+				    if(isOsArchSPARC)
+					browser_natives=jvmHome+"/lib/sparc";
+				} else if(unixFlavor==unixFlavor_Irix)
+				{
+				    if(isOsArchMIPS)
+					browser_natives=jvmHome+"/lib/mips";
+				} else if(unixFlavor==unixFlavor_HPUX)
+				{
+				    if(isOsArchPARISC)
+					browser_natives=jvmHome+"/lib/parisc";
+				} else if(unixFlavor==unixFlavor_MacOsX)
+				{
+				    if(isOsArchPPC)
+				    {
+					browser_natives=jvmHome+"/lib/ppc";
+				    }
+				}
+			        java_lib="libjava.so";
+		        }
+		        if(isMacOs9)
+		        {
+			    if(isOsArchPPC)
+					browser_natives=jvmHome+"/lib/ppc";
+			    java_lib="java.dll";
+		        }
+		        if(browser_natives==null || browser_natives.length()==0)
+		        {
+			   	browser_natives=jvmHome+"/bin";
+			        java_lib="java.dll";
+		        }
+		        javalibdir_list=new Vector();
+                        javalibdir_list.addElement(browser_natives);
+                        javalibdir_list.addElement(jvmHome+"/bin");
+                        javalibdir_list.addElement(jvmHome+"/lib/i686");
+                        javalibdir_list.addElement(jvmHome+"/lib/i686/i686/native_threads");
+                        javalibdir_list.addElement(jvmHome+"/lib/i686/i686/green_threads");
+                        javalibdir_list.addElement(jvmHome+"/lib/i386");
+                        javalibdir_list.addElement(jvmHome+"/lib/ppc");
+                        javalibdir_list.addElement(jvmHome+"/lib/sparc");
+                        javalibdir_list.addElement(jvmHome+"/lib/mips");
+                        javalibdir_list.addElement(jvmHome+"/lib/parisc");
+                        javalibdir_list.addElement(jvmHome+"/lib/risc");
+                        javalibdir=FileTool.libraryExists(this,java_lib,javalibdir_list);
+                        if (javalibdir!=null)
+		    	    browser_natives=javalibdir;
+                    } // if jvmhome!=null
+                } // if jvmhome-classpath exists ! 
+            }   // if ( (isWin32) || (isUnix) )
 	    /*
-            else if (isMacOs)
+            else if (isMacOs9)
             {
             }
 	    */
@@ -761,7 +869,7 @@ public class MachineCtrl
 	}
 
 	Panel panMain = new Panel();
-	panMain.setLayout(new GridLayout(10,1));
+	panMain.setLayout(new GridLayout(11,1));
 
 	if(osVersion!=null && osArch!=null)
 		panMain.add(new Label("OS: "+osName+" "+osVersion+" "+osArch));
@@ -772,7 +880,7 @@ public class MachineCtrl
 	panFlow.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
 	panFlow.add(new Label("os-dir/os-library-dir:"));
 	if(os_dir!=null && os_lib_dir!=null)
-		panFlow.add(new Label(os_dir.trim()+"/"+os_lib_dir.trim()));
+		panFlow.add(new Label(os_dir.trim()+" / "+os_lib_dir.trim()));
 	else
 		panFlow.add(new Label("none/none"));
 	panMain.add(panFlow);
@@ -783,7 +891,16 @@ public class MachineCtrl
         checkboxInstallGLUTFontSupport = new Checkbox("with GLUT-Fonts", true);
 	checkboxInstallGLUTFontSupport.addItemListener(this);
 	panGL4JSpecials.add(checkboxInstallGLUTFontSupport);
-	panGL4JSpecials.add(new Label("(takes up to 200kBytes)"));
+	panGL4JSpecials.add(new Label("(takes up to 111 kBytes)"));
+	panMain.add(panGL4JSpecials);
+
+	panGL4JSpecials = new Panel();
+	panGL4JSpecials.setLayout(new GridLayout(1,2));
+        installGLFFontSupport = true;
+        checkboxInstallGLFFontSupport = new Checkbox("with GLF-Fonts", true);
+	checkboxInstallGLFFontSupport.addItemListener(this);
+	panGL4JSpecials.add(checkboxInstallGLFFontSupport);
+	panGL4JSpecials.add(new Label("(takes up to 611 kBytes)"));
 	panMain.add(panGL4JSpecials);
 
 	Panel panOS = new Panel();
@@ -794,7 +911,7 @@ public class MachineCtrl
 	cb1 = new Checkbox("Win95", isWin95);
 	cb1.setEnabled(false);
 	panOS.add(cb1);
-	cb1 = new Checkbox("MacOS", isMacOs);
+	cb1 = new Checkbox("MacOS9", isMacOs9);
 	cb1.setEnabled(false);
 	panOS.add(cb1);
 	cb1 = new Checkbox("Unix", isUnix);
@@ -805,7 +922,7 @@ public class MachineCtrl
 	if(isUnix)
 	{
 		Panel panOSUnix = new Panel();
-		panOSUnix.setLayout(new GridLayout(2,2));
+		panOSUnix.setLayout(new GridLayout(2,3));
 		cb1 = new Checkbox("GNU/Linux", unixFlavor==unixFlavor_Linux);
 		cb1.setEnabled(false);
 		panOSUnix.add(cb1);
@@ -816,6 +933,12 @@ public class MachineCtrl
 		cb1.setEnabled(false);
 		panOSUnix.add(cb1);
 		cb1 = new Checkbox("Irix", unixFlavor==unixFlavor_Irix);
+		cb1.setEnabled(false);
+		panOSUnix.add(cb1);
+		cb1 = new Checkbox("HP-UX", unixFlavor==unixFlavor_HPUX);
+		cb1.setEnabled(false);
+		panOSUnix.add(cb1);
+		cb1 = new Checkbox("Darwin/MacOsX", unixFlavor==unixFlavor_MacOsX);
 		cb1.setEnabled(false);
 		panOSUnix.add(cb1);
 		panMain.add(panOSUnix);
@@ -850,16 +973,29 @@ public class MachineCtrl
 	buttonFileClasses.addActionListener(this);
 	panFlow.add(buttonFileClasses);
 	panMain.add(panFlow);
+
 	panFlow = new Panel();
 	//panFlow.setLayout(new GridLayout(1,3));
 	panFlow.setLayout(new FlowLayout(FlowLayout.LEFT));
-	panFlow.add(new Label("Native-Lib's-Path:"));
+	panFlow.add(new Label("Java Native-Lib's-Path's:"));
     	tf_browser_natives = new TextField(browser_natives,60);
     	tf_browser_natives.addActionListener(this);
 	panFlow.add(tf_browser_natives);
-	buttonFileNatives = new Button("...");
-	buttonFileNatives.addActionListener(this);
-	panFlow.add(buttonFileNatives);
+	buttonFileNativesBrowser = new Button("...");
+	buttonFileNativesBrowser.addActionListener(this);
+	panFlow.add(buttonFileNativesBrowser);
+	panMain.add(panFlow);
+
+	panFlow = new Panel();
+	//panFlow.setLayout(new GridLayout(1,3));
+	panFlow.setLayout(new FlowLayout(FlowLayout.LEFT));
+	panFlow.add(new Label("OS Native-Lib's-Path's:"));
+    	tf_os_natives = new TextField(os_natives,60);
+    	tf_os_natives.addActionListener(this);
+	panFlow.add(tf_os_natives);
+	buttonFileNativesOS = new Button("...");
+	buttonFileNativesOS.addActionListener(this);
+	panFlow.add(buttonFileNativesOS);
 	panMain.add(panFlow);
 
 	dialog.add("Center", panMain);
@@ -974,15 +1110,18 @@ public class MachineCtrl
 	fisdir=false;
 
 	try {
-		fname = tf_browser_natives.getText().replace('\\','/');
+	    fname = tf_browser_natives.getText().replace('\\','/');
+	    if(fname!=null && fname.length()>0)
 		fname = fname.trim();
-		f = new File(fname);
+	    if(fname!=null && fname.length()>0)
+	    {
+	        f = new File(fname);
 		fexist=f.exists();
 		fisdir=f.isDirectory();
 		if(f!=null && fexist && fisdir )
 		{
 			browser_natives = fname;
-			System.out.println("Set Native-Dir to: "+
+			System.out.println("Set Browser-Native-Dir to: "+
 						browser_natives);
 		} else {
 			str = new String ("directory <"+
@@ -998,6 +1137,7 @@ public class MachineCtrl
 			tf_browser_natives.requestFocus();
 			tf_browser_natives.getToolkit().beep();
 		}
+	    }
 	} catch (Exception ex) {
 			ex.printStackTrace();
 			str = new String ("EXCEPTION directory <"+
@@ -1012,6 +1152,50 @@ public class MachineCtrl
 			ok=false;
 			tf_browser_natives.requestFocus();
 			tf_browser_natives.getToolkit().beep();
+	}
+	try {
+	    fname = tf_os_natives.getText().replace('\\','/');
+	    if(fname!=null && fname.length()>0)
+		fname = fname.trim();
+	    if(fname!=null && fname.length()>0)
+	    {
+		f = new File(fname);
+		fexist=f.exists();
+		fisdir=f.isDirectory();
+		if(f!=null && fexist && fisdir )
+		{
+			os_natives = fname;
+			System.out.println("Set OS-Native-Dir to: "+
+						os_natives);
+		} else {
+			str = new String ("directory <"+
+			tf_os_natives.getText().trim()+
+			"> is invalid ");
+			if(f!=null) {
+				str+= "( exist="+ fexist +
+				      ", isDir="+fisdir+ ")";
+			} else {
+				str+= "( f is NULL )";
+			}
+			ok=false;
+			tf_os_natives.requestFocus();
+			tf_os_natives.getToolkit().beep();
+		}
+	    }
+	} catch (Exception ex) {
+			ex.printStackTrace();
+			str = new String ("EXCEPTION directory <"+
+			tf_os_natives.getText().trim()+
+			"> is invalid ");
+			if(f!=null) {
+				str+= "( exist="+ fexist +
+				      ", isDir="+fisdir+ ")";
+			} else {
+				str+= "( f is NULL )";
+			}
+			ok=false;
+			tf_os_natives.requestFocus();
+			tf_os_natives.getToolkit().beep();
 	}
 	if(!ok && str!=null)
 	{
@@ -1054,13 +1238,21 @@ public class MachineCtrl
 	    fd.show();
 	    tf_browser_classes.setText(fd.getDirectory());
 	    //checkTextFields();
-	} else if(src.equals(buttonFileNatives)) 
+	} else if(src.equals(buttonFileNativesBrowser)) 
 	{
 	    FileDialog fd = 
-	    		new FileDialog(dialog,"GL4Java Classes Dir",FileDialog.SAVE);
+	    		new FileDialog(dialog,"GL4Java JVM Natives Dir",FileDialog.SAVE);
 	    fd.setDirectory(tf_browser_natives.getText());
 	    fd.show();
 	    tf_browser_natives.setText(fd.getDirectory());
+	    //checkTextFields();
+	} else if(src.equals(buttonFileNativesOS)) 
+	{
+	    FileDialog fd = 
+	    		new FileDialog(dialog,"GL4Java OS Natives Dir",FileDialog.SAVE);
+	    fd.setDirectory(tf_os_natives.getText());
+	    fd.show();
+	    tf_os_natives.setText(fd.getDirectory());
 	    //checkTextFields();
 	} else if(src.equals(goToJausoftGL4Java) && applet!=null) 
 	{
@@ -1079,6 +1271,11 @@ public class MachineCtrl
 	{
 		installGLUTFontSupport = 
 			checkboxInstallGLUTFontSupport.getState();
+	}
+	if(checkboxInstallGLFFontSupport.equals(e.getItemSelectable()))
+	{
+		installGLFFontSupport = 
+			checkboxInstallGLFFontSupport.getState();
 	}
     	
     }

@@ -1,8 +1,13 @@
 /** THIS IS A MANUAL CODED PART
-    gl-manualCodedImplJNI.java
+    gl-manualCodedImplJNI14.java
 */
 
 static const char _gl_n_a_string[] = "GL-String not avaiable !";
+
+static const char * _gl_lib_vendor_="Jausoft - Sven Goethel Software Development";
+static const char * _gl_lib_version_="2.8.1.0";
+
+/* ---------------------------------------------------------------------- */
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLFunc14JauJNI_glGetString ( JNIEnv *env, jobject obj,
@@ -20,9 +25,6 @@ Java_gl4java_GLFunc14JauJNI_glGetString ( JNIEnv *env, jobject obj,
     return (*env)->NewStringUTF(env, tmpString);
 }
 
-static const char * _gl_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _gl_lib_version_="2.8.0.8";
-
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLFunc14JauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
 {
@@ -35,9 +37,10 @@ Java_gl4java_GLFunc14JauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
     return (*env)->NewStringUTF(env, _gl_lib_version_);   
 }
 
-//----------------------------------------------------------------------
-// Support for NVidia routines
-//
+/* ---------------------------------------------------------------------- */
+/*
+ * Support for NVidia routines
+ */
 
 #include "ptrtypes.h"
 
@@ -52,7 +55,7 @@ Java_gl4java_GLFunc14JauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
   #include "wgltool.h"
 #endif
 
-#define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (NULL, NULL, (a), NULL, 1, 0);
+#define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (NULL, NULL, (a), NULL, 0);
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLFunc14JauJNI_glAllocateMemoryNV0(JNIEnv* env, jobject unused,
