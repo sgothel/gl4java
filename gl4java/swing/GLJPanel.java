@@ -1,6 +1,8 @@
 package gl4java.swing;
 
 import gl4java.*;
+import gl4java.drawable.*;
+import gl4java.drawable.utils.*;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -22,7 +24,17 @@ import javax.swing.*;
  * </pre>
  * <p>
  *
- * You should overwrite the following methods for your needs:
+ * There are two ways of using a GLJPanel: the {@link
+ * gl4java.GLEventListener} model or the subclassing model. Earlier
+ * versions of the system only supported the subclassing model. The
+ * default implementations of {@link #init}, {@link #display},
+ * {@link #reshape} and {@link #doCleanup}
+ * now send events to GLEventListeners; they can
+ * still be overridden as before to support the subclassing model.
+ *
+ * <p>
+ * If using the subclassing model, you should override the following
+ * methods for your needs:
  * <pre>
         <a href="GLJPanel.html#init()">preInit - initialisation before creating GLContext</a>
         <a href="GLJPanel.html#init()">init - 1st initialisation after creating GLContext</a>
@@ -64,11 +76,11 @@ import javax.swing.*;
  *
  * @version 	2.0, 21. April 1999
  * @author      Sven Goethel
- * 
- */
+ *  */
 public class GLJPanel extends JPanel
 	implements GLEnum, GLUEnum,
-		   ComponentListener, WindowListener, MouseListener
+		   ComponentListener, WindowListener, MouseListener,
+                   GLDrawable
 {
     protected GLContext glj = null;
     public GLFunc gl = null;
@@ -158,6 +170,9 @@ public class GLJPanel extends JPanel
     protected Dimension offScrnSize = null;
     protected boolean customOffScrnSize=false;
     protected boolean offScrnSizeChanged=false;
+
+    // The list of GLEventListeners
+    private GLEventListenerList listeners = new GLEventListenerList();
 
     static {
 	if(GLContext.loadNativeLibraries(null, null, null)==false)
@@ -434,6 +449,9 @@ public class GLJPanel extends JPanel
      *
      * @see gl4java.swing.GLJPanel#paint
      * @see gl4java.swing.GLJPanel#display
+     * @see gl4java.drawable.GLEventListener#preDisplay
+     * @see gl4java.drawable.GLEventListener#display
+     * @see gl4java.drawable.GLEventListener#postDisplay
      */ 
     public synchronized final void sDisplay()
     {
@@ -443,6 +461,8 @@ public class GLJPanel extends JPanel
 
 	if(!cvsIsInit())
 		return;
+
+        listeners.sendPreDisplayEvent(this);
 
 	if( glj.gljMakeCurrent() == false ) {
 		System.out.println("GLJPanel: problem in use() method");
@@ -544,8 +564,9 @@ public class GLJPanel extends JPanel
 			_f_dur_times=0;
 		}
 	    }
-
 	}
+
+        listeners.sendPostDisplayEvent(this);
 
     }
 
@@ -553,8 +574,20 @@ public class GLJPanel extends JPanel
      *
      * This is the rendering-method called by sDisplay 
      * (and sDisplay is called by paint !).
-     * The derived-class (Your Subclass) will redefine this, to draw it's own...
      *
+     * <p>
+     * The default implementation of display() sends display events to
+     * all {@link gl4java.GLEventListener}s associated with this
+     * GLJPanel, and automatically calls {@link
+     * gl4java.GLContext#gljMakeCurrent} and {@link
+     * gl4java.GLContext#gljFree} as necessary.
+     *
+     * <p>}
+     * If you use the subclassing model (as opposed to the
+     * GLEventListener model), your subclass will redefine this to
+     * perform its OpenGL drawing.
+     *
+     * <p>
      * BE SURE, if you want to call 'display' by yourself
      * (e.g. in the run method for animation)
      * YOU HAVE TO CALL sDisplay !
@@ -566,9 +599,11 @@ public class GLJPanel extends JPanel
      *
      * @see gl4java.swing.GLJPanel#sDisplay
      * @see gl4java.swing.GLJPanel#paint
+     * @see gl4java.drawable.GLEventListener#display
      */ 
     public void display()
     {
+        listeners.sendDisplayEvent(this);
     }
 
     /**
@@ -592,17 +627,23 @@ public class GLJPanel extends JPanel
 
     /**
      *
-     * This is your init method.
      * init is called right after the GL-Context is initialized.
-     * You should override init, to initialize your stuff needed
-     * by OpenGL an Java !
+     * The default implementation calls init() on all of this
+     * component's GLEventListeners.
+     *     
+     * <p>
+     * If using the subclassing model, you can override this to
+     * perform one-time OpenGL initializations such as setting up
+     * lights and display lists.
      *
      * @return 		void
      *
      * @see	gl4java.swing.GLJPanel#paint
+     * @see gl4java.drawable.GLEventListener#init
      */ 
     public void init()
     {
+        listeners.sendInitEvent(this);
     }
 
     /**
@@ -615,9 +656,11 @@ public class GLJPanel extends JPanel
      * @return 		void
      *
      * @see	gl4java.swing.GLJPanel#cvsDispose
+     * @see gl4java.drawable.GLEventListener#cleanup
      */
     public void doCleanup()
     {
+        listeners.sendCleanupEvent(this);
     }
 
     /**
@@ -644,20 +687,22 @@ public class GLJPanel extends JPanel
 
     /**
      *
-     * This is the reshape-method called by paint. 
-     * The derived-class (Your Subclass) will redefine this, 
-     * to manage your individual reshape ...
-     *
      * This ´reshape´ method will be invoked after the first paint command
-     * after GLJPanel.componentResize is called AND only if ´gljUse´ was
-     * succesfull (so a call of gljUse is redundant).
+     * after GLCanvas.componentResize is called AND only if ´gljMakeCurrent´ was
+     * successful (so a call of gljMakeCurrent is redundant).
      * ´reshape´ is not an overloading of java.awt.Component.reshape,
      * ´reshape´ is more like ´glut´-reshape.
      * 
-     * GLJPanel.reshape allready has a simple default implementation,
-     * which calls ´gljResize´ and ´glViewport´ - so you may be can
-     * left this one as it is (no need to overload).
-     * The needed call to ´gljResize´ is done by hte invoker paint !
+     * <p>
+     * GLCanvas.reshape already has a simple default implementation,
+     * which calls ´gljResize´ and ´glViewport´. It also sends the
+     * reshape() event to all GLEventListeners. If using the
+     * GLEventListener model, it may not be necessary to do anything
+     * in your event listener's reshape() method; if using the
+     * subclassing model, it may not be necessary to override this.
+     *
+     * <p>
+     * The needed call to ´gljResize´ is done by the invoker paint !
      *
      * @param width		the new width
      * @param height	the new height
@@ -665,12 +710,14 @@ public class GLJPanel extends JPanel
      *
      * @see gl4java.swing.GLJPanel#paint
      * @see gl4java.swing.GLJPanel#sDisplay
+     * @see gl4java.drawable.GLEventListener#reshape
      */ 
     public void reshape( int width, int height )
     {
         if(GLContext.gljClassDebug)
           System.out.println("GLJPanel::reshape bounds("+getBounds()+")");
 	gl.glViewport(0,0, width, height);
+        listeners.sendReshapeEvent(this, width, height);
     }
 
     /**
@@ -862,5 +909,24 @@ public class GLJPanel extends JPanel
     public final int cvsGetHeight() {
         return getSize().height;
      }
-}
 
+    //----------------------------------------------------------------------
+    // Implementation of GLDrawable
+    //
+
+    public void addGLEventListener(GLEventListener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeGLEventListener(GLEventListener listener) {
+        listeners.remove(listener);
+    }
+
+    public GLFunc getGL() {
+        return gl;
+    }
+
+    public GLUFunc getGLU() {
+        return glu;
+    }
+}

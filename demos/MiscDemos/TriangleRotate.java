@@ -12,18 +12,32 @@ import java.lang.*;
 import java.util.*;
 import java.io.*;
 import java.util.*;
-import gl4java.GLContext;
-import gl4java.awt.GLAnimCanvas;
-import gl4java.applet.SimpleGLAnimApplet1;
+
+import gl4java.*;
+import gl4java.drawable.*;
+import gl4java.awt.*;
+import gl4java.applet.*;
 
 public class TriangleRotate extends SimpleGLAnimApplet1 
 {
 
     public void init()
     {
+	GLContext.gljNativeDebug = true;
+	GLContext.gljThreadDebug = false;
+	GLContext.gljClassDebug = true;
+
 	super.init();
         Dimension d = getSize();
-        canvas = new gldemo(d.width, d.height);
+	System.out.println("applet size: "+d);
+        GLCapabilities caps = new GLCapabilities();
+
+        canvas =
+            GLDrawableFactory.getFactory().createGLAnimCanvas(caps, d.width, d.height);
+
+        gldemo demo = new gldemo();
+        canvas.addGLEventListener(demo);
+
         add("Center", canvas);
     }
 
@@ -65,7 +79,8 @@ public class TriangleRotate extends SimpleGLAnimApplet1
 		f.setVisible(true);
 	}
 
-    private class gldemo extends GLAnimCanvas
+    private class gldemo
+    	implements GLEventListener
     {
 	float rotate;
 
@@ -73,24 +88,25 @@ public class TriangleRotate extends SimpleGLAnimApplet1
 	float LightDiffuse[]  = { 1.0f, 1.0f, 1.0f, 0.9f};
 	float LightSpecular[] = { 0.8f, 0.8f, 0.8f, 1.0f};
 
-        public gldemo(int w, int h)
+        private GLFunc gl;
+        private GLUFunc glu;
+	private GLContext glj;
+
+        public gldemo()
         {
-            super(w, h);
-            GLContext.gljNativeDebug = false;
-            GLContext.gljClassDebug = false;
-            setAnimateFps(30.0);
         }
     
-        public void preInit()
+        public void cleanup(GLDrawable drawable)
+	{
+	}
+
+        public void init(GLDrawable drawable)
         {
-            doubleBuffer = true;
-            stereoView = false;
-	    createOwnWindow = true;
-        }
-    
-        public void init()
-        {
-		reshape(getSize().width, getSize().height);
+            gl = drawable.getGL();
+            glu = drawable.getGLU();
+            glj = drawable.getGLContext();
+
+		//drawable.reshape(getSize().width, getSize().height);
 
 		gl.glEnable(GL_LIGHT0);
 		gl.glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmbient);
@@ -100,7 +116,7 @@ public class TriangleRotate extends SimpleGLAnimApplet1
 		glj.gljCheckGL();
         }
     
-        public void reshape(int width, int height)
+        public void reshape(gl4java.drawable.GLDrawable d,int width,int height)
         {
 		gl.glMatrixMode(GL_PROJECTION);
 		gl.glLoadIdentity();
@@ -110,10 +126,8 @@ public class TriangleRotate extends SimpleGLAnimApplet1
             	gl.glViewport(0,0,width,height);
         }
 
-        public void display()
+        public void display(GLDrawable drawable)
         {
-            	if (glj.gljMakeCurrent() == false) return;
-
 		gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		gl.glMatrixMode(GL_MODELVIEW);
@@ -132,9 +146,15 @@ public class TriangleRotate extends SimpleGLAnimApplet1
 			gl.glVertex3f( 1, -1, 0);
 		gl.glEnd();
 
-		glj.gljSwap();
 		glj.gljCheckGL();
-		glj.gljFree();
         }
+
+        public void preDisplay(GLDrawable drawable)
+	{
+	}
+
+        public void postDisplay(GLDrawable drawable)
+	{
+	}
    }
 }

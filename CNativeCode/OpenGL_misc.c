@@ -31,6 +31,250 @@ static const char * _lib_version_=  __LIB_VERSION__ ;
 	#define CALLBACK
 #endif
 
+
+#ifdef  J_GET_INT_FIELD
+	#undef  J_GET_INT_FIELD
+#endif
+#define J_GET_INT_FIELD(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "I"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; }
+
+#ifdef  J_GET_INT_FIELD_VAL
+	#undef  J_GET_INT_FIELD_VAL
+#endif
+#define J_GET_INT_FIELD_VAL(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "I"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; else glCaps-> ## ATTRIBUTE_NAME = (int) ((*env)->GetIntField(env, capsObj, f ## ATTRIBUTE_NAME)); }
+
+#ifdef  J_SET_INT_FIELD_VAL
+	#undef  J_SET_INT_FIELD_VAL
+#endif
+#define J_SET_INT_FIELD_VAL(ATTRIBUTE_NAME) if(ok==JNI_TRUE && f ## ATTRIBUTE_NAME!=0) { (*env)->SetIntField(env, capsObj, f ## ATTRIBUTE_NAME, (jint) glCaps-> ## ATTRIBUTE_NAME); }
+
+#ifdef  J_GET_LONG_FIELD
+	#undef  J_GET_LONG_FIELD
+#endif
+#define J_GET_LONG_FIELD(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "J"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; }
+
+
+#ifdef  J_GET_LONG_FIELD_VAL
+	#undef  J_GET_LONG_FIELD_VAL
+#endif
+#define J_GET_LONG_FIELD_VAL(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "J"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; else glCaps-> ## ATTRIBUTE_NAME = (long) ((*env)->GetLongField(env, capsObj, f ## ATTRIBUTE_NAME)); }
+
+#ifdef  J_SET_LONG_FIELD_VAL
+	#undef  J_SET_LONG_FIELD_VAL
+#endif
+#define J_SET_LONG_FIELD_VAL(ATTRIBUTE_NAME) if(ok==JNI_TRUE && f ## ATTRIBUTE_NAME!=0) { (*env)->SetLongField(env, capsObj, f ## ATTRIBUTE_NAME, (jlong) glCaps-> ## ATTRIBUTE_NAME); }
+
+jboolean LIBAPIENTRY javaGLCapabilities2NativeGLCapabilities 
+					     ( JNIEnv *env, 
+		                               jobject capsObj, 
+					       GLCapabilities *glCaps )
+{
+    jfieldID fbuffer=0;
+    jfieldID fcolor=0;
+    jfieldID fstereo=0;
+    jfieldID fdepthBits=0;
+    jfieldID fstencilBits=0;
+    jfieldID fredBits=0;
+    jfieldID fgreenBits=0;
+    jfieldID fblueBits=0;
+    jfieldID falphaBits=0;
+    jfieldID faccumRedBits=0;
+    jfieldID faccumGreenBits=0;
+    jfieldID faccumBlueBits=0;
+    jfieldID faccumAlphaBits=0;
+    jfieldID fnativeVisualID=0;
+
+    jclass cls = 0;
+
+    jboolean ok = JNI_TRUE;
+
+    /**
+     *
+    jthrowable exc;
+    jclass _GLCapabilities= 0;
+
+    _GLCapabilities= (*env)->FindClass(env, "Lgl4java/GLCapabilities;");
+    exc = (*env)->ExceptionOccurred(env);
+    if(exc) {
+          fprintf(stderr, "GL4Java: glcaps java2native FindClass gl4java/GLCapabilities failed, cannot check glCaps object\n");
+	  (*env)->ExceptionClear(env);
+          fflush(stderr);
+	  _GLCapabilities=0;
+    }
+    exc=0;
+
+
+    if(_GLCapabilities!=0 &&
+        (*env)->IsInstanceOf(env, capsObj, _GLCapabilities)==JNI_FALSE )
+    {
+      fprintf(stderr,"\nGL4Java glcaps java2native ERROR: capsObj is not instanceof gl4java/GLCapabilities !\n");
+      fflush(stderr);
+      return JNI_FALSE;
+    }
+    */
+							                  
+    cls = (*env)->GetObjectClass(env, capsObj);
+    if(cls==0) 
+    {
+        fprintf(stderr,"GL4Java ERROR: clazz not accessible\n");
+	fflush(stderr);
+        return JNI_FALSE;
+    }
+
+    if(glCaps==0) 
+    {
+        fprintf(stderr,"GL4Java ERROR: native argument GLCapabilities not given\n");
+	fflush(stderr);
+        return JNI_FALSE;
+    }
+
+    J_GET_INT_FIELD_VAL(buffer, "buffer")
+    J_GET_INT_FIELD_VAL(color, "color")
+    J_GET_INT_FIELD_VAL(stereo, "stereo")
+    J_GET_INT_FIELD_VAL(depthBits, "depthBits")
+    J_GET_INT_FIELD_VAL(stencilBits, "stencilBits")
+    J_GET_INT_FIELD_VAL(redBits, "redBits")
+    J_GET_INT_FIELD_VAL(greenBits, "greenBits")
+    J_GET_INT_FIELD_VAL(blueBits, "blueBits")
+    J_GET_INT_FIELD_VAL(alphaBits, "alphaBits")
+    J_GET_INT_FIELD_VAL(accumRedBits, "accumRedBits")
+    J_GET_INT_FIELD_VAL(accumGreenBits, "accumGreenBits")
+    J_GET_INT_FIELD_VAL(accumBlueBits, "accumBlueBits")
+    J_GET_INT_FIELD_VAL(accumAlphaBits, "accumAlphaBits")
+    J_GET_LONG_FIELD_VAL(nativeVisualID, "nativeVisualID")
+
+    if(JNI_TRUE!=ok)
+    {
+        fprintf(stderr,"GL4Java ERROR: gl4java/GLCapabilities fields not accessible\n");
+	fflush(stderr);
+        return JNI_FALSE;
+    }
+
+    return JNI_TRUE;
+}
+
+jboolean LIBAPIENTRY nativeGLCapabilities2JavaGLCapabilities 
+				     ( JNIEnv *env, 
+				       jobject capsObj, 
+				       GLCapabilities *glCaps )
+{
+    jfieldID fbuffer=0;
+    jfieldID fcolor=0;
+    jfieldID fstereo=0;
+    jfieldID fdepthBits=0;
+    jfieldID fstencilBits=0;
+    jfieldID fredBits=0;
+    jfieldID fgreenBits=0;
+    jfieldID fblueBits=0;
+    jfieldID falphaBits=0;
+    jfieldID faccumRedBits=0;
+    jfieldID faccumGreenBits=0;
+    jfieldID faccumBlueBits=0;
+    jfieldID faccumAlphaBits=0;
+    jfieldID fnativeVisualID=0;
+
+    jclass cls = 0;
+
+    jboolean ok = JNI_TRUE;
+
+    /**
+    jthrowable exc;
+    jclass _GLCapabilities= 0;
+
+    _GLCapabilities= (*env)->FindClass(env, "Lgl4java/GLCapabilities;");
+    exc = (*env)->ExceptionOccurred(env);
+    if(exc) {
+          fprintf(stderr, "GL4Java: glcaps native2java FindClass gl4java/GLCapabilities failed, cannot check glCaps object\n");
+	  (*env)->ExceptionClear(env);
+          fflush(stderr);
+	  _GLCapabilities=0;
+    }
+    exc=0;
+
+
+    if(_GLCapabilities!=0 &&
+        (*env)->IsInstanceOf(env, capsObj, _GLCapabilities)==JNI_FALSE )
+    {
+      fprintf(stderr,"\nGL4Java glcaps native2java ERROR: capsObj is not instanceof gl4java/GLCapabilities !\n");
+      fflush(stderr);
+      return JNI_FALSE;
+    }
+    */
+							                  
+    cls = (*env)->GetObjectClass(env, capsObj);
+    if(cls==0) 
+    {
+        fprintf(stderr,"GL4Java ERROR: clazz not accessible\n");
+	fflush(stderr);
+        return JNI_FALSE;
+    }
+
+    J_GET_INT_FIELD(buffer, "buffer")
+    J_GET_INT_FIELD(color, "color")
+    J_GET_INT_FIELD(stereo, "stereo")
+    J_GET_INT_FIELD(depthBits, "depthBits")
+    J_GET_INT_FIELD(stencilBits, "stencilBits")
+    J_GET_INT_FIELD(redBits, "redBits")
+    J_GET_INT_FIELD(greenBits, "greenBits")
+    J_GET_INT_FIELD(blueBits, "blueBits")
+    J_GET_INT_FIELD(alphaBits, "alphaBits")
+    J_GET_INT_FIELD(accumRedBits, "accumRedBits")
+    J_GET_INT_FIELD(accumGreenBits, "accumGreenBits")
+    J_GET_INT_FIELD(accumBlueBits, "accumBlueBits")
+    J_GET_INT_FIELD(accumAlphaBits, "accumAlphaBits")
+    J_GET_LONG_FIELD(nativeVisualID, "nativeVisualID")
+
+    if(JNI_TRUE!=ok)
+    {
+        fprintf(stderr,"GL4Java ERROR: gl4java/GLCapabilities fields not accessible\n");
+	fflush(stderr);
+        return JNI_FALSE;
+    }
+
+    J_SET_INT_FIELD_VAL(buffer);
+    J_SET_INT_FIELD_VAL(color);
+    J_SET_INT_FIELD_VAL(stereo);
+    J_SET_INT_FIELD_VAL(depthBits);
+    J_SET_INT_FIELD_VAL(stencilBits);
+    J_SET_INT_FIELD_VAL(redBits);
+    J_SET_INT_FIELD_VAL(greenBits);
+    J_SET_INT_FIELD_VAL(blueBits);
+    J_SET_INT_FIELD_VAL(alphaBits);
+    J_SET_INT_FIELD_VAL(accumRedBits);
+    J_SET_INT_FIELD_VAL(accumGreenBits);
+    J_SET_INT_FIELD_VAL(accumBlueBits);
+    J_SET_INT_FIELD_VAL(accumAlphaBits);
+    J_GET_LONG_FIELD_VAL(nativeVisualID, "nativeVisualID")
+
+    if(JNI_TRUE!=ok)
+    {
+        fprintf(stderr,"GL4Java ERROR: gl4java/GLCapabilities fields not writable\n");
+	fflush(stderr);
+        return JNI_FALSE;
+    }
+
+    return JNI_TRUE;
+}
+	
+void LIBAPIENTRY printGLCapabilities ( GLCapabilities *glCaps )
+{
+    fprintf(stdout, "\t doubleBuff: %d, ", (int)glCaps->buffer);
+    fprintf(stdout, " rgba: %d, ", (int)glCaps->color);
+    fprintf(stdout, " stereo: %d, ", (int)glCaps->stereo);
+    fprintf(stdout, " depthSize: %d, ", (int)glCaps->depthBits);
+    fprintf(stdout, " stencilSize: %d !\n", (int)glCaps->stencilBits);
+    fprintf(stdout, "\t red: %d, ", (int)glCaps->redBits);
+    fprintf(stdout, " green: %d, ", (int)glCaps->greenBits);
+    fprintf(stdout, " blue: %d, ", (int)glCaps->blueBits);
+    fprintf(stdout, " alpha: %d !\n", (int)glCaps->alphaBits);
+    fprintf(stdout, "\t red accum: %d, ", (int)glCaps->accumRedBits);
+    fprintf(stdout, " green accum: %d, ", (int)glCaps->accumGreenBits);
+    fprintf(stdout, " blue accum: %d, ", (int)glCaps->accumBlueBits);
+    fprintf(stdout, " alpha accum: %d !\n", (int)glCaps->accumAlphaBits);
+    fprintf(stdout, "\t nativeVisualID: %ld !\n", (long)glCaps->nativeVisualID);
+
+    fflush(stdout);
+}
+
 jboolean LIBAPIENTRY testJavaGLTypes(jboolean verbose)
 {
     jboolean ret=JNI_TRUE;

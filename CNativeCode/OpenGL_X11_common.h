@@ -24,7 +24,7 @@
   	int           success;  /* 1: OK, 0: ERROR */
   } VisualGC;
   
-  
+
   /*
    * prototypes for functions local to this file scope
    */
@@ -33,35 +33,37 @@
                                  GLXContext *gc, GLXContext gc_share,
 				 jboolean verbose );
   
+  LIBAPI int LIBAPIENTRY setVisualAttribListByGLCapabilities( 
+					int visualAttribList[/*>=32*/],
+				        GLCapabilities *glCaps );
+
   LIBAPI VisualGC LIBAPIENTRY findVisualGlX( Display *display, 
-  			       Window rootWin,
-  			       Window * pWin, 
-  			       int width, int height,
-                               jboolean doubleBuffer, 
-                               jboolean stereoView,
-  			       jboolean rgba,
-  			       jint stencilBits,
-  			       jint accumSize,
-  			       jboolean * pOwnWin,
-  			       GLXContext shareWith,
-  			       jboolean offscreen,
-  			       Pixmap *pix,
+			       Window rootWin,
+			       Window * pWin, 
+			       int width, int height,
+    			       GLCapabilities *glCaps,
+			       jboolean * pOwnWin,
+			       GLXContext shareWith,
+			       jboolean offscreen,
+			       Pixmap *pix,
 			       jboolean verbose
-  			     );
+			     );
   
   LIBAPI void LIBAPIENTRY printVisualInfo ( Display *display, XVisualInfo * vi);
   LIBAPI void LIBAPIENTRY printAllVisualInfo ( Display *disp, Window win, 
   					       jboolean verbose);
   
   LIBAPI int LIBAPIENTRY testVisualInfo ( Display *display, XVisualInfo * vi, 
-  		            int dblBuffer, int stereoView, int rgbaMode, 
-  			    int stencilSize, int accumSize);
+    			                  GLCapabilities *glCaps);
   
+  LIBAPI XVisualInfo * LIBAPIENTRY findVisualIdByID( XVisualInfo ** visualList, 
+					    int visualID, Display *disp,
+					    Window win, jboolean verbose);
+
   LIBAPI XVisualInfo * LIBAPIENTRY findVisualIdByFeature( 
   				  XVisualInfo ** visualList, 
                                   Display *disp, Window win,
-  	                          int dblBuffer, int stereoView, int rgbaMode, 
-  		                  int stencilSize, int accumSize,
+				  GLCapabilities *glCaps,
 				  jboolean verbose);
   
   /* testX11Java does important implementation plattformspecific checks:
@@ -70,6 +72,9 @@
    */
   LIBAPI jboolean LIBAPIENTRY testX11Java();
   
+  LIBAPI jboolean LIBAPIENTRY setGLCapabilities ( Display * disp, 
+                                 XVisualInfo * visual, GLCapabilities *glCaps);
+
   LIBAPI int LIBAPIENTRY x11gl_myErrorHandler(
   				  Display *pDisp, XErrorEvent *p_error);
   

@@ -6,16 +6,20 @@
 #include <wingdi.h>
 
 
+LIBAPI void LIBAPIENTRY setPixelFormatByGLCapabilities( 
+					PIXELFORMATDESCRIPTOR *pfd,
+				        GLCapabilities *glCaps,
+					jboolean offScreenRenderer,
+					HDC hdc);
+
 // Set Pixel Format function - forward declaration
-LIBAPI void LIBAPIENTRY SetDCPixelFormat(HDC hDC, jboolean doubleBuffer, 
-		jboolean stereo, jint stencilBits, jboolean offScreenRenderer, 
-		jboolean verbose);
+LIBAPI void LIBAPIENTRY SetDCPixelFormat(HDC hDC, GLCapabilities *glCaps,
+		jboolean offScreenRenderer, jboolean verbose);
 
 LIBAPI HPALETTE LIBAPIENTRY GetOpenGLPalette(HDC hDC);
 
-LIBAPI HGLRC LIBAPIENTRY get_GC( HDC *hDC, jboolean doubleBuffer, 
-		jboolean stereo, jint stencilBits, HGLRC shareWith, 
-		jboolean offScreenRenderer,
+LIBAPI HGLRC LIBAPIENTRY get_GC( HDC *hDC, GLCapabilities *glCaps,
+		HGLRC shareWith, jboolean offScreenRenderer,
 		int width, int height, HBITMAP *pix,
 		jboolean verbose);
 
@@ -41,4 +45,6 @@ LIBAPI void LIBAPIENTRY resizeDIB(HDC hDC, HBITMAP *hOldBitmap,
 
 LIBAPI HPALETTE LIBAPIENTRY setupPalette(HDC hDC);
 
+LIBAPI jboolean LIBAPIENTRY setGLCapabilities ( HDC hdc, int nPixelFormat,
+					        GLCapabilities *glCaps );
 #endif

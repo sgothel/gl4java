@@ -319,60 +319,6 @@ public class GLContext extends Object
     protected boolean offScreenRenderer = false;    
 
    /**
-    * Do we use doubleBuffer - of course !
-    * This is the default visual property ... !
-    *
-    * This is set via the constructor !
-    * 
-    * @see gl4java.GLContext#isDoubleBuffer
-    * @see gl4java.GLContext#GLContext
-    */
-    protected boolean doubleBuffer = true;    
-
-    /**
-     * Visual pre-set for stencil-bit number, default: 0
-     *
-     * @see gl4java.GLContext#GLContext
-     */
-    protected int stencilBits = 0;
-
-    /**
-     * Visual pre-set for accumulator-size number, default: 0
-     *
-     * This value has a special behavior.
-     * For input - within the contructor,
-     * it is the value for each component !
-     *
-     * The output value, after the constructor returns,
-     * it is the summary of all accumulation bits of all components !
-     *
-     * @see gl4java.GLContext#GLContext
-     */
-    protected int accumSize = 0;
-
-   /**
-    * Do we use stereoView - not yet ;-) !
-    * This is the default visual property ... !
-    *
-    * This is set via the constructor !
-    * 
-    * @see gl4java.GLContext#isStereoView
-    * @see gl4java.GLContext#GLContext
-    */
-    protected boolean stereoView = false;    
-
-   /**
-    * Do we use True-Color RGBA  - of course ;-) !
-    * This is the default visual property ... !
-    *
-    * This is set via the constructor !
-    * 
-    * @see gl4java.GLContext#isRGBA
-    * @see gl4java.GLContext#GLContext
-    */
-    protected boolean rgba = true;    
-
-   /**
     * We normally do not have to create an own Window !
     * This is the default visual property ... !
     * But some machines, like SGI's Irix, 
@@ -386,6 +332,15 @@ public class GLContext extends Object
     * @see gl4java.GLContext#GLContext
     */
     protected boolean createOwnWindow = false;
+
+   /**
+    * The GLCapabilities ..
+    *
+    * This is set via the constructor !
+    * 
+    * @see gl4java.GLContext#GLContext
+    */
+    protected GLCapabilities glCaps = null;
 
    /**
     * The resize flag, which indicates a resize for the next paint function !
@@ -475,56 +430,74 @@ public class GLContext extends Object
     * @see gl4java.GLContext#OsX11
     * @see gl4java.GLContext#OsMac
     */
-    public final int getNativeOSType() { return osType; }
+    public static int getNativeOSType() { return osType; }
+
+    public static String getNativeOSName() { return osName; }
 
    /**
     * Query the visual property ... !
     *
     * After a GLContext is created, this property can be queried !
     *
-    * @see gl4java.GLContext#doubleBuffer
+    * @see gl4java.GLContext#glCaps
     * @see gl4java.GLContext#GLContext
     */
-    public final boolean isDoubleBuffer() { return doubleBuffer; }
+    public final GLCapabilities getGLCapabilities() { return glCaps; }
 
    /**
     * Query the visual property ... !
     *
     * After a GLContext is created, this property can be queried !
     *
-    * @see gl4java.GLContext#stereoView
+    * @see gl4java.GLContext#glCaps
     * @see gl4java.GLContext#GLContext
     */
-    public final int getStencilBitNumber() { return stencilBits; }
+    public final boolean isDoubleBuffer() { return glCaps.getDoubleBuffered(); }
 
    /**
     * Query the visual property ... !
     *
     * After a GLContext is created, this property can be queried !
     *
+    * @see gl4java.GLContext#glCaps
     * @see gl4java.GLContext#GLContext
     */
-    public final int getAccumSize() { return accumSize; }
+    public final int getStencilBitNumber() { return glCaps.getStencilBits(); }
 
    /**
     * Query the visual property ... !
     *
     * After a GLContext is created, this property can be queried !
     *
-    * @see gl4java.GLContext#stereoView
+    * @see gl4java.GLContext#glCaps
     * @see gl4java.GLContext#GLContext
     */
-    public final boolean isStereoView() { return stereoView; }
+    public final int getAccumSize() 
+    { return glCaps.getAccumRedBits()+
+             glCaps.getAccumGreenBits()+
+             glCaps.getAccumBlueBits()+
+             glCaps.getAccumAlphaBits();
+    }
 
    /**
     * Query the visual property ... !
     *
     * After a GLContext is created, this property can be queried !
     *
-    * @see gl4java.GLContext#rgba
+    * @see gl4java.GLContext#glCaps
     * @see gl4java.GLContext#GLContext
     */
-    public final boolean isRGBA() { return rgba; }
+    public final boolean isStereoView() { return glCaps.getStereo(); }
+
+   /**
+    * Query the visual property ... !
+    *
+    * After a GLContext is created, this property can be queried !
+    *
+    * @see gl4java.GLContext#glCaps
+    * @see gl4java.GLContext#GLContext
+    */
+    public final boolean isRGBA() { return glCaps.getTrueColor(); }
 
    /**
     * Query the visual property ... !
@@ -578,9 +551,10 @@ public class GLContext extends Object
 						String gluLibName
 					      )
     {
-        System.out.println("GLContext.loadNativeLibraries ...");
         if(libsLoaded) return true;
-        System.out.println("GLContext.loadNativeLibraries will do it !");
+
+        if(gljClassDebug)
+	    System.out.println("GLContext.loadNativeLibraries will do it !");
 
 	String libNames[] = null;
 
@@ -790,6 +764,7 @@ public class GLContext extends Object
      	String gluName = defGLUFuncClass;
 	boolean info=false;
 	boolean exitImmediatly=false;
+	boolean noFactory=false;
 	int i = 0;
 	boolean ok=true;
 
@@ -803,6 +778,7 @@ public class GLContext extends Object
 		System.out.println("	-gluclass <glu-class> \t choose a custom the gl4java-glu-class java GLUFunc implementation (default: GLUFuncJauJNI)");
 		System.out.println("	-info \t creates a GLContext and prints all avaiable information of GL/GLU and GL4Java");
 		System.out.println("	-infotxt \t like -info, but exits straight after -info !");
+		System.out.println("	-noFactory \t creates a GLContext without the new GLDrawableFactory API");
 	        System.exit(0);
 	}
 
@@ -823,6 +799,8 @@ public class GLContext extends Object
 		} else if(args[i].equals("-infotxt")) {
 			info=true;
 			exitImmediatly=true;
+		} else if(args[i].equals("-noFactory")) {
+			noFactory=true;
 		} else {
 		  System.out.println("illegal arg "+i+": "+args[i]);
 		  ok=false;
@@ -860,7 +838,21 @@ public class GLContext extends Object
 		Frame f = new Frame("GL4Java Info");
 		f.setSize(10, 10);
 
-		Canvas cvs = new Canvas();
+		Canvas cvs = null;
+		GLCapabilities glCaps = new GLCapabilities();
+		gl4java.drawable.GLDrawableFactory df = 
+			gl4java.drawable.GLDrawableFactory.getFactory();
+
+		if(noFactory || 
+		   !(df instanceof gl4java.drawable.SunJDK13GLDrawableFactory)
+		  )
+		{
+			cvs = new Canvas();
+		} else {
+		        gl4java.drawable.SunJDK13GLDrawableFactory sdf =
+			  (gl4java.drawable.SunJDK13GLDrawableFactory)df;
+			cvs = new Canvas(sdf.getGraphicsConfiguration(glCaps));
+		}
 		cvs.setVisible(true);
 		cvs.setSize(50,50);
 		f.add("Center", cvs);
@@ -869,7 +861,7 @@ public class GLContext extends Object
 		// f.pack();
 		f.setVisible(true);
 
-		GLContext glj = new GLContext(cvs, gl, glu);
+		GLContext glj = new GLContext( cvs, gl, glu, glCaps, null);
 
 		Frame fInfo = glj.gljShowVersions();
 
@@ -891,6 +883,8 @@ public class GLContext extends Object
 	}
     }
 		
+    public static int getJVMVersionMajor() { return jvmVersionMajor; }
+    public static int getJVMVersionMinor() { return jvmVersionMinor; }
     public static String getJVMVendor() { return jvmVendor; }
     public static boolean isNetscapeJVM() { return isNetscapeJvm; }
     public static boolean isMicrosoftJVM() { return isMicrosoftJvm; }
@@ -923,23 +917,17 @@ public class GLContext extends Object
     * @param glf	  the users selected GLUFunc implementation
     * @param _createOwnWindow the flag for the visual property
     * @param _offScreenRenderer the flag for the visual property
-    * @param _doubleBuffer the flag for the visual property
-    * @param _stereoView  the flag for the visual property
-    * @param _rgba	  the flag for the visual property
-    * @param _stencilBits the flag for the visual property
-    * @param _accumSize   the flag for the visual property
-    * @param _sharedGLContext the shared GLContext
     * @param _offScrnSize the fixed offscreen pixmap size
+    * @param _glCaps      the GLCapabilities
+    * @param _sharedGLContext the shared GLContext
     *
     */
     protected GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
-		         boolean _createOwnWindow, boolean _offScreenRenderer,
-                         boolean _doubleBuffer, boolean _stereoView,
-		         boolean _rgba,
-		         int _stencilBits,
-		         int _accumSize,
-		         GLContext _sharedGLContext,
-    			 Dimension _offScrnSize
+		         boolean _createOwnWindow, 
+			 boolean _offScreenRenderer,
+    			 Dimension _offScrnSize,
+			 GLCapabilities _glCaps,
+		         GLContext _sharedGLContext
                        )
     {
 		super( );
@@ -949,12 +937,9 @@ public class GLContext extends Object
 		glu   = gluf ;
 	        createOwnWindow = _createOwnWindow;
 	        offScreenRenderer = _offScreenRenderer;
-		doubleBuffer=_doubleBuffer;
-		stereoView=_stereoView;
-		rgba=_rgba;
-		stencilBits=_stencilBits;
-		accumSize=_accumSize;
 		offScrnSize= _offScrnSize;
+
+		glCaps = _glCaps;
 
 		this.sharedGLContext  = _sharedGLContext;
 		if(sharedGLContext != null) 
@@ -1008,6 +993,77 @@ public class GLContext extends Object
 			else
 			  System.out.println("GLContext GLContext() failed");
 		}
+    }
+   /**
+    *
+    * Constructor
+    *
+    * This privat constructor is for all possible
+    * compinations and is called from the customized
+    * constructors.
+    *
+    *  First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _createOwnWindow the flag for the visual property
+    * @param _offScreenRenderer the flag for the visual property
+    * @param _doubleBuffer the flag for the visual property
+    * @param _stereoView  the flag for the visual property
+    * @param _rgba	  the flag for the visual property
+    * @param _stencilBits the flag for the visual property
+    * @param _accumSize   the flag for the visual property
+    * @param _sharedGLContext the shared GLContext
+    * @param _offScrnSize the fixed offscreen pixmap size
+    *
+    */
+    protected GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
+		         boolean _createOwnWindow, boolean _offScreenRenderer,
+                         boolean _doubleBuffer, boolean _stereoView,
+		         boolean _rgba,
+		         int _stencilBits,
+		         int _accumSize,
+		         GLContext _sharedGLContext,
+    			 Dimension _offScrnSize
+                       )
+    {
+		this( comp, glf, gluf, _createOwnWindow, 
+		      _offScreenRenderer, _offScrnSize,
+		      new GLCapabilities(_doubleBuffer, _stereoView,
+					 _rgba, _stencilBits, 
+					 _accumSize, _accumSize, 
+					 _accumSize, _accumSize),
+		      _sharedGLContext);
+    }
+
+   /**
+    *
+    * Constructor
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _glCaps      the GLCapabilities
+    * @param _sharedGLContext the shared GLContext
+    *
+    */
+    public GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
+		      GLCapabilities _glCaps,
+		      GLContext _sharedGLContext
+                    )
+    {
+		this( comp, glf, gluf, false, 
+		      false, null, _glCaps, 
+		      _sharedGLContext);
     }
 
    /**
@@ -1719,6 +1775,12 @@ public class GLContext extends Object
     {
 	if( libsLoaded==false ) return ;
 
+	if(glCaps==null)
+	{
+	    System.out.println("Internal error: glCaps not initialized !!");
+            throw new GL4JavaInitException ();
+	}
+
 	if(pData==0 && !offScreenRenderer && !useJAWT())
 	{
 	    System.out.println("could not open a GL widget -- Win CONTEXT");
@@ -2252,7 +2314,7 @@ public class GLContext extends Object
         return gljSwapNative( displayHandle,
 			      windowHandle,
 			      glContext,
-			      doubleBuffer);
+			      glCaps.getDoubleBuffered());
     }
 
     private static final native boolean gljSwapNative( long disp, 
@@ -2396,6 +2458,10 @@ public class GLContext extends Object
       if(libsLoaded==false || gl==null || glu==null || !gljIsInit())
       	return null;
 
+      String jvmstr = "Java Virtual Machine: Version "+ getJVMVersionMajor()+
+	             "." + getJVMVersionMinor() +", Vendor: "+ 
+                     getJVMVendor() + "\n" ;
+
       String info1= "GL4Java - LGPL-Version"                       + "\n" +
       	            "-------------------------------------------------\n" +
       	            "-------------------------------------------------\n" +
@@ -2420,6 +2486,8 @@ public class GLContext extends Object
 		    "            Version: "+glu.getNativeVersion() + "\n" +
 		    "            Vendor : "+glu.getNativeVendor()  + "\n" +
       	            "-------------------------------------------------\n" +
+		    "\n"+
+		    jvmstr +
 		    "\n" ;
 
         String glVen = gl.glGetString(GLFunc.GL_VENDOR);

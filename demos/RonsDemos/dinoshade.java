@@ -41,8 +41,10 @@ import java.lang.*;
 import java.util.*;
 import java.io.*;
 import java.util.*;
-import gl4java.GLContext;
-import gl4java.awt.GLAnimCanvas;
+
+import gl4java.*;
+import gl4java.awt.*;
+import gl4java.drawable.*;
 import gl4java.applet.SimpleGLAnimApplet1;
 
 public class dinoshade extends SimpleGLAnimApplet1 
@@ -201,14 +203,34 @@ public class dinoshade extends SimpleGLAnimApplet1
 
 	public void init()
 	{
-	super.init();
-        Dimension d = getSize();
-        canvas = new dinoshadeCanvas(d.width, d.height);
-        add("Center", canvas);
+		super.init();
+		Dimension d = getSize();
+
+		GLCapabilities glCaps = new GLCapabilities();
+		glCaps.setStencilBits(16);
+
+		gl4java.drawable.GLDrawableFactory df =
+			gl4java.drawable.GLDrawableFactory.getFactory();
+	 
+		if(df instanceof gl4java.drawable.SunJDK13GLDrawableFactory)
+		{
+		    gl4java.drawable.SunJDK13GLDrawableFactory sdf =
+		      (gl4java.drawable.SunJDK13GLDrawableFactory)df;
+		    canvas = new dinoshadeCanvas
+		      (sdf.getGraphicsConfiguration(glCaps), glCaps, d.width, d.height);
+		} else {
+		    canvas = new dinoshadeCanvas(glCaps, d.width, d.height);
+		}
+
+		add("Center", canvas);
 	}
 
 
 	public static void main( String args[] ) {
+		GLContext.gljNativeDebug = true;
+		GLContext.gljThreadDebug = false;
+		GLContext.gljClassDebug = true;
+
 		dinoshade applet = 
 		         new dinoshade();
 
@@ -236,6 +258,7 @@ public class dinoshade extends SimpleGLAnimApplet1
 		f.setBounds(-100,-100,99,99);
 		f.setVisible(true);
 		f.setVisible(false);
+		f.setVisible(true);
 		Insets i = f.getInsets();
 		f.setBounds(0,0,
 			    ps.width+i.left+i.right, 
@@ -306,19 +329,15 @@ public class dinoshade extends SimpleGLAnimApplet1
         private float floorPlane[] = new float[4];
         private float floorShadow[] = new float[16];
 
-        public dinoshadeCanvas(int w, int h)
+        public dinoshadeCanvas(GraphicsConfiguration g, GLCapabilities glCaps,
+			     int w, int h)
         {
-            super(w, h);
-            GLContext.gljNativeDebug = false;
-            GLContext.gljClassDebug = false;
-            setAnimateFps(30.0);
+            super(g, glCaps, w, h);
         }
     
-        public void preInit()
+        public dinoshadeCanvas(GLCapabilities glCaps, int w, int h)
         {
-            doubleBuffer = true;
-            stereoView = false;
-	    stencilBits = 3;
+            super(glCaps, w, h);
         }
     
         public void init()

@@ -361,5 +361,3 @@ jawt_unlock (JNIEnv *env, JAWTDataHolder *pJData, jboolean verbose)
 
   return JNI_TRUE;
 }
-
-

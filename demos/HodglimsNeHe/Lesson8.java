@@ -16,8 +16,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 //GL4Java classes
-import gl4java.GLContext;
-import gl4java.awt.GLAnimCanvas;
+import gl4java.*;
+import gl4java.awt.*;
+import gl4java.drawable.*;
 import gl4java.utils.textures.*;
 
 
@@ -27,6 +28,7 @@ public class Lesson8 extends Applet
    	//We are using GLAnimCanvas because we want the canvas
    	//to be constantly redrawn
     renderCanvas canvas = null;
+    public static boolean isAnApplet = true;
 
 
 	/**
@@ -39,8 +41,23 @@ public class Lesson8 extends Applet
         //We will use BorderLayout to layout the applet components
         setLayout(new BorderLayout());
         
+	Dimension d = getSize();
+	GLCapabilities glCaps = new GLCapabilities();
+	glCaps.setAlphaBits(8);
+
+        gl4java.drawable.GLDrawableFactory df =
+		gl4java.drawable.GLDrawableFactory.getFactory();
+ 
         //Create our canvas and add it to the center of the applet
-        canvas = new renderCanvas(getSize().width, getSize().height);
+	if(df instanceof gl4java.drawable.SunJDK13GLDrawableFactory)
+	{
+	    gl4java.drawable.SunJDK13GLDrawableFactory sdf =
+	      (gl4java.drawable.SunJDK13GLDrawableFactory)df;
+	    canvas = new renderCanvas
+	      (sdf.getGraphicsConfiguration(glCaps), glCaps, d.width, d.height);
+	} else {
+	    canvas = new renderCanvas(glCaps, d.width, d.height);
+	}
 	canvas.requestFocus();
         add("Center", canvas);
 	}
@@ -84,6 +101,46 @@ public class Lesson8 extends Applet
     }
     
     
+	public static void main( String args[] ) {
+    		isAnApplet = false;
+		Lesson8 applet = 
+		         new Lesson8();
+
+		Frame f = new Frame("Lesson8");
+
+		GLContext.gljNativeDebug = true;
+		GLContext.gljThreadDebug = false;
+		GLContext.gljClassDebug = true;
+
+		f.addWindowListener( new WindowAdapter()
+				{
+					public void windowClosed(WindowEvent e)
+					{
+						System.exit(0);
+					}
+					public void windowClosing(WindowEvent e)
+					{
+						windowClosed(e);
+					}
+				}
+			);
+
+		f.setLayout(new BorderLayout());
+		f.add("Center", applet);
+		applet.setSize(500,300);
+		applet.init();
+		applet.start();
+		Dimension ps = applet.getPreferredSize();
+		f.setBounds(-100,-100,99,99);
+		f.setVisible(true);
+		f.setVisible(false);
+		f.setVisible(true);
+		Insets i = f.getInsets();
+		f.setBounds(0,0,
+			    ps.width+i.left+i.right, 
+		            ps.height+i.top+i.bottom);
+		f.setVisible(true);
+	}
 	
     private class renderCanvas extends GLAnimCanvas
     	implements KeyListener, MouseListener
@@ -115,34 +172,22 @@ public class Lesson8 extends Applet
 		int[] texture = new int[3]; //Storage for 3 textures
 		
 		
-        /**
-         * renderCanvas(int w, int h)
-         *
-         * Constructor.
-         */
-        public renderCanvas(int w, int h)
+        public renderCanvas(GraphicsConfiguration g, GLCapabilities glCaps,
+			     int w, int h)
         {
-            super(w, h);
-            
+            super(g, glCaps, w, h);
             //Registers this canvas to process keyboard events
         	addKeyListener(this);
                 addMouseListener(this);    
         }
     
-        
-        /**
-         * void preInit()
-         *
-         * Called just BEFORE the GL-Context is created.
-         */
-        public void preInit()
+        public renderCanvas(GLCapabilities glCaps, int w, int h)
         {
-            //We want double buffering
-            doubleBuffer = true;
-            //But we dont want stereo view
-            stereoView = false;
+            super(glCaps, w, h);
+            //Registers this canvas to process keyboard events
+        	addKeyListener(this);
+                addMouseListener(this);    
         }
-    
     
         /**
          * void LoadGLTextures()
@@ -152,7 +197,10 @@ public class Lesson8 extends Applet
         public void LoadGLTextures()
     	{
     		PngTextureLoader texLoader = new PngTextureLoader(gl, glu);
-    		texLoader.readTexture(getCodeBase(), "data/glass.png");
+		if(isAnApplet)
+    		    texLoader.readTexture(getCodeBase(), "data/glass.png");
+		else
+    		    texLoader.readTexture("data/glass.png");
     			
     		//Full Brightness, 50% Alpha
     		gl.glColor4f(1.0f, 1.0f, 1.0f, 0.5f);

@@ -96,14 +96,14 @@ CNATIVEDIR  		= CNativeCode
 # LIBRARY DEFINITION
 
 LIBMAJOR		= 2
-LIBMINOR		= 5
-LIBBUGFIX		= 2
+LIBMINOR		= 6
+LIBBUGFIX		= 0
 RELEASE                 = 0
 
 #
 # The demo release number
 #
-DEMORELEASE		= 3
+DEMORELEASE		= 4
 
 #lib GLContext
 LIBBASENAME1c 		= GL4JavaJauGljJNI13
@@ -192,12 +192,15 @@ MK_GL4JAVA_JAR		= ( cd $(DEST_CLASSES_DIR) ; \
 				gl4java/system \
 				gl4java/utils/*.class \
 				gl4java/utils/textures \
-				gl4java/utils/glut/*.class ; \
+				gl4java/utils/glut/*.class \
+				gl4java/drawable ; \
 			    rm -f gl4java-glutfonts.jar ; \
 			    $(JAR) cf gl4java-glutfonts.jar \
 				gl4java/utils/glut/fonts ; \
-			    for i in $(JAR_DESTS); do \
-			    	cp -av gl4java*.jar $$i ; done \
+			    if [ ! -z "$(JAR_DESTS)" ] ; then \
+			        for i in $(JAR_DESTS); do \
+			    	    cp -av gl4java*.jar $$i ; done \
+			    fi \
 			  )
 
 ######################################################################
@@ -221,6 +224,12 @@ JAVA_C_MAP4_FILE 	= GLFuncJauJNInf.java
 
 #lib GLUFunc - 2
 JAVA_C_MAP5_FILE 	= GLUFuncJauJNInf.java
+
+JAVA_C_MAP6_X11_FILE 	= X11SunJDK13GLDrawableFactory.java
+
+JAVA_C_MAP6_WIN32_FILE 	= Win32SunJDK13GLDrawableFactory.java
+
+JAVA_C_MAP6_MAC_FILE 	= MacSunJDK13GLDrawableFactory.java
 
 FILES_GLUT_FONT.java = \
 		  $(PACKAGEDIR)/utils/glut/fonts/GLUTBitmapFont.java \
@@ -247,6 +256,7 @@ FILES_GLUT_FONT.class = ${FILES_GLUT_FONT.java:.java=.class}
 FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/jau/awt/WinHandleAccess.java \
 		  $(PACKAGEDIR)/GL4JavaReflections.java \
+		  $(PACKAGEDIR)/GLCapabilities.java \
 		  $(PACKAGEDIR)/GLEnum.java \
 		  $(PACKAGEDIR)/GLUEnum.java \
 		  $(PACKAGEDIR)/GLFunc.java \
@@ -277,15 +287,23 @@ FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/utils/textures/TGATextureLoader.java \
 		  $(PACKAGEDIR)/utils/textures/AWTTextureLoader.java \
 		  $(PACKAGEDIR)/utils/textures/TextureGrabber.java \
-		  $(PACKAGEDIR)/utils/textures/TGATextureGrabber.java
+		  $(PACKAGEDIR)/utils/textures/TGATextureGrabber.java \
+		  $(PACKAGEDIR)/drawable/GLEventListener.java \
+		  $(PACKAGEDIR)/drawable/utils/GLEventListenerList.java \
+		  $(PACKAGEDIR)/drawable/GLDrawable.java   \
+		  $(PACKAGEDIR)/drawable/GLDrawableFactory.java   \
+		  $(PACKAGEDIR)/drawable/DummyGLDrawableFactory.java \
+		  $(PACKAGEDIR)/drawable/SunJDK13GLDrawableFactory.java
 
 FILES.class 		= ${FILES.java:.java=.class}
 
-FILES_mac.java		= gl4java/jau/awt/macintosh/MacHandleAccess.java
+FILES_mac.java		= gl4java/jau/awt/macintosh/MacHandleAccess.java \
+		          gl4java/drawable/$(JAVA_C_MAP6_MAC_FILE)
 
 FILES_mac.class 	= ${FILES_mac.java:.java=.class}
 
-FILES_w32.java		= gl4java/jau/awt/windows/Win32HandleAccess.java
+FILES_w32.java		= gl4java/jau/awt/windows/Win32HandleAccess.java \
+		          gl4java/drawable/$(JAVA_C_MAP6_WIN32_FILE)
 
 FILES_w32.class 	= ${FILES_w32.java:.java=.class}
 
@@ -294,7 +312,8 @@ FILES_msw32.java	= $(PACKAGEDIR)/system/GljMSJDirect.java \
 
 FILES_msw32.class 	= ${FILES_msw32.java:.java=.class}
 
-FILES_x11.java		= gl4java/jau/awt/motif/X11HandleAccess.java
+FILES_x11.java		= gl4java/jau/awt/motif/X11HandleAccess.java \
+		          gl4java/drawable/$(JAVA_C_MAP6_X11_FILE)
 
 FILES_x11.class 	= ${FILES_x11.java:.java=.class}
 
@@ -315,6 +334,7 @@ FILES1b.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
 FILES1c.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/OpenGL_X11_common.c	 \
 			  $(CNATIVEDIR)/jawt_misc.c		 \
+			  $(CNATIVEDIR)/GLDrawableFactory_X11_SunJDK13.c \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jni12tools.c	         \
 			  $(CNATIVEDIR)/GLCallbackHelperJNI.c 
@@ -384,6 +404,12 @@ FILE.gen4.h 	= $(CHEADERDIR)/$(PACKAGEDIR)_${JAVA_C_MAP4_FILE:.java=.h}
 #lib GLUFunc - 2
 FILE.gen5.h 	= $(CHEADERDIR)/$(PACKAGEDIR)_${JAVA_C_MAP5_FILE:.java=.h}
 
+FILE.gen6.x11.h = $(CHEADERDIR)/$(PACKAGEDIR)_drawable_${JAVA_C_MAP6_X11_FILE:.java=.h}
+
+FILE.gen6.win32.h = $(CHEADERDIR)/$(PACKAGEDIR)_drawable_${JAVA_C_MAP6_WIN32_FILE:.java=.h}
+
+FILE.gen6.mac.h = $(CHEADERDIR)/$(PACKAGEDIR)_drawable_${JAVA_C_MAP6_MAC_FILE:.java=.h}
+
 FILES.gen   		= $(FILE.gen1.h) \
 			  $(FILE.gen2.h) \
 			  $(FILE.gen3.h) \
@@ -417,6 +443,7 @@ x11			: cleanup gljni \
 	                  $(FILES.class) $(FILES_x11.class) \
 			  $(DEST_CLASSES_DIR)/gl4java.jar \
 			  $(FILES.gen) \
+			  $(FILE.gen6.x11.h) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY1) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY1b) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY1c) \
@@ -435,6 +462,7 @@ mac			: cleanup gljni \
 	                  $(FILES.class) $(FILES_mac.class) \
 			  makeJar \
 			  $(FILES.gen) \
+			  $(FILE.gen6.mac.h) \
                           $(CNATIVEDIR)/winstuff.h 
 
 
@@ -442,8 +470,9 @@ w32			: cleanupw32 gljni \
 	                  $(FILES_w32.class) \
 	                  $(FILES_msw32.class) \
 			  $(FILES.class) \
-			  makeJar \
+			  $(DEST_CLASSES_DIR)/gl4java.jar \
 			  $(FILES.gen) \
+			  $(FILE.gen6.win32.h) \
                           $(CNATIVEDIR)/winstuff.h 
 
 #gljni			: tools gl2j gl2c
@@ -590,7 +619,7 @@ $(CNATIVEDIR)/OpenGL_X11.o: ${FILE.gen1.h}
 
 $(CNATIVEDIR)/OpenGL_misc.o: ${FILE.gen1.h}
 
-$(FILE.gen1.h): $(PACKAGEDIR)/${JAVA_C_MAP1_FILE}
+$(FILE.gen1.h): $(PACKAGEDIR)/${JAVA_C_MAP1_FILE:.java=.class}
 	rm -f $(FILE.gen1.h)
 	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP1_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
@@ -605,7 +634,7 @@ $(CNATIVEDIR)/OpenGL_JauJNI_dynfuncs.o: ${FILE.gen2.h} \
                                         $(CNATIVEDIR)/jnitools.h \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
-$(FILE.gen2.h): $(PACKAGEDIR)/${JAVA_C_MAP2_FILE}
+$(FILE.gen2.h): $(PACKAGEDIR)/${JAVA_C_MAP2_FILE:.java=.class}
 	rm -f $(FILE.gen2.h)
 	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP2_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
@@ -616,7 +645,7 @@ $(CNATIVEDIR)/OpenGLU_JauJNI_funcs.o: ${FILE.gen3.h} \
                                         $(CNATIVEDIR)/jnitools.h \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
-$(FILE.gen3.h): $(PACKAGEDIR)/${JAVA_C_MAP3_FILE}
+$(FILE.gen3.h): $(PACKAGEDIR)/${JAVA_C_MAP3_FILE:.java=.class}
 	rm -f $(FILE.gen3.h)
 	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP3_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
@@ -626,7 +655,7 @@ $(CNATIVEDIR)/OpenGL_JauJNInf_dynfuncs.o: ${FILE.gen4.h} \
                                         $(CNATIVEDIR)/jnitools.h \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
-$(FILE.gen4.h): $(PACKAGEDIR)/${JAVA_C_MAP4_FILE}
+$(FILE.gen4.h): $(PACKAGEDIR)/${JAVA_C_MAP4_FILE:.java=.class}
 	rm -f $(FILE.gen4.h)
 	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP4_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
@@ -636,9 +665,27 @@ $(CNATIVEDIR)/OpenGLU_JauJNInf_funcs.o: ${FILE.gen5.h} \
                                         $(CNATIVEDIR)/jnitools.h \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
-$(FILE.gen5.h): $(PACKAGEDIR)/${JAVA_C_MAP5_FILE}
+$(FILE.gen5.h): $(PACKAGEDIR)/${JAVA_C_MAP5_FILE:.java=.class}
 	rm -f $(FILE.gen5.h)
 	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP5_FILE:.java=} 2>&1 \
+	| tee -a $(THISDIR)/errors
+
+$(FILE.gen6.x11.h): $(PACKAGEDIR)/drawable/${JAVA_C_MAP6_X11_FILE:.java=.class}
+	rm -f $(FILE.gen6.x11.h)
+	$(JAVAH) -jni -d $(CHEADERDIR) \
+	      $(PACKAGEDIR).drawable.${JAVA_C_MAP6_X11_FILE:.java=} 2>&1 \
+	| tee -a $(THISDIR)/errors
+
+$(FILE.gen6.win32.h): $(PACKAGEDIR)/drawable/${JAVA_C_MAP6_WIN32_FILE:.java=.class}
+	rm -f $(FILE.gen6.win32.h)
+	$(JAVAH) -jni -d $(CHEADERDIR) \
+	      $(PACKAGEDIR).drawable.${JAVA_C_MAP6_WIN32_FILE:.java=} 2>&1 \
+	| tee -a $(THISDIR)/errors
+
+$(FILE.gen6.mac.h): $(PACKAGEDIR)/drawable/${JAVA_C_MAP6_MAC_FILE:.java=.class}
+	rm -f $(FILE.gen6.mac.h)
+	$(JAVAH) -jni -d $(CHEADERDIR) \
+	      $(PACKAGEDIR).drawable.${JAVA_C_MAP6_MAC_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
 
 #
@@ -765,6 +812,8 @@ javadoc:
 		-doctitle "GL4Java API" \
 		gl4java gl4java.jau.awt gl4java.awt gl4java.swing \
 		gl4java.system gl4java.applet \
+		gl4java.drawable \
+		gl4java.drawable.utils \
 		gl4java.utils \
 		gl4java.utils.glut \
 		gl4java.utils.glut.fonts \
@@ -782,6 +831,8 @@ javadocw32:
 		-author -version \
 		gl4java gl4java.jau.awt gl4java.awt gl4java.swing \
 		gl4java.system gl4java.applet \
+		gl4java.drawable \
+		gl4java.drawable.utils \
 		gl4java.utils \
 		gl4java.utils.glut \
 		gl4java.utils.glut.fonts \
@@ -813,6 +864,7 @@ java2binpkg: pbinpkg
 		gl4java/swing \
 		gl4java/jau \
 		gl4java/system \
+		gl4java/drawable \
 		gl4java/utils/*.class \
 		gl4java/utils/textures \
 		gl4java/utils/glut/*.class

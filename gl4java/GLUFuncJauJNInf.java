@@ -32,7 +32,7 @@ public String getClassVendor ( )
 { return "Jausoft - Sven Goethel Software Development"; }
 
 public String getClassVersion ( ) 
-{ return "2.4.1.0"; }
+{ return "2.5.2.0"; }
 
 
 /**

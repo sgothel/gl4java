@@ -57,14 +57,12 @@ import java.lang.*;
 import java.util.*;
 import java.io.*;
 import java.util.*;
-import gl4java.GLContext;
+import gl4java.*;
+import gl4java.drawable.*;
 import gl4java.awt.GLCanvas;
 
 public class stencil extends Applet 
 {
-    stencilCanvas canvas1 = null;
-    stencilCanvas canvas2 = null;
-
 	Panel cvs = null;
 
         /* Initialize the applet */
@@ -75,10 +73,29 @@ public class stencil extends Applet
 		Dimension d = getSize();
 		setLayout(new BorderLayout());
 
-		canvas1 = new stencilCanvas(d.width, d.height, 0, false);
-		System.out.println("the left canvas has 0 stencil-bits, self-window");
-		canvas2 = new stencilCanvas(d.width, d.height, 8, true);
-		System.out.println("the right canvas should have 8 stencil-bits, ownWindow");
+		GLCapabilities caps1 = new GLCapabilities();
+		caps1.setStencilBits(0);
+
+		System.out.println("the left canvas has 0 stencil-bits");
+		System.out.println("caps1: "+caps1);
+
+		GLCanvas canvas1 =
+                          GLDrawableFactory.getFactory().createGLCanvas(caps1, d.width, d.height);
+
+		stencilDemo demo1 = new stencilDemo(d.width, d.height);
+                canvas1.addGLEventListener(demo1);
+
+		GLCapabilities caps2 = new GLCapabilities();
+		caps2.setStencilBits(8);
+
+		System.out.println("the right canvas should have >=8 stencil-bits");
+		System.out.println("caps2: "+caps2);
+
+		GLCanvas canvas2 =
+                          GLDrawableFactory.getFactory().createGLCanvas(caps2, d.width, d.height);
+
+		stencilDemo demo2 = new stencilDemo(d.width, d.height);
+                canvas2.addGLEventListener(demo2);
 
 		cvs = new Panel();
 		cvs.setLayout(new GridLayout(1,2));
@@ -131,37 +148,39 @@ public class stencil extends Applet
         /* Local GLCanvas extension class */
 
 
-    private class stencilCanvas extends GLCanvas
+    private class stencilDemo
+    	implements GLEventListener
     {
         private static final float M_PI = 3.14159265359f;
         private static final int YELLOWMAT = 1, BLUEMAT = 2;
         private boolean initdone = false;
 
-        public stencilCanvas(int w, int h, 
-	                     int _stencilBits,
-			     boolean _createOwnWindow)
+        private GLFunc gl;
+        private GLUFunc glu;
+	private GLContext glj;
+
+
+        public stencilDemo(int w, int h)
         {
-            super(w, h);
-	    stencilBits = _stencilBits;
-	    createOwnWindow = _createOwnWindow;
         }
     
-        public void preInit()
+        public void cleanup(GLDrawable drawable)
+	{
+	}
+
+        public void init(GLDrawable drawable)
         {
-            doubleBuffer = true;
-            stereoView = false;
-        }
-    
-        public void init()
-        {
+            gl = drawable.getGL();
+            glu = drawable.getGLU();
+            glj = drawable.getGLContext();
+
 	    // Examine some OpenGL properties
 	    int [] res=new int[6];
 
 	    gl.glGetIntegerv(GL_STENCIL_BITS,res);
 
             System.out.println("init(): " + this + "\n\t" +
-	                       "Stencil bits are "+res[0] +"\n\t" +
-			       "IsOwnCreatedWindow: "+createOwnWindow);
+	                       "Stencil bits are "+res[0] +"\n\t");
 
             float yellow_diffuse[] = { 0.7f, 0.7f, 0.0f, 1.0f };
             float yellow_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
@@ -195,16 +214,9 @@ public class stencil extends Applet
             glj.gljCheckGL();
 
             initdone = true;
-            reshape(getSize().width, getSize().height);
         }
     
-        public void cvsDispose()
-        {
-            System.out.println("destroy(): " + this);
-            super.cvsDispose();
-        }
-    
-        public void reshape(int width, int height)
+        public void reshape(gl4java.drawable.GLDrawable d,int width,int height)
         {
             gl.glViewport(0,0,width,height);
 
@@ -247,10 +259,8 @@ public class stencil extends Applet
             gl.glTranslatef(0.0f, 0.0f, -5.0f);
         }
 
-        public void display()
+        public void display(GLDrawable drawable)
         {
-            if (glj.gljMakeCurrent() == false) return;
-
                 /* Draw a sphere in a diamond-shaped section in the
                  * middle of a window with 2 torii.
                  */
@@ -281,10 +291,16 @@ public class stencil extends Applet
             gl.glPopMatrix();
             gl.glPopMatrix();
 
-            glj.gljSwap();
             glj.gljCheckGL();
-            glj.gljFree();
         }
+
+        public void preDisplay(GLDrawable drawable)
+	{
+	}
+
+        public void postDisplay(GLDrawable drawable)
+	{
+	}
 
         // Imported from glut.
         private void glutSolidTorus

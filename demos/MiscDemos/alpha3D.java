@@ -15,9 +15,9 @@ import java.lang.*;
 import java.util.*;
 import java.io.*;
 import java.util.*;
-import gl4java.GLContext;
-import gl4java.awt.GLCanvas;
-import gl4java.awt.GLAnimCanvas;
+import gl4java.*;
+import gl4java.awt.*;
+import gl4java.drawable.*;
 import gl4java.applet.SimpleGLAnimApplet1;
 
 import gl4java.utils.glut.*;
@@ -35,7 +35,23 @@ public class alpha3D extends SimpleGLAnimApplet1
 	{
 	super.init();
         Dimension d = getSize();
-        canvas = new alpha3DCanvas(d.width, d.height);
+	GLCapabilities glCaps = new GLCapabilities();
+	glCaps.setAlphaBits(8);
+	glCaps.setAccumAlphaBits(8);
+
+        gl4java.drawable.GLDrawableFactory df =
+		gl4java.drawable.GLDrawableFactory.getFactory();
+ 
+	if(df instanceof gl4java.drawable.SunJDK13GLDrawableFactory)
+	{
+	    gl4java.drawable.SunJDK13GLDrawableFactory sdf =
+	      (gl4java.drawable.SunJDK13GLDrawableFactory)df;
+	    canvas = new alpha3DCanvas
+	      (sdf.getGraphicsConfiguration(glCaps), glCaps, d.width, d.height);
+	} else {
+	    canvas = new alpha3DCanvas(glCaps, d.width, d.height);
+	}
+
         add("Center", canvas);
 	}
 
@@ -45,6 +61,10 @@ public class alpha3D extends SimpleGLAnimApplet1
 		         new alpha3D();
 
 		Frame f = new Frame("alpha3D");
+
+		GLContext.gljNativeDebug = true;
+		GLContext.gljThreadDebug = false;
+		GLContext.gljClassDebug = true;
 
 		f.addWindowListener( new WindowAdapter()
 				{
@@ -93,21 +113,19 @@ public class alpha3D extends SimpleGLAnimApplet1
 	float transparentZ = MINZ;
 	int sphereList, cubeList;
 
-        public alpha3DCanvas(int w, int h)
+        public alpha3DCanvas(GraphicsConfiguration g, GLCapabilities glCaps,
+			     int w, int h)
         {
-            super(w, h);
-            GLContext.gljNativeDebug = false;
-            GLContext.gljClassDebug = false;
+            super(g, glCaps, w, h);
             setAnimateFps(30.0);
         }
     
-        public void preInit()
+        public alpha3DCanvas(GLCapabilities glCaps, int w, int h)
         {
-            doubleBuffer = true;
-            stereoView = false;
+            super(glCaps, w, h);
+            setAnimateFps(30.0);
         }
     
-
 	public void init()
 	{
 	    glut = new GLUTFuncLightImpl(gl, glu);

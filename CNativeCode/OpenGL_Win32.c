@@ -75,26 +75,26 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
     jfieldID fpixmapHandle=0;
     jfieldID foffScreenRenderer=0;
     jfieldID faccumSize=0;
-    jfieldID fwindowHandle=0, fpData=0, fdoubleBuffer=0, fstereoView=0, fstencilBits=0;
+    jfieldID fwindowHandle=0, fpData=0;
     jfieldID fverbose=0;
     jfieldID fglContext=0;
     jfieldID fshareWith=0;
     jfieldID fcreatewinw = 0, fcreatewinh = 0;
+    jfieldID fglCaps=0;
 
     /* these variables will be mapped in the java-object ! */
     jboolean joffScreenRenderer=JNI_FALSE;
-	jboolean jdoubleBuffer=JNI_TRUE;
-	jboolean jstereoView=JNI_FALSE;
-	jint jstencilBits=0;
-    jint jaccumSize=0;
     HDC thisWin=0;
     HGLRC gc=0;
+    PIXELFORMATDESCRIPTOR pfd;
     HDC pData=0;
 	HGLRC shareWith=NULL;
     jint jcreatewinw = 0, jcreatewinh = 0;
     HBITMAP pix=0;
-
-    PIXELFORMATDESCRIPTOR pfd;
+    GLCapabilities glCaps;
+    jobject  jglCaps=0;
+    jthrowable exc;
+    jclass _GLCapabilities= 0;
 
     (void) canvas;
 
@@ -103,7 +103,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
     {
         fprintf(stderr,"oo0.0 cls==0\n");
 		  fflush(stderr);
-		  ret=JNI_FALSE;
+		  return JNI_FALSE;
     }
 
     if(ret==JNI_TRUE)
@@ -113,7 +113,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 	    {
                 fprintf(stderr,"oo0.2 fverbose==0\n");
                 fflush(stderr);
-					 ret=JNI_FALSE;
+		return JNI_FALSE;
 	    } else {
 		verbose = (*env)->GetStaticBooleanField(env, cls, fverbose);
 	    }
@@ -133,8 +133,11 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 
     if(ret==JNI_TRUE) {
 	    fpData = (*env)->GetFieldID(env, cls, "pData", "J");
-	    if (fpData == 0) ret= JNI_FALSE;
-	    else pData = (HDC)
+		if (fpData == 0) {
+			fprintf(stderr, "pData not accessible !\n");
+			fflush(stderr);
+			ret= JNI_FALSE;
+		} else pData = (HDC)
 	      ( (PointerHolder)(*env)->GetLongField(env, obj, fpData));
     }
     if(JNI_TRUE==verbose)
@@ -144,43 +147,80 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 
     if(ret==JNI_TRUE) {
 	    fwindowHandle = (*env)->GetFieldID(env, cls, "windowHandle", "J");
-	    if (fwindowHandle == 0) ret= JNI_FALSE;
+	    if (fwindowHandle == 0) {
+			fprintf(stderr, "windowHandle not accessible !\n");
+			fflush(stderr);
+			ret= JNI_FALSE;
+		}
     }
 
     if(ret==JNI_TRUE) {
 	    fglContext=(*env)->GetFieldID(env, cls, "glContext", "J");
-	    if (fglContext == 0) ret= JNI_FALSE;
+	    if (fglContext == 0)
+	    {
+			fprintf(stderr, "fglContext not accessible !\n");
+			fflush(stderr);
+			ret= JNI_FALSE;
+		}
     }
 
     if(ret==JNI_TRUE) {
 	    foffScreenRenderer = 
 	    		(*env)->GetFieldID(env, cls, "offScreenRenderer", "Z");
-	    if (foffScreenRenderer == 0) ret= JNI_FALSE;
+	    if (foffScreenRenderer == 0)
+	    {
+			fprintf(stderr, "foffScreenRenderer not accessible !\n");
+			fflush(stderr);
+			ret= JNI_FALSE;
+		}
 	    else joffScreenRenderer =(*env)->GetBooleanField(env, obj, foffScreenRenderer);
     }
 
     if(ret==JNI_TRUE) {
-	    fdoubleBuffer = (*env)->GetFieldID(env, cls, "doubleBuffer", "Z");
-	    if (fdoubleBuffer == 0) ret= JNI_FALSE;
-	    else jdoubleBuffer =(*env)->GetBooleanField(env, obj, fdoubleBuffer);
+            fglCaps = (*env)->GetFieldID(env, cls, "glCaps", "Lgl4java/GLCapabilities;");
+            if (fglCaps == 0)
+			{
+				fprintf(stderr, "fglCaps not accessible !\n");
+				fflush(stderr);
+				ret= JNI_FALSE;
+			}
+            else jglCaps =(*env)->GetObjectField(env, obj, fglCaps);
     }
 
-    if(ret==JNI_TRUE) {
-	    fstereoView = (*env)->GetFieldID(env, cls, "stereoView", "Z");
-	    if (fstereoView == 0) ret= JNI_FALSE;
-	    else jstereoView =(*env)->GetBooleanField(env, obj, fstereoView);
+    if( jglCaps==0 )
+    {
+      fprintf(stderr,"\nGL4Java openOpenGL ERROR: ZERO capsObj was fetched by GetObjectField !\n");
+      fflush(stderr);
+      return JNI_FALSE;
     }
 
-    if(ret==JNI_TRUE) {
-	    fstencilBits = (*env)->GetFieldID(env, cls, "stencilBits", "I");
-	    if (fstencilBits == 0) ret= JNI_FALSE;
-	    else jstencilBits =(*env)->GetIntField(env, obj, fstencilBits);
+    _GLCapabilities= (*env)->FindClass(env, "Lgl4java/GLCapabilities;");
+    exc = (*env)->ExceptionOccurred(env);
+    if(exc) {
+          if(JNI_TRUE==verbose)
+	  {
+             fprintf(stderr, "GL4Java: openOpen FindClass gl4java/GLCapabilities failed, cannot check glCaps object\n");
+	     (*env)->ExceptionDescribe(env);
+             fflush(stderr);
+	  }
+	  (*env)->ExceptionClear(env);
+	  _GLCapabilities=0;
+    }
+    exc=0;
+
+    if( _GLCapabilities!=0 &&
+        (*env)->IsInstanceOf(env, jglCaps, _GLCapabilities)==JNI_FALSE )
+    {
+      fprintf(stderr,"\nGL4Java openOpenGL ERROR: glCaps is not instanceof gl4java/GLCapabilities !\n");
+      fflush(stderr);
+      return JNI_FALSE;
     }
 
-    if(ret==JNI_TRUE) {
-	    faccumSize = (*env)->GetFieldID(env, cls, "accumSize", "I");
-	    if (faccumSize == 0) ret= JNI_FALSE;
-	    else jaccumSize =(*env)->GetIntField(env, obj, faccumSize);
+    if( JNI_TRUE != javaGLCapabilities2NativeGLCapabilities ( env, jglCaps, &glCaps ) )
+    {
+      fprintf(stderr,"\nGL4Java ERROR: glCaps Object is not valid !\n");
+      fflush(stderr);
+      return JNI_FALSE;
     }
 
     if(ret==JNI_TRUE) {
@@ -209,7 +249,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 
     if(joffScreenRenderer==JNI_TRUE)
     {
-	    jdoubleBuffer = JNI_FALSE;
+	glCaps.buffer=BUFFER_SINGLE;
     }
 
     if(JNI_TRUE==verbose && joffScreenRenderer==JNI_TRUE)
@@ -236,8 +276,10 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 	    thisWin = (HDC)pData;
 
     /* get the graphics context for this widget */
-    if( (gc = get_GC( &thisWin, jdoubleBuffer, jstereoView, jstencilBits, shareWith, 
-				      joffScreenRenderer, jcreatewinw, jcreatewinh, &pix, verbose)) == 0 )
+    if( (gc = get_GC( &thisWin, &glCaps, shareWith, 
+	              joffScreenRenderer, jcreatewinw, jcreatewinh, 
+		      &pix, verbose)) == 0 
+      )
     {
 	    printf( "getGC error" );
 	    return JNI_FALSE;
@@ -246,24 +288,19 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 	/* fetch the states of doubleBuffer and stereo */
     (void) PixelFormatDescriptorFromDc( thisWin, &pfd);
 
-	jdoubleBuffer = (pfd.dwFlags & PFD_DOUBLEBUFFER)?JNI_TRUE:JNI_FALSE;
-    if(ret==JNI_TRUE && fdoubleBuffer!=0) {
-	    (*env)->SetBooleanField(env, obj, fdoubleBuffer, 
-	                            jdoubleBuffer);
+    if(JNI_TRUE==verbose) 
+    { 
+	fprintf(stdout,"\nGL4Java: writing capabilities to GLContext's java object\n");
+        fflush(stdout);
     }
 
-	jstencilBits = (jint)(pfd.cStencilBits);
-	if(ret==JNI_TRUE && fstencilBits!=0) {
-	    (*env)->SetIntField(env, obj, 
-				fstencilBits, (jint)jstencilBits);
-	}
+    if(jglCaps!=0)
+       (void) nativeGLCapabilities2JavaGLCapabilities (env, jglCaps, &glCaps);
 
-	jaccumSize=(jint)(pfd.cAccumRedBits+pfd.cAccumGreenBits+pfd.cAccumBlueBits+pfd.cAccumAlphaBits);
-	if(ret==JNI_TRUE && faccumSize!=0) {
-	    (*env)->SetIntField(env, obj, 
-				faccumSize, (jint)jaccumSize);
-	}
-
+    if(ret==JNI_TRUE && fglCaps && jglCaps) {
+                    (*env)->SetObjectField(env, obj, fglCaps, jglCaps);
+    }
+  
     if(ret==JNI_TRUE && fwindowHandle!=0) {
 	    (*env)->SetLongField(env, obj, fwindowHandle, 
 	                        (jlong)((PointerHolder)thisWin));

@@ -12,8 +12,8 @@ import java.lang.*;
 import java.util.*;
 import java.io.*;
 import java.util.*;
-import gl4java.GLContext;
-import gl4java.GLEnum;
+import gl4java.*;
+import gl4java.drawable.*;
 import gl4java.awt.GLAnimCanvas;
 import gl4java.applet.SimpleGLAnimApplet1;
 
@@ -22,18 +22,8 @@ public class gears extends SimpleGLAnimApplet1
 {
 
         /* Initialize the applet */
-	static {
-		GLContext.gljNativeDebug = true;
-		GLContext.gljThreadDebug = false;
-		GLContext.gljClassDebug = true;
-	}
-
-
 	public void init()
 	{
-		GLContext.gljNativeDebug = true;
-		GLContext.gljThreadDebug = false;
-		GLContext.gljClassDebug = true;
 	  init(false);
 	}
 
@@ -41,11 +31,18 @@ public class gears extends SimpleGLAnimApplet1
 	{
 	super.init();
         Dimension d = getSize();
-        canvas = new gearsCanvas(showGL, d.width, d.height);
-        add("Center", canvas);
-            addMouseListener(this);
-	}
 
+        GLCapabilities caps = new GLCapabilities();
+
+        canvas =
+            GLDrawableFactory.getFactory().createGLAnimCanvas(caps, d.width, d.height);
+
+        gearRenderer gear = new gearRenderer(showGL);
+        canvas.addGLEventListener(gear);
+
+        add("Center", canvas);
+        addMouseListener(this);
+	}
 
 	public static void main( String args[] ) 
 	{
@@ -110,6 +107,9 @@ public class gears extends SimpleGLAnimApplet1
 			);
 
 		gears applet = new gears();
+		mainFrame.add(applet);
+		applet.setSize(400,500);
+		applet.init();
 
 		if(perftest)
 		{
@@ -124,10 +124,8 @@ public class gears extends SimpleGLAnimApplet1
 				applet.canvas.getUseFpsSleep());
 		}
 
-		mainFrame.add(applet);
-		applet.setSize(400,500);
-		applet.init();
 		applet.start();
+
 		Dimension ps = applet.getPreferredSize();
 		mainFrame.setBounds(-100,-100,99,99);
 		mainFrame.setVisible(true);
@@ -188,7 +186,7 @@ public class gears extends SimpleGLAnimApplet1
         /* Local GLAnimCanvas extension class */
 
 
-    public class gearsCanvas extends GLAnimCanvas implements MouseListener, MouseMotionListener
+    public class gearRenderer implements GLEventListener, MouseListener, MouseMotionListener
     {
         private static final float M_PI = 3.14159265f;
 
@@ -204,28 +202,20 @@ public class gears extends SimpleGLAnimApplet1
 
         private boolean showGL = false;
     
-        public gearsCanvas(int w, int h)
-        {
-	    this(false, w, h);
-        }
-    
-        public gearsCanvas(boolean showGL, int w, int h)
-        {
-            super(w, h);
-            setAnimateFps(30.0);
+        private GLFunc gl;
+        private GLUFunc glu;
+	private GLContext glj;
 
+        public gearRenderer(boolean showGL)
+        {
 	    this.showGL=showGL;
         }
     
-        public void preInit()
+        public void init(GLDrawable drawable)
         {
-            doubleBuffer = true;
-            stereoView = false;
-        }
-    
-        public void init()
-        {
-            reshape(getSize().width, getSize().height);
+            gl = drawable.getGL();
+            glu = drawable.getGLU();
+            glj = drawable.getGLContext();
 
             float pos[] = { 5.0f, 5.0f, 10.0f, 0.0f };
             float red[] = { 0.8f, 0.1f, 0.0f, 1.0f };
@@ -261,21 +251,21 @@ public class gears extends SimpleGLAnimApplet1
                 
             glj.gljCheckGL();
 
-            addMouseListener(this);
-            addMouseMotionListener(this);
+            drawable.addMouseListener(this);
+            drawable.addMouseMotionListener(this);
 
 	    T0=System.currentTimeMillis();
             System.out.println("init ..");
         }
     
-        public void doCleanup()
+        public void cleanup(GLDrawable drawable)
         {
             System.out.println("destroy(): " + this);
             removeMouseListener(this);
             removeMouseMotionListener(this);
         }
     
-        public void reshape(int width, int height)
+        public void reshape(gl4java.drawable.GLDrawable gld,int width,int height)
         {
             float h = (float)height / (float)width;
             
@@ -288,10 +278,8 @@ public class gears extends SimpleGLAnimApplet1
             gl.glTranslatef(0.0f, 0.0f, -40.0f);
         }
 
-        public void display()
+        public void display(GLDrawable drawable)
         {
-            if (glj.gljMakeCurrent() == false) return;
-    
 	    if(showGL)
 	    {
 	    	showGL=false;
@@ -329,12 +317,15 @@ public class gears extends SimpleGLAnimApplet1
             
             gl.glPopMatrix();
 
-            glj.gljSwap();
-            glj.gljCheckGL();
-            glj.gljFree();
-
 	    Frames++;
+        }
 
+        public void preDisplay(GLDrawable drawable)
+	{
+	}
+
+        public void postDisplay(GLDrawable drawable)
+	{
 	    long t=System.currentTimeMillis();
 	    if(t - T0 >= 5000) 
 	    {

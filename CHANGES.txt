@@ -1,6 +1,6 @@
 \begin{verbatim}
 
-Last Changes: 12th February  2001 (Version 2.5.2 - Release 0 )
+Last Changes: 23th February  2001 (Version 2.6.0 - Release 0 )
 Started:      July 1997 (Version 0)
 
 -----------------
@@ -8,7 +8,55 @@ TOP  = NEW
 DOWN = OLD
 -----------------
 
-12th February  2001 (Version 2.5.2 - Release 0 )
+23th February  2001 (Version 2.6.0 - Release 0 )
+	o Converted David Bucciarelli's gltestperf
+	  to java ! 
+	  Go to directory demos, and do "java gltestperf --help" !
+
+	o Implemented JDK >= 1.3's GraphicsConfiguration
+
+	  With the new GLCapabilities and the factory
+	  SunJDK13GLDrawableFactory (only usable JDK>=1.3),
+	  a Canvas and it's native Window
+	  can be created with the right native format
+	  for the OpenGL features(set in GLCapabilities),
+	  so there is no more need for an own created window !
+
+	  GLContext, GLCanvas and GLAnimCanvas supports
+	  now GLCapabilities and GraphicsConfiguration
+	  within it's constructor !
+
+	  GLContext has no more protected attributes, like 
+	  doubleBuffer, etc., because it now holds an 
+	  GLCapabilities object !
+
+	  For a raw example, see:
+	  	gl4java.GLContext (itself's main method)
+		demos/MiscDemos/alpha3D.java
+		demos/HodglimsNeHe/Lesson8.java
+
+	  The MacOs's implementation of the Factory to use
+	  GraphicsConfiguration is currently missing ...
+
+	o Introducing the new GLDrawable/GLEventListener model
+	  initiated by Kenneth B Russel.
+	  This includes usage of new Factories, see above !
+
+	  Have a look at the gl4java.drawable package !
+
+	  The following demos does use the new style also:
+		demos/MiscDemos/gears.java
+		demos/MiscDemos/stencil.java     
+		demos/MiscDemos/TestListener.java
+		demos/MiscDemos/TriangleRotate.java
+	  ... have a look.
+
+	  You can now implement a GLDrawable, 
+	  like GLCanvas and GLAnimCanvas,
+	  which can add some GLEventListener's.
+
+	  GLEventListener implements all needed rendering functions.
+
 	o Implements JDK >= 1.3.X 's JAWT
 	  The mechanism of fetching the native window handle (etc.),
 	  is - since JDK 1.3.0 - now an official standard !
@@ -16,8 +64,7 @@ DOWN = OLD
 
 	  This feature is used within the "GL4JavaJauGljJNI13"
 	  native library, which is used dynamically if JVM >= 1.3 !
-	  Many thanxs to Kenneth B. Russel for 
-	  motivations: 
+	  Many thanxs to Kenneth B. Russel for motivations: 
 	  	JDK 1.4 will no more support the old 
 	  	illegal style of fetching the native window handle !
 

@@ -17,8 +17,8 @@
 #include "OpenGL_Win32_common.h"
 
 
-HGLRC LIBAPIENTRY get_GC( HDC * hDC, jboolean doubleBuffer, 
-		jboolean stereo, jint stencilBits, HGLRC shareWith, 
+HGLRC LIBAPIENTRY get_GC( HDC * hDC, GLCapabilities *glCaps,
+		HGLRC shareWith, 
 		jboolean offScreenRenderer,
 		int width, int height, HBITMAP *pix,
 		jboolean verbose)
@@ -45,7 +45,7 @@ HGLRC LIBAPIENTRY get_GC( HDC * hDC, jboolean doubleBuffer,
 		/* setupPalette(hDC); USE MY PROC */
 	}
 
-	SetDCPixelFormat(*hDC, doubleBuffer, stereo, stencilBits, offScreenRenderer, verbose);
+	SetDCPixelFormat(*hDC, glCaps, offScreenRenderer, verbose);
 
 	// Create palette if needed
 	hPalette = GetOpenGLPalette(*hDC);
@@ -89,64 +89,116 @@ HGLRC LIBAPIENTRY get_GC( HDC * hDC, jboolean doubleBuffer,
     return tempRC;
 }
 
-// Select the pixel format for a given device context
-void LIBAPIENTRY SetDCPixelFormat(HDC hDC, jboolean doubleBuffer, 
-		jboolean stereo, jint stencilBits, jboolean offScreenRenderer,
-		jboolean verbose)
+void LIBAPIENTRY setPixelFormatByGLCapabilities( 
+					PIXELFORMATDESCRIPTOR *pfd,
+				        GLCapabilities *glCaps,
+					jboolean offScreenRenderer,
+					HDC hdc)
 {
-    int nPixelFormat=0;
+
+	int colorBits = glCaps->redBits + glCaps->greenBits + glCaps->blueBits;
+
+	pfd->nSize=sizeof(PIXELFORMATDESCRIPTOR); 
+	pfd->nVersion=1; 
+	pfd->dwFlags=PFD_SUPPORT_OPENGL | PFD_GENERIC_ACCELERATED; /* refined later */
+	pfd->iPixelType=0; 
+	pfd->cColorBits=0; 
+	pfd->cRedBits=0; 
+	pfd->cRedShift=0; 
+	pfd->cGreenBits=0; 
+	pfd->cGreenShift=0; 
+	pfd->cBlueBits=0; 
+	pfd->cBlueShift=0; 
+	pfd->cAlphaBits=0; 
+	pfd->cAlphaShift=0; 
+	pfd->cAccumBits=0; 
+	pfd->cAccumRedBits=0; 
+	pfd->cAccumGreenBits=0; 
+	pfd->cAccumBlueBits=0; 
+	pfd->cAccumAlphaBits=0; 
+	pfd->cDepthBits=32; 
+	pfd->cStencilBits=0; 
+	pfd->cAuxBuffers=0; 
+	pfd->iLayerType=PFD_MAIN_PLANE; 
+	pfd->bReserved=0; 
+	pfd->dwLayerMask=0; 
+	pfd->dwVisibleMask=0; 
+	pfd->dwDamageMask=0; 
+ 
+    if(COLOR_RGBA == glCaps->color)
+		pfd->iPixelType=PFD_TYPE_RGBA; 
+	else
+		pfd->iPixelType=PFD_TYPE_COLORINDEX; 
+
+    if(offScreenRenderer)
+		pfd->dwFlags |= PFD_DRAW_TO_BITMAP;           // Draw to Bitmap
+	else
+		pfd->dwFlags |= PFD_DRAW_TO_WINDOW;           // Draw to Window (not to bitmap)
+
+
+    if(BUFFER_DOUBLE==glCaps->buffer)
+		pfd->dwFlags |= PFD_DOUBLEBUFFER ;  // Double buffered is optional
+
+    if(STEREO_ON==glCaps->stereo)
+		pfd->dwFlags |= PFD_STEREO ;        // Stereo is optional
+
+    if(hdc!=NULL && GetDeviceCaps(hdc, BITSPIXEL)<colorBits)
+    	    pfd->cColorBits = GetDeviceCaps(hdc, BITSPIXEL);
+        else
+    pfd->cColorBits = (BYTE)colorBits;
+
+	pfd->cStencilBits = (BYTE) glCaps->stencilBits;
+}
+
+
+void LIBAPIENTRY SetDCPixelFormat(HDC hDC, GLCapabilities *glCaps,
+		                  jboolean offScreenRenderer, jboolean verbose)
+{
+    int nPixelFormat=-1;
 	const char * text=0;
 
-    PIXELFORMATDESCRIPTOR pfd = {
-			sizeof(PIXELFORMATDESCRIPTOR),  // Size of this structure
-			1,                              // Version of this structure
-			0,								// will be defined later !!!!
-			PFD_TYPE_RGBA,                  // RGBA Color mode
-			24,                             // Want 24bit color
-			0,0,0,0,0,0,                    // Not used to select mode
-			0,0,                            // Not used to select mode
-			0,0,0,0,0,                      // Not used to select mode
-			32,                             // Size of depth buffer
-			0,                              // Not used to select mode
-			0,                              // Not used to select mode
-			PFD_MAIN_PLANE,                 // Draw in main plane
-			0,                              // Not used to select mode
-			0,0,0 };                        // Not used to select mode
+    PIXELFORMATDESCRIPTOR pfd ;
 
+    if(verbose==JNI_TRUE)
+    {
+	fprintf(stdout, "GL4Java SetDCPixelFormat: input capabilities:\n");
+	printGLCapabilities ( glCaps );
+    }
 
-	// customize dw_flags
-	DWORD dw_flags = PFD_SUPPORT_OPENGL | PFD_GENERIC_ACCELERATED;	// Support accelerated OpenGL calls in window
-
-	if(offScreenRenderer)
-		dw_flags |= PFD_DRAW_TO_BITMAP;           // Draw to Bitmap
-	else
-		dw_flags |= PFD_DRAW_TO_WINDOW;           // Draw to Window (not to bitmap)
-
-
-	if(doubleBuffer==JNI_TRUE)
-		dw_flags |= PFD_DOUBLEBUFFER ;  // Double buffered is optional
-
-	if(stereo==JNI_TRUE)
-		dw_flags |= PFD_STEREO ;        // Stereo is optional
-
-	pfd.dwFlags = dw_flags;
-
-    pfd.cColorBits = GetDeviceCaps(hDC, BITSPIXEL);
-
-	if(stencilBits>0)
-		pfd.cStencilBits = (BYTE) stencilBits;
-
-	if(verbose==JNI_TRUE)
-	{
-		fprintf(stderr,"\n\nUSER CHOOSED PIXELFORMAT (TRYING):\n");
-		text=GetTextualPixelFormatByPFD(&pfd, 0);			
-		fprintf(stderr,text);
+    if(glCaps->nativeVisualID>=0)
+    {
+            if ( 0 < DescribePixelFormat( hDC, (int)(glCaps->nativeVisualID), 
+	                                  sizeof(pfd), &pfd ) )
+	    {
+	        nPixelFormat=(int)(glCaps->nativeVisualID);
+	        if(verbose==JNI_TRUE)
+		{
+		  fprintf(stderr,"\n\nUSER found stored PIXELFORMAT number: %ld\n",
+		  	nPixelFormat);
+		  fflush(stderr);
+		}	
+	    } else {
+		  fprintf(stderr,"\n\nUSER no stored PIXELFORMAT number found !!\n");
+           nPixelFormat = -1;
+		  fflush(stderr);
+	    }
 	}
+
+    if(nPixelFormat<0)
+        setPixelFormatByGLCapabilities( &pfd, glCaps, offScreenRenderer, hDC);
+
+    if(verbose==JNI_TRUE)
+    {
+		fprintf(stderr,"\n\nUSER CHOOSED PIXELFORMAT (TRYING):\n");
+		text=GetTextualPixelFormatByPFD(&pfd, nPixelFormat);			
+		fprintf(stderr,text);
+		fflush(stderr);
+    }
 
     // Choose a pixel format that best matches that described in pfd
     if( hDC == 0 )
 	    printf( "SetDCPixelFormat: Error, no HDC-Contex is given\n");
-    else
+    else if(nPixelFormat<0)
 	    nPixelFormat = ChoosePixelFormat(hDC, &pfd);
 
     if( nPixelFormat == 0 )
@@ -155,6 +207,16 @@ void LIBAPIENTRY SetDCPixelFormat(HDC hDC, jboolean doubleBuffer,
     // Set the pixel format for the device context
     if( SetPixelFormat(hDC, nPixelFormat, &pfd) == FALSE)
 	    printf( "setpixel failed\n" );
+    else {
+            (void) setGLCapabilities ( hDC, nPixelFormat, glCaps );
+	    if(verbose==JNI_TRUE)
+	    {
+	        fprintf(stdout, "GL4Java SetDCPixelFormat: used capabilities:\n");
+	        printGLCapabilities ( glCaps );
+	    }
+    }
+	fflush(stdout);
+	fflush(stderr);
 }
 
 
@@ -267,6 +329,7 @@ jboolean LIBAPIENTRY testWin32Java()
 }
 
 
+
 static void
 PrintMessage( const char *Format, ... )
 {
@@ -335,8 +398,8 @@ GetTextualPixelFormatByPFD(PIXELFORMATDESCRIPTOR *ppfd, int format)
     strcat(buffer, line); sprintf(line,"  cGreenShift - %d\n", ppfd->cGreenShift);
     strcat(buffer, line); sprintf(line,"  cBlueBits - %d\n", ppfd->cBlueBits);
     strcat(buffer, line); sprintf(line,"  cBlueShift - %d\n", ppfd->cBlueShift);
-    strcat(buffer, line); sprintf(line,"  cAlphaBits - %d\n", ppfd->cAlphaBits);
-    strcat(buffer, line); sprintf(line,"  cAlphaShift - 0x%x\n", ppfd->cAlphaShift);
+    strcat(buffer, line); sprintf(line,"  cAlphaBits - %d (N.A.)\n", ppfd->cAlphaBits);
+    strcat(buffer, line); sprintf(line,"  cAlphaShift - 0x%x (N.A.)\n", ppfd->cAlphaShift);
     strcat(buffer, line); sprintf(line,"  cAccumBits - %d\n", ppfd->cAccumBits);
     strcat(buffer, line); sprintf(line,"  cAccumRedBits - %d\n", ppfd->cAccumRedBits);
     strcat(buffer, line); sprintf(line,"  cAccumGreenBits - %d\n", ppfd->cAccumGreenBits);
@@ -657,4 +720,45 @@ HPALETTE LIBAPIENTRY setupPalette(HDC hDC)
 	return hPalette;
 }
 
+
+jboolean LIBAPIENTRY setGLCapabilities ( HDC hdc, 
+					 int nPixelFormat,
+ 					 GLCapabilities *glCaps )
+{
+    PIXELFORMATDESCRIPTOR pfd;
+
+    (void) PixelFormatDescriptorFromDc( hdc, &pfd);
+
+    if (pfd.dwFlags & PFD_DOUBLEBUFFER)
+	glCaps->buffer=BUFFER_DOUBLE;
+    else
+	glCaps->buffer=BUFFER_SINGLE;
+
+    if (pfd.dwFlags & PFD_STEREO)
+	glCaps->stereo=STEREO_ON;
+    else
+	glCaps->stereo=STEREO_OFF;
+
+    if (pfd.iPixelType == PFD_TYPE_RGBA)
+	glCaps->color=COLOR_RGBA;
+
+    if (pfd.iPixelType == PFD_TYPE_COLORINDEX)
+	glCaps->color=COLOR_INDEX;
+
+    glCaps->depthBits = pfd.cDepthBits;
+    glCaps->stencilBits = pfd.cStencilBits;
+
+    glCaps->redBits = pfd.cRedBits;
+    glCaps->greenBits= pfd.cGreenBits;
+    glCaps->blueBits=  pfd.cBlueBits;
+    /* glCaps->alphaBits= pfd.cAlphaBits; N.A. */
+    glCaps->accumRedBits = pfd.cAccumRedBits;
+    glCaps->accumGreenBits= pfd.cAccumGreenBits;
+    glCaps->accumBlueBits= pfd.cAccumBlueBits;
+    glCaps->accumAlphaBits= pfd.cAccumAlphaBits;
+
+    glCaps->nativeVisualID=nPixelFormat;
+
+    return JNI_TRUE;
+}
 

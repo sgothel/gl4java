@@ -13,8 +13,11 @@ import java.lang.*;
 import java.util.*;
 import java.io.*;
 import java.util.*;
-import gl4java.GLContext;
-import gl4java.awt.GLCanvas;
+import gl4java.*;
+import gl4java.awt.*;
+import gl4java.drawable.*;
+import gl4java.applet.SimpleGLAnimApplet1;
+
 
 public class shadowvol extends Applet 
 {
@@ -28,12 +31,27 @@ public class shadowvol extends Applet
 
         /* Initialize the applet */
 
-
 	public void init()
 	{
         Dimension d = getSize();
         setLayout(new BorderLayout());
-        canvas = new shadowvolCanvas(d.width, d.height);
+
+	GLCapabilities glCaps = new GLCapabilities();
+	glCaps.setStencilBits(16);
+
+        gl4java.drawable.GLDrawableFactory df =
+		gl4java.drawable.GLDrawableFactory.getFactory();
+ 
+	if(df instanceof gl4java.drawable.SunJDK13GLDrawableFactory)
+	{
+	    gl4java.drawable.SunJDK13GLDrawableFactory sdf =
+	      (gl4java.drawable.SunJDK13GLDrawableFactory)df;
+	    canvas = new shadowvolCanvas
+	      (sdf.getGraphicsConfiguration(glCaps), glCaps, d.width, d.height);
+	} else {
+	    canvas = new shadowvolCanvas(glCaps, d.width, d.height);
+	}
+
         add("Center", canvas);
 	}
 
@@ -69,6 +87,27 @@ public class shadowvol extends Applet
         int n;
     }
 
+	public static void main( String args[] ) 
+	{
+		GLContext.gljNativeDebug = true;
+		GLContext.gljThreadDebug = false;
+		GLContext.gljClassDebug = true;
+
+		Frame mainFrame = new Frame("shadowvol");
+
+		shadowvol applet = new shadowvol();
+
+		applet.setSize(400, 400);
+		applet.init();
+		applet.start();
+
+		mainFrame.add(applet);
+
+		mainFrame.pack();
+		mainFrame.setVisible(true);
+	}
+
+
 
         /* Local GLCanvas extension class */
 
@@ -91,18 +130,15 @@ public class shadowvol extends Applet
         private ShadObj shadower = new ShadObj();
         private int rendermode = SHADOW;
 
-        public shadowvolCanvas(int w, int h)
+        public shadowvolCanvas(GraphicsConfiguration g, GLCapabilities glCaps,
+			     int w, int h)
         {
-            super(w, h);
-            GLContext.gljNativeDebug = false;
-            GLContext.gljClassDebug = false;
+            super(g, glCaps, w, h);
         }
     
-        public void preInit()
+        public shadowvolCanvas(GLCapabilities glCaps, int w, int h)
         {
-            doubleBuffer = true;
-            stereoView = false;
-	    stencilBits = 3;
+            super(glCaps, w, h);
         }
     
         public void init()
@@ -120,6 +156,8 @@ public class shadowvol extends Applet
             gl.glEnable(GL_LIGHTING);
             gl.glEnable(GL_LIGHT0);
             gl.glEnable(GL_CULL_FACE);
+
+            gl.glClearColor(0.0f, 0.1f, 0.1f, 0.0f);
 
                 /* place light 0 in the right place */
             gl.glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
@@ -205,15 +243,15 @@ public class shadowvol extends Applet
 
         public void display()
         {
+	    System.out.println("display ..");
             if (glj.gljMakeCurrent() == false) return;
+	    System.out.println("display .. doit ");
 
-
-            
-            
             gl.glClear
                 (GL_COLOR_BUFFER_BIT |
                  GL_DEPTH_BUFFER_BIT |
                  GL_STENCIL_BUFFER_BIT);
+            glj.gljCheckGL();
             switch (rendermode)
             {
             case NONE:
@@ -256,6 +294,9 @@ public class shadowvol extends Applet
                 break;
             }
 
+	    System.out.println("display .. done ");
+
+            glj.gljCheckGL();
             glj.gljSwap();
             glj.gljCheckGL();
             glj.gljFree();
@@ -274,6 +315,7 @@ public class shadowvol extends Applet
         {
             rendermode++;
             if (rendermode > SHADOW) rendermode = NONE;
+	    System.out.println("mouse .. render mode: "+rendermode+", -> repaint");
             repaint();
         }
     
@@ -367,6 +409,7 @@ public class shadowvol extends Applet
             /* render while jittering the shadows */
         private void render(ShadObj obj)
         {
+            glj.gljCheckGL();
             float shad_mat[] = {10.f, 0.1f, 0.1f, 1.0f};
             float v[] = new float[3];
                 /* material properties for objects in scene */
@@ -384,6 +427,7 @@ public class shadowvol extends Applet
                 /* Since we want to turn texturing on for floor only, we have
                    to make floor a separate glBegin()/glEnd() sequence. You
                    can't turn texturing on and off between begin and end calls */
+            glj.gljCheckGL();
             gl.glBegin(GL_QUADS);
             gl.glNormal3f(0.0f, 1.0f, 0.0f);
             gl.glTexCoord2i(0, 0);
@@ -431,6 +475,7 @@ public class shadowvol extends Applet
 
             gl.glEnd();
             
+            glj.gljCheckGL();
             cone();
             
             sphere();
@@ -453,6 +498,7 @@ public class shadowvol extends Applet
                 gl.glVertex3fv(v);
             }
             gl.glEnd();
+            glj.gljCheckGL();
         }
     }
 }

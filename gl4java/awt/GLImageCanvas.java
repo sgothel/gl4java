@@ -41,6 +41,13 @@ public class GLImageCanvas extends GLCanvas
 	super(w, h);
     }
 
+    public GLImageCanvas( GraphicsConfiguration config, 
+                          GLCapabilities capabilities,
+    			  int w, int h)
+    {
+	super(config, capabilities, w, h);
+    }
+
     public void setKeepAspectRatio(boolean v)
     { keepAspect=v; }
 

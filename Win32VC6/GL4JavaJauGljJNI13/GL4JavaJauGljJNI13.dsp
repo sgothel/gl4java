@@ -60,6 +60,10 @@ SOURCE=..\..\CNativeCode\GLCallbackHelperJNI.c
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\CNativeCode\GLDrawableFactory_Win32_SunJDK13.c
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\CNativeCode\jawt_misc.c
 # End Source File
 # Begin Source File

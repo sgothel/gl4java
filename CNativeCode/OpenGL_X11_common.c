@@ -96,6 +96,46 @@ int LIBAPIENTRY get_GC( Display *display, Window win, XVisualInfo *visual,
 }
 
 
+int LIBAPIENTRY setVisualAttribListByGLCapabilities( 
+					int visualAttribList[/*>=32*/],
+				        GLCapabilities *glCaps )
+{
+    int i=0;
+    visualAttribList[i++] = GLX_RED_SIZE;
+    visualAttribList[i++] = 1;
+    visualAttribList[i++] = GLX_GREEN_SIZE;
+    visualAttribList[i++] = 1;
+    visualAttribList[i++] = GLX_BLUE_SIZE;
+    visualAttribList[i++] = 1;
+    visualAttribList[i++] = GLX_DEPTH_SIZE;
+    visualAttribList[i++] = 1;
+    visualAttribList[i++] = GLX_ACCUM_RED_SIZE;
+    visualAttribList[i++] = (glCaps->accumRedBits>0)?1:0;
+    visualAttribList[i++] = GLX_ACCUM_GREEN_SIZE;
+    visualAttribList[i++] = (glCaps->accumGreenBits>0)?1:0;
+    visualAttribList[i++] = GLX_ACCUM_BLUE_SIZE;
+    visualAttribList[i++] = (glCaps->accumBlueBits>0)?1:0;
+
+    if(COLOR_RGBA == glCaps->color)
+    {
+	    visualAttribList[i++] = GLX_RGBA;
+	    visualAttribList[i++] = GLX_ALPHA_SIZE;
+	    visualAttribList[i++] = (glCaps->alphaBits>0)?1:0;
+	    visualAttribList[i++] = GLX_ACCUM_ALPHA_SIZE;
+	    visualAttribList[i++] = (glCaps->accumAlphaBits>0)?1:0;
+    }
+    if(BUFFER_DOUBLE==glCaps->buffer)
+	    visualAttribList[i++] = GLX_DOUBLEBUFFER;
+
+    if(STEREO_ON==glCaps->stereo)
+	    visualAttribList[i++] = GLX_STEREO;
+
+    visualAttribList[i++] = GLX_STENCIL_SIZE;
+    visualAttribList[i++] = glCaps->stencilBits;
+    visualAttribList[i] = None;
+    return i;
+}
+
 
 /**
  * Description for pWin:
@@ -109,11 +149,7 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 			       Window rootWin,
 			       Window * pWin, 
 			       int width, int height,
-                               jboolean doubleBuffer, 
-                               jboolean stereoView,
-			       jboolean rgba,
-			       jint stencilBits,
-			       jint accumSize,
+    			       GLCapabilities * glCaps,
 			       jboolean * pOwnWin,
 			       GLXContext shareWith,
 			       jboolean offscreen,
@@ -122,8 +158,7 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 			     )
 {
     Window newWin = 0;
-    int visualAttribList[32];
-    int i=0;
+    int visualAttribList[64];
     int j=0;
     int done=0;
     VisualGC vgc = { NULL, 0, 0 };
@@ -135,12 +170,14 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
      */
     XVisualInfo * visualList=NULL; /* the visual list, to be XFree-ed */
 
-    /* backup variables ... */
-    jboolean 	_rgba=rgba;
-    jint 	_stencilBits=stencilBits;
-    jint 	_accumSize=accumSize;
-    jboolean 	_stereoView=stereoView;
-    jboolean 	_doubleBuffer=doubleBuffer;
+    /* backup ... */
+    GLCapabilities _glCaps = *glCaps;
+
+    if(JNI_TRUE==verbose)
+    {
+	    fprintf(stdout, "GL4Java findVisualGlX: input capabilities:\n");
+	    printGLCapabilities ( glCaps );
+    }
 
     do {
             if(JNI_TRUE==verbose)
@@ -148,35 +185,19 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 	         fprintf(stderr, "GL4Java: seeking visual loop# %d\n", j);
 	    }
 
-            i=0;
-	    visualAttribList[i++] = GLX_RED_SIZE;
-	    visualAttribList[i++] = 1;
-	    visualAttribList[i++] = GLX_GREEN_SIZE;
-	    visualAttribList[i++] = 1;
-	    visualAttribList[i++] = GLX_BLUE_SIZE;
-	    visualAttribList[i++] = 1;
-	    visualAttribList[i++] = GLX_DEPTH_SIZE;
-	    visualAttribList[i++] = 1;
-	    visualAttribList[i++] = GLX_ACCUM_RED_SIZE;
-	    visualAttribList[i++] = accumSize;
-	    visualAttribList[i++] = GLX_ACCUM_GREEN_SIZE;
-	    visualAttribList[i++] = accumSize;
-	    visualAttribList[i++] = GLX_ACCUM_BLUE_SIZE;
-	    visualAttribList[i++] = accumSize;
-
-	    if(JNI_TRUE==rgba)
+            if(glCaps->nativeVisualID>=0)
 	    {
-		    visualAttribList[i++] = GLX_RGBA;
-		    visualAttribList[i++] = GLX_ACCUM_ALPHA_SIZE;
-		    visualAttribList[i++] = accumSize;
+	    	vgc.visual = findVisualIdByID(&visualList, 
+		                              (int)(glCaps->nativeVisualID), 
+					       display, *pWin, verbose);
 	    }
-	    if(JNI_TRUE==doubleBuffer)
-		    visualAttribList[i++] = GLX_DOUBLEBUFFER;
-	    if(JNI_TRUE==stereoView)
-		    visualAttribList[i++] = GLX_STEREO;
-	    visualAttribList[i++] = GLX_STENCIL_SIZE;
-	    visualAttribList[i++] = (int)stencilBits;
-	    visualAttribList[i] = None;
+
+	    if(vgc.visual==NULL)
+	    {
+                glCaps->nativeVisualID=0;
+                (void) setVisualAttribListByGLCapabilities( 
+						visualAttribList, glCaps);
+	    }
 
             if(tryChooseVisual==JNI_TRUE && vgc.visual==NULL)
 	    {
@@ -187,13 +208,13 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 		    {
 			if(vgc.visual!=NULL)
 			{
-			    fprintf(stderr, "glXChooseVisual: test visual(ID:%d(0x%X)):\n", 
+			    fprintf(stdout, "findVisualGlX.glXChooseVisual: found visual(ID:%d(0x%X))\n", 
 				(int) vgc.visual->visualid,
 				(int) vgc.visual->visualid);
-			    printVisualInfo ( display, vgc.visual);
-			} else
-			    fprintf(stderr, "glXChooseVisual: no visual\n");
-			fflush(stderr);
+			} else {
+			    fprintf(stdout, "findVisualGlX.glXChooseVisual: no visual\n");
+			}
+			fflush(stdout);
 		    }
 	    }
 
@@ -201,25 +222,17 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 	    {
 	        vgc.visual = findVisualIdByFeature( &visualList, 
 				                      display, *pWin,
-	                                              doubleBuffer, stereoView,
-	                                              rgba, 
-						      stencilBits, 
-						      accumSize,
+						      glCaps,
 						      verbose);
 	    }
 
-	    if(vgc.visual==NULL)
-	    {
-	        vgc.visual = findVisualIdByFeature( &visualList, 
-				                      display, *pWin,
-	                                              doubleBuffer, stereoView,
-	                                              rgba, 
-						      stencilBits>0, 
-						      accumSize>0, verbose);
-            }
-
 	    if( *pOwnWin == JNI_TRUE && vgc.visual!=NULL)
 	    {
+		if(JNI_TRUE==verbose)
+		{
+		    fprintf(stdout, "findVisualGlX: CREATING OWN WINDOW !\n");
+		    fflush(stdout);
+		}
 		newWin = createOwnOverlayWin(display, 
 					     rootWin, 
 					     *pWin /* the parent */,
@@ -302,32 +315,41 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 	    		vgc.visual=NULL;
 		    }
 
-		    /* Fall-Back ... */
+		    /**
+		     * Falling-Back the exact (min. requirement) parameters ..
+		     */
 		    if(*pOwnWin==JNI_FALSE && offscreen==JNI_FALSE) {
-			rgba=_rgba;
-			stencilBits=_stencilBits;
-			accumSize=_accumSize;
-			stereoView=_stereoView;
-			doubleBuffer=_doubleBuffer;
+		        *glCaps=_glCaps;
 			*pOwnWin=JNI_TRUE;
-		    } else if(accumSize>0 && offscreen==JNI_TRUE) {
-		        accumSize=0;
-		    } else if(doubleBuffer==JNI_FALSE && offscreen==JNI_TRUE) {
-		        doubleBuffer=JNI_TRUE;
-		    } else if(stencilBits>0) {
-		        stencilBits=0;
-		    } else if(stereoView==JNI_TRUE) {
-			stereoView=JNI_FALSE;
-		    } else if(rgba==JNI_TRUE) {
-			rgba=JNI_FALSE;
-		    } else if(doubleBuffer==JNI_TRUE) {
-			doubleBuffer=JNI_FALSE;
+		    } else if( (glCaps->accumRedBits>0 ||
+		                glCaps->accumGreenBits>0 ||
+		                glCaps->accumBlueBits>0 ||
+		                glCaps->accumAlphaBits>0
+			       ) && offscreen==JNI_TRUE
+			     ) 
+	            {
+		        glCaps->accumRedBits=0;
+			glCaps->accumGreenBits=0;
+			glCaps->accumBlueBits=0;
+			glCaps->accumAlphaBits=0;
+		    } else if(glCaps->buffer==BUFFER_SINGLE && 
+		              offscreen==JNI_TRUE) 
+		    {
+		        glCaps->buffer=BUFFER_DOUBLE;
+		    } else if(glCaps->stereo==STEREO_ON) {
+			glCaps->stereo=STEREO_OFF;
+		    } else if(glCaps->stencilBits>32) {
+		        glCaps->stencilBits=32;
+		    } else if(glCaps->stencilBits>16) {
+		        glCaps->stencilBits=16;
+		    } else if(glCaps->stencilBits>8) {
+		        glCaps->stencilBits=8;
+		    } else if(glCaps->stencilBits>0) {
+		        glCaps->stencilBits=0;
+		    } else if(glCaps->buffer==BUFFER_DOUBLE) {
+		        glCaps->buffer=BUFFER_SINGLE;
 		    } else if(tryChooseVisual==JNI_TRUE) {
-			rgba=_rgba;
-			stencilBits=_stencilBits;
-			accumSize=_accumSize;
-			stereoView=_stereoView;
-			doubleBuffer=_doubleBuffer;
+		        *glCaps=_glCaps;
 			*pOwnWin=JNI_FALSE;
 			tryChooseVisual=JNI_FALSE;
 		    } else done=1;
@@ -336,7 +358,9 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 
     if(vgc.success==1 && JNI_TRUE==verbose)
     {
-	    fprintf(stderr, "\nfindVisualGlX vi(ID:%d): \n screen %d, depth %d, class %d,\n clrmapsz %d, bitsPerRGB %d, shared with %d\n",
+	    (void) setGLCapabilities (display, vgc.visual, glCaps);
+
+	    fprintf(stderr, "\nfindVisualGlX results vi(ID:%d): \n screen %d, depth %d, class %d,\n clrmapsz %d, bitsPerRGB %d, shared with %d\n",
 		(int)vgc.visual->visualid,
 		(int)vgc.visual->screen,
 		(int)vgc.visual->depth,
@@ -353,10 +377,11 @@ VisualGC LIBAPIENTRY findVisualGlX( Display *display,
 
 void LIBAPIENTRY printVisualInfo ( Display *display, XVisualInfo * vi)
 {
-    int dblBuffer, stereoView, rgbaMode, stencilSize;
-    int accumRedSize, accumGreenSize, accumBlueSize, accumAlphaSize;
+    GLCapabilities glCaps;
 
-    fprintf(stderr, "\nvi(ID:%d(0x%X)): \n screen %d, depth %d, class %d,\n clrmapsz %d, bitsPerRGB %d\n",
+    setGLCapabilities ( display, vi, &glCaps);
+
+    fprintf(stdout, "\nvi(ID:%d(0x%X)): \n screen %d, depth %d, class %d,\n clrmapsz %d, bitsPerRGB %d\n",
 	(int) vi->visualid,
 	(int) vi->visualid,
 	(int) vi->screen,
@@ -365,25 +390,7 @@ void LIBAPIENTRY printVisualInfo ( Display *display, XVisualInfo * vi)
 	(int) vi->colormap_size,
 	(int) vi->bits_per_rgb );
 
-    glXGetConfig( display, vi, GLX_DOUBLEBUFFER, &dblBuffer);
-    glXGetConfig( display, vi, GLX_STEREO, &stereoView);
-    glXGetConfig( display, vi, GLX_RGBA, &rgbaMode);
-    glXGetConfig( display, vi, GLX_STENCIL_SIZE, &stencilSize);
-    glXGetConfig( display, vi, GLX_ACCUM_RED_SIZE, &accumRedSize);
-    glXGetConfig( display, vi, GLX_ACCUM_GREEN_SIZE, &accumGreenSize);
-    glXGetConfig( display, vi, GLX_ACCUM_BLUE_SIZE, &accumBlueSize);
-    glXGetConfig( display, vi, GLX_ACCUM_ALPHA_SIZE, &accumAlphaSize);
-
-    fprintf(stderr, "\t doubleBuff: %d, ", dblBuffer);
-    fprintf(stderr, " stereo: %d, ", stereoView);
-    fprintf(stderr, " rgba: %d, ", rgbaMode);
-    fprintf(stderr, " stencilSize: %d !\n", stencilSize);
-    fprintf(stderr, "\t red accum: %d, ", accumRedSize);
-    fprintf(stderr, " green accum: %d, ", accumGreenSize);
-    fprintf(stderr, " blue accum: %d, ", accumBlueSize);
-    fprintf(stderr, " alpha accum: %d !\n", accumAlphaSize);
-
-    fflush(stderr);
+    printGLCapabilities ( &glCaps );
 }
 
 void LIBAPIENTRY printAllVisualInfo ( Display *disp, Window win, jboolean verbose)
@@ -423,45 +430,103 @@ void LIBAPIENTRY printAllVisualInfo ( Display *disp, Window win, jboolean verbos
 }
 
 int LIBAPIENTRY testVisualInfo ( Display *display, XVisualInfo * vi, 
-		            int dblBuffer, int stereoView, int rgbaMode, 
-			    int stencilSize, int accumSize)
+				 GLCapabilities *glCaps)
 {
-    int glxCfg;
+    GLCapabilities _glCaps;
+    setGLCapabilities ( display, vi, &_glCaps);
 
-    glXGetConfig( display, vi, GLX_DOUBLEBUFFER, &glxCfg);
-    if(glxCfg<dblBuffer) return 0;
+    if(_glCaps.buffer<glCaps->buffer) return 0;
 
-    glXGetConfig( display, vi, GLX_STEREO, &glxCfg);
-    if(glxCfg<stereoView) return 0;
+    if(_glCaps.color<glCaps->color) return 0;
 
-    glXGetConfig( display, vi, GLX_RGBA, &glxCfg);
-    if(glxCfg<rgbaMode) return 0;
+    if(_glCaps.stereo<glCaps->stereo) return 0;
 
-    glXGetConfig( display, vi, GLX_STENCIL_SIZE, &glxCfg);
-    if(glxCfg<stencilSize) return 0;
+    /*
+    if(_glCaps.depthBits<glCaps->depthBits) return 0;
+    */
 
-    glXGetConfig(display, vi, GLX_ACCUM_RED_SIZE, &glxCfg);
-    if(glxCfg<accumSize) return 0;
+    if(_glCaps.stencilBits<glCaps->stencilBits) return 0;
 
-    glXGetConfig(display, vi, GLX_ACCUM_GREEN_SIZE, &glxCfg);
-    if(glxCfg<accumSize) return 0;
+    /*
+    if(_glCaps.redBits<glCaps->redBits) return 0;
 
-    glXGetConfig(display, vi, GLX_ACCUM_BLUE_SIZE, &glxCfg);
-    if(glxCfg<accumSize) return 0;
+    if(_glCaps.greenBits<glCaps->greenBits) return 0;
 
-    if(rgbaMode>0) {
-	    glXGetConfig(display, vi, GLX_ACCUM_ALPHA_SIZE, &glxCfg);
-	    if(glxCfg<accumSize) return 0;
+    if(_glCaps.blueBits<glCaps->blueBits) return 0;
+    */
+
+    if(_glCaps.accumRedBits<glCaps->accumRedBits) return 0;
+
+    if(_glCaps.accumGreenBits<glCaps->accumGreenBits) return 0;
+
+    if(_glCaps.accumBlueBits<glCaps->accumBlueBits) return 0;
+
+    if(glCaps->color>0) {
+    	    /*
+	    if(_glCaps.alphaBits<glCaps->alphaBits) return 0;
+	    */
+	    if(_glCaps.accumAlphaBits<glCaps->accumAlphaBits) return 0;
     }
 
     return 1;
 }
 
 
+XVisualInfo * LIBAPIENTRY findVisualIdByID( XVisualInfo ** visualList, 
+					    int visualID, Display *disp,
+					    Window win, jboolean verbose)
+{
+    XVisualInfo    *    vi=0;
+    XVisualInfo    	viTemplate;
+    int 		i, numReturns;
+    XWindowAttributes 	xwa;
+    int 		done=0;
+
+    if(XGetWindowAttributes(disp, win, &xwa) == 0)
+    {
+	fprintf(stderr, "\nERROR while fetching XWindowAttributes\n");
+	fflush(stderr);
+	return 0;
+    }
+
+    viTemplate.screen = DefaultScreen( disp );
+    viTemplate.class = (xwa.visual)->class ;
+    viTemplate.depth = xwa.depth;
+
+    *visualList = XGetVisualInfo( disp, VisualScreenMask,
+	                          &viTemplate, &numReturns ); 
+
+    for(i=0; done==0 && i<numReturns; i++)
+    {
+        vi = &((*visualList)[i]);
+
+	if(vi->visualid==visualID)
+	{
+                if(JNI_TRUE==verbose)
+		{
+		    fprintf(stderr, "findVisualIdByID: Found matching Visual:\n");
+		    printVisualInfo ( disp, vi);
+		}
+		return vi;
+	}
+    }
+
+    if(JNI_TRUE==verbose)
+    {
+	    if( numReturns==0 )
+		fprintf(stderr, "findVisualIdByID: No available visuals. Exiting...\n" );
+	    else if( i>=numReturns )
+		fprintf(stderr, "findVisualIdByID: No matching visualID found ...\n" );
+	    fflush(stderr);
+    }
+     
+    XFree(*visualList);
+    *visualList=NULL;
+    return NULL;
+}
 XVisualInfo * LIBAPIENTRY findVisualIdByFeature( XVisualInfo ** visualList, 
                                   Display *disp, Window win,
-	                          int dblBuffer, int stereoView, int rgbaMode, 
-		                  int stencilSize, int accumSize,
+				  GLCapabilities *glCaps,
 				  jboolean verbose)
 {
     XVisualInfo    *    vi=0;
@@ -487,8 +552,7 @@ XVisualInfo * LIBAPIENTRY findVisualIdByFeature( XVisualInfo ** visualList,
     for(i=0; done==0 && i<numReturns; i++)
     {
         vi = &((*visualList)[i]);
-	if ( testVisualInfo ( disp, vi, dblBuffer, stereoView, rgbaMode, 
-			      stencilSize, accumSize) )
+	if ( testVisualInfo ( disp, vi, glCaps ) )
 	{
                 if(JNI_TRUE==verbose)
 		{
@@ -546,6 +610,86 @@ jboolean LIBAPIENTRY testX11Java()
     }
 
     return ret;
+}
+
+jboolean LIBAPIENTRY setGLCapabilities ( Display * disp, 
+                                 XVisualInfo * visual, GLCapabilities *glCaps)
+{
+    int iValue=0;
+    int iValue1=0;
+    int iValue2=0;
+    int iValue3=0;
+
+    if(glXGetConfig( disp, visual, GLX_DOUBLEBUFFER, &iValue)==0)
+    {
+	glCaps->buffer=iValue?BUFFER_DOUBLE:BUFFER_SINGLE;
+    } else {
+	fprintf(stderr,"GL4Java: fetching doubleBuffer state failed\n");
+	fflush(stderr);
+    }
+
+    if(glXGetConfig( disp, visual, GLX_RGBA, &iValue)==0)
+    {
+	glCaps->color=iValue?COLOR_RGBA:COLOR_INDEX;
+    } else {
+	fprintf(stderr,"GL4Java: fetching rgba state failed\n");
+	fflush(stderr);
+    }
+
+    if(glXGetConfig( disp, visual, GLX_STEREO, &iValue)==0)
+    {
+	glCaps->stereo=iValue?STEREO_ON:STEREO_OFF;
+    } else {
+	fprintf(stderr,"GL4Java: fetching stereoView state failed\n");
+	fflush(stderr);
+    }
+
+    if(glXGetConfig( disp, visual, GLX_DEPTH_SIZE, &iValue)==0)
+    {
+        glCaps->depthBits = iValue;
+    } else {
+	fprintf(stderr,"GL4Java: fetching depthBits state failed\n");
+	fflush(stderr);
+    }
+
+    if(glXGetConfig( disp, visual, GLX_STENCIL_SIZE, &iValue)==0)
+    {
+        glCaps->stencilBits = iValue;
+    } else {
+	fprintf(stderr,"GL4Java: fetching stencilBits state failed\n");
+	fflush(stderr);
+    }
+
+    if(glXGetConfig(disp,visual,GLX_RED_SIZE, &iValue)==0 &&
+       glXGetConfig(disp,visual,GLX_GREEN_SIZE, &iValue1)==0 &&
+       glXGetConfig(disp,visual,GLX_BLUE_SIZE, &iValue2)==0 &&
+       glXGetConfig(disp,visual,GLX_ALPHA_SIZE, &iValue3)==0 )
+    {
+        glCaps->redBits = iValue;
+        glCaps->greenBits= iValue1;
+        glCaps->blueBits= iValue2;
+        glCaps->alphaBits= iValue3;
+    } else {
+	fprintf(stderr,"GL4Java: fetching rgba Size states failed\n");
+	fflush(stderr);
+    }
+
+    if(glXGetConfig(disp,visual,GLX_ACCUM_RED_SIZE, &iValue)==0 &&
+       glXGetConfig(disp,visual,GLX_ACCUM_GREEN_SIZE, &iValue1)==0 &&
+       glXGetConfig(disp,visual,GLX_ACCUM_BLUE_SIZE, &iValue2)==0 &&
+       glXGetConfig(disp,visual,GLX_ACCUM_ALPHA_SIZE, &iValue3)==0 )
+    {
+        glCaps->accumRedBits = iValue;
+        glCaps->accumGreenBits= iValue1;
+        glCaps->accumBlueBits= iValue2;
+        glCaps->accumAlphaBits= iValue3;
+    } else {
+	fprintf(stderr,"GL4Java: fetching rgba AccumSize states failed\n");
+	fflush(stderr);
+    }
+    glCaps->nativeVisualID=(long)visual->visualid;
+
+    return JNI_TRUE;
 }
 
 

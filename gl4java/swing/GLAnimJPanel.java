@@ -24,6 +24,25 @@ import java.lang.Math;
  * <pre>
         <a href="../../GL4Java.html">The GL4Java Documentation</a>
  * </pre>
+ *
+ * <p>
+ * There are two ways of using a GLAnimJPanel: the {@link
+ * gl4java.GLEventListener} model or the subclassing model. Earlier
+ * versions of the system only supported the subclassing model. The
+ * default implementations of {@link #init}, {@link #display},
+ * {@link #reshape} and {@link #doCleanup}
+ * now send events to GLEventListeners; they can
+ * still be overridden as before to support the subclassing model.
+ *
+ * <p>
+ * If using the subclassing model, you should override the following
+ * methods for your needs:
+ * <pre>
+        <a href="GLAnimJPanel.html#init()">init - 1st initialisation</a>
+        <a href="GLAnimJPanel.html#display()">display - render one frame</a>
+        <a href="GLCanvas.html#reshape(int, int)">reshape - to reshape (window resize)</a>
+        <a href="GLAnimJPanel.html#ReInit()">ReInit - ReInitialisation after stop for setSuspended(false)</a>
+ * </pre>
  * <p>
  *
  * This code uses repaint() to fire a sDisplay call by the AWT-Event thread !
@@ -93,14 +112,6 @@ import java.lang.Math;
  * </pre>
  * Like the first animation run, this class renders a view frames (default 10)
  * to subtract the render time from the sleep time !
- * <p>
- * You should overwrite the following methods for your needs:
- * <pre>
-        <a href="GLAnimJPanel.html#init()">init - 1st initialisation</a>
-        <a href="GLAnimJPanel.html#display()">display - render one frame</a>
-        <a href="GLCanvas.html#reshape(int, int)">reshape - to reshape (window resize)</a>
-        <a href="GLAnimJPanel.html#ReInit()">ReInit - ReInitialisation after stop for setSuspended(false)</a>
- * </pre>
  *
  * @see gl4java.awt.GLCanvas
  * @version         2.0, 21. April 1999
@@ -231,53 +242,6 @@ public class GLAnimJPanel extends GLJPanel
 		setAnimateFps(FramesPerSec);
         }
 
-         /** 
-          *  init should be overwritten by you,
-          *  to enter your initialisation code
-          *
-          */
-        public void init() 
-        {
-                /* here we should add and initialize our JAVA components */
-
-                /* ... and furthet OpenGL init's - like you want to */
-
-                glj.gljCheckGL();
-
-                ReInit();
-
-                /* and start our working thread ... */
-                start();
-        }
-
-        /**
-         *
-         * This is the rendering-method called by sDisplay 
-         * (and sDisplay is called by paint, or by the thread directly !).
-         * The derived-class (Your Subclass) will redefine this, 
-         * to draw it's own animation !
-	 *
-         * <p>
-         *
-         * You should set shallWeRender here,
-         * to signalize the animation-loop 'run' to supsend
-         * <p>
-         * To restart the thread, just call setSuspended(false)
-         *
-         * @see gl4java.swing.GLAnimJPanel#shallWeRender
-         * @see gl4java.swing.GLAnimJPanel#run
-         * @see gl4java.swing.GLAnimJPanel#setSuspended
-         * @see gl4java.awt.GLAnimCanvas#sDisplay
-         * @see gl4java.awt.GLAnimCanvas#paint
-         */ 
-         public void display()
-         {
-		  int i;
-
-		  // ... just render it
-
-         }
-
         /**
          * ReInit should be overwritten by you,
          * to enter your re-initialisation within setSuspended(false) 
@@ -362,16 +326,6 @@ public class GLAnimJPanel extends GLJPanel
             notify();
         }
 
-        /**
-         * Should be set in display,
-         * whether to render or not while the animation loop
-         * <p>
-         * If shallWeRender is false,
-         * this thread will suspend !
-         *
-         * @see gl4java.swing.GLAnimJPanel#display
-         * @see gl4java.swing.GLAnimJPanel#run
-         */
         protected boolean shallWeRender = true;
 
 	private long _fDelay = 0;
@@ -383,7 +337,7 @@ public class GLAnimJPanel extends GLJPanel
           *  The running loop for animations
           *  which initiates the call of display
           *
-          * @see gl4java.swing.GLAnimJPanel#shallWeRender
+          * @see gl4java.swing.GLAnimJPanel#setSuspended
           * @see gl4java.swing.GLAnimJPanel#display
           */
         public void run() 
@@ -563,13 +517,13 @@ public class GLAnimJPanel extends GLJPanel
          * fot the getFps* methods
          * <p>
          * this function is called automatically by
-         * run, if the thread is suspended via shallWeRender
+         * run, if the thread is suspended via setSuspended
          * <p>
          * All data's are print out on System.out 
          * if verboseFps is set !
          *
          * @see gl4java.swing.GLAnimJPanel#run
-         * @see gl4java.swing.GLAnimJPanel#shallWeRender
+         * @see gl4java.swing.GLAnimJPanel#setSuspended
          * @see gl4java.swing.GLAnimJPanel#resetFpsCounter
          * @see gl4java.swing.GLAnimJPanel#stopFpsCounter
          * @see gl4java.swing.GLAnimJPanel#getFps
@@ -605,7 +559,7 @@ public class GLAnimJPanel extends GLJPanel
          * verboseFps is set to true by default !
          *
          * @see gl4java.swing.GLAnimJPanel#run
-         * @see gl4java.swing.GLAnimJPanel#shallWeRender
+         * @see gl4java.swing.GLAnimJPanel#setSuspended
          * @see gl4java.swing.GLAnimJPanel#resetFpsCounter
          * @see gl4java.swing.GLAnimJPanel#stopFpsCounter
          * @see gl4java.swing.GLAnimJPanel#getFps

@@ -28,6 +28,60 @@
 		typedef long PointerHolder;
 	#endif
 
+	  /* to match the GLCapabilities values .. */
+
+	  #define BUFFER_SINGLE 0
+	  #define BUFFER_DOUBLE 1
+	 
+	  #define COLOR_INDEX 0
+	  #define COLOR_RGBA  1
+	  
+	  #define STEREO_OFF 0
+	  #define STEREO_ON  1
+
+	  typedef struct {
+		  jint buffer;
+		  jint color;
+		  jint stereo;
+		  jint depthBits;
+		  jint stencilBits;
+
+		  jint redBits;
+		  jint greenBits;
+		  jint blueBits;
+		  jint alphaBits;
+		  jint accumRedBits;
+		  jint accumGreenBits;
+		  jint accumBlueBits;
+		  jint accumAlphaBits;
+
+		  jlong nativeVisualID;
+	  } GLCapabilities;
+		
+	/**
+	 * gets the capabilities outta java's GLCapabilities object 'capsObj'
+	 * and puts those values to the C-Struct GLCapabilities !
+	 */
+	LIBAPI jboolean LIBAPIENTRY javaGLCapabilities2NativeGLCapabilities 
+						     ( JNIEnv *env, 
+						       jobject capsObj, 
+						       GLCapabilities *glCaps );
+
+	/**
+	 * gets the capabilities outta the C-Struct GLCapabilities
+	 * and puts those values to java's GLCapabilities object 'capsObj'
+	 */
+	LIBAPI jboolean LIBAPIENTRY nativeGLCapabilities2JavaGLCapabilities 
+						     ( JNIEnv *env, 
+						       jobject capsObj, 
+						       GLCapabilities *glCaps );
+
+		
+	/**
+	 * prints the contents of the GLCapabilities to stdout !
+	 */
+	LIBAPI void LIBAPIENTRY printGLCapabilities ( GLCapabilities *glCaps );
+
 	/* testJavaGLTypes does important implementation plattformspecific checks:
 	 *
 	 * o do fit the JNI <-> GL Variables-Type Mapping 

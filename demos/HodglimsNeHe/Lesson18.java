@@ -458,6 +458,9 @@ public class Lesson18 extends Applet
     }
   }
   public static void main(String as[]) {
+		GLContext.gljNativeDebug = true;
+		GLContext.gljThreadDebug = false;
+		GLContext.gljClassDebug = true;
     Frame f=new Frame("Lesson18");
     Lesson18 a=new Lesson18();
     a.init();

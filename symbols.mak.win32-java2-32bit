@@ -19,6 +19,12 @@ JDK_HOME_w32		= D:\\java2
 JAVASHAREINC    	= $(JDK_HOME)/include
 JAVAOSINC  		= $(JDK_HOME)/include/win32
 
+JAR_DESTS		= //D/java2/jre/lib/ext \
+			  //D/jdk1.2.2/jre/lib/ext \
+			  //D/jre1.3.0/lib/ext \
+			  //D/jre1.3.0_01/lib/ext \
+			  //D/Programme/Netscape/Communicator/Program/java/classes
+
 CC			= gcc
 MKLIB 			= mklibs/mkslib.linux
 MKEXP 			= echo

@@ -27,7 +27,7 @@ javac -classpath ".:../capsapi_classes.zip" *.java
 . versionundef.sh
 
 rm -rf META-INF
-signtool -d . -e .class -k GL4JInst206a -Z GL4JInst_ns.jar -c9 --norecurse .
+signtool -d . -e .class -k GL4JInst206b -Z GL4JInst_ns.jar -c9 --norecurse .
 rm -rf META-INF
 
 rm -f key3.db cert7.db *.class

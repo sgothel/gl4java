@@ -6,9 +6,12 @@
 package gl4java.awt;
 
 import gl4java.*;
+import gl4java.drawable.*;
+import gl4java.drawable.utils.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.EventListener;
 
 /**
  * This is meant as an base class writing
@@ -25,7 +28,17 @@ import java.awt.event.*;
  * </pre>
  * <p>
  *
- * You should overwrite the following methods for your needs:
+ * There are two ways of using a GLCanvas: the {@link
+ * gl4java.drawable.GLEventListener} model or the subclassing model. Earlier
+ * versions of OpenGL for Java only supported the subclassing model.
+ * The default implementations of {@link #init}, {@link #display}, 
+ * {@link #reshape} and {@link #doCleanup} 
+ * now send events to GLEventListeners; they can
+ * still be overridden as before to support the subclassing model.
+ * 
+ * <p>
+ * If using the subclassing model, you should override the following
+ * methods for your needs:
  * <pre>
         <a href="GLCanvas.html#init()">preInit - initialisation before creating GLContext</a>
         <a href="GLCanvas.html#init()">init - 1st initialisation after creating GLContext</a>
@@ -65,11 +78,11 @@ import java.awt.event.*;
  * @see gl4java.awt.GLAnimCanvas
  * @version 	2.0, 21. April 1999
  * @author      Sven Goethel
- * 
- */
+ *  */
 public class GLCanvas extends Canvas
 	implements GLEnum, GLUEnum,
-		   ComponentListener, WindowListener, MouseListener
+		   ComponentListener, WindowListener, MouseListener,
+                   GLDrawable
 {
     protected GLContext glj = null;
     public GLFunc gl = null;
@@ -137,6 +150,8 @@ public class GLCanvas extends Canvas
     */
     protected boolean rgba = true;    
 
+    protected GLCapabilities capabilities = null;
+
    /**
     * Visual pre-set for RGBA usage, default: true - of course ;-)
     * This value is updated after a GLContext is created with the
@@ -155,9 +170,72 @@ public class GLCanvas extends Canvas
     */
     protected GLContext sharedGLContext;	
 
+    // The list of GLEventListeners
+    private GLEventListenerList listeners = new GLEventListenerList();
+
     static {
 	if(GLContext.loadNativeLibraries(null, null, null)==false)
 	  System.out.println("GLCanvas could not load def. native libs.");
+    }
+
+    /**
+     *
+     * Constructor
+     *
+     * @param width    	the canvas initial-prefered width
+     * @param height   	the canvas initial-prefered height
+     *
+     * @param gl_Name     The name of the GLFunc implementation
+     *                    If gl_Name==null, the default class will be used !
+     *
+     * @param glu_Name    The name of the GLUFunc implementation
+     *                    If gl_LibName==null, the default class will be used !
+     *
+     */
+    public GLCanvas(   GLCapabilities capabilities,
+                       int width, int height,
+     	               String gl_Name, 
+     	               String glu_Name
+		     )
+    {
+	super( );
+
+	this.capabilities=capabilities;
+
+	if( (gl=GLContext.createGLFunc(gl_Name)) ==null)
+	{
+	  System.out.println("GLFunc implementation "+gl_Name+" not created");
+	}
+	if( (glu=GLContext.createGLUFunc(glu_Name)) ==null)
+	{
+	  System.out.println("GLUFunc implementation "+glu_Name+" not created");
+	}
+
+	size = new Dimension(width, height);
+
+	setSize(size);
+
+    }
+
+    /**
+     *
+     * Constructor
+     *
+     * @param width    	the canvas initial-prefered width
+     * @param height   	the canvas initial-prefered height
+     *
+     * @param gl_Name     The name of the GLFunc implementation
+     *                    If gl_Name==null, the default class will be used !
+     *
+     * @param glu_Name    The name of the GLUFunc implementation
+     *                    If gl_LibName==null, the default class will be used !
+     *
+     */
+    public GLCanvas(   GLCapabilities capabilities,
+                       int width, int height
+		     )
+    {
+	this(capabilities, width, height, null, null);
     }
 
     /**
@@ -179,7 +257,50 @@ public class GLCanvas extends Canvas
      	               String glu_Name
 		     )
     {
-	super( );
+	this(null, width, height, gl_Name, glu_Name);
+    }
+
+    /**
+     *
+     * Constructor
+     *
+     * Uses the default GLFunc and GLUFunc implementation !
+     *
+     * @param width    	the canvas initial-prefered width
+     * @param height   	the canvas initial-prefered height
+     *
+     */
+    public GLCanvas( int width, int height )
+    {
+	this(width, height, null, null);
+    }
+
+    /**
+     *
+     * Constructor (JDK 1.2 or later)
+     *
+     * @param config    the GraphicsConfiguration for this canvas (>= JDK 1.2)
+     *
+     * @param width    	the canvas initial-prefered width
+     * @param height   	the canvas initial-prefered height
+     *
+     * @param gl_Name     The name of the GLFunc implementation
+     *                    If gl_Name==null, the default class will be used !
+     *
+     * @param glu_Name    The name of the GLUFunc implementation
+     *                    If gl_LibName==null, the default class will be used !
+     *
+     */
+    public GLCanvas( GraphicsConfiguration config,
+                     GLCapabilities capabilities,
+                     int width, int height,
+     	             String gl_Name, 
+     	             String glu_Name
+		   )
+    {
+	super( config );
+
+	this.capabilities=capabilities;
 
 	if( (gl=GLContext.createGLFunc(gl_Name)) ==null)
 	{
@@ -198,17 +319,21 @@ public class GLCanvas extends Canvas
 
     /**
      *
-     * Constructor
+     * Constructor (JDK 1.2 or later)
      *
      * Uses the default GLFunc and GLUFunc implementation !
+     *
+     * @param config    the GraphicsConfiguration for this canvas (>= JDK 1.2)
      *
      * @param width    	the canvas initial-prefered width
      * @param height   	the canvas initial-prefered height
      *
      */
-    public GLCanvas( int width, int height )
+    public GLCanvas( GraphicsConfiguration config,
+                     GLCapabilities capabilities,
+                     int width, int height )
     {
-	this(width, height, null, null);
+	this(config, capabilities, width, height, null, null);
     }
 
     /* GLCanvas AWT classes */
@@ -295,11 +420,18 @@ public class GLCanvas extends Canvas
 
 		if(glj!=null) glj=null;
 
-	        glj = new GLContext ( this, gl, glu, 
-                                      createOwnWindow,
-		                      doubleBuffer, stereoView,
-				      rgba, stencilBits, accumSize,
-				      sharedGLContext );
+                if (capabilities != null )
+		{
+	            glj = new GLContext ( this, gl, glu, 
+                                          capabilities,
+				          sharedGLContext );
+		} else {
+	            glj = new GLContext ( this, gl, glu, 
+                                          createOwnWindow,
+		                          doubleBuffer, stereoView,
+				          rgba, stencilBits, accumSize,
+				          sharedGLContext );
+		}
 
 		if(glj!=null)
 		{
@@ -344,6 +476,9 @@ public class GLCanvas extends Canvas
 		/* to be able for RESIZE event's */
 		addComponentListener(this);
 		addMouseListener(this);
+
+		/* force a reshape, to be sure .. */
+	        mustResize = true;
 	} 
 		   
 	sDisplay();
@@ -371,17 +506,23 @@ public class GLCanvas extends Canvas
 
     /**
      *
-     * This is your init method.
      * init is called right after the GL-Context is initialized.
-     * You should override init, to initialize your stuff needed
-     * by OpenGL an Java !
+     * The default implementation calls init() on all of this
+     * component's GLEventListeners.
+     *     
+     * <p>
+     * If using the subclassing model, you can override this to
+     * perform one-time OpenGL initializations such as setting up
+     * lights and display lists.
      *
      * @return 		void
      *
-     * @see	gl4java.awt.GLCanvas#paint
-     */ 
+     * @see gl4java.awt.GLCanvas#paint 
+     * @see gl4java.drawable.GLEventListener#init
+     */
     public void init()
     {
+        listeners.sendInitEvent(this);
     }
 
     /**
@@ -394,9 +535,11 @@ public class GLCanvas extends Canvas
      * @return 		void
      *
      * @see	gl4java.awt.GLCanvas#cvsDispose
+     * @see gl4java.drawable.GLEventListener#cleanup
      */
     public void doCleanup()
     {
+        listeners.sendCleanupEvent(this);
     }
 
     /**
@@ -427,7 +570,7 @@ public class GLCanvas extends Canvas
      * @return 	boolean
      *
      * @see     gl4java.awt.GLCanvas#cvsDispose
-     * @see     gl4java.GLContext#setEnable
+     * @see     gl4java.GLContext#setEnabled
      * @see     gl4java.GLContext#gljMakeCurrent
      * @see     gl4java.GLContext#gljDestroy
      * @see     gl4java.GLContext#gljFree
@@ -452,7 +595,7 @@ public class GLCanvas extends Canvas
      * @return 	boolean
      *
      * @see     gl4java.awt.GLCanvas#cvsDispose
-     * @see     gl4java.GLContext#setEnable
+     * @see     gl4java.GLContext#setEnabled
      * @see     gl4java.GLContext#gljMakeCurrent
      * @see     gl4java.GLContext#gljDestroy
      * @see     gl4java.GLContext#gljFree
@@ -505,8 +648,6 @@ public class GLCanvas extends Canvas
     {
         boolean ok = true;
 
-	long _s = System.currentTimeMillis();
-
 	if(!cvsIsInit())
 	{
 		return;
@@ -525,6 +666,9 @@ public class GLCanvas extends Canvas
 		glj.gljFree();
 	    }
 	}
+
+	long _s = System.currentTimeMillis();
+
 	if(ok) 
 	{
 	        display();
@@ -537,11 +681,39 @@ public class GLCanvas extends Canvas
      *
      * This is the rendering-method called by sDisplay 
      * (and sDisplay is called by paint !).
-     * The derived-class (Your Subclass) will redefine this, to draw it's own...
      *
      * <p>
+     * The default implementation of display() sends 
+     * preDisplay, display and postDisplay events to
+     * all {@link gl4java.GLEventListener}s associated with this
+     * GLCanvas in the above order.
      *
-     * You MUST encapsulate your OpenGL call's within:
+     * <p>
+     * <pre>
+        reset timer for frame duration (done by sDisplay)
+
+     	for_all(gl4java.GLEventListener)
+		SEND preDisplay
+
+	if( gljMakeCurrent() )
+	{
+		for_all(gl4java.GLEventListener)
+			SEND display
+		gljFree()
+		gljSwap()
+
+		for_all(gl4java.GLEventListener)
+			SEND postDisplay
+	}
+
+        stop timer for frame duration (done by sDisplay)
+     * </pre>
+     *
+     * <p>
+     * If you use the subclassing model (as opposed to the
+     * GLEventListener model), your subclass will redefine this to
+     * perform its OpenGL drawing. In this case you MUST encapsulate
+     * your OpenGL calls within:
      * <pre>
     	- glj.gljMakeCurrent()
 		YOUR OpenGL commands here !
@@ -560,39 +732,58 @@ public class GLCanvas extends Canvas
      * @see gl4java.awt.GLCanvas#sDisplay
      * @see gl4java.awt.GLCanvas#paint
      * @see gl4java.GLContext#gljMakeCurrent
-     * @see gl4java.GLContext#gljSwap
-     */ 
+     * @see gl4java.GLContext#gljSwap 
+     * @see gl4java.drawable.GLEventListener#preDisplay
+     * @see gl4java.drawable.GLEventListener#display
+     * @see gl4java.drawable.GLEventListener#postDisplay
+     */
     public void display()
     {
+        listeners.sendPreDisplayEvent(this);
+
+        if (glj.gljMakeCurrent()) {
+            listeners.sendDisplayEvent(this);
+
+	    glj.gljSwap();
+            glj.gljCheckGL();
+            glj.gljFree();
+
+            listeners.sendPostDisplayEvent(this);
+        }
+
     }
 
     /**
      *
-     * This is the reshape-method called by paint. 
-     * The derived-class (Your Subclass) will redefine this, 
-     * to manage your individual reshape ...
-     *
      * This ´reshape´ method will be invoked after the first paint command
-     * after GLCanvas.componentResize is called AND only if ´gljUse´ was
-     * succesfull (so a call of gljUse is redundant).
+     * after GLCanvas.componentResize is called AND only if ´gljMakeCurrent´ was
+     * successful (so a call of gljMakeCurrent is redundant).
      * ´reshape´ is not an overloading of java.awt.Component.reshape,
      * ´reshape´ is more like ´glut´-reshape.
      * 
-     * GLCanvas.reshape allready has a simple default implementation,
-     * which calls ´gljResize´ and ´glViewport´ - so you may be can
-     * left this one as it is (no need to overload).
-     * The needed call to ´gljResize´ is done by hte invoker paint !
+     * <p>
+     * GLCanvas.reshape already has a simple default implementation,
+     * which calls ´gljResize´ and ´glViewport´. It also sends the
+     * reshape() event to all GLEventListeners. If using the
+     * GLEventListener model, it may not be necessary to do anything
+     * in your event listener's reshape() method; if using the
+     * subclassing model, it may not be necessary to override this.
+     *
+     * <p>
+     * The needed call to ´gljResize´ is done by the invoker paint !
      *
      * @param width		the new width
      * @param height	the new height
      * @return 		void
      *
      * @see gl4java.awt.GLCanvas#paint
-     * @see gl4java.awt.GLCanvas#sDisplay
-     */ 
+     * @see gl4java.awt.GLCanvas#sDisplay 
+     * @see gl4java.drawable.GLEventListener#reshape
+     */
     public void reshape( int width, int height )
     {
 	gl.glViewport(0,0, width, height);
+        listeners.sendReshapeEvent(this, width, height);
     }
 
     /**
@@ -810,5 +1001,63 @@ public class GLCanvas extends Canvas
     public final int cvsGetHeight() {
         return getSize().height;
      }
-}
 
+    //----------------------------------------------------------------------
+    // Implementation of GLDrawable
+    //
+
+    public void addGLEventListener(GLEventListener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeGLEventListener(GLEventListener listener) {
+        listeners.remove(listener);
+    }
+
+    public EventListener[] getListeners(Class listenerType) 
+    	throws ClassCastException
+    {
+	EventListener[] evtlst=null;
+        Class _GLEventListener = null;
+
+	try {
+           _GLEventListener = Class.forName("gl4java.drawable.GLEventListener");
+	} catch (Exception ex) {
+	   System.out.println(ex);
+	}
+
+        if (_GLEventListener!=null &&
+	    listenerType.isAssignableFrom(_GLEventListener) )
+        	evtlst = listeners.getListeners();
+
+	EventListener[] t_evtlst = super.getListeners(listenerType);
+
+	if(t_evtlst==null || t_evtlst.length==0)
+		return evtlst;
+
+	if(evtlst==null || evtlst.length==0)
+		return t_evtlst;
+
+	EventListener[] n_evtlst = 
+		new EventListener[t_evtlst.length+evtlst.length];
+
+	try {
+	  System.arraycopy(evtlst, 0, n_evtlst, 0, evtlst.length);
+	  System.arraycopy(t_evtlst, 0, n_evtlst, evtlst.length, t_evtlst.length);
+	} catch (Exception ex)
+	{ System.out.println(ex); }
+
+	evtlst = null;
+	t_evtlst = null;
+
+	return n_evtlst;
+    }
+
+    public GLFunc getGL() {
+        return gl;
+    }
+
+    public GLUFunc getGLU() {
+        return glu;
+    }
+}
