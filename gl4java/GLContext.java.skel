@@ -812,6 +812,20 @@ public class GLContext extends Object
 	     AccessController.doPrivileged(new PrivilegedAction() {
 	      public Object run() 
 	      {
+		/* Try to load jawt.dll ahead of time to prevent
+		   problems on Sun JDK 1.3 and greater. Loading the
+		   version of the native library which uses JAWT
+		   causes run-time link errors if jre/lib/<arch> or
+		   jre/bin are not in $PATH. A more clean solution
+		   might be to explicitly look up the JAWT functions,
+		   but that would require looking up the full path to
+		   libjawt.so/jawt.dll, which is a pain as it's
+		   automatically done by the JDK's libraries. */
+		try {
+		    System.loadLibrary("jawt");
+		} catch (UnsatisfiedLinkError e) {
+		}
+
 		/* load libs */
 		int libNumber = 0;
 		String _libName = null ;
