@@ -449,9 +449,13 @@ public class GLCanvas extends Canvas
         context handling by calling {@link
         #setAWTThreadRenderingEnabled} and {@link
         #setAutoMakeContextCurrent} with the given boolean. */
-    public void optimizeContextHandling(boolean yesOrNo) {
+    public void setOptimizeContextHandling(boolean yesOrNo) {
         setAWTThreadRenderingEnabled(yesOrNo);
         setAutoMakeContextCurrent(yesOrNo);
+    }
+
+    public boolean getOptimizeContextHandling() {
+        return getAWTThreadRenderingEnabled() || getAutoMakeContextCurrent();
     }
 
     /**
@@ -804,7 +808,7 @@ public class GLCanvas extends Canvas
 
 	if( mustResize )
 	{
-            if (getAutoMakeContextCurrent() && getAWTThreadRenderingEnabled()) {
+            if (getAutoMakeContextCurrent()) {
               if( glj.gljMakeCurrent() == true )
                 {
                   size = getSize();
@@ -815,28 +819,17 @@ public class GLCanvas extends Canvas
                   repaint(100);
                   glj.gljFree();
                 }
-            } else if (getAutoMakeContextCurrent()) {
-              if( glj.gljMakeCurrent() == true )
-                {
-                  size = getSize();
-                  glj.gljResize( size.width, size.height ) ;
-                  reshape(size.width, size.height);
-                  mustResize = false;
-                  invalidate();
-                  repaint(100);
-                  glj.gljFree();
-                }
-            } else if (getAWTThreadRenderingEnabled()) {
-              size = getSize();
-              glj.gljResize( size.width, size.height ) ;
-              reshape(size.width, size.height);
-              mustResize = false;
-              invalidate();
-              repaint(100);
             } else {
               size = getSize();
               glj.gljResize( size.width, size.height ) ;
+              if (getAWTThreadRenderingEnabled()) {
+                  reshape(size.width, size.height);
+              }
               mustResize = false;
+              if (getAWTThreadRenderingEnabled()) {
+                  invalidate();
+                  repaint(100);
+              }
             }
 	}
 
