@@ -173,6 +173,24 @@ public class GLCanvas extends Canvas
     // The list of GLEventListeners
     private GLEventListenerList listeners = new GLEventListenerList();
 
+    // Indicates whether init() has been called yet.
+    private volatile boolean initCalled = false;
+
+    // Indicates whether the canvas will permit any calls to init() or
+    // display() from within the paint() method; defaults to true for
+    // backward compatibility.
+    private boolean enableAWTThreadRendering = true;
+
+    // Indicates whether display() automatically makes the canvas's
+    // GLContext current and frees it each call; defaults to true for
+    // backward compatibility. On higher-end graphics cards it is
+    // important to minimize the number of "make current" calls even
+    // across frames; a GLAnimCanvas running in its own thread, and
+    // with AWT thread rendering disabled, will only make its
+    // associated context current once, at the beginning of its
+    // rendering loop.
+    private boolean autoMakeContextCurrent = true;
+
     static {
 	if(GLContext.doLoadNativeLibraries(null, null, null)==false)
 	  System.out.println("GLCanvas could not load def. native libs.");
@@ -385,6 +403,57 @@ public class GLCanvas extends Canvas
     public final Window getTopLevelWindow()
     { return topLevelWindow; }
 
+    /** Enables/disables calls to init() and display() from within the
+        AWT thread. If this is enabled (the default, for backward
+        compatibility with earlier releases), the first call to
+        paint() from within the AWT thread (typically prompted by a
+        repaint()) will cause the canvas to be initialized, and
+        subsequent calls to paint() will cause display() to be called.
+        If AWT thread rendering is disabled, the AWT thread will not
+        cause init() or display() to be called if repaint() is called,
+        and the first call to display() will cause the canvas to be
+        initialized. This function is present both to work around bugs
+        in certain vendors' drivers which do not function properly in
+        multithreaded settings, and to allow improved performance of
+        GLAnimCanvas. */
+    public void setAWTThreadRenderingEnabled(boolean val) {
+      enableAWTThreadRendering = val;
+    }
+
+    /** Indicates whether AWT thread rendering is enabled; see {@link
+        #setAWTThreadRenderingEnabled}. */
+    public boolean getAWTThreadRenderingEnabled() {
+      return enableAWTThreadRendering;
+    }
+    
+    /** Indicates whether the canvas automatically makes its
+        underlying GLContext current and frees it during each call to
+        display(); defaults to true for backward compatibility. On
+        higher-end graphics cards it is important to minimize the
+        number of "make current" calls even across frames; a
+        GLAnimCanvas running in its own thread and with AWT thread
+        rendering disabled will only make its associated context
+        current once, at the beginning of its rendering loop. */
+    public void setAutoMakeContextCurrent(boolean val) {
+      autoMakeContextCurrent = val;
+    }
+
+    /** Indicates whether the canvas automatically makes its
+        underlying GLContext current and frees it during each call to
+        display(); see {@link #setAutoMakeContextCurrent}. */
+    public boolean getAutoMakeContextCurrent() {
+      return autoMakeContextCurrent;
+    }
+
+    /** Convenience routine which Enables or disables optimized
+        context handling by calling {@link
+        #setAWTThreadRenderingEnabled} and {@link
+        #setAutoMakeContextCurrent} with the given boolean. */
+    public void optimizeContextHandling(boolean yesOrNo) {
+        setAWTThreadRenderingEnabled(yesOrNo);
+        setAutoMakeContextCurrent(yesOrNo);
+    }
+
     /**
      * this function overrides the Canvas paint method !
      *
@@ -448,7 +517,10 @@ public class GLCanvas extends Canvas
 		                (float)col.getGreen()/255.0f, 
 		                (float)col.getBlue()/255.0f, 0.0f);
 
-		init();
+                if (getAWTThreadRenderingEnabled()) {
+                  init();
+                  initCalled = true;
+                }
 
 		// fetch the top-level window ,
 		// to add us as the windowListener
@@ -484,9 +556,14 @@ public class GLCanvas extends Canvas
 
 		/* force a reshape, to be sure .. */
 	        mustResize = true;
+
+                // Free up the OpenGL context for another thread to use
+                glj.gljFree();
 	} 
-		   
-	sDisplay();
+
+        if (getAWTThreadRenderingEnabled()) {
+          sDisplay();
+        }
     }
 
     /**
@@ -651,33 +728,9 @@ public class GLCanvas extends Canvas
      */ 
     public synchronized final void sDisplay()
     {
-        boolean ok = true;
-
-	if(!cvsIsInit())
-	{
-		return;
-	}
-
-	if( mustResize )
-	{
-	    if( glj.gljMakeCurrent() == true )
-	    {
-		size = getSize();
-		glj.gljResize( size.width, size.height ) ;
-	        reshape(size.width, size.height);
-		mustResize = false;
-		invalidate();
-		repaint(100);
-		glj.gljFree();
-	    }
-	}
-
 	long _s = System.currentTimeMillis();
 
-	if(ok) 
-	{
-	        display();
-	}
+        display();
 
 	_f_dur = System.currentTimeMillis()-_s;
     }
@@ -744,9 +797,60 @@ public class GLCanvas extends Canvas
      */
     public void display()
     {
+	if(!cvsIsInit())
+	{
+		return;
+	}
+
+	if( mustResize )
+	{
+            if (getAutoMakeContextCurrent() && getAWTThreadRenderingEnabled()) {
+              if( glj.gljMakeCurrent() == true )
+                {
+                  size = getSize();
+                  glj.gljResize( size.width, size.height ) ;
+                  reshape(size.width, size.height);
+                  mustResize = false;
+                  invalidate();
+                  repaint(100);
+                  glj.gljFree();
+                }
+            } else if (getAutoMakeContextCurrent()) {
+              if( glj.gljMakeCurrent() == true )
+                {
+                  size = getSize();
+                  glj.gljResize( size.width, size.height ) ;
+                  reshape(size.width, size.height);
+                  mustResize = false;
+                  invalidate();
+                  repaint(100);
+                  glj.gljFree();
+                }
+            } else if (getAWTThreadRenderingEnabled()) {
+              size = getSize();
+              glj.gljResize( size.width, size.height ) ;
+              reshape(size.width, size.height);
+              mustResize = false;
+              invalidate();
+              repaint(100);
+            } else {
+              size = getSize();
+              glj.gljResize( size.width, size.height ) ;
+              mustResize = false;
+            }
+	}
+
+        if (!getAWTThreadRenderingEnabled()) {
+          if (!initCalled) {
+            init();
+            initCalled = true;
+          }
+        }
+
         listeners.sendPreDisplayEvent(this);
 
-        if (glj.gljMakeCurrent()) {
+        if (getAutoMakeContextCurrent()) {
+          if (glj.gljMakeCurrent()) {
             listeners.sendDisplayEvent(this);
 
 	    glj.gljSwap();
@@ -754,8 +858,13 @@ public class GLCanvas extends Canvas
             glj.gljFree();
 
             listeners.sendPostDisplayEvent(this);
+          }
+        } else {
+            listeners.sendDisplayEvent(this);
+	    glj.gljSwap();
+            glj.gljCheckGL();
+            listeners.sendPostDisplayEvent(this);
         }
-
     }
 
     /**

@@ -290,6 +290,10 @@ public class GLAnimCanvas extends GLCanvas
 
         protected boolean useFpsSleep = true;
 
+        protected boolean useYield = true;
+
+        protected boolean useSDisplay = true;
+
         /**
          * The normal behavior is to use 'repaint'
          * within the AWT-Event Thread to render.
@@ -328,6 +332,19 @@ public class GLAnimCanvas extends GLCanvas
 	     useFpsSleep = b;
         }
 
+        /** If useFpsSleep is disabled, the library still performs a
+            Thread.yield() automatically -- use this to disable this */
+        public void setUseYield(boolean b) {
+          useYield = b;
+        }
+
+        /** The default behavior, if not using repaints, is to call
+            sDisplay() in the thread's main loop; set this to false to
+            call display() directly. */
+        public void setUseSDisplay(boolean val) {
+          useSDisplay = val;
+        }
+
         public boolean getUseRepaint()
         {
                 return useRepaint;
@@ -336,6 +353,16 @@ public class GLAnimCanvas extends GLCanvas
         public boolean getUseFpsSleep()
         {
                 return useFpsSleep;
+        }
+
+        public boolean getUseYield()
+        {
+                return useYield;
+        }
+
+        public boolean getUseSDisplay()
+        {
+                return useSDisplay;
         }
 
          /** 
@@ -401,6 +428,11 @@ public class GLAnimCanvas extends GLCanvas
 
 	    isRunning = true;
 
+            boolean firstRender = true;
+
+            int numInitRetries = 1;
+            int numMakeCurrentRetries = 1;
+
 	    synchronized (this) {
 	    	globalThreadNumber++;
 	    }
@@ -409,13 +441,37 @@ public class GLAnimCanvas extends GLCanvas
             {
 		  if(cvsIsInit())
 		  {
+                    if (firstRender) {
+                      if (!getAutoMakeContextCurrent()) {
+                        synchronized (this) {
+                          if (!glj.gljMakeCurrent()) {
+                            System.err.println("Error making context current (" +
+                                               numMakeCurrentRetries + ")...");
+                            ++numMakeCurrentRetries;
+                            try {
+                              Thread.currentThread().sleep(100);
+                            } catch (Exception e) {
+                            }
+                            continue;
+                          }
+                        }
+                        System.err.println("Context made current in AnimCanvas's thread");
+                      }
+                      firstRender = false;
+                    }
+
 			  /* DRAW THE TINGS .. */
 			  if (shallWeRender) 
 			  {
 			      if(useRepaint)
 				      repaint();
-			      else 
-				      sDisplay();
+			      else { 
+                                if (useSDisplay) {
+                                  sDisplay();
+                                } else {
+                                  display();
+                                }
+                              }
 			  } else {
                               synchronized (this) {
 				      threadSuspended=true;
@@ -425,7 +481,15 @@ public class GLAnimCanvas extends GLCanvas
 			  if(fps_isCounting) 
 				fps_frames++; 
 
-		  }
+		  } else {
+                    System.err.println("Waiting for canvas to initialize (" +
+                                       numInitRetries + ")...");
+                    ++numInitRetries;
+                    try {
+                      Thread.currentThread().sleep(100);
+                    } catch (Exception e) {
+                    }
+                  }
 
 		  try {
 		       if(useFpsSleep)
@@ -446,7 +510,9 @@ public class GLAnimCanvas extends GLCanvas
 
                           Thread.currentThread().sleep(dFpsMilli, 0 );
                        } else {
-		          Thread.yield();
+                         if (useYield) {
+                           Thread.yield();
+                         }
 		       }
 
                        if (threadSuspended) {
@@ -460,8 +526,10 @@ public class GLAnimCanvas extends GLCanvas
 	          {}
             }
 
-	    if(glj!=null)
-		    glj.gljFree(); // just to be sure ..
+            if (getAutoMakeContextCurrent()) {
+              if(glj!=null)
+                glj.gljFree(); // just to be sure ..
+            }
 
 	    synchronized (this) {
 	    	globalThreadNumber--;
