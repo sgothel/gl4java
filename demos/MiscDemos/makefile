@@ -44,7 +44,8 @@ JAVA13_CLASSES = ${JAVA13_SOURCES:.java=.class})
 
 ifdef JAVAC_14
 	JAVA14_SOURCES = \
-		gearsFullScreen.java 
+		gearsFullScreen.java \
+		ScreenResSelector.java
 	JAVA14_CLASSES = ${JAVA14_SOURCES:.java=.class})
 	HAVE_JAVAC_14     = 1
 else
@@ -53,7 +54,7 @@ else
 endif
 
 all: cleanup $(JAVA13_CLASSES) $(JAVA14_CLASSES)
-	
+
 $(JAVA13_CLASSES)       : $(JAVA13_SOURCES)
 	$(JAVAC_13) -O -deprecation $^ | tee -a errors
 

@@ -28,6 +28,7 @@ public class SimpleGLAnimApplet1 extends Applet
     public Checkbox checkUseFpsSleep = null;
     public Checkbox checkUseYield = null;
     public Button buttonReStart = null;
+    public Button buttonQuit = null;
     
 
     Frame fInfo = null;
@@ -62,6 +63,9 @@ public class SimpleGLAnimApplet1 extends Applet
 	checkUseYield = new Checkbox("yield", true);
 	pan.add(checkUseYield);
 
+        buttonQuit = new Button("Quit");
+        pan.add(buttonQuit);
+
 	add("South",pan);
     }
 
@@ -86,6 +90,7 @@ public class SimpleGLAnimApplet1 extends Applet
 	checkUseYield.addItemListener(this);
 	buttonReStart.addActionListener(this);
 	buttonFps.addActionListener(this);
+	buttonQuit.addActionListener(this);
         canvas.addMouseListener(this);
 	textFps.addActionListener(this);
 
@@ -105,6 +110,7 @@ public class SimpleGLAnimApplet1 extends Applet
 	checkUseYield.removeItemListener(this);
 	buttonReStart.removeActionListener(this);
 	buttonFps.removeActionListener(this);
+	buttonQuit.removeActionListener(this);
         canvas.removeMouseListener(this);
 
         canvas.cvsDispose();
@@ -274,7 +280,9 @@ public class SimpleGLAnimApplet1 extends Applet
 	else if( canvas!=null && source.equals(buttonReStart) )
 	{
 		canvas.setSuspended(!canvas.isSuspended(), false);
-	}
+	} else if (source.equals(buttonQuit)) {
+          System.exit(0);
+        }
     }
 
 	public void windowOpened(WindowEvent e)

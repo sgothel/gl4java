@@ -17,199 +17,193 @@ import gl4java.awt.GLAnimCanvas;
 import gl4java.applet.SimpleGLAnimApplet1;
 
 public class gearsFullScreen extends SimpleGLAnimApplet1 
-    implements MouseListener
+  implements MouseListener
 {
 
-        /* Initialize the applet */
-	public void init()
-	{
-	  init(false);
-	}
+  /* Initialize the applet */
+  public void init() {
+    init(false);
+  }
 
-	public void init(boolean showGL)
-	{
-	super.init();
+  public void init(boolean showGL) {
+    super.init();
 
-        Dimension d = getSize();
+    Dimension d = getSize();
 
-        GLCapabilities caps = new GLCapabilities();
+    GLCapabilities caps = new GLCapabilities();
 
-        canvas =
-            GLDrawableFactory.getFactory().createGLAnimCanvas(caps, d.width, d.height);
+    canvas =
+      GLDrawableFactory.getFactory().createGLAnimCanvas(caps, d.width, d.height);
 
-        gearRenderer gear = new gearRenderer(showGL);
-        canvas.addGLEventListener(gear);
+    gearRenderer gear = new gearRenderer(showGL);
+    canvas.addGLEventListener(gear);
 
-        add("Center", canvas);
-        addMouseListener(this);
-	}
+    add("Center", canvas);
+    addMouseListener(this);
+  }
 
-	public void destroy()
-	{
-            removeMouseListener(this);
-	    super.destroy();
-	}
+  public void destroy() {
+    removeMouseListener(this);
+    super.destroy();
+  }
 
 
-	public static void main( String args[] ) 
-	{
-		int i = 0;
-		String gljLib = null;
-		String glLib = null;
-		String gluLib = null;
-		boolean perftest=false;
+  public static void main(String args[]) {
+    int i = 0;
+    String gljLib = null;
+    String glLib = null;
+    String gluLib = null;
+    boolean perftest=false;
 
-	        GLContext.gljNativeDebug = false;
-	        GLContext.gljClassDebug = false;
-	        GLContext.gljThreadDebug = false;
+    GLContext.gljNativeDebug = false;
+    GLContext.gljClassDebug = false;
+    GLContext.gljThreadDebug = false;
 
-		while(args.length>i)
-		{
-			if(args[i].equals("-perftest"))
-			{
-				perftest=true;
-			} else if(args[i].equals("-gljLib"))
-			{
-				i++;
-				if(args.length>i)
-					gljLib=args[i];
-			} else if(args[i].equals("-glLib"))
-			{
-				i++;
-				if(args.length>i)
-					glLib=args[i];
-			} else if(args[i].equals("-gluLib"))
-			{
-				i++;
-				if(args.length>i)
-					gluLib=args[i];
-			} else {
-			  System.out.println("illegal arg "+i+": "+args[i]);
-			}
-			i++;
-		}
+    while(args.length > i) {
+      if(args[i].equals("-perftest")) {
+        perftest=true;
+      } else if(args[i].equals("-gljLib")) {
+        i++;
+        if(args.length>i)
+          gljLib=args[i];
+      } else if(args[i].equals("-glLib")) {
+        i++;
+        if(args.length>i)
+          glLib=args[i];
+      } else if(args[i].equals("-gluLib")) {
+        i++;
+        if(args.length>i)
+          gluLib=args[i];
+      } else {
+        System.out.println("illegal arg "+i+": "+args[i]);
+      }
+      i++;
+    }
 
-		if(perftest)
-		{
-			GLContext.gljNativeDebug = false;
-			GLContext.gljThreadDebug = false;
-			GLContext.gljClassDebug = false;
-		}
+    if(perftest) {
+      GLContext.gljNativeDebug = false;
+      GLContext.gljThreadDebug = false;
+      GLContext.gljClassDebug = false;
+    }
 
-		if(perftest)
-			GLContext.gljClassDebug=true;
-		GLContext.doLoadNativeLibraries(gljLib, glLib, gluLib);
-		if(perftest)
-			GLContext.gljClassDebug=false;
+    if(perftest)
+      GLContext.gljClassDebug=true;
+    GLContext.doLoadNativeLibraries(gljLib, glLib, gluLib);
+    if(perftest)
+      GLContext.gljClassDebug=false;
 
-	        GraphicsEnvironment env = 
-			GraphicsEnvironment.getLocalGraphicsEnvironment();
-	        GraphicsDevice device = env.getDefaultScreenDevice();
-		Frame mainFrame = null;
+    GraphicsEnvironment env = 
+      GraphicsEnvironment.getLocalGraphicsEnvironment();
+    final GraphicsDevice device = env.getDefaultScreenDevice();
+    Frame mainFrame = null;
+    final DisplayMode origMode = device.getDisplayMode();
+    DisplayMode newMode = null;
+    int initWidth = 400;
+    int initHeight = 300;
 
-		System.out.println("isFullScreenSupported: "+
-			device.isFullScreenSupported() );
+    System.out.println("isFullScreenSupported: " +
+                       device.isFullScreenSupported());
 
-		try {
-		        GraphicsConfiguration gc ;
-			gl4java.drawable.GLDrawableFactory df =
-				gl4java.drawable.GLDrawableFactory.getFactory();
-		 
-			if(df instanceof gl4java.drawable.SunJDK13GLDrawableFactory)
-			{
-			    GLCapabilities glCaps = new GLCapabilities();
-			    gl4java.drawable.SunJDK13GLDrawableFactory sdf =
-			      (gl4java.drawable.SunJDK13GLDrawableFactory)df;
+    if (device.isFullScreenSupported()) {
+      newMode = ScreenResSelector.showSelectionDialog();
+      if (newMode != null) {
+        initWidth = newMode.getWidth();
+        initHeight = newMode.getHeight();
+      }
+    }
 
-			    gc = sdf.getGraphicsConfiguration(glCaps, device);	
-			} else {
-		            gc = device.getDefaultConfiguration();
-			}
+    try {
+      mainFrame = new Frame();
+      gearsFullScreen applet = new gearsFullScreen();
+      mainFrame.add(applet);
 
-		        mainFrame = new Frame(gc);
+      if (device.isFullScreenSupported()) {
+        mainFrame.setUndecorated(true);
+      }
 
-		        gearsFullScreen applet = new gearsFullScreen();
-        		mainFrame.add(applet);
-        		applet.setSize(400,500);
-        		applet.init();
+      applet.init();
+      if(perftest) {
+          applet.canvas.setUseFpsSleep(false);
+          applet.canvas.setUseRepaint(false);
+          applet.canvas.setUseYield(false);
         
-        		if(perftest)
-        		{
-        			applet.canvas.setUseFpsSleep(false);
-        			applet.canvas.setUseRepaint(false);
-        			applet.canvas.setUseYield(false);
+          System.out.println("useFpsSleep: "+
+                             applet.canvas.getUseFpsSleep());
+          System.out.println("useRepaint: "+
+                             applet.canvas.getUseRepaint());
         
-        			System.out.println("useFpsSleep: "+
-        				applet.canvas.getUseFpsSleep());
-        			System.out.println("useRepaint: "+
-        				applet.canvas.getUseRepaint());
-        
-        			System.out.println("useFpsSleep: "+
-        				applet.canvas.getUseFpsSleep());
-        		}
-        
-        		applet.start();
-        
-        		Dimension ps = applet.getPreferredSize();
-        		mainFrame.setBounds(-100,-100,99,99);
-        		mainFrame.setVisible(true);
-        		mainFrame.setVisible(false);
-        		mainFrame.setVisible(true);
-        		Insets is = mainFrame.getInsets();
-        		mainFrame.setBounds(0,0,
-        			    ps.width+is.left+is.right, 
-        			    ps.height+is.top+is.bottom);
-        		mainFrame.setVisible(true);
-			Thread.currentThread().sleep(10000, 0 );
-		} catch (Exception e) {
-		    e.printStackTrace();
-		} finally {
-		    device.setFullScreenWindow(null);
-		}
-
-	}
-
-        // Methods required for the implementation of MouseListener
-        public void mouseEntered( MouseEvent evt )
-        {
-		//System.out.println("mouse entered: ");
-		super.mouseEntered(evt);
+          System.out.println("useFpsSleep: "+
+                             applet.canvas.getUseFpsSleep());
         }
-    
-        public void mouseExited( MouseEvent evt )
-        {
-		//System.out.println("mouse exit: ");
-		super.mouseExited(evt);
-        }
-    
-        public void mousePressed( MouseEvent evt )
-        {
-		//System.out.println("mouse pressed: ");
-		super.mousePressed(evt);
-        }
-    
-        public void mouseReleased( MouseEvent evt )
-        {
-		//System.out.println("mouse released: ");
-		super.mouseReleased(evt);
-        }
-    
-        public void mouseClicked( MouseEvent evt )
-        {
-		//System.out.println("mouse clicked: ");
-		super.mouseClicked(evt);
 
-            if ((evt.getModifiers() & evt.BUTTON2_MASK) != 0)
-            {
-	        System.out.println("stopping applet now .. (after 1s, restart)");
-		stop();
-		try {
-			Thread.sleep(1000);
-		} catch (Exception e)
-		{ System.out.println("oops, somebody woke us up .."); }
-	        System.out.println("restarting applet now .. ");
-		canvas.setVisible(true);
-		start();
+      mainFrame.setSize(initWidth, initHeight);
+      mainFrame.show();
+      mainFrame.setLocation(0, 0);
+
+      if (device.isFullScreenSupported()) {
+        device.setFullScreenWindow(mainFrame);
+        if (device.isDisplayChangeSupported()) {
+          device.setDisplayMode(newMode);
+        } else {
+          newMode = null;
+        }
+        final DisplayMode tmpMode = newMode;
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+              if (tmpMode != null) {
+                try {
+                  device.setDisplayMode(origMode);
+                } catch (Exception e) {
+                }
+              }
+              device.setFullScreenWindow(null);
             }
-        }
+          });
+      }
+        
+      applet.start();
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      device.setFullScreenWindow(null);
+    }
+  }
+
+  // Methods required for the implementation of MouseListener
+  public void mouseEntered( MouseEvent evt ) {
+    //System.out.println("mouse entered: ");
+    super.mouseEntered(evt);
+  }
+    
+  public void mouseExited( MouseEvent evt ) {
+    //System.out.println("mouse exit: ");
+    super.mouseExited(evt);
+  }
+    
+  public void mousePressed( MouseEvent evt ) {
+    //System.out.println("mouse pressed: ");
+    super.mousePressed(evt);
+  }
+    
+  public void mouseReleased( MouseEvent evt ) {
+    //System.out.println("mouse released: ");
+    super.mouseReleased(evt);
+  }
+    
+  public void mouseClicked( MouseEvent evt ) {
+    //System.out.println("mouse clicked: ");
+    super.mouseClicked(evt);
+
+    if ((evt.getModifiers() & evt.BUTTON2_MASK) != 0) {
+        System.out.println("stopping applet now .. (after 1s, restart)");
+        stop();
+        try {
+          Thread.sleep(1000);
+        } catch (Exception e) {
+          System.out.println("oops, somebody woke us up .."); }
+        System.out.println("restarting applet now .. ");
+        canvas.setVisible(true);
+        start();
+      }
+  }
 }

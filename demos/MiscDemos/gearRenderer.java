@@ -328,7 +328,7 @@ public class gearRenderer
 		//System.out.println("mouse dragged: ");
             int x = evt.getX();
             int y = evt.getY();
-	    Dimension size = gldrawable.getSize();
+	    Dimension size = evt.getComponent().getSize();
 
             float thetaY = 360.0f * ( (float)(x-prevMouseX)/(float)size.width);
             float thetaX = 360.0f * ( (float)(prevMouseY-y)/(float)size.height);
