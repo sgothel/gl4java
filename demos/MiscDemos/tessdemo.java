@@ -14,8 +14,9 @@
 
 /*
  * $Log$
- * Revision 1.1  2000/11/18 06:53:19  sven
- * Initial revision
+ * Revision 1.1.1.1  2000/11/18 06:53:19  sven
+ * Initial import into CVS.
+ * Version 2.5.0.0 beta 1
  *
  * Revision 1.3f.2.1f  1999/11/16 11:09:09  gareth
  * Added combine callback.  Converted vertices from ints to floats.

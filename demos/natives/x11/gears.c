@@ -14,8 +14,9 @@
 
 /*
  * $Log$
- * Revision 1.1  2000/11/18 06:54:01  sven
- * Initial revision
+ * Revision 1.1.1.1  2000/11/18 06:54:01  sven
+ * Initial import into CVS.
+ * Version 2.5.0.0 beta 1
  *
  * Revision 1.2  1999/10/21 16:39:06  brianp
  * added -info command line option
