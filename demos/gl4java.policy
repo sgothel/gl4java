@@ -1,7 +1,7 @@
 //
 // GL4Java extensions get all permissions !
 //
-// This peace should be added on top of the file:
+// This config-piece should be added on top of the file:
 //
 // If a Java2 SDK is used:
 //	<java2-installation>/jre/lib/security/java.policy
@@ -9,7 +9,7 @@
 // If a Java2 JRE is used:
 //	<jre-installation>/lib/security/java.policy
 //
-// GL4Java Homepage:
+// The GL4Java Homepage:
 //
 //	http://www.jausoft.com/gl4java/
 //
@@ -24,37 +24,73 @@ grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/*"
         permission java.security.AllPermission;
 };                                                                              
 
-grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/MiscDemos/*
+grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/MiscDemos/*"
 {
         permission java.security.AllPermission;
 };                                                                              
 
-grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/RonsDemos/*
+grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/RonsDemos/*"
 {
         permission java.security.AllPermission;
 };                                                                              
 
-grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/SwingDemos/*
+grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/SwingDemos/*"
 {
         permission java.security.AllPermission;
 };                                                                              
 
-grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/GLLandScape/*
+grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/GLLandScape/*"
 {
         permission java.security.AllPermission;
 };                                                                              
 
-grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/HodglimsNeHe/*
+grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/HodglimsNeHe/*"
 {
         permission java.security.AllPermission;
 };                                                                              
 
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/Installer/*"
+{
+        permission java.security.AllPermission;
+};                                                                              
 
-grant codeBase "file:/home/sven/projects/java/GL4Java/demos/- {
-  permission java.security.AllPermission;
-};
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/demos/*"
+{
+        permission java.security.AllPermission;
+};                                                                              
 
-grant codeBase "file:/home/sven/projects/java/GL4Java/demos/RonsDemos/- {
-  permission java.security.AllPermission;
-};
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/demos/MiscDemos/*"
+{
+        permission java.security.AllPermission;
+};                                                                              
+
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/demos/RonsDemos/*"
+{
+        permission java.security.AllPermission;
+};                                                                              
+
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/demos/SwingDemos/*"
+{
+        permission java.security.AllPermission;
+};                                                                              
+
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/demos/GLLandScape/*"
+{
+        permission java.security.AllPermission;
+};                                                                              
+
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/demos/HodglimsNeHe/*"
+{
+        permission java.security.AllPermission;
+};                                                                              
+
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java-Stuff/*"
+{
+        permission java.security.AllPermission;
+};                                                                              
+
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java-Stuff/psi/*"
+{
+        permission java.security.AllPermission;
+};                                                                              
 
