@@ -28,6 +28,28 @@ import gl4java.drawable.*;
     from the NVidia-specific routine wglAllocateMemoryNV. This memory
     region is used in conjunction with glVertexArrayRangeNV. </P>
 
+    <P> In contrast to the C++ version of this demo, the Java
+    programming language version compares the following two
+    configurations:
+
+    <ul>
+    <li> JDK 1.4 NIO buffers + VAR extension
+    <li> pre-JDK 1.4-style OpenGL for Java glVertexPointer calls
+    taking float[]
+    </ul>
+
+    The glVertexPointer calls contain a long-standing bug wherein if a
+    garbage collection occurs at the wrong time, the arrays containing
+    the data passed down to glVertexPointer may move, leading to
+    either incorrect data being drawn or a program crash. This is
+    obviously not suitable for production systems. The solution is to
+    upgrade to JDK 1.4 and use java.nio direct buffers for the storage
+    passed down to glVertexPointer and similar routines which take
+    pointers to persistent regions of memory, regardless of whether an
+    extension like NVidia's vertex array range is used. More
+    information on this topic is available <a href =
+    "http://java.sun.com/products/jfc/tsc/articles/jcanyon/">here</a>. </P>
+
     <P> On a 750 MHz PIII with an SDRAM memory bus and a GeForce 256
     running the Java HotSpot[tm] Client VM and OpenGL for Java 2.8,
     this demonstration attains 90% of the speed of the compiled C++
