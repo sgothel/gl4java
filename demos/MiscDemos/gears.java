@@ -52,6 +52,9 @@ public class gears extends SimpleGLAnimApplet1
 		String gluLib = null;
 		boolean perftest=false;
 
+	        GLContext.gljNativeDebug = true;
+	        GLContext.gljClassDebug = true;
+
 		while(args.length>i)
 		{
 			if(args[i].equals("-perftest"))

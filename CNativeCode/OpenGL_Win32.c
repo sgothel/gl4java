@@ -258,7 +258,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 		fflush(stderr);
     }
 
-    wglMakeCurrent(NULL, NULL);
+    disp__wglMakeCurrent(NULL, NULL);
 
     /**
      * with version jdk1.1.6 and later, we are able to use 
@@ -351,7 +351,7 @@ Java_gl4java_GLContext_gljMakeCurrentNative( JNIEnv *env, jobject obj,
 	    return JNI_FALSE;
 	}
 
-        if ( ret==JNI_TRUE && !wglMakeCurrent((HDC)((PointerHolder)thisWin), 
+        if ( ret==JNI_TRUE && !disp__wglMakeCurrent((HDC)((PointerHolder)thisWin), 
 	                                      (HGLRC)((PointerHolder)glContext)) )
         {
     		return JNI_FALSE;
@@ -372,7 +372,7 @@ Java_gl4java_GLContext_gljFreeNative( JNIEnv *env, jobject obj,
     (void)disp;
     (void)canvas;
 
-    if ( ! wglMakeCurrent( NULL, NULL ) )
+    if ( ! disp__wglMakeCurrent( NULL, NULL ) )
     {
 			fprintf(stderr, "gljFree failed\n");
 			fflush(stderr);
@@ -454,7 +454,7 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 			}
 		}
 
-		if ( ! wglMakeCurrent( NULL, NULL ) )
+		if ( ! disp__wglMakeCurrent( NULL, NULL ) )
 		{
 			fprintf(stderr, "gljDestroy failed (free)\n");
 			fflush(stderr);
@@ -463,7 +463,7 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 		if(ret==JNI_TRUE) 
 		{
 			if(gc!=0)
-				wglDeleteContext(gc);
+				disp__wglDeleteContext(gc);
 
 			if(pix!=0)
 			{
@@ -536,7 +536,7 @@ Java_gl4java_GLContext_gljSwapNative( JNIEnv *env, jobject obj,
 	                return JNI_FALSE;
 		}
 	} else {
-		glFlush();
+		disp__glFlush();
 	}
 	return ret;
 }

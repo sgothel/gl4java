@@ -3,156 +3,6 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
-Project: "GL4JavaJauGLJNI"=.\GL4JavaJauGLJNI\GL4JavaJauGLJNI.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-    Begin Project Dependency
-    Project_Dep_Name GL4JavaJauGljJNI
-    End Project Dependency
-}}}
-
-###############################################################################
-
-Project: "GL4JavaJauGLJNI12"=.\GL4JavaJauGLJNI12\GL4JavaJauGLJNI12.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-    Begin Project Dependency
-    Project_Dep_Name GL4JavaJauGljJNI12
-    End Project Dependency
-}}}
-
-###############################################################################
-
-Project: "GL4JavaJauGLJNI12tst"=.\GL4JavaJauGLJNI12tst\GL4JavaJauGLJNI12tst.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-    Begin Project Dependency
-    Project_Dep_Name GL4JavaJauGljJNI12
-    End Project Dependency
-}}}
-
-###############################################################################
-
-Project: "GL4JavaJauGLJNInf"=.\GL4JavaJauGLJNInf\GL4JavaJauGLJNInf.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-    Begin Project Dependency
-    Project_Dep_Name GL4JavaJauGljJNI
-    End Project Dependency
-}}}
-
-###############################################################################
-
-Project: "GL4JavaJauGLJNItst"=.\GL4JavaJauGLJNItst\GL4JavaJauGLJNItst.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-    Begin Project Dependency
-    Project_Dep_Name GL4JavaJauGljJNI
-    End Project Dependency
-}}}
-
-###############################################################################
-
-Project: "GL4JavaJauGLUJNI"=.\GL4JavaJauGLUJNI\GL4JavaJauGLUJNI.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-    Begin Project Dependency
-    Project_Dep_Name GL4JavaJauGljJNI
-    End Project Dependency
-}}}
-
-###############################################################################
-
-Project: "GL4JavaJauGLUJNI12"=.\GL4JavaJauGLUJNI12\GL4JavaJauGLUJNI12.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-    Begin Project Dependency
-    Project_Dep_Name GL4JavaJauGljJNI12
-    End Project Dependency
-}}}
-
-###############################################################################
-
-Project: "GL4JavaJauGLUJNI12tst"=.\GL4JavaJauGLUJNI12tst\GL4JavaJauGLUJNI12tst.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-    Begin Project Dependency
-    Project_Dep_Name GL4JavaJauGljJNI12
-    End Project Dependency
-}}}
-
-###############################################################################
-
-Project: "GL4JavaJauGLUJNInf"=.\GL4JavaJauGLUJNInf\GL4JavaJauGLUJNI.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-    Begin Project Dependency
-    Project_Dep_Name GL4JavaJauGljJNI
-    End Project Dependency
-}}}
-
-###############################################################################
-
-Project: "GL4JavaJauGLUJNItst"=.\GL4JavaJauGLUJNItst\GL4JavaJauGLUJNItst.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-    Begin Project Dependency
-    Project_Dep_Name GL4JavaJauGljJNI
-    End Project Dependency
-}}}
-
-###############################################################################
-
 Project: "GL4JavaJauGljJNI"=.\GL4JavaJauGljJNI\GL4JavaJauGljJNI.dsp - Package Owner=<4>
 
 Package=<5>
@@ -189,6 +39,30 @@ Package=<4>
 
 ###############################################################################
 
+Project: "GL4JavaJauGljJNI13nf"=.\GL4JavaJauGljJNI13nf\GL4JavaJauGljJNI13nf.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "GL4JavaJauGljJNI13tst"=.\GL4JavaJauGljJNI13tst\GL4JavaJauGljJNI13tst.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
 Project: "GL4JavaMSJDirect"=.\GL4JavaMSJDirect\GL4JavaMSJDirect.dsp - Package Owner=<4>
 
 Package=<5>
@@ -200,6 +74,18 @@ Package=<4>
     Begin Project Dependency
     Project_Dep_Name GL4JavaJauGljJNI
     End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "invokejvm"=.\invokejvm\invokejvm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
 }}}
 
 ###############################################################################

@@ -14,10 +14,11 @@ Java_gl4java_drawable_X11SunJDK13GLDrawableFactory_glXChooseVisualID
     XVisualInfo * visual=NULL;
     int visualAttribList[32];
     int done=0;
-
+    jboolean ok;
     GLCapabilities glCaps;
+    int accumTestDone=0;
 
-    jboolean ok = javaGLCapabilities2NativeGLCapabilities ( env, 
+    ok = javaGLCapabilities2NativeGLCapabilities ( env, 
 			  capsObj, &glCaps );
 
     if(JNI_TRUE!=ok)
@@ -50,7 +51,7 @@ Java_gl4java_drawable_X11SunJDK13GLDrawableFactory_glXChooseVisualID
     	    printGLCapabilities ( &glCaps );
         }
 
-        visual = glXChooseVisual( disp, screen, visualAttribList );
+        visual = disp__glXChooseVisual( disp, screen, visualAttribList );
     
         if(JNI_TRUE==verbose)
         {
@@ -66,19 +67,47 @@ Java_gl4java_drawable_X11SunJDK13GLDrawableFactory_glXChooseVisualID
 	/**
 	 * Falling-Back the exact (min. requirement) parameters ..
 	 */
-        if(visual==NULL && glCaps.stereo==STEREO_ON) {
+	if(visual==NULL)
+	{
+            if(glCaps.stereo==STEREO_ON) {
 		glCaps.stereo=STEREO_OFF;
-        } else if(visual==NULL && glCaps.stencilBits>32) {
+            } else if(glCaps.stencilBits>32) {
 		glCaps.stencilBits=32;
-        } else if(visual==NULL && glCaps.stencilBits>16) {
+            } else if(glCaps.stencilBits>16) {
 		glCaps.stencilBits=16;
-        } else if(visual==NULL && glCaps.stencilBits>8) {
+            } else if(glCaps.stencilBits>8) {
 		glCaps.stencilBits=8;
-        } else if(visual==NULL && glCaps.stencilBits>0) {
+            } else if(glCaps.stencilBits>0) {
 		glCaps.stencilBits=0;
-        } else if(visual==NULL && glCaps.buffer==BUFFER_DOUBLE) {
-	        glCaps.buffer=BUFFER_SINGLE;
-        } else done=1; /* forget it .. */
+            } else if( glCaps.alphaBits>0 ||
+	               glCaps.accumAlphaBits>0
+	             )
+            {
+	        glCaps.alphaBits=0;
+    	        glCaps.accumAlphaBits=0;
+            } else if( accumTestDone==0 &&
+    	               ( glCaps.accumRedBits==0 ||
+    		         glCaps.accumGreenBits==0 ||
+    		         glCaps.accumBlueBits==0
+    	               )
+    	             )     
+            {
+    	        glCaps.accumRedBits=1;
+    	        glCaps.accumGreenBits=1;
+    	        glCaps.accumBlueBits=1;
+            } else if( glCaps.accumRedBits>0 ||
+    	               glCaps.accumGreenBits>0 ||
+    	               glCaps.accumBlueBits>0
+    	             ) 
+            {
+    	        glCaps.accumRedBits=0;
+    	        glCaps.accumGreenBits=0;
+    	        glCaps.accumBlueBits=0;
+    	        accumTestDone=1;
+            } else if(glCaps.buffer==BUFFER_DOUBLE) {
+    	        glCaps.buffer=BUFFER_SINGLE;
+            } else done=1; /* forget it .. */
+        }
     }
 
     if(visual==NULL)

@@ -6,7 +6,7 @@ Java_gl4java_GLUFuncJauJNI_gluErrorString ( JNIEnv *env, jobject obj,
 {
     const char *tmpString=0;
 
-    tmpString = gluErrorString ( /* jint */ errorCode );
+    tmpString = disp__gluErrorString ( /* jint */ errorCode );
     if(tmpString==NULL)
     	tmpString=_glu_n_a_string;
 
@@ -19,7 +19,7 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
 {
     const char *tmpString=0;
 
-    tmpString = gluGetString ( /* jint */ name);
+    tmpString = disp__gluGetString ( /* jint */ name);
     if(tmpString==NULL)
     	tmpString=_glu_n_a_string;
 
@@ -27,7 +27,7 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _glu_lib_version_="2.5.2.0";
+static const char * _glu_lib_version_="2.7.0.0";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLUFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
@@ -77,7 +77,7 @@ Java_gl4java_GLUFuncJauJNI_gluQuadricCallback( JNIEnv *env, jobject obj,
 	switch(which)
 	{
 		case GLU_ERROR:
-			gluQuadricCallback((void *)((PointerHolder)qobj), 
+			disp__gluQuadricCallback((void *)((PointerHolder)qobj), 
 			                   which, cbf_GLU_ERROR );
 			break;
 		default:
@@ -101,7 +101,7 @@ Java_gl4java_GLUFuncJauJNI_gluNurbsCallback( JNIEnv *env, jobject obj,
 	switch(which)
 	{
 		case GLU_ERROR:
-			gluNurbsCallback((void *)((PointerHolder)nobj), which, 
+			disp__gluNurbsCallback((void *)((PointerHolder)nobj), which, 
 				         cbf_GLU_ERROR );
 			break;
 		default:
@@ -129,62 +129,62 @@ Java_gl4java_GLUFuncJauJNI_gluTessCallback( JNIEnv *env, jobject obj,
 	switch(which)
 	{
 		case GLU_TESS_BEGIN:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_BEGIN );
 			break;
 		case GLU_TESS_BEGIN_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_BEGIN_DATA );
 			break;
 		case GLU_TESS_EDGE_FLAG:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_EDGE_FLAG );
 			break;
 		case GLU_TESS_EDGE_FLAG_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_EDGE_FLAG_DATA );
 			break;
 		case GLU_TESS_VERTEX:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_VERTEX );
 			break;
 		case GLU_TESS_VERTEX_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_VERTEX_DATA );
 			break;
 		case GLU_TESS_END:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_END );
 			break;
 		case GLU_TESS_END_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_END_DATA );
 			break;
 		case GLU_TESS_ERROR:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_ERROR );
 			break;
 		case GLU_TESS_ERROR_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_ERROR_DATA );
 			break;
 		case GLU_TESS_COMBINE:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_COMBINE );
 			break;
 		case GLU_TESS_COMBINE_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_COMBINE_DATA );
 			break;
@@ -203,7 +203,7 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteQuadric( JNIEnv *env, jobject obj,
 					     jlong qobj )
 {
-	gluDeleteQuadric((void *)((PointerHolder)qobj));
+	disp__gluDeleteQuadric((void *)((PointerHolder)qobj));
 	RemoveCallbackNodes((void *)((PointerHolder)qobj));
 }
 
@@ -211,7 +211,7 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteNurbsRenderer( JNIEnv *env, jobject obj,
 						   jlong nobj )
 {
-	gluDeleteNurbsRenderer((void *)((PointerHolder)nobj));
+	disp__gluDeleteNurbsRenderer((void *)((PointerHolder)nobj));
 	RemoveCallbackNodes((void *)((PointerHolder)nobj));
 }
 
@@ -219,25 +219,25 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 					  jlong tobj )
 {
-	gluDeleteTess((GLUtesselator *)((PointerHolder)tobj));
+	disp__gluDeleteTess((GLUtesselator *)((PointerHolder)tobj));
 	RemoveCallbackNodes((void *)((PointerHolder)tobj));
 }
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewQuadric( JNIEnv *env, jobject obj)
 {
-	return (jlong)((PointerHolder)gluNewQuadric());
+	return (jlong)((PointerHolder)disp__gluNewQuadric());
 }
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewNurbsRenderer( JNIEnv *env, jobject obj)
 {
-	return (jlong)((PointerHolder)gluNewNurbsRenderer());
+	return (jlong)((PointerHolder)disp__gluNewNurbsRenderer());
 }
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 {
-	return (jlong)((PointerHolder)gluNewTess());
+	return (jlong)((PointerHolder)disp__gluNewTess());
 }
 

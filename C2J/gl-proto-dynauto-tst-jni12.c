@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 1.5 Beta
+ * C2J Parser Version 2.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLFuncJauJNI ! 
@@ -16,15 +16,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat c)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat))
-				getGLProcAddressHelper("glClearIndex", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glClearIndex (
 			(GLfloat) c
 		);
 
@@ -44,15 +37,8 @@
 		jfloat blue,
 		jfloat alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLclampf, GLclampf, GLclampf, GLclampf) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLclampf, GLclampf, GLclampf, GLclampf))
-				getGLProcAddressHelper("glClearColor", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glClearColor (
 			(GLclampf) red,
 			(GLclampf) green,
 			(GLclampf) blue,
@@ -72,15 +58,8 @@
 		JNIEnv *env, jobject obj,
 		jint mask)
 	{
-		static void (CALLBACK *__func_ptr__)(GLbitfield) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLbitfield))
-				getGLProcAddressHelper("glClear", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glClear (
 			(GLbitfield) mask
 		);
 
@@ -97,15 +76,8 @@
 		JNIEnv *env, jobject obj,
 		jint mask)
 	{
-		static void (CALLBACK *__func_ptr__)(GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLuint))
-				getGLProcAddressHelper("glIndexMask", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glIndexMask (
 			(GLuint) mask
 		);
 
@@ -125,15 +97,8 @@
 		jboolean blue,
 		jboolean alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLboolean, GLboolean, GLboolean, GLboolean) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLboolean, GLboolean, GLboolean, GLboolean))
-				getGLProcAddressHelper("glColorMask", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColorMask (
 			(GLboolean) red,
 			(GLboolean) green,
 			(GLboolean) blue,
@@ -154,15 +119,8 @@
 		jint func,
 		jfloat ref)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLclampf) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLclampf))
-				getGLProcAddressHelper("glAlphaFunc", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glAlphaFunc (
 			(GLenum) func,
 			(GLclampf) ref
 		);
@@ -181,15 +139,8 @@
 		jint sfactor,
 		jint dfactor)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum))
-				getGLProcAddressHelper("glBlendFunc", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glBlendFunc (
 			(GLenum) sfactor,
 			(GLenum) dfactor
 		);
@@ -207,15 +158,8 @@
 		JNIEnv *env, jobject obj,
 		jint opcode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glLogicOp", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glLogicOp (
 			(GLenum) opcode
 		);
 
@@ -232,15 +176,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glCullFace", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCullFace (
 			(GLenum) mode
 		);
 
@@ -257,15 +194,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glFrontFace", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glFrontFace (
 			(GLenum) mode
 		);
 
@@ -282,15 +212,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat size)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat))
-				getGLProcAddressHelper("glPointSize", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPointSize (
 			(GLfloat) size
 		);
 
@@ -307,15 +230,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat width)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat))
-				getGLProcAddressHelper("glLineWidth", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glLineWidth (
 			(GLfloat) width
 		);
 
@@ -333,15 +249,8 @@
 		jint factor,
 		jshort pattern)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLushort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLushort))
-				getGLProcAddressHelper("glLineStipple", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glLineStipple (
 			(GLint) factor,
 			(GLushort) pattern
 		);
@@ -360,15 +269,8 @@
 		jint face,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum))
-				getGLProcAddressHelper("glPolygonMode", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPolygonMode (
 			(GLenum) face,
 			(GLenum) mode
 		);
@@ -387,15 +289,8 @@
 		jfloat factor,
 		jfloat units)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat))
-				getGLProcAddressHelper("glPolygonOffset", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPolygonOffset (
 			(GLfloat) factor,
 			(GLfloat) units
 		);
@@ -413,17 +308,10 @@
 		JNIEnv *env, jobject obj,
 		jbyteArray mask)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLubyte *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLubyte *))
-				getGLProcAddressHelper("glPolygonStipple", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(mask!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, mask, &isCopiedArray0);
@@ -432,7 +320,7 @@
 				printf("COPY by glPolygonStipple arg: mask");
 			}
 		}
-		__func_ptr__ (
+		disp__glPolygonStipple (
 			(const GLubyte *) ptr0
 		);
 
@@ -453,17 +341,10 @@
 		JNIEnv *env, jobject obj,
 		jbyteArray mask)
 	{
-		static void (CALLBACK *__func_ptr__)(GLubyte *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLubyte *))
-				getGLProcAddressHelper("glGetPolygonStipple", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(mask!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, mask, &isCopiedArray0);
@@ -472,7 +353,7 @@
 				printf("COPY by glGetPolygonStipple arg: mask");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPolygonStipple (
 			(GLubyte *) ptr0
 		);
 
@@ -493,15 +374,8 @@
 		JNIEnv *env, jobject obj,
 		jboolean flag)
 	{
-		static void (CALLBACK *__func_ptr__)(GLboolean) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLboolean))
-				getGLProcAddressHelper("glEdgeFlag", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEdgeFlag (
 			(GLboolean) flag
 		);
 
@@ -518,17 +392,10 @@
 		JNIEnv *env, jobject obj,
 		jbooleanArray flag)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLboolean *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jboolean *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLboolean *))
-				getGLProcAddressHelper("glEdgeFlagv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(flag!=NULL)
 		{
 			ptr0 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, flag, &isCopiedArray0);
@@ -537,7 +404,7 @@
 				printf("COPY by glEdgeFlagv arg: flag");
 			}
 		}
-		__func_ptr__ (
+		disp__glEdgeFlagv (
 			(const GLboolean *) ptr0
 		);
 
@@ -561,15 +428,8 @@
 		jint width,
 		jint height)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLsizei, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLsizei, GLsizei))
-				getGLProcAddressHelper("glScissor", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glScissor (
 			(GLint) x,
 			(GLint) y,
 			(GLsizei) width,
@@ -590,17 +450,10 @@
 		jint plane,
 		jdoubleArray equation)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLdouble *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLdouble *))
-				getGLProcAddressHelper("glClipPlane", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(equation!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, equation, &isCopiedArray1);
@@ -609,7 +462,7 @@
 				printf("COPY by glClipPlane arg: equation");
 			}
 		}
-		__func_ptr__ (
+		disp__glClipPlane (
 			(GLenum) plane,
 			(const GLdouble *) ptr1
 		);
@@ -632,17 +485,10 @@
 		jint plane,
 		jdoubleArray equation)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLdouble *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLdouble *))
-				getGLProcAddressHelper("glGetClipPlane", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(equation!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, equation, &isCopiedArray1);
@@ -651,7 +497,7 @@
 				printf("COPY by glGetClipPlane arg: equation");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetClipPlane (
 			(GLenum) plane,
 			(GLdouble *) ptr1
 		);
@@ -673,15 +519,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glDrawBuffer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glDrawBuffer (
 			(GLenum) mode
 		);
 
@@ -698,15 +537,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glReadBuffer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glReadBuffer (
 			(GLenum) mode
 		);
 
@@ -723,15 +555,8 @@
 		JNIEnv *env, jobject obj,
 		jint cap)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glEnable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEnable (
 			(GLenum) cap
 		);
 
@@ -748,15 +573,8 @@
 		JNIEnv *env, jobject obj,
 		jint cap)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glDisable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glDisable (
 			(GLenum) cap
 		);
 
@@ -773,17 +591,10 @@
 		JNIEnv *env, jobject obj,
 		jint cap)
 	{
-		static jboolean (CALLBACK *__func_ptr__)(GLenum) = NULL;
 		jboolean ret;
 
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (jboolean (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glIsEnabled", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return 0;
-		}
-		ret = (jboolean) __func_ptr__ (
+		ret = (jboolean) disp__glIsEnabled (
 			(GLenum) cap
 		);
 
@@ -801,15 +612,8 @@
 		JNIEnv *env, jobject obj,
 		jint cap)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glEnableClientState", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEnableClientState (
 			(GLenum) cap
 		);
 
@@ -826,15 +630,8 @@
 		JNIEnv *env, jobject obj,
 		jint cap)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glDisableClientState", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glDisableClientState (
 			(GLenum) cap
 		);
 
@@ -852,17 +649,10 @@
 		jint pname,
 		jbooleanArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jboolean *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean *))
-				getGLProcAddressHelper("glGetBooleanv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -871,7 +661,7 @@
 				printf("COPY by glGetBooleanv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetBooleanv (
 			(GLenum) pname,
 			(GLboolean *) ptr1
 		);
@@ -894,17 +684,10 @@
 		jint pname,
 		jdoubleArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLdouble *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLdouble *))
-				getGLProcAddressHelper("glGetDoublev", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -913,7 +696,7 @@
 				printf("COPY by glGetDoublev arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetDoublev (
 			(GLenum) pname,
 			(GLdouble *) ptr1
 		);
@@ -936,17 +719,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetFloatv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -955,7 +731,7 @@
 				printf("COPY by glGetFloatv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetFloatv (
 			(GLenum) pname,
 			(GLfloat *) ptr1
 		);
@@ -978,17 +754,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint *))
-				getGLProcAddressHelper("glGetIntegerv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -997,7 +766,7 @@
 				printf("COPY by glGetIntegerv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetIntegerv (
 			(GLenum) pname,
 			(GLint *) ptr1
 		);
@@ -1019,15 +788,8 @@
 		JNIEnv *env, jobject obj,
 		jint mask)
 	{
-		static void (CALLBACK *__func_ptr__)(GLbitfield) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLbitfield))
-				getGLProcAddressHelper("glPushAttrib", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPushAttrib (
 			(GLbitfield) mask
 		);
 
@@ -1043,15 +805,8 @@
 	Java_gl4java_GLFuncJauJNI_glPopAttrib (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glPopAttrib", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPopAttrib (
 		);
 
 	}
@@ -1067,15 +822,8 @@
 		JNIEnv *env, jobject obj,
 		jint mask)
 	{
-		static void (CALLBACK *__func_ptr__)(GLbitfield) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLbitfield))
-				getGLProcAddressHelper("glPushClientAttrib", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPushClientAttrib (
 			(GLbitfield) mask
 		);
 
@@ -1091,15 +839,8 @@
 	Java_gl4java_GLFuncJauJNI_glPopClientAttrib (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glPopClientAttrib", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPopClientAttrib (
 		);
 
 	}
@@ -1115,17 +856,10 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
-		static jint (CALLBACK *__func_ptr__)(GLenum) = NULL;
 		jint ret;
 
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (jint (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glRenderMode", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return 0;
-		}
-		ret = (jint) __func_ptr__ (
+		ret = (jint) disp__glRenderMode (
 			(GLenum) mode
 		);
 
@@ -1142,17 +876,10 @@
 	Java_gl4java_GLFuncJauJNI_glGetError (
 		JNIEnv *env, jobject obj)
 	{
-		static jint (CALLBACK *__func_ptr__)() = NULL;
 		jint ret;
 
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (jint (CALLBACK *)())
-				getGLProcAddressHelper("glGetError", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return 0;
-		}
-		ret = (jint) __func_ptr__ (
+		ret = (jint) disp__glGetError (
 		);
 
 		return ret;
@@ -1168,15 +895,8 @@
 	Java_gl4java_GLFuncJauJNI_glFinish (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glFinish", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glFinish (
 		);
 
 	}
@@ -1191,15 +911,8 @@
 	Java_gl4java_GLFuncJauJNI_glFlush (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glFlush", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glFlush (
 		);
 
 	}
@@ -1216,15 +929,8 @@
 		jint target,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum))
-				getGLProcAddressHelper("glHint", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glHint (
 			(GLenum) target,
 			(GLenum) mode
 		);
@@ -1242,15 +948,8 @@
 		JNIEnv *env, jobject obj,
 		jdouble depth)
 	{
-		static void (CALLBACK *__func_ptr__)(GLclampd) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLclampd))
-				getGLProcAddressHelper("glClearDepth", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glClearDepth (
 			(GLclampd) depth
 		);
 
@@ -1267,15 +966,8 @@
 		JNIEnv *env, jobject obj,
 		jint func)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glDepthFunc", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glDepthFunc (
 			(GLenum) func
 		);
 
@@ -1292,15 +984,8 @@
 		JNIEnv *env, jobject obj,
 		jboolean flag)
 	{
-		static void (CALLBACK *__func_ptr__)(GLboolean) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLboolean))
-				getGLProcAddressHelper("glDepthMask", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glDepthMask (
 			(GLboolean) flag
 		);
 
@@ -1318,15 +1003,8 @@
 		jdouble near_val,
 		jdouble far_val)
 	{
-		static void (CALLBACK *__func_ptr__)(GLclampd, GLclampd) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLclampd, GLclampd))
-				getGLProcAddressHelper("glDepthRange", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glDepthRange (
 			(GLclampd) near_val,
 			(GLclampd) far_val
 		);
@@ -1347,15 +1025,8 @@
 		jfloat blue,
 		jfloat alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glClearAccum", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glClearAccum (
 			(GLfloat) red,
 			(GLfloat) green,
 			(GLfloat) blue,
@@ -1376,15 +1047,8 @@
 		jint op,
 		jfloat value)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat))
-				getGLProcAddressHelper("glAccum", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glAccum (
 			(GLenum) op,
 			(GLfloat) value
 		);
@@ -1402,15 +1066,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glMatrixMode", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMatrixMode (
 			(GLenum) mode
 		);
 
@@ -1432,15 +1089,8 @@
 		jdouble near_val,
 		jdouble far_val)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glOrtho", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glOrtho (
 			(GLdouble) left,
 			(GLdouble) right,
 			(GLdouble) bottom,
@@ -1467,15 +1117,8 @@
 		jdouble near_val,
 		jdouble far_val)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glFrustum", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glFrustum (
 			(GLdouble) left,
 			(GLdouble) right,
 			(GLdouble) bottom,
@@ -1500,15 +1143,8 @@
 		jint width,
 		jint height)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLsizei, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLsizei, GLsizei))
-				getGLProcAddressHelper("glViewport", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glViewport (
 			(GLint) x,
 			(GLint) y,
 			(GLsizei) width,
@@ -1527,15 +1163,8 @@
 	Java_gl4java_GLFuncJauJNI_glPushMatrix (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glPushMatrix", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPushMatrix (
 		);
 
 	}
@@ -1550,15 +1179,8 @@
 	Java_gl4java_GLFuncJauJNI_glPopMatrix (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glPopMatrix", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPopMatrix (
 		);
 
 	}
@@ -1573,15 +1195,8 @@
 	Java_gl4java_GLFuncJauJNI_glLoadIdentity (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glLoadIdentity", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glLoadIdentity (
 		);
 
 	}
@@ -1597,17 +1212,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray m)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glLoadMatrixd", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(m!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, m, &isCopiedArray0);
@@ -1616,7 +1224,7 @@
 				printf("COPY by glLoadMatrixd arg: m");
 			}
 		}
-		__func_ptr__ (
+		disp__glLoadMatrixd (
 			(const GLdouble *) ptr0
 		);
 
@@ -1637,17 +1245,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray m)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glLoadMatrixf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(m!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, m, &isCopiedArray0);
@@ -1656,7 +1257,7 @@
 				printf("COPY by glLoadMatrixf arg: m");
 			}
 		}
-		__func_ptr__ (
+		disp__glLoadMatrixf (
 			(const GLfloat *) ptr0
 		);
 
@@ -1677,17 +1278,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray m)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glMultMatrixd", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(m!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, m, &isCopiedArray0);
@@ -1696,7 +1290,7 @@
 				printf("COPY by glMultMatrixd arg: m");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultMatrixd (
 			(const GLdouble *) ptr0
 		);
 
@@ -1717,17 +1311,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray m)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glMultMatrixf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(m!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, m, &isCopiedArray0);
@@ -1736,7 +1323,7 @@
 				printf("COPY by glMultMatrixf arg: m");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultMatrixf (
 			(const GLfloat *) ptr0
 		);
 
@@ -1760,15 +1347,8 @@
 		jdouble y,
 		jdouble z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glRotated", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRotated (
 			(GLdouble) angle,
 			(GLdouble) x,
 			(GLdouble) y,
@@ -1791,15 +1371,8 @@
 		jfloat y,
 		jfloat z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glRotatef", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRotatef (
 			(GLfloat) angle,
 			(GLfloat) x,
 			(GLfloat) y,
@@ -1821,15 +1394,8 @@
 		jdouble y,
 		jdouble z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glScaled", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glScaled (
 			(GLdouble) x,
 			(GLdouble) y,
 			(GLdouble) z
@@ -1850,15 +1416,8 @@
 		jfloat y,
 		jfloat z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glScalef", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glScalef (
 			(GLfloat) x,
 			(GLfloat) y,
 			(GLfloat) z
@@ -1879,15 +1438,8 @@
 		jdouble y,
 		jdouble z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glTranslated", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTranslated (
 			(GLdouble) x,
 			(GLdouble) y,
 			(GLdouble) z
@@ -1908,15 +1460,8 @@
 		jfloat y,
 		jfloat z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glTranslatef", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTranslatef (
 			(GLfloat) x,
 			(GLfloat) y,
 			(GLfloat) z
@@ -1935,17 +1480,10 @@
 		JNIEnv *env, jobject obj,
 		jint list)
 	{
-		static jboolean (CALLBACK *__func_ptr__)(GLuint) = NULL;
 		jboolean ret;
 
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (jboolean (CALLBACK *)(GLuint))
-				getGLProcAddressHelper("glIsList", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return 0;
-		}
-		ret = (jboolean) __func_ptr__ (
+		ret = (jboolean) disp__glIsList (
 			(GLuint) list
 		);
 
@@ -1964,15 +1502,8 @@
 		jint list,
 		jint range)
 	{
-		static void (CALLBACK *__func_ptr__)(GLuint, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLuint, GLsizei))
-				getGLProcAddressHelper("glDeleteLists", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glDeleteLists (
 			(GLuint) list,
 			(GLsizei) range
 		);
@@ -1990,17 +1521,10 @@
 		JNIEnv *env, jobject obj,
 		jint range)
 	{
-		static jint (CALLBACK *__func_ptr__)(GLsizei) = NULL;
 		jint ret;
 
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (jint (CALLBACK *)(GLsizei))
-				getGLProcAddressHelper("glGenLists", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return 0;
-		}
-		ret = (jint) __func_ptr__ (
+		ret = (jint) disp__glGenLists (
 			(GLsizei) range
 		);
 
@@ -2019,15 +1543,8 @@
 		jint list,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLuint, GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLuint, GLenum))
-				getGLProcAddressHelper("glNewList", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glNewList (
 			(GLuint) list,
 			(GLenum) mode
 		);
@@ -2044,15 +1561,8 @@
 	Java_gl4java_GLFuncJauJNI_glEndList (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glEndList", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEndList (
 		);
 
 	}
@@ -2068,15 +1578,8 @@
 		JNIEnv *env, jobject obj,
 		jint list)
 	{
-		static void (CALLBACK *__func_ptr__)(GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLuint))
-				getGLProcAddressHelper("glCallList", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCallList (
 			(GLuint) list
 		);
 
@@ -2095,17 +1598,10 @@
 		jint type,
 		jbyteArray lists)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jbyte *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glCallLists", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(lists!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, lists, &isCopiedArray2);
@@ -2114,7 +1610,7 @@
 				printf("COPY by glCallLists arg: lists");
 			}
 		}
-		__func_ptr__ (
+		disp__glCallLists (
 			(GLsizei) n,
 			(GLenum) type,
 			(const GLvoid *) ptr2
@@ -2132,17 +1628,10 @@
 		jint type,
 		jshortArray lists)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jshort *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glCallLists", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(lists!=NULL)
 		{
 			ptr2 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, lists, &isCopiedArray2);
@@ -2151,7 +1640,7 @@
 				printf("COPY by glCallLists arg: lists");
 			}
 		}
-		__func_ptr__ (
+		disp__glCallLists (
 			(GLsizei) n,
 			(GLenum) type,
 			(const GLvoid *) ptr2
@@ -2169,17 +1658,10 @@
 		jint type,
 		jintArray lists)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glCallLists", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(lists!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, lists, &isCopiedArray2);
@@ -2188,7 +1670,7 @@
 				printf("COPY by glCallLists arg: lists");
 			}
 		}
-		__func_ptr__ (
+		disp__glCallLists (
 			(GLsizei) n,
 			(GLenum) type,
 			(const GLvoid *) ptr2
@@ -2206,17 +1688,10 @@
 		jint type,
 		jfloatArray lists)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glCallLists", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(lists!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, lists, &isCopiedArray2);
@@ -2225,7 +1700,7 @@
 				printf("COPY by glCallLists arg: lists");
 			}
 		}
-		__func_ptr__ (
+		disp__glCallLists (
 			(GLsizei) n,
 			(GLenum) type,
 			(const GLvoid *) ptr2
@@ -2243,17 +1718,10 @@
 		jint type,
 		jdoubleArray lists)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glCallLists", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(lists!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, lists, &isCopiedArray2);
@@ -2262,7 +1730,7 @@
 				printf("COPY by glCallLists arg: lists");
 			}
 		}
-		__func_ptr__ (
+		disp__glCallLists (
 			(GLsizei) n,
 			(GLenum) type,
 			(const GLvoid *) ptr2
@@ -2280,17 +1748,10 @@
 		jint type,
 		jbooleanArray lists)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glCallLists", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(lists!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, lists, &isCopiedArray2);
@@ -2299,7 +1760,7 @@
 				printf("COPY by glCallLists arg: lists");
 			}
 		}
-		__func_ptr__ (
+		disp__glCallLists (
 			(GLsizei) n,
 			(GLenum) type,
 			(const GLvoid *) ptr2
@@ -2317,17 +1778,10 @@
 		jint type,
 		jlongArray lists)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jlong *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glCallLists", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(lists!=NULL)
 		{
 			ptr2 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, lists, &isCopiedArray2);
@@ -2336,7 +1790,7 @@
 				printf("COPY by glCallLists arg: lists");
 			}
 		}
-		__func_ptr__ (
+		disp__glCallLists (
 			(GLsizei) n,
 			(GLenum) type,
 			(const GLvoid *) ptr2
@@ -2359,15 +1813,8 @@
 		JNIEnv *env, jobject obj,
 		jint base)
 	{
-		static void (CALLBACK *__func_ptr__)(GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLuint))
-				getGLProcAddressHelper("glListBase", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glListBase (
 			(GLuint) base
 		);
 
@@ -2384,15 +1831,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glBegin", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glBegin (
 			(GLenum) mode
 		);
 
@@ -2408,15 +1848,8 @@
 	Java_gl4java_GLFuncJauJNI_glEnd (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glEnd", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEnd (
 		);
 
 	}
@@ -2433,15 +1866,8 @@
 		jdouble x,
 		jdouble y)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble))
-				getGLProcAddressHelper("glVertex2d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex2d (
 			(GLdouble) x,
 			(GLdouble) y
 		);
@@ -2460,15 +1886,8 @@
 		jfloat x,
 		jfloat y)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat))
-				getGLProcAddressHelper("glVertex2f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex2f (
 			(GLfloat) x,
 			(GLfloat) y
 		);
@@ -2487,15 +1906,8 @@
 		jint x,
 		jint y)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint))
-				getGLProcAddressHelper("glVertex2i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex2i (
 			(GLint) x,
 			(GLint) y
 		);
@@ -2514,15 +1926,8 @@
 		jshort x,
 		jshort y)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort))
-				getGLProcAddressHelper("glVertex2s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex2s (
 			(GLshort) x,
 			(GLshort) y
 		);
@@ -2542,15 +1947,8 @@
 		jdouble y,
 		jdouble z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glVertex3d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex3d (
 			(GLdouble) x,
 			(GLdouble) y,
 			(GLdouble) z
@@ -2571,15 +1969,8 @@
 		jfloat y,
 		jfloat z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glVertex3f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex3f (
 			(GLfloat) x,
 			(GLfloat) y,
 			(GLfloat) z
@@ -2600,15 +1991,8 @@
 		jint y,
 		jint z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLint))
-				getGLProcAddressHelper("glVertex3i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex3i (
 			(GLint) x,
 			(GLint) y,
 			(GLint) z
@@ -2629,15 +2013,8 @@
 		jshort y,
 		jshort z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glVertex3s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex3s (
 			(GLshort) x,
 			(GLshort) y,
 			(GLshort) z
@@ -2659,15 +2036,8 @@
 		jdouble z,
 		jdouble w)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glVertex4d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex4d (
 			(GLdouble) x,
 			(GLdouble) y,
 			(GLdouble) z,
@@ -2690,15 +2060,8 @@
 		jfloat z,
 		jfloat w)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glVertex4f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex4f (
 			(GLfloat) x,
 			(GLfloat) y,
 			(GLfloat) z,
@@ -2721,15 +2084,8 @@
 		jint z,
 		jint w)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLint, GLint))
-				getGLProcAddressHelper("glVertex4i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex4i (
 			(GLint) x,
 			(GLint) y,
 			(GLint) z,
@@ -2752,15 +2108,8 @@
 		jshort z,
 		jshort w)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glVertex4s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glVertex4s (
 			(GLshort) x,
 			(GLshort) y,
 			(GLshort) z,
@@ -2780,17 +2129,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glVertex2dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2799,7 +2141,7 @@
 				printf("COPY by glVertex2dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex2dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -2820,17 +2162,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glVertex2fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2839,7 +2174,7 @@
 				printf("COPY by glVertex2fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex2fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -2860,17 +2195,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glVertex2iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2879,7 +2207,7 @@
 				printf("COPY by glVertex2iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex2iv (
 			(const GLint *) ptr0
 		);
 
@@ -2900,17 +2228,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glVertex2sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2919,7 +2240,7 @@
 				printf("COPY by glVertex2sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex2sv (
 			(const GLshort *) ptr0
 		);
 
@@ -2940,17 +2261,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glVertex3dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2959,7 +2273,7 @@
 				printf("COPY by glVertex3dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex3dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -2980,17 +2294,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glVertex3fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -2999,7 +2306,7 @@
 				printf("COPY by glVertex3fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex3fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -3020,17 +2327,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glVertex3iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3039,7 +2339,7 @@
 				printf("COPY by glVertex3iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex3iv (
 			(const GLint *) ptr0
 		);
 
@@ -3060,17 +2360,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glVertex3sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3079,7 +2372,7 @@
 				printf("COPY by glVertex3sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex3sv (
 			(const GLshort *) ptr0
 		);
 
@@ -3100,17 +2393,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glVertex4dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3119,7 +2405,7 @@
 				printf("COPY by glVertex4dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex4dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -3140,17 +2426,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glVertex4fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3159,7 +2438,7 @@
 				printf("COPY by glVertex4fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex4fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -3180,17 +2459,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glVertex4iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3199,7 +2471,7 @@
 				printf("COPY by glVertex4iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex4iv (
 			(const GLint *) ptr0
 		);
 
@@ -3220,17 +2492,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glVertex4sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3239,7 +2504,7 @@
 				printf("COPY by glVertex4sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertex4sv (
 			(const GLshort *) ptr0
 		);
 
@@ -3262,15 +2527,8 @@
 		jbyte ny,
 		jbyte nz)
 	{
-		static void (CALLBACK *__func_ptr__)(GLbyte, GLbyte, GLbyte) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLbyte, GLbyte, GLbyte))
-				getGLProcAddressHelper("glNormal3b", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glNormal3b (
 			(GLbyte) nx,
 			(GLbyte) ny,
 			(GLbyte) nz
@@ -3291,15 +2549,8 @@
 		jdouble ny,
 		jdouble nz)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glNormal3d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glNormal3d (
 			(GLdouble) nx,
 			(GLdouble) ny,
 			(GLdouble) nz
@@ -3320,15 +2571,8 @@
 		jfloat ny,
 		jfloat nz)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glNormal3f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glNormal3f (
 			(GLfloat) nx,
 			(GLfloat) ny,
 			(GLfloat) nz
@@ -3349,15 +2593,8 @@
 		jint ny,
 		jint nz)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLint))
-				getGLProcAddressHelper("glNormal3i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glNormal3i (
 			(GLint) nx,
 			(GLint) ny,
 			(GLint) nz
@@ -3378,15 +2615,8 @@
 		jshort ny,
 		jshort nz)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glNormal3s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glNormal3s (
 			(GLshort) nx,
 			(GLshort) ny,
 			(GLshort) nz
@@ -3405,17 +2635,10 @@
 		JNIEnv *env, jobject obj,
 		jbyteArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLbyte *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLbyte *))
-				getGLProcAddressHelper("glNormal3bv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3424,7 +2647,7 @@
 				printf("COPY by glNormal3bv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormal3bv (
 			(const GLbyte *) ptr0
 		);
 
@@ -3445,17 +2668,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glNormal3dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3464,7 +2680,7 @@
 				printf("COPY by glNormal3dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormal3dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -3485,17 +2701,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glNormal3fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3504,7 +2713,7 @@
 				printf("COPY by glNormal3fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormal3fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -3525,17 +2734,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glNormal3iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3544,7 +2746,7 @@
 				printf("COPY by glNormal3iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormal3iv (
 			(const GLint *) ptr0
 		);
 
@@ -3565,17 +2767,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glNormal3sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -3584,7 +2779,7 @@
 				printf("COPY by glNormal3sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormal3sv (
 			(const GLshort *) ptr0
 		);
 
@@ -3605,15 +2800,8 @@
 		JNIEnv *env, jobject obj,
 		jdouble c)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble))
-				getGLProcAddressHelper("glIndexd", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glIndexd (
 			(GLdouble) c
 		);
 
@@ -3630,15 +2818,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat c)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat))
-				getGLProcAddressHelper("glIndexf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glIndexf (
 			(GLfloat) c
 		);
 
@@ -3655,15 +2836,8 @@
 		JNIEnv *env, jobject obj,
 		jint c)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint))
-				getGLProcAddressHelper("glIndexi", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glIndexi (
 			(GLint) c
 		);
 
@@ -3680,15 +2854,8 @@
 		JNIEnv *env, jobject obj,
 		jshort c)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort))
-				getGLProcAddressHelper("glIndexs", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glIndexs (
 			(GLshort) c
 		);
 
@@ -3705,15 +2872,8 @@
 		JNIEnv *env, jobject obj,
 		jbyte c)
 	{
-		static void (CALLBACK *__func_ptr__)(GLubyte) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLubyte))
-				getGLProcAddressHelper("glIndexub", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glIndexub (
 			(GLubyte) c
 		);
 
@@ -3730,17 +2890,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray c)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glIndexdv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(c!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, c, &isCopiedArray0);
@@ -3749,7 +2902,7 @@
 				printf("COPY by glIndexdv arg: c");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexdv (
 			(const GLdouble *) ptr0
 		);
 
@@ -3770,17 +2923,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray c)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glIndexfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(c!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, c, &isCopiedArray0);
@@ -3789,7 +2935,7 @@
 				printf("COPY by glIndexfv arg: c");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexfv (
 			(const GLfloat *) ptr0
 		);
 
@@ -3810,17 +2956,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray c)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glIndexiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(c!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, c, &isCopiedArray0);
@@ -3829,7 +2968,7 @@
 				printf("COPY by glIndexiv arg: c");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexiv (
 			(const GLint *) ptr0
 		);
 
@@ -3850,17 +2989,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray c)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glIndexsv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(c!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, c, &isCopiedArray0);
@@ -3869,7 +3001,7 @@
 				printf("COPY by glIndexsv arg: c");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexsv (
 			(const GLshort *) ptr0
 		);
 
@@ -3890,17 +3022,10 @@
 		JNIEnv *env, jobject obj,
 		jbyteArray c)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLubyte *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLubyte *))
-				getGLProcAddressHelper("glIndexubv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(c!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, c, &isCopiedArray0);
@@ -3909,7 +3034,7 @@
 				printf("COPY by glIndexubv arg: c");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexubv (
 			(const GLubyte *) ptr0
 		);
 
@@ -3932,15 +3057,8 @@
 		jbyte green,
 		jbyte blue)
 	{
-		static void (CALLBACK *__func_ptr__)(GLbyte, GLbyte, GLbyte) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLbyte, GLbyte, GLbyte))
-				getGLProcAddressHelper("glColor3b", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor3b (
 			(GLbyte) red,
 			(GLbyte) green,
 			(GLbyte) blue
@@ -3961,15 +3079,8 @@
 		jdouble green,
 		jdouble blue)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glColor3d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor3d (
 			(GLdouble) red,
 			(GLdouble) green,
 			(GLdouble) blue
@@ -3990,15 +3101,8 @@
 		jfloat green,
 		jfloat blue)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glColor3f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor3f (
 			(GLfloat) red,
 			(GLfloat) green,
 			(GLfloat) blue
@@ -4019,15 +3123,8 @@
 		jint green,
 		jint blue)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLint))
-				getGLProcAddressHelper("glColor3i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor3i (
 			(GLint) red,
 			(GLint) green,
 			(GLint) blue
@@ -4048,15 +3145,8 @@
 		jshort green,
 		jshort blue)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glColor3s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor3s (
 			(GLshort) red,
 			(GLshort) green,
 			(GLshort) blue
@@ -4077,15 +3167,8 @@
 		jbyte green,
 		jbyte blue)
 	{
-		static void (CALLBACK *__func_ptr__)(GLubyte, GLubyte, GLubyte) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLubyte, GLubyte, GLubyte))
-				getGLProcAddressHelper("glColor3ub", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor3ub (
 			(GLubyte) red,
 			(GLubyte) green,
 			(GLubyte) blue
@@ -4106,15 +3189,8 @@
 		jint green,
 		jint blue)
 	{
-		static void (CALLBACK *__func_ptr__)(GLuint, GLuint, GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLuint, GLuint, GLuint))
-				getGLProcAddressHelper("glColor3ui", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor3ui (
 			(GLuint) red,
 			(GLuint) green,
 			(GLuint) blue
@@ -4135,15 +3211,8 @@
 		jshort green,
 		jshort blue)
 	{
-		static void (CALLBACK *__func_ptr__)(GLushort, GLushort, GLushort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLushort, GLushort, GLushort))
-				getGLProcAddressHelper("glColor3us", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor3us (
 			(GLushort) red,
 			(GLushort) green,
 			(GLushort) blue
@@ -4165,15 +3234,8 @@
 		jbyte blue,
 		jbyte alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLbyte, GLbyte, GLbyte, GLbyte) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLbyte, GLbyte, GLbyte, GLbyte))
-				getGLProcAddressHelper("glColor4b", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor4b (
 			(GLbyte) red,
 			(GLbyte) green,
 			(GLbyte) blue,
@@ -4196,15 +3258,8 @@
 		jdouble blue,
 		jdouble alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glColor4d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor4d (
 			(GLdouble) red,
 			(GLdouble) green,
 			(GLdouble) blue,
@@ -4227,15 +3282,8 @@
 		jfloat blue,
 		jfloat alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glColor4f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor4f (
 			(GLfloat) red,
 			(GLfloat) green,
 			(GLfloat) blue,
@@ -4258,15 +3306,8 @@
 		jint blue,
 		jint alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLint, GLint))
-				getGLProcAddressHelper("glColor4i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor4i (
 			(GLint) red,
 			(GLint) green,
 			(GLint) blue,
@@ -4289,15 +3330,8 @@
 		jshort blue,
 		jshort alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glColor4s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor4s (
 			(GLshort) red,
 			(GLshort) green,
 			(GLshort) blue,
@@ -4320,15 +3354,8 @@
 		jbyte blue,
 		jbyte alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLubyte, GLubyte, GLubyte, GLubyte) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLubyte, GLubyte, GLubyte, GLubyte))
-				getGLProcAddressHelper("glColor4ub", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor4ub (
 			(GLubyte) red,
 			(GLubyte) green,
 			(GLubyte) blue,
@@ -4351,15 +3378,8 @@
 		jint blue,
 		jint alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLuint, GLuint, GLuint, GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLuint, GLuint, GLuint, GLuint))
-				getGLProcAddressHelper("glColor4ui", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor4ui (
 			(GLuint) red,
 			(GLuint) green,
 			(GLuint) blue,
@@ -4382,15 +3402,8 @@
 		jshort blue,
 		jshort alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLushort, GLushort, GLushort, GLushort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLushort, GLushort, GLushort, GLushort))
-				getGLProcAddressHelper("glColor4us", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColor4us (
 			(GLushort) red,
 			(GLushort) green,
 			(GLushort) blue,
@@ -4410,17 +3423,10 @@
 		JNIEnv *env, jobject obj,
 		jbyteArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLbyte *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLbyte *))
-				getGLProcAddressHelper("glColor3bv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4429,7 +3435,7 @@
 				printf("COPY by glColor3bv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor3bv (
 			(const GLbyte *) ptr0
 		);
 
@@ -4450,17 +3456,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glColor3dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4469,7 +3468,7 @@
 				printf("COPY by glColor3dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor3dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -4490,17 +3489,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glColor3fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4509,7 +3501,7 @@
 				printf("COPY by glColor3fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor3fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -4530,17 +3522,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glColor3iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4549,7 +3534,7 @@
 				printf("COPY by glColor3iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor3iv (
 			(const GLint *) ptr0
 		);
 
@@ -4570,17 +3555,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glColor3sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4589,7 +3567,7 @@
 				printf("COPY by glColor3sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor3sv (
 			(const GLshort *) ptr0
 		);
 
@@ -4610,17 +3588,10 @@
 		JNIEnv *env, jobject obj,
 		jbyteArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLubyte *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLubyte *))
-				getGLProcAddressHelper("glColor3ubv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4629,7 +3600,7 @@
 				printf("COPY by glColor3ubv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor3ubv (
 			(const GLubyte *) ptr0
 		);
 
@@ -4650,17 +3621,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLuint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLuint *))
-				getGLProcAddressHelper("glColor3uiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4669,7 +3633,7 @@
 				printf("COPY by glColor3uiv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor3uiv (
 			(const GLuint *) ptr0
 		);
 
@@ -4690,17 +3654,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLushort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLushort *))
-				getGLProcAddressHelper("glColor3usv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4709,7 +3666,7 @@
 				printf("COPY by glColor3usv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor3usv (
 			(const GLushort *) ptr0
 		);
 
@@ -4730,17 +3687,10 @@
 		JNIEnv *env, jobject obj,
 		jbyteArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLbyte *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLbyte *))
-				getGLProcAddressHelper("glColor4bv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4749,7 +3699,7 @@
 				printf("COPY by glColor4bv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor4bv (
 			(const GLbyte *) ptr0
 		);
 
@@ -4770,17 +3720,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glColor4dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4789,7 +3732,7 @@
 				printf("COPY by glColor4dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor4dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -4810,17 +3753,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glColor4fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4829,7 +3765,7 @@
 				printf("COPY by glColor4fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor4fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -4850,17 +3786,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glColor4iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4869,7 +3798,7 @@
 				printf("COPY by glColor4iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor4iv (
 			(const GLint *) ptr0
 		);
 
@@ -4890,17 +3819,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glColor4sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4909,7 +3831,7 @@
 				printf("COPY by glColor4sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor4sv (
 			(const GLshort *) ptr0
 		);
 
@@ -4930,17 +3852,10 @@
 		JNIEnv *env, jobject obj,
 		jbyteArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLubyte *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jbyte *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLubyte *))
-				getGLProcAddressHelper("glColor4ubv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4949,7 +3864,7 @@
 				printf("COPY by glColor4ubv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor4ubv (
 			(const GLubyte *) ptr0
 		);
 
@@ -4970,17 +3885,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLuint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLuint *))
-				getGLProcAddressHelper("glColor4uiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -4989,7 +3897,7 @@
 				printf("COPY by glColor4uiv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor4uiv (
 			(const GLuint *) ptr0
 		);
 
@@ -5010,17 +3918,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLushort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLushort *))
-				getGLProcAddressHelper("glColor4usv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5029,7 +3930,7 @@
 				printf("COPY by glColor4usv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glColor4usv (
 			(const GLushort *) ptr0
 		);
 
@@ -5050,15 +3951,8 @@
 		JNIEnv *env, jobject obj,
 		jdouble s)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble))
-				getGLProcAddressHelper("glTexCoord1d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord1d (
 			(GLdouble) s
 		);
 
@@ -5075,15 +3969,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat s)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat))
-				getGLProcAddressHelper("glTexCoord1f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord1f (
 			(GLfloat) s
 		);
 
@@ -5100,15 +3987,8 @@
 		JNIEnv *env, jobject obj,
 		jint s)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint))
-				getGLProcAddressHelper("glTexCoord1i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord1i (
 			(GLint) s
 		);
 
@@ -5125,15 +4005,8 @@
 		JNIEnv *env, jobject obj,
 		jshort s)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort))
-				getGLProcAddressHelper("glTexCoord1s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord1s (
 			(GLshort) s
 		);
 
@@ -5151,15 +4024,8 @@
 		jdouble s,
 		jdouble t)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble))
-				getGLProcAddressHelper("glTexCoord2d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord2d (
 			(GLdouble) s,
 			(GLdouble) t
 		);
@@ -5178,15 +4044,8 @@
 		jfloat s,
 		jfloat t)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat))
-				getGLProcAddressHelper("glTexCoord2f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord2f (
 			(GLfloat) s,
 			(GLfloat) t
 		);
@@ -5205,15 +4064,8 @@
 		jint s,
 		jint t)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint))
-				getGLProcAddressHelper("glTexCoord2i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord2i (
 			(GLint) s,
 			(GLint) t
 		);
@@ -5232,15 +4084,8 @@
 		jshort s,
 		jshort t)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort))
-				getGLProcAddressHelper("glTexCoord2s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord2s (
 			(GLshort) s,
 			(GLshort) t
 		);
@@ -5260,15 +4105,8 @@
 		jdouble t,
 		jdouble r)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glTexCoord3d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord3d (
 			(GLdouble) s,
 			(GLdouble) t,
 			(GLdouble) r
@@ -5289,15 +4127,8 @@
 		jfloat t,
 		jfloat r)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glTexCoord3f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord3f (
 			(GLfloat) s,
 			(GLfloat) t,
 			(GLfloat) r
@@ -5318,15 +4149,8 @@
 		jint t,
 		jint r)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLint))
-				getGLProcAddressHelper("glTexCoord3i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord3i (
 			(GLint) s,
 			(GLint) t,
 			(GLint) r
@@ -5347,15 +4171,8 @@
 		jshort t,
 		jshort r)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glTexCoord3s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord3s (
 			(GLshort) s,
 			(GLshort) t,
 			(GLshort) r
@@ -5377,15 +4194,8 @@
 		jdouble r,
 		jdouble q)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glTexCoord4d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord4d (
 			(GLdouble) s,
 			(GLdouble) t,
 			(GLdouble) r,
@@ -5408,15 +4218,8 @@
 		jfloat r,
 		jfloat q)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glTexCoord4f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord4f (
 			(GLfloat) s,
 			(GLfloat) t,
 			(GLfloat) r,
@@ -5439,15 +4242,8 @@
 		jint r,
 		jint q)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLint, GLint))
-				getGLProcAddressHelper("glTexCoord4i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord4i (
 			(GLint) s,
 			(GLint) t,
 			(GLint) r,
@@ -5470,15 +4266,8 @@
 		jshort r,
 		jshort q)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glTexCoord4s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexCoord4s (
 			(GLshort) s,
 			(GLshort) t,
 			(GLshort) r,
@@ -5498,17 +4287,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glTexCoord1dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5517,7 +4299,7 @@
 				printf("COPY by glTexCoord1dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord1dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -5538,17 +4320,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glTexCoord1fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5557,7 +4332,7 @@
 				printf("COPY by glTexCoord1fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord1fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -5578,17 +4353,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glTexCoord1iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5597,7 +4365,7 @@
 				printf("COPY by glTexCoord1iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord1iv (
 			(const GLint *) ptr0
 		);
 
@@ -5618,17 +4386,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glTexCoord1sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5637,7 +4398,7 @@
 				printf("COPY by glTexCoord1sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord1sv (
 			(const GLshort *) ptr0
 		);
 
@@ -5658,17 +4419,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glTexCoord2dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5677,7 +4431,7 @@
 				printf("COPY by glTexCoord2dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord2dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -5698,17 +4452,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glTexCoord2fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5717,7 +4464,7 @@
 				printf("COPY by glTexCoord2fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord2fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -5738,17 +4485,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glTexCoord2iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5757,7 +4497,7 @@
 				printf("COPY by glTexCoord2iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord2iv (
 			(const GLint *) ptr0
 		);
 
@@ -5778,17 +4518,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glTexCoord2sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5797,7 +4530,7 @@
 				printf("COPY by glTexCoord2sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord2sv (
 			(const GLshort *) ptr0
 		);
 
@@ -5818,17 +4551,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glTexCoord3dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5837,7 +4563,7 @@
 				printf("COPY by glTexCoord3dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord3dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -5858,17 +4584,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glTexCoord3fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5877,7 +4596,7 @@
 				printf("COPY by glTexCoord3fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord3fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -5898,17 +4617,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glTexCoord3iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5917,7 +4629,7 @@
 				printf("COPY by glTexCoord3iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord3iv (
 			(const GLint *) ptr0
 		);
 
@@ -5938,17 +4650,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glTexCoord3sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5957,7 +4662,7 @@
 				printf("COPY by glTexCoord3sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord3sv (
 			(const GLshort *) ptr0
 		);
 
@@ -5978,17 +4683,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glTexCoord4dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -5997,7 +4695,7 @@
 				printf("COPY by glTexCoord4dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord4dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -6018,17 +4716,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glTexCoord4fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6037,7 +4728,7 @@
 				printf("COPY by glTexCoord4fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord4fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -6058,17 +4749,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glTexCoord4iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6077,7 +4761,7 @@
 				printf("COPY by glTexCoord4iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord4iv (
 			(const GLint *) ptr0
 		);
 
@@ -6098,17 +4782,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glTexCoord4sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6117,7 +4794,7 @@
 				printf("COPY by glTexCoord4sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoord4sv (
 			(const GLshort *) ptr0
 		);
 
@@ -6139,15 +4816,8 @@
 		jdouble x,
 		jdouble y)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble))
-				getGLProcAddressHelper("glRasterPos2d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos2d (
 			(GLdouble) x,
 			(GLdouble) y
 		);
@@ -6166,15 +4836,8 @@
 		jfloat x,
 		jfloat y)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat))
-				getGLProcAddressHelper("glRasterPos2f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos2f (
 			(GLfloat) x,
 			(GLfloat) y
 		);
@@ -6193,15 +4856,8 @@
 		jint x,
 		jint y)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint))
-				getGLProcAddressHelper("glRasterPos2i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos2i (
 			(GLint) x,
 			(GLint) y
 		);
@@ -6220,15 +4876,8 @@
 		jshort x,
 		jshort y)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort))
-				getGLProcAddressHelper("glRasterPos2s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos2s (
 			(GLshort) x,
 			(GLshort) y
 		);
@@ -6248,15 +4897,8 @@
 		jdouble y,
 		jdouble z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glRasterPos3d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos3d (
 			(GLdouble) x,
 			(GLdouble) y,
 			(GLdouble) z
@@ -6277,15 +4919,8 @@
 		jfloat y,
 		jfloat z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glRasterPos3f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos3f (
 			(GLfloat) x,
 			(GLfloat) y,
 			(GLfloat) z
@@ -6306,15 +4941,8 @@
 		jint y,
 		jint z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLint))
-				getGLProcAddressHelper("glRasterPos3i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos3i (
 			(GLint) x,
 			(GLint) y,
 			(GLint) z
@@ -6335,15 +4963,8 @@
 		jshort y,
 		jshort z)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glRasterPos3s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos3s (
 			(GLshort) x,
 			(GLshort) y,
 			(GLshort) z
@@ -6365,15 +4986,8 @@
 		jdouble z,
 		jdouble w)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glRasterPos4d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos4d (
 			(GLdouble) x,
 			(GLdouble) y,
 			(GLdouble) z,
@@ -6396,15 +5010,8 @@
 		jfloat z,
 		jfloat w)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glRasterPos4f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos4f (
 			(GLfloat) x,
 			(GLfloat) y,
 			(GLfloat) z,
@@ -6427,15 +5034,8 @@
 		jint z,
 		jint w)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLint, GLint))
-				getGLProcAddressHelper("glRasterPos4i", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos4i (
 			(GLint) x,
 			(GLint) y,
 			(GLint) z,
@@ -6458,15 +5058,8 @@
 		jshort z,
 		jshort w)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glRasterPos4s", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRasterPos4s (
 			(GLshort) x,
 			(GLshort) y,
 			(GLshort) z,
@@ -6486,17 +5079,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glRasterPos2dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6505,7 +5091,7 @@
 				printf("COPY by glRasterPos2dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos2dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -6526,17 +5112,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glRasterPos2fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6545,7 +5124,7 @@
 				printf("COPY by glRasterPos2fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos2fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -6566,17 +5145,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glRasterPos2iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6585,7 +5157,7 @@
 				printf("COPY by glRasterPos2iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos2iv (
 			(const GLint *) ptr0
 		);
 
@@ -6606,17 +5178,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glRasterPos2sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6625,7 +5190,7 @@
 				printf("COPY by glRasterPos2sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos2sv (
 			(const GLshort *) ptr0
 		);
 
@@ -6646,17 +5211,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glRasterPos3dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6665,7 +5223,7 @@
 				printf("COPY by glRasterPos3dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos3dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -6686,17 +5244,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glRasterPos3fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6705,7 +5256,7 @@
 				printf("COPY by glRasterPos3fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos3fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -6726,17 +5277,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glRasterPos3iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6745,7 +5289,7 @@
 				printf("COPY by glRasterPos3iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos3iv (
 			(const GLint *) ptr0
 		);
 
@@ -6766,17 +5310,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glRasterPos3sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6785,7 +5322,7 @@
 				printf("COPY by glRasterPos3sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos3sv (
 			(const GLshort *) ptr0
 		);
 
@@ -6806,17 +5343,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glRasterPos4dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6825,7 +5355,7 @@
 				printf("COPY by glRasterPos4dv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos4dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -6846,17 +5376,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glRasterPos4fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6865,7 +5388,7 @@
 				printf("COPY by glRasterPos4fv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos4fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -6886,17 +5409,10 @@
 		JNIEnv *env, jobject obj,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *))
-				getGLProcAddressHelper("glRasterPos4iv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6905,7 +5421,7 @@
 				printf("COPY by glRasterPos4iv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos4iv (
 			(const GLint *) ptr0
 		);
 
@@ -6926,17 +5442,10 @@
 		JNIEnv *env, jobject obj,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *))
-				getGLProcAddressHelper("glRasterPos4sv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray0);
@@ -6945,7 +5454,7 @@
 				printf("COPY by glRasterPos4sv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glRasterPos4sv (
 			(const GLshort *) ptr0
 		);
 
@@ -6969,15 +5478,8 @@
 		jdouble x2,
 		jdouble y2)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glRectd", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRectd (
 			(GLdouble) x1,
 			(GLdouble) y1,
 			(GLdouble) x2,
@@ -7000,15 +5502,8 @@
 		jfloat x2,
 		jfloat y2)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glRectf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRectf (
 			(GLfloat) x1,
 			(GLfloat) y1,
 			(GLfloat) x2,
@@ -7031,15 +5526,8 @@
 		jint x2,
 		jint y2)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLint, GLint))
-				getGLProcAddressHelper("glRecti", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRecti (
 			(GLint) x1,
 			(GLint) y1,
 			(GLint) x2,
@@ -7062,15 +5550,8 @@
 		jshort x2,
 		jshort y2)
 	{
-		static void (CALLBACK *__func_ptr__)(GLshort, GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLshort, GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glRects", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glRects (
 			(GLshort) x1,
 			(GLshort) y1,
 			(GLshort) x2,
@@ -7091,7 +5572,6 @@
 		jdoubleArray v1,
 		jdoubleArray v2)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *, const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
@@ -7099,12 +5579,6 @@
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *, const GLdouble *))
-				getGLProcAddressHelper("glRectdv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v1!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v1, &isCopiedArray0);
@@ -7121,7 +5595,7 @@
 				printf("COPY by glRectdv arg: v2");
 			}
 		}
-		__func_ptr__ (
+		disp__glRectdv (
 			(const GLdouble *) ptr0,
 			(const GLdouble *) ptr1
 		);
@@ -7148,7 +5622,6 @@
 		jfloatArray v1,
 		jfloatArray v2)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *, const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
@@ -7156,12 +5629,6 @@
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *, const GLfloat *))
-				getGLProcAddressHelper("glRectfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v1!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v1, &isCopiedArray0);
@@ -7178,7 +5645,7 @@
 				printf("COPY by glRectfv arg: v2");
 			}
 		}
-		__func_ptr__ (
+		disp__glRectfv (
 			(const GLfloat *) ptr0,
 			(const GLfloat *) ptr1
 		);
@@ -7205,7 +5672,6 @@
 		jintArray v1,
 		jintArray v2)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLint *, const GLint *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jint *ptr0 = NULL;
 		static int isWarned0 = 0;
@@ -7213,12 +5679,6 @@
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLint *, const GLint *))
-				getGLProcAddressHelper("glRectiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v1!=NULL)
 		{
 			ptr0 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v1, &isCopiedArray0);
@@ -7235,7 +5695,7 @@
 				printf("COPY by glRectiv arg: v2");
 			}
 		}
-		__func_ptr__ (
+		disp__glRectiv (
 			(const GLint *) ptr0,
 			(const GLint *) ptr1
 		);
@@ -7262,7 +5722,6 @@
 		jshortArray v1,
 		jshortArray v2)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLshort *, const GLshort *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jshort *ptr0 = NULL;
 		static int isWarned0 = 0;
@@ -7270,12 +5729,6 @@
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLshort *, const GLshort *))
-				getGLProcAddressHelper("glRectsv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v1!=NULL)
 		{
 			ptr0 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v1, &isCopiedArray0);
@@ -7292,7 +5745,7 @@
 				printf("COPY by glRectsv arg: v2");
 			}
 		}
-		__func_ptr__ (
+		disp__glRectsv (
 			(const GLshort *) ptr0,
 			(const GLshort *) ptr1
 		);
@@ -7321,17 +5774,10 @@
 		jint stride,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -7340,7 +5786,7 @@
 				printf("COPY by glVertexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -7360,17 +5806,10 @@
 		jint stride,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -7379,7 +5818,7 @@
 				printf("COPY by glVertexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -7399,17 +5838,10 @@
 		jint stride,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -7418,7 +5850,7 @@
 				printf("COPY by glVertexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -7438,17 +5870,10 @@
 		jint stride,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -7457,7 +5882,7 @@
 				printf("COPY by glVertexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -7477,17 +5902,10 @@
 		jint stride,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -7496,7 +5914,7 @@
 				printf("COPY by glVertexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -7516,17 +5934,10 @@
 		jint stride,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -7535,7 +5946,7 @@
 				printf("COPY by glVertexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -7555,17 +5966,10 @@
 		jint stride,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -7574,7 +5978,7 @@
 				printf("COPY by glVertexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -7600,17 +6004,10 @@
 		jint stride,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jbyte *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -7619,7 +6016,7 @@
 				printf("COPY by glNormalPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -7637,17 +6034,10 @@
 		jint stride,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jshort *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -7656,7 +6046,7 @@
 				printf("COPY by glNormalPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -7674,17 +6064,10 @@
 		jint stride,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -7693,7 +6076,7 @@
 				printf("COPY by glNormalPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -7711,17 +6094,10 @@
 		jint stride,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -7730,7 +6106,7 @@
 				printf("COPY by glNormalPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -7748,17 +6124,10 @@
 		jint stride,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -7767,7 +6136,7 @@
 				printf("COPY by glNormalPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -7785,17 +6154,10 @@
 		jint stride,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -7804,7 +6166,7 @@
 				printf("COPY by glNormalPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -7822,17 +6184,10 @@
 		jint stride,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jlong *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -7841,7 +6196,7 @@
 				printf("COPY by glNormalPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -7867,17 +6222,10 @@
 		jint stride,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -7886,7 +6234,7 @@
 				printf("COPY by glColorPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -7906,17 +6254,10 @@
 		jint stride,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -7925,7 +6266,7 @@
 				printf("COPY by glColorPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -7945,17 +6286,10 @@
 		jint stride,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -7964,7 +6298,7 @@
 				printf("COPY by glColorPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -7984,17 +6318,10 @@
 		jint stride,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8003,7 +6330,7 @@
 				printf("COPY by glColorPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8023,17 +6350,10 @@
 		jint stride,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8042,7 +6362,7 @@
 				printf("COPY by glColorPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8062,17 +6382,10 @@
 		jint stride,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8081,7 +6394,7 @@
 				printf("COPY by glColorPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8101,17 +6414,10 @@
 		jint stride,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8120,7 +6426,7 @@
 				printf("COPY by glColorPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8146,17 +6452,10 @@
 		jint stride,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jbyte *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -8165,7 +6464,7 @@
 				printf("COPY by glIndexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -8183,17 +6482,10 @@
 		jint stride,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jshort *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -8202,7 +6494,7 @@
 				printf("COPY by glIndexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -8220,17 +6512,10 @@
 		jint stride,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -8239,7 +6524,7 @@
 				printf("COPY by glIndexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -8257,17 +6542,10 @@
 		jint stride,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -8276,7 +6554,7 @@
 				printf("COPY by glIndexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -8294,17 +6572,10 @@
 		jint stride,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -8313,7 +6584,7 @@
 				printf("COPY by glIndexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -8331,17 +6602,10 @@
 		jint stride,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -8350,7 +6614,7 @@
 				printf("COPY by glIndexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -8368,17 +6632,10 @@
 		jint stride,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jlong *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -8387,7 +6644,7 @@
 				printf("COPY by glIndexPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointer (
 			(GLenum) type,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -8413,17 +6670,10 @@
 		jint stride,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8432,7 +6682,7 @@
 				printf("COPY by glTexCoordPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8452,17 +6702,10 @@
 		jint stride,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8471,7 +6714,7 @@
 				printf("COPY by glTexCoordPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8491,17 +6734,10 @@
 		jint stride,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8510,7 +6746,7 @@
 				printf("COPY by glTexCoordPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8530,17 +6766,10 @@
 		jint stride,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8549,7 +6778,7 @@
 				printf("COPY by glTexCoordPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8569,17 +6798,10 @@
 		jint stride,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8588,7 +6810,7 @@
 				printf("COPY by glTexCoordPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8608,17 +6830,10 @@
 		jint stride,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8627,7 +6842,7 @@
 				printf("COPY by glTexCoordPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8647,17 +6862,10 @@
 		jint stride,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -8666,7 +6874,7 @@
 				printf("COPY by glTexCoordPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointer (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -8691,17 +6899,10 @@
 		jint stride,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jbyte *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glEdgeFlagPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -8710,7 +6911,7 @@
 				printf("COPY by glEdgeFlagPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glEdgeFlagPointer (
 			(GLsizei) stride,
 			(const GLvoid *) ptr1
 		);
@@ -8726,17 +6927,10 @@
 		jint stride,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glEdgeFlagPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr1 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -8745,7 +6939,7 @@
 				printf("COPY by glEdgeFlagPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glEdgeFlagPointer (
 			(GLsizei) stride,
 			(const GLvoid *) ptr1
 		);
@@ -8761,17 +6955,10 @@
 		jint stride,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glEdgeFlagPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -8780,7 +6967,7 @@
 				printf("COPY by glEdgeFlagPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glEdgeFlagPointer (
 			(GLsizei) stride,
 			(const GLvoid *) ptr1
 		);
@@ -8796,17 +6983,10 @@
 		jint stride,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glEdgeFlagPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -8815,7 +6995,7 @@
 				printf("COPY by glEdgeFlagPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glEdgeFlagPointer (
 			(GLsizei) stride,
 			(const GLvoid *) ptr1
 		);
@@ -8831,17 +7011,10 @@
 		jint stride,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glEdgeFlagPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -8850,7 +7023,7 @@
 				printf("COPY by glEdgeFlagPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glEdgeFlagPointer (
 			(GLsizei) stride,
 			(const GLvoid *) ptr1
 		);
@@ -8866,17 +7039,10 @@
 		jint stride,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jboolean *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glEdgeFlagPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -8885,7 +7051,7 @@
 				printf("COPY by glEdgeFlagPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glEdgeFlagPointer (
 			(GLsizei) stride,
 			(const GLvoid *) ptr1
 		);
@@ -8901,17 +7067,10 @@
 		jint stride,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jlong *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glEdgeFlagPointer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr1 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray1);
@@ -8920,7 +7079,7 @@
 				printf("COPY by glEdgeFlagPointer arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glEdgeFlagPointer (
 			(GLsizei) stride,
 			(const GLvoid *) ptr1
 		);
@@ -8943,17 +7102,10 @@
 		jint pname,
 		jbyteArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jbyte *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointerv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -8962,7 +7114,7 @@
 				printf("COPY by glGetPointerv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointerv (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -8978,17 +7130,10 @@
 		jint pname,
 		jshortArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointerv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -8997,7 +7142,7 @@
 				printf("COPY by glGetPointerv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointerv (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -9013,17 +7158,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointerv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -9032,7 +7170,7 @@
 				printf("COPY by glGetPointerv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointerv (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -9048,17 +7186,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointerv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -9067,7 +7198,7 @@
 				printf("COPY by glGetPointerv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointerv (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -9083,17 +7214,10 @@
 		jint pname,
 		jdoubleArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointerv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -9102,7 +7226,7 @@
 				printf("COPY by glGetPointerv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointerv (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -9118,17 +7242,10 @@
 		jint pname,
 		jbooleanArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jboolean *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointerv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -9137,7 +7254,7 @@
 				printf("COPY by glGetPointerv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointerv (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -9153,17 +7270,10 @@
 		jint pname,
 		jlongArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jlong *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointerv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -9172,7 +7282,7 @@
 				printf("COPY by glGetPointerv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointerv (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -9194,15 +7304,8 @@
 		JNIEnv *env, jobject obj,
 		jint i)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint))
-				getGLProcAddressHelper("glArrayElement", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glArrayElement (
 			(GLint) i
 		);
 
@@ -9221,15 +7324,8 @@
 		jint first,
 		jint count)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLsizei))
-				getGLProcAddressHelper("glDrawArrays", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glDrawArrays (
 			(GLenum) mode,
 			(GLint) first,
 			(GLsizei) count
@@ -9251,17 +7347,10 @@
 		jint type,
 		jbyteArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray3);
@@ -9270,7 +7359,7 @@
 				printf("COPY by glDrawElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawElements (
 			(GLenum) mode,
 			(GLsizei) count,
 			(GLenum) type,
@@ -9290,17 +7379,10 @@
 		jint type,
 		jshortArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray3);
@@ -9309,7 +7391,7 @@
 				printf("COPY by glDrawElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawElements (
 			(GLenum) mode,
 			(GLsizei) count,
 			(GLenum) type,
@@ -9329,17 +7411,10 @@
 		jint type,
 		jintArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray3);
@@ -9348,7 +7423,7 @@
 				printf("COPY by glDrawElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawElements (
 			(GLenum) mode,
 			(GLsizei) count,
 			(GLenum) type,
@@ -9368,17 +7443,10 @@
 		jint type,
 		jfloatArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray3);
@@ -9387,7 +7455,7 @@
 				printf("COPY by glDrawElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawElements (
 			(GLenum) mode,
 			(GLsizei) count,
 			(GLenum) type,
@@ -9407,17 +7475,10 @@
 		jint type,
 		jdoubleArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray3);
@@ -9426,7 +7487,7 @@
 				printf("COPY by glDrawElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawElements (
 			(GLenum) mode,
 			(GLsizei) count,
 			(GLenum) type,
@@ -9446,17 +7507,10 @@
 		jint type,
 		jbooleanArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray3);
@@ -9465,7 +7519,7 @@
 				printf("COPY by glDrawElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawElements (
 			(GLenum) mode,
 			(GLsizei) count,
 			(GLenum) type,
@@ -9485,17 +7539,10 @@
 		jint type,
 		jlongArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray3);
@@ -9504,7 +7551,7 @@
 				printf("COPY by glDrawElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawElements (
 			(GLenum) mode,
 			(GLsizei) count,
 			(GLenum) type,
@@ -9530,17 +7577,10 @@
 		jint stride,
 		jbyteArray pointer)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jbyte *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glInterleavedArrays", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pointer!=NULL)
 		{
 			ptr2 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -9549,7 +7589,7 @@
 				printf("COPY by glInterleavedArrays arg: pointer");
 			}
 		}
-		__func_ptr__ (
+		disp__glInterleavedArrays (
 			(GLenum) format,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -9567,17 +7607,10 @@
 		jint stride,
 		jshortArray pointer)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jshort *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glInterleavedArrays", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pointer!=NULL)
 		{
 			ptr2 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -9586,7 +7619,7 @@
 				printf("COPY by glInterleavedArrays arg: pointer");
 			}
 		}
-		__func_ptr__ (
+		disp__glInterleavedArrays (
 			(GLenum) format,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -9604,17 +7637,10 @@
 		jint stride,
 		jintArray pointer)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glInterleavedArrays", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pointer!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -9623,7 +7649,7 @@
 				printf("COPY by glInterleavedArrays arg: pointer");
 			}
 		}
-		__func_ptr__ (
+		disp__glInterleavedArrays (
 			(GLenum) format,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -9641,17 +7667,10 @@
 		jint stride,
 		jfloatArray pointer)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glInterleavedArrays", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pointer!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -9660,7 +7679,7 @@
 				printf("COPY by glInterleavedArrays arg: pointer");
 			}
 		}
-		__func_ptr__ (
+		disp__glInterleavedArrays (
 			(GLenum) format,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -9678,17 +7697,10 @@
 		jint stride,
 		jdoubleArray pointer)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glInterleavedArrays", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pointer!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -9697,7 +7709,7 @@
 				printf("COPY by glInterleavedArrays arg: pointer");
 			}
 		}
-		__func_ptr__ (
+		disp__glInterleavedArrays (
 			(GLenum) format,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -9715,17 +7727,10 @@
 		jint stride,
 		jbooleanArray pointer)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glInterleavedArrays", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pointer!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -9734,7 +7739,7 @@
 				printf("COPY by glInterleavedArrays arg: pointer");
 			}
 		}
-		__func_ptr__ (
+		disp__glInterleavedArrays (
 			(GLenum) format,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -9752,17 +7757,10 @@
 		jint stride,
 		jlongArray pointer)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jlong *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glInterleavedArrays", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pointer!=NULL)
 		{
 			ptr2 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pointer, &isCopiedArray2);
@@ -9771,7 +7769,7 @@
 				printf("COPY by glInterleavedArrays arg: pointer");
 			}
 		}
-		__func_ptr__ (
+		disp__glInterleavedArrays (
 			(GLenum) format,
 			(GLsizei) stride,
 			(const GLvoid *) ptr2
@@ -9794,15 +7792,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glShadeModel", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glShadeModel (
 			(GLenum) mode
 		);
 
@@ -9821,15 +7812,8 @@
 		jint pname,
 		jfloat param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
-				getGLProcAddressHelper("glLightf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glLightf (
 			(GLenum) light,
 			(GLenum) pname,
 			(GLfloat) param
@@ -9850,15 +7834,8 @@
 		jint pname,
 		jint param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint))
-				getGLProcAddressHelper("glLighti", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glLighti (
 			(GLenum) light,
 			(GLenum) pname,
 			(GLint) param
@@ -9879,17 +7856,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
-				getGLProcAddressHelper("glLightfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -9898,7 +7868,7 @@
 				printf("COPY by glLightfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glLightfv (
 			(GLenum) light,
 			(GLenum) pname,
 			(const GLfloat *) ptr2
@@ -9923,17 +7893,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
-				getGLProcAddressHelper("glLightiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -9942,7 +7905,7 @@
 				printf("COPY by glLightiv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glLightiv (
 			(GLenum) light,
 			(GLenum) pname,
 			(const GLint *) ptr2
@@ -9967,17 +7930,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetLightfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -9986,7 +7942,7 @@
 				printf("COPY by glGetLightfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetLightfv (
 			(GLenum) light,
 			(GLenum) pname,
 			(GLfloat *) ptr2
@@ -10011,17 +7967,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetLightiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -10030,7 +7979,7 @@
 				printf("COPY by glGetLightiv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetLightiv (
 			(GLenum) light,
 			(GLenum) pname,
 			(GLint *) ptr2
@@ -10054,15 +8003,8 @@
 		jint pname,
 		jfloat param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat))
-				getGLProcAddressHelper("glLightModelf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glLightModelf (
 			(GLenum) pname,
 			(GLfloat) param
 		);
@@ -10081,15 +8023,8 @@
 		jint pname,
 		jint param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint))
-				getGLProcAddressHelper("glLightModeli", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glLightModeli (
 			(GLenum) pname,
 			(GLint) param
 		);
@@ -10108,17 +8043,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLfloat *))
-				getGLProcAddressHelper("glLightModelfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -10127,7 +8055,7 @@
 				printf("COPY by glLightModelfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glLightModelfv (
 			(GLenum) pname,
 			(const GLfloat *) ptr1
 		);
@@ -10150,17 +8078,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLint *))
-				getGLProcAddressHelper("glLightModeliv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -10169,7 +8090,7 @@
 				printf("COPY by glLightModeliv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glLightModeliv (
 			(GLenum) pname,
 			(const GLint *) ptr1
 		);
@@ -10193,15 +8114,8 @@
 		jint pname,
 		jfloat param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
-				getGLProcAddressHelper("glMaterialf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMaterialf (
 			(GLenum) face,
 			(GLenum) pname,
 			(GLfloat) param
@@ -10222,15 +8136,8 @@
 		jint pname,
 		jint param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint))
-				getGLProcAddressHelper("glMateriali", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMateriali (
 			(GLenum) face,
 			(GLenum) pname,
 			(GLint) param
@@ -10251,17 +8158,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
-				getGLProcAddressHelper("glMaterialfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -10270,7 +8170,7 @@
 				printf("COPY by glMaterialfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glMaterialfv (
 			(GLenum) face,
 			(GLenum) pname,
 			(const GLfloat *) ptr2
@@ -10295,17 +8195,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
-				getGLProcAddressHelper("glMaterialiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -10314,7 +8207,7 @@
 				printf("COPY by glMaterialiv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glMaterialiv (
 			(GLenum) face,
 			(GLenum) pname,
 			(const GLint *) ptr2
@@ -10339,17 +8232,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetMaterialfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -10358,7 +8244,7 @@
 				printf("COPY by glGetMaterialfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMaterialfv (
 			(GLenum) face,
 			(GLenum) pname,
 			(GLfloat *) ptr2
@@ -10383,17 +8269,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetMaterialiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -10402,7 +8281,7 @@
 				printf("COPY by glGetMaterialiv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMaterialiv (
 			(GLenum) face,
 			(GLenum) pname,
 			(GLint *) ptr2
@@ -10426,15 +8305,8 @@
 		jint face,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum))
-				getGLProcAddressHelper("glColorMaterial", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glColorMaterial (
 			(GLenum) face,
 			(GLenum) mode
 		);
@@ -10453,15 +8325,8 @@
 		jfloat xfactor,
 		jfloat yfactor)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat))
-				getGLProcAddressHelper("glPixelZoom", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPixelZoom (
 			(GLfloat) xfactor,
 			(GLfloat) yfactor
 		);
@@ -10480,15 +8345,8 @@
 		jint pname,
 		jfloat param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat))
-				getGLProcAddressHelper("glPixelStoref", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPixelStoref (
 			(GLenum) pname,
 			(GLfloat) param
 		);
@@ -10507,15 +8365,8 @@
 		jint pname,
 		jint param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint))
-				getGLProcAddressHelper("glPixelStorei", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPixelStorei (
 			(GLenum) pname,
 			(GLint) param
 		);
@@ -10534,15 +8385,8 @@
 		jint pname,
 		jfloat param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat))
-				getGLProcAddressHelper("glPixelTransferf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPixelTransferf (
 			(GLenum) pname,
 			(GLfloat) param
 		);
@@ -10561,15 +8405,8 @@
 		jint pname,
 		jint param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint))
-				getGLProcAddressHelper("glPixelTransferi", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPixelTransferi (
 			(GLenum) pname,
 			(GLint) param
 		);
@@ -10589,17 +8426,10 @@
 		jint mapsize,
 		jfloatArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, const GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, const GLfloat *))
-				getGLProcAddressHelper("glPixelMapfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray2);
@@ -10608,7 +8438,7 @@
 				printf("COPY by glPixelMapfv arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glPixelMapfv (
 			(GLenum) map,
 			(GLint) mapsize,
 			(const GLfloat *) ptr2
@@ -10633,17 +8463,10 @@
 		jint mapsize,
 		jintArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, const GLuint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, const GLuint *))
-				getGLProcAddressHelper("glPixelMapuiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray2);
@@ -10652,7 +8475,7 @@
 				printf("COPY by glPixelMapuiv arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glPixelMapuiv (
 			(GLenum) map,
 			(GLint) mapsize,
 			(const GLuint *) ptr2
@@ -10677,17 +8500,10 @@
 		jint mapsize,
 		jshortArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, const GLushort *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jshort *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, const GLushort *))
-				getGLProcAddressHelper("glPixelMapusv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr2 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray2);
@@ -10696,7 +8512,7 @@
 				printf("COPY by glPixelMapusv arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glPixelMapusv (
 			(GLenum) map,
 			(GLint) mapsize,
 			(const GLushort *) ptr2
@@ -10720,17 +8536,10 @@
 		jint map,
 		jfloatArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetPixelMapfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray1);
@@ -10739,7 +8548,7 @@
 				printf("COPY by glGetPixelMapfv arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPixelMapfv (
 			(GLenum) map,
 			(GLfloat *) ptr1
 		);
@@ -10762,17 +8571,10 @@
 		jint map,
 		jintArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLuint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLuint *))
-				getGLProcAddressHelper("glGetPixelMapuiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray1);
@@ -10781,7 +8583,7 @@
 				printf("COPY by glGetPixelMapuiv arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPixelMapuiv (
 			(GLenum) map,
 			(GLuint *) ptr1
 		);
@@ -10804,17 +8606,10 @@
 		jint map,
 		jshortArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLushort *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLushort *))
-				getGLProcAddressHelper("glGetPixelMapusv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr1 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray1);
@@ -10823,7 +8618,7 @@
 				printf("COPY by glGetPixelMapusv arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPixelMapusv (
 			(GLenum) map,
 			(GLushort *) ptr1
 		);
@@ -10851,17 +8646,10 @@
 		jfloat ymove,
 		jbyteArray bitmap)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLsizei, GLfloat, GLfloat, GLfloat, GLfloat, const GLubyte *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jbyte *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLsizei, GLfloat, GLfloat, GLfloat, GLfloat, const GLubyte *))
-				getGLProcAddressHelper("glBitmap", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(bitmap!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, bitmap, &isCopiedArray6);
@@ -10870,7 +8658,7 @@
 				printf("COPY by glBitmap arg: bitmap");
 			}
 		}
-		__func_ptr__ (
+		disp__glBitmap (
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLfloat) xorig,
@@ -10903,17 +8691,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jbyte *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glReadPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -10922,7 +8703,7 @@
 				printf("COPY by glReadPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glReadPixels (
 			(GLint) x,
 			(GLint) y,
 			(GLsizei) width,
@@ -10948,17 +8729,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jshort *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glReadPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -10967,7 +8741,7 @@
 				printf("COPY by glReadPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glReadPixels (
 			(GLint) x,
 			(GLint) y,
 			(GLsizei) width,
@@ -10993,17 +8767,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jint *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glReadPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -11012,7 +8779,7 @@
 				printf("COPY by glReadPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glReadPixels (
 			(GLint) x,
 			(GLint) y,
 			(GLsizei) width,
@@ -11038,17 +8805,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jfloat *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glReadPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -11057,7 +8817,7 @@
 				printf("COPY by glReadPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glReadPixels (
 			(GLint) x,
 			(GLint) y,
 			(GLsizei) width,
@@ -11083,17 +8843,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jdouble *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glReadPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -11102,7 +8855,7 @@
 				printf("COPY by glReadPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glReadPixels (
 			(GLint) x,
 			(GLint) y,
 			(GLsizei) width,
@@ -11128,17 +8881,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jboolean *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glReadPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -11147,7 +8893,7 @@
 				printf("COPY by glReadPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glReadPixels (
 			(GLint) x,
 			(GLint) y,
 			(GLsizei) width,
@@ -11173,17 +8919,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jlong *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glReadPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -11192,7 +8931,7 @@
 				printf("COPY by glReadPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glReadPixels (
 			(GLint) x,
 			(GLint) y,
 			(GLsizei) width,
@@ -11223,17 +8962,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -11242,7 +8974,7 @@
 				printf("COPY by glDrawPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawPixels (
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLenum) format,
@@ -11264,17 +8996,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -11283,7 +9008,7 @@
 				printf("COPY by glDrawPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawPixels (
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLenum) format,
@@ -11305,17 +9030,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -11324,7 +9042,7 @@
 				printf("COPY by glDrawPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawPixels (
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLenum) format,
@@ -11346,17 +9064,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -11365,7 +9076,7 @@
 				printf("COPY by glDrawPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawPixels (
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLenum) format,
@@ -11387,17 +9098,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -11406,7 +9110,7 @@
 				printf("COPY by glDrawPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawPixels (
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLenum) format,
@@ -11428,17 +9132,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -11447,7 +9144,7 @@
 				printf("COPY by glDrawPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawPixels (
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLenum) format,
@@ -11469,17 +9166,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -11488,7 +9178,7 @@
 				printf("COPY by glDrawPixels arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawPixels (
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLenum) format,
@@ -11517,15 +9207,8 @@
 		jint height,
 		jint type)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint, GLsizei, GLsizei, GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint, GLsizei, GLsizei, GLenum))
-				getGLProcAddressHelper("glCopyPixels", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyPixels (
 			(GLint) x,
 			(GLint) y,
 			(GLsizei) width,
@@ -11548,15 +9231,8 @@
 		jint ref,
 		jint mask)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLuint))
-				getGLProcAddressHelper("glStencilFunc", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glStencilFunc (
 			(GLenum) func,
 			(GLint) ref,
 			(GLuint) mask
@@ -11575,15 +9251,8 @@
 		JNIEnv *env, jobject obj,
 		jint mask)
 	{
-		static void (CALLBACK *__func_ptr__)(GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLuint))
-				getGLProcAddressHelper("glStencilMask", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glStencilMask (
 			(GLuint) mask
 		);
 
@@ -11602,15 +9271,8 @@
 		jint zfail,
 		jint zpass)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum))
-				getGLProcAddressHelper("glStencilOp", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glStencilOp (
 			(GLenum) fail,
 			(GLenum) zfail,
 			(GLenum) zpass
@@ -11629,15 +9291,8 @@
 		JNIEnv *env, jobject obj,
 		jint s)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint))
-				getGLProcAddressHelper("glClearStencil", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glClearStencil (
 			(GLint) s
 		);
 
@@ -11656,15 +9311,8 @@
 		jint pname,
 		jdouble param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLdouble))
-				getGLProcAddressHelper("glTexGend", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexGend (
 			(GLenum) coord,
 			(GLenum) pname,
 			(GLdouble) param
@@ -11685,15 +9333,8 @@
 		jint pname,
 		jfloat param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
-				getGLProcAddressHelper("glTexGenf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexGenf (
 			(GLenum) coord,
 			(GLenum) pname,
 			(GLfloat) param
@@ -11714,15 +9355,8 @@
 		jint pname,
 		jint param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint))
-				getGLProcAddressHelper("glTexGeni", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexGeni (
 			(GLenum) coord,
 			(GLenum) pname,
 			(GLint) param
@@ -11743,17 +9377,10 @@
 		jint pname,
 		jdoubleArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLdouble *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLdouble *))
-				getGLProcAddressHelper("glTexGendv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -11762,7 +9389,7 @@
 				printf("COPY by glTexGendv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexGendv (
 			(GLenum) coord,
 			(GLenum) pname,
 			(const GLdouble *) ptr2
@@ -11787,17 +9414,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
-				getGLProcAddressHelper("glTexGenfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -11806,7 +9426,7 @@
 				printf("COPY by glTexGenfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexGenfv (
 			(GLenum) coord,
 			(GLenum) pname,
 			(const GLfloat *) ptr2
@@ -11831,17 +9451,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
-				getGLProcAddressHelper("glTexGeniv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -11850,7 +9463,7 @@
 				printf("COPY by glTexGeniv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexGeniv (
 			(GLenum) coord,
 			(GLenum) pname,
 			(const GLint *) ptr2
@@ -11875,17 +9488,10 @@
 		jint pname,
 		jdoubleArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLdouble *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLdouble *))
-				getGLProcAddressHelper("glGetTexGendv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -11894,7 +9500,7 @@
 				printf("COPY by glGetTexGendv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexGendv (
 			(GLenum) coord,
 			(GLenum) pname,
 			(GLdouble *) ptr2
@@ -11919,17 +9525,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetTexGenfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -11938,7 +9537,7 @@
 				printf("COPY by glGetTexGenfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexGenfv (
 			(GLenum) coord,
 			(GLenum) pname,
 			(GLfloat *) ptr2
@@ -11963,17 +9562,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetTexGeniv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -11982,7 +9574,7 @@
 				printf("COPY by glGetTexGeniv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexGeniv (
 			(GLenum) coord,
 			(GLenum) pname,
 			(GLint *) ptr2
@@ -12007,15 +9599,8 @@
 		jint pname,
 		jfloat param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
-				getGLProcAddressHelper("glTexEnvf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexEnvf (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLfloat) param
@@ -12036,15 +9621,8 @@
 		jint pname,
 		jint param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint))
-				getGLProcAddressHelper("glTexEnvi", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexEnvi (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLint) param
@@ -12065,17 +9643,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
-				getGLProcAddressHelper("glTexEnvfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -12084,7 +9655,7 @@
 				printf("COPY by glTexEnvfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexEnvfv (
 			(GLenum) target,
 			(GLenum) pname,
 			(const GLfloat *) ptr2
@@ -12109,17 +9680,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
-				getGLProcAddressHelper("glTexEnviv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -12128,7 +9692,7 @@
 				printf("COPY by glTexEnviv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexEnviv (
 			(GLenum) target,
 			(GLenum) pname,
 			(const GLint *) ptr2
@@ -12153,17 +9717,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetTexEnvfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -12172,7 +9729,7 @@
 				printf("COPY by glGetTexEnvfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexEnvfv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLfloat *) ptr2
@@ -12197,17 +9754,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetTexEnviv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -12216,7 +9766,7 @@
 				printf("COPY by glGetTexEnviv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexEnviv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLint *) ptr2
@@ -12241,15 +9791,8 @@
 		jint pname,
 		jfloat param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
-				getGLProcAddressHelper("glTexParameterf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexParameterf (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLfloat) param
@@ -12270,15 +9813,8 @@
 		jint pname,
 		jint param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint))
-				getGLProcAddressHelper("glTexParameteri", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glTexParameteri (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLint) param
@@ -12299,17 +9835,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
-				getGLProcAddressHelper("glTexParameterfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -12318,7 +9847,7 @@
 				printf("COPY by glTexParameterfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexParameterfv (
 			(GLenum) target,
 			(GLenum) pname,
 			(const GLfloat *) ptr2
@@ -12343,17 +9872,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
-				getGLProcAddressHelper("glTexParameteriv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -12362,7 +9884,7 @@
 				printf("COPY by glTexParameteriv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexParameteriv (
 			(GLenum) target,
 			(GLenum) pname,
 			(const GLint *) ptr2
@@ -12387,17 +9909,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetTexParameterfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -12406,7 +9921,7 @@
 				printf("COPY by glGetTexParameterfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexParameterfv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLfloat *) ptr2
@@ -12431,17 +9946,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetTexParameteriv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -12450,7 +9958,7 @@
 				printf("COPY by glGetTexParameteriv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexParameteriv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLint *) ptr2
@@ -12476,17 +9984,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetTexLevelParameterfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray3);
@@ -12495,7 +9996,7 @@
 				printf("COPY by glGetTexLevelParameterfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexLevelParameterfv (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) pname,
@@ -12522,17 +10023,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLint *))
-				getGLProcAddressHelper("glGetTexLevelParameteriv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray3);
@@ -12541,7 +10035,7 @@
 				printf("COPY by glGetTexLevelParameteriv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexLevelParameteriv (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) pname,
@@ -12572,17 +10066,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jbyte *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr7 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -12591,7 +10078,7 @@
 				printf("COPY by glTexImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -12619,17 +10106,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jshort *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr7 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -12638,7 +10118,7 @@
 				printf("COPY by glTexImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -12666,17 +10146,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jint *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr7 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -12685,7 +10158,7 @@
 				printf("COPY by glTexImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -12713,17 +10186,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jfloat *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr7 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -12732,7 +10198,7 @@
 				printf("COPY by glTexImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -12760,17 +10226,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jdouble *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr7 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -12779,7 +10238,7 @@
 				printf("COPY by glTexImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -12807,17 +10266,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jboolean *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr7 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -12826,7 +10278,7 @@
 				printf("COPY by glTexImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -12854,17 +10306,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray7 = JNI_FALSE;
 		jlong *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr7 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray7);
@@ -12873,7 +10318,7 @@
 				printf("COPY by glTexImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -12909,17 +10354,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jbyte *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -12928,7 +10366,7 @@
 				printf("COPY by glTexImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -12958,17 +10396,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jshort *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -12977,7 +10408,7 @@
 				printf("COPY by glTexImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -13007,17 +10438,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jint *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -13026,7 +10450,7 @@
 				printf("COPY by glTexImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -13056,17 +10480,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jfloat *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -13075,7 +10492,7 @@
 				printf("COPY by glTexImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -13105,17 +10522,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jdouble *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -13124,7 +10534,7 @@
 				printf("COPY by glTexImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -13154,17 +10564,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jboolean *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -13173,7 +10576,7 @@
 				printf("COPY by glTexImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -13203,17 +10606,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jlong *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -13222,7 +10618,7 @@
 				printf("COPY by glTexImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -13255,17 +10651,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetTexImage", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -13274,7 +10663,7 @@
 				printf("COPY by glGetTexImage arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexImage (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) format,
@@ -13296,17 +10685,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetTexImage", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -13315,7 +10697,7 @@
 				printf("COPY by glGetTexImage arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexImage (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) format,
@@ -13337,17 +10719,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetTexImage", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -13356,7 +10731,7 @@
 				printf("COPY by glGetTexImage arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexImage (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) format,
@@ -13378,17 +10753,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetTexImage", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -13397,7 +10765,7 @@
 				printf("COPY by glGetTexImage arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexImage (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) format,
@@ -13419,17 +10787,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetTexImage", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -13438,7 +10799,7 @@
 				printf("COPY by glGetTexImage arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexImage (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) format,
@@ -13460,17 +10821,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetTexImage", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -13479,7 +10833,7 @@
 				printf("COPY by glGetTexImage arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexImage (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) format,
@@ -13501,17 +10855,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetTexImage", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr4 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray4);
@@ -13520,7 +10867,7 @@
 				printf("COPY by glGetTexImage arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetTexImage (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) format,
@@ -13546,17 +10893,10 @@
 		jint n,
 		jintArray textures)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLuint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLuint *))
-				getGLProcAddressHelper("glGenTextures", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -13565,7 +10905,7 @@
 				printf("COPY by glGenTextures arg: textures");
 			}
 		}
-		__func_ptr__ (
+		disp__glGenTextures (
 			(GLsizei) n,
 			(GLuint *) ptr1
 		);
@@ -13588,17 +10928,10 @@
 		jint n,
 		jintArray textures)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLuint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLuint *))
-				getGLProcAddressHelper("glDeleteTextures", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -13607,7 +10940,7 @@
 				printf("COPY by glDeleteTextures arg: textures");
 			}
 		}
-		__func_ptr__ (
+		disp__glDeleteTextures (
 			(GLsizei) n,
 			(const GLuint *) ptr1
 		);
@@ -13630,15 +10963,8 @@
 		jint target,
 		jint texture)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLuint))
-				getGLProcAddressHelper("glBindTexture", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glBindTexture (
 			(GLenum) target,
 			(GLuint) texture
 		);
@@ -13658,7 +10984,6 @@
 		jintArray textures,
 		jfloatArray priorities)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLuint *, const GLclampf *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
@@ -13666,12 +10991,6 @@
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLuint *, const GLclampf *))
-				getGLProcAddressHelper("glPrioritizeTextures", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -13688,7 +11007,7 @@
 				printf("COPY by glPrioritizeTextures arg: priorities");
 			}
 		}
-		__func_ptr__ (
+		disp__glPrioritizeTextures (
 			(GLsizei) n,
 			(const GLuint *) ptr1,
 			(const GLclampf *) ptr2
@@ -13717,7 +11036,6 @@
 		jintArray textures,
 		jbooleanArray residences)
 	{
-		static jboolean (CALLBACK *__func_ptr__)(GLsizei, const GLuint *, GLboolean *) = NULL;
 		jboolean ret;
 
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -13727,12 +11045,6 @@
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (jboolean (CALLBACK *)(GLsizei, const GLuint *, GLboolean *))
-				getGLProcAddressHelper("glAreTexturesResident", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return 0;
-		}
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -13749,7 +11061,7 @@
 				printf("COPY by glAreTexturesResident arg: residences");
 			}
 		}
-		ret = (jboolean) __func_ptr__ (
+		ret = (jboolean) disp__glAreTexturesResident (
 			(GLsizei) n,
 			(const GLuint *) ptr1,
 			(GLboolean *) ptr2
@@ -13777,17 +11089,10 @@
 		JNIEnv *env, jobject obj,
 		jint texture)
 	{
-		static jboolean (CALLBACK *__func_ptr__)(GLuint) = NULL;
 		jboolean ret;
 
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (jboolean (CALLBACK *)(GLuint))
-				getGLProcAddressHelper("glIsTexture", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return 0;
-		}
-		ret = (jboolean) __func_ptr__ (
+		ret = (jboolean) disp__glIsTexture (
 			(GLuint) texture
 		);
 
@@ -13811,17 +11116,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jbyte *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -13830,7 +11128,7 @@
 				printf("COPY by glTexSubImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -13856,17 +11154,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jshort *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -13875,7 +11166,7 @@
 				printf("COPY by glTexSubImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -13901,17 +11192,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jint *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -13920,7 +11204,7 @@
 				printf("COPY by glTexSubImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -13946,17 +11230,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jfloat *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -13965,7 +11242,7 @@
 				printf("COPY by glTexSubImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -13991,17 +11268,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jdouble *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -14010,7 +11280,7 @@
 				printf("COPY by glTexSubImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14036,17 +11306,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jboolean *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -14055,7 +11318,7 @@
 				printf("COPY by glTexSubImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14081,17 +11344,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jlong *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr6 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray6);
@@ -14100,7 +11356,7 @@
 				printf("COPY by glTexSubImage1D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14135,17 +11391,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jbyte *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -14154,7 +11403,7 @@
 				printf("COPY by glTexSubImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14184,17 +11433,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jshort *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -14203,7 +11445,7 @@
 				printf("COPY by glTexSubImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14233,17 +11475,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jint *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -14252,7 +11487,7 @@
 				printf("COPY by glTexSubImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14282,17 +11517,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jfloat *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -14301,7 +11529,7 @@
 				printf("COPY by glTexSubImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14331,17 +11559,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jdouble *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -14350,7 +11571,7 @@
 				printf("COPY by glTexSubImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14380,17 +11601,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jboolean *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -14399,7 +11613,7 @@
 				printf("COPY by glTexSubImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14429,17 +11643,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray8 = JNI_FALSE;
 		jlong *ptr8 = NULL;
 		static int isWarned8 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr8 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray8);
@@ -14448,7 +11655,7 @@
 				printf("COPY by glTexSubImage2D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14483,15 +11690,8 @@
 		jint width,
 		jint border)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint))
-				getGLProcAddressHelper("glCopyTexImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyTexImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) internalformat,
@@ -14521,15 +11721,8 @@
 		jint height,
 		jint border)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint))
-				getGLProcAddressHelper("glCopyTexImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyTexImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) internalformat,
@@ -14558,15 +11751,8 @@
 		jint y,
 		jint width)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei))
-				getGLProcAddressHelper("glCopyTexSubImage1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyTexSubImage1D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14595,15 +11781,8 @@
 		jint width,
 		jint height)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei))
-				getGLProcAddressHelper("glCopyTexSubImage2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyTexSubImage2D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -14632,17 +11811,10 @@
 		jint order,
 		jdoubleArray points)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLdouble, GLdouble, GLint, GLint, const GLdouble *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLdouble, GLdouble, GLint, GLint, const GLdouble *))
-				getGLProcAddressHelper("glMap1d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(points!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, points, &isCopiedArray5);
@@ -14651,7 +11823,7 @@
 				printf("COPY by glMap1d arg: points");
 			}
 		}
-		__func_ptr__ (
+		disp__glMap1d (
 			(GLenum) target,
 			(GLdouble) u1,
 			(GLdouble) u2,
@@ -14682,17 +11854,10 @@
 		jint order,
 		jfloatArray points)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat, GLfloat, GLint, GLint, const GLfloat *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLint, GLint, const GLfloat *))
-				getGLProcAddressHelper("glMap1f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(points!=NULL)
 		{
 			ptr5 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, points, &isCopiedArray5);
@@ -14701,7 +11866,7 @@
 				printf("COPY by glMap1f arg: points");
 			}
 		}
-		__func_ptr__ (
+		disp__glMap1f (
 			(GLenum) target,
 			(GLfloat) u1,
 			(GLfloat) u2,
@@ -14736,17 +11901,10 @@
 		jint vorder,
 		jdoubleArray points)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, const GLdouble *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jdouble *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, const GLdouble *))
-				getGLProcAddressHelper("glMap2d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(points!=NULL)
 		{
 			ptr9 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, points, &isCopiedArray9);
@@ -14755,7 +11913,7 @@
 				printf("COPY by glMap2d arg: points");
 			}
 		}
-		__func_ptr__ (
+		disp__glMap2d (
 			(GLenum) target,
 			(GLdouble) u1,
 			(GLdouble) u2,
@@ -14794,17 +11952,10 @@
 		jint vorder,
 		jfloatArray points)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, const GLfloat *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jfloat *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, const GLfloat *))
-				getGLProcAddressHelper("glMap2f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(points!=NULL)
 		{
 			ptr9 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, points, &isCopiedArray9);
@@ -14813,7 +11964,7 @@
 				printf("COPY by glMap2f arg: points");
 			}
 		}
-		__func_ptr__ (
+		disp__glMap2f (
 			(GLenum) target,
 			(GLfloat) u1,
 			(GLfloat) u2,
@@ -14845,17 +11996,10 @@
 		jint query,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLdouble *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jdouble *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLdouble *))
-				getGLProcAddressHelper("glGetMapdv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr2 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray2);
@@ -14864,7 +12008,7 @@
 				printf("COPY by glGetMapdv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMapdv (
 			(GLenum) target,
 			(GLenum) query,
 			(GLdouble *) ptr2
@@ -14889,17 +12033,10 @@
 		jint query,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetMapfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray2);
@@ -14908,7 +12045,7 @@
 				printf("COPY by glGetMapfv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMapfv (
 			(GLenum) target,
 			(GLenum) query,
 			(GLfloat *) ptr2
@@ -14933,17 +12070,10 @@
 		jint query,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetMapiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray2);
@@ -14952,7 +12082,7 @@
 				printf("COPY by glGetMapiv arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMapiv (
 			(GLenum) target,
 			(GLenum) query,
 			(GLint *) ptr2
@@ -14975,15 +12105,8 @@
 		JNIEnv *env, jobject obj,
 		jdouble u)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble))
-				getGLProcAddressHelper("glEvalCoord1d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEvalCoord1d (
 			(GLdouble) u
 		);
 
@@ -15000,15 +12123,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat u)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat))
-				getGLProcAddressHelper("glEvalCoord1f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEvalCoord1f (
 			(GLfloat) u
 		);
 
@@ -15025,17 +12141,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray u)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glEvalCoord1dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(u!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, u, &isCopiedArray0);
@@ -15044,7 +12153,7 @@
 				printf("COPY by glEvalCoord1dv arg: u");
 			}
 		}
-		__func_ptr__ (
+		disp__glEvalCoord1dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -15065,17 +12174,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray u)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glEvalCoord1fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(u!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, u, &isCopiedArray0);
@@ -15084,7 +12186,7 @@
 				printf("COPY by glEvalCoord1fv arg: u");
 			}
 		}
-		__func_ptr__ (
+		disp__glEvalCoord1fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -15106,15 +12208,8 @@
 		jdouble u,
 		jdouble v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLdouble, GLdouble))
-				getGLProcAddressHelper("glEvalCoord2d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEvalCoord2d (
 			(GLdouble) u,
 			(GLdouble) v
 		);
@@ -15133,15 +12228,8 @@
 		jfloat u,
 		jfloat v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat))
-				getGLProcAddressHelper("glEvalCoord2f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEvalCoord2f (
 			(GLfloat) u,
 			(GLfloat) v
 		);
@@ -15159,17 +12247,10 @@
 		JNIEnv *env, jobject obj,
 		jdoubleArray u)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLdouble *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jdouble *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLdouble *))
-				getGLProcAddressHelper("glEvalCoord2dv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(u!=NULL)
 		{
 			ptr0 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, u, &isCopiedArray0);
@@ -15178,7 +12259,7 @@
 				printf("COPY by glEvalCoord2dv arg: u");
 			}
 		}
-		__func_ptr__ (
+		disp__glEvalCoord2dv (
 			(const GLdouble *) ptr0
 		);
 
@@ -15199,17 +12280,10 @@
 		JNIEnv *env, jobject obj,
 		jfloatArray u)
 	{
-		static void (CALLBACK *__func_ptr__)(const GLfloat *) = NULL;
 		jboolean isCopiedArray0 = JNI_FALSE;
 		jfloat *ptr0 = NULL;
 		static int isWarned0 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(const GLfloat *))
-				getGLProcAddressHelper("glEvalCoord2fv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(u!=NULL)
 		{
 			ptr0 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, u, &isCopiedArray0);
@@ -15218,7 +12292,7 @@
 				printf("COPY by glEvalCoord2fv arg: u");
 			}
 		}
-		__func_ptr__ (
+		disp__glEvalCoord2fv (
 			(const GLfloat *) ptr0
 		);
 
@@ -15241,15 +12315,8 @@
 		jdouble u1,
 		jdouble u2)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLdouble, GLdouble))
-				getGLProcAddressHelper("glMapGrid1d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMapGrid1d (
 			(GLint) un,
 			(GLdouble) u1,
 			(GLdouble) u2
@@ -15270,15 +12337,8 @@
 		jfloat u1,
 		jfloat u2)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLfloat, GLfloat))
-				getGLProcAddressHelper("glMapGrid1f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMapGrid1f (
 			(GLint) un,
 			(GLfloat) u1,
 			(GLfloat) u2
@@ -15302,15 +12362,8 @@
 		jdouble v1,
 		jdouble v2)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLdouble, GLdouble, GLint, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLdouble, GLdouble, GLint, GLdouble, GLdouble))
-				getGLProcAddressHelper("glMapGrid2d", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMapGrid2d (
 			(GLint) un,
 			(GLdouble) u1,
 			(GLdouble) u2,
@@ -15337,15 +12390,8 @@
 		jfloat v1,
 		jfloat v2)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLfloat, GLfloat, GLint, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLfloat, GLfloat, GLint, GLfloat, GLfloat))
-				getGLProcAddressHelper("glMapGrid2f", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMapGrid2f (
 			(GLint) un,
 			(GLfloat) u1,
 			(GLfloat) u2,
@@ -15367,15 +12413,8 @@
 		JNIEnv *env, jobject obj,
 		jint i)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint))
-				getGLProcAddressHelper("glEvalPoint1", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEvalPoint1 (
 			(GLint) i
 		);
 
@@ -15393,15 +12432,8 @@
 		jint i,
 		jint j)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLint))
-				getGLProcAddressHelper("glEvalPoint2", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEvalPoint2 (
 			(GLint) i,
 			(GLint) j
 		);
@@ -15421,15 +12453,8 @@
 		jint i1,
 		jint i2)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint))
-				getGLProcAddressHelper("glEvalMesh1", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEvalMesh1 (
 			(GLenum) mode,
 			(GLint) i1,
 			(GLint) i2
@@ -15452,15 +12477,8 @@
 		jint j1,
 		jint j2)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint))
-				getGLProcAddressHelper("glEvalMesh2", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glEvalMesh2 (
 			(GLenum) mode,
 			(GLint) i1,
 			(GLint) i2,
@@ -15482,15 +12500,8 @@
 		jint pname,
 		jfloat param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat))
-				getGLProcAddressHelper("glFogf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glFogf (
 			(GLenum) pname,
 			(GLfloat) param
 		);
@@ -15509,15 +12520,8 @@
 		jint pname,
 		jint param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint))
-				getGLProcAddressHelper("glFogi", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glFogi (
 			(GLenum) pname,
 			(GLint) param
 		);
@@ -15536,17 +12540,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLfloat *))
-				getGLProcAddressHelper("glFogfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -15555,7 +12552,7 @@
 				printf("COPY by glFogfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glFogfv (
 			(GLenum) pname,
 			(const GLfloat *) ptr1
 		);
@@ -15578,17 +12575,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLint *))
-				getGLProcAddressHelper("glFogiv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -15597,7 +12587,7 @@
 				printf("COPY by glFogiv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glFogiv (
 			(GLenum) pname,
 			(const GLint *) ptr1
 		);
@@ -15621,17 +12611,10 @@
 		jint type,
 		jfloatArray buffer)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLenum, GLfloat *))
-				getGLProcAddressHelper("glFeedbackBuffer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(buffer!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, buffer, &isCopiedArray2);
@@ -15640,7 +12623,7 @@
 				printf("COPY by glFeedbackBuffer arg: buffer");
 			}
 		}
-		__func_ptr__ (
+		disp__glFeedbackBuffer (
 			(GLsizei) size,
 			(GLenum) type,
 			(GLfloat *) ptr2
@@ -15663,15 +12646,8 @@
 		JNIEnv *env, jobject obj,
 		jfloat token)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat))
-				getGLProcAddressHelper("glPassThrough", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPassThrough (
 			(GLfloat) token
 		);
 
@@ -15689,17 +12665,10 @@
 		jint size,
 		jintArray buffer)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLuint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLuint *))
-				getGLProcAddressHelper("glSelectBuffer", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(buffer!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, buffer, &isCopiedArray1);
@@ -15708,7 +12677,7 @@
 				printf("COPY by glSelectBuffer arg: buffer");
 			}
 		}
-		__func_ptr__ (
+		disp__glSelectBuffer (
 			(GLsizei) size,
 			(GLuint *) ptr1
 		);
@@ -15729,15 +12698,8 @@
 	Java_gl4java_GLFuncJauJNI_glInitNames (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glInitNames", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glInitNames (
 		);
 
 	}
@@ -15753,15 +12715,8 @@
 		JNIEnv *env, jobject obj,
 		jint name)
 	{
-		static void (CALLBACK *__func_ptr__)(GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLuint))
-				getGLProcAddressHelper("glLoadName", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glLoadName (
 			(GLuint) name
 		);
 
@@ -15778,15 +12733,8 @@
 		JNIEnv *env, jobject obj,
 		jint name)
 	{
-		static void (CALLBACK *__func_ptr__)(GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLuint))
-				getGLProcAddressHelper("glPushName", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPushName (
 			(GLuint) name
 		);
 
@@ -15802,15 +12750,8 @@
 	Java_gl4java_GLFuncJauJNI_glPopName (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glPopName", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPopName (
 		);
 
 	}
@@ -15831,17 +12772,10 @@
 		jint type,
 		jbyteArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawRangeElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray5);
@@ -15850,7 +12784,7 @@
 				printf("COPY by glDrawRangeElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawRangeElements (
 			(GLenum) mode,
 			(GLuint) start,
 			(GLuint) end,
@@ -15874,17 +12808,10 @@
 		jint type,
 		jshortArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawRangeElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr5 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray5);
@@ -15893,7 +12820,7 @@
 				printf("COPY by glDrawRangeElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawRangeElements (
 			(GLenum) mode,
 			(GLuint) start,
 			(GLuint) end,
@@ -15917,17 +12844,10 @@
 		jint type,
 		jintArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawRangeElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray5);
@@ -15936,7 +12856,7 @@
 				printf("COPY by glDrawRangeElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawRangeElements (
 			(GLenum) mode,
 			(GLuint) start,
 			(GLuint) end,
@@ -15960,17 +12880,10 @@
 		jint type,
 		jfloatArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawRangeElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr5 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray5);
@@ -15979,7 +12892,7 @@
 				printf("COPY by glDrawRangeElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawRangeElements (
 			(GLenum) mode,
 			(GLuint) start,
 			(GLuint) end,
@@ -16003,17 +12916,10 @@
 		jint type,
 		jdoubleArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawRangeElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray5);
@@ -16022,7 +12928,7 @@
 				printf("COPY by glDrawRangeElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawRangeElements (
 			(GLenum) mode,
 			(GLuint) start,
 			(GLuint) end,
@@ -16046,17 +12952,10 @@
 		jint type,
 		jbooleanArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawRangeElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray5);
@@ -16065,7 +12964,7 @@
 				printf("COPY by glDrawRangeElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawRangeElements (
 			(GLenum) mode,
 			(GLuint) start,
 			(GLuint) end,
@@ -16089,17 +12988,10 @@
 		jint type,
 		jlongArray indices)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glDrawRangeElements", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(indices!=NULL)
 		{
 			ptr5 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, indices, &isCopiedArray5);
@@ -16108,7 +13000,7 @@
 				printf("COPY by glDrawRangeElements arg: indices");
 			}
 		}
-		__func_ptr__ (
+		disp__glDrawRangeElements (
 			(GLenum) mode,
 			(GLuint) start,
 			(GLuint) end,
@@ -16143,17 +13035,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jbyte *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -16162,7 +13047,7 @@
 				printf("COPY by glTexImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -16194,17 +13079,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jshort *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -16213,7 +13091,7 @@
 				printf("COPY by glTexImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -16245,17 +13123,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jint *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -16264,7 +13135,7 @@
 				printf("COPY by glTexImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -16296,17 +13167,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jfloat *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -16315,7 +13179,7 @@
 				printf("COPY by glTexImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -16347,17 +13211,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jdouble *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -16366,7 +13223,7 @@
 				printf("COPY by glTexImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -16398,17 +13255,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jboolean *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -16417,7 +13267,7 @@
 				printf("COPY by glTexImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -16449,17 +13299,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jlong *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -16468,7 +13311,7 @@
 				printf("COPY by glTexImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) internalFormat,
@@ -16508,17 +13351,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jbyte *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -16527,7 +13363,7 @@
 				printf("COPY by glTexSubImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -16561,17 +13397,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jshort *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -16580,7 +13409,7 @@
 				printf("COPY by glTexSubImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -16614,17 +13443,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jint *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -16633,7 +13455,7 @@
 				printf("COPY by glTexSubImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -16667,17 +13489,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jfloat *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -16686,7 +13501,7 @@
 				printf("COPY by glTexSubImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -16720,17 +13535,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jdouble *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -16739,7 +13547,7 @@
 				printf("COPY by glTexSubImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -16773,17 +13581,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jboolean *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -16792,7 +13593,7 @@
 				printf("COPY by glTexSubImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -16826,17 +13627,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jlong *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -16845,7 +13639,7 @@
 				printf("COPY by glTexSubImage3D arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -16884,15 +13678,8 @@
 		jint width,
 		jint height)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei))
-				getGLProcAddressHelper("glCopyTexSubImage3D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyTexSubImage3D (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -16922,17 +13709,10 @@
 		jint type,
 		jbyteArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -16941,7 +13721,7 @@
 				printf("COPY by glColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTable (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -16965,17 +13745,10 @@
 		jint type,
 		jshortArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -16984,7 +13757,7 @@
 				printf("COPY by glColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTable (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -17008,17 +13781,10 @@
 		jint type,
 		jintArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -17027,7 +13793,7 @@
 				printf("COPY by glColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTable (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -17051,17 +13817,10 @@
 		jint type,
 		jfloatArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -17070,7 +13829,7 @@
 				printf("COPY by glColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTable (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -17094,17 +13853,10 @@
 		jint type,
 		jdoubleArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -17113,7 +13865,7 @@
 				printf("COPY by glColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTable (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -17137,17 +13889,10 @@
 		jint type,
 		jbooleanArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -17156,7 +13901,7 @@
 				printf("COPY by glColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTable (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -17180,17 +13925,10 @@
 		jint type,
 		jlongArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -17199,7 +13937,7 @@
 				printf("COPY by glColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTable (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -17230,17 +13968,10 @@
 		jint type,
 		jbyteArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -17249,7 +13980,7 @@
 				printf("COPY by glColorSubTable arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTable (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -17273,17 +14004,10 @@
 		jint type,
 		jshortArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -17292,7 +14016,7 @@
 				printf("COPY by glColorSubTable arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTable (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -17316,17 +14040,10 @@
 		jint type,
 		jintArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -17335,7 +14052,7 @@
 				printf("COPY by glColorSubTable arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTable (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -17359,17 +14076,10 @@
 		jint type,
 		jfloatArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -17378,7 +14088,7 @@
 				printf("COPY by glColorSubTable arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTable (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -17402,17 +14112,10 @@
 		jint type,
 		jdoubleArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -17421,7 +14124,7 @@
 				printf("COPY by glColorSubTable arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTable (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -17445,17 +14148,10 @@
 		jint type,
 		jbooleanArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -17464,7 +14160,7 @@
 				printf("COPY by glColorSubTable arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTable (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -17488,17 +14184,10 @@
 		jint type,
 		jlongArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -17507,7 +14196,7 @@
 				printf("COPY by glColorSubTable arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTable (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -17535,17 +14224,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
-				getGLProcAddressHelper("glColorTableParameteriv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -17554,7 +14236,7 @@
 				printf("COPY by glColorTableParameteriv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTableParameteriv (
 			(GLenum) target,
 			(GLenum) pname,
 			(const GLint *) ptr2
@@ -17579,17 +14261,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
-				getGLProcAddressHelper("glColorTableParameterfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -17598,7 +14273,7 @@
 				printf("COPY by glColorTableParameterfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTableParameterfv (
 			(GLenum) target,
 			(GLenum) pname,
 			(const GLfloat *) ptr2
@@ -17625,15 +14300,8 @@
 		jint y,
 		jint width)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLint, GLint, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLint, GLint, GLsizei))
-				getGLProcAddressHelper("glCopyColorSubTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyColorSubTable (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLint) x,
@@ -17658,15 +14326,8 @@
 		jint y,
 		jint width)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint, GLint, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint, GLint, GLsizei))
-				getGLProcAddressHelper("glCopyColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyColorTable (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLint) x,
@@ -17690,17 +14351,10 @@
 		jint type,
 		jbyteArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17709,7 +14363,7 @@
 				printf("COPY by glGetColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTable (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -17729,17 +14383,10 @@
 		jint type,
 		jshortArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17748,7 +14395,7 @@
 				printf("COPY by glGetColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTable (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -17768,17 +14415,10 @@
 		jint type,
 		jintArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17787,7 +14427,7 @@
 				printf("COPY by glGetColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTable (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -17807,17 +14447,10 @@
 		jint type,
 		jfloatArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17826,7 +14459,7 @@
 				printf("COPY by glGetColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTable (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -17846,17 +14479,10 @@
 		jint type,
 		jdoubleArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17865,7 +14491,7 @@
 				printf("COPY by glGetColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTable (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -17885,17 +14511,10 @@
 		jint type,
 		jbooleanArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17904,7 +14523,7 @@
 				printf("COPY by glGetColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTable (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -17924,17 +14543,10 @@
 		jint type,
 		jlongArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTable", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -17943,7 +14555,7 @@
 				printf("COPY by glGetColorTable arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTable (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -17969,17 +14581,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetColorTableParameterfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -17988,7 +14593,7 @@
 				printf("COPY by glGetColorTableParameterfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableParameterfv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLfloat *) ptr2
@@ -18013,17 +14618,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetColorTableParameteriv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -18032,7 +14630,7 @@
 				printf("COPY by glGetColorTableParameteriv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableParameteriv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLint *) ptr2
@@ -18055,15 +14653,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glBlendEquation", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glBlendEquation (
 			(GLenum) mode
 		);
 
@@ -18083,15 +14674,8 @@
 		jfloat blue,
 		jfloat alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLclampf, GLclampf, GLclampf, GLclampf) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLclampf, GLclampf, GLclampf, GLclampf))
-				getGLProcAddressHelper("glBlendColor", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glBlendColor (
 			(GLclampf) red,
 			(GLclampf) green,
 			(GLclampf) blue,
@@ -18114,15 +14698,8 @@
 		jint internalformat,
 		jboolean sink)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLenum, GLboolean) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLenum, GLboolean))
-				getGLProcAddressHelper("glHistogram", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glHistogram (
 			(GLenum) target,
 			(GLsizei) width,
 			(GLenum) internalformat,
@@ -18142,15 +14719,8 @@
 		JNIEnv *env, jobject obj,
 		jint target)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glResetHistogram", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glResetHistogram (
 			(GLenum) target
 		);
 
@@ -18171,17 +14741,10 @@
 		jint type,
 		jbyteArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetHistogram", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18190,7 +14753,7 @@
 				printf("COPY by glGetHistogram arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetHistogram (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18212,17 +14775,10 @@
 		jint type,
 		jshortArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetHistogram", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18231,7 +14787,7 @@
 				printf("COPY by glGetHistogram arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetHistogram (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18253,17 +14809,10 @@
 		jint type,
 		jintArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetHistogram", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18272,7 +14821,7 @@
 				printf("COPY by glGetHistogram arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetHistogram (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18294,17 +14843,10 @@
 		jint type,
 		jfloatArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetHistogram", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18313,7 +14855,7 @@
 				printf("COPY by glGetHistogram arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetHistogram (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18335,17 +14877,10 @@
 		jint type,
 		jdoubleArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetHistogram", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18354,7 +14889,7 @@
 				printf("COPY by glGetHistogram arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetHistogram (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18376,17 +14911,10 @@
 		jint type,
 		jbooleanArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetHistogram", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18395,7 +14923,7 @@
 				printf("COPY by glGetHistogram arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetHistogram (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18417,17 +14945,10 @@
 		jint type,
 		jlongArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetHistogram", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18436,7 +14957,7 @@
 				printf("COPY by glGetHistogram arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetHistogram (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18463,17 +14984,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetHistogramParameterfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -18482,7 +14996,7 @@
 				printf("COPY by glGetHistogramParameterfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetHistogramParameterfv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLfloat *) ptr2
@@ -18507,17 +15021,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetHistogramParameteriv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -18526,7 +15033,7 @@
 				printf("COPY by glGetHistogramParameteriv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetHistogramParameteriv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLint *) ptr2
@@ -18551,15 +15058,8 @@
 		jint internalformat,
 		jboolean sink)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLboolean) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLboolean))
-				getGLProcAddressHelper("glMinmax", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMinmax (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLboolean) sink
@@ -18578,15 +15078,8 @@
 		JNIEnv *env, jobject obj,
 		jint target)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glResetMinmax", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glResetMinmax (
 			(GLenum) target
 		);
 
@@ -18607,17 +15100,10 @@
 		jint types,
 		jbyteArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetMinmax", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18626,7 +15112,7 @@
 				printf("COPY by glGetMinmax arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMinmax (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18648,17 +15134,10 @@
 		jint types,
 		jshortArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetMinmax", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18667,7 +15146,7 @@
 				printf("COPY by glGetMinmax arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMinmax (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18689,17 +15168,10 @@
 		jint types,
 		jintArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetMinmax", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18708,7 +15180,7 @@
 				printf("COPY by glGetMinmax arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMinmax (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18730,17 +15202,10 @@
 		jint types,
 		jfloatArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetMinmax", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18749,7 +15214,7 @@
 				printf("COPY by glGetMinmax arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMinmax (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18771,17 +15236,10 @@
 		jint types,
 		jdoubleArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetMinmax", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18790,7 +15248,7 @@
 				printf("COPY by glGetMinmax arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMinmax (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18812,17 +15270,10 @@
 		jint types,
 		jbooleanArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetMinmax", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18831,7 +15282,7 @@
 				printf("COPY by glGetMinmax arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMinmax (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18853,17 +15304,10 @@
 		jint types,
 		jlongArray values)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLboolean, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetMinmax", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(values!=NULL)
 		{
 			ptr4 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, values, &isCopiedArray4);
@@ -18872,7 +15316,7 @@
 				printf("COPY by glGetMinmax arg: values");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMinmax (
 			(GLenum) target,
 			(GLboolean) reset,
 			(GLenum) format,
@@ -18899,17 +15343,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetMinmaxParameterfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -18918,7 +15355,7 @@
 				printf("COPY by glGetMinmaxParameterfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMinmaxParameterfv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLfloat *) ptr2
@@ -18943,17 +15380,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetMinmaxParameteriv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -18962,7 +15392,7 @@
 				printf("COPY by glGetMinmaxParameteriv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetMinmaxParameteriv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLint *) ptr2
@@ -18990,17 +15420,10 @@
 		jint type,
 		jbyteArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -19009,7 +15432,7 @@
 				printf("COPY by glConvolutionFilter1D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter1D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19033,17 +15456,10 @@
 		jint type,
 		jshortArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr5 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -19052,7 +15468,7 @@
 				printf("COPY by glConvolutionFilter1D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter1D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19076,17 +15492,10 @@
 		jint type,
 		jintArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -19095,7 +15504,7 @@
 				printf("COPY by glConvolutionFilter1D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter1D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19119,17 +15528,10 @@
 		jint type,
 		jfloatArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr5 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -19138,7 +15540,7 @@
 				printf("COPY by glConvolutionFilter1D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter1D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19162,17 +15564,10 @@
 		jint type,
 		jdoubleArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -19181,7 +15576,7 @@
 				printf("COPY by glConvolutionFilter1D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter1D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19205,17 +15600,10 @@
 		jint type,
 		jbooleanArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -19224,7 +15612,7 @@
 				printf("COPY by glConvolutionFilter1D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter1D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19248,17 +15636,10 @@
 		jint type,
 		jlongArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr5 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray5);
@@ -19267,7 +15648,7 @@
 				printf("COPY by glConvolutionFilter1D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter1D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19299,17 +15680,10 @@
 		jint type,
 		jbyteArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jbyte *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -19318,7 +15692,7 @@
 				printf("COPY by glConvolutionFilter2D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19344,17 +15718,10 @@
 		jint type,
 		jshortArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jshort *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr6 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -19363,7 +15730,7 @@
 				printf("COPY by glConvolutionFilter2D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19389,17 +15756,10 @@
 		jint type,
 		jintArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jint *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr6 = (jint *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -19408,7 +15768,7 @@
 				printf("COPY by glConvolutionFilter2D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19434,17 +15794,10 @@
 		jint type,
 		jfloatArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jfloat *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr6 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -19453,7 +15806,7 @@
 				printf("COPY by glConvolutionFilter2D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19479,17 +15832,10 @@
 		jint type,
 		jdoubleArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jdouble *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr6 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -19498,7 +15844,7 @@
 				printf("COPY by glConvolutionFilter2D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19524,17 +15870,10 @@
 		jint type,
 		jbooleanArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jboolean *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -19543,7 +15882,7 @@
 				printf("COPY by glConvolutionFilter2D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19569,17 +15908,10 @@
 		jint type,
 		jlongArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jlong *ptr6 = NULL;
 		static int isWarned6 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glConvolutionFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr6 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray6);
@@ -19588,7 +15920,7 @@
 				printf("COPY by glConvolutionFilter2D arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -19617,15 +15949,8 @@
 		jint pname,
 		jfloat params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
-				getGLProcAddressHelper("glConvolutionParameterf", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glConvolutionParameterf (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLfloat) params
@@ -19646,17 +15971,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
-				getGLProcAddressHelper("glConvolutionParameterfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -19665,7 +15983,7 @@
 				printf("COPY by glConvolutionParameterfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionParameterfv (
 			(GLenum) target,
 			(GLenum) pname,
 			(const GLfloat *) ptr2
@@ -19690,15 +16008,8 @@
 		jint pname,
 		jint params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint))
-				getGLProcAddressHelper("glConvolutionParameteri", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glConvolutionParameteri (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLint) params
@@ -19719,17 +16030,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
-				getGLProcAddressHelper("glConvolutionParameteriv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -19738,7 +16042,7 @@
 				printf("COPY by glConvolutionParameteriv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glConvolutionParameteriv (
 			(GLenum) target,
 			(GLenum) pname,
 			(const GLint *) ptr2
@@ -19765,15 +16069,8 @@
 		jint y,
 		jint width)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint, GLint, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint, GLint, GLsizei))
-				getGLProcAddressHelper("glCopyConvolutionFilter1D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyConvolutionFilter1D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLint) x,
@@ -19799,15 +16096,8 @@
 		jint width,
 		jint height)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint, GLint, GLsizei, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint, GLint, GLsizei, GLsizei))
-				getGLProcAddressHelper("glCopyConvolutionFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyConvolutionFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLint) x,
@@ -19832,17 +16122,10 @@
 		jint type,
 		jbyteArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetConvolutionFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -19851,7 +16134,7 @@
 				printf("COPY by glGetConvolutionFilter arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetConvolutionFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -19871,17 +16154,10 @@
 		jint type,
 		jshortArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetConvolutionFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -19890,7 +16166,7 @@
 				printf("COPY by glGetConvolutionFilter arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetConvolutionFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -19910,17 +16186,10 @@
 		jint type,
 		jintArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetConvolutionFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -19929,7 +16198,7 @@
 				printf("COPY by glGetConvolutionFilter arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetConvolutionFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -19949,17 +16218,10 @@
 		jint type,
 		jfloatArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetConvolutionFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -19968,7 +16230,7 @@
 				printf("COPY by glGetConvolutionFilter arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetConvolutionFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -19988,17 +16250,10 @@
 		jint type,
 		jdoubleArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetConvolutionFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -20007,7 +16262,7 @@
 				printf("COPY by glGetConvolutionFilter arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetConvolutionFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -20027,17 +16282,10 @@
 		jint type,
 		jbooleanArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetConvolutionFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -20046,7 +16294,7 @@
 				printf("COPY by glGetConvolutionFilter arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetConvolutionFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -20066,17 +16314,10 @@
 		jint type,
 		jlongArray image)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetConvolutionFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(image!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, image, &isCopiedArray3);
@@ -20085,7 +16326,7 @@
 				printf("COPY by glGetConvolutionFilter arg: image");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetConvolutionFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -20111,17 +16352,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetConvolutionParameterfv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -20130,7 +16364,7 @@
 				printf("COPY by glGetConvolutionParameterfv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetConvolutionParameterfv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLfloat *) ptr2
@@ -20155,17 +16389,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetConvolutionParameteriv", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -20174,7 +16401,7 @@
 				printf("COPY by glGetConvolutionParameteriv arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetConvolutionParameteriv (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLint *) ptr2
@@ -20204,7 +16431,6 @@
 		jbyteArray row,
 		jbyteArray column)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jbyte *ptr6 = NULL;
 		static int isWarned6 = 0;
@@ -20212,12 +16438,6 @@
 		jbyte *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *))
-				getGLProcAddressHelper("glSeparableFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr6 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray6);
@@ -20234,7 +16454,7 @@
 				printf("COPY by glSeparableFilter2D arg: column");
 			}
 		}
-		__func_ptr__ (
+		disp__glSeparableFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -20266,7 +16486,6 @@
 		jshortArray row,
 		jshortArray column)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jshort *ptr6 = NULL;
 		static int isWarned6 = 0;
@@ -20274,12 +16493,6 @@
 		jshort *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *))
-				getGLProcAddressHelper("glSeparableFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr6 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray6);
@@ -20296,7 +16509,7 @@
 				printf("COPY by glSeparableFilter2D arg: column");
 			}
 		}
-		__func_ptr__ (
+		disp__glSeparableFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -20328,7 +16541,6 @@
 		jintArray row,
 		jintArray column)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jint *ptr6 = NULL;
 		static int isWarned6 = 0;
@@ -20336,12 +16548,6 @@
 		jint *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *))
-				getGLProcAddressHelper("glSeparableFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr6 = (jint *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray6);
@@ -20358,7 +16564,7 @@
 				printf("COPY by glSeparableFilter2D arg: column");
 			}
 		}
-		__func_ptr__ (
+		disp__glSeparableFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -20390,7 +16596,6 @@
 		jfloatArray row,
 		jfloatArray column)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jfloat *ptr6 = NULL;
 		static int isWarned6 = 0;
@@ -20398,12 +16603,6 @@
 		jfloat *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *))
-				getGLProcAddressHelper("glSeparableFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr6 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray6);
@@ -20420,7 +16619,7 @@
 				printf("COPY by glSeparableFilter2D arg: column");
 			}
 		}
-		__func_ptr__ (
+		disp__glSeparableFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -20452,7 +16651,6 @@
 		jdoubleArray row,
 		jdoubleArray column)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jdouble *ptr6 = NULL;
 		static int isWarned6 = 0;
@@ -20460,12 +16658,6 @@
 		jdouble *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *))
-				getGLProcAddressHelper("glSeparableFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr6 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray6);
@@ -20482,7 +16674,7 @@
 				printf("COPY by glSeparableFilter2D arg: column");
 			}
 		}
-		__func_ptr__ (
+		disp__glSeparableFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -20514,7 +16706,6 @@
 		jbooleanArray row,
 		jbooleanArray column)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jboolean *ptr6 = NULL;
 		static int isWarned6 = 0;
@@ -20522,12 +16713,6 @@
 		jboolean *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *))
-				getGLProcAddressHelper("glSeparableFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr6 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray6);
@@ -20544,7 +16729,7 @@
 				printf("COPY by glSeparableFilter2D arg: column");
 			}
 		}
-		__func_ptr__ (
+		disp__glSeparableFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -20576,7 +16761,6 @@
 		jlongArray row,
 		jlongArray column)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *) = NULL;
 		jboolean isCopiedArray6 = JNI_FALSE;
 		jlong *ptr6 = NULL;
 		static int isWarned6 = 0;
@@ -20584,12 +16768,6 @@
 		jlong *ptr7 = NULL;
 		static int isWarned7 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *))
-				getGLProcAddressHelper("glSeparableFilter2D", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr6 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray6);
@@ -20606,7 +16784,7 @@
 				printf("COPY by glSeparableFilter2D arg: column");
 			}
 		}
-		__func_ptr__ (
+		disp__glSeparableFilter2D (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -20643,7 +16821,6 @@
 		jbyteArray column,
 		jbyteArray span)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
@@ -20654,12 +16831,6 @@
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *))
-				getGLProcAddressHelper("glGetSeparableFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -20684,7 +16855,7 @@
 				printf("COPY by glGetSeparableFilter arg: span");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetSeparableFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -20716,7 +16887,6 @@
 		jshortArray column,
 		jshortArray span)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
@@ -20727,12 +16897,6 @@
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *))
-				getGLProcAddressHelper("glGetSeparableFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -20757,7 +16921,7 @@
 				printf("COPY by glGetSeparableFilter arg: span");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetSeparableFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -20789,7 +16953,6 @@
 		jintArray column,
 		jintArray span)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
@@ -20800,12 +16963,6 @@
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *))
-				getGLProcAddressHelper("glGetSeparableFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -20830,7 +16987,7 @@
 				printf("COPY by glGetSeparableFilter arg: span");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetSeparableFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -20862,7 +17019,6 @@
 		jfloatArray column,
 		jfloatArray span)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
@@ -20873,12 +17029,6 @@
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *))
-				getGLProcAddressHelper("glGetSeparableFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -20903,7 +17053,7 @@
 				printf("COPY by glGetSeparableFilter arg: span");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetSeparableFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -20935,7 +17085,6 @@
 		jdoubleArray column,
 		jdoubleArray span)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
@@ -20946,12 +17095,6 @@
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *))
-				getGLProcAddressHelper("glGetSeparableFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -20976,7 +17119,7 @@
 				printf("COPY by glGetSeparableFilter arg: span");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetSeparableFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -21008,7 +17151,6 @@
 		jbooleanArray column,
 		jbooleanArray span)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
@@ -21019,12 +17161,6 @@
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *))
-				getGLProcAddressHelper("glGetSeparableFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -21049,7 +17185,7 @@
 				printf("COPY by glGetSeparableFilter arg: span");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetSeparableFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -21081,7 +17217,6 @@
 		jlongArray column,
 		jlongArray span)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
@@ -21092,12 +17227,6 @@
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *))
-				getGLProcAddressHelper("glGetSeparableFilter", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(row!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, row, &isCopiedArray3);
@@ -21122,7 +17251,7 @@
 				printf("COPY by glGetSeparableFilter arg: span");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetSeparableFilter (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -21159,15 +17288,8 @@
 		jfloat blue,
 		jfloat alpha)
 	{
-		static void (CALLBACK *__func_ptr__)(GLclampf, GLclampf, GLclampf, GLclampf) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLclampf, GLclampf, GLclampf, GLclampf))
-				getGLProcAddressHelper("glBlendColorEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glBlendColorEXT (
 			(GLclampf) red,
 			(GLclampf) green,
 			(GLclampf) blue,
@@ -21188,15 +17310,8 @@
 		jfloat factor,
 		jfloat bias)
 	{
-		static void (CALLBACK *__func_ptr__)(GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLfloat, GLfloat))
-				getGLProcAddressHelper("glPolygonOffsetEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPolygonOffsetEXT (
 			(GLfloat) factor,
 			(GLfloat) bias
 		);
@@ -21223,17 +17338,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jbyte *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -21242,7 +17350,7 @@
 				printf("COPY by glTexImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) internalFormat,
@@ -21274,17 +17382,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jshort *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -21293,7 +17394,7 @@
 				printf("COPY by glTexImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) internalFormat,
@@ -21325,17 +17426,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jint *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -21344,7 +17438,7 @@
 				printf("COPY by glTexImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) internalFormat,
@@ -21376,17 +17470,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jfloat *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -21395,7 +17482,7 @@
 				printf("COPY by glTexImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) internalFormat,
@@ -21427,17 +17514,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jdouble *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -21446,7 +17526,7 @@
 				printf("COPY by glTexImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) internalFormat,
@@ -21478,17 +17558,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jboolean *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -21497,7 +17570,7 @@
 				printf("COPY by glTexImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) internalFormat,
@@ -21529,17 +17602,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray9 = JNI_FALSE;
 		jlong *ptr9 = NULL;
 		static int isWarned9 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr9 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray9);
@@ -21548,7 +17614,7 @@
 				printf("COPY by glTexImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLenum) internalFormat,
@@ -21588,17 +17654,10 @@
 		jint type,
 		jbyteArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jbyte *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -21607,7 +17666,7 @@
 				printf("COPY by glTexSubImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -21641,17 +17700,10 @@
 		jint type,
 		jshortArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jshort *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -21660,7 +17712,7 @@
 				printf("COPY by glTexSubImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -21694,17 +17746,10 @@
 		jint type,
 		jintArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jint *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jint *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -21713,7 +17758,7 @@
 				printf("COPY by glTexSubImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -21747,17 +17792,10 @@
 		jint type,
 		jfloatArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jfloat *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -21766,7 +17804,7 @@
 				printf("COPY by glTexSubImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -21800,17 +17838,10 @@
 		jint type,
 		jdoubleArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jdouble *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -21819,7 +17850,7 @@
 				printf("COPY by glTexSubImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -21853,17 +17884,10 @@
 		jint type,
 		jbooleanArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jboolean *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -21872,7 +17896,7 @@
 				printf("COPY by glTexSubImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -21906,17 +17930,10 @@
 		jint type,
 		jlongArray pixels)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray10 = JNI_FALSE;
 		jlong *ptr10 = NULL;
 		static int isWarned10 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glTexSubImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(pixels!=NULL)
 		{
 			ptr10 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, pixels, &isCopiedArray10);
@@ -21925,7 +17942,7 @@
 				printf("COPY by glTexSubImage3DEXT arg: pixels");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexSubImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -21964,15 +17981,8 @@
 		jint width,
 		jint height)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei))
-				getGLProcAddressHelper("glCopyTexSubImage3DEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glCopyTexSubImage3DEXT (
 			(GLenum) target,
 			(GLint) level,
 			(GLint) xoffset,
@@ -21998,17 +18008,10 @@
 		jint n,
 		jintArray textures)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLuint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLuint *))
-				getGLProcAddressHelper("glGenTexturesEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -22017,7 +18020,7 @@
 				printf("COPY by glGenTexturesEXT arg: textures");
 			}
 		}
-		__func_ptr__ (
+		disp__glGenTexturesEXT (
 			(GLsizei) n,
 			(GLuint *) ptr1
 		);
@@ -22040,17 +18043,10 @@
 		jint n,
 		jintArray textures)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLuint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLuint *))
-				getGLProcAddressHelper("glDeleteTexturesEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -22059,7 +18055,7 @@
 				printf("COPY by glDeleteTexturesEXT arg: textures");
 			}
 		}
-		__func_ptr__ (
+		disp__glDeleteTexturesEXT (
 			(GLsizei) n,
 			(const GLuint *) ptr1
 		);
@@ -22082,15 +18078,8 @@
 		jint target,
 		jint texture)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLuint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLuint))
-				getGLProcAddressHelper("glBindTextureEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glBindTextureEXT (
 			(GLenum) target,
 			(GLuint) texture
 		);
@@ -22110,7 +18099,6 @@
 		jintArray textures,
 		jfloatArray priorities)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, const GLuint *, const GLclampf *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
@@ -22118,12 +18106,6 @@
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, const GLuint *, const GLclampf *))
-				getGLProcAddressHelper("glPrioritizeTexturesEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -22140,7 +18122,7 @@
 				printf("COPY by glPrioritizeTexturesEXT arg: priorities");
 			}
 		}
-		__func_ptr__ (
+		disp__glPrioritizeTexturesEXT (
 			(GLsizei) n,
 			(const GLuint *) ptr1,
 			(const GLclampf *) ptr2
@@ -22169,7 +18151,6 @@
 		jintArray textures,
 		jbooleanArray residences)
 	{
-		static jboolean (CALLBACK *__func_ptr__)(GLsizei, const GLuint *, GLboolean *) = NULL;
 		jboolean ret;
 
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -22179,12 +18160,6 @@
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (jboolean (CALLBACK *)(GLsizei, const GLuint *, GLboolean *))
-				getGLProcAddressHelper("glAreTexturesResidentEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return 0;
-		}
 		if(textures!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, textures, &isCopiedArray1);
@@ -22201,7 +18176,7 @@
 				printf("COPY by glAreTexturesResidentEXT arg: residences");
 			}
 		}
-		ret = (jboolean) __func_ptr__ (
+		ret = (jboolean) disp__glAreTexturesResidentEXT (
 			(GLsizei) n,
 			(const GLuint *) ptr1,
 			(GLboolean *) ptr2
@@ -22229,17 +18204,10 @@
 		JNIEnv *env, jobject obj,
 		jint texture)
 	{
-		static jboolean (CALLBACK *__func_ptr__)(GLuint) = NULL;
 		jboolean ret;
 
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (jboolean (CALLBACK *)(GLuint))
-				getGLProcAddressHelper("glIsTextureEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return 0;
-		}
-		ret = (jboolean) __func_ptr__ (
+		ret = (jboolean) disp__glIsTextureEXT (
 			(GLuint) texture
 		);
 
@@ -22261,17 +18229,10 @@
 		jint count,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22280,7 +18241,7 @@
 				printf("COPY by glVertexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22302,17 +18263,10 @@
 		jint count,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22321,7 +18275,7 @@
 				printf("COPY by glVertexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22343,17 +18297,10 @@
 		jint count,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22362,7 +18309,7 @@
 				printf("COPY by glVertexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22384,17 +18331,10 @@
 		jint count,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22403,7 +18343,7 @@
 				printf("COPY by glVertexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22425,17 +18365,10 @@
 		jint count,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22444,7 +18377,7 @@
 				printf("COPY by glVertexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22466,17 +18399,10 @@
 		jint count,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22485,7 +18411,7 @@
 				printf("COPY by glVertexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22507,17 +18433,10 @@
 		jint count,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glVertexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22526,7 +18445,7 @@
 				printf("COPY by glVertexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glVertexPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22554,17 +18473,10 @@
 		jint count,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -22573,7 +18485,7 @@
 				printf("COPY by glNormalPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -22593,17 +18505,10 @@
 		jint count,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -22612,7 +18517,7 @@
 				printf("COPY by glNormalPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -22632,17 +18537,10 @@
 		jint count,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -22651,7 +18549,7 @@
 				printf("COPY by glNormalPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -22671,17 +18569,10 @@
 		jint count,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -22690,7 +18581,7 @@
 				printf("COPY by glNormalPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -22710,17 +18601,10 @@
 		jint count,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -22729,7 +18613,7 @@
 				printf("COPY by glNormalPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -22749,17 +18633,10 @@
 		jint count,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -22768,7 +18645,7 @@
 				printf("COPY by glNormalPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -22788,17 +18665,10 @@
 		jint count,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glNormalPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -22807,7 +18677,7 @@
 				printf("COPY by glNormalPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glNormalPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -22835,17 +18705,10 @@
 		jint count,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22854,7 +18717,7 @@
 				printf("COPY by glColorPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22876,17 +18739,10 @@
 		jint count,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22895,7 +18751,7 @@
 				printf("COPY by glColorPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22917,17 +18773,10 @@
 		jint count,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22936,7 +18785,7 @@
 				printf("COPY by glColorPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22958,17 +18807,10 @@
 		jint count,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -22977,7 +18819,7 @@
 				printf("COPY by glColorPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -22999,17 +18841,10 @@
 		jint count,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -23018,7 +18853,7 @@
 				printf("COPY by glColorPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -23040,17 +18875,10 @@
 		jint count,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -23059,7 +18887,7 @@
 				printf("COPY by glColorPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -23081,17 +18909,10 @@
 		jint count,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glColorPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -23100,7 +18921,7 @@
 				printf("COPY by glColorPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -23128,17 +18949,10 @@
 		jint count,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -23147,7 +18961,7 @@
 				printf("COPY by glIndexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -23167,17 +18981,10 @@
 		jint count,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -23186,7 +18993,7 @@
 				printf("COPY by glIndexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -23206,17 +19013,10 @@
 		jint count,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -23225,7 +19025,7 @@
 				printf("COPY by glIndexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -23245,17 +19045,10 @@
 		jint count,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -23264,7 +19057,7 @@
 				printf("COPY by glIndexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -23284,17 +19077,10 @@
 		jint count,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -23303,7 +19089,7 @@
 				printf("COPY by glIndexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -23323,17 +19109,10 @@
 		jint count,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -23342,7 +19121,7 @@
 				printf("COPY by glIndexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -23362,17 +19141,10 @@
 		jint count,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glIndexPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray3);
@@ -23381,7 +19153,7 @@
 				printf("COPY by glIndexPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glIndexPointerEXT (
 			(GLenum) type,
 			(GLsizei) stride,
 			(GLsizei) count,
@@ -23409,17 +19181,10 @@
 		jint count,
 		jbyteArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jbyte *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -23428,7 +19193,7 @@
 				printf("COPY by glTexCoordPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -23450,17 +19215,10 @@
 		jint count,
 		jshortArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jshort *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -23469,7 +19227,7 @@
 				printf("COPY by glTexCoordPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -23491,17 +19249,10 @@
 		jint count,
 		jintArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jint *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jint *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -23510,7 +19261,7 @@
 				printf("COPY by glTexCoordPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -23532,17 +19283,10 @@
 		jint count,
 		jfloatArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jfloat *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -23551,7 +19295,7 @@
 				printf("COPY by glTexCoordPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -23573,17 +19317,10 @@
 		jint count,
 		jdoubleArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jdouble *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -23592,7 +19329,7 @@
 				printf("COPY by glTexCoordPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -23614,17 +19351,10 @@
 		jint count,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jboolean *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -23633,7 +19363,7 @@
 				printf("COPY by glTexCoordPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -23655,17 +19385,10 @@
 		jint count,
 		jlongArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *) = NULL;
 		jboolean isCopiedArray4 = JNI_FALSE;
 		jlong *ptr4 = NULL;
 		static int isWarned4 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-				getGLProcAddressHelper("glTexCoordPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr4 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray4);
@@ -23674,7 +19397,7 @@
 				printf("COPY by glTexCoordPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glTexCoordPointerEXT (
 			(GLint) size,
 			(GLenum) type,
 			(GLsizei) stride,
@@ -23701,17 +19424,10 @@
 		jint count,
 		jbooleanArray ptr)
 	{
-		static void (CALLBACK *__func_ptr__)(GLsizei, GLsizei, const GLboolean *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jboolean *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLsizei, GLsizei, const GLboolean *))
-				getGLProcAddressHelper("glEdgeFlagPointerEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(ptr!=NULL)
 		{
 			ptr2 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, ptr, &isCopiedArray2);
@@ -23720,7 +19436,7 @@
 				printf("COPY by glEdgeFlagPointerEXT arg: ptr");
 			}
 		}
-		__func_ptr__ (
+		disp__glEdgeFlagPointerEXT (
 			(GLsizei) stride,
 			(GLsizei) count,
 			(const GLboolean *) ptr2
@@ -23744,17 +19460,10 @@
 		jint pname,
 		jbyteArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jbyte *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointervEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -23763,7 +19472,7 @@
 				printf("COPY by glGetPointervEXT arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointervEXT (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -23779,17 +19488,10 @@
 		jint pname,
 		jshortArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointervEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -23798,7 +19500,7 @@
 				printf("COPY by glGetPointervEXT arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointervEXT (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -23814,17 +19516,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointervEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -23833,7 +19528,7 @@
 				printf("COPY by glGetPointervEXT arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointervEXT (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -23849,17 +19544,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointervEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -23868,7 +19556,7 @@
 				printf("COPY by glGetPointervEXT arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointervEXT (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -23884,17 +19572,10 @@
 		jint pname,
 		jdoubleArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointervEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -23903,7 +19584,7 @@
 				printf("COPY by glGetPointervEXT arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointervEXT (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -23919,17 +19600,10 @@
 		jint pname,
 		jbooleanArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jboolean *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointervEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -23938,7 +19612,7 @@
 				printf("COPY by glGetPointervEXT arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointervEXT (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -23954,17 +19628,10 @@
 		jint pname,
 		jlongArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, void **) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jlong *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, void **))
-				getGLProcAddressHelper("glGetPointervEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -23973,7 +19640,7 @@
 				printf("COPY by glGetPointervEXT arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetPointervEXT (
 			(GLenum) pname,
 			(void **) ptr1
 		);
@@ -23995,15 +19662,8 @@
 		JNIEnv *env, jobject obj,
 		jint i)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint))
-				getGLProcAddressHelper("glArrayElementEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glArrayElementEXT (
 			(GLint) i
 		);
 
@@ -24022,15 +19682,8 @@
 		jint first,
 		jint count)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLsizei))
-				getGLProcAddressHelper("glDrawArraysEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glDrawArraysEXT (
 			(GLenum) mode,
 			(GLint) first,
 			(GLsizei) count
@@ -24049,15 +19702,8 @@
 		JNIEnv *env, jobject obj,
 		jint mode)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glBlendEquationEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glBlendEquationEXT (
 			(GLenum) mode
 		);
 
@@ -24075,15 +19721,8 @@
 		jint pname,
 		jfloat param)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat))
-				getGLProcAddressHelper("glPointParameterfEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glPointParameterfEXT (
 			(GLenum) pname,
 			(GLfloat) param
 		);
@@ -24102,17 +19741,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLfloat *))
-				getGLProcAddressHelper("glPointParameterfvEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray1);
@@ -24121,7 +19753,7 @@
 				printf("COPY by glPointParameterfvEXT arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glPointParameterfvEXT (
 			(GLenum) pname,
 			(const GLfloat *) ptr1
 		);
@@ -24148,17 +19780,10 @@
 		jint type,
 		jbyteArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -24167,7 +19792,7 @@
 				printf("COPY by glColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTableEXT (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -24191,17 +19816,10 @@
 		jint type,
 		jshortArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -24210,7 +19828,7 @@
 				printf("COPY by glColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTableEXT (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -24234,17 +19852,10 @@
 		jint type,
 		jintArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -24253,7 +19864,7 @@
 				printf("COPY by glColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTableEXT (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -24277,17 +19888,10 @@
 		jint type,
 		jfloatArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -24296,7 +19900,7 @@
 				printf("COPY by glColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTableEXT (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -24320,17 +19924,10 @@
 		jint type,
 		jdoubleArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -24339,7 +19936,7 @@
 				printf("COPY by glColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTableEXT (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -24363,17 +19960,10 @@
 		jint type,
 		jbooleanArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -24382,7 +19972,7 @@
 				printf("COPY by glColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTableEXT (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -24406,17 +19996,10 @@
 		jint type,
 		jlongArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr5 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray5);
@@ -24425,7 +20008,7 @@
 				printf("COPY by glColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorTableEXT (
 			(GLenum) target,
 			(GLenum) internalformat,
 			(GLsizei) width,
@@ -24456,17 +20039,10 @@
 		jint type,
 		jbyteArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jbyte *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -24475,7 +20051,7 @@
 				printf("COPY by glColorSubTableEXT arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTableEXT (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -24499,17 +20075,10 @@
 		jint type,
 		jshortArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jshort *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -24518,7 +20087,7 @@
 				printf("COPY by glColorSubTableEXT arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTableEXT (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -24542,17 +20111,10 @@
 		jint type,
 		jintArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jint *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jint *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -24561,7 +20123,7 @@
 				printf("COPY by glColorSubTableEXT arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTableEXT (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -24585,17 +20147,10 @@
 		jint type,
 		jfloatArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jfloat *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -24604,7 +20159,7 @@
 				printf("COPY by glColorSubTableEXT arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTableEXT (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -24628,17 +20183,10 @@
 		jint type,
 		jdoubleArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jdouble *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -24647,7 +20195,7 @@
 				printf("COPY by glColorSubTableEXT arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTableEXT (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -24671,17 +20219,10 @@
 		jint type,
 		jbooleanArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jboolean *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -24690,7 +20231,7 @@
 				printf("COPY by glColorSubTableEXT arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTableEXT (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -24714,17 +20255,10 @@
 		jint type,
 		jlongArray data)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *) = NULL;
 		jboolean isCopiedArray5 = JNI_FALSE;
 		jlong *ptr5 = NULL;
 		static int isWarned5 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-				getGLProcAddressHelper("glColorSubTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(data!=NULL)
 		{
 			ptr5 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, data, &isCopiedArray5);
@@ -24733,7 +20267,7 @@
 				printf("COPY by glColorSubTableEXT arg: data");
 			}
 		}
-		__func_ptr__ (
+		disp__glColorSubTableEXT (
 			(GLenum) target,
 			(GLsizei) start,
 			(GLsizei) count,
@@ -24762,17 +20296,10 @@
 		jint type,
 		jbyteArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jbyte *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jbyte *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -24781,7 +20308,7 @@
 				printf("COPY by glGetColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableEXT (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -24801,17 +20328,10 @@
 		jint type,
 		jshortArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jshort *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -24820,7 +20340,7 @@
 				printf("COPY by glGetColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableEXT (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -24840,17 +20360,10 @@
 		jint type,
 		jintArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jint *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jint *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -24859,7 +20372,7 @@
 				printf("COPY by glGetColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableEXT (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -24879,17 +20392,10 @@
 		jint type,
 		jfloatArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jfloat *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -24898,7 +20404,7 @@
 				printf("COPY by glGetColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableEXT (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -24918,17 +20424,10 @@
 		jint type,
 		jdoubleArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jdouble *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -24937,7 +20436,7 @@
 				printf("COPY by glGetColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableEXT (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -24957,17 +20456,10 @@
 		jint type,
 		jbooleanArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jboolean *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jboolean *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -24976,7 +20468,7 @@
 				printf("COPY by glGetColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableEXT (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -24996,17 +20488,10 @@
 		jint type,
 		jlongArray table)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLenum, GLvoid *) = NULL;
 		jboolean isCopiedArray3 = JNI_FALSE;
 		jlong *ptr3 = NULL;
 		static int isWarned3 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-				getGLProcAddressHelper("glGetColorTableEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(table!=NULL)
 		{
 			ptr3 = (jlong *) (*env)->GetPrimitiveArrayCritical(env, table, &isCopiedArray3);
@@ -25015,7 +20500,7 @@
 				printf("COPY by glGetColorTableEXT arg: table");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableEXT (
 			(GLenum) target,
 			(GLenum) format,
 			(GLenum) type,
@@ -25041,17 +20526,10 @@
 		jint pname,
 		jfloatArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLfloat *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jfloat *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-				getGLProcAddressHelper("glGetColorTableParameterfvEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -25060,7 +20538,7 @@
 				printf("COPY by glGetColorTableParameterfvEXT arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableParameterfvEXT (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLfloat *) ptr2
@@ -25085,17 +20563,10 @@
 		jint pname,
 		jintArray params)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLenum, GLint *) = NULL;
 		jboolean isCopiedArray2 = JNI_FALSE;
 		jint *ptr2 = NULL;
 		static int isWarned2 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-				getGLProcAddressHelper("glGetColorTableParameterivEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(params!=NULL)
 		{
 			ptr2 = (jint *) (*env)->GetPrimitiveArrayCritical(env, params, &isCopiedArray2);
@@ -25104,7 +20575,7 @@
 				printf("COPY by glGetColorTableParameterivEXT arg: params");
 			}
 		}
-		__func_ptr__ (
+		disp__glGetColorTableParameterivEXT (
 			(GLenum) target,
 			(GLenum) pname,
 			(GLint *) ptr2
@@ -25128,15 +20599,8 @@
 		jint first,
 		jint count)
 	{
-		static void (CALLBACK *__func_ptr__)(GLint, GLsizei) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLint, GLsizei))
-				getGLProcAddressHelper("glLockArraysEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glLockArraysEXT (
 			(GLint) first,
 			(GLsizei) count
 		);
@@ -25153,15 +20617,8 @@
 	Java_gl4java_GLFuncJauJNI_glUnlockArraysEXT (
 		JNIEnv *env, jobject obj)
 	{
-		static void (CALLBACK *__func_ptr__)() = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)())
-				getGLProcAddressHelper("glUnlockArraysEXT", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glUnlockArraysEXT (
 		);
 
 	}
@@ -25177,15 +20634,8 @@
 		JNIEnv *env, jobject obj,
 		jint texture)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glActiveTextureARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glActiveTextureARB (
 			(GLenum) texture
 		);
 
@@ -25202,15 +20652,8 @@
 		JNIEnv *env, jobject obj,
 		jint texture)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum))
-				getGLProcAddressHelper("glClientActiveTextureARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glClientActiveTextureARB (
 			(GLenum) texture
 		);
 
@@ -25228,15 +20671,8 @@
 		jint target,
 		jdouble s)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLdouble))
-				getGLProcAddressHelper("glMultiTexCoord1dARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord1dARB (
 			(GLenum) target,
 			(GLdouble) s
 		);
@@ -25255,17 +20691,10 @@
 		jint target,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLdouble *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLdouble *))
-				getGLProcAddressHelper("glMultiTexCoord1dvARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25274,7 +20703,7 @@
 				printf("COPY by glMultiTexCoord1dvARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord1dvARB (
 			(GLenum) target,
 			(const GLdouble *) ptr1
 		);
@@ -25297,15 +20726,8 @@
 		jint target,
 		jfloat s)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat))
-				getGLProcAddressHelper("glMultiTexCoord1fARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord1fARB (
 			(GLenum) target,
 			(GLfloat) s
 		);
@@ -25324,17 +20746,10 @@
 		jint target,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLfloat *))
-				getGLProcAddressHelper("glMultiTexCoord1fvARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25343,7 +20758,7 @@
 				printf("COPY by glMultiTexCoord1fvARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord1fvARB (
 			(GLenum) target,
 			(const GLfloat *) ptr1
 		);
@@ -25366,15 +20781,8 @@
 		jint target,
 		jint s)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint))
-				getGLProcAddressHelper("glMultiTexCoord1iARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord1iARB (
 			(GLenum) target,
 			(GLint) s
 		);
@@ -25393,17 +20801,10 @@
 		jint target,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLint *))
-				getGLProcAddressHelper("glMultiTexCoord1ivARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25412,7 +20813,7 @@
 				printf("COPY by glMultiTexCoord1ivARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord1ivARB (
 			(GLenum) target,
 			(const GLint *) ptr1
 		);
@@ -25435,15 +20836,8 @@
 		jint target,
 		jshort s)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLshort))
-				getGLProcAddressHelper("glMultiTexCoord1sARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord1sARB (
 			(GLenum) target,
 			(GLshort) s
 		);
@@ -25462,17 +20856,10 @@
 		jint target,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLshort *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLshort *))
-				getGLProcAddressHelper("glMultiTexCoord1svARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25481,7 +20868,7 @@
 				printf("COPY by glMultiTexCoord1svARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord1svARB (
 			(GLenum) target,
 			(const GLshort *) ptr1
 		);
@@ -25505,15 +20892,8 @@
 		jdouble s,
 		jdouble t)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLdouble, GLdouble))
-				getGLProcAddressHelper("glMultiTexCoord2dARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord2dARB (
 			(GLenum) target,
 			(GLdouble) s,
 			(GLdouble) t
@@ -25533,17 +20913,10 @@
 		jint target,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLdouble *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLdouble *))
-				getGLProcAddressHelper("glMultiTexCoord2dvARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25552,7 +20925,7 @@
 				printf("COPY by glMultiTexCoord2dvARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord2dvARB (
 			(GLenum) target,
 			(const GLdouble *) ptr1
 		);
@@ -25576,15 +20949,8 @@
 		jfloat s,
 		jfloat t)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat, GLfloat))
-				getGLProcAddressHelper("glMultiTexCoord2fARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord2fARB (
 			(GLenum) target,
 			(GLfloat) s,
 			(GLfloat) t
@@ -25604,17 +20970,10 @@
 		jint target,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLfloat *))
-				getGLProcAddressHelper("glMultiTexCoord2fvARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25623,7 +20982,7 @@
 				printf("COPY by glMultiTexCoord2fvARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord2fvARB (
 			(GLenum) target,
 			(const GLfloat *) ptr1
 		);
@@ -25647,15 +21006,8 @@
 		jint s,
 		jint t)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint))
-				getGLProcAddressHelper("glMultiTexCoord2iARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord2iARB (
 			(GLenum) target,
 			(GLint) s,
 			(GLint) t
@@ -25675,17 +21027,10 @@
 		jint target,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLint *))
-				getGLProcAddressHelper("glMultiTexCoord2ivARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25694,7 +21039,7 @@
 				printf("COPY by glMultiTexCoord2ivARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord2ivARB (
 			(GLenum) target,
 			(const GLint *) ptr1
 		);
@@ -25718,15 +21063,8 @@
 		jshort s,
 		jshort t)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLshort, GLshort))
-				getGLProcAddressHelper("glMultiTexCoord2sARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord2sARB (
 			(GLenum) target,
 			(GLshort) s,
 			(GLshort) t
@@ -25746,17 +21084,10 @@
 		jint target,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLshort *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLshort *))
-				getGLProcAddressHelper("glMultiTexCoord2svARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25765,7 +21096,7 @@
 				printf("COPY by glMultiTexCoord2svARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord2svARB (
 			(GLenum) target,
 			(const GLshort *) ptr1
 		);
@@ -25790,15 +21121,8 @@
 		jdouble t,
 		jdouble r)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glMultiTexCoord3dARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord3dARB (
 			(GLenum) target,
 			(GLdouble) s,
 			(GLdouble) t,
@@ -25819,17 +21143,10 @@
 		jint target,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLdouble *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLdouble *))
-				getGLProcAddressHelper("glMultiTexCoord3dvARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25838,7 +21155,7 @@
 				printf("COPY by glMultiTexCoord3dvARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord3dvARB (
 			(GLenum) target,
 			(const GLdouble *) ptr1
 		);
@@ -25863,15 +21180,8 @@
 		jfloat t,
 		jfloat r)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glMultiTexCoord3fARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord3fARB (
 			(GLenum) target,
 			(GLfloat) s,
 			(GLfloat) t,
@@ -25892,17 +21202,10 @@
 		jint target,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLfloat *))
-				getGLProcAddressHelper("glMultiTexCoord3fvARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25911,7 +21214,7 @@
 				printf("COPY by glMultiTexCoord3fvARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord3fvARB (
 			(GLenum) target,
 			(const GLfloat *) ptr1
 		);
@@ -25936,15 +21239,8 @@
 		jint t,
 		jint r)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint))
-				getGLProcAddressHelper("glMultiTexCoord3iARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord3iARB (
 			(GLenum) target,
 			(GLint) s,
 			(GLint) t,
@@ -25965,17 +21261,10 @@
 		jint target,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLint *))
-				getGLProcAddressHelper("glMultiTexCoord3ivARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -25984,7 +21273,7 @@
 				printf("COPY by glMultiTexCoord3ivARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord3ivARB (
 			(GLenum) target,
 			(const GLint *) ptr1
 		);
@@ -26009,15 +21298,8 @@
 		jshort t,
 		jshort r)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glMultiTexCoord3sARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord3sARB (
 			(GLenum) target,
 			(GLshort) s,
 			(GLshort) t,
@@ -26038,17 +21320,10 @@
 		jint target,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLshort *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLshort *))
-				getGLProcAddressHelper("glMultiTexCoord3svARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -26057,7 +21332,7 @@
 				printf("COPY by glMultiTexCoord3svARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord3svARB (
 			(GLenum) target,
 			(const GLshort *) ptr1
 		);
@@ -26083,15 +21358,8 @@
 		jdouble r,
 		jdouble q)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLdouble, GLdouble, GLdouble, GLdouble) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLdouble, GLdouble, GLdouble, GLdouble))
-				getGLProcAddressHelper("glMultiTexCoord4dARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord4dARB (
 			(GLenum) target,
 			(GLdouble) s,
 			(GLdouble) t,
@@ -26113,17 +21381,10 @@
 		jint target,
 		jdoubleArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLdouble *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jdouble *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLdouble *))
-				getGLProcAddressHelper("glMultiTexCoord4dvARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jdouble *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -26132,7 +21393,7 @@
 				printf("COPY by glMultiTexCoord4dvARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord4dvARB (
 			(GLenum) target,
 			(const GLdouble *) ptr1
 		);
@@ -26158,15 +21419,8 @@
 		jfloat r,
 		jfloat q)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLfloat, GLfloat, GLfloat, GLfloat) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat, GLfloat))
-				getGLProcAddressHelper("glMultiTexCoord4fARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord4fARB (
 			(GLenum) target,
 			(GLfloat) s,
 			(GLfloat) t,
@@ -26188,17 +21442,10 @@
 		jint target,
 		jfloatArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLfloat *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jfloat *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLfloat *))
-				getGLProcAddressHelper("glMultiTexCoord4fvARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jfloat *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -26207,7 +21454,7 @@
 				printf("COPY by glMultiTexCoord4fvARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord4fvARB (
 			(GLenum) target,
 			(const GLfloat *) ptr1
 		);
@@ -26233,15 +21480,8 @@
 		jint r,
 		jint q)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLint, GLint, GLint, GLint) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint))
-				getGLProcAddressHelper("glMultiTexCoord4iARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord4iARB (
 			(GLenum) target,
 			(GLint) s,
 			(GLint) t,
@@ -26263,17 +21503,10 @@
 		jint target,
 		jintArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLint *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jint *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLint *))
-				getGLProcAddressHelper("glMultiTexCoord4ivARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jint *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -26282,7 +21515,7 @@
 				printf("COPY by glMultiTexCoord4ivARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord4ivARB (
 			(GLenum) target,
 			(const GLint *) ptr1
 		);
@@ -26308,15 +21541,8 @@
 		jshort r,
 		jshort q)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, GLshort, GLshort, GLshort, GLshort) = NULL;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, GLshort, GLshort, GLshort, GLshort))
-				getGLProcAddressHelper("glMultiTexCoord4sARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
-		__func_ptr__ (
+		disp__glMultiTexCoord4sARB (
 			(GLenum) target,
 			(GLshort) s,
 			(GLshort) t,
@@ -26338,17 +21564,10 @@
 		jint target,
 		jshortArray v)
 	{
-		static void (CALLBACK *__func_ptr__)(GLenum, const GLshort *) = NULL;
 		jboolean isCopiedArray1 = JNI_FALSE;
 		jshort *ptr1 = NULL;
 		static int isWarned1 = 0;
 
-		if(__func_ptr__==NULL) {
-			__func_ptr__ = (void (CALLBACK *)(GLenum, const GLshort *))
-				getGLProcAddressHelper("glMultiTexCoord4svARB", NULL, 1, 0);
-			if(__func_ptr__==NULL)
-				return;
-		}
 		if(v!=NULL)
 		{
 			ptr1 = (jshort *) (*env)->GetPrimitiveArrayCritical(env, v, &isCopiedArray1);
@@ -26357,7 +21576,7 @@
 				printf("COPY by glMultiTexCoord4svARB arg: v");
 			}
 		}
-		__func_ptr__ (
+		disp__glMultiTexCoord4svARB (
 			(GLenum) target,
 			(const GLshort *) ptr1
 		);
@@ -26368,4 +21587,4 @@
 		}
 	}
 
-/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.0:  Java program parsed successfully. */ 

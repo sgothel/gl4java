@@ -1,5 +1,5 @@
 MAJV=2
-MINV=6
+MINV=7
 BUGV=0
 RELV=0
 

@@ -41,7 +41,7 @@ Java_gl4java_GLUFuncJauJNI_gluErrorString ( JNIEnv *env, jobject obj,
 {
     const char *tmpString=0;
 
-    tmpString = gluErrorString ( /* jint */ errorCode );
+    tmpString = disp__gluErrorString ( /* jint */ errorCode );
     if(tmpString==NULL)
     	tmpString=_glu_n_a_string;
 
@@ -54,7 +54,7 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
 {
     const char *tmpString=0;
 
-    tmpString = gluGetString ( /* jint */ name);
+    tmpString = disp__gluGetString ( /* jint */ name);
     if(tmpString==NULL)
     	tmpString=_glu_n_a_string;
 
@@ -62,7 +62,7 @@ Java_gl4java_GLUFuncJauJNI_gluGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _glu_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _glu_lib_version_="2.5.2.0";
+static const char * _glu_lib_version_="2.7.0.0";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLUFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
@@ -112,7 +112,7 @@ Java_gl4java_GLUFuncJauJNI_gluQuadricCallback( JNIEnv *env, jobject obj,
 	switch(which)
 	{
 		case GLU_ERROR:
-			gluQuadricCallback((void *)((PointerHolder)qobj), 
+			disp__gluQuadricCallback((void *)((PointerHolder)qobj), 
 			                   which, cbf_GLU_ERROR );
 			break;
 		default:
@@ -136,7 +136,7 @@ Java_gl4java_GLUFuncJauJNI_gluNurbsCallback( JNIEnv *env, jobject obj,
 	switch(which)
 	{
 		case GLU_ERROR:
-			gluNurbsCallback((void *)((PointerHolder)nobj), which, 
+			disp__gluNurbsCallback((void *)((PointerHolder)nobj), which, 
 				         cbf_GLU_ERROR );
 			break;
 		default:
@@ -164,62 +164,62 @@ Java_gl4java_GLUFuncJauJNI_gluTessCallback( JNIEnv *env, jobject obj,
 	switch(which)
 	{
 		case GLU_TESS_BEGIN:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_BEGIN );
 			break;
 		case GLU_TESS_BEGIN_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_BEGIN_DATA );
 			break;
 		case GLU_TESS_EDGE_FLAG:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_EDGE_FLAG );
 			break;
 		case GLU_TESS_EDGE_FLAG_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_EDGE_FLAG_DATA );
 			break;
 		case GLU_TESS_VERTEX:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_VERTEX );
 			break;
 		case GLU_TESS_VERTEX_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_VERTEX_DATA );
 			break;
 		case GLU_TESS_END:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_END );
 			break;
 		case GLU_TESS_END_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_END_DATA );
 			break;
 		case GLU_TESS_ERROR:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_ERROR );
 			break;
 		case GLU_TESS_ERROR_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_ERROR_DATA );
 			break;
 		case GLU_TESS_COMBINE:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_COMBINE );
 			break;
 		case GLU_TESS_COMBINE_DATA:
-			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			disp__gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
 			                which, 
 				        cbf_GLU_TESS_COMBINE_DATA );
 			break;
@@ -238,7 +238,7 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteQuadric( JNIEnv *env, jobject obj,
 					     jlong qobj )
 {
-	gluDeleteQuadric((void *)((PointerHolder)qobj));
+	disp__gluDeleteQuadric((void *)((PointerHolder)qobj));
 	RemoveCallbackNodes((void *)((PointerHolder)qobj));
 }
 
@@ -246,7 +246,7 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteNurbsRenderer( JNIEnv *env, jobject obj,
 						   jlong nobj )
 {
-	gluDeleteNurbsRenderer((void *)((PointerHolder)nobj));
+	disp__gluDeleteNurbsRenderer((void *)((PointerHolder)nobj));
 	RemoveCallbackNodes((void *)((PointerHolder)nobj));
 }
 
@@ -254,30 +254,30 @@ JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 					  jlong tobj )
 {
-	gluDeleteTess((GLUtesselator *)((PointerHolder)tobj));
+	disp__gluDeleteTess((GLUtesselator *)((PointerHolder)tobj));
 	RemoveCallbackNodes((void *)((PointerHolder)tobj));
 }
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewQuadric( JNIEnv *env, jobject obj)
 {
-	return (jlong)((PointerHolder)gluNewQuadric());
+	return (jlong)((PointerHolder)disp__gluNewQuadric());
 }
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewNurbsRenderer( JNIEnv *env, jobject obj)
 {
-	return (jlong)((PointerHolder)gluNewNurbsRenderer());
+	return (jlong)((PointerHolder)disp__gluNewNurbsRenderer());
 }
 
 JNIEXPORT jlong JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 {
-	return (jlong)((PointerHolder)gluNewTess());
+	return (jlong)((PointerHolder)disp__gluNewTess());
 }
 
 /**
- * C2J Parser Version 1.5 Beta
+ * C2J Parser Version 2.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -303,7 +303,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble upz)
 	{
 
-		gluLookAt (
+		disp__gluLookAt (
 			(GLdouble) eyex,
 			(GLdouble) eyey,
 			(GLdouble) eyez,
@@ -332,7 +332,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble top)
 	{
 
-		gluOrtho2D (
+		disp__gluOrtho2D (
 			(GLdouble) left,
 			(GLdouble) right,
 			(GLdouble) bottom,
@@ -356,7 +356,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble zFar)
 	{
 
-		gluPerspective (
+		disp__gluPerspective (
 			(GLdouble) fovy,
 			(GLdouble) aspect,
 			(GLdouble) zNear,
@@ -387,7 +387,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr4 = (*env)->GetIntArrayElements(env, viewport, &isCopiedArray4);
 		}
-		gluPickMatrix (
+		disp__gluPickMatrix (
 			(GLdouble) x,
 			(GLdouble) y,
 			(GLdouble) width,
@@ -456,7 +456,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr8 = (*env)->GetDoubleArrayElements(env, winz, &isCopiedArray8);
 		}
-		ret = (jint) gluProject (
+		ret = (jint) disp__gluProject (
 			(GLdouble) objx,
 			(GLdouble) objy,
 			(GLdouble) objz,
@@ -550,7 +550,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr8 = (*env)->GetDoubleArrayElements(env, objz, &isCopiedArray8);
 		}
-		ret = (jint) gluUnProject (
+		ret = (jint) disp__gluUnProject (
 			(GLdouble) winx,
 			(GLdouble) winy,
 			(GLdouble) winz,
@@ -622,7 +622,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr8 = (*env)->GetByteArrayElements(env, dataout, &isCopiedArray8);
 		}
-		ret = (jint) gluScaleImage (
+		ret = (jint) disp__gluScaleImage (
 			(GLenum) format,
 			(GLsizei) widthin,
 			(GLsizei) heightin,
@@ -669,7 +669,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr5 = (*env)->GetByteArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -702,7 +702,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr5 = (*env)->GetShortArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -735,7 +735,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr5 = (*env)->GetIntArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -768,7 +768,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr5 = (*env)->GetFloatArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -801,7 +801,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr5 = (*env)->GetDoubleArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -834,7 +834,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr5 = (*env)->GetBooleanArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -867,7 +867,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr5 = (*env)->GetLongArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -908,7 +908,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr6 = (*env)->GetByteArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -943,7 +943,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr6 = (*env)->GetShortArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -978,7 +978,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr6 = (*env)->GetIntArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -1013,7 +1013,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr6 = (*env)->GetFloatArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -1048,7 +1048,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr6 = (*env)->GetDoubleArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -1083,7 +1083,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr6 = (*env)->GetBooleanArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -1118,7 +1118,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr6 = (*env)->GetLongArrayElements(env, data, 0);
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -1148,7 +1148,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint drawStyle)
 	{
 
-		gluQuadricDrawStyle (
+		disp__gluQuadricDrawStyle (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) drawStyle
 		);
@@ -1168,7 +1168,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint orientation)
 	{
 
-		gluQuadricOrientation (
+		disp__gluQuadricOrientation (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) orientation
 		);
@@ -1188,7 +1188,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint normals)
 	{
 
-		gluQuadricNormals (
+		disp__gluQuadricNormals (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) normals
 		);
@@ -1208,7 +1208,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jboolean textureCoords)
 	{
 
-		gluQuadricTexture (
+		disp__gluQuadricTexture (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLboolean) textureCoords
 		);
@@ -1232,7 +1232,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint stacks)
 	{
 
-		gluCylinder (
+		disp__gluCylinder (
 			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) baseRadius,
 			(GLdouble) topRadius,
@@ -1258,7 +1258,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint stacks)
 	{
 
-		gluSphere (
+		disp__gluSphere (
 			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) radius,
 			(GLint) slices,
@@ -1283,7 +1283,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint loops)
 	{
 
-		gluDisk (
+		disp__gluDisk (
 			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) innerRadius,
 			(GLdouble) outerRadius,
@@ -1311,7 +1311,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble sweepAngle)
 	{
 
-		gluPartialDisk (
+		disp__gluPartialDisk (
 			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) innerRadius,
 			(GLdouble) outerRadius,
@@ -1353,7 +1353,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr3 = (*env)->GetIntArrayElements(env, viewport, 0);
 		}
-		gluLoadSamplingMatrices (
+		disp__gluLoadSamplingMatrices (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(const GLfloat *) ptr1,
 			(const GLfloat *) ptr2,
@@ -1388,7 +1388,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jfloat value)
 	{
 
-		gluNurbsProperty (
+		disp__gluNurbsProperty (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLenum) property,
 			(GLfloat) value
@@ -1416,7 +1416,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr2 = (*env)->GetFloatArrayElements(env, value, &isCopiedArray2);
 		}
-		gluGetNurbsProperty (
+		disp__gluGetNurbsProperty (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLenum) property,
 			(GLfloat *) ptr2
@@ -1440,7 +1440,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong nobj)
 	{
 
-		gluBeginCurve (
+		disp__gluBeginCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1458,7 +1458,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong nobj)
 	{
 
-		gluEndCurve (
+		disp__gluEndCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1494,7 +1494,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr4 = (*env)->GetFloatArrayElements(env, ctlarray, &isCopiedArray4);
 		}
-		gluNurbsCurve (
+		disp__gluNurbsCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) nknots,
 			(GLfloat *) ptr2,
@@ -1526,7 +1526,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong nobj)
 	{
 
-		gluBeginSurface (
+		disp__gluBeginSurface (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1544,7 +1544,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong nobj)
 	{
 
-		gluEndSurface (
+		disp__gluEndSurface (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1590,7 +1590,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr7 = (*env)->GetFloatArrayElements(env, ctlarray, &isCopiedArray7);
 		}
-		gluNurbsSurface (
+		disp__gluNurbsSurface (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) sknot_count,
 			(GLfloat *) ptr2,
@@ -1630,7 +1630,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong nobj)
 	{
 
-		gluBeginTrim (
+		disp__gluBeginTrim (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1648,7 +1648,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong nobj)
 	{
 
-		gluEndTrim (
+		disp__gluEndTrim (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1676,7 +1676,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr2 = (*env)->GetFloatArrayElements(env, array, &isCopiedArray2);
 		}
-		gluPwlCurve (
+		disp__gluPwlCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) count,
 			(GLfloat *) ptr2,
@@ -1709,7 +1709,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr1 = (*env)->GetByteArrayElements(env, polygon_data, &isCopiedArray1);
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1732,7 +1732,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr1 = (*env)->GetShortArrayElements(env, polygon_data, &isCopiedArray1);
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1755,7 +1755,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr1 = (*env)->GetIntArrayElements(env, polygon_data, &isCopiedArray1);
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1778,7 +1778,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr1 = (*env)->GetFloatArrayElements(env, polygon_data, &isCopiedArray1);
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1801,7 +1801,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr1 = (*env)->GetDoubleArrayElements(env, polygon_data, &isCopiedArray1);
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1824,7 +1824,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr1 = (*env)->GetBooleanArrayElements(env, polygon_data, &isCopiedArray1);
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1847,7 +1847,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr1 = (*env)->GetLongArrayElements(env, polygon_data, &isCopiedArray1);
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1870,7 +1870,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong tobj)
 	{
 
-		gluTessBeginContour (
+		disp__gluTessBeginContour (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
@@ -1902,7 +1902,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr2 = (*env)->GetByteArrayElements(env, vertex_data, &isCopiedArray2);
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -1937,7 +1937,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr2 = (*env)->GetShortArrayElements(env, vertex_data, &isCopiedArray2);
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -1972,7 +1972,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr2 = (*env)->GetIntArrayElements(env, vertex_data, &isCopiedArray2);
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -2007,7 +2007,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr2 = (*env)->GetFloatArrayElements(env, vertex_data, &isCopiedArray2);
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -2042,7 +2042,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr2 = (*env)->GetDoubleArrayElements(env, vertex_data, &isCopiedArray2);
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -2077,7 +2077,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr2 = (*env)->GetBooleanArrayElements(env, vertex_data, &isCopiedArray2);
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -2112,7 +2112,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr2 = (*env)->GetLongArrayElements(env, vertex_data, &isCopiedArray2);
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -2140,7 +2140,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong tobj)
 	{
 
-		gluTessEndContour (
+		disp__gluTessEndContour (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
@@ -2158,7 +2158,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong tobj)
 	{
 
-		gluTessEndPolygon (
+		disp__gluTessEndPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
@@ -2178,7 +2178,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble value)
 	{
 
-		gluTessProperty (
+		disp__gluTessProperty (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) which,
 			(GLdouble) value
@@ -2201,7 +2201,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jdouble z)
 	{
 
-		gluTessNormal (
+		disp__gluTessNormal (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble) x,
 			(GLdouble) y,
@@ -2230,7 +2230,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		{
 			ptr2 = (*env)->GetDoubleArrayElements(env, value, &isCopiedArray2);
 		}
-		gluGetTessProperty (
+		disp__gluGetTessProperty (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) which,
 			(GLdouble *) ptr2
@@ -2254,7 +2254,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong tobj)
 	{
 
-		gluBeginPolygon (
+		disp__gluBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
@@ -2273,7 +2273,7 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jint type)
 	{
 
-		gluNextContour (
+		disp__gluNextContour (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) type
 		);
@@ -2292,10 +2292,10 @@ Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
 		jlong tobj)
 	{
 
-		gluEndPolygon (
+		disp__gluEndPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
 
-/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.0:  Java program parsed successfully. */ 

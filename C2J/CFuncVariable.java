@@ -20,6 +20,7 @@ public class CFuncVariable
 
 	public boolean isVoid;
 	public boolean isConst;
+	public boolean usePointerHolderCast;
 
 	public int     arrayNumber;
 
@@ -54,13 +55,15 @@ public class CFuncVariable
 	 */
 	public String identifier;
 
-	public CFuncVariable()
+	public CFuncVariable(boolean _usePointerHolderCast)
 	{
 		complete=false;
 
 		isVoid=false;
 		isConst=false;
 		isGLUPtrObject=false;
+
+		usePointerHolderCast=_usePointerHolderCast;
 
 		arrayNumber=0;
 
@@ -72,7 +75,7 @@ public class CFuncVariable
 	protected Object clone()
 	                throws CloneNotSupportedException
 	{
-		CFuncVariable nobj=new CFuncVariable();
+		CFuncVariable nobj=new CFuncVariable(usePointerHolderCast);
 		nobj.typeC=new String(typeC);
 		nobj.typeJava=new String(typeJava);
 		nobj.identifier=new String(identifier);
@@ -97,7 +100,7 @@ public class CFuncVariable
 			res += "*";
 		res += " "+identifier;
 		if(isVoid)
-			res += " /* Void */";
+			res += " /* Void typeC = <"+typeC+"> */";
 		return res;
 	}
 
@@ -179,7 +182,12 @@ public class CFuncVariable
 		for(j=0; j<arrayNumber; j++)
 			res+="*";
 		if(isGLUPtrObject)
-			res+="*) (PointerHolder";
+		{
+			if(usePointerHolderCast)
+				res+="*) (PointerHolder";
+			else
+				res+="*";
+		}
 		return res;
 	}
 }

@@ -2,12 +2,14 @@
 #include "GLCallbackHelperJNI.h"
 #include "jnitools.h"
 
-#ifndef _WIN32_
-  #ifdef macintosh
+#ifdef _WIN32_
+	#include "wgltool.h"
+#else
+  #ifdef _MAC_OS9_
 	#include <agl.h>
 	#include <string.h>
   #else
-	#include <GL/glx.h>
+	#include "glxtool.h"
   #endif
 #endif
 
@@ -225,12 +227,12 @@ void  LIBAPIENTRY RemoveCallbackNodes(void *cb_obj)
 jlong  LIBAPIENTRY GetCurrentGLContext()
 {
 	#ifdef _WIN32_
-                return (jlong) wglGetCurrentContext();
+                return (jlong) disp__wglGetCurrentContext();
         #else
-          #ifdef macintosh
+          #ifdef _MAC_OS9_
                 return (jlong) aglGetCurrentContext();
           #else
-                return (jlong) glXGetCurrentContext();   
+                return (jlong) disp__glXGetCurrentContext();   
 	  #endif
         #endif
 }

@@ -57,7 +57,7 @@ import java.util.*;
 
   public class C2J{
 
-    public static final String version = "C2J Parser Version 1.5 Beta" ;
+    public static final String version = "C2J Parser Version 2.0" ;
     public static final String vendor  = "Jausoft - Sven Goethel Software Development";
 
     public static final int EXPORT_JNI_JAVA        = 1;
@@ -66,12 +66,16 @@ import java.util.*;
     public static final int EXPORT_JNI_C           = 4; // strong binding
     public static final int EXPORT_JNI_C_DYN       = 5; // dyn. binding
     public static final int EXPORT_GL_FUNC_NAMES   = 10;
+    public static final int EXPORT_GL_DISPATCH_DECL= 11;
+    public static final int EXPORT_GL_DISPATCH_VAR = 12;
+    public static final int EXPORT_GL_DISPATCH_GET = 13;
 
     public static final int MODIFIER_JNI_CRITICAL_ARRAY = 1;
     public static final int MODIFIER_JNI_COPY_CHECK = 2; // experimental trial ..
 
     public static int     exportMode;
     public static int     exportModifier;
+    public static boolean usePointerHolderCast = false;
     public static boolean verbose=false ;
     public static boolean syntaxVerbose=false ;
     public static boolean echoMode=false ;
@@ -123,7 +127,7 @@ import java.util.*;
         System.out.println("Usage is one of:");
         System.out.println("         java C2J [-v] [-s] [-echo] [jnic|jnijava|jnijavaf|msjava|echo] <ClassName> < inputfile");
         System.out.println("OR");
-        System.out.println("         java C2J [-v] [-s] [-echo] [-jnic-criticalarray] [-jnic-trial] [jnic|jnic-dyn|jnijava|msjava <dllname>|glfnames] <ClassName> inputfile");
+        System.out.println("         java C2J [-v] [-s] [-echo] [-jnic-criticalarray] [-jnic-trial] [jnic|jnic-dyn|jnijava|msjava <dllname>|glfnames|gldispatch-decl|gldispatch-var|gldispatch-get] <ClassName> inputfile");
         System.out.println("     , inputfile is a C-HeaderFile (Preprocessed).");
         System.out.println("     , where <ClassName> must be full qualified with an underscore instead of an dot - if not in (any) Java-Mode.");
         System.out.println("     , where -v means verbose");
@@ -137,6 +141,7 @@ import java.util.*;
         System.out.println("     , where jnijavaf produces JNI-Java Code (final)");
         System.out.println("     , where msjava <dllname> produces MSJVM-Java Code for the DLL <dllname>");
         System.out.println("     , where glfnames produces all GL function names");
+        System.out.println("     , where gldispatch* produces the gl-func declarations, definitions and get stubs");
         System.out.println("     , where echo just prints the parsed C-Code\n");
         System.out.println("     E.g.");
         System.out.println("          java C2J jnic myPackage_myClass a.h > a.c");
@@ -197,10 +202,12 @@ import java.util.*;
 		else if( args[i].equals("jnic") )
 		{
 			exportMode = EXPORT_JNI_C;
+			usePointerHolderCast = true;
 		}
 		else if( args[i].equals("jnic-dyn") )
 		{
 			exportMode = EXPORT_JNI_C_DYN;
+			usePointerHolderCast = true;
 		}
 		else if( args[i].equals("jnijava") )
 		{
@@ -213,6 +220,18 @@ import java.util.*;
 		else if( args[i].equals("glfnames") )
 		{
 			exportMode = EXPORT_GL_FUNC_NAMES;
+		}
+		else if( args[i].equals("gldispatch-decl") )
+		{
+			exportMode = EXPORT_GL_DISPATCH_DECL;
+		}
+		else if( args[i].equals("gldispatch-var") )
+		{
+			exportMode = EXPORT_GL_DISPATCH_VAR;
+		}
+		else if( args[i].equals("gldispatch-get") )
+		{
+			exportMode = EXPORT_GL_DISPATCH_GET;
 		}
 		else if( args[i].equals("msjava") && i+1<args.length )
 		{
@@ -429,6 +448,29 @@ void ExternalDeclaration() :
 	    	break;
 	    case EXPORT_GL_FUNC_NAMES:
 		System.out.println("\t\t\""+cfunc.funcSpec.identifier+"\", ");
+	    	break;
+	    case EXPORT_GL_DISPATCH_DECL:
+		System.out.println("\tLIBAPI "+
+				   cfunc.funcSpec.getCTypeString()+
+			           " (CALLBACK * disp__"+
+				   cfunc.funcSpec.identifier + " )("+
+				   cfunc.argsType2CStrList()+");\n");
+	    	break;
+	    case EXPORT_GL_DISPATCH_VAR:
+		System.out.println("\t"+
+				   cfunc.funcSpec.getCTypeString()+
+			           " (CALLBACK * disp__"+
+				   cfunc.funcSpec.identifier + " )("+
+				   cfunc.argsType2CStrList()+") = NULL;\n");
+	    	break;
+	    case EXPORT_GL_DISPATCH_GET:
+		System.out.println("\tdisp__"+cfunc.funcSpec.identifier+
+		                   " = ("+
+			           cfunc.funcSpec.getCTypeString()+
+				   " (CALLBACK *)("+ 
+				   cfunc.argsType2CStrList()+"))"+
+				   "\n\t  GET_GL_PROCADDRESS (\""+
+				   cfunc.funcSpec.identifier+"\");\n");
 	        break;
 	    case EXPORT_MSJDIRECT_JAVA  :
 		System.out.println(cfunc.toMsJDirectCode(dllname));
@@ -552,7 +594,7 @@ CFuncVariable TypeSpecifier(CFuncVariable cfvar) :
 	      )
 	      {
 	        if(cfvar==null)
-			cfvar = new CFuncVariable();
+			cfvar = new CFuncVariable(usePointerHolderCast);
 
 		cfvar.typeC     = t.image;
 		cfvar.typeJava  = typeJava;
@@ -654,7 +696,7 @@ CFuncVariable TypeSpecifierGL(CFuncVariable cfvar) :
     )
     {
 	if(cfvar==null)
-		cfvar = new CFuncVariable();
+		cfvar = new CFuncVariable(usePointerHolderCast);
 	cfvar.typeC     = t.image;
 	cfvar.typeJava  = typeJava;
 	cfvar.isVoid	= isVoid;
@@ -669,7 +711,7 @@ CFuncVariable TypeQualifier(CFuncVariable cfvar) :
 	( t=<CONST> 
 	  { cSrc += t.image+" "; 
 	    if(cfvar==null)
-		cfvar = new CFuncVariable();
+		cfvar = new CFuncVariable(usePointerHolderCast);
 	    cfvar.isConst=true;
 	    return cfvar;
 	  } | 
@@ -952,7 +994,12 @@ void ParameterDeclaration(CFuncDeclaration cfunc) : {}
 			      * We may must squash the "void" Argument
 			      * E.g. void function(void) !
 			      */
-			    if(cfvar.isVoid)
+			    if(cfvar.isVoid &&
+			       exportMode != EXPORT_GL_DISPATCH_DECL &&
+			       exportMode != EXPORT_GL_DISPATCH_VAR &&
+			       exportMode != EXPORT_GL_DISPATCH_GET &&
+			       exportMode != EXPORT_MSJDIRECT_JAVA
+			      )
 			    {
 			    	cfunc.argList.removeElementAt(
 					cfunc.argList.size()-1);
@@ -962,7 +1009,10 @@ void ParameterDeclaration(CFuncDeclaration cfunc) : {}
 			      * We have a regular argument,
 			      * so we must add an instance name here ...
 			      */
-			    cfvar.identifier="arg"+(cfunc.argList.size()-1);
+			    if(cfvar.isVoid)
+			      cfvar.identifier=" ";
+			    else
+			      cfvar.identifier="arg"+(cfunc.argList.size()-1);
 			    cfvar.complete=true;
 	            }
 		}

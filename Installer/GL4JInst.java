@@ -697,6 +697,13 @@ public class GL4JInst
                  "\n" +
                  "You should now be able to run 3D web\n" +
                  "applets which use GL4Java.");
+            if (mctrl.isUnix)
+	    {
+		    statustextarea.setText
+			(statustextarea.getText() +
+			 "\n" +
+			 "ROOT may have to run 'ldconfig' !\n");
+	    }
 	    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 	    if(isAnApplet)
 	    	showStatus("Installation complete! Please restart your browser!");

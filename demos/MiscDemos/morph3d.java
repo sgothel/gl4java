@@ -169,6 +169,11 @@ public class morph3d extends SimpleGLAnimApplet1
 
         boolean isAnApplet = true;
 
+	public morph3d()
+	{
+		super();
+	}
+
 	public void init()
 	{
 	  super.init();

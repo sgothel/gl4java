@@ -129,7 +129,7 @@ public class CFuncDeclaration
 
 		if(funcSpec==null && state==FUNC_TYPE_MISSING)
 		{
-			funcSpec = new CFuncVariable();
+			funcSpec = new CFuncVariable(false);
 			return funcSpec;
 		}
 		else if(state==FUNC_TYPE_MISSING || state==FUNC_NAME_MISSING)
@@ -142,7 +142,7 @@ public class CFuncDeclaration
 				argList.elementAt(argList.size()-1);
 		}
 
-		CFuncVariable cfvar = new CFuncVariable();
+		CFuncVariable cfvar = new CFuncVariable(false);
 		argList.addElement(cfvar);
 		return cfvar;
 	}
@@ -474,15 +474,6 @@ public class CFuncDeclaration
 
 		res += "\t{\n";
 
-		if(exportMode==C2J.EXPORT_JNI_C_DYN)
-		{
-			//
-			// Add the global static OpenGL function pointer
-			//
-			res += "\t\tstatic "+funcSpec.getJNITypeString()+
-			       " (CALLBACK *__func_ptr__)("+argsType2CStrList()+") = NULL;\n";
-		}
-
 		//
 		// Add the return variable 
 		//
@@ -527,25 +518,6 @@ public class CFuncDeclaration
 		}
 
 	        res += "\n" ;
-
-		if(exportMode==C2J.EXPORT_JNI_C_DYN)
-		{
-			//
-			// Add the global static OpenGL function pointer assignment
-			//
-			res += "\t\tif(__func_ptr__==NULL) {\n";
-			res += "\t\t\t__func_ptr__ = ("+
-			  funcSpec.getJNITypeString()+" (CALLBACK *)("+
-			  argsType2CStrList()+"))\n"+
-			  "\t\t\t\tgetGLProcAddressHelper(\""
-				    +funcSpec.identifier+"\", NULL, 1, 0);\n";
-			res += "\t\t\tif(__func_ptr__==NULL)\n";
-			if(funcSpec.typeC.equals("void")==false)
-				res += "\t\t\t\treturn 0;\n";
-			else
-				res += "\t\t\t\treturn;\n";
-			res += "\t\t}\n";
-		}
 
 		//
 		// Adding the JNI access Methods 
@@ -629,7 +601,8 @@ public class CFuncDeclaration
 		if(exportMode==C2J.EXPORT_JNI_C)
 			res += funcSpec.identifier + " (\n";
 		else
-			res += "__func_ptr__ (\n";
+			res += "disp__"+funcSpec.identifier + " (\n";
+
 
 		for (i=0;  i<argList.size() ; i++ )
 		{
@@ -820,7 +793,7 @@ public class CFuncDeclaration
 		res += "\t\t";
 		if(funcSpec.typeJava.equals("void")==false)
 			res += "return ";
-		res += "__"+funcSpec.identifier+"(\n";
+		res += "disp__"+funcSpec.identifier+"(\n";
 		for (i=0; i<argList.size(); i++)
 		{
 		  	cfvar = (CFuncVariable) argList.elementAt(i);

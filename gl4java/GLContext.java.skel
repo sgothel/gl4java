@@ -64,15 +64,9 @@ import java.lang.reflect.*;
  * <pre>
 	  The default native library's are:
 	  <p>
-	  	GLContext:	GL4JavaJauGljJNI    (jdk ==1.1), 
-				GL4JavaJauGljJNI12  (jdk ==1.2),
-				GL4JavaJauGljJNI13  (jdk >=1.3)
-
-		GLFuncJauJNI:	GL4JavaJauGLJNI     (jdk ==1.1),
-				GL4JavaJauGLJNI12   (jdk >=1.2)
-
-		GLUFuncJauJNI:	GL4JavaJauGLUJNI    (jdk ==1.1),
-				GL4JavaJauGLUJNI12  (jdk >=1.2)
+		GL4JavaJauGljJNI    (jdk ==1.1), 
+		GL4JavaJauGljJNI12  (jdk ==1.2),
+		GL4JavaJauGljJNI13  (jdk >=1.3)
 	  <p>
 	  To check wich version and vendors are currently used,
 	  just call while a GLContext is created :
@@ -183,16 +177,16 @@ public class GLContext extends Object
     protected static boolean libsLoaded 	        = false;
 
     /**
-     * The default GLContext native library for Windows 95/NT && MS-JVM
+     * The default extra native library for Windows 95/NT && MS-JVM
      *
      */
-    public static final String defGljMSWinLib   = "GL4JavaGljMSJDirect" ;
+    public final static String defGljMSWinLib   = "GL4JavaGljMSJDirect" ;
 
     /**
-     * The default GLContext native library for all 
+     * The default GLContext/GLFunc/GLUFunc native library for all 
      *
      */
-    public static final String defGljLib   = "GL4JavaJauGljJNI" ;
+    public final static String defGljLib   = "GL4JavaJauGljJNI" ;
 
     /**
      * The default GLFunc implementation 
@@ -201,21 +195,51 @@ public class GLContext extends Object
     public static final String defGLFuncClass 	   = "GLFuncJauJNI" ;
 
     /**
-     * The default GLFunc native library for all
-     */
-    public static final String defGLFuncLib = "GL4JavaJauGLJNI" ;
-
-    /**
      * The default GLUFunc implementation 
      *
      */
     public static final String defGLUFuncClass = "GLUFuncJauJNI" ;
 
     /**
-     * The default GLUFunc native library for all
+     * The default native GL library ... for X11
      */
-    public static final String defGLUFuncLib = "GL4JavaJauGLUJNI" ;
+    public final static String defNativeGLLibX11 = "libGL.so";
 
+    /**
+     * The default native GL library ... for MacOS9
+     */
+    public final static String defNativeGLLibMacOS9 = "\\pOpenGLLibrary";
+
+    /**
+     * The default native GL library ... for MacOSX
+     */
+    public final static String defNativeGLLibMacOSX = "libGL.so";
+
+    /**
+     * The default native GL library ... for Win32
+     */
+    public final static String defNativeGLLibWin32 = "OPENGL32.DLL";
+
+
+    /**
+     * The default native GLU library ... for X11
+     */
+    public final static String defNativeGLULibX11 = "libGLU.so";
+
+    /**
+     * The default native GLU library ... for MacOS9
+     */
+    public final static String defNativeGLULibMacOS9 = "\\pOpenGLULibrary";
+
+    /**
+     * The default native GLU library ... for MacOSX
+     */
+    public final static String defNativeGLULibMacOSX = "libGLU.so";
+
+    /**
+     * The default native GLU library ... for Win32
+     */
+    public final static String defNativeGLULibWin32 = "GLU32.DLL";
 
    /**
     * the version of this java-class
@@ -224,7 +248,7 @@ public class GLContext extends Object
     *
     * Each <Value> is dezimal !
     */
-    public static final String version             = __SED_CLASS_VERSION__ ;
+    public final static String version             = __SED_CLASS_VERSION__ ;
 
    /**
     * Flag's to enable/disable verbose Information.
@@ -374,11 +398,12 @@ public class GLContext extends Object
     *
     * Ok - lets give one to the Max :-) 
     */
-    public static final int
+    public final static int
        OsWindoof	= -1,
        OsUnknown	=  0,
        OsX11	   	=  1,
-       OsMac		=  2; // for Gerard Ziemski's port
+       OsMac9		=  2, // for Gerard Ziemski's port
+       OsMacX		=  3; // for Gerard Ziemski's port
  
     private static int osType=OsUnknown;
   
@@ -392,8 +417,7 @@ public class GLContext extends Object
     private static int    jvmVersionMinor = 1; // min. defaults
     private static String osName = null;
 
-    private static String jniEXTsuff_gl_glu = "";
-    private static String jniEXTsuff_glj    = "";
+    private static String jniEXTsuff = "";
 
    /**
     * Get the native GL Context !
@@ -402,7 +426,7 @@ public class GLContext extends Object
     */
     public final long getNativeGLContext() { return glContext; }
 
-    public static final int getNativeGLContextNumber() 
+    public final static int getNativeGLContextNumber() 
     { return glContextNumber; }
 
    /**
@@ -428,7 +452,8 @@ public class GLContext extends Object
     * @see gl4java.GLContext#OsWindoof
     * @see gl4java.GLContext#OsUnknown
     * @see gl4java.GLContext#OsX11
-    * @see gl4java.GLContext#OsMac
+    * @see gl4java.GLContext#OsMac9
+    * @see gl4java.GLContext#OsMacX
     */
     public static int getNativeOSType() { return osType; }
 
@@ -512,8 +537,9 @@ public class GLContext extends Object
     /**
      * Support of loading the native library seperatly.
      *
-     * Link with the native OpenGL library.  If we cannot link, an exception
-     * is thrown.  
+     * Link with the default native OpenGL library.  
+     * If we cannot link, an exception is thrown.  
+     *
      * The name of the library is named e.g.: "GL4JavaJauGljJNI" at the 
      * Java level, or "libGL4JavaJauGljJNI.so" at the solaris level,
      * or "GL4JavaJauGljJNI.dll" at the win32 level :-).
@@ -529,26 +555,86 @@ public class GLContext extends Object
 	    }
      * </pre> 
      *
-     * @param gljLibName The name of the GLContex native library.
+     * @param gljLibName The name of the GLContex/GLFunc/GLUFunc 
+     *                   native library.
      *                   If gljLibName==null, the default library will be used !
      *
-     * @param glLibName  The name of the GLFunc native library.
-     *                   If glLibName==null, the default library will be used !
+     * @param glLibName  deprecated
      *
-     * @param gluLibName The name of the GLUFunc native library.
-     *                   If gluLibName==null, the default library will be used !
+     * @param gluLibName deprecated
      *
      * @return 		boolean, true if succesfull !
      *
      * @see	gl4java.GLContext#defGljLib   
      *
-     * @see	gl4java.GLContext#defGLFuncLib 
-     *
-     * @see	gl4java.GLContext#defGLUFuncLib 
+     * @deprecated The arguments glLibName and gluLibName are obsolete,
+     *             because all glj/gl/glu stuff resides within 
+     *		   the gljLib !
+     *		   Now you can use doLoadNativeLibraries !
      */
-    public static boolean loadNativeLibraries ( String gljLibName,
+    public final static boolean loadNativeLibraries ( String gljLibName,
     						String glLibName,
 						String gluLibName
+					      )
+    {
+    	return doLoadNativeLibraries(gljLibName, null, null);
+    }
+
+    /**
+     * Support of loading the native library seperatly.
+     *
+     * Link with the given OpenGL library.  
+     * If we cannot link, an exception is thrown.  
+     *
+     * You can also specify the OpenGL and GLU library by 
+     * the environment variables:
+     * <pre>
+     		GLTOOL_USE_GLLIB	- OpenGL library name
+     		GLTOOL_USE_GLULIB	- GLU    library name
+     * </pre>
+     * these environment variables does _always_ overrides
+     * any given ones at this point !!
+     *
+     * The name of the library is named e.g.: "GL4JavaJauGljJNI" at the 
+     * Java level, or "libGL4JavaJauGljJNI.so" at the solaris level,
+     * or "GL4JavaJauGljJNI.dll" at the win32 level :-).
+     *
+     * <p> 
+     *
+     * The user must call loadNativeLibrary !
+     * E.g. he can add the default loader like this:
+     * <pre>
+	    static {
+		if(GLContext.doLoadNativeLibraries(null, null, null)==false)
+		  System.out.println("could not load def. native libs.");
+	    }
+     * </pre> 
+     *
+     * @param gljLibName The name of the GLContex/GLFunc/GLUFunc 
+     *                   native library.
+     *                   If gljLibName==null, the default library will be used !
+     *
+     * @param nativeGLLibName  The name of the native GL library.
+     *                   If nativeGLLibName==null, the default library will be used !
+     *
+     * @param nativeGLULibName The name of the native GLU library.
+     *                   If nativeGLULibName==null, the default library will be used !
+     *
+     * @return 		boolean, true if succesfull !
+     *
+     * @see	gl4java.GLContext#defGljLib   
+     * @see	gl4java.GLContext#defNativeGLLibX11
+     * @see	gl4java.GLContext#defNativeGLLibMacOS9
+     * @see	gl4java.GLContext#defNativeGLLibMacOSX
+     * @see	gl4java.GLContext#defNativeGLLibWin32
+     * @see	gl4java.GLContext#defNativeGLULibX11
+     * @see	gl4java.GLContext#defNativeGLULibMacOS9
+     * @see	gl4java.GLContext#defNativeGLULibMacOSX
+     * @see	gl4java.GLContext#defNativeGLULibWin32
+     */
+    public final static boolean doLoadNativeLibraries ( String gljLibName,
+						String nativeGLLibName,
+						String nativeGLULibName
 					      )
     {
         if(libsLoaded) return true;
@@ -607,8 +693,10 @@ public class GLContext extends Object
  	osName = System.getProperty( "os.name" );
  	if( osName.startsWith( "Wind" ) )
 	   osType = OsWindoof;
+ 	else if( osName.startsWith( "Mac OS X" ) )
+	   osType = OsMacX;
  	else if( osName.startsWith( "Mac OS" ) )
-	   osType = OsMac;
+	   osType = OsMac9;
 	else /* oops - lets guess unix/x11 :-) */
 	   osType = OsX11;
 
@@ -616,8 +704,7 @@ public class GLContext extends Object
 	       ( jvmVersionMajor==1 && jvmVersionMinor>=4 )
 	  )
 	{
-		jniEXTsuff_gl_glu = "12";
-		jniEXTsuff_glj    = "13";
+		jniEXTsuff = "13";
 	}
 
 	else 
@@ -626,50 +713,63 @@ public class GLContext extends Object
 	    && !isIBMJvm && !isMicrosoftJvm 
 	  )
 	{
-		jniEXTsuff_gl_glu = "12";
-		jniEXTsuff_glj    = "13";
+		jniEXTsuff = "13";
 	}
 
 	else 
 
 	if( jvmVersionMajor==1 && jvmVersionMinor>=2 )
 	{
-		jniEXTsuff_gl_glu = "12";
-		jniEXTsuff_glj    = "12";
+		jniEXTsuff = "12";
 	}
 
 	else 
 
 	{
-		jniEXTsuff_gl_glu = "";
-		jniEXTsuff_glj    = "";
+		jniEXTsuff = "";
 	}
 
 
 	if(gljLibName==null)
-	    gljLibName = defGljLib+jniEXTsuff_glj;
-	if(glLibName==null)
-	    glLibName  = defGLFuncLib+jniEXTsuff_gl_glu;
-	if(gluLibName==null)
-	    gluLibName = defGLUFuncLib+jniEXTsuff_gl_glu;
+	    gljLibName = defGljLib+jniEXTsuff;
+
+	if(nativeGLLibName==null)
+	{
+	    if ( osType==OsWindoof )
+		    nativeGLLibName = defNativeGLLibWin32;
+	    else if ( osType==OsMac9 )
+		    nativeGLLibName = defNativeGLLibMacOS9;
+	    else if ( osType==OsMacX )
+		    nativeGLLibName = defNativeGLLibMacOSX;
+	    else
+		    nativeGLLibName = defNativeGLLibX11;
+        }
+
+	if(nativeGLULibName==null)
+	{
+	    if ( osType==OsWindoof )
+		    nativeGLULibName = defNativeGLULibWin32;
+	    else if ( osType==OsMac9 )
+		    nativeGLULibName = defNativeGLULibMacOS9;
+	    else if ( osType==OsMacX )
+		    nativeGLULibName = defNativeGLULibMacOSX;
+	    else
+		    nativeGLULibName = defNativeGLULibX11;
+        }
 
 	if ( (osType==OsWindoof) && (isMicrosoftJvm) )
 	{
 	   // JDirect loads the GL libraries automatically,
 	   // so we don't have to.
-	   libNames = new String[4];
+	   libNames = new String[2];
 	   libNames[0]= gljLibName;
-	   libNames[1]= glLibName;
-	   libNames[2]= gluLibName;
-	   libNames[3]= defGljMSWinLib;
+	   libNames[1]= defGljMSWinLib;
 	   useMSJDirect = true;
 	} else {
 	   /* For MAC, Win32+SunJVM, Unices ... 
 	    */
-	   libNames = new String[3];
+	   libNames = new String[1];
 	   libNames[0]= gljLibName;
-	   libNames[1]= glLibName;
-	   libNames[2]= gluLibName;
 	   useMSJDirect = false;
 	}
 
@@ -732,8 +832,27 @@ public class GLContext extends Object
 	}
 	if(libNumber==libNames.length) 
 	{
-		libsLoaded=true;
+		/**
+		 * load the GL/GLU libs natively first, so
+		 * the OS can use the dynamic loader to
+		 * solve the symbol names ..
+		 */
+		if(gljClassDebug)
+			System.out.println("fetching GL/GLU functions ...");
+		if(gljFetchGLFunctions 
+			(nativeGLLibName, nativeGLULibName, true)
+		  )
+		{
+			System.out.println("fetched GL/GLU functions succesfully !");
+			libsLoaded=true;
+		} else {
+			System.out.println("GL4Java-ERROR: can't fetch GL/GLU functions !");
+		}
+
 	}
+
+	if(!libsLoaded)
+		System.exit(1);
 
 	return libsLoaded;
     }
@@ -745,9 +864,9 @@ public class GLContext extends Object
      *
      * @param args, a list of args, 
      *
+     *	  -GLLib    <OpenGL libname> 
+     *	  -GLULib   <GLU libname> 
      *    -gljlib   <glj-libname> gl4java-glj-lib native library
-     *    -gllib    <gl-libname> gl4java-gl-lib native library
-     *    -glulib   <glu-libname> gl4java-glu-lib native library
      *    -glclass  <gl-class> gl4java-gl-class java GLFunc implementation
      *    -gluclass <glu-class> gl4java-glu-class java GLUFunc implementation
      *    -info     creates a GLContext and prints all avaiable information of GL/GLU and GL4Java
@@ -757,9 +876,9 @@ public class GLContext extends Object
      */
     public static void main( String args[] ) 
     {
+    	String nativeGLLib = null;
+    	String nativeGLULib = null;
      	String gljLibName = null;
-     	String glLibName = null;
-     	String gluLibName = null;
      	String glName = defGLFuncClass;
      	String gluName = defGLUFuncClass;
 	boolean info=false;
@@ -771,11 +890,11 @@ public class GLContext extends Object
 	if(args.length==0)
 	{
 		System.out.println("usage: java gl4java.GLContext <options>, where options can be: ");
-		System.out.println("	-gljlib <glj-libname> \t choose a custom the gl4java-glj-lib native library (default: GL4JavaJauGljJNI)");
-		System.out.println("	-gllib <gl-libname> \t choose a custom the gl4java-gl-lib native library (default: GL4JavaJauGLJNI)");
-		System.out.println("	-glulib <glu-libname> \t choose a custom the gl4java-glu-lib native library (default: GL4JavaJauGLUJNI");
-		System.out.println("	-glclass <gl-class> \t choose a custom the gl4java-gl-class java GLFunc implementation (default: GLFuncJauJNI)");
-		System.out.println("	-gluclass <glu-class> \t choose a custom the gl4java-glu-class java GLUFunc implementation (default: GLUFuncJauJNI)");
+		System.out.println("	-GLLib <OpenGL Libname> \t choose a custom OpenGL native library (default: libGL, or OPENGL32, ..)");
+		System.out.println("	-GLULib <GLU Libname> \t choose a custom GLU native library (default: libGLU, or GLU32, ..)");
+		System.out.println("	-gljlib <glj-libname> \t choose a custom gl4java-glj-lib native library (default: GL4JavaJauGljJNI)");
+		System.out.println("	-glclass <gl-class> \t choose a custom gl4java-gl-class java GLFunc implementation (default: GLFuncJauJNI)");
+		System.out.println("	-gluclass <glu-class> \t choose a custom gl4java-glu-class java GLUFunc implementation (default: GLUFuncJauJNI)");
 		System.out.println("	-info \t creates a GLContext and prints all avaiable information of GL/GLU and GL4Java");
 		System.out.println("	-infotxt \t like -info, but exits straight after -info !");
 		System.out.println("	-noFactory \t creates a GLContext without the new GLDrawableFactory API");
@@ -784,12 +903,12 @@ public class GLContext extends Object
 
 	while(args.length>i)
 	{
-		if(args[i].equals("-gljlib")) {
+		if(args[i].equals("-GLLib")) {
+			if(args.length>++i) nativeGLLib=args[i];
+		} else if(args[i].equals("-GLULib")) {
+			if(args.length>++i) nativeGLULib=args[i];
+		} else if(args[i].equals("-gljlib")) {
 			if(args.length>++i) gljLibName=args[i];
-		} else if(args[i].equals("-gllib")) {
-			if(args.length>++i) glLibName=args[i];
-		} else if(args[i].equals("-glulib")) {
-			if(args.length>++i) gluLibName=args[i];
 		} else if(args[i].equals("-glclass")) {
 			if(args.length>++i) glName=args[i];
 		} else if(args[i].equals("-gluclass")) {
@@ -814,7 +933,10 @@ public class GLContext extends Object
 	GLFunc  gl = null;
 	GLUFunc glu = null;
 
-	if(GLContext.loadNativeLibraries(gljLibName, glLibName, gluLibName))
+	if(GLContext.doLoadNativeLibraries(gljLibName, 
+					 nativeGLLib, nativeGLULib
+					)
+	  )
 		System.out.println("native Libraries loaded succesfull");
 	else {
 		System.out.println("native library NOT loaded complete");
@@ -1379,7 +1501,7 @@ public class GLContext extends Object
     *
     * @return             the created offscreen context
     */
-    public static final GLContext createOffScreenCtx
+    public final static GLContext createOffScreenCtx
     		       ( Component comp, GLFunc glf, GLUFunc gluf, 
                          boolean _stereoView,
 		         boolean _rgba,
@@ -1421,7 +1543,7 @@ public class GLContext extends Object
     *
     * @return             the created offscreen context
     */
-    public static final GLContext createOffScreenCtx
+    public final static GLContext createOffScreenCtx
     		       ( Component comp, GLFunc glf, GLUFunc gluf, 
                          boolean _stereoView,
 		         boolean _rgba,
@@ -1492,7 +1614,7 @@ public class GLContext extends Object
      *
      * @see	gl4java.GLContext#defGLFuncClass   
      */
-    public static final GLFunc createGLFunc(String vendorClass)
+    public final static GLFunc createGLFunc(String vendorClass)
     {
         String access_name = "gl4java.";
 	GLFunc gl = null;
@@ -1537,7 +1659,7 @@ public class GLContext extends Object
      *
      * @see	gl4java.GLContext#defGLUFuncClass   
      */
-    public static final GLUFunc createGLUFunc(String vendorClass)
+    public final static GLUFunc createGLUFunc(String vendorClass)
     {
         String access_name = "gl4java.";
 	GLUFunc glu = null;
@@ -1707,7 +1829,7 @@ public class GLContext extends Object
 		  pData = win_access.getWinHandle(_compHeavy, g);
 		  windowHandle = pData;
 	    }
-            else if(osType==OsMac && !useJAWT())
+            else if((osType==OsMac9 || osType==OsMacX) && !useJAWT())
             {
 		  win_access = (WinHandleAccess)
 		    Class.forName(
@@ -1974,12 +2096,12 @@ public class GLContext extends Object
      * X11-connection to our AIX host ;-))
      * So a call to this function is not needed !
      */
-    public static final boolean gljCheckGLTypes()
+    public final static boolean gljCheckGLTypes()
     {
         return gljCheckGLTypesNative();
     }
 
-    private static final native boolean gljCheckGLTypesNative();
+    private final static native boolean gljCheckGLTypesNative();
 
     public final boolean gljCheckGL()
     {
@@ -2178,7 +2300,7 @@ public class GLContext extends Object
         return gljMakeCurrent();
     }
 
-    private static final native boolean gljMakeCurrentNative(
+    private final static native boolean gljMakeCurrentNative(
     						Component canvas,
     						long disp, 
     					        long thisWin,
@@ -2191,7 +2313,7 @@ public class GLContext extends Object
     *
     * @return 		int
     */ 
-    public static final native int gljGetCurrentContext();
+    public final static native int gljGetCurrentContext();
 
     /**
      *
@@ -2301,7 +2423,7 @@ public class GLContext extends Object
 	return result;
     }
 
-     private static final native boolean gljFreeNative( Component canvas,
+     private final static native boolean gljFreeNative( Component canvas,
      							long disp, 
     					                long thisWin,
 					                long glContext );
@@ -2319,7 +2441,7 @@ public class GLContext extends Object
 			      glCaps.getDoubleBuffered());
     }
 
-    private static final native boolean gljSwapNative( long disp, 
+    private final static native boolean gljSwapNative( long disp, 
     					              long thisWin,
 					              long glContext,
 						      boolean doubleBuffer );
@@ -2357,6 +2479,18 @@ public class GLContext extends Object
     {
         return glEnabled;
     }
+
+    /**
+     * This functions fetches/dispatches the GL/GLU functions,
+     * which must be allready loaded via the loadNativeLibraries
+     * function !
+     *
+     * @see	gl4java.GLContext#loadNativeLibraries
+     */
+    public final static native boolean gljFetchOSGLFunctions 
+			( String gllibname, String glulibname, boolean force );
+    public final static native boolean gljFetchGLFunctions 
+			( String gllibname, String glulibname, boolean force );
 
     /**
      * This functions checks the existence of 
@@ -2528,9 +2662,9 @@ public class GLContext extends Object
 	if(h==null) break;
 
      	if(gljTestGLProc (h, verbose))
-		tmp= "OK  : "+h+"\n";
+		tmp= "#"+i+" OK   : "+h+"\n";
 	else
-		tmp= "NOPE: "+h+"\n";
+		tmp= "#"+i+" NOPE : "+h+"\n";
 	    
 	info3 += tmp;
      }

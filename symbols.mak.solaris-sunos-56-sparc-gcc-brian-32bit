@@ -23,18 +23,15 @@ JAVAH 			= $(JDK_HOME)/bin/javah
 JAR                     = $(JDK_HOME)/bin/jar
 
 OGLINCDIR 		= /usr/X/include/GL
-OGLLIBDIR 		= /usr/X/lib
 
 XINCDIR 		= /usr/X/include
 XLIBDIR 		= /usr/X/lib
 
 MATHLIB 		= -lm
 
-OGLLIBS 		= -L$(OGLLIBDIR) -lGL -lGLU
-
 XLIBS   		= -L$(XLIBDIR) -lX11
 
-LIBS	    		= $(OGLLIBS) $(XLIBS) $(MATHLIB) -lpthread -ldl
+LIBS	    		= $(XLIBS) $(MATHLIB) -lpthread -ldl
 
 INCL_OS    		= -I. -I$(JAVASHAREINC) -I$(JAVAOSINC) \
 	                  -I$(XINCDIR) -I$(OGLINCDIR)

@@ -12,8 +12,7 @@
 
 	#include <jni.h>
 
-	#include<GL/gl.h>
-	#include <GL/glu.h>
+	#include "gltool.h"
 
 	#ifndef LIBAPIENTRY
 		#define LIBAPIENTRY

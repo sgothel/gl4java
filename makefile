@@ -9,6 +9,7 @@
 # for general creation (java + native-lib) invoke:
 #
 # make x11	: create java and native lib for unix/x11
+# make x11strip	: strip the debug info / symbols from the native libs !
 # make w32	: create java and native lib for windows32 (SUN & MSJVM)
 # make mac	: create java and native lib for Macintosh
 #
@@ -96,79 +97,34 @@ CNATIVEDIR  		= CNativeCode
 # LIBRARY DEFINITION
 
 LIBMAJOR		= 2
-LIBMINOR		= 6
+LIBMINOR		= 7
 LIBBUGFIX		= 0
-RELEASE                 = 1
+RELEASE                 = 0
 
 #
 # The demo release number
 #
 DEMORELEASE		= 4
 
-#lib GLContext
-LIBBASENAME1c 		= GL4JavaJauGljJNI13
-LIBNAME1c 		= lib$(LIBBASENAME1c)
-LIBRARY1c 		= $(LIBNAME1c).so
-
-#lib GLContext
-LIBBASENAME1b 		= GL4JavaJauGljJNI12
-LIBNAME1b 		= lib$(LIBBASENAME1b)
-LIBRARY1b 		= $(LIBNAME1b).so
-
-#lib GLContext
 LIBBASENAME1 		= GL4JavaJauGljJNI
 LIBNAME1 		= lib$(LIBBASENAME1)
 LIBRARY1 		= $(LIBNAME1).so
 
-#lib GLFunc - 1
-LIBBASENAME2 		= GL4JavaJauGLJNI
+LIBBASENAME2 		= GL4JavaJauGljJNI12
 LIBNAME2 		= lib$(LIBBASENAME2)
 LIBRARY2 		= $(LIBNAME2).so
 
-#lib GLFunc - 1
-LIBBASENAME2b 		= GL4JavaJauGLJNI12
-LIBNAME2b 		= lib$(LIBBASENAME2b)
-LIBRARY2b 		= $(LIBNAME2b).so
-
-#lib GLUFunc - 1
-LIBBASENAME3 		= GL4JavaJauGLUJNI
+LIBBASENAME3 		= GL4JavaJauGljJNI13
 LIBNAME3 		= lib$(LIBBASENAME3)
 LIBRARY3 		= $(LIBNAME3).so
 
-#lib GLUFunc - 1
-LIBBASENAME3b 		= GL4JavaJauGLUJNI12
-LIBNAME3b 		= lib$(LIBBASENAME3b)
-LIBRARY3b 		= $(LIBNAME3b).so
-
-#lib GLFunc - 2
-LIBBASENAME4 		= GL4JavaJauGLJNInf
+LIBBASENAME4 		= GL4JavaJauGljJNI13nf
 LIBNAME4 		= lib$(LIBBASENAME4)
 LIBRARY4 		= $(LIBNAME4).so
 
-#lib GLUFunc - 2
-LIBBASENAME5 		= GL4JavaJauGLUJNInf
+LIBBASENAME5 		= GL4JavaJauGljJNI13tst
 LIBNAME5 		= lib$(LIBBASENAME5)
 LIBRARY5 		= $(LIBNAME5).so
-
-#lib GLFunc - 3
-LIBBASENAME6 		= GL4JavaJauGLJNItst
-LIBNAME6 		= lib$(LIBBASENAME6)
-LIBRARY6 		= $(LIBNAME6).so
-
-#lib GLFunc - 3
-LIBBASENAME6b 		= GL4JavaJauGLJNI12tst
-LIBNAME6b 		= lib$(LIBBASENAME6b)
-LIBRARY6b 		= $(LIBNAME6b).so
-
-#lib GLUFunc - 3
-LIBBASENAME7 		= GL4JavaJauGLUJNItst
-LIBNAME7 		= lib$(LIBBASENAME7)
-LIBRARY7 		= $(LIBNAME7).so
-
-#lib GLUFunc - 3
-LIBBASENAME7b 		= GL4JavaJauGLUJNI12tst
-LIBNAME7b 		= lib$(LIBBASENAME7b)
-LIBRARY7b 		= $(LIBNAME7b).so
 
 # the name of the package has to match the name of the subdirectory that
 # the java source and java class files sit in
@@ -320,74 +276,77 @@ FILES_x11.class 	= ${FILES_x11.java:.java=.class}
 
 #lib GLContext
 FILES1.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
-			  $(CNATIVEDIR)/OpenGL_X11_common.c	 \
+			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
+			  $(CNATIVEDIR)/glcaps.c	         \
+			  $(CNATIVEDIR)/gltool.c	         \
+			  $(CNATIVEDIR)/glxtool.c	         \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jnitools.c	         \
-			  $(CNATIVEDIR)/GLCallbackHelperJNI.c
+			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
+			  $(CNATIVEDIR)/OpenGL_JauJNI_funcs.c    \
+			  $(CNATIVEDIR)/OpenGLU_JauJNI_funcs.c   \
+			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
-FILES1b.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
-			  $(CNATIVEDIR)/OpenGL_X11_common.c	 \
+FILES2.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
+			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
+			  $(CNATIVEDIR)/glcaps.c	         \
+			  $(CNATIVEDIR)/gltool.c	         \
+			  $(CNATIVEDIR)/glxtool.c	         \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jni12tools.c	         \
-			  $(CNATIVEDIR)/GLCallbackHelperJNI.c
+			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
+			  $(CNATIVEDIR)/OpenGL_JauJNI12_funcs.c  \
+			  $(CNATIVEDIR)/OpenGLU_JauJNI12_funcs.c \
+			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
-FILES1c.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
-			  $(CNATIVEDIR)/OpenGL_X11_common.c	 \
+FILES3.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
+			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
+			  $(CNATIVEDIR)/glcaps.c	         \
+			  $(CNATIVEDIR)/gltool.c	         \
+			  $(CNATIVEDIR)/glxtool.c	         \
 			  $(CNATIVEDIR)/jawt_misc.c		 \
 			  $(CNATIVEDIR)/GLDrawableFactory_X11_SunJDK13.c \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jni12tools.c	         \
-			  $(CNATIVEDIR)/GLCallbackHelperJNI.c 
-
-#lib GLFunc - 1
-FILES2.c		= $(CNATIVEDIR)/OpenGL_JauJNI_dynfuncs.c
-
-#lib GLFunc - 1
-FILES2b.c		= $(CNATIVEDIR)/OpenGL_JauJNI12_dynfuncs.c
-
-#lib GLUFunc - 1
-FILES3.c		= $(CNATIVEDIR)/OpenGLU_JauJNI_funcs.c   \
+			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
+			  $(CNATIVEDIR)/OpenGL_JauJNI12_funcs.c  \
+			  $(CNATIVEDIR)/OpenGLU_JauJNI12_funcs.c \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
-#lib GLUFunc - 1
-FILES3b.c		= $(CNATIVEDIR)/OpenGLU_JauJNI12_funcs.c   \
+FILES4.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
+			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
+			  $(CNATIVEDIR)/glcaps.c	         \
+			  $(CNATIVEDIR)/gltool.c	         \
+			  $(CNATIVEDIR)/glxtool.c	         \
+			  $(CNATIVEDIR)/jawt_misc.c		 \
+			  $(CNATIVEDIR)/GLDrawableFactory_X11_SunJDK13.c \
+			  $(CNATIVEDIR)/OpenGL_misc.c		 \
+			  $(CNATIVEDIR)/jni12tools.c	         \
+			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
+			  $(CNATIVEDIR)/OpenGL_JauJNI12nf_funcs.c  \
+			  $(CNATIVEDIR)/OpenGLU_JauJNI12nf_funcs.c \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
-#lib GLFunc - 2
-FILES4.c		= $(CNATIVEDIR)/OpenGL_JauJNInf_dynfuncs.c
-
-#lib GLUFunc - 2
-FILES5.c		= $(CNATIVEDIR)/OpenGLU_JauJNInf_funcs.c \
+FILES5.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
+			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
+			  $(CNATIVEDIR)/glcaps.c	         \
+			  $(CNATIVEDIR)/gltool.c	         \
+			  $(CNATIVEDIR)/glxtool.c	         \
+			  $(CNATIVEDIR)/jawt_misc.c		 \
+			  $(CNATIVEDIR)/GLDrawableFactory_X11_SunJDK13.c \
+			  $(CNATIVEDIR)/OpenGL_misc.c		 \
+			  $(CNATIVEDIR)/jni12tools.c	         \
+			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
+			  $(CNATIVEDIR)/OpenGL_JauJNI12tst_funcs.c  \
+			  $(CNATIVEDIR)/OpenGLU_JauJNI12tst_funcs.c \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
-#lib GLFunc - 3
-FILES6.c		= $(CNATIVEDIR)/OpenGL_JauJNItst_dynfuncs.c
 
-#lib GLFunc - 3
-FILES6b.c		= $(CNATIVEDIR)/OpenGL_JauJNI12tst_dynfuncs.c
-
-#lib GLUFunc - 3
-FILES7.c		= $(CNATIVEDIR)/OpenGLU_JauJNItst_funcs.c \
-			  $(CNATIVEDIR)/GLUCallbackJNI.c
-
-#lib GLUFunc - 3
-FILES7b.c		= $(CNATIVEDIR)/OpenGLU_JauJNI12tst_funcs.c \
-			  $(CNATIVEDIR)/GLUCallbackJNI.c
-
-#lib GLFunc - 3
 FILES1.o 		= ${FILES1.c:.c=.o}
-FILES1b.o 		= ${FILES1b.c:.c=.o}
-FILES1c.o 		= ${FILES1c.c:.c=.o}
 FILES2.o 		= ${FILES2.c:.c=.o}
-FILES2b.o 		= ${FILES2b.c:.c=.o}
 FILES3.o 		= ${FILES3.c:.c=.o}
-FILES3b.o 		= ${FILES3b.c:.c=.o}
 FILES4.o 		= ${FILES4.c:.c=.o}
 FILES5.o 		= ${FILES5.c:.c=.o}
-FILES6.o 		= ${FILES6.c:.c=.o}
-FILES6b.o 		= ${FILES6b.c:.c=.o}
-FILES7.o 		= ${FILES7.c:.c=.o}
-FILES7b.o 		= ${FILES7b.c:.c=.o}
 
 #lib GLContext
 FILE.gen1.h 	= $(CHEADERDIR)/$(PACKAGEDIR)_${JAVA_C_MAP1_FILE:.java=.h}
@@ -445,18 +404,18 @@ x11			: cleanup gljni \
 			  $(FILES.gen) \
 			  $(FILE.gen6.x11.h) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY1) \
-		 	  $(HOME_LIB_DIR)/$(LIBRARY1b) \
-		 	  $(HOME_LIB_DIR)/$(LIBRARY1c) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY2) \
-		 	  $(HOME_LIB_DIR)/$(LIBRARY2b) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY3) \
-		 	  $(HOME_LIB_DIR)/$(LIBRARY3b) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY4) \
 			  $(HOME_LIB_DIR)/$(LIBRARY5) \
-			  $(HOME_LIB_DIR)/$(LIBRARY6) \
-			  $(HOME_LIB_DIR)/$(LIBRARY6b) \
-			  $(HOME_LIB_DIR)/$(LIBRARY7) \
-			  $(HOME_LIB_DIR)/$(LIBRARY7b)
+			  invokejvm
+
+x11strip		:
+	strip ${HOME_LIB_DIR}/${LIBRARY1}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
+	strip ${HOME_LIB_DIR}/${LIBRARY2}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
+	strip ${HOME_LIB_DIR}/${LIBRARY3}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
+	strip ${HOME_LIB_DIR}/${LIBRARY4}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
+	strip ${HOME_LIB_DIR}/${LIBRARY5}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
 
 mac			: cleanup gljni \
 	                  $(FILES.class) $(FILES_mac.class) \
@@ -479,6 +438,10 @@ w32			: cleanupw32 gljni \
 gljni			: gl2j gl2c
 
 
+invokejvm: $(CNATIVEDIR)/invokejvm.o
+	gcc -o invokejvm $(CNATIVEDIR)/invokejvm.o \
+	    -L$(JAVAOSLIB)/client -ljvm -ldl
+
 ######################################################################
 # GENERATE LIBS ...
 ######################################################################
@@ -493,100 +456,36 @@ $(HOME_LIB_DIR)/$(LIBRARY1): $(FILES1.o)
 	         $(LIBNAME1) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
 	         $(FILES1.o) $(LIBS)
 
-$(HOME_LIB_DIR)/$(LIBRARY1b): $(FILES1b.o)
-	rm -f ${HOME_LIB_DIR}/${LIBNAME1b}.*
-	$(MKEXP) $(LIBNAME1b) $(FILES1b.o)
-	$(MKLIB) $(HOME_LIB_DIR) \
-	         $(LIBNAME1b) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES1b.o) $(LIBS)
-
-$(HOME_LIB_DIR)/$(LIBRARY1c): $(FILES1c.o)
-	rm -f ${HOME_LIB_DIR}/${LIBNAME1c}.*
-	$(MKEXP) $(LIBNAME1c) $(FILES1c.o)
-	$(MKLIB) $(HOME_LIB_DIR) \
-	         $(LIBNAME1c) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES1c.o) $(LIBS) -L$(JAVAOSLIB) \
-		 -ljawt
-
 $(HOME_LIB_DIR)/$(LIBRARY2): $(FILES2.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME2}.*
 	$(MKEXP) $(LIBNAME2) $(FILES2.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME2) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES2.o) $(LIBS) -L$(HOME_LIB_DIR) \
-		 -l$(LIBBASENAME1)
-
-$(HOME_LIB_DIR)/$(LIBRARY2b): $(FILES2b.o)
-	rm -f ${HOME_LIB_DIR}/${LIBNAME2b}.*
-	$(MKEXP) $(LIBNAME2b) $(FILES2b.o)
-	$(MKLIB) $(HOME_LIB_DIR) \
-	         $(LIBNAME2b) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES2b.o) $(LIBS) -L$(HOME_LIB_DIR) \
-		 -l$(LIBBASENAME1b)
+	         $(FILES2.o) $(LIBS)
 
 $(HOME_LIB_DIR)/$(LIBRARY3): $(FILES3.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME3}.*
 	$(MKEXP) $(LIBNAME3) $(FILES3.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME3) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES3.o) $(LIBS) -L$(HOME_LIB_DIR) \
-		 -l$(LIBBASENAME1)
-
-$(HOME_LIB_DIR)/$(LIBRARY3b): $(FILES3b.o)
-	rm -f ${HOME_LIB_DIR}/${LIBNAME3b}.*
-	$(MKEXP) $(LIBNAME3b) $(FILES3b.o)
-	$(MKLIB) $(HOME_LIB_DIR) \
-	         $(LIBNAME3b) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES3b.o) $(LIBS) -L$(HOME_LIB_DIR) \
-		 -l$(LIBBASENAME1b)
+	         $(FILES3.o) $(LIBS) -L$(JAVAOSLIB) \
+		 -ljawt
 
 $(HOME_LIB_DIR)/$(LIBRARY4): $(FILES4.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME4}.*
 	$(MKEXP) $(LIBNAME4) $(FILES4.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME4) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES4.o) $(LIBS) -L$(HOME_LIB_DIR) \
-		 -l$(LIBBASENAME1)
+	         $(FILES4.o) $(LIBS) -L$(JAVAOSLIB) \
+		 -ljawt
 
 $(HOME_LIB_DIR)/$(LIBRARY5): $(FILES5.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME5}.*
 	$(MKEXP) $(LIBNAME5) $(FILES5.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME5) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES5.o) $(LIBS) -L$(HOME_LIB_DIR) \
-		 -l$(LIBBASENAME1)
-
-$(HOME_LIB_DIR)/$(LIBRARY6): $(FILES6.o)
-	rm -f ${HOME_LIB_DIR}/${LIBNAME6}.*
-	$(MKEXP) $(LIBNAME6) $(FILES6.o)
-	$(MKLIB) $(HOME_LIB_DIR) \
-	         $(LIBNAME6) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES6.o) $(LIBS) -L$(HOME_LIB_DIR) \
-		 -l$(LIBBASENAME1)
-
-$(HOME_LIB_DIR)/$(LIBRARY6b): $(FILES6b.o)
-	rm -f ${HOME_LIB_DIR}/${LIBNAME6b}.*
-	$(MKEXP) $(LIBNAME6b) $(FILES6b.o)
-	$(MKLIB) $(HOME_LIB_DIR) \
-	         $(LIBNAME6b) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES6b.o) $(LIBS) -L$(HOME_LIB_DIR) \
-		 -l$(LIBBASENAME1b)
-
-$(HOME_LIB_DIR)/$(LIBRARY7): $(FILES7.o)
-	rm -f ${HOME_LIB_DIR}/${LIBNAME7}.*
-	$(MKEXP) $(LIBNAME7) $(FILES7.o)
-	$(MKLIB) $(HOME_LIB_DIR) \
-	         $(LIBNAME7) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES7.o) $(LIBS) -L$(HOME_LIB_DIR) \
-		 -l$(LIBBASENAME1)
-
-$(HOME_LIB_DIR)/$(LIBRARY7b): $(FILES7b.o)
-	rm -f ${HOME_LIB_DIR}/${LIBNAME7b}.*
-	$(MKEXP) $(LIBNAME7b) $(FILES7b.o)
-	$(MKLIB) $(HOME_LIB_DIR) \
-	         $(LIBNAME7b) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES7b.o) $(LIBS) -L$(HOME_LIB_DIR) \
-		 -l$(LIBBASENAME1b)
+	         $(FILES5.o) $(LIBS) -L$(JAVAOSLIB) \
+		 -ljawt
 
 ######################################################################
 # NEEDED DEPENDENCYs FOR GENERATED FILES ...
@@ -630,7 +529,7 @@ $(CNATIVEDIR)/OpenGL_misc.o: $(CNATIVEDIR)/OpenGL_misc.c makefile
 	      -o $@ $< 2>&1 | tee -a $(THISDIR)/errors
 
 #lib GLFunc - 1
-$(CNATIVEDIR)/OpenGL_JauJNI_dynfuncs.o: ${FILE.gen2.h} \
+$(CNATIVEDIR)/OpenGL_JauJNI_funcs.o: ${FILE.gen2.h} \
                                         $(CNATIVEDIR)/jnitools.h \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
@@ -651,7 +550,7 @@ $(FILE.gen3.h): $(PACKAGEDIR)/${JAVA_C_MAP3_FILE:.java=.class}
 	| tee -a $(THISDIR)/errors
 
 #lib GLFunc - 2
-$(CNATIVEDIR)/OpenGL_JauJNInf_dynfuncs.o: ${FILE.gen4.h} \
+$(CNATIVEDIR)/OpenGL_JauJNInf_funcs.o: ${FILE.gen4.h} \
                                         $(CNATIVEDIR)/jnitools.h \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
@@ -687,6 +586,20 @@ $(FILE.gen6.mac.h): $(PACKAGEDIR)/drawable/${JAVA_C_MAP6_MAC_FILE:.java=.class}
 	$(JAVAH) -jni -d $(CHEADERDIR) \
 	      $(PACKAGEDIR).drawable.${JAVA_C_MAP6_MAC_FILE:.java=} 2>&1 \
 	| tee -a $(THISDIR)/errors
+
+$(CNATIVEDIR)/gltool.o:  $(CNATIVEDIR)/gltool.h \
+                      $(CNATIVEDIR)/glxtool.h $(CNATIVEDIR)/glcaps.h \
+		      $(CNATIVEDIR)/gl-disp-var.hc   $(CNATIVEDIR)/glu-disp-fetch.hc \
+		      $(CNATIVEDIR)/gl-disp-fetch.hc $(CNATIVEDIR)/glu-disp-var.hc
+
+$(CNATIVEDIR)/glxtool.o: $(CNATIVEDIR)/gltool.h \
+                      $(CNATIVEDIR)/glxtool.h $(CNATIVEDIR)/glcaps.h \
+		      $(CNATIVEDIR)/glx-disp-fetch.hc $(CNATIVEDIR)/glx-disp-var.hc
+
+
+$(CNATIVEDIR)/glxtool.h: $(CNATIVEDIR)/glx-disp-var.h
+
+$(CNATIVEDIR)/gltool.h:  $(CNATIVEDIR)/gl-disp-var.h $(CNATIVEDIR)/glu-disp-var.h
 
 #
 # This is the stuff for the MS-JVM
@@ -746,7 +659,6 @@ cleannative:
 	      $(HOME_LIB_DIR)/${LIBNAME1}.* $(HOME_LIB_DIR)/${LIBNAME2}.* \
 	      $(HOME_LIB_DIR)/${LIBNAME3}.* $(HOME_LIB_DIR)/${LIBNAME4}.* \
 	      $(HOME_LIB_DIR)/${LIBNAME5}.* \
-	      $(HOME_LIB_DIR)/${LIBNAME6}.* $(HOME_LIB_DIR)/${LIBNAME7}.* \
 	      $(CNATIVEDIR)/winstuff.h
 	cd demos/natives/x11 ; make clean
 
@@ -889,19 +801,13 @@ unix2binpkg: pbinpkg java2binpkg
 	rm -f binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).zip
 	cd $(HOME_LIB_DIR) ; \
 	zip -9 $(THISDIR)/binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).zip \
-		$(LIBRARY1) $(LIBRARY2) $(LIBRARY3) \
-		$(LIBRARY1b) $(LIBRARY2b) $(LIBRARY3b) \
-		$(LIBRARY1c)
+		$(LIBRARY1) $(LIBRARY2) $(LIBRARY3) 
 	rm -f binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).tar.gz
 	cd $(HOME_LIB_DIR) ; \
 	tar cf $(THISDIR)/binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).tar \
 		$(LIBNAME1).* $(LIBNAME2).* \
-		$(LIBNAME1b).* $(LIBNAME2b).* \
-		$(LIBNAME1c).* \
-		$(LIBNAME3).* $(LIBNAME3b).* \
-		$(LIBNAME4).* $(LIBNAME5).* \
-		$(LIBNAME6).* $(LIBNAME7).* \
-		$(LIBNAME6b).* $(LIBNAME7b).* 
+		$(LIBNAME3).* \
+		$(LIBNAME4).* $(LIBNAME5).* 
 	cd binpkg ; gzip -9 libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).tar
 
 win2binpkg: pbinpkg java2binpkg
@@ -909,15 +815,11 @@ win2binpkg: pbinpkg java2binpkg
 	cd Win32VC6/libs ; zip -9 ../../binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(WIN32TYPE).zip \
 		GL4JavaGljMSJDirect.dll \
 		GL4JavaJauGljJNI.dll GL4JavaJauGljJNI12.dll \
-		GL4JavaJauGljJNI13.dll \
-		GL4JavaJauGLJNI.dll GL4JavaJauGLJNI12.dll \
-		GL4JavaJauGLUJNI.dll GL4JavaJauGLUJNI12.dll
+		GL4JavaJauGljJNI13.dll 
 
 	rm -f binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(WIN32TYPE)-tst.zip
 	cd Win32VC6/libs ; zip -9 ../../binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(WIN32TYPE)-tst.zip \
-		GL4JavaJauGLJNInf.dll GL4JavaJauGLUJNInf.dll \
-		GL4JavaJauGLJNItst.dll GL4JavaJauGLJNI12tst.dll \
-		GL4JavaJauGLUJNItst.dll GL4JavaJauGLUJNI12tst.dll
+		GL4JavaJauGljJNI13nf.dll GL4JavaJauGljJNI13tst.dll
 
 javacalldemos:
 	cd demos ; javac *.java

@@ -5,11 +5,17 @@
 #ifdef _X11_
 	#include <GL/glx.h>
 	#include <dlfcn.h>
+	#include "glxtool.h"
 #endif
 
-#ifdef macintosh
+#ifdef _WIN32_
+	#include "wgltool.h"
+#endif
+
+#include <string.h>
+
+#ifdef _MAC_OS9_
 	#include <agl.h>
-	#include <string.h>
 	#include <CodeFragments.h>
 	#include <Errors.h>
 	#include <TextUtils.h>
@@ -21,7 +27,7 @@
 
 static const char * _lib_version_=  __LIB_VERSION__ ;
 
-#ifdef macintosh
+#ifdef _MAC_OS9_
   static const char * _lib_vendor_ = "Jausoft - Sven Goethel Software Development & Gerard Ziemski"; 
 #else
   static const char * _lib_vendor_ = "Jausoft - Sven Goethel Software Development"; 
@@ -31,6 +37,50 @@ static const char * _lib_version_=  __LIB_VERSION__ ;
 	#define CALLBACK
 #endif
 
+char libGLName[800] = 
+#ifdef _X11_
+	"libGL.so"
+#endif
+#ifdef _WIN32_
+	"OPENGL32.DLL"
+#endif
+#ifdef _MAC_OS9_
+	"\pOpenGLLibrary"
+#endif
+#ifdef _MAC_OSX_
+	"libGL.so"
+#endif
+;
+
+char libGLUName[800] = 
+#ifdef _X11_
+	"libGLU.so"
+#endif
+#ifdef _WIN32_
+	"GLU32.DLL"
+#endif
+#ifdef _MAC_OS9_
+	"\pOpenGLULibrary"
+#endif
+#ifdef _MAC_OSX_
+	"libGLU.so"
+#endif
+;
+
+#ifdef  J_GET_BOOL_FIELD
+	#undef  J_GET_BOOL_FIELD
+#endif
+#define J_GET_BOOL_FIELD(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "Z"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; }
+
+#ifdef  J_GET_BOOL_FIELD_VAL
+	#undef  J_GET_BOOL_FIELD_VAL
+#endif
+#define J_GET_BOOL_FIELD_VAL(ATTRIBUTE_NAME, ATTRIBUTE_NAME_STR) if(ok==JNI_TRUE) { f ## ATTRIBUTE_NAME = (*env)->GetFieldID(env, cls, ATTRIBUTE_NAME_STR, "Z"); if ( f ## ATTRIBUTE_NAME == 0) ok= JNI_FALSE; else glCaps-> ## ATTRIBUTE_NAME = (int) ((*env)->GetBooleanField(env, capsObj, f ## ATTRIBUTE_NAME)); }
+
+#ifdef  J_SET_BOOL_FIELD_VAL
+	#undef  J_SET_BOOL_FIELD_VAL
+#endif
+#define J_SET_BOOL_FIELD_VAL(ATTRIBUTE_NAME) if(ok==JNI_TRUE && f ## ATTRIBUTE_NAME!=0) { (*env)->SetBooleanField(env, capsObj, f ## ATTRIBUTE_NAME, (jboolean) glCaps-> ## ATTRIBUTE_NAME); }
 
 #ifdef  J_GET_INT_FIELD
 	#undef  J_GET_INT_FIELD
@@ -141,6 +191,7 @@ jboolean LIBAPIENTRY javaGLCapabilities2NativeGLCapabilities
     J_GET_INT_FIELD_VAL(accumBlueBits, "accumBlueBits")
     J_GET_INT_FIELD_VAL(accumAlphaBits, "accumAlphaBits")
     J_GET_LONG_FIELD_VAL(nativeVisualID, "nativeVisualID")
+    glCaps->gl_supported=1;
 
     if(JNI_TRUE!=ok)
     {
@@ -255,26 +306,6 @@ jboolean LIBAPIENTRY nativeGLCapabilities2JavaGLCapabilities
     return JNI_TRUE;
 }
 	
-void LIBAPIENTRY printGLCapabilities ( GLCapabilities *glCaps )
-{
-    fprintf(stdout, "\t doubleBuff: %d, ", (int)glCaps->buffer);
-    fprintf(stdout, " rgba: %d, ", (int)glCaps->color);
-    fprintf(stdout, " stereo: %d, ", (int)glCaps->stereo);
-    fprintf(stdout, " depthSize: %d, ", (int)glCaps->depthBits);
-    fprintf(stdout, " stencilSize: %d !\n", (int)glCaps->stencilBits);
-    fprintf(stdout, "\t red: %d, ", (int)glCaps->redBits);
-    fprintf(stdout, " green: %d, ", (int)glCaps->greenBits);
-    fprintf(stdout, " blue: %d, ", (int)glCaps->blueBits);
-    fprintf(stdout, " alpha: %d !\n", (int)glCaps->alphaBits);
-    fprintf(stdout, "\t red accum: %d, ", (int)glCaps->accumRedBits);
-    fprintf(stdout, " green accum: %d, ", (int)glCaps->accumGreenBits);
-    fprintf(stdout, " blue accum: %d, ", (int)glCaps->accumBlueBits);
-    fprintf(stdout, " alpha accum: %d !\n", (int)glCaps->accumAlphaBits);
-    fprintf(stdout, "\t nativeVisualID: %ld !\n", (long)glCaps->nativeVisualID);
-
-    fflush(stdout);
-}
-
 jboolean LIBAPIENTRY testJavaGLTypes(jboolean verbose)
 {
     jboolean ret=JNI_TRUE;
@@ -509,58 +540,58 @@ Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIII_3B (
 	                                               &isCopiedArray);
 
 	/* Save current modes. */
-	glGetIntegerv(GL_PACK_SWAP_BYTES, &swapbytes);
-	glGetIntegerv(GL_PACK_LSB_FIRST, &lsbfirst);
-	glGetIntegerv(GL_PACK_ROW_LENGTH, &rowlength);
-	glGetIntegerv(GL_PACK_SKIP_ROWS, &skiprows);
-	glGetIntegerv(GL_PACK_SKIP_PIXELS, &skippixels);
-	glGetIntegerv(GL_PACK_ALIGNMENT, &alignment);
-	glGetIntegerv(GL_UNPACK_SWAP_BYTES, &unswapbytes);
-	glGetIntegerv(GL_UNPACK_LSB_FIRST, &unlsbfirst);
-	glGetIntegerv(GL_UNPACK_ROW_LENGTH, &unrowlength);
-	glGetIntegerv(GL_UNPACK_SKIP_ROWS, &unskiprows);
-	glGetIntegerv(GL_UNPACK_SKIP_PIXELS, &unskippixels);
-	glGetIntegerv(GL_UNPACK_ALIGNMENT, &unalignment);
+	disp__glGetIntegerv(GL_PACK_SWAP_BYTES, &swapbytes);
+	disp__glGetIntegerv(GL_PACK_LSB_FIRST, &lsbfirst);
+	disp__glGetIntegerv(GL_PACK_ROW_LENGTH, &rowlength);
+	disp__glGetIntegerv(GL_PACK_SKIP_ROWS, &skiprows);
+	disp__glGetIntegerv(GL_PACK_SKIP_PIXELS, &skippixels);
+	disp__glGetIntegerv(GL_PACK_ALIGNMENT, &alignment);
+	disp__glGetIntegerv(GL_UNPACK_SWAP_BYTES, &unswapbytes);
+	disp__glGetIntegerv(GL_UNPACK_LSB_FIRST, &unlsbfirst);
+	disp__glGetIntegerv(GL_UNPACK_ROW_LENGTH, &unrowlength);
+	disp__glGetIntegerv(GL_UNPACK_SKIP_ROWS, &unskiprows);
+	disp__glGetIntegerv(GL_UNPACK_SKIP_PIXELS, &unskippixels);
+	disp__glGetIntegerv(GL_UNPACK_ALIGNMENT, &unalignment);
 
 	/* Little endian machines (DEC Alpha, Inten X86, PPC(in LSB mode)...  
 	   for example) could benefit from setting 
 	   GL_PACK_LSB_FIRST to GL_TRUE
 	   instead of GL_FALSE, but this would require changing the
 	   generated bitmaps too. */
-	glPixelStorei(GL_PACK_SWAP_BYTES, GL_FALSE);
-	glPixelStorei(GL_PACK_LSB_FIRST, GL_TRUE);
-        glPixelStorei(GL_PACK_ROW_LENGTH, width);
-	glPixelStorei(GL_PACK_SKIP_ROWS, 0);
-	glPixelStorei(GL_PACK_SKIP_PIXELS, 0);
-	glPixelStorei(GL_PACK_ALIGNMENT, 1);
-	glPixelStorei(GL_UNPACK_SWAP_BYTES, GL_FALSE);
-	glPixelStorei(GL_UNPACK_LSB_FIRST, GL_TRUE);
-        glPixelStorei(GL_UNPACK_ROW_LENGTH, width);
-	glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
-	glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	disp__glPixelStorei(GL_PACK_SWAP_BYTES, GL_FALSE);
+	disp__glPixelStorei(GL_PACK_LSB_FIRST, GL_TRUE);
+        disp__glPixelStorei(GL_PACK_ROW_LENGTH, width);
+	disp__glPixelStorei(GL_PACK_SKIP_ROWS, 0);
+	disp__glPixelStorei(GL_PACK_SKIP_PIXELS, 0);
+	disp__glPixelStorei(GL_PACK_ALIGNMENT, 1);
+	disp__glPixelStorei(GL_UNPACK_SWAP_BYTES, GL_FALSE);
+	disp__glPixelStorei(GL_UNPACK_LSB_FIRST, GL_TRUE);
+        disp__glPixelStorei(GL_UNPACK_ROW_LENGTH, width);
+	disp__glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
+	disp__glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
+	disp__glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	/* Actually read the pixels. */
-        glReadBuffer(bufferName);
-        glReadPixels(xpos, ypos, width, height, format, type, 
+        disp__glReadBuffer(bufferName);
+        disp__glReadPixels(xpos, ypos, width, height, format, type, 
 	             pixelGLDestData);
 
 	/* Restore saved modes. */
-	glPixelStorei(GL_PACK_SWAP_BYTES, swapbytes);
-	glPixelStorei(GL_PACK_LSB_FIRST, lsbfirst);
-	glPixelStorei(GL_PACK_ROW_LENGTH, rowlength);
-	glPixelStorei(GL_PACK_SKIP_ROWS, skiprows);
-	glPixelStorei(GL_PACK_SKIP_PIXELS, skippixels);
-	glPixelStorei(GL_PACK_ALIGNMENT, alignment);
-	glPixelStorei(GL_UNPACK_SWAP_BYTES, unswapbytes);
-	glPixelStorei(GL_UNPACK_LSB_FIRST, unlsbfirst);
-	glPixelStorei(GL_UNPACK_ROW_LENGTH, unrowlength);
-	glPixelStorei(GL_UNPACK_SKIP_ROWS, unskiprows);
-	glPixelStorei(GL_UNPACK_SKIP_PIXELS, unskippixels);
-	glPixelStorei(GL_UNPACK_ALIGNMENT, unalignment);
+	disp__glPixelStorei(GL_PACK_SWAP_BYTES, swapbytes);
+	disp__glPixelStorei(GL_PACK_LSB_FIRST, lsbfirst);
+	disp__glPixelStorei(GL_PACK_ROW_LENGTH, rowlength);
+	disp__glPixelStorei(GL_PACK_SKIP_ROWS, skiprows);
+	disp__glPixelStorei(GL_PACK_SKIP_PIXELS, skippixels);
+	disp__glPixelStorei(GL_PACK_ALIGNMENT, alignment);
+	disp__glPixelStorei(GL_UNPACK_SWAP_BYTES, unswapbytes);
+	disp__glPixelStorei(GL_UNPACK_LSB_FIRST, unlsbfirst);
+	disp__glPixelStorei(GL_UNPACK_ROW_LENGTH, unrowlength);
+	disp__glPixelStorei(GL_UNPACK_SKIP_ROWS, unskiprows);
+	disp__glPixelStorei(GL_UNPACK_SKIP_PIXELS, unskippixels);
+	disp__glPixelStorei(GL_UNPACK_ALIGNMENT, unalignment);
 
-	glFlush();
-	glFinish();
+	disp__glFlush();
+	disp__glFinish();
 
 	(*env)->ReleaseByteArrayElements(env,  
 	                                 pixelGLDest, pixelGLDestData, 
@@ -614,54 +645,54 @@ Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIII_3B_3I (
 	                                            &isCopiedArray1);
 
 	/* Save current modes. */
-	glGetIntegerv(GL_PACK_SWAP_BYTES, &swapbytes);
-	glGetIntegerv(GL_PACK_LSB_FIRST, &lsbfirst);
-	glGetIntegerv(GL_PACK_ROW_LENGTH, &rowlength);
-	glGetIntegerv(GL_PACK_SKIP_ROWS, &skiprows);
-	glGetIntegerv(GL_PACK_SKIP_PIXELS, &skippixels);
-	glGetIntegerv(GL_PACK_ALIGNMENT, &alignment);
-	glGetIntegerv(GL_UNPACK_SWAP_BYTES, &unswapbytes);
-	glGetIntegerv(GL_UNPACK_LSB_FIRST, &unlsbfirst);
-	glGetIntegerv(GL_UNPACK_ROW_LENGTH, &unrowlength);
-	glGetIntegerv(GL_UNPACK_SKIP_ROWS, &unskiprows);
-	glGetIntegerv(GL_UNPACK_SKIP_PIXELS, &unskippixels);
-	glGetIntegerv(GL_UNPACK_ALIGNMENT, &unalignment);
+	disp__glGetIntegerv(GL_PACK_SWAP_BYTES, &swapbytes);
+	disp__glGetIntegerv(GL_PACK_LSB_FIRST, &lsbfirst);
+	disp__glGetIntegerv(GL_PACK_ROW_LENGTH, &rowlength);
+	disp__glGetIntegerv(GL_PACK_SKIP_ROWS, &skiprows);
+	disp__glGetIntegerv(GL_PACK_SKIP_PIXELS, &skippixels);
+	disp__glGetIntegerv(GL_PACK_ALIGNMENT, &alignment);
+	disp__glGetIntegerv(GL_UNPACK_SWAP_BYTES, &unswapbytes);
+	disp__glGetIntegerv(GL_UNPACK_LSB_FIRST, &unlsbfirst);
+	disp__glGetIntegerv(GL_UNPACK_ROW_LENGTH, &unrowlength);
+	disp__glGetIntegerv(GL_UNPACK_SKIP_ROWS, &unskiprows);
+	disp__glGetIntegerv(GL_UNPACK_SKIP_PIXELS, &unskippixels);
+	disp__glGetIntegerv(GL_UNPACK_ALIGNMENT, &unalignment);
 
 	/* Little endian machines (DEC Alpha, Inten X86, PPC(in LSB mode)...  
 	   for example) could benefit from setting 
 	   GL_PACK_LSB_FIRST to GL_TRUE
 	   instead of GL_FALSE, but this would require changing the
 	   generated bitmaps too. */
-	glPixelStorei(GL_PACK_SWAP_BYTES, GL_FALSE);
-	glPixelStorei(GL_PACK_LSB_FIRST, GL_TRUE);
-        glPixelStorei(GL_PACK_ROW_LENGTH, width);
-	glPixelStorei(GL_PACK_SKIP_ROWS, 0);
-	glPixelStorei(GL_PACK_SKIP_PIXELS, 0);
-	glPixelStorei(GL_PACK_ALIGNMENT, 1);
-	glPixelStorei(GL_UNPACK_SWAP_BYTES, GL_FALSE);
-	glPixelStorei(GL_UNPACK_LSB_FIRST, GL_TRUE);
-        glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
-	glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
-	glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	disp__glPixelStorei(GL_PACK_SWAP_BYTES, GL_FALSE);
+	disp__glPixelStorei(GL_PACK_LSB_FIRST, GL_TRUE);
+        disp__glPixelStorei(GL_PACK_ROW_LENGTH, width);
+	disp__glPixelStorei(GL_PACK_SKIP_ROWS, 0);
+	disp__glPixelStorei(GL_PACK_SKIP_PIXELS, 0);
+	disp__glPixelStorei(GL_PACK_ALIGNMENT, 1);
+	disp__glPixelStorei(GL_UNPACK_SWAP_BYTES, GL_FALSE);
+	disp__glPixelStorei(GL_UNPACK_LSB_FIRST, GL_TRUE);
+        disp__glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+	disp__glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
+	disp__glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
+	disp__glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	/* Actually read the pixels. */
-        glReadBuffer(bufferName);
-        glReadPixels(xpos, ypos, width, height, format, type, pixelGLData);
+        disp__glReadBuffer(bufferName);
+        disp__glReadPixels(xpos, ypos, width, height, format, type, pixelGLData);
 
 	/* Restore saved modes. */
-	glPixelStorei(GL_PACK_SWAP_BYTES, swapbytes);
-	glPixelStorei(GL_PACK_LSB_FIRST, lsbfirst);
-	glPixelStorei(GL_PACK_ROW_LENGTH, rowlength);
-	glPixelStorei(GL_PACK_SKIP_ROWS, skiprows);
-	glPixelStorei(GL_PACK_SKIP_PIXELS, skippixels);
-	glPixelStorei(GL_PACK_ALIGNMENT, alignment);
-	glPixelStorei(GL_UNPACK_SWAP_BYTES, unswapbytes);
-	glPixelStorei(GL_UNPACK_LSB_FIRST, unlsbfirst);
-	glPixelStorei(GL_UNPACK_ROW_LENGTH, unrowlength);
-	glPixelStorei(GL_UNPACK_SKIP_ROWS, unskiprows);
-	glPixelStorei(GL_UNPACK_SKIP_PIXELS, unskippixels);
-	glPixelStorei(GL_UNPACK_ALIGNMENT, unalignment);
+	disp__glPixelStorei(GL_PACK_SWAP_BYTES, swapbytes);
+	disp__glPixelStorei(GL_PACK_LSB_FIRST, lsbfirst);
+	disp__glPixelStorei(GL_PACK_ROW_LENGTH, rowlength);
+	disp__glPixelStorei(GL_PACK_SKIP_ROWS, skiprows);
+	disp__glPixelStorei(GL_PACK_SKIP_PIXELS, skippixels);
+	disp__glPixelStorei(GL_PACK_ALIGNMENT, alignment);
+	disp__glPixelStorei(GL_UNPACK_SWAP_BYTES, unswapbytes);
+	disp__glPixelStorei(GL_UNPACK_LSB_FIRST, unlsbfirst);
+	disp__glPixelStorei(GL_UNPACK_ROW_LENGTH, unrowlength);
+	disp__glPixelStorei(GL_UNPACK_SKIP_ROWS, unskiprows);
+	disp__glPixelStorei(GL_UNPACK_SKIP_PIXELS, unskippixels);
+	disp__glPixelStorei(GL_UNPACK_ALIGNMENT, unalignment);
 
         for(y_desc=height-1; y_desc>=0; y_desc--)
         {
@@ -780,303 +811,58 @@ Java_gl4java_GLContext_gljCpyOffScrnImg2Buffer__III_3I
 #endif
 }
 
-#ifdef macintosh
-
-#ifndef NDEBUG
-
-static void PrintSymbolNamesByConnection (CFragConnectionID myConnID)
+JNIEXPORT jboolean JNICALL
+Java_gl4java_GLContext_gljFetchOSGLFunctions (
+	JNIEnv *env, jclass jclass,
+	jstring gllibname, jstring glulibname, jboolean force )
 {
-       long           myIndex;
-       long           myCount;       /*number of exported symbols in fragment*/
-       OSErr          myErr;
-       Str255         myName;        /*symbol name*/
-       Ptr            myAddr;        /*symbol address*/
-       CFragSymbolClass       myClass;       /*symbol class*/
-       static char buffer[256];
+	const char * gllib;
+	const char * glulib;
 
-       myErr = CountSymbols(myConnID, &myCount);
-       if (!myErr)
-          for (myIndex = 1; myIndex <= myCount; myIndex++)
-             {
-                myErr = GetIndSymbol(myConnID, myIndex, myName, 
-                                        &myAddr, &myClass);
-                if (!myErr)
-		{
-			p2cstrcpy (buffer, myName);
-								 
-            printf("%d/%d: class %d - name %s\n", 
-		   		myIndex, myCount, myClass, buffer);
-		}
-             }
-}
+        gllib = (*env)->GetStringUTFChars(env, gllibname, 0);
+        glulib = (*env)->GetStringUTFChars(env, glulibname, 0);
 
-static Ptr SeekSymbolNamesByConnection (CFragConnectionID myConnID, Str255 name)
-{
-       long           myIndex;
-       long           myCount;       /*number of exported symbols in fragment*/
-       OSErr          myErr;
-       Str255         myName;        /*symbol name*/
-       Ptr            myAddr;        /*symbol address*/
-       CFragSymbolClass       myClass;       /*symbol class*/
+	strncpy (libGLName, gllib, 798);
+	strncpy (libGLUName, glulib, 798);
+	libGLName[799] = 0;
+	libGLUName[799] = 0;
 
-       myErr = CountSymbols(myConnID, &myCount);
-       if (!myErr)
-          for (myIndex = 1; myIndex <= myCount; myIndex++)
-             {
-                myErr = GetIndSymbol(myConnID, myIndex, myName, 
-                                        &myAddr, &myClass);
-                if (!myErr && EqualString (myName, name, true, true) == true )
-			return myAddr;
-             }
-}
-
-#endif /* ifndef NDEBUG */
-
-#endif /* ifdef macintosh */
-
-void * LIBAPIENTRY getGLProcAddressHelper(const char * func, int * method,
-					  int debug, int verbose )
-{
-	void * funcPtr=NULL;
-	int lmethod;
+        (*env)->ReleaseStringUTFChars(env, gllibname, gllib);
+        (*env)->ReleaseStringUTFChars(env, glulibname, glulib);
 
 #ifdef _X11_
-
-	void * libHandleGL;
-
-	/*
-	 * void (*glXGetProcAddressARB(const GLubyte *procName))
-	 */
-	static void * (CALLBACK *__glXGetProcAddress)
-					(const GLubyte *procName) = NULL;
-        static int                  __firstAccess                 = 1;
-
-        if(__glXGetProcAddress==NULL && __firstAccess)
-	{
-	    libHandleGL = dlopen("libGL.so", RTLD_LAZY|RTLD_GLOBAL);
-	    if(libHandleGL==NULL)
-	    {
-		printf("cannot access OpenGL library libGL.so\n");
-		fflush(NULL);
-	    } else {
-		__glXGetProcAddress = 
-				    dlsym(libHandleGL, "glXGetProcAddressARB");
-
-		if(__glXGetProcAddress!=NULL && verbose) {
-		        printf("found glXGetProcAddressARB in libGL.so\n");
-		        fflush(NULL);
-		}
-
-		if(__glXGetProcAddress==NULL) 
-		{
-		    __glXGetProcAddress = 
-				    dlsym(libHandleGL, "glXGetProcAddressEXT");
-
-		    if(__glXGetProcAddress!=NULL && verbose) {
-		        printf("found glXGetProcAddressEXT in libGL.so\n");
-		        fflush(NULL);
-		    }
-		}
-
-		if(__glXGetProcAddress==NULL) 
-		{
-		    __glXGetProcAddress = 
-				    dlsym(libHandleGL, "glXGetProcAddress");
-
-		    if(__glXGetProcAddress!=NULL && verbose) {
-		        printf("found glXGetProcAddress in libGL.so\n");
-		        fflush(NULL);
-		    }
-		}
-
-		dlclose(libHandleGL);
-		libHandleGL=NULL;
-
-		if(__glXGetProcAddress==NULL)
-		{
-		    printf("cannot find glXGetProcAddress* in OpenGL library libGL.so\n");
-		    fflush(NULL);
-		    libHandleGL = dlopen("libglx.so", RTLD_LAZY|RTLD_GLOBAL);
-		    if(libHandleGL==NULL)
-		    {
-			printf("cannot access GLX library libglx.so\n");
-			fflush(NULL);
-		    } else {
-			__glXGetProcAddress = 
-				    dlsym(libHandleGL, "glXGetProcAddressARB");
-
-		        if(__glXGetProcAddress!=NULL && verbose) {
-		            printf("found glXGetProcAddressARB in libglx.so\n");
-		            fflush(NULL);
-		        }
-
-			if(__glXGetProcAddress==NULL) {
-			    __glXGetProcAddress = 
-				    dlsym(libHandleGL, "glXGetProcAddressEXT");
-
-		            if(__glXGetProcAddress!=NULL && verbose) {
-		                printf("found glXGetProcAddressEXT in libglx.so\n");
-		                fflush(NULL);
-		            }
-			}
-
-			if(__glXGetProcAddress==NULL) {
-			    __glXGetProcAddress = 
-				    dlsym(libHandleGL, "glXGetProcAddress");
-
-		            if(__glXGetProcAddress!=NULL && verbose) {
-		                printf("found glXGetProcAddress in libglx.so\n");
-		                fflush(NULL);
-		            }
-			}
-
-			dlclose(libHandleGL);
-			libHandleGL=NULL;
-		    }
-		}
-	    }
-	}
-        if(__glXGetProcAddress==NULL && __firstAccess)
-	{
-	    printf("cannot find glXGetProcAddress* in GLX library libglx.so\n");
-	    fflush(NULL);
-	}
-        __firstAccess = 0;
-
-        if(__glXGetProcAddress!=NULL)
-		funcPtr = __glXGetProcAddress(func);
-
-	if(funcPtr==NULL) {
-		lmethod=2;
-		libHandleGL = dlopen("libGL.so", RTLD_LAZY|RTLD_GLOBAL);
-		if(libHandleGL==NULL)
-		{
-			printf("cannot access OpenGL library libGL.so\n");
-			fflush(NULL);
-		} else {
-			funcPtr = dlsym(libHandleGL, func);
-			dlclose(libHandleGL);
-		}
-	} else lmethod=1;
+        fetch_GLX_FUNCS (libGLName, libGLUName, (force==JNI_TRUE)?1:0);
 #endif
-
 
 #ifdef _WIN32_
-
-	HMODULE hDLL_OPENGL32 = 0;
-
-
-
-	funcPtr = wglGetProcAddress(func);
-	if(funcPtr==NULL)
-	{
-		lmethod=2;
-
-
-		if(hDLL_OPENGL32==NULL)
-
-		{
-			hDLL_OPENGL32 = LoadLibrary ("OPENGL32.DLL");
-
-			/* hDLL_OPENGL32 = GetModuleHandle ("OPENGL32.DLL"); */
-
-		}
-		if(hDLL_OPENGL32==NULL)
-		{
-			printf("cannot access OpenGL library OPENGL32.DLL\n");
-			fflush(NULL);
-		} else {
-			funcPtr = GetProcAddress (hDLL_OPENGL32, func);
-			FreeLibrary(hDLL_OPENGL32);
-		}
-	} else lmethod=1;
+        fetch_WGL_FUNCS (libGLName, libGLUName, (force==JNI_TRUE)?1:0);
 #endif
 
-#ifdef macintosh
-   	Str255 errName;
-	Str255 funcName;
-	Ptr glLibMainAddr = 0;
-	CFragConnectionID glLibConnectId = 0;
-	CFragSymbolClass glLibSymClass = 0;
-	OSErr returnError=fragNoErr;
-	#ifndef NDEBUG
-        static int firstTime = 1;
-    #endif
-	     
-        returnError = 
-		GetSharedLibrary("\pOpenGLLibrary", 
-			       kPowerPCCFragArch, 
-			       kReferenceCFrag,
-			       &glLibConnectId, 
-			       &glLibMainAddr, 
-                   errName);
+	return JNI_TRUE;
+}
 
-	if (returnError != fragNoErr)
-	{
-        	printf ("GetSharedLibrary Err(%d): Ahhh!  Didn't find LIBRARY !\n",
-        		returnError);
-	} 
+JNIEXPORT jboolean JNICALL
+Java_gl4java_GLContext_gljFetchGLFunctions (
+	JNIEnv *env, jclass jclass,
+	jstring gllibname, jstring glulibname, jboolean force )
+{
+	const char * gllib;
+	const char * glulib;
 
-	if (returnError == fragNoErr)
-	{
-		c2pstrcpy ( funcName, func );
-		
-		#ifndef NDEBUG
-		 if(firstTime)
-		 {
-			PrintSymbolNamesByConnection (glLibConnectId);
-			firstTime=0;
-		 } 
-		 funcPtr = (void *) 
-			SeekSymbolNamesByConnection (glLibConnectId, funcName);
-		#endif
-		
-		if(funcPtr==NULL)
-		{
-		  returnError = 
-		    FindSymbol (glLibConnectId, funcName, 
-		                &funcPtr, & glLibSymClass );
-		    lmethod=2;
-		} 
-		#ifndef NDEBUG
-		 else lmethod=3;
-		#endif
-		
-		if (returnError != fragNoErr)
-		{
-		  printf ("GetSharedLibrary Err(%d): Ahhh!  Didn't find SYMBOL: %s !\n",
-		  	returnError, func);
-		} 
-		returnError = fragNoErr; // fall back to ok mode ...
-	} 
+        gllib = (*env)->GetStringUTFChars(env, gllibname, 0);
+        glulib = (*env)->GetStringUTFChars(env, glulibname, 0);
 
-	if (returnError == fragNoErr && glLibConnectId!=NULL)
-	{
-		returnError = CloseConnection(&glLibConnectId);
+	strncpy (libGLName, gllib, 798);
+	strncpy (libGLUName, glulib, 798);
+	libGLName[799] = 0;
+	libGLUName[799] = 0;
 
-		if (returnError != fragNoErr)
-		{
-		  printf ("GetSharedLibrary Err(%d): Ahhh!  Didn't close LIBRARY !\n",
-		  	returnError);
-		} 
-	} 
+        (*env)->ReleaseStringUTFChars(env, gllibname, gllib);
+        (*env)->ReleaseStringUTFChars(env, glulibname, glulib);
 
-	
-#endif
+        fetch_GL_FUNCS (libGLName, libGLUName, (force==JNI_TRUE)?1:0);
 
-	if(funcPtr==NULL)
-	{
-	  if(debug||verbose)
-	  {
-		printf("%s (%d): not implemented !\n", func, lmethod);
-		fflush(NULL);
-	  }
-	} else if(verbose) {
-		printf("%s (%d): loaded !\n", func, lmethod);
-		fflush(NULL);
-	} 
-	if(method!=NULL) *method=lmethod;
-	return funcPtr;
+	return JNI_TRUE;
 }
 
 JNIEXPORT jboolean JNICALL
@@ -1088,11 +874,12 @@ Java_gl4java_GLContext_gljTestGLProc (
      
      const char *str = (*env)->GetStringUTFChars(env, name, 0);
 
-     #ifdef macintosh
+     #ifdef _MAC_OS9_
      	InstallJavaConsole(env);
      #endif
      
-     res = ( getGLProcAddressHelper(str, &method, 0, verbose)!=NULL )?
+     res = ( getGLProcAddressHelper(libGLName, libGLUName,
+                                    str, &method, 0, verbose)!=NULL )?
 			JNI_TRUE:JNI_FALSE;
 
      (*env)->ReleaseStringUTFChars(env, name, str);
@@ -1105,12 +892,12 @@ Java_gl4java_GLContext_gljGetCurrentContext(
 	JNIEnv *env, jobject obj )
 {
 	#ifdef _WIN32_
-                return (jint) wglGetCurrentContext();
+                return (jint) disp__wglGetCurrentContext();
         #else
-          #ifdef macintosh
+          #ifdef _MAC_OS9_
                 return (jint) aglGetCurrentContext();
           #else
-                return (jint) glXGetCurrentContext();   
+                return (jint) disp__glXGetCurrentContext();   
 	  #endif
         #endif
 }

@@ -32,12 +32,12 @@ public final String getClassVendor ( )
 { return "Jausoft - Sven Goethel Software Development"; }
 
 public final String getClassVersion ( ) 
-{ return "2.4.1.0"; }
+{ return "2.7.0.0"; }
 
 
 
 /**
- * C2J Parser Version 1.5 Beta
+ * C2J Parser Version 2.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLFuncJauJNI ! 
@@ -6990,7 +6990,7 @@ public final String getClassVersion ( )
 		short[] v
 	) ;
 
-/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.0:  Java program parsed successfully. */ 
 
 
 }

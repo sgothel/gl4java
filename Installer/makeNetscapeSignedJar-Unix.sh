@@ -5,9 +5,9 @@
 # The Netscape signing keys were created using the Netscape signtool
 # utility, as follows:
 # copy key3.db and cert7.db from one of the users directories.
-# signtool -d . -G GL4JInst205
+# signtool -d . -G GL4JInst207
 # Enter the following information:
-# certificate common name: GL4JInst205
+# certificate common name: GL4JInst207
 # organization: GL4Java Development Team
 # organization unit: GL4JInst
 # state or province: NRW
@@ -27,7 +27,7 @@ javac -classpath ".:../capsapi_classes.zip" *.java
 . versionundef.sh
 
 rm -rf META-INF
-signtool -d . -e .class -k GL4JInst206b -Z GL4JInst_ns.jar -c9 --norecurse .
+signtool -d . -e .class -k GL4JInst270 -Z GL4JInst_ns.jar -c9 --norecurse .
 rm -rf META-INF
 
 rm -f key3.db cert7.db *.class

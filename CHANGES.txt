@@ -1,12 +1,111 @@
 \begin{verbatim}
 
-Last Changes: 23th February  2001 (Version 2.6.0 - Release 0 )
+Last Changes: 5th April  2001 (Version 2.7.0 - Release 0 )
 Started:      July 1997 (Version 0)
 
 -----------------
 TOP  = NEW
 DOWN = OLD
 -----------------
+
+5th  April  2001 (Version 2.7.0 - Release 0 )
+	o Since 2.7.0 we do not link the OpenGL and GLU libraries
+	  at compile time, we do link them at runtime now !
+
+	o It is now possible to specify/switch the gl/glu lib's at runtime !!
+
+	  E.g. the classes 
+	  	"gl4java.GLContext", 
+		"gl4java.utils.Test"
+			(you better use the one within the demos/MiscDemos
+			 directory just called Test)
+	  now takes the arguments:
+	  	"-GLLib <name>" and
+	  	"-GLULib <name>"
+	  to specify the OpenGL and GLU library which should be used !!
+
+	  You can also switch to another GL/GLU set of libraries,
+	  while just calling gl4java.GLContext.gljFetchGLFunctions(...),
+	  with force:=true !
+	  But be shure that no GLContext is alive ;-)
+
+	  Last but not least, you can use gltool's feature of
+	  specifying the GL/GLU library names by the systems
+	  environment variables:
+     		GLTOOL_USE_GLLIB	- OpenGL library name
+     		GLTOOL_USE_GLULIB	- GLU    library name
+          these environment variables does _always_ overrides
+          any given ones from the java side !
+
+	o The native libraries are now a bit rearranged.
+	  The following set is being used now:
+	  	JDK >= 1.3: GL4JavaJauGljJNI13
+
+		JDK == 1.2: GL4JavaJauGljJNI12
+
+		JDK <= 1.1: GL4JavaJauGljJNI
+			    + GL4JavaGljMSJDirect (for MSJVM only)
+
+	  For testing purposes, the follwing tripples can being used:
+	  	JDK >= 1.3:
+			GL4JavaJauGljJNI13nf  (for non final methods !)
+
+			GL4JavaJauGljJNI13tst (for some jni tests .. !)
+
+	  Hopefully this new linkage, and the new dynamic loader code,
+	  does solve some problems under some OS ..., e.g.:
+
+	  	- increasing memory footprint 
+			(loading more than one lib instance )
+
+		- cannot resolve symbol ...
+
+		- may have a speedup ..
+		
+	o Added new modules:
+		- gltool.[ch]
+		- glxtool.[ch]
+		- glcaps.[ch]
+	  These modules are extracted from the existing for general purpose !
+	  E.g. they are used within xmame.xgl now ;-)
+
+	o Fixed glxtool's findVisualGlX:
+		- fall back fix
+		- findVisualIdByFeature fix ..
+
+	o C2J Version 2.0
+	  	- Now, GLU and GLX functionpointers are dispatched dynamically 
+		  like the GL one's also !!
+
+		- The functions pointers are no more static/local at 
+		  it's generated function, they are now global.
+
+		- The global function pointer has the name:
+			disp__<function name>
+
+		- The makefile creates the dispatcher within:
+			- <lib>-disp-var.h       (the function declarations)
+			- <lib>-disp-var.hc      (the function definition code)
+			- <lib>-disp-fetch.hc    (the function fetch code)
+		  where lib is:
+		  	gl  (the opengl functions)
+		  	glu (the glu    functions)
+		  	glx (the glx    functions, created complete by hand)
+
+	o demos/MiscDemos/Test 
+	  is a copy one of gl4java.utils.Test,
+	  which works from any point now !
+
+	  this is usefull, if you want to test some
+	  GLCanvas derivations ad hoc !
+
+	o added a native invoker for debugging purpose:
+		invokejvm (Win32 + X11)
+
+	o BUG/Missing: the current native GL/GLU wrapper does not check,
+	  if the native opengl functions does exist (NULL Pointer) !
+
+	  This will be fixed up within the next bugfix version 2.7.1 !
 
 23th February  2001 (Version 2.6.0 - Release 0 )
 	o Converted David Bucciarelli's gltestperf

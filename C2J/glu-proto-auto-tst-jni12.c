@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 1.5 Beta
+ * C2J Parser Version 2.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -25,7 +25,7 @@
 		jdouble upz)
 	{
 
-		gluLookAt (
+		disp__gluLookAt (
 			(GLdouble) eyex,
 			(GLdouble) eyey,
 			(GLdouble) eyez,
@@ -54,7 +54,7 @@
 		jdouble top)
 	{
 
-		gluOrtho2D (
+		disp__gluOrtho2D (
 			(GLdouble) left,
 			(GLdouble) right,
 			(GLdouble) bottom,
@@ -78,7 +78,7 @@
 		jdouble zFar)
 	{
 
-		gluPerspective (
+		disp__gluPerspective (
 			(GLdouble) fovy,
 			(GLdouble) aspect,
 			(GLdouble) zNear,
@@ -114,7 +114,7 @@
 				printf("COPY by gluPickMatrix arg: viewport");
 			}
 		}
-		gluPickMatrix (
+		disp__gluPickMatrix (
 			(GLdouble) x,
 			(GLdouble) y,
 			(GLdouble) width,
@@ -216,7 +216,7 @@
 				printf("COPY by gluProject arg: winz");
 			}
 		}
-		ret = (jint) gluProject (
+		ret = (jint) disp__gluProject (
 			(GLdouble) objx,
 			(GLdouble) objy,
 			(GLdouble) objz,
@@ -343,7 +343,7 @@
 				printf("COPY by gluUnProject arg: objz");
 			}
 		}
-		ret = (jint) gluUnProject (
+		ret = (jint) disp__gluUnProject (
 			(GLdouble) winx,
 			(GLdouble) winy,
 			(GLdouble) winz,
@@ -426,7 +426,7 @@
 				printf("COPY by gluScaleImage arg: dataout");
 			}
 		}
-		ret = (jint) gluScaleImage (
+		ret = (jint) disp__gluScaleImage (
 			(GLenum) format,
 			(GLsizei) widthin,
 			(GLsizei) heightin,
@@ -479,7 +479,7 @@
 				printf("COPY by gluBuild1DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -518,7 +518,7 @@
 				printf("COPY by gluBuild1DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -557,7 +557,7 @@
 				printf("COPY by gluBuild1DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -596,7 +596,7 @@
 				printf("COPY by gluBuild1DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -635,7 +635,7 @@
 				printf("COPY by gluBuild1DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -674,7 +674,7 @@
 				printf("COPY by gluBuild1DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -713,7 +713,7 @@
 				printf("COPY by gluBuild1DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild1DMipmaps (
+		ret = (jint) disp__gluBuild1DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -760,7 +760,7 @@
 				printf("COPY by gluBuild2DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -801,7 +801,7 @@
 				printf("COPY by gluBuild2DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -842,7 +842,7 @@
 				printf("COPY by gluBuild2DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -883,7 +883,7 @@
 				printf("COPY by gluBuild2DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -924,7 +924,7 @@
 				printf("COPY by gluBuild2DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -965,7 +965,7 @@
 				printf("COPY by gluBuild2DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -1006,7 +1006,7 @@
 				printf("COPY by gluBuild2DMipmaps arg: data");
 			}
 		}
-		ret = (jint) gluBuild2DMipmaps (
+		ret = (jint) disp__gluBuild2DMipmaps (
 			(GLenum) target,
 			(GLint) components,
 			(GLint) width,
@@ -1036,7 +1036,7 @@
 		jint drawStyle)
 	{
 
-		gluQuadricDrawStyle (
+		disp__gluQuadricDrawStyle (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) drawStyle
 		);
@@ -1056,7 +1056,7 @@
 		jint orientation)
 	{
 
-		gluQuadricOrientation (
+		disp__gluQuadricOrientation (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) orientation
 		);
@@ -1076,7 +1076,7 @@
 		jint normals)
 	{
 
-		gluQuadricNormals (
+		disp__gluQuadricNormals (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) normals
 		);
@@ -1096,7 +1096,7 @@
 		jboolean textureCoords)
 	{
 
-		gluQuadricTexture (
+		disp__gluQuadricTexture (
 			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLboolean) textureCoords
 		);
@@ -1120,7 +1120,7 @@
 		jint stacks)
 	{
 
-		gluCylinder (
+		disp__gluCylinder (
 			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) baseRadius,
 			(GLdouble) topRadius,
@@ -1146,7 +1146,7 @@
 		jint stacks)
 	{
 
-		gluSphere (
+		disp__gluSphere (
 			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) radius,
 			(GLint) slices,
@@ -1171,7 +1171,7 @@
 		jint loops)
 	{
 
-		gluDisk (
+		disp__gluDisk (
 			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) innerRadius,
 			(GLdouble) outerRadius,
@@ -1199,7 +1199,7 @@
 		jdouble sweepAngle)
 	{
 
-		gluPartialDisk (
+		disp__gluPartialDisk (
 			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) innerRadius,
 			(GLdouble) outerRadius,
@@ -1259,7 +1259,7 @@
 				printf("COPY by gluLoadSamplingMatrices arg: viewport");
 			}
 		}
-		gluLoadSamplingMatrices (
+		disp__gluLoadSamplingMatrices (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(const GLfloat *) ptr1,
 			(const GLfloat *) ptr2,
@@ -1294,7 +1294,7 @@
 		jfloat value)
 	{
 
-		gluNurbsProperty (
+		disp__gluNurbsProperty (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLenum) property,
 			(GLfloat) value
@@ -1327,7 +1327,7 @@
 				printf("COPY by gluGetNurbsProperty arg: value");
 			}
 		}
-		gluGetNurbsProperty (
+		disp__gluGetNurbsProperty (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLenum) property,
 			(GLfloat *) ptr2
@@ -1351,7 +1351,7 @@
 		jlong nobj)
 	{
 
-		gluBeginCurve (
+		disp__gluBeginCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1369,7 +1369,7 @@
 		jlong nobj)
 	{
 
-		gluEndCurve (
+		disp__gluEndCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1415,7 +1415,7 @@
 				printf("COPY by gluNurbsCurve arg: ctlarray");
 			}
 		}
-		gluNurbsCurve (
+		disp__gluNurbsCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) nknots,
 			(GLfloat *) ptr2,
@@ -1447,7 +1447,7 @@
 		jlong nobj)
 	{
 
-		gluBeginSurface (
+		disp__gluBeginSurface (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1465,7 +1465,7 @@
 		jlong nobj)
 	{
 
-		gluEndSurface (
+		disp__gluEndSurface (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1526,7 +1526,7 @@
 				printf("COPY by gluNurbsSurface arg: ctlarray");
 			}
 		}
-		gluNurbsSurface (
+		disp__gluNurbsSurface (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) sknot_count,
 			(GLfloat *) ptr2,
@@ -1566,7 +1566,7 @@
 		jlong nobj)
 	{
 
-		gluBeginTrim (
+		disp__gluBeginTrim (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1584,7 +1584,7 @@
 		jlong nobj)
 	{
 
-		gluEndTrim (
+		disp__gluEndTrim (
 			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
@@ -1617,7 +1617,7 @@
 				printf("COPY by gluPwlCurve arg: array");
 			}
 		}
-		gluPwlCurve (
+		disp__gluPwlCurve (
 			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) count,
 			(GLfloat *) ptr2,
@@ -1655,7 +1655,7 @@
 				printf("COPY by gluTessBeginPolygon arg: polygon_data");
 			}
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1683,7 +1683,7 @@
 				printf("COPY by gluTessBeginPolygon arg: polygon_data");
 			}
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1711,7 +1711,7 @@
 				printf("COPY by gluTessBeginPolygon arg: polygon_data");
 			}
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1739,7 +1739,7 @@
 				printf("COPY by gluTessBeginPolygon arg: polygon_data");
 			}
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1767,7 +1767,7 @@
 				printf("COPY by gluTessBeginPolygon arg: polygon_data");
 			}
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1795,7 +1795,7 @@
 				printf("COPY by gluTessBeginPolygon arg: polygon_data");
 			}
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1823,7 +1823,7 @@
 				printf("COPY by gluTessBeginPolygon arg: polygon_data");
 			}
 		}
-		gluTessBeginPolygon (
+		disp__gluTessBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
@@ -1846,7 +1846,7 @@
 		jlong tobj)
 	{
 
-		gluTessBeginContour (
+		disp__gluTessBeginContour (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
@@ -1888,7 +1888,7 @@
 				printf("COPY by gluTessVertex arg: vertex_data");
 			}
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -1933,7 +1933,7 @@
 				printf("COPY by gluTessVertex arg: vertex_data");
 			}
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -1978,7 +1978,7 @@
 				printf("COPY by gluTessVertex arg: vertex_data");
 			}
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -2023,7 +2023,7 @@
 				printf("COPY by gluTessVertex arg: vertex_data");
 			}
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -2068,7 +2068,7 @@
 				printf("COPY by gluTessVertex arg: vertex_data");
 			}
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -2113,7 +2113,7 @@
 				printf("COPY by gluTessVertex arg: vertex_data");
 			}
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -2158,7 +2158,7 @@
 				printf("COPY by gluTessVertex arg: vertex_data");
 			}
 		}
-		gluTessVertex (
+		disp__gluTessVertex (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
@@ -2186,7 +2186,7 @@
 		jlong tobj)
 	{
 
-		gluTessEndContour (
+		disp__gluTessEndContour (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
@@ -2204,7 +2204,7 @@
 		jlong tobj)
 	{
 
-		gluTessEndPolygon (
+		disp__gluTessEndPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
@@ -2224,7 +2224,7 @@
 		jdouble value)
 	{
 
-		gluTessProperty (
+		disp__gluTessProperty (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) which,
 			(GLdouble) value
@@ -2247,7 +2247,7 @@
 		jdouble z)
 	{
 
-		gluTessNormal (
+		disp__gluTessNormal (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble) x,
 			(GLdouble) y,
@@ -2281,7 +2281,7 @@
 				printf("COPY by gluGetTessProperty arg: value");
 			}
 		}
-		gluGetTessProperty (
+		disp__gluGetTessProperty (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) which,
 			(GLdouble *) ptr2
@@ -2305,7 +2305,7 @@
 		jlong tobj)
 	{
 
-		gluBeginPolygon (
+		disp__gluBeginPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
@@ -2324,7 +2324,7 @@
 		jint type)
 	{
 
-		gluNextContour (
+		disp__gluNextContour (
 			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) type
 		);
@@ -2343,10 +2343,10 @@
 		jlong tobj)
 	{
 
-		gluEndPolygon (
+		disp__gluEndPolygon (
 			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
 
-/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 2.0:  Java program parsed successfully. */ 

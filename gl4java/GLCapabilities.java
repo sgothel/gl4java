@@ -284,7 +284,6 @@ public class GLCapabilities
   public long getNativeVisualID()
   { return nativeVisualID ; }
 
-
   public String toString()
   {
   	return "GLCapabilities ["+

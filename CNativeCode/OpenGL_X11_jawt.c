@@ -169,7 +169,8 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
     jfieldID fcreatewinw = 0, fcreatewinh = 0;
     jfieldID fshareWith = 0;
     jboolean joffScreenRenderer=JNI_FALSE;
-    jboolean jownwind = JNI_FALSE ;
+    jboolean jb_value;
+    int ownwind = 0 ;
     jint jcreatewinw = 0, jcreatewinh = 0;
     GLXContext jshareWith = 0;
 
@@ -275,7 +276,10 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
     if(ret==JNI_TRUE) {
 	    fownwind = (*env)->GetFieldID(env, cls, "createOwnWindow", "Z");
 	    if (fownwind == 0) ret= JNI_FALSE;
-	    else jownwind =(*env)->GetBooleanField(env, obj, fownwind);
+	    else {
+	    	jb_value =(*env)->GetBooleanField(env, obj, fownwind);
+		ownwind = (jb_value==JNI_TRUE)?1:0;
+	    }
     }
 
     if(ret==JNI_TRUE) {
@@ -303,7 +307,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 
     if(joffScreenRenderer==JNI_TRUE)
     {
-	    jownwind = JNI_FALSE;
+	    ownwind = 0;
     }
 
     if(ret==JNI_TRUE) {
@@ -425,7 +429,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 
     /* Check to see if the Xserver supports OpenGL */
     if(ret==JNI_TRUE) {
-      if( !glXQueryExtension(display, (int *) 0, (int *) 0) ) {
+      if( !disp__glXQueryExtension(display, (int *) 0, (int *) 0) ) {
 	fprintf(stderr, "GL4Java ERROR: Can not query glx extension -> Server does not support OpenGL\n");
 	fflush(stderr);
 	jawt_free_close_unlock(env, &pData, JNI_FALSE);
@@ -433,8 +437,8 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
       } else {
 	if (JNI_TRUE==verbose) {
 		fprintf(stdout, "GLX by %s Version %s\n", 
-			glXGetClientString(display, GLX_VENDOR),
-			glXGetClientString(display, GLX_VERSION));
+			disp__glXGetClientString(display, GLX_VENDOR),
+			disp__glXGetClientString(display, GLX_VERSION));
 		fflush(stdout);
 	}
       }
@@ -446,12 +450,14 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 	    screen = DefaultScreen( display );
             rootwini  = RootWindow(display,screen) ;
 
-	    glXMakeCurrent(display, None, NULL);
+	    disp__glXMakeCurrent(display, None, NULL);
 
             vgc = findVisualGlX( display, rootwini, &theWindow,
 	                         (int)jcreatewinw, (int)jcreatewinh, 
-				 &glCaps,
-				 &jownwind, jshareWith,
+				 &glCaps, &ownwind,
+				 NULL /* pOwnWinAttr */,
+				 0 /* ownWinmask */,
+				 jshareWith,
 				 joffScreenRenderer, &pix, verbose);
 
 	    if(vgc.success == 0 && glCaps.color==COLOR_RGBA)
@@ -464,8 +470,10 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 
                 vgc = findVisualGlX( display, rootwini, &theWindow,
 	                             (int)jcreatewinw, (int)jcreatewinh, 
-				     &glCaps,
-				     &jownwind, jshareWith,
+				     &glCaps, &ownwind,
+				     NULL /* pOwnWinAttr */,
+				     0 /* ownWinmask */,
+				     jshareWith,
 				     joffScreenRenderer, &pix, verbose);
 	    }
 
@@ -474,7 +482,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 	         fprintf(stderr,"GL4Java ERROR: GETTING GC FAILED\n");
 	         fflush(stderr);
 
-		 if(jownwind==JNI_TRUE && theWindow!=0)
+		 if(ownwind && theWindow!=0)
 			 XDestroyWindow( display, theWindow );
 		 if(joffScreenRenderer==JNI_TRUE && pix!=0)
 			 XFreePixmap(display, pix);
@@ -482,7 +490,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 		 jawt_free_close_unlock(env, &pData, JNI_FALSE);
 		 ret = JNI_FALSE;
 	    } else {
-		 if(jownwind==JNI_TRUE || joffScreenRenderer==JNI_TRUE)
+		 if(ownwind || joffScreenRenderer==JNI_TRUE)
 		 {
 	         	pData->dsi_win=(void *)(PointerHolder)theWindow;
 	         	pData->dsi_win_created=1;
@@ -536,7 +544,8 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
     }
 
     if(ret==JNI_TRUE && fownwind) {
-	    (*env)->SetBooleanField(env, obj, fownwind, jownwind);
+	    jb_value = ownwind?JNI_TRUE:JNI_FALSE;
+	    (*env)->SetBooleanField(env, obj, fownwind, jb_value);
     }
 
     return ret;
@@ -552,7 +561,7 @@ Java_gl4java_GLContext_gljResizeNative( JNIEnv *env, jobject obj,
      * by a native Thread .... So we have to try avoid gl* reentrance
      * on the same GL-Context
      */
-    glXWaitGL();
+    disp__glXWaitGL();
 
     if(isOwnWindow)
     {
@@ -628,11 +637,11 @@ Java_gl4java_GLContext_gljMakeCurrentNative( JNIEnv *env, jobject obj,
 	  return ret;
     }
 
-    ctx = glXGetCurrentContext();
+    ctx = disp__glXGetCurrentContext();
 
     if(ret==JNI_TRUE && ctx!=(GLXContext)((PointerHolder)glContext) )
     {
-	    if( !glXMakeCurrent( GET_USED_DISPLAY(thisWin),
+	    if( !disp__glXMakeCurrent( GET_USED_DISPLAY(thisWin),
 	                         GET_USED_WINDOW(thisWin),
 	                         (GLXContext)((PointerHolder)glContext) ) ) 
 	    {
@@ -664,7 +673,7 @@ Java_gl4java_GLContext_gljFreeNative( JNIEnv *env, jobject obj,
 
     if(ret==JNI_TRUE)
     {
-	    if( !glXMakeCurrent( GET_USED_DISPLAY(thisWin),
+	    if( !disp__glXMakeCurrent( GET_USED_DISPLAY(thisWin),
 	                         None, NULL)) 
 	    {
 		fprintf(stderr, "GL4Java: gljFree failed\n");
@@ -683,7 +692,7 @@ Java_gl4java_GLContext_gljIsContextCurrentNative( JNIEnv *env, jobject obj,
 				      jlong glContext
 				    )
 {
-    GLXContext ctx = glXGetCurrentContext();
+    GLXContext ctx = disp__glXGetCurrentContext();
 
     if(ctx==(GLXContext)((PointerHolder)glContext))
     	return JNI_TRUE;
@@ -794,7 +803,7 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
     win = GET_USED_WINDOW(pData);
     disp = GET_USED_DISPLAY(pData);
 
-    glXWaitGL();
+    disp__glXWaitGL();
 
     if(ret==JNI_TRUE)
     {
@@ -806,7 +815,7 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 			fflush(stderr);
 		}
 	    }
-	    glXMakeCurrent( disp, None, NULL );
+	    disp__glXMakeCurrent( disp, None, NULL );
 
 	    if(ret==JNI_TRUE) 
 	    {
@@ -814,12 +823,12 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 		{
 			if(JNI_TRUE==verbose)
 				fprintf(stderr, "GL4Java: glXDestroyContext sure %p\n", gc);
-			glXDestroyContext(disp, gc);
+			disp__glXDestroyContext(disp, gc);
 		}
 	        if(pix!=0)
 		{
 		    if(win!=0)
-			    glXDestroyGLXPixmap(disp, win);
+			    disp__glXDestroyGLXPixmap(disp, win);
 		    win=0;
 		    pData->dsi_win = NULL;
 		    pData->dsi_win_created = 0;
@@ -887,13 +896,14 @@ Java_gl4java_GLContext_gljSwapNative( JNIEnv *env, jobject obj,
 
     if( doubleBuffer == JNI_FALSE ) {
 	/* don't double buffer */
-	glXWaitGL();
+	disp__glXWaitGL();
     } else {
-	glXSwapBuffers( GET_USED_DISPLAY(thisWin),
+	disp__glXSwapBuffers( GET_USED_DISPLAY(thisWin),
 	                GET_USED_WINDOW(thisWin) );
     }
 
     return JNI_TRUE;
 }
+
 
 

@@ -271,7 +271,7 @@ jawt_lock (JNIEnv *env, JAWTDataHolder *pJData, jboolean ignoreSurfaceChanged,
       #ifdef _X11_ 
   	( ((JAWT_X11DrawingSurfaceInfo *)(pJData->dsi_os))->drawable );
       #endif
-      #ifdef macintosh  
+      #ifdef _MAC_OS9_  
         NULL;
       #endif
       #ifdef _WIN32_ 
@@ -285,7 +285,7 @@ jawt_lock (JNIEnv *env, JAWTDataHolder *pJData, jboolean ignoreSurfaceChanged,
       #ifdef _X11_ 
   	( ((JAWT_X11DrawingSurfaceInfo *)(pJData->dsi_os))->display );
       #endif
-      #ifdef macintosh  
+      #ifdef _MAC_OS9_  
         NULL;
       #endif
       #ifdef _WIN32_ 
