@@ -14,6 +14,9 @@
 
 /*
  * $Log$
+ * Revision 1.1.1.2  2000/11/18 10:41:27  sven
+ * still working for the initial check in
+ *
  * Revision 1.1.1.1  2000/11/18 06:53:19  sven
  * Initial import into CVS.
  * Version 2.5.0.0 beta 1
