@@ -14,6 +14,9 @@
 
 /*
  * $Log$
+ * Revision 1.3  2002/04/25 03:26:09  sven
+ * *** empty log message ***
+ *
  * Revision 1.2  2001/02/13 05:32:09  sven
  * JAWT Support JDK >=1.3
  *
@@ -180,8 +183,9 @@ public class tessdemo extends Applet {
 
 	public MyCanvas(int w, int h) {
 	    super(w,h);
-	    GLContext.gljNativeDebug = false;
-	    GLContext.gljClassDebug  = false;
+	        GLContext.gljNativeDebug = true;
+	        GLContext.gljClassDebug = true;
+	        GLContext.gljThreadDebug = true;
 	}
 
 	public void init() {
