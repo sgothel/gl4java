@@ -13,6 +13,8 @@ public class MachineCtrl
     implements ActionListener, ItemListener
 {
 
+    public static boolean DEBUG = true;
+
     public String title = null;
     Frame dialog  = null;
     public Button goToJausoftGL4Java = null;
@@ -36,6 +38,9 @@ public class MachineCtrl
     // Java VM vendor and operating system stuff:
     public String  jvmVendor = null;
     public String  jvmVersion = null;
+    public int     jvmVersionMajor = 1; // min. defaults
+    public int     jvmVersionMinor = 1; // min. defaults
+    public String  jvmHome = null;
 	    public boolean isNetscapeJvm = false;
 	    public boolean isSunJvm = false;
 	    public boolean isMacJvm = false;
@@ -80,7 +85,33 @@ public class MachineCtrl
 
         // Query Java VM vendor and operating system.
         jvmVendor = java.lang.System.getProperty("java.vendor").toLowerCase();
+        jvmHome   = java.lang.System.getProperty("java.home");
         jvmVersion = java.lang.System.getProperty("java.version").toLowerCase();
+
+	int i0 = 0;
+	int i1 = jvmVersion.indexOf(".", i0);
+        String strhlp = null;
+	if(i1>0)
+	{
+	    strhlp = jvmVersion.substring(i0,i1);
+	    try {
+	      jvmVersionMajor = Integer.valueOf(strhlp).intValue();
+	    } catch (Exception e) 
+	    {System.out.println("Not a number: "+strhlp+" ("+jvmVersion+")");}
+	}
+	i0 = i1+1;
+	i1 = jvmVersion.indexOf(".", i0);
+	if( i1 < 0 )
+		i1 = jvmVersion.length(); // no 2nd dot, no bug version number
+
+	if( 0<i0 && i0<i1 )
+	{
+	    strhlp = jvmVersion.substring(i0,i1);
+	    try {
+	      jvmVersionMinor = Integer.valueOf(strhlp).intValue();
+	    } catch (Exception e) 
+	    {System.out.println("Not a number: "+strhlp+" ("+jvmVersion+")");}
+	}
 
         osName = System.getProperty("os.name").toLowerCase();
         osVersion = System.getProperty("os.version").toLowerCase();
@@ -128,7 +159,10 @@ public class MachineCtrl
 	System.out.println("\tosArch: "+osArch);
 	System.out.println("");
 	System.out.println("jvmVendor: "+jvmVendor);
-	System.out.println("jvmVersion: "+jvmVersion);
+	System.out.println("jvmVersion: "+jvmVersion+
+	                   "( major "+jvmVersionMajor+
+			   ", minor "+jvmVersionMinor+")");
+	System.out.println("jvmHome: "+jvmHome);
 	System.out.println("");
 	System.out.println("pathsep: "+pathsep);
 	System.out.println("filesep: "+filesep);
@@ -575,52 +609,81 @@ public class MachineCtrl
             }
             if ( (isWin32) || (isUnix) || (isMacOs) )
             {
+	        if(DEBUG)
+			System.out.println("find classpath ...");
+
                 String classpath =
                     System.getProperty("java.class.path").replace('\\','/');
-                String javahome = System.getProperty("java.home");
-		if(javahome!=null)
+		if(jvmHome!=null && 
+	           ( jvmVersionMajor>=2 ||
+	             ( jvmVersionMajor==1 && jvmVersionMinor>=2 )
+		   )
+		  )
 		{
-                    javahome=javahome.replace('\\','/');
-                    if(javahome.toLowerCase().endsWith("/jre"))
-                	classpath+=pathsep+javahome+"/lib/ext/gl4java.jar";
+                    jvmHome=jvmHome.replace('\\','/');
+                    classpath=jvmHome+"/lib/ext/gl4java.jar"+
+		              pathsep+classpath;
+
+	            if(DEBUG)
+			System.out.println("> added java2 lib/ext classpath ...");
 		}
                 if (classpath != null)
                 {
                     while ( (classpath != null) && (classpath.length() > 0) )
                     {
                         int p = classpath.indexOf(pathsep);
+                        String thisfile = null;
                         String thispath = null;
                         if (p < 0)
                         {
-                            thispath = classpath;
+                            thisfile = classpath;
                             classpath = null;
                         }
                         else
                         {
-                            thispath = classpath.substring(0,p);
+                            thisfile = classpath.substring(0,p);
                             if ((p+1) < classpath.length())
                                 classpath = classpath.substring(p+1,classpath.length());
                             else
                                 classpath = null;
                         }
-                        if (   (thispath != null)
-                            && (thispath.length() > 0)
-                            && thispath.toLowerCase().endsWith(".jar")
+
+	                if(DEBUG)
+			   System.out.println(">> checking thisfile: "+thisfile);
+
+                        if (   (thisfile != null)
+                            && (thisfile.length() > 0)
+                            && 
+			    ( thisfile.toLowerCase().endsWith(".jar") ||
+			      thisfile.toLowerCase().endsWith(".zip")
+                            )
 			   )
                         {
+			    if(DEBUG)
+			        System.out.println(">> thisfile contains jar/zip archiv - good");
                             int lastpos = -1, newpos;
                             while ( (newpos = 
-			               thispath.indexOf('/',lastpos+1)) 
+			               thisfile.indexOf('/',lastpos+1)) 
 				      >= 0
 				  )
                                 lastpos = newpos;
                             if (lastpos >= 0)
                             {
-                                thispath = thispath.substring(0,lastpos);
-                                if (thispath.toLowerCase().endsWith("/java/classes") 
-                                || thispath.toLowerCase().endsWith("/jre/lib/ext") ) 
+                                thispath = thisfile.substring(0,lastpos);
+			        if(DEBUG)
+			           System.out.println(">> thispath: "+thispath+" (dirname will be checked)");
+                                if (
+				   thispath.toLowerCase().endsWith("/java/classes") 
+                                || thispath.toLowerCase().endsWith("/lib/ext")
+                                || thisfile.toLowerCase().endsWith("/lib/classes.zip") 
+				    ) 
                                 {
+				    if(DEBUG)
+					System.out.println(">> thispath has expected dir names - good");
                                     browser_classes = new String(thispath);
+
+    				    FileTool.MkdirWithParents(this, thisfile);
+
                                     if (isUnix)
                                     {
                                         switch (unixFlavor)

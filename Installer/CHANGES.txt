@@ -12,12 +12,18 @@ This CHANGES starts with version 2.00 !
 
 GL4Java Installer 2.00 is based upon version 1.05, by Ron Cemer !
 
-Last Changes: 18. November 2000 (Version 2.05)
+Last Changes: 21. November 2000 (Version 2.05b)
 
 -----------------
 TOP  = new
 DOWN = old
 -----------------
+
+November 21, 2000 (Version 2.05b):
+
+	- Added J2RE (Java2 JRE) and Java 1.1 classpath support !
+	  Now the installer will find and - if needed - generates the
+	  lib/ext directory relative to the java.home path !
 
 November 18, 2000 (Version 2.05):
 
