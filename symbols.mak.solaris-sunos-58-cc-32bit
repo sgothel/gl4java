@@ -11,9 +11,12 @@ HOME_LIB_DIR    	= ${THISDIR}/lib
 DEST_CLASSES_DIR	= ${THISDIR}/classes
 UNIXTYPE		= SUNOS-58
 
+ARCH                    = $(shell uname -p)
+
 JDK_HOME		= $(shell dirname $$(which java))/..
 JAVASHAREINC    	= $(JDK_HOME)/include
 JAVAOSINC  		= $(JDK_HOME)/include/solaris
+JAVAOSLIB  		= $(JDK_HOME)/jre/lib/$(ARCH)
 
 JAR_DESTS		= ${THISDIR}
 
