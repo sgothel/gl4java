@@ -8,6 +8,15 @@ TOP  = NEW
 DOWN = OLD
 -----------------
 
+10th April  2001 (Version 2.7.2 - Release 0 )
+	o Added setup the glClearColor within GLCanvas/GLJPanel
+	  to the Components background color.
+	  This is done _after_ Context creation and _before_ init !
+
+	o Added the missing reshape call within GLJPanel (Swing)
+
+	o Simplified and speed up the GL2AWT functions (Swing).
+
 10th April  2001 (Version 2.7.1 - Release 0 )
 	o Added a check for NULL Pointer.
 	  If the native GL/GLU function pointer are zero (may not exist),

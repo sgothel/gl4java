@@ -37,6 +37,7 @@ public class GearsJPanel extends GLAnimJPanel
             setAnimateFps(30.0);
 
             mtxfuncs = new MatrixFuncs();
+	    setUseRepaint(true);
         }
     
         public void init()
@@ -93,6 +94,7 @@ public class GearsJPanel extends GLAnimJPanel
     
         public void reshape(int width, int height)
         {
+	    System.out.println("reshape: "+width+"x"+height);
             float h = (float)height / (float)width;
             
             gl.glViewport(0,0,width,height);

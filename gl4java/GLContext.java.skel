@@ -2554,41 +2554,40 @@ public class GLContext extends Object
      * This functions reads the pixel from the GL frame
      * and puts it into the pixelDest array,
      * while converting them correctly to the AWT pixel format,
-     * using GL_RGB[A] and BufferedImage.TYPE_INT[A]RGB !
+     * using GL_BGRA and BufferedImage.TYPE_INT_ARGB !
      */
     public final static native void gljReadPixelGL2AWT (
+    			int pack_rowlen,
+    			int pack_x, int pack_y,
 			int x, int y, int width, int height,
 			int format, int type, int bufferName,
-			byte[] pixelGL, int[] pixelDest);
+			int[] pixelDest);
 
     /**
-     * Experimental Code, not done yet !
-     * This one is to upspeed the Offscreen rendering engine for e.g. Swing !
-     *
+     * This functions reads the pixel from the GL frame
+     * and puts it into the pixelDest array,
+     * while converting them correctly to the AWT pixel format,
+     * using GL_RGB and BufferedImage.TYPE_USHORT_565_RGB !
+     */
+    public final static native void gljReadPixelGL2AWT (
+    			int pack_rowlen,
+    			int pack_x, int pack_y,
+			int x, int y, int width, int height,
+			int format, int type, int bufferName,
+			short[] pixelDest);
+
+    /**
      * This functions reads the pixel from the GL frame
      * and puts it into the pixelDest array,
      * while using hardware correct AWT and GL pixel format,
-     * using GL_BGR[A]_EXT and BufferedImage.TYPE_[34]BYTE_[A]BGR !
-     *
-     * ATTENTION: This functions runs only if hardware supports this,
-     * e.g. on Win32 platforms !!!
+     * using GL_BGR and BufferedImage.TYPE_3BYTE_BGR !
      */
     public final static native void gljReadPixelGL2AWT (
+    			int pack_rowlen,
+    			int pack_x, int pack_y,
 			int x, int y, int width, int height,
 			int format, int type, int bufferName,
 			byte[] pixelGLDest);
-
-    /**
-     * Experimental Code, not done yet !
-     * This one is to upspeed the Offscreen rendering engine for e.g. Swing !
-     */
-    public final native void gljCpyOffScrnImg2Buffer(int width, int height, int format, byte[] pixelDest);
-
-    /**
-     * Experimental Code, not done yet !
-     * This one is to upspeed the Offscreen rendering engine for e.g. Swing !
-     */
-    public final native void gljCpyOffScrnImg2Buffer(int width, int height, int format, int[] pixelDest);
 
     /**
      * native C function to achieve the native lib vendor !

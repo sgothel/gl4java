@@ -239,6 +239,10 @@ public  class TessJPanel extends GLJPanel
 
 	   gl.glMatrixMode( GL_PROJECTION );
 	   gl.glLoadIdentity();
-	   glu.gluOrtho2D(0.0f, (double) w, 0.0f, (double) h);
+	   //
+	   // draw this upside down, because of 
+	   // the reversed swing orientation
+	   //
+	   glu.gluOrtho2D(0.0f, (double) w, (double) h, 0.0f);
 	}
 }

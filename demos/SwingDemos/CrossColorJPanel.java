@@ -7,12 +7,11 @@ public class CrossColorJPanel extends GLJPanel
 {
 	public CrossColorJPanel( )
 	{
-	    super();
+	    super(false);
 	}
 
 
 	public void init() {
-	    reshape(getSize().width, getSize().height);
 	}
 
 	public void display() 
@@ -20,6 +19,7 @@ public class CrossColorJPanel extends GLJPanel
 	    int i;
 
 	    gl.glPushMatrix();
+
 	    gl.glClear(GL_COLOR_BUFFER_BIT);
 
 	    gl.glBegin(GLEnum.GL_LINES);
@@ -43,8 +43,18 @@ public class CrossColorJPanel extends GLJPanel
 	    gl.glPopMatrix();
 	}
 
+        public void resize ( int x, int y, int width, int height )
+        {
+	        System.out.println("reshape: "+x+"/"+y+": "+width+"x"+height);
+		gl.glViewport(x, y, width, height);
+		gl.glMatrixMode(GL_PROJECTION);
+		gl.glLoadIdentity();
+		gl.glOrtho(0, 10, 0, 10, -50.0,50.0);
+		gl.glMatrixMode(GL_MODELVIEW);
+        }    
         public void reshape( int width, int height )
         {
+	        System.out.println("reshape: "+width+"x"+height);
 		gl.glViewport(0, 0, width, height);
 		gl.glMatrixMode(GL_PROJECTION);
 		gl.glLoadIdentity();

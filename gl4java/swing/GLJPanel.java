@@ -5,6 +5,7 @@ import gl4java.drawable.*;
 import gl4java.drawable.utils.*;
 
 import java.awt.*;
+import java.awt.geom.*;
 import java.awt.image.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -143,18 +144,15 @@ public class GLJPanel extends JPanel
    /**
     * The data to hold the offscreen pixels on the java side !
     *
-    * @see gl4java.swing.GLJPanel#offImagePixels
     * @see gl4java.swing.GLJPanel#paint
     */
     protected BufferedImage offImage = null;
 
-   /**
-    * The data to hold the offscreen pixels on the GL side !
-    *
-    * @see gl4java.swing.GLJPanel#offImage
-    * @see gl4java.swing.GLJPanel#paint
-    */
-    protected byte[] offImagePixels = null;
+    protected int glFormat=0;
+    protected int glType=0;
+    protected int glComps=0;
+    protected int awtFormat=0;
+
 
    /**
     * The custom set offscreen Size
@@ -175,7 +173,7 @@ public class GLJPanel extends JPanel
     private GLEventListenerList listeners = new GLEventListenerList();
 
     static {
-	if(GLContext.loadNativeLibraries(null, null, null)==false)
+	if(GLContext.doLoadNativeLibraries(null, null, null)==false)
 	  System.out.println("GLJPanel could not load def. native libs.");
     }
 
@@ -213,7 +211,7 @@ public class GLJPanel extends JPanel
 	/* to be able for RESIZE event's */
 	addComponentListener(this);
 
-	setOpaque(false);
+	setOpaque(true);
     }
 
     /**
@@ -349,6 +347,7 @@ public class GLJPanel extends JPanel
      * @see gl4java.swing.GLJPanel#display
      * @see gl4java.swing.GLJPanel#preInit
      * @see gl4java.swing.GLJPanel#init
+    public synchronized final void paint(Graphics g)
      */
     public synchronized final void paintComponent(Graphics g)
     {
@@ -358,7 +357,6 @@ public class GLJPanel extends JPanel
 		if(mustResize)
 		{
 			cvsDispose();
-			mustResize=false;
 		}
 		preInit();
 		glj = GLContext.createOffScreenCtx ( this, gl, glu, 
@@ -384,7 +382,13 @@ public class GLJPanel extends JPanel
 		offImage=null;
 		offScrnSizeChanged=false;
 
+		Color col = getBackground();
+		gl.glClearColor((float)col.getRed()/255.0f, 
+		                (float)col.getGreen()/255.0f, 
+		                (float)col.getBlue()/255.0f, 0.0f);
 		init();
+	        Dimension size = size=getSize();
+		reshape(size.width, size.height);
 
 		// fetch the top-level window ,
 		// to add us as the windowListener
@@ -417,18 +421,14 @@ public class GLJPanel extends JPanel
 		if(glj!=null && glj.gljIsInit())
 			cvsInitialized=true;
 	} 
-	/*
-	if( mustResize ) size = getSize();
-	g.setClip(0, 0, size.width, size.height );
-	*/
-	//super.paintComponent(g);
-
 	gr = g;
 	sDisplay();
     }
 
     Graphics gr = null;
     DataBufferInt dbInt = null;
+    DataBufferUShort dbUShort = null;
+    DataBufferByte dbByte = null;
 
     /**
      *
@@ -469,6 +469,23 @@ public class GLJPanel extends JPanel
 		return;
         }
 
+	if(mustResize)
+	{
+		mustResize=false;
+	        Dimension size = null;
+
+	        if(customOffScrnSize)
+	    	   size=offScrnSize;
+	        else 
+	    	   size=getSize();
+
+		reshape(size.width, size.height);
+		/*
+		invalidate();
+		repaint(100);
+		*/
+	}
+
 	if(ok) 
 	{
 	    display();
@@ -479,16 +496,8 @@ public class GLJPanel extends JPanel
 		glj.gljCheckGL();
 	    }
 
-	    int glFormat;
-	    int glComps;
-	    int awtFormat;
-
-	    glFormat = (rgba == true)?GL_RGBA:GL_RGB;
-	    glComps  = (rgba == true)?4:3;
-	    awtFormat = (rgba == true)?BufferedImage.TYPE_INT_ARGB:
-	                                   BufferedImage.TYPE_INT_RGB;
-
 	    Dimension size = null;
+
 	    if(customOffScrnSize)
 	    	size=offScrnSize;
 	    else 
@@ -501,29 +510,102 @@ public class GLJPanel extends JPanel
 	    if(offImage==null || 
 	       offImage.getHeight()!=h  || offImage.getWidth()!=w)
 	    {
+	        GLCapabilities caps = glj.getGLCapabilities();
+
+	        if(caps.getAlphaBits()>0)
+		    awtFormat = BufferedImage.TYPE_4BYTE_ABGR;
+	        else
+		    awtFormat = BufferedImage.TYPE_3BYTE_BGR;
+
 	    	if(offImage!=null)
 			offImage.flush();
+
 		offImage = new BufferedImage(w,h,awtFormat);
-		offImagePixels=new byte[w*h*glComps];
-		dbInt = (DataBufferInt)
-		offImage.getRaster().getDataBuffer();
 
-		if(GLContext.gljClassDebug)
+	        dbByte=null;
+	        dbUShort=null;
+	        dbInt=null;
+
+		switch (awtFormat)
 		{
-		   System.out.print("set offImage to size: "+size+
-		                    "(hw size: "+w+"x"+h+"), type: ");
-		   switch(glFormat) {
-		   	case GL_RGB: System.out.println("RGB"); break;
-		   	case GL_RGBA: System.out.println("RGBA"); break;
-		   	case GL_BGR_EXT: System.out.println("BGR"); break;
-		   	case GL_BGRA_EXT: System.out.println("BGRA"); break;
-		   }
+			case BufferedImage.TYPE_3BYTE_BGR:
+			        if(GLContext.gljClassDebug)
+				System.out.println("awt=3BYTE_BGR, gl=BGR,UNSIGNED_BYTE");
+				glFormat = GL_BGR;
+				glType   = GL_UNSIGNED_BYTE;
+				glComps  = 3;
+			        dbByte   = (DataBufferByte)
+				           offImage.getRaster().getDataBuffer();
+				break;
+			case BufferedImage.TYPE_4BYTE_ABGR:
+			        if(GLContext.gljClassDebug)
+				System.out.println("awt=4BYTE_ABGR, gl=BGRA,UNSIGNED_INT_8_8_8_8");
+				glFormat = GL_BGRA;
+				glType   = GL_UNSIGNED_INT_8_8_8_8;
+				glComps  = 4;
+			        dbByte   = (DataBufferByte)
+				           offImage.getRaster().getDataBuffer();
+				break;
+			case BufferedImage.TYPE_INT_RGB:
+			        if(GLContext.gljClassDebug)
+				System.out.println("awt=INT_RGB, gl=BGRA,UNSIGNED_INT_8_8_8_8_REV");
+				glFormat = GL_BGRA;
+				glType   = GL_UNSIGNED_INT_8_8_8_8_REV;
+				glComps  = 4;
+			        dbInt    = (DataBufferInt)
+				           offImage.getRaster().getDataBuffer();
+				break;
+			case BufferedImage.TYPE_INT_ARGB:
+			        if(GLContext.gljClassDebug)
+				System.out.println("awt=INT_ARGB, gl=BGRA,INT_8_8_8_8_REV");
+				glFormat = GL_BGRA;
+				glType   = GL_UNSIGNED_INT_8_8_8_8_REV;
+				glComps  = 4;
+			        dbInt    = (DataBufferInt)
+				           offImage.getRaster().getDataBuffer();
+				break;
+			case BufferedImage.TYPE_INT_BGR:
+			        if(GLContext.gljClassDebug)
+				System.out.println("awt=INT_BGR, gl=BGRA,UNSIGNED_INT_8_8_8_8");
+				glFormat = GL_BGRA;
+				glType   = GL_UNSIGNED_INT_8_8_8_8;
+				glComps  = 4;
+			        dbInt    = (DataBufferInt)
+				           offImage.getRaster().getDataBuffer();
+				break;
+			case BufferedImage.TYPE_USHORT_555_RGB:
+			        if(GLContext.gljClassDebug)
+				System.out.println("awt=USHORT_555_RGB, gl=RGBA,UNSIGNED_INT_5_5_5_1");
+				glFormat = GL_RGBA;
+				glType   = GL_UNSIGNED_SHORT_5_5_5_1;
+				glComps  = 2;
+			        dbUShort = (DataBufferUShort)
+				           offImage.getRaster().getDataBuffer();
+				break;
+			case BufferedImage.TYPE_USHORT_565_RGB:
+			        if(GLContext.gljClassDebug)
+				System.out.println("awt=USHORT_565_RGB, gl=RGB,UNSIGNED_INT_5_6_5");
+				glFormat = GL_RGB;
+				glType   = GL_UNSIGNED_SHORT_5_6_5;
+				glComps  = 2;
+			        dbUShort = (DataBufferUShort)
+				           offImage.getRaster().getDataBuffer();
+				break;
 		}
-	    }
+	    } 
 
-	    glj.gljReadPixelGL2AWT(0,0,w,h,glFormat,GL_UNSIGNED_BYTE,
-	    			   glj.isDoubleBuffer()?GL_BACK:GL_FRONT,
-	                           offImagePixels,  dbInt.getData());
+	    if(dbByte!=null)
+		    glj.gljReadPixelGL2AWT(w, 0,0, 0, 0, w, h, glFormat, glType,
+				   glj.isDoubleBuffer()?GL_BACK:GL_FRONT,
+				   dbByte.getData());
+	    else if(dbUShort!=null)
+		    glj.gljReadPixelGL2AWT(w, 0,0, 0, 0, w, h, glFormat, glType,
+				   glj.isDoubleBuffer()?GL_BACK:GL_FRONT,
+				   dbUShort.getData());
+	    else if(dbInt!=null)
+		    glj.gljReadPixelGL2AWT(w, 0,0, 0, 0, w, h, glFormat,glType,
+				   glj.isDoubleBuffer()?GL_BACK:GL_FRONT,
+				   dbInt.getData());
 
 	    //glj.gljSwap(); // no true swapping with offscreen buffers ..
 
@@ -565,9 +647,7 @@ public class GLJPanel extends JPanel
 		}
 	    }
 	}
-
         listeners.sendPostDisplayEvent(this);
-
     }
 
     /**
@@ -929,4 +1009,31 @@ public class GLJPanel extends JPanel
     public GLUFunc getGLU() {
         return glu;
     }
+
+  public Point getAbsoluteCoord(JRootPane rp)
+  {
+        Container obj = this;
+        Container next = obj.getParent();
+        Point _absCoord = this.getLocation();
+        Point p = null;
+
+	//System.out.println("\nADDING START :"+obj);
+ 
+        while ( next instanceof JComponent ) 
+	{
+                obj  = next;
+                next = obj.getParent();
+
+		if ( next instanceof JComponent ) 
+		{
+			//System.out.println("\nADDING :"+obj);
+			p = obj.getLocation();
+			_absCoord.x+=p.x;
+			_absCoord.y+=p.y;
+		}
+		if(obj==rp) break;
+        }
+        return _absCoord;
+  }
+
 }

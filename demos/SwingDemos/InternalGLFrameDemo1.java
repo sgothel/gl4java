@@ -19,7 +19,7 @@ public class InternalGLFrameDemo1 extends JFrame {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(inset, inset, 
                   screenSize.width/2 - inset*2, 
-                  screenSize.height/2*3-inset*2);
+                  screenSize.height/2-inset*2);
 
         //Quit this app when the big window closes.
         addWindowListener(new WindowAdapter() {
@@ -28,7 +28,6 @@ public class InternalGLFrameDemo1 extends JFrame {
             }
         });
 
-        //Set up the GUI.
         desktop = new JDesktopPane(); //a specialized layered pane
         createFrame(); //Create first window
 	setContentPane(desktop);
@@ -149,8 +148,10 @@ public class InternalGLFrameDemo1 extends JFrame {
 				    canvas.cvsDispose();
 			    }
 			    canvas = (GLJPanel)obj;
+			    canvas.setBackground(desktop.getBackground());
 			    canvas.setVisible(true);
 			    master.add("Center", canvas);
+			    canvas.setVisible(true);
 			    master.invalidate();
 			    master.validate();
 			    master.repaint();

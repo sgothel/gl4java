@@ -511,8 +511,11 @@ Java_gl4java_GLContext_gljGetNativeLibVendorNative(JNIEnv *env, jobject obj )
  * This one is to upspeed the Offscreen rendering engine for e.g. Swing !
  */
 JNIEXPORT void JNICALL
-Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIII_3B (
+Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIIIIII_3B (
 	JNIEnv *env, jobject obj,
+	jint pack_rowlen,
+	jint pack_x,
+	jint pack_y,
 	jint xpos,
 	jint ypos,
 	jint width,
@@ -560,9 +563,9 @@ Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIII_3B (
 	   generated bitmaps too. */
 	disp__glPixelStorei(GL_PACK_SWAP_BYTES, GL_FALSE);
 	disp__glPixelStorei(GL_PACK_LSB_FIRST, GL_TRUE);
-        disp__glPixelStorei(GL_PACK_ROW_LENGTH, width);
-	disp__glPixelStorei(GL_PACK_SKIP_ROWS, 0);
-	disp__glPixelStorei(GL_PACK_SKIP_PIXELS, 0);
+        disp__glPixelStorei(GL_PACK_ROW_LENGTH, pack_rowlen);
+	disp__glPixelStorei(GL_PACK_SKIP_ROWS, pack_y);
+	disp__glPixelStorei(GL_PACK_SKIP_PIXELS, pack_x);
 	disp__glPixelStorei(GL_PACK_ALIGNMENT, 1);
 	disp__glPixelStorei(GL_UNPACK_SWAP_BYTES, GL_FALSE);
 	disp__glPixelStorei(GL_UNPACK_LSB_FIRST, GL_TRUE);
@@ -599,11 +602,15 @@ Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIII_3B (
 }
 
 /**
+ * Experimental Code, not done yet !
  * This one is to upspeed the Offscreen rendering engine for e.g. Swing !
  */
 JNIEXPORT void JNICALL
-Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIII_3B_3I (
+Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIIIIII_3S (
 	JNIEnv *env, jobject obj,
+	jint pack_rowlen,
+	jint pack_x,
+	jint pack_y,
 	jint xpos,
 	jint ypos,
 	jint width,
@@ -611,38 +618,24 @@ Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIII_3B_3I (
 	jint format,
 	jint type,
 	jint bufferName,
-	jbyteArray pixelGL,
-	jintArray pixelDest)
+	jshortArray pixelGLDest)
 {
 	GLint swapbytes, lsbfirst, rowlength;
 	GLint skiprows, skippixels, alignment;
 	GLint unswapbytes, unlsbfirst, unrowlength;
 	GLint unskiprows, unskippixels, unalignment;
 
-	jsize lenPixelSource = 0;
-	jbyte *pixelGLData = NULL;
-	jsize lenPixelDest = 0;
-	jint *pixelDestData = NULL;
-        int alpha=0;
-        int red=0;
-        int green=0;
-        int blue=0;
-        int offset=0;
-        int y_desc;
-	int x;
+	jshort *pixelGLDestData = NULL;
+	jsize lenPixelGLDest = 0;
 
-	jboolean isCopiedArray0 = JNI_FALSE;
-	jboolean isCopiedArray1 = JNI_FALSE;
+	jboolean isCopiedArray = JNI_FALSE;
 
-	if(pixelGL==NULL || pixelDest==NULL)
+	if(pixelGLDest==NULL)
 		return;
 
-	lenPixelSource = (*env)->GetArrayLength(env, pixelGL);
-	pixelGLData = (*env)->GetByteArrayElements(env, pixelGL, 
-	                                           &isCopiedArray0);
-	lenPixelDest = (*env)->GetArrayLength(env, pixelDest);
-	pixelDestData = (*env)->GetIntArrayElements(env, pixelDest, 
-	                                            &isCopiedArray1);
+	lenPixelGLDest = (*env)->GetArrayLength(env, pixelGLDest);
+	pixelGLDestData = (*env)->GetShortArrayElements(env, pixelGLDest, 
+	                                               &isCopiedArray);
 
 	/* Save current modes. */
 	disp__glGetIntegerv(GL_PACK_SWAP_BYTES, &swapbytes);
@@ -665,20 +658,21 @@ Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIII_3B_3I (
 	   generated bitmaps too. */
 	disp__glPixelStorei(GL_PACK_SWAP_BYTES, GL_FALSE);
 	disp__glPixelStorei(GL_PACK_LSB_FIRST, GL_TRUE);
-        disp__glPixelStorei(GL_PACK_ROW_LENGTH, width);
-	disp__glPixelStorei(GL_PACK_SKIP_ROWS, 0);
-	disp__glPixelStorei(GL_PACK_SKIP_PIXELS, 0);
-	disp__glPixelStorei(GL_PACK_ALIGNMENT, 1);
+        disp__glPixelStorei(GL_PACK_ROW_LENGTH, pack_rowlen);
+	disp__glPixelStorei(GL_PACK_SKIP_ROWS, pack_y);
+	disp__glPixelStorei(GL_PACK_SKIP_PIXELS, pack_x);
+	disp__glPixelStorei(GL_PACK_ALIGNMENT, 2);
 	disp__glPixelStorei(GL_UNPACK_SWAP_BYTES, GL_FALSE);
 	disp__glPixelStorei(GL_UNPACK_LSB_FIRST, GL_TRUE);
-        disp__glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+        disp__glPixelStorei(GL_UNPACK_ROW_LENGTH, width);
 	disp__glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
 	disp__glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
-	disp__glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	disp__glPixelStorei(GL_UNPACK_ALIGNMENT, 2);
 
 	/* Actually read the pixels. */
         disp__glReadBuffer(bufferName);
-        disp__glReadPixels(xpos, ypos, width, height, format, type, pixelGLData);
+        disp__glReadPixels(xpos, ypos, width, height, format, type, 
+	             pixelGLDestData);
 
 	/* Restore saved modes. */
 	disp__glPixelStorei(GL_PACK_SWAP_BYTES, swapbytes);
@@ -694,122 +688,104 @@ Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIII_3B_3I (
 	disp__glPixelStorei(GL_UNPACK_SKIP_PIXELS, unskippixels);
 	disp__glPixelStorei(GL_UNPACK_ALIGNMENT, unalignment);
 
-        for(y_desc=height-1; y_desc>=0; y_desc--)
-        {
-              for(x=0;x<width;x++)
-              {
-                red   = ( (int)(pixelGLData[offset++]) & 0xff ) << 16;
-                green = ( (int)(pixelGLData[offset++]) & 0xff ) <<  8;
-                blue  =   (int)(pixelGLData[offset++]) & 0xff;
+	disp__glFlush();
+	disp__glFinish();
 
-                if(format==GL_RGBA)
-                    alpha = ( (int)(pixelGLData[offset++]) & 0xff ) << 24;
-                else
-                    alpha = ( (int) 0xff ) << 24;
-
-                pixelDestData[y_desc*width + x] = alpha | red | green | blue;
-              }
-        }     
-
-	(*env)->ReleaseByteArrayElements(env,  pixelGL, pixelGLData, 
-	                               (isCopiedArray0==JNI_TRUE)?0:JNI_ABORT);
-
-	(*env)->ReleaseIntArrayElements(env,  pixelDest, pixelDestData, 
-	                               (isCopiedArray1==JNI_TRUE)?0:JNI_ABORT);
+	(*env)->ReleaseShortArrayElements(env,  
+	                                 pixelGLDest, pixelGLDestData, 
+					 (isCopiedArray==JNI_TRUE)?0:JNI_ABORT);
 }
 
 /**
- * Experimental Code, not done yet !
  * This one is to upspeed the Offscreen rendering engine for e.g. Swing !
  */
-JNIEXPORT void JNICALL 
-Java_gl4java_GLContext_gljCpyOffScrnImg2Buffer__III_3B
-  (JNIEnv *env, jobject obj, jint width, jint height, jint format, jbyteArray pixelDest)
+JNIEXPORT void JNICALL
+Java_gl4java_GLContext_gljReadPixelGL2AWT__IIIIIIIIII_3I (
+	JNIEnv *env, jobject obj,
+	jint pack_rowlen,
+	jint pack_x,
+	jint pack_y,
+	jint xpos,
+	jint ypos,
+	jint width,
+	jint height,
+	jint format,
+	jint type,
+	jint bufferName,
+	jintArray pixelDest)
 {
-}
-
-/**
- * Experimental Code, not done yet !
- * This one is to upspeed the Offscreen rendering engine for e.g. Swing !
- */
-JNIEXPORT void JNICALL 
-Java_gl4java_GLContext_gljCpyOffScrnImg2Buffer__III_3I
-  (JNIEnv *env, jobject obj, jint width, jint height, jint format, jintArray pixelDest)
-{
-#ifdef _X11_
-
-        jclass cls = 0;
-        jfieldID fpixmapHandle=0;
+	GLint swapbytes, lsbfirst, rowlength;
+	GLint skiprows, skippixels, alignment;
+	GLint unswapbytes, unlsbfirst, unrowlength;
+	GLint unskiprows, unskippixels, unalignment;
 
 	jsize lenPixelDest = 0;
 	jint *pixelDestData = NULL;
+
 	jboolean isCopiedArray = JNI_FALSE;
-	jboolean ret = JNI_TRUE;
-	int sizemax=0;
-	int sizepix=0;
 
-
-        jfieldID fdisplayHandle=0;
-        Display *disp=0;
-	Pixmap pix=0;
-        XImage *image;
-
-        cls = (*env)->GetObjectClass(env, obj);
-
-	fdisplayHandle = (*env)->GetFieldID(env, cls, "displayHandle", "I");
-	if (fdisplayHandle == 0) ret= JNI_FALSE;
-	else disp=(Display *)(*env)->GetIntField(env, obj, fdisplayHandle);
-
-	fpixmapHandle = (*env)->GetFieldID(env, cls, "pixmapHandle", "I");
-	if (fpixmapHandle == 0) ret= JNI_FALSE;
-	else pix = (Pixmap)(*env)->GetIntField(env, obj, fpixmapHandle);
-
-	if(pix==0 || pixelDest==NULL)
+	if(pixelDest==NULL)
 		return;
 
 	lenPixelDest = (*env)->GetArrayLength(env, pixelDest);
 	pixelDestData = (*env)->GetIntArrayElements(env, pixelDest, 
 	                                            &isCopiedArray);
 
-	if(format==GL_RGBA) {
-          image = XGetImage(disp, pix, 0, 0, width, height, 
-	                    0xffffffff, ZPixmap);
-          printf("format RGBA!!\n");
-	} else if(format==GL_RGB) {
-          image = XGetImage(disp, pix, 0, 0, width, height, 
-	                    0x00ffffff, ZPixmap);
-          printf("format RGB!!\n");
-	} else {
-          image = XGetImage(disp, pix, 0, 0, width, height, 
-	                    0xffffffff, ZPixmap);
-          printf("format not supported - guessing RGBA!!\n");
-	}
+	/* Save current modes. */
+	disp__glGetIntegerv(GL_PACK_SWAP_BYTES, &swapbytes);
+	disp__glGetIntegerv(GL_PACK_LSB_FIRST, &lsbfirst);
+	disp__glGetIntegerv(GL_PACK_ROW_LENGTH, &rowlength);
+	disp__glGetIntegerv(GL_PACK_SKIP_ROWS, &skiprows);
+	disp__glGetIntegerv(GL_PACK_SKIP_PIXELS, &skippixels);
+	disp__glGetIntegerv(GL_PACK_ALIGNMENT, &alignment);
+	disp__glGetIntegerv(GL_UNPACK_SWAP_BYTES, &unswapbytes);
+	disp__glGetIntegerv(GL_UNPACK_LSB_FIRST, &unlsbfirst);
+	disp__glGetIntegerv(GL_UNPACK_ROW_LENGTH, &unrowlength);
+	disp__glGetIntegerv(GL_UNPACK_SKIP_ROWS, &unskiprows);
+	disp__glGetIntegerv(GL_UNPACK_SKIP_PIXELS, &unskippixels);
+	disp__glGetIntegerv(GL_UNPACK_ALIGNMENT, &unalignment);
 
-	if(image!=NULL)
-	{
-	    printf("width %d height %d\n", (int)width, (int)height);
-	    printf("depth %d, bytes_per_line %d, width %d, height %d\n",
-	       image->depth, image->bytes_per_line, image->width, image->height);
-	    sizemax=(int)(lenPixelDest*sizeof(jint));
-	    sizepix=image->bytes_per_line*image->height;
+	/* Little endian machines (DEC Alpha, Inten X86, PPC(in LSB mode)...  
+	   for example) could benefit from setting 
+	   GL_PACK_LSB_FIRST to GL_TRUE
+	   instead of GL_FALSE, but this would require changing the
+	   generated bitmaps too. */
+	disp__glPixelStorei(GL_PACK_SWAP_BYTES, GL_FALSE);
+	disp__glPixelStorei(GL_PACK_LSB_FIRST, GL_TRUE);
+        disp__glPixelStorei(GL_PACK_ROW_LENGTH, pack_rowlen);
+	disp__glPixelStorei(GL_PACK_SKIP_ROWS, pack_y);
+	disp__glPixelStorei(GL_PACK_SKIP_PIXELS, pack_x);
+	disp__glPixelStorei(GL_PACK_ALIGNMENT, 4);
+	disp__glPixelStorei(GL_UNPACK_SWAP_BYTES, GL_FALSE);
+	disp__glPixelStorei(GL_UNPACK_LSB_FIRST, GL_TRUE);
+        disp__glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+	disp__glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
+	disp__glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
+	disp__glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
 
-	    printf("sizeof dest-array: %d bytes\n", sizemax);
-	    printf("sizeof image bpl*height: %d bytes\n", sizepix); 
+	/* Actually read the pixels. */
+        disp__glReadBuffer(bufferName);
+        disp__glReadPixels(xpos, ypos, width, height, 
+			   format, type, pixelDestData);
 
-	    if(sizepix<sizemax) sizemax=sizepix;
+	/* Restore saved modes. */
+	disp__glPixelStorei(GL_PACK_SWAP_BYTES, swapbytes);
+	disp__glPixelStorei(GL_PACK_LSB_FIRST, lsbfirst);
+	disp__glPixelStorei(GL_PACK_ROW_LENGTH, rowlength);
+	disp__glPixelStorei(GL_PACK_SKIP_ROWS, skiprows);
+	disp__glPixelStorei(GL_PACK_SKIP_PIXELS, skippixels);
+	disp__glPixelStorei(GL_PACK_ALIGNMENT, alignment);
+	disp__glPixelStorei(GL_UNPACK_SWAP_BYTES, unswapbytes);
+	disp__glPixelStorei(GL_UNPACK_LSB_FIRST, unlsbfirst);
+	disp__glPixelStorei(GL_UNPACK_ROW_LENGTH, unrowlength);
+	disp__glPixelStorei(GL_UNPACK_SKIP_ROWS, unskiprows);
+	disp__glPixelStorei(GL_UNPACK_SKIP_PIXELS, unskippixels);
+	disp__glPixelStorei(GL_UNPACK_ALIGNMENT, unalignment);
 
-	    (*env)->SetIntArrayRegion(env,  pixelDest, 0, sizemax/sizeof(jint),
-				      (jint*)image->data);
-	    printf("copied ..\n");
-	} else {
-	    printf("invalid image ...\n");
-	}
-
-	if(pixelDestData!=NULL)
-	    (*env)->ReleaseIntArrayElements(env,  pixelDest, pixelDestData, 
-	                                    JNI_ABORT);
-#endif
+	(*env)->ReleaseIntArrayElements(env,  pixelDest, pixelDestData, 
+	                               (isCopiedArray==JNI_TRUE)?0:JNI_ABORT);
 }
+
 
 JNIEXPORT jboolean JNICALL
 Java_gl4java_GLContext_gljFetchOSGLFunctions (

@@ -98,7 +98,7 @@ CNATIVEDIR  		= CNativeCode
 
 LIBMAJOR		= 2
 LIBMINOR		= 7
-LIBBUGFIX		= 1
+LIBBUGFIX		= 2
 RELEASE                 = 0
 
 #

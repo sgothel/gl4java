@@ -174,7 +174,7 @@ public class GLCanvas extends Canvas
     private GLEventListenerList listeners = new GLEventListenerList();
 
     static {
-	if(GLContext.loadNativeLibraries(null, null, null)==false)
+	if(GLContext.doLoadNativeLibraries(null, null, null)==false)
 	  System.out.println("GLCanvas could not load def. native libs.");
     }
 
@@ -442,6 +442,11 @@ public class GLCanvas extends Canvas
 			stereoView = glj.isStereoView();
 			rgba = glj.isRGBA();
 		}
+
+		Color col = getBackground();
+		gl.glClearColor((float)col.getRed()/255.0f, 
+		                (float)col.getGreen()/255.0f, 
+		                (float)col.getBlue()/255.0f, 0.0f);
 
 		init();
 
