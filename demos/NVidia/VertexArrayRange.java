@@ -261,6 +261,8 @@ public class VertexArrayRange {
       ensurePresent("glSetFenceNV");
       ensurePresent("glTestFenceNV");
       ensurePresent("glFinishFenceNV");
+      // NOTE: this one routine is a special case -- accessed in C via
+      // wglAllocateMemoryNV or glXAllocateMemoryNV
       ensurePresent("glAllocateMemoryNV");
       
       gl.glClearColor(0, 0, 0, 0);
