@@ -17,33 +17,45 @@ Questions (F.A.Q)</font>
 <hr>
 <p><b><i>Table Of Contents (TOC)</i></b><br><br>
 
-<i>GL4JAVA general questions : </i><br>
-<a href="#what">What is GL4JAVA ?</a><br>
-<a href="#who">Who makes GL4JAVA ?</a><br>
-<a href="#how">How can I learn using GL4JAVA ?</a><br>
-<a href="#pay">Do I have to pay in order to use GL4JAVA ?</a><br>
+<i>GL4Java general questions : </i><br>
+<a href="#what">What is GL4Java ?</a><br>
+<a href="#who">Who makes GL4Java ?</a><br>
+<a href="#how">How can I learn using GL4Java ?</a><br>
+<a href="#pay">Do I have to pay in order to use GL4Java ?</a><br>
 <a href="#howcanihelp">How can I help ?</a><br>
 <a href="#wherecanigetitfrom">Where can I download and install the beast ?</a><br>
-<a href="#appl">What kinda GL4JAVA applications and applets currently exist ?</a><br>
-<a href="#rtfm">What should I read before you reply with RTFM ? Whom should I ask ?</a><br>
+<a href="#appl">What kinda GL4Java applications and applets currently exist ?</a><br>
 
 <br>
 <i>JAVA related questions : </i><br>
+<a href="#whichjvm">Which Java Virtuell Machine (JVM) should I use ?</a><br>
 <a href="#javaslow">But isn't Java slow ?</a><br>
-<a href="#ports">What platforms does GL4JAVA run on ?</a><br>
-<a href="#java3d">How does GL4JAVA compare to Java3D ?</a><br>
+<a href="#ports">What platforms does GL4Java run on ?</a><br>
+<a href="#java3d">How does GL4Java compare to Java3D ?</a><br>
 
 <br>
-<i>GL4JAVA technical questions : </i><br>
-<a href="#java2setup">I'm trying to use gl4java on my OS using Java2. I can't succeed having it working !</a><br>
+<i>GL4Java installation questions : </i><br>
+<a href="#java2installer">How to use the Installer ?</a><br>
+<a href="#java2setup">GL4Java Installation Check-List (for Java2) !</a><br>
+<a href="#java2installprobs">Please Help - It won't run !</a><br><br>
+
+<a href="#rtfm">What should I read before you reply with RTFM ? Whom should I ask ?</a><br>
+<a href="#how2complain">How-To Complain About Non Working GL4Java ?</a><br>
+
+<br>
+<i>GL4Java technical questions : </i><br>
+<a href="#memoryleak1">Does GL4Java has a memory leak (Part 1) ?</a><br>
+<a href="#memoryleak2">Does GL4Java has a memory leak (Part 2) ?</a><br><br>
+
 <a href="#frame">My Canvas renders 1 frame, then stops, what's wrong ?</a><br>
 <a href="#weight">GLAnimCanvas vs GLJPanel, which should I choose ?</a><br>
-<a href="#model">GLJPanel/GLAnimCanvas subclass model vs GLEventListener model, which should I choose ?</a><br>
-<a href="#extensions">Extensions - Does GL4JAVA support extensions ? How do I load them ?</a><br>
-<a href="#tesselation">Tesselation - Does GL4JAVA support tesselation ? How do I use it ?</a><br>
-<a href="#offscreen">Offscreen - How Do I Use Offscreen Rendering with GL4JAVA ? </a><br>
-<a href="#fullscreen">Fullscreen - How Do I Use Fullscreen with GL4JAVA ?</a></b>
-<a href="#bumpmapping">Bump Mapping - How Do I Use Bump Mapping with GL4JAVA ?</a></b>
+<a href="#model">GLJPanel/GLAnimCanvas subclass model vs GLEventListener model, which should I choose ?</a><br><br>
+
+<a href="#extensions">Extensions - Does GL4Java support extensions ? How do I load them ?</a><br>
+<a href="#tesselation">Tesselation - Does GL4Java support tesselation ? How do I use it ?</a><br>
+<a href="#offscreen">Offscreen - How Do I Use Offscreen Rendering with GL4Java ? </a><br>
+<a href="#fullscreen">Fullscreen - How Do I Use Fullscreen with GL4Java ?</a></b><br>
+<a href="#bumpmapping">Bump Mapping - How Do I Use Bump Mapping with GL4Java ?</a></b><br>
 
 <br>
 
@@ -57,13 +69,13 @@ Questions (F.A.Q)</font>
 
 
 <a NAME="what"></a>
-<p><b><i>What is GL4JAVA ?</i></b>
+<p><b><i>What is GL4Java ?</i></b>
 <hr><br>
-GL4JAVA is an abbreviation of OpenGL<SUP>TM</SUP> for Java<SUP>TM</SUP>,<br>
+GL4Java is an abbreviation of OpenGL<SUP>TM</SUP> for Java<SUP>TM</SUP>,<br>
 read the <a href="#trademarks">trademarks</a> section ;-) <br><br>
 
-GL4JAVA is an OpenGL binding for Java.<br>
-The GL4JAVA API maps native c++ OpenGL functions
+GL4Java is an OpenGL binding for Java.<br>
+The GL4Java API maps native c++ OpenGL functions
 to the Java language and provides fast access
 to 3D accelerators from Java.<br><br>
 
@@ -72,7 +84,7 @@ and implements window handle functions (native and java),
 while using the Java-Native-Interface (JNI) of Java or the
 JDirect-Interface of MS-JVM. Win32, X-Window, Mac.<BR><BR>
 
-GL4JAVA has been developed under Open Source Model since 1997
+GL4Java has been developed under Open Source Model since 1997
 and has become over the years a serious and stable API.<br>
 Though, the library is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY nor obligation of user support.<br><br>
@@ -83,10 +95,10 @@ Have a look at the <a href="http://gl4java.sourceforge.net/docs/overview/index.h
 
 
 <a NAME="who"></a>
-<p><b><i>Who makes GL4JAVA ?</i></b>
+<p><b><i>Who makes GL4Java ?</i></b>
 <hr>
 <br>
-GL4JAVA is mainly developed by Sven Gothel from <A HREF="http://www.jausoft.com" target="_new">Jausoft</A> but many people have
+GL4Java is mainly developed by Sven Gothel from <A HREF="http://www.jausoft.com" target="_new">Jausoft</A> but many people have
 helped/contributed to the development of the project :<br><br>
         <li>Aetius,
         <li>Jean-Yves BRUD,
@@ -124,15 +136,15 @@ Please check out the <A HREF="thanxs.html">Thanxs Page</a> also !
 
 
 <a NAME="how"></a>
-<p><b><i>How can I learn using GL4JAVA ?</i></b>
+<p><b><i>How can I learn using GL4Java ?</i></b>
 <hr><br>
 Have a look at the <a href="http://gl4java.sourceforge.net/docs/index.html">GL4Java Documents</a> !<br><br>
 If you are completely new to OpenGL, you can check out <A HREF="http://nehe.gamedev.net/" target="_new">NeHe's OpenGL Tutorials</A>. It is a good starting point to get a taste of OpenGL.
-Several NeHe's tutorials have been ported to GL4JAVA and can be found <A HREF="http://dev.knowledgeassociates.com/hodglim/nehe/nehe.shtml" target="_new">here</A> (most of them are also included within the demo package)<BR><BR>
+Several NeHe's tutorials have been ported to GL4Java and can be found <A HREF="http://dev.knowledgeassociates.com/hodglim/nehe/nehe.shtml" target="_new">here</A> (most of them are also included within the demo package)<BR><BR>
 Then if you're seriously considering learning OpenGL, we advise you to buy the OpenGL Programming Guide, wich is also commonly refered as the "OpenGL RedBook".<br>
 You can find several digital copies of it online, but we don't know if they are authorized by the authors. If you want to check them out, search fo "OpenGL Redbook" in a search engine.<br>
 Notice the book has more than 600 pages, so it's REALLY worst buying it if you don't want to burn your eyes on the screen ! :)<br><br>
-Then the next and mandatory step (before you ask a basic or stupid question to Sven which will reply by a <a href="#rtfm">RTFM</a> !) is to read the docs and learn the demos provided with GL4JAVA wich can be found <A HREF="http://www.jausoft.com/Files/Java/1.1.X/GL4Java/archive"> here</A>, 
+Then the next and mandatory step (before you ask a basic or stupid question to Sven which will reply by a <a href="#rtfm">RTFM</a> !) is to read the docs and learn the demos provided with GL4Java wich can be found <A HREF="http://www.jausoft.com/Files/Java/1.1.X/GL4Java/archive"> here</A>, 
 
 </P>
 <br><br>
@@ -140,16 +152,16 @@ Then the next and mandatory step (before you ask a basic or stupid question to S
 
 
 <a NAME="pay"></a>
-<p><b><i>Do I have to pay in order to use GL4JAVA ?</i></b>
+<p><b><i>Do I have to pay in order to use GL4Java ?</i></b>
 <hr>
 <br>
-No. The GL4JAVA library is free software. You can redistribute it and/or
+No. The GL4Java library is free software. You can redistribute it and/or
 modify it under the terms of the <A HREF="http://www.gnu.org" target="_new">GNU Library General Public
 License</A> as published by the Free Software Foundation; either
 version 2 of the License, or (at your option) any later version.<br><br>
 
-Of course, Sven Gothel spends a lot of time developping GL4JAVA and a generous
-donnation to Jausoft would help him continue supporting the development of GL4JAVA.
+Of course, Sven Gothel spends a lot of time developping GL4Java and a generous
+donnation to Jausoft would help him continue supporting the development of GL4Java.
 </p>
 <br><br>
 
@@ -159,8 +171,8 @@ donnation to Jausoft would help him continue supporting the development of GL4JA
 <hr>
 <br>
 
-Well, GL4JAVA is OpenSource'd LGPL licensed and lives from your support !<br>
-So, anything you missing within GL4JAVA may be a good thing to add and maintain.<br>
+Well, GL4Java is OpenSource'd LGPL licensed and lives from your support !<br>
+So, anything you missing within GL4Java may be a good thing to add and maintain.<br>
 Just ask the mailinglist <a href="http://sourceforge.net/mail/?group_id=602">Usergroup Mailinglist</a> !<br>
 
 </P>
@@ -184,43 +196,40 @@ Take your time, don't hurry ;-) !<br><br>
 and a checklist for the automatic installation via the installer !</a> 
 <br><br>
 
-If you wan't to check out the very latest GL4JAVA <i>on the edge</i> development release,<br>
-please go to <a href="http://gl4java.sourceforge.net">GL4JAVA @ SOURCEFORGE</a> !<br>
+If you wan't to check out the very latest GL4Java <i>on the edge</i> development release,<br>
+please go to <a href="http://gl4java.sourceforge.net">GL4Java @ SOURCEFORGE</a> !<br>
 
 <br><br>
 
 <a NAME="appl"></a>
-<p><b><i>What kinda GL4JAVA applications and applets currently exist ?</i></b>
+<p><b><i>What kinda GL4Java applications and applets currently exist ?</i></b>
 <hr>
 <br>
 <li><a href="http://www.jausoft.com/products/gl4java/gl4java_apps.html">Applications</a><br>
 <li><a href="http://www.jausoft.com/products/gl4java/gl4java_demos.html">Demos</a><br>
 
-<br>and just search the web for GL4JAVA ;-)<br>
+<br>and just search the web for GL4Java ;-)<br>
 
 <br><br>
 
 
-<a NAME="rtfm"></a>
-<p><b><i>What should I read before you reply with RTFM ? Whom should I ask ?<br>
-(RTFM = Unix abbreviation for `Read The Fucking Manual')</i></b>
+<a NAME="whichjvm"></a>
+<p><b><i>Which Java Virtuell Machine (JVM) should I use ?<i></b>
 <hr>
 <br>
-Read the <a href="http://gl4java.sourceforge.net/docs/overview/index.html">Overview</a> !<br>
-and there you will find the JavaDoc GL4JAVA API and other stuff.<br><br>
+Since GL4Java Version 2.8.2.0, we do support JVM 1.4's NIO Buffers,<br>
+therefore, you should use the high performance JVM 1.4 !<br>
 
-Download or browse the latest source, docs and demos via CVS <a href="http://sourceforge.net/projects/gl4java">GL4JAVA @ SOURCEFORGE</a><br>
-and read the README files, the docs and the demos !<br><br>
+If this version is not avaiable for you,<br>
+please use the latest, e.g. 1.3.1, 1.3.0, ...<br><br>
 
-You can also browser them from here: <a href="http://www.jausoft.com/Files/Java/1.1.X/GL4Java">latest release</a>,<br>
-download them from here: <a href="http://www.jausoft.com/Files/Java/1.1.X/GL4Java/archive">latest source, docs, demos</a>,<br>
-but this source might be outdated, since this is not the development release !<br><br>
+If you like to use Java Applet's within your WWW Browser,<br>
+you better your the Java2-Plugin, e.g. a Java2 JRE (Java Runtime Environment) !<br>
+This is the best way to achive a high performance Java VM for your Applets <br><br>
 
-Just ask the mailinglist <a href="http://sourceforge.net/mail/?group_id=602">Usergroup Mailinglist</a>! <br>
+Remind that the browsers build-in JVM's are allmost old and maybe unsupported .. ! <br><br>
 
-<br><br>
-
-
+</p><br><br>
 
 
 <a NAME="javaslow"></a>
@@ -230,9 +239,9 @@ Just ask the mailinglist <a href="http://sourceforge.net/mail/?group_id=602">Use
 No. Check out the <a href="../demos/index.html" target="_new">demos</a> !<br><br>
 Java has been arround for more than 6 years now and the speed of execution of the language has
 been improved dramaticaly. The latest implementation of Java 2.0 (JDK 1.4) is running especially fast.
-Since programing with GL4JAVA relies mostly on hardware acceleration, the speed of execution of the
+Since programing with GL4Java relies mostly on hardware acceleration, the speed of execution of the
 Java language doesn't matter much unless you use huge and unoptimized algorithms.<br><br>
-It is heard that using Java as an Applet in a browser reduces the performance considerably though, because the display often goes thrue the browser's window API rather than directly to your Operating System display API.
+It is heard that using Java as an Applet in a browser build-in Java Virtual Machine (JVM) reduces the performance considerably though, because the display often goes thrue the browser's window API rather than directly to your Operating System display API.
 This is especially true with Netscape 6.0 wich cuts down the Java performance by a factor of 2 (using the java plugin !) compared to the AppletViewer.<br><br>
 There are several papers about optimizing the speed of Java on the Internet :<br><br>
 <A HREF="http://developer.java.sun.com/developer/technicalArticles/Programming/PerfTuning/" target="_new">Tuning JavaTM I/O Performance</A> on java.sun.com<br>
@@ -242,10 +251,10 @@ There are several papers about optimizing the speed of Java on the Internet :<br
 
 
 <a NAME="ports"></a>
-<p><b><i>What platforms does GL4JAVA run on ?</i></b>
+<p><b><i>What platforms does GL4Java run on ?</i></b>
 <hr>
 <br>
-GL4JAVA runs on GNU/Linux, Win32, Mac OS 9.x, Mac OS X and any Unix/X11/OpenGL.<br><br>
+GL4Java runs on GNU/Linux, Win32, Mac OS 9.x, Mac OS X and any Unix/X11/OpenGL.<br><br>
 
 We do support precompiled native binaries It should run on any Unix/X11/OpenGL machine, but we sometimes don't have precompiled binaries for those.<br>
 E.g. we had it run also on Solaris, Irix and AIX. But since nobody does create binaries and maintains<br>
@@ -254,10 +263,10 @@ those machines, we cannot provide you with precompiled native libraries.<br>
 
 
 <a NAME="java3d"></a>
-<p><b><i>How does GL4JAVA compare to Java3D ?</i></b>
+<p><b><i>How does GL4Java compare to Java3D ?</i></b>
 <hr>
 <br>
-GL4JAVA is an OpenGL binding and provides nothing else than access to OpenGL/GLU commands.<br>
+GL4Java is an OpenGL binding and provides nothing else than access to OpenGL/GLU commands.<br>
 GUI managment and toolkits like GLUT, texture managment, etc. are also provided.<br>
 For the near future hopefully we can support a higher level scenegraph (SG) API like VRML or 3DS.<br><br>
 
@@ -280,21 +289,21 @@ If performance is critical (such as for games), if you have plenty of time, and 
 
 CONCLUSION:<br>
 If you don't want to do plain OpenGL use a SCENEGRAPH environment! <br>
-If there is none yet avaiable for GL4JAVA,<br>
+If there is none yet avaiable for GL4Java,<br>
 <b>create some</b>, make it avaiable under the terms of the LGPL !<br>
-GL4JAVA is OpenSource and lives from your support and contributions.<br>
-GL4JAVA provides you with it's source code and adding functionality is welcome.<br>
+GL4Java is OpenSource and lives from your support and contributions.<br>
+GL4Java provides you with it's source code and adding functionality is welcome.<br>
 Look at the <a href="http://gl4java.sourceforge.net/docs/overview/benefits.html">benefits</a> !<br><br>
 
 
 </p><br><br>
 
 <a NAME="extensions"></a>
-<p><b><i>Does GL4JAVA support extensions ? How do I load them ?</i></b>
+<p><b><i>Does GL4Java support extensions ? How do I load them ?</i></b>
 <hr>
 <br>
 
-Yes, GL4JAVA supports numerous extensions. In order to list wich extensions are supported, just do a <br>
+Yes, GL4Java supports numerous extensions. In order to list wich extensions are supported, just do a <br>
 >java gl4java.GLContext -info<br>
 OR press the gl4java button on a demo, e.g. 
 <a href="../demos/MiscDemos/gears.html" target="_new">gears</a>.<br><br>
@@ -311,7 +320,7 @@ Check out the <a href="../demos/NVidia/VertexArrayRange.java" target="_new">NVid
 </p><br><br>
 
 <a NAME="tesselation"></a>
-<p><b><i>Does GL4JAVA support tesselation ? How do I use it ?</i></b>
+<p><b><i>Does GL4Java support tesselation ? How do I use it ?</i></b>
 <hr>
 <br>
 
@@ -446,7 +455,7 @@ which dispatches the call (incl. data) to your java callback function !
 </p><br><br>
 
 <a NAME="offscreen"></a>
-<p><b><i>How Do I Use Offscreen Rendering with GL4JAVA ?  </i></b>
+<p><b><i>How Do I Use Offscreen Rendering with GL4Java ?  </i></b>
 <hr>
 <br>
 You can just use it, the way GLJPanel use it for swing integration !<br><br>
@@ -461,7 +470,7 @@ Here is a little offscreen PNG gl-image renderer, using gl4java.awt.GLOffScreenD
 </p><br><br>
 
 <a NAME="fullscreen"></a>
-<p><b><i>How Do I Use Fullscreen with GL4JAVA ?  </i></b>
+<p><b><i>How Do I Use Fullscreen with GL4Java ?  </i></b>
 <hr>
 <br>
 Well, for the pre JDK 1.4 aera, i only can recommend the stupid way<br>
@@ -477,7 +486,7 @@ fullscreen mode like this:<br><br>
 </p><br><br>
 
 <a NAME="bumpmapping"></a>
-<p><b><i>How Do I Use Bump Mapping with GL4JAVA ? </i></b>
+<p><b><i>How Do I Use Bump Mapping with GL4Java ? </i></b>
 <hr>
 <br>
 I do not know ? ;-) <br><br>
@@ -485,8 +494,28 @@ Somebody should fill this .. please !<br><br>
 
 </p><br><br>
 
+<a NAME="java2installer"></a>
+<p><b><i>How to use the Installer ?</i></b>
+<hr>
+<br>
+For any installation, you should be able to access the web via http,<br>
+therefore you have to setup your firewall/proxy well ;-)<br><br>
+
+The Automatic Web Installation, may determine your browser via javascript,<br>
+but to be sure, you better use the force ;-)<br>
+Just click, e.g. for a default Java2 Browser, the related force-link !<br><br>
+
+Be sure to setup your Java2 policy file, for a Java2 installation.<br>
+A default Java2 policy file addition is provided on the installation page.<br>
+
+The Installer can also be downloaded and can be run as a standalone application !<br>
+The Installer then fetches all needed archives from the web, if not allready downloaded,<br>
+and installes them properly !<br><br>
+
+</p><br><br>
+
 <a NAME="java2setup"></a>
-<p><b><i>I'm trying to use gl4java on my OS using Java2. I can't succeed having it working !</i></b>
+<p><b><i>GL4Java Installation Check-List (for Java2) !</i></b>
 <hr>
 <br>
 First of all, we do use the follwing names here:<br><br>
@@ -608,7 +637,7 @@ grant codeBase "file:${java.home}/lib/ext/*" {
 </pre><br>
 <br>
 The following issue might be obsolete regarding the GL4Java 2.8 release !<br>
-Some have problems using standalone GL4JAVA applications,<br>
+Some have problems using standalone GL4Java applications,<br>
 because they wouldn't fint jawt.dll and wouldn't load gl4java dependent dlls.<br>
 In this case you have 2 choices:<br>
 <li> Make sure you have your PATH variable set correctly (don't forget to replace "\jdk1.x\" by your own jdk directory):
@@ -620,39 +649,282 @@ You should be up and running now ! That is what I call a seamless installation !
 </p><br><br>
 
 
-
-<a NAME="frame"></a>
-<p><b><i>My Canvas renders 1 frame, then stops, what's wrong ?</i></b>
+<a NAME="java2installprobs"></a>
+<p><b><i>Please Help - It won't run !</i></b>
 <hr>
 <br>
-Ensure you have managed the GL Context correctly.<br><br>
-If using the old override model (derivation from GLCanvas or GLAnimCanvas),<br>
-you have to make the gl context current first, then use gl and last but not least free it !<br><br>
-Here is how you should use gl4java during display :<br><br>
+<i>Q: I just get a java.lang.RuntimePermission exception !</i><br><br>
+Just be sure, you have installed GL4Java properly within the<br> 
+<pre>
+JAVA_HOME/lib/ext/gl4java.jar
+</pre>
+directory, see the <a href="#java2setup">setup notes</a><br>
+Otherwise, you have to add the gl4java.jar archive to your java2 security policy file !<br><br>
+
+<i>Q: I just get the error: java.lang.UnsatisfiedLinkError: loadJAWT0</i><br><br>
+Your gl4java.jar archive does not match the native libraries ..<br>
+you have installed !<br>
+loadJAWT0 is a new native lib funtion intro. in 2.8.2 ..<br><br>
+Just remove all gl4java*.jar and all GL4Java*.dll (or GL4Java*.so* for Unices) files !<br>
+Then re-install the latest version - thats it ;-)<br>
+
+
+</p><br><br>
+
+
+<a NAME="rtfm"></a>
+<p><b><i>What should I read before you reply with RTFM ? Whom should I ask ?<br>
+(RTFM = Unix abbreviation for `Read The Fucking Manual')</i></b>
+<hr>
+<br>
+Read the <a href="http://gl4java.sourceforge.net/docs/overview/index.html">Overview</a> !<br>
+and there you will find the JavaDoc GL4Java API and other stuff.<br><br>
+
+Download or browse the latest source, docs and demos via CVS <a href="http://sourceforge.net/projects/gl4java">GL4Java @ SOURCEFORGE</a><br>
+and read the README files, the docs and the demos !<br><br>
+
+You can also browser them from here: <a href="http://www.jausoft.com/Files/Java/1.1.X/GL4Java">latest release</a>,<br>
+download them from here: <a href="http://www.jausoft.com/Files/Java/1.1.X/GL4Java/archive">latest source, docs, demos</a>,<br>
+but this source might be outdated, since this is not the development release !<br><br>
+
+Just ask the mailinglist <a href="http://sourceforge.net/mail/?group_id=602">Usergroup Mailinglist</a>! <br>
+
+<br><br>
+
+
+<a NAME="how2complain"></a>
+<p><b><i>How-To Complain About Non Working GL4Java ?</i></b>
+<hr>
+<br>
+Please Read The Following Issues First:<br><br>
+
+<LI><a href="#rtfm">What should I read before you reply with RTFM ? Whom should I ask ?</a></LI>
+<LI><a href="#java2installer">How to use the Installer ?</a></LI>
+<LI><a href="#java2setup">GL4Java Installation Check-List (for Java2) !</a></LI>
+<LI><a href="#java2installprobs">Please Help - It won't run !</a></LI>
+
+<br>
+
+Please retest with:<br>
+       <LI>The latest Java Virtual Machine (JVM)</LI>
+       <LI>The latest GL4Java Version</LI>
+
+<br>
+
+If this won't help, please send the follwing information to the mailinglist:<br><br>
+       <LI>Operating System</LI>
+       <LI>Java VM Vendor and Version (in detail)</LI>
+       <LI>GL4Java Version (in detail)</LI>
+       <LI>OpenGL (gfx-card and driver) Vendor and Version (in detail)</LI>
+
+<br>
+
+IF possible, the following output within a seperated compressed (e.g. zip, or gzip) textfile:<br>
+<pre>
+	java gl4java.GLContext -infotxt
+</pre>
+
+<br>
+
+If you feel, that the above GL4Java self-test info is correct,<br>
+please add the output of the demo/MiscDemos/gears.java demo,<br>
+within a compressed file also (zip or bzip2).<br><br>
+
+Be polite ;-)<br><br>
+
+Be patient ;-)<br><br>
+
+<br><br>
+
+<a NAME="memoryleak1"></a>
+<p><b><i>Does GL4Java has a memory leak (Part 1) ?</i></b>
+<hr>
+<br>
+Because many complained about a possible memory leak within GL4Java,<br>
+I have double checked GL4Java's native ressource managment<br>
+(with it's verbose printouts ..), and everything seems ok ! <br>
+;-)<br><br>
+
+(MY) Win98se machine looks like the only platform with this bug.<br><br>
+
+So, because Win98xx is a kinda dead thing ;-),<br>
+and i really do not use it regulary (just to offer you thie win32 binaries),<br>
+we may can forget this issue .. ?!?!<br><br>
+
+Tip for Win98 users:<br>
+        DONT use Win98, WinME or WinXP ;-)<br>
+        Use WinNT, Win2k - or better: switch to a rock solid machine !<br><br>
+
+Well it is not recommended to use a WinXP machine,<br>
+since you do not have a special http, smb, or whatever<br>
+content checking firewall, which is able to disallow M$<br>
+to spy you personality and you machine itself !<br><br>
+
+don't hesitate, go for it, use at least GNU/Linux ;-)<br><br>
+
+... but this might be offthread ..<br><br>
 
 <PRE>
-public void display(){
 
-	// Ensure GL Context is initialised correctly
-	if (!glj.gljMakeCurrent())return;
+TEST RESULTS 1.) win98se, 2) winnt, 3.) linux-ppc, 4.) linux-x86
+------------------------------------------------------------------
 
-	// YOUR CUSTOM CODE goes here
+( All test ran with an NVidia gfx card and its proprietary driver,
+  except the linux-ppc one (ATI (DRI driver)) !
+)
 
-	// swap the buffers IF double buffering is enabled
-	glj.gljSwap();
+win98se + jdk 1.3.1 + gl4java 2.8.1.0
+test: "java gl4java.GLContext -infotxt"
+summary: after each run 2MB of memory are "lost" !
 
-	// just check if some opengl errors occured
-        glj.gljCheckGL();
+---------------
 
-	// free the GL Context. This function MUST be called
-	// in last position in you display function.
-        glj.gljFree();
+win98se + jdk 1.3.1_01 + gl4java 2.8.1.0
+test: "java gl4java.GLContext -infotxt"
+        test loop       memory used (MB)
+        0               167.5 !!!!!!!!!
+        1               173.3 !!!!!!!!!
+        2               175.4 !!!!!!!!!
+        3               177.3 !!!!!!!!!
+        4               179.1 !!!!!!!!!
 
-}
+----------------
+
+winnt 4.0 + 500MByte + jdk 1.3.1 + gl4java 2.8.1.0
+test: "java gl4java.GLContext -infotxt"
+        test loop       memory used (kb)
+        0               75404
+        1               76028
+        2               76028
+        3               76028
+        4               76028
+
+----------------
+
+winnt 4.0 + 500MByte + jdk 1.3.1_01+ gl4java 2.8.1.0
+test: "java gl4java.GLContext -infotxt"
+        test loop       memory used (kb)
+        0               68980
+        1               69788
+        2               69784
+        3               69784
+        4               69776
+
+----------------
+
+winnt 4.0 + 500MByte + jdk 1.4.0b3 + gl4java 2.8.1.0
+test: "java gl4java.GLContext -infotxt"
+        test loop       memory used (kb)
+        0               70612
+        1               71660
+        2               71656
+        3               71656
+        4               71656
+
+test: "java gl4java.GLContext VertexArrayRange" (demos/NVidia)
+        test loop       memory used (kb)
+        0               70592
+        1               70784
+        2               70784
+        3               70700
+        4               70632
+
+------------
+
+linux 2.4.12 ppc + 256 MB + jdk 1.3.0 (blackdown fcs) + gl4java 2.8.1.0
+test: "java gl4java.GLContext -infotxt"
+        test loop       memory used (MB)
+        0               199
+        1               199
+        2               199
+        3               198
+        4               198
+
+------------
+
+linux 2.4.11 x86 + 650 MB + jdk 1.3.1 (blackdown fcs) + gl4java 2.8.1.0
+test: "java gl4java.GLContext -infotxt"
+        test loop       memory used (MB)
+        0               616
+        1               608
+        2               608
+        3               607
+        4               607
+
+------------
+
+linux 2.4.11 x86 + 650 MB + jdk 1.4.0b3 (sun) + gl4java 2.8.1.0
+test: "java gl4java.GLContext -infotxt"
+        test loop       memory used (MB)
+        0               616
+        1               604
+        2               603
+        3               604
+        4               604
+
+test: "java gl4java.GLContext VertexArrayRange" (demos/NVidia)
+        test loop       memory used (MB)
+        0               612
+        1               593
+        2               592
+        3               593
+        4               593
+
 </PRE>
 </p>
-If using the new gl listener model, you do not have to take care about this,<br>
-cause the listener holder (GLCanvas or GLAnimCanvas) itself takes care about this<br><br><br>
+<br><br><br>
+
+<a NAME="memoryleak2"></a>
+<p><b><i>Does GL4Java has a memory leak (Part 2) ?</i></b>
+<hr>
+<br>
+
+<PRE>
+I would like to report a bug in using GL4Java 2.8.2.0, it leaks memory 
+very fast (4k/sec) on PC. I noticed that because I run the exact same 
+java program on Mac OS X without any leaks. You can also try the Swing 
+demo called winOlympicCvs applet, everytime you click on the window you 
+will lose 4k on your Task Manager. Any ideas what may go wrong? Thanks!
+
+-Aaron
+</PRE>
+
+<br>
+
+I have tested this issue, but could not reproduce his results,<br>
+the memory leak !<br><br>
+
+So I guess, it is all about the buggy OS or/and the drivers ... ! <br><br>
+Here are my results:<br>
+<br>
+
+<PRE>
+My System:
+
+WinNT 4.0,  4.00.1381
+Quadro2 MXR/EX NVidia OpenGL 4.00.1381.2311
+523 636 kByte Ram
+Java 1.3.1_01
+Memory meassured with the TASKMANAGER !
+
+Test1: "java gl4java.GLContext -infotxt"
+4 Runs
+1.) 165552
+2.) 165556
+3.) 165556
+4.) 165556
+
+Test2: "appletviewer glOlympicCvsApplet.html"
+2 Clicks After Animations Stops, and 3 just before
+1.)165564
+2.)195368
+3.)195376
+4.)195372
+5.)195372
+
+Well, looks like no memory leak at all .. hmm..
+</PRE>
+<br><br><br>
 
 
 <a NAME="weight"></a>
@@ -676,7 +948,7 @@ have a look at GL4Java/demos/testTextPPM1.java, where swing/awt is mixed ..
 <p><b><i>GLJPanel/GLAnimCanvas subclass model vs GLEventListener model, which should I choose ?</i></b>
 <hr>
 <br>
-The subclass model is the old mechanism which was used with GL4JAVA untill now.<br> 
+The subclass model is the old mechanism which was used with GL4Java untill now.<br> 
 It consists in designing a class inherited from GLAnimCanvas or GLJPanel and overload its init() and display() methods to put your custom code.<br><br>
 It's recommended to use the new GLEventListener model, even if you're a beginner.<br><br>
 The listener model allows you to switch easyly between different GLEventListener's init()/display()/etc.. methods without having to destroy your canvas and create a new one.<br><br>
@@ -745,6 +1017,6 @@ by Sun Microsystems, Inc.<br><br>
 
 <hr WIDTH="100%">
 <font size=-1>This FAQ is maintained by <A HREF="mailto:acousinie@wanadoo.fr">Alban Cousinié</A> and <A HREF="mailto:sgoethel@jausoft.com">Sven Goethel</A>.<br>
-Last Updated on 10th November 2001</font>
+Last Updated on 4th February 2002</font>
 </body>
 </html>
