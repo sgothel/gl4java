@@ -921,9 +921,6 @@ public class GLContext extends Object
 
 	}
 
-	if(!libsLoaded)
-		System.exit(1);
-
 	return libsLoaded;
     }
  
