@@ -2368,7 +2368,10 @@ public class GLContext extends Object
 	     if(gljThreadDebug && !dbgPrinted)
 	     {
 		     System.out.println("wait-switch: "+thisThread);
-	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	             /** JAU NVidia 2314 Bug workaround
+	     	      * System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+		      */
+	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext);
 	     }
 
 	     if(ctxThread==thisThread)
@@ -2412,7 +2415,10 @@ public class GLContext extends Object
 	     if(gljThreadDebug && !dbgPrinted)
 	     {
 		     System.out.println("wait-earmarked: "+thisThread);
-	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+		     /** JAU NVidia 2314 Bug workaround
+	     	      * System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+		      */
+	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext);
 		     dbgPrinted=true;
 	     }
              if( _comp instanceof GLRunnable )
@@ -2446,7 +2452,10 @@ public class GLContext extends Object
 		return result;
 	} else if( ctxThread!=null && ctxThread!=thisThread ) {
 	     System.out.println("MakeCurrent: ctxThread ain't zero, funny failure");
-	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	     /** JAU NVidia 2314 Bug workaround
+	      * System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	      */
+	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext);
 	     return result;
 	}
 
@@ -2460,7 +2469,10 @@ public class GLContext extends Object
 	        } else {
 		     System.out.println("MakeCurrent: "+thisThread+" <New>");
 		}
-	        System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	        /** JAU NVidia 2314 Bug workaround
+	         *  System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+		 */
+	        System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext);
 	}
 
 	/**
@@ -2480,7 +2492,10 @@ public class GLContext extends Object
 	        if(gljThreadDebug)
 		{
 			     System.out.println("Native MakeCurrent failed");
-			     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+			     /** JAU NVidia 2314 Bug workaround
+			      * System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+			      */
+			     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext);
 			     Exception e = new Exception();
 			     e.printStackTrace();
 		}
@@ -2690,7 +2705,10 @@ public class GLContext extends Object
 	     if(gljThreadDebug)
 	     {
 	         System.out.println("gljFree: denied, not holding context ! ");
-	         System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	         /** JAU NVidia 2314 Bug workaround
+	          * System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+		  */
+	         System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext);
 	         Exception e = new Exception();
 	         e.printStackTrace();
 	     }
@@ -2718,14 +2736,20 @@ public class GLContext extends Object
 	        if(gljThreadDebug)
 		{
 		     System.out.println("gljFree: gljFreeNative result: "+result);
-	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	             /** JAU NVidia 2314 Bug workaround
+	     	      * System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+		      */
+	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext);
 	        }
 	} else {
     		result = unlockJAWT(windowHandle, false);
 		if(gljThreadDebug)
 		{
 	     	     System.out.println("gljFree: no CTX change, no requests, unlockJAWT: "+result);
-	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	             /** JAU NVidia 2314 Bug workaround
+	     	      * System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+		      */
+	     	      System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext);
 	        }
 	}
 	notifyAll();

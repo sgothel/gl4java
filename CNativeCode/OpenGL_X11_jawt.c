@@ -713,7 +713,9 @@ Java_gl4java_GLContext_gljMakeCurrentNative( JNIEnv *env, jobject obj,
 	  return ret;
     }
 
-    ctx = disp__glXGetCurrentContext();
+    /** JAU NVidia 2314 Bug workaround .. 
+        ctx = disp__glXGetCurrentContext();
+     */
 
     if(ret==JNI_TRUE && ctx!=(GLXContext)((PointerHolder)glContext) )
     {
@@ -866,7 +868,8 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
     win = GET_USED_WINDOW(pData);
     disp = GET_USED_DISPLAY(pData);
 
-    disp__glXWaitGL();
+    if(gc!=0)
+	    disp__glXWaitGL();
 
     if(ret==JNI_TRUE)
     {
@@ -877,8 +880,7 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
 			fprintf(stderr, "GL4Java: gljDestroy failed, GL context is 0\n");
 			fflush(stderr);
 		}
-	    }
-	    disp__glXMakeCurrent( disp, None, NULL );
+	    } else disp__glXMakeCurrent( disp, None, NULL );
 
 	    if(ret==JNI_TRUE) 
 	    {
