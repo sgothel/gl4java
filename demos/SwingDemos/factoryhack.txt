@@ -1,0 +1,16 @@
+
+        //Set up the GUI.
+	GLCapabilities caps = new GLCapabilities();
+	Canvas cvs = null;
+	GLDrawableFactory gldf = GLDrawableFactory.getFactory();
+	if(gldf instanceof SunJDK13GLDrawableFactory)
+	{
+		SunJDK13GLDrawableFactory sgldf = 
+			(SunJDK13GLDrawableFactory)gldf;
+		GraphicsConfiguration grcfg = 
+			sgldf.getGraphicsConfiguration(caps);
+		cvs = new Canvas (grcfg);
+	} else {
+		cvs = new Canvas ();
+	}
+	cvs.
