@@ -719,7 +719,7 @@ cleannative:
 	cd demos/natives/x11 ; make clean
 
 # clean out the *.o files and machine generated files from javah
-clean: cleannative cleanupw32
+clean: cleannative cleanupw32 cleanhtmldoc
 	rm -f $(CHEADERDIR)/* errors gl4java/*~ CNativeCode/*~ \
 	      $(FILE.gen1.h) $(FILE.gen2.h) \
 	      $(FILE.gen3.h) $(FILE.gen4.h) $(FILE.gen5.h)
@@ -728,6 +728,7 @@ clean: cleannative cleanupw32
 	cd demos ; make clean
 
 cleanhtmldoc:
+	rm -rf doxygens/html
 	rm -rf docs/html
 	rm -f docs/*.ps
 
