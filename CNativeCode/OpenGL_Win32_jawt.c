@@ -426,6 +426,10 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
 	    return JNI_FALSE;
     }
 
+    if (joffScreenRenderer) {
+      pData->dsi_win = theWindow;
+    }
+
 	/* fetch the states of doubleBuffer and stereo */
     (void) PixelFormatDescriptorFromDc( theWindow, &pfd);
 
