@@ -283,7 +283,7 @@ public class reflect extends SimpleGLAnimApplet1
 
         private void make_objects()
         {
-           int q;
+           long q;
         
            float cyan[]  = { 0.0f, 1.0f, 1.0f, 1.0f };
            float green[] = { 0.2f, 1.0f, 0.2f, 1.0f };

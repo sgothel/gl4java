@@ -371,6 +371,7 @@ public class text3d extends SimpleGLAnimApplet1
             doubleBuffer = true;
             stereoView = false;
 	    accumSize = 8;
+	    setUseRepaint(false);
         }
     
         public void init()

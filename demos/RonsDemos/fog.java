@@ -215,7 +215,7 @@ public class fog extends Applet
             gl.glPushMatrix();
             gl.glTranslatef(x, y, z);
 
-            int qobj = glu.gluNewQuadric();
+            long qobj = glu.gluNewQuadric();
             glu.gluQuadricOrientation(qobj,GLU_OUTSIDE);
             glu.gluQuadricNormals(qobj,GLU_SMOOTH);
             glu.gluQuadricTexture(qobj,false);

@@ -72,6 +72,7 @@ public class SimpleGLAnimApplet1 extends Applet
     {
         checkUseFpsSleep.setState(canvas.getUseFpsSleep());
         checkUseRepaint.setState(canvas.getUseRepaint());
+        canvas.addMouseListener(this);
         canvas.start();
     }
 
@@ -111,9 +112,54 @@ public class SimpleGLAnimApplet1 extends Applet
     {
     }
     
+    Container _cont = null;
+
     public void mouseClicked( MouseEvent evt )
     {
 	Component comp = evt.getComponent();
+
+	if ((evt.getModifiers() & evt.BUTTON3_MASK) != 0) 
+	{
+	    if(comp instanceof GLAnimCanvas)
+	    {
+		GLAnimCanvas glcvs = (GLAnimCanvas)comp;
+		glcvs.cvsDispose();
+
+		Container c = glcvs.getParent();
+		c.remove(glcvs);
+
+		System.out.println("\n\nremoved: "+glcvs);
+		System.out.println("Global GLAnimCanvas Render-Thread Number: "+ GLAnimCanvas.getGlobalThreadNumber());
+		System.out.println("GLContextNumber: "+
+				GLContext.getNativeGLContextNumber());
+
+		glcvs.setVisible(true);
+
+		if(c instanceof Frame)
+		{
+			Frame of = (Frame)c;
+			of.dispose();
+			of=null;
+
+			_cont.add(canvas);
+			_cont.doLayout();
+		} else if(c instanceof Panel) 
+		{
+			_cont=c;
+			Frame f = new Frame("EXTRA");
+			f.add(glcvs);
+			f.pack();
+			f.setVisible(true);
+		}
+		glcvs.start();
+
+		System.out.println("\nadded+started: "+glcvs);
+		System.out.println("Global GLAnimCanvas Render-Thread Number: "+ GLAnimCanvas.getGlobalThreadNumber());
+		System.out.println("GLContextNumber: "+
+				GLContext.getNativeGLContextNumber());
+	    }
+	    return;
+	} 
 
 	if( canvas!=null && comp.equals(buttonFps) )
 	{

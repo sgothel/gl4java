@@ -111,7 +111,7 @@ public class shadowvol extends Applet
             reshape(getSize().width, getSize().height);
 
             byte tex[];
-            int sphere, cone, base;
+            long sphere, cone, base;
             float sphere_mat[] = {1.0f, 0.5f, 0.0f, 1.0f};
             float cone_mat[] = {0.0f, 0.5f, 1.0f, 1.0f};
 

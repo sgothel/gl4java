@@ -93,7 +93,7 @@ public  class TessJPanel extends GLJPanel
 	    int i;
 	    glut = new GLUTFuncLightImplWithFonts(gl, glu);
 
-	   int tobj;
+	   long tobj;
 
 	   gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 

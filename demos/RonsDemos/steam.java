@@ -95,7 +95,7 @@ public class steam extends SimpleGLAnimApplet1
         private int list_flywheel_filled = 4;
         private int list_flywheel_texture = 8;
             /* Variable used in the creaton of glu objects */
-        int obj;    // (GLU quadric object)
+        long obj;    // (GLU quadric object)
 
         private PopupMenu menu = null;
         private boolean menu_showing = false;
@@ -587,7 +587,7 @@ public class steam extends SimpleGLAnimApplet1
             /* Draws a cylinder using glu function, drawing flat discs
                at each end, to give the appearence of it being solid. */
         private void myCylinder
-            (int object, float outerRadius, float innerRadius, float length)
+            (long object, float outerRadius, float innerRadius, float length)
         {
             gl.glPushMatrix();
             glu.gluCylinder(object, outerRadius, outerRadius, length, 20, 1);

@@ -253,7 +253,7 @@ public class particle extends SimpleGLAnimApplet1
             sphere_list = gl.glGenLists(1);
             gl.glNewList(sphere_list,GL_COMPILE);
             gl.glColor3ub((byte)0, (byte)255, (byte)128);
-            int qobj = glu.gluNewQuadric();
+            long qobj = glu.gluNewQuadric();
             glu.gluQuadricOrientation(qobj,GLU_OUTSIDE);
             glu.gluQuadricNormals(qobj,GLU_SMOOTH);
             glu.gluQuadricTexture(qobj,false);

@@ -22,13 +22,36 @@
  * some X stuff is also modified/debugged to run on aix ...
  */
 
-/* 
- * need to include the JAVA internal header files for macros and function
- * prototypes required to maipulated JAVA data structures and functions
- *
- * StubPreamble.h includes the structure and macro definitions neede to
- * convert JAVA data structures into C data structures.
- *
+/**
+ * Pointer Semantics of GLContext:
+ * ==============================
+
+   "displayHandle"	:= (Display *)
+   	
+   "windowHandle" 	:= (Window)
+   	if("offScreenRenderer" == FALSE && "createOwnWindow" == TRUE )
+		"windowHandle" contains the new created Window 
+		               (by XCreateWindow)!
+	else
+		"windowHandle" contains the new Java-Native Window 
+
+   "pixmapHandle"	:= (Pixmap)
+   	if("offScreenRenderer" == TRUE)
+		"pixmapHandle" contains the new Pixmap (by XCreatePixmap)!
+		"windowHandle" contains the new created OffScreenWindow 
+			       (by glXCreateGLXPixmap)!
+        else
+		"pixmapHandle" is unused !
+
+   "sharedGLContextNative" := (GLXContext)
+   	This is the optional shared GLContext !
+
+   "glContext" := (GLXContext)
+   	This is THE used GLContext !
+
+   "pData    " := (jlong)
+   	This is used as the "not initialized" flag !
+	It is reset to zero while Destroy Method
  */
 
 #include <stdio.h>
@@ -53,555 +76,29 @@
 
 #include <stdlib.h>
 
+#include "OpenGL_X11_common.h"
 
 /*
  * STATIC FLAGS FOR gl4java behavior ...
  */
 static jboolean verbose = JNI_FALSE;
 
-/*
- * prototypes for functions local to this file scope
- */
-static int get_GC( Display *display, Window win, XVisualInfo *visual,
-                   GLXContext *gc, GLXContext gc_share);
-
-typedef struct {
-	XVisualInfo * visual;
-        GLXContext    gc;
-	int           success;  /* 1: OK, 0: ERROR */
-} VisualGC;
-
-static VisualGC findVisualGlX( Display *display, 
-			       Window rootWin,
-			       Window * pWin, 
-			       int width, int height,
-                               jboolean doubleBuffer, 
-                               jboolean stereoView,
-			       jboolean rgba,
-			       jint stencilBits,
-			       jint accumSize,
-			       jboolean * pOwnWin,
-			       GLXContext shareWith,
-			       jboolean offscreen,
-			       Pixmap *pix
-			     );
-
-static void printVisualInfo ( Display *display, XVisualInfo * vi);
-static void printAllVisualInfo ( Display *disp, Window win);
-
-static int testVisualInfo ( Display *display, XVisualInfo * vi, 
-		            int dblBuffer, int stereoView, int rgbaMode, 
-			    int stencilSize, int accumSize);
-
-static XVisualInfo * findVisualIdByFeature( XVisualInfo ** visualList, 
-                                  Display *disp, Window win,
-	                          int dblBuffer, int stereoView, int rgbaMode, 
-		                  int stencilSize, int accumSize);
-
-/* testJavaGLTypes does important implementation plattformspecific checks:
- *
- * o do fit the JNI <-> GL Variables-Type Mapping 
- * o IF ERROR OR VERBOSE -> DUMP JNI,GL Type-Length
- */
-jboolean testJavaGLTypes(jboolean verbose);
-
-/* testX11Java does important implementation plattformspecific checks:
- *
- * o do fit X11-Vars in jint (because GLFrame stores 'em like that)
- */
-static jboolean testX11Java();
-
-static int x11gl_myErrorHandler(Display *pDisp, XErrorEvent *p_error)
+JNIEXPORT jboolean JNICALL
+Java_gl4java_GLContext_useJAWT( JNIEnv *env, jobject obj )
 {
-	char err_msg[80];
-
-	XGetErrorText(pDisp, p_error->error_code, err_msg, 80);
-	fprintf(stderr, "X11 Error detected.\n %s\n", err_msg);
-	fprintf(stderr, " Protocol request: %d\n", p_error->request_code);
-	fprintf(stderr, " Resource ID : 0x%x\n", (int)p_error->resourceid);
-	fprintf(stderr, " \ntrying to continue ... \n");
-	fflush(stderr);
-	return 0;
+    (void)env;
+    (void)obj;
+    return JNI_FALSE;
 }
 
-static int x11gl_myIOErrorHandler(Display *pDisp)
+JNIEXPORT jboolean JNICALL
+Java_gl4java_GLContext_hasJAWTSurfaceChanged( JNIEnv *env, jobject obj,
+					      jlong thisWin )
 {
-	fprintf(stderr, "X11 I/O Error detected.\n");
-	fprintf(stderr, " \ndo not know what to do ... \n");
-	fflush(stderr);
-	return 0;
-}
-
-static Window createOwnOverlayWin(Display *display, Window rootwini, Window parentWin,
-                                  XVisualInfo *visual, int width, int height)
-{				  
-  /*
-  //------------------------------------------------------------------------//
-  // Some Systems (SGI) wont give up the window and so we have to create a  //
-  // window that fits on top of the Java Canvas.                            //
-  //------------------------------------------------------------------------//
-  */
-  Window window=0;
-  XSetWindowAttributes   attribs ;
-
-  /*
-    //----------------------------------------------------------------------//
-    // now we have the visual with the best depth so lets make a color map  //
-    // for it.  we use allocnone because this is a true colour visual and   //
-    // the color map is read only anyway. This must be done because we      //
-    // cannot call XCreateSimpleWindow.                                     // 
-    //----------------------------------------------------------------------//
-  */
-    int cmap = XCreateColormap ( display
-                               , rootwini
-                               , visual->visual
-                               , AllocNone 
-                               );
-
-  /*
-    //----------------------------------------------------------------------//
-    // Set up the window attributes.                                        //
-    //----------------------------------------------------------------------//
-  */
-    attribs.event_mask       = ExposureMask                              ;
-    attribs.border_pixel     = BlackPixel(display, DefaultScreen(display)) ;
-    attribs.colormap         = cmap                                        ;
-    attribs.bit_gravity      = SouthWestGravity ;                          ;
-    attribs.background_pixel = 0xFF00FFFF                                  ;  
-   
-  /*
-    //----------------------------------------------------------------------//
-    // Create a window.                                                     //
-    //----------------------------------------------------------------------//
-  */
-    window = XCreateWindow( display
-                          , parentWin  
-                          , 0
-                          , 0
-                          , width
-                          , height
-                          , 0
-                          , visual->depth
-                          , InputOutput
-                          , visual->visual
-                          , CWBitGravity  | CWColormap 
-                          | CWBorderPixel | CWBackPixel
-                          , &attribs);
-    
-    return window;
-}
-
-
-static void printVisualInfo ( Display *display, XVisualInfo * vi)
-{
-    int dblBuffer, stereoView, rgbaMode, stencilSize;
-    int accumRedSize, accumGreenSize, accumBlueSize, accumAlphaSize;
-
-    fprintf(stderr, "\nvi(ID:%d(0x%X)): \n screen %d, depth %d, class %d,\n clrmapsz %d, bitsPerRGB %d\n",
-	(int) vi->visualid,
-	(int) vi->visualid,
-	(int) vi->screen,
-	(int) vi->depth,
-	(int) vi->class,
-	(int) vi->colormap_size,
-	(int) vi->bits_per_rgb );
-
-    glXGetConfig( display, vi, GLX_DOUBLEBUFFER, &dblBuffer);
-    glXGetConfig( display, vi, GLX_STEREO, &stereoView);
-    glXGetConfig( display, vi, GLX_RGBA, &rgbaMode);
-    glXGetConfig( display, vi, GLX_STENCIL_SIZE, &stencilSize);
-    glXGetConfig( display, vi, GLX_ACCUM_RED_SIZE, &accumRedSize);
-    glXGetConfig( display, vi, GLX_ACCUM_GREEN_SIZE, &accumGreenSize);
-    glXGetConfig( display, vi, GLX_ACCUM_BLUE_SIZE, &accumBlueSize);
-    glXGetConfig( display, vi, GLX_ACCUM_ALPHA_SIZE, &accumAlphaSize);
-
-    fprintf(stderr, "\t doubleBuff: %d, ", dblBuffer);
-    fprintf(stderr, " stereo: %d, ", stereoView);
-    fprintf(stderr, " rgba: %d, ", rgbaMode);
-    fprintf(stderr, " stencilSize: %d !\n", stencilSize);
-    fprintf(stderr, "\t red accum: %d, ", accumRedSize);
-    fprintf(stderr, " green accum: %d, ", accumGreenSize);
-    fprintf(stderr, " blue accum: %d, ", accumBlueSize);
-    fprintf(stderr, " alpha accum: %d !\n", accumAlphaSize);
-
-    fflush(stderr);
-}
-
-static void printAllVisualInfo ( Display *disp, Window win)
-{
-    XVisualInfo    *	visualInfo=0;    
-    XVisualInfo    *    vi=0;
-    XVisualInfo    	viTemplate;
-    int 		i, numReturns;
-    XWindowAttributes 	xwa;
-
-    if(XGetWindowAttributes(disp, win, &xwa) == 0)
-    {
-	fprintf(stderr, "\nERROR while fetching XWindowAttributes\n");
-	fflush(stderr);
-	return;
-    }
-
-    viTemplate.screen = DefaultScreen( disp );
-    viTemplate.class = (xwa.visual)->class ;
-    viTemplate.depth = xwa.depth;
-
-    visualInfo = XGetVisualInfo( disp, VisualScreenMask,
-	&viTemplate, &numReturns ); 
-
-    if(JNI_TRUE==verbose)
-    {
-	    fprintf(stderr, "\nNum of Visuals : %d\n", numReturns );
-
-	    for(i=0; i<numReturns; i++)
-	    {
-	    	    vi = &(visualInfo[i]);
-		    printVisualInfo ( disp, vi);
-	    }
-    }
-
-    XFree(visualInfo); 	
-}
-
-static int testVisualInfo ( Display *display, XVisualInfo * vi, 
-		            int dblBuffer, int stereoView, int rgbaMode, 
-			    int stencilSize, int accumSize)
-{
-    int glxCfg;
-
-    glXGetConfig( display, vi, GLX_DOUBLEBUFFER, &glxCfg);
-    if(glxCfg<dblBuffer) return 0;
-
-    glXGetConfig( display, vi, GLX_STEREO, &glxCfg);
-    if(glxCfg<stereoView) return 0;
-
-    glXGetConfig( display, vi, GLX_RGBA, &glxCfg);
-    if(glxCfg<rgbaMode) return 0;
-
-    glXGetConfig( display, vi, GLX_STENCIL_SIZE, &glxCfg);
-    if(glxCfg<stencilSize) return 0;
-
-    glXGetConfig(display, vi, GLX_ACCUM_RED_SIZE, &glxCfg);
-    if(glxCfg<accumSize) return 0;
-
-    glXGetConfig(display, vi, GLX_ACCUM_GREEN_SIZE, &glxCfg);
-    if(glxCfg<accumSize) return 0;
-
-    glXGetConfig(display, vi, GLX_ACCUM_BLUE_SIZE, &glxCfg);
-    if(glxCfg<accumSize) return 0;
-
-    if(rgbaMode>0) {
-	    glXGetConfig(display, vi, GLX_ACCUM_ALPHA_SIZE, &glxCfg);
-	    if(glxCfg<accumSize) return 0;
-    }
-
-    return 1;
-}
-
-
-static XVisualInfo * findVisualIdByFeature( XVisualInfo ** visualList, 
-                                  Display *disp, Window win,
-	                          int dblBuffer, int stereoView, int rgbaMode, 
-		                  int stencilSize, int accumSize)
-{
-    XVisualInfo    *    vi=0;
-    XVisualInfo    	viTemplate;
-    int 		i, numReturns;
-    XWindowAttributes 	xwa;
-    int 		done=0;
-
-    if(XGetWindowAttributes(disp, win, &xwa) == 0)
-    {
-	fprintf(stderr, "\nERROR while fetching XWindowAttributes\n");
-	fflush(stderr);
-	return 0;
-    }
-
-    viTemplate.screen = DefaultScreen( disp );
-    viTemplate.class = (xwa.visual)->class ;
-    viTemplate.depth = xwa.depth;
-
-    *visualList = XGetVisualInfo( disp, VisualScreenMask,
-	                          &viTemplate, &numReturns ); 
-
-    for(i=0; done==0 && i<numReturns; i++)
-    {
-        vi = &((*visualList)[i]);
-	if ( testVisualInfo ( disp, vi, dblBuffer, stereoView, rgbaMode, 
-			      stencilSize, accumSize) )
-	{
-                if(JNI_TRUE==verbose)
-		{
-		    fprintf(stderr, "findVisualIdByFeature: Found matching Visual:\n");
-		    printVisualInfo ( disp, vi);
-		}
-		return vi;
-	}
-    }
-
-    if(JNI_TRUE==verbose)
-    {
-	    if( numReturns==0 )
-		fprintf(stderr, "findVisualIdByFeature: No available visuals. Exiting...\n" );
-	    else if( i>=numReturns )
-		fprintf(stderr, "findVisualIdByFeature: No matching visual found ...\n" );
-	    fflush(stderr);
-    }
-     
-    XFree(*visualList);
-    *visualList=NULL;
-    return NULL;
-}
-
-/**
- * Description for pWin:
- *   if ownwin:
- *      input: 	the parent window
- *      output: the newly created window
- *   else if ! ownwin:
- *      i/o:    the window itself
- */
-static VisualGC findVisualGlX( Display *display, 
-			       Window rootWin,
-			       Window * pWin, 
-			       int width, int height,
-                               jboolean doubleBuffer, 
-                               jboolean stereoView,
-			       jboolean rgba,
-			       jint stencilBits,
-			       jint accumSize,
-			       jboolean * pOwnWin,
-			       GLXContext shareWith,
-			       jboolean offscreen,
-			       Pixmap *pix
-			     )
-{
-    Window newWin = 0;
-    int visualAttribList[32];
-    int i=0;
-    int j=0;
-    int done=0;
-    VisualGC vgc = { NULL, 0, 0 };
-    jboolean tryChooseVisual = JNI_TRUE;
-    int gc_ret = 0;
-
-    /** 
-     * The Visual seeked by Function: findVisualIdByFeature !
-     */
-    XVisualInfo * visualList=NULL; /* the visual list, to be XFree-ed */
-
-    /* backup variables ... */
-    jboolean 	_rgba=rgba;
-    jint 	_stencilBits=stencilBits;
-    jint 	_accumSize=accumSize;
-    jboolean 	_stereoView=stereoView;
-    jboolean 	_doubleBuffer=doubleBuffer;
-
-    do {
-            if(JNI_TRUE==verbose)
-	    {
-	         fprintf(stderr, "GL4Java: seeking visual loop# %d\n", j);
-	    }
-
-            i=0;
-	    visualAttribList[i++] = GLX_RED_SIZE;
-	    visualAttribList[i++] = 1;
-	    visualAttribList[i++] = GLX_GREEN_SIZE;
-	    visualAttribList[i++] = 1;
-	    visualAttribList[i++] = GLX_BLUE_SIZE;
-	    visualAttribList[i++] = 1;
-	    visualAttribList[i++] = GLX_DEPTH_SIZE;
-	    visualAttribList[i++] = 1;
-	    visualAttribList[i++] = GLX_ACCUM_RED_SIZE;
-	    visualAttribList[i++] = accumSize;
-	    visualAttribList[i++] = GLX_ACCUM_GREEN_SIZE;
-	    visualAttribList[i++] = accumSize;
-	    visualAttribList[i++] = GLX_ACCUM_BLUE_SIZE;
-	    visualAttribList[i++] = accumSize;
-
-	    if(JNI_TRUE==rgba)
-	    {
-		    visualAttribList[i++] = GLX_RGBA;
-		    visualAttribList[i++] = GLX_ACCUM_ALPHA_SIZE;
-		    visualAttribList[i++] = accumSize;
-	    }
-	    if(JNI_TRUE==doubleBuffer)
-		    visualAttribList[i++] = GLX_DOUBLEBUFFER;
-	    if(JNI_TRUE==stereoView)
-		    visualAttribList[i++] = GLX_STEREO;
-	    visualAttribList[i++] = GLX_STENCIL_SIZE;
-	    visualAttribList[i++] = (int)stencilBits;
-	    visualAttribList[i] = None;
-
-            if(tryChooseVisual==JNI_TRUE && vgc.visual==NULL)
-	    {
-		    vgc.visual = glXChooseVisual( display,
-						  DefaultScreen( display ),
-						  visualAttribList );
-		    if(JNI_TRUE==verbose)
-		    {
-			if(vgc.visual!=NULL)
-			{
-			    fprintf(stderr, "glXChooseVisual: test visual(ID:%d(0x%X)):\n", 
-				(int) vgc.visual->visualid,
-				(int) vgc.visual->visualid);
-			    printVisualInfo ( display, vgc.visual);
-			} else
-			    fprintf(stderr, "glXChooseVisual: no visual\n");
-			fflush(stderr);
-		    }
-	    }
-
-	    if(vgc.visual==NULL)
-	    {
-	        vgc.visual = findVisualIdByFeature( &visualList, 
-				                      display, *pWin,
-	                                              doubleBuffer, stereoView,
-	                                              rgba, 
-						      stencilBits, 
-						      accumSize);
-	    }
-
-	    if(vgc.visual==NULL)
-	    {
-	        vgc.visual = findVisualIdByFeature( &visualList, 
-				                      display, *pWin,
-	                                              doubleBuffer, stereoView,
-	                                              rgba, 
-						      stencilBits>0, 
-						      accumSize>0);
-            }
-
-	    if( *pOwnWin == JNI_TRUE && vgc.visual!=NULL)
-	    {
-		newWin = createOwnOverlayWin(display, 
-					     rootWin, 
-					     *pWin /* the parent */,
-					     vgc.visual, width, height);
-	    }
-
-	    if( offscreen==JNI_TRUE && vgc.visual!=NULL)
-	    {
-	        if(*pix!=0)
-		{
-			XFreePixmap(display, *pix);
-		}
-		if(vgc.visual !=NULL)
-	    		*pix = XCreatePixmap( display, rootWin, width, height, 
-		                              vgc.visual->depth); 
-		if(*pix!=0)
-		{
-	           *pWin = glXCreateGLXPixmap( display,  vgc.visual, *pix );
-		   if(*pWin==0)
-		   {
-		   	XFreePixmap(display, *pix);
-			*pix=0;
-			fprintf(stderr, "GL4Java(%d): glXCreateGLXPixmap failed\n", j);
-			fflush(stderr);
-		   }
-		} else {
-		   fprintf(stderr, "GL4Java(%d): XCreatePixmap failed\n", j);
-		   fflush(stderr);
-		   *pWin = 0;
-		}
-                if(JNI_TRUE==verbose)
-		{
-			if(*pWin!=0)
-			{
-			   fprintf(stderr, "GL4Java(%d): pixmap ok\n", j);
-			   fflush(stderr);
-			}
-		}
-	    }
-
-	    gc_ret = -100;
-
-	    if( *pOwnWin == JNI_TRUE && newWin!=0 &&
-	        (gc_ret=get_GC( display, newWin,
-			        vgc.visual, &(vgc.gc), shareWith)) == 0
-              )
-	    {
-		    vgc.success=1;
-		    *pWin = newWin ;
-	    }
-	    else if( vgc.visual!=NULL &&  *pOwnWin == JNI_FALSE && *pWin!=0 &&
-	             (gc_ret=get_GC( display, *pWin,
-			             vgc.visual, &(vgc.gc), shareWith)) == 0
-	           )    
-	    {
-		    vgc.success=1;
-            } else 
-	    {
-	    	    j++; /* trial counter */
-		    if(JNI_TRUE==verbose)
-		    {
-		        fprintf(stderr, "GL4Java(%d): Visual fetching failed (gc_get=%d)\n", j, gc_ret);
-			fflush(stderr);
-		    }
-
-		    if(*pix!=0)
-		    {
-		   	XFreePixmap(display, *pix);
-			*pix=0;
-		    }
-
-		    if(visualList!=NULL)
-		    {
-			XFree(visualList);
-			visualList=NULL;
-	    		vgc.visual=NULL;
-		    } else if(vgc.visual!=NULL)
-		    {
-			XFree(vgc.visual);
-	    		vgc.visual=NULL;
-		    }
-
-		    /* Fall-Back ... */
-		    if(*pOwnWin==JNI_FALSE && offscreen==JNI_FALSE) {
-			rgba=_rgba;
-			stencilBits=_stencilBits;
-			accumSize=_accumSize;
-			stereoView=_stereoView;
-			doubleBuffer=_doubleBuffer;
-			*pOwnWin=JNI_TRUE;
-		    } else if(accumSize>0 && offscreen==JNI_TRUE) {
-		        accumSize=0;
-		    } else if(doubleBuffer==JNI_FALSE && offscreen==JNI_TRUE) {
-		        doubleBuffer=JNI_TRUE;
-		    } else if(stencilBits>0) {
-		        stencilBits=0;
-		    } else if(stereoView==JNI_TRUE) {
-			stereoView=JNI_FALSE;
-		    } else if(rgba==JNI_TRUE) {
-			rgba=JNI_FALSE;
-		    } else if(doubleBuffer==JNI_TRUE) {
-			doubleBuffer=JNI_FALSE;
-		    } else if(tryChooseVisual==JNI_TRUE) {
-			rgba=_rgba;
-			stencilBits=_stencilBits;
-			accumSize=_accumSize;
-			stereoView=_stereoView;
-			doubleBuffer=_doubleBuffer;
-			*pOwnWin=JNI_FALSE;
-			tryChooseVisual=JNI_FALSE;
-		    } else done=1;
-	    }
-    } while (vgc.success==0 && done==0) ;
-
-    if(vgc.success==1 && JNI_TRUE==verbose)
-    {
-	    fprintf(stderr, "\nfindVisualGlX vi(ID:%d): \n screen %d, depth %d, class %d,\n clrmapsz %d, bitsPerRGB %d, shared with %d\n",
-		(int)vgc.visual->visualid,
-		(int)vgc.visual->screen,
-		(int)vgc.visual->depth,
-		(int)vgc.visual->class,
-		(int)vgc.visual->colormap_size,
-		(int)vgc.visual->bits_per_rgb,
-		(int)shareWith);
-	    printVisualInfo ( display, vgc.visual);
-    }
-
-    return vgc;
+    (void)env;
+    (void)obj;
+    (void)thisWin;
+    return JNI_FALSE;
 }
 
 /*
@@ -615,7 +112,8 @@ static VisualGC findVisualGlX( Display *display,
  * followed by the method table for the class.
  */
 JNIEXPORT jboolean JNICALL
-Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
+Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj,
+					 jobject canvas)
 {
     int screen = 0;
 
@@ -642,7 +140,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
     jint jaccumSize=0;
     jboolean jownwind = JNI_FALSE ;
     jint jcreatewinw = 0, jcreatewinh = 0;
-    jint jshareWith = 0;
+    GLXContext jshareWith = 0;
 
     /* these variables will be mapped in the java-object ! */
     Window thisWin=0;
@@ -651,6 +149,8 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
     Pixmap pix;
 
     int iValue, iValue1, iValue2, iValue3;
+
+    (void)canvas;
 
     cls = (*env)->GetObjectClass(env, obj);
     if(cls==0) 
@@ -679,7 +179,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
 	fflush(stderr);
     }
 
-    /* FIRST OF ALL CHECK IF A NATIVE POINTER OR X11-TYPE FITS IN ´jint´ */
+    /* FIRST OF ALL CHECK IF A NATIVE POINTER OR X11-TYPE FITS IN ´jlong´ */
     ret = testX11Java();
     ret = testJavaGLTypes(verbose);
 
@@ -739,20 +239,23 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
     }
 
     if(ret==JNI_TRUE) {
-	    fshareWith = (*env)->GetFieldID(env, cls, "sharedGLContextNative", "I");
+	    fshareWith = (*env)->GetFieldID(env, cls, "sharedGLContextNative", "J");
 	    if (fshareWith == 0) ret= JNI_FALSE;
-	    else jshareWith =(*env)->GetIntField(env, obj, fshareWith);
+	    else jshareWith = (GLXContext)
+		( (PointerHolder) (*env)->GetLongField(env, obj, fshareWith) );
     }
 
 
     if(ret==JNI_TRUE) {
-	    fwindowHandle = (*env)->GetFieldID(env, cls, "windowHandle", "I");
+	    fwindowHandle = (*env)->GetFieldID(env, cls, "windowHandle", "J");
 	    if (fwindowHandle == 0) ret= JNI_FALSE;
-	    else thisWin =(Window) (*env)->GetIntField(env, obj, fwindowHandle);
+	    else 
+	      thisWin =(Window) 
+	      ( (PointerHolder) (*env)->GetLongField(env, obj, fwindowHandle) );
     }
 
     if(ret==JNI_TRUE) {
-	    fpixmapHandle = (*env)->GetFieldID(env, cls, "pixmapHandle", "I");
+	    fpixmapHandle = (*env)->GetFieldID(env, cls, "pixmapHandle", "J");
 	    if (fpixmapHandle == 0) ret= JNI_FALSE;
     }
 
@@ -771,8 +274,8 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
 
     if(JNI_TRUE==verbose)
     {
-	fprintf(stderr,"\nGL4Java:  (JAVA FOUND WINDOW HANDLE %d == 0x%x)\n", 
-	    (int)thisWin, (int)thisWin);
+	fprintf(stderr,"\nGL4Java:  (JAVA FOUND WINDOW HANDLE 0x%p)\n", 
+	    (void *)((PointerHolder)thisWin));
 	if(joffScreenRenderer==JNI_TRUE)
 	{
 	  fprintf(stderr,"\nGL4Java:  (USING OFFSCREEN GLPIXMAP BUFFER,\n\t forced: !ownWindow, window=NULL)\n");
@@ -789,12 +292,12 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
     }
 
     if(ret==JNI_TRUE) {
-	    fdisplayHandle = (*env)->GetFieldID(env, cls, "displayHandle", "I");
+	    fdisplayHandle = (*env)->GetFieldID(env, cls, "displayHandle", "J");
 	    if (fdisplayHandle == 0) ret= JNI_FALSE;
     }
 
     if(ret==JNI_TRUE) {
-	    fglContext=(*env)->GetFieldID(env, cls, "glContext", "I");
+	    fglContext=(*env)->GetFieldID(env, cls, "glContext", "J");
 	    if (fglContext == 0) ret= JNI_FALSE;
     }
 
@@ -845,8 +348,8 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
 	                         (int)jcreatewinw, (int)jcreatewinh, 
                                  jdoubleBuffer, jstereoView, jrgba, 
 				 jstencilBits, jaccumSize,
-				 &jownwind, (GLXContext) jshareWith,
-				 joffScreenRenderer, &pix);
+				 &jownwind, jshareWith,
+				 joffScreenRenderer, &pix, verbose);
 
 	    if(vgc.success == 0 && jrgba==JNI_TRUE)
 	    {
@@ -855,8 +358,8 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
 	                             (int)jcreatewinw, (int)jcreatewinh, 
                                      jdoubleBuffer, jstereoView, jrgba, 
 				     jstencilBits, jaccumSize,
-				     &jownwind, (GLXContext) jshareWith,
-				     joffScreenRenderer, &pix);
+				     &jownwind, jshareWith,
+				     joffScreenRenderer, &pix, verbose);
 	    }
 
 	    if(vgc.success == 0)
@@ -982,19 +485,19 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
     }
 
     if(ret==JNI_TRUE && fwindowHandle!=0) {
-	    (*env)->SetIntField(env, obj, fwindowHandle, (jint)thisWin);
+	    (*env)->SetLongField(env, obj, fwindowHandle, (jlong)((PointerHolder)thisWin));
     }
 
     if(ret==JNI_TRUE && fpixmapHandle!=0) {
-	    (*env)->SetIntField(env, obj, fpixmapHandle, (jint)pix);
+	    (*env)->SetLongField(env, obj, fpixmapHandle, (jlong)((PointerHolder)pix));
     }
 
     if(ret==JNI_TRUE && fdisplayHandle) {
-	    (*env)->SetIntField(env, obj, fdisplayHandle, (jint)display);
+	    (*env)->SetLongField(env, obj, fdisplayHandle, (jlong)((PointerHolder)display));
     }
 
     if(ret==JNI_TRUE && fglContext) {
-	    (*env)->SetIntField(env, obj, fglContext, (jint)vgc.gc);
+	    (*env)->SetLongField(env, obj, fglContext, (jlong)((PointerHolder)vgc.gc));
     }
 
     if(ret==JNI_TRUE && fownwind) {
@@ -1007,7 +510,7 @@ Java_gl4java_GLContext_openOpenGLNative( JNIEnv *env, jobject obj )
 JNIEXPORT void JNICALL
 Java_gl4java_GLContext_gljResizeNative( JNIEnv *env, jobject obj,
 	                                jboolean isOwnWindow,
-				        jint disp, jint thisWin,
+				        jlong disp, jlong thisWin,
 				        jint width, jint height)
 {
     /* perform a X11 synchronise, because rendering could be done
@@ -1018,7 +521,8 @@ Java_gl4java_GLContext_gljResizeNative( JNIEnv *env, jobject obj,
 
     if(isOwnWindow)
     {
-	   XResizeWindow((Display *)disp, (Window)thisWin, width, height);
+	   XResizeWindow((Display *)((PointerHolder)disp), 
+	                 (Window)((PointerHolder)thisWin), width, height);
 	   /* if(JNI_TRUE==verbose)
 	   {
 		fprintf(stderr, "XResizeWindow -> %d x %d\n", 
@@ -1032,13 +536,16 @@ Java_gl4java_GLContext_gljResizeNative( JNIEnv *env, jobject obj,
 
 JNIEXPORT jboolean JNICALL
 Java_gl4java_GLContext_gljMakeCurrentNative( JNIEnv *env, jobject obj,
-					     jint disp,
-					     jint thisWin,
-					     jint glContext
+					     jobject canvas,
+					     jlong disp,
+					     jlong thisWin,
+					     jlong glContext
                                            )
 {
     jboolean ret = JNI_TRUE;
     GLXContext ctx = NULL;
+
+    (void)canvas;
 
     if(glContext==0)
     {
@@ -1049,14 +556,16 @@ Java_gl4java_GLContext_gljMakeCurrentNative( JNIEnv *env, jobject obj,
 
     ctx = glXGetCurrentContext();
 
-    if(ctx==(GLXContext)glContext)
+    if(ctx==(GLXContext)((PointerHolder)glContext))
     	return JNI_TRUE;
 
     if(ret==JNI_TRUE)
     {
-	    if( !glXMakeCurrent( (Display *)disp, (Window)thisWin, 
-	                         (GLXContext)glContext ) ) 
+	    if( !glXMakeCurrent( (Display *)((PointerHolder)disp), 
+	                         (Window)((PointerHolder)thisWin), 
+	                         (GLXContext)((PointerHolder)glContext) ) ) 
 	    {
+   extern GLenum glGetError ( void ) ;
 		fprintf(stderr, "GL4Java: gljMakeCurrent failed with GC\n  Another thread may be use it now ...\n");
 		fflush(stderr);
 		ret = JNI_FALSE;
@@ -1068,19 +577,21 @@ Java_gl4java_GLContext_gljMakeCurrentNative( JNIEnv *env, jobject obj,
 
 JNIEXPORT jboolean JNICALL
 Java_gl4java_GLContext_gljFreeNative( JNIEnv *env, jobject obj,
-				      jint disp,
-				      jint thisWin,
-				      jint glContext
+			              jobject canvas,
+				      jlong disp,
+				      jlong thisWin,
+				      jlong glContext
 				    )
 {
     jboolean ret = JNI_TRUE;
 
     (void)thisWin;
     (void)glContext;
+    (void)canvas;
 
     if(ret==JNI_TRUE)
     {
-	    if( !glXMakeCurrent( (Display *)disp, None, NULL ) ) 
+	    if( !glXMakeCurrent( (Display *)((PointerHolder)disp), None, NULL)) 
 	    {
 		fprintf(stderr, "GL4Java: gljFree failed\n");
 		fflush(stderr);
@@ -1092,12 +603,12 @@ Java_gl4java_GLContext_gljFreeNative( JNIEnv *env, jobject obj,
 
 JNIEXPORT jboolean JNICALL
 Java_gl4java_GLContext_gljIsContextCurrentNative( JNIEnv *env, jobject obj,
-				      jint glContext
+				      jlong glContext
 				    )
 {
     GLXContext ctx = glXGetCurrentContext();
 
-    if(ctx==(GLXContext)glContext)
+    if(ctx==(GLXContext)((PointerHolder)glContext))
     	return JNI_TRUE;
 
     return JNI_FALSE;
@@ -1105,52 +616,67 @@ Java_gl4java_GLContext_gljIsContextCurrentNative( JNIEnv *env, jobject obj,
 
 
 JNIEXPORT jboolean JNICALL
-Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj )
+Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj,
+					 jobject canvas )
 {
     jclass cls = 0;
     jfieldID fdisplayHandle=0, fwindowHandle=0, fglContext=0;
     jfieldID fpixmapHandle=0;
     jfieldID fpData=0;
+    jfieldID fownwind=0;
 
+    jboolean jownwind = JNI_FALSE ;
     Display *disp=0;
     GLXContext gc=0;
     Window win=0;
-    jint pData=0;
+    jlong pData=0;
     Pixmap pix=0;
 
     jboolean ret = JNI_TRUE;
+
+    (void) canvas;
 
     cls = (*env)->GetObjectClass(env, obj);
     if(cls==0) ret=JNI_FALSE;
 
     if(ret==JNI_TRUE) {
-	    fwindowHandle = (*env)->GetFieldID(env, cls, "windowHandle", "I");
+	    fwindowHandle = (*env)->GetFieldID(env, cls, "windowHandle", "J");
 	    if (fwindowHandle == 0) ret= JNI_FALSE;
-	    else win = (Window) (*env)->GetIntField(env, obj, fwindowHandle);
+	    else win = (Window) 
+	      ( (PointerHolder) (*env)->GetLongField(env, obj, fwindowHandle) );
     }
 
     if(ret==JNI_TRUE) {
-	    fdisplayHandle = (*env)->GetFieldID(env, cls, "displayHandle", "I");
+	    fdisplayHandle = (*env)->GetFieldID(env, cls, "displayHandle", "J");
 	    if (fdisplayHandle == 0) ret= JNI_FALSE;
-	    else disp=(Display *)(*env)->GetIntField(env, obj, fdisplayHandle);
+	    else disp=(Display *)
+	      ( (PointerHolder) (*env)->GetLongField(env, obj, fdisplayHandle));
     }
 
     if(ret==JNI_TRUE) {
-	    fglContext=(*env)->GetFieldID(env, cls, "glContext", "I");
+	    fglContext=(*env)->GetFieldID(env, cls, "glContext", "J");
 	    if (fglContext == 0) ret= JNI_FALSE;
-	    else gc =(GLXContext)(*env)->GetIntField(env, obj, fglContext);
+	    else gc =(GLXContext)
+	      ( (PointerHolder) (*env)->GetLongField(env, obj, fglContext) );
     }
 
     if(ret==JNI_TRUE) {
-	fpData = (*env)->GetFieldID(env, cls, "pData", "I");
+	fpData = (*env)->GetFieldID(env, cls, "pData", "J");
 	if (fpData == 0) ret= JNI_FALSE;
-	else pData =(*env)->GetIntField(env, obj, fpData);
+	else pData =(*env)->GetLongField(env, obj, fpData);
     }
 
     if(ret==JNI_TRUE) {
-	    fpixmapHandle = (*env)->GetFieldID(env, cls, "pixmapHandle", "I");
+	    fpixmapHandle = (*env)->GetFieldID(env, cls, "pixmapHandle", "J");
 	    if (fpixmapHandle == 0) ret= JNI_FALSE;
-	    else pix = (Pixmap)(*env)->GetIntField(env, obj, fpixmapHandle);
+	    else pix = (Pixmap) 
+	     ( (PointerHolder) (*env)->GetLongField(env, obj, fpixmapHandle));
+    }
+
+    if(ret==JNI_TRUE) {
+	    fownwind = (*env)->GetFieldID(env, cls, "createOwnWindow", "Z");
+	    if (fownwind == 0) ret= JNI_FALSE;
+	    else jownwind =(*env)->GetBooleanField(env, obj, fownwind);
     }
 
     glXWaitGL();
@@ -1166,17 +692,23 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj )
 		}
 		ret = JNI_FALSE;
 	    }
-	    if( ret==JNI_TRUE && !glXMakeCurrent( disp, None, NULL ) ) 
+	    glXMakeCurrent( disp, None, NULL );
+
+	    if(ret==JNI_TRUE) 
 	    {
-		fprintf(stderr, "GL4Java: gljDestroy failed\n");
-		fflush(stderr);
-		ret = JNI_FALSE;
-	    }  else if(ret==JNI_TRUE) {
 		glXDestroyContext(disp, gc);
 	        if(pix!=0)
 	        {
-		    XFreePixmap(disp, (Pixmap)pix);
+		    if(win!=0)
+			    glXDestroyGLXPixmap(disp, win);
+		    win=0;
+		    XFreePixmap(disp, pix);
 	        }
+		if(jownwind && win!=0)
+		{
+		    XDestroyWindow(disp, win);
+		    win=0;
+		}
 	    }
     }
 
@@ -1190,33 +722,37 @@ Java_gl4java_GLContext_gljDestroyNative( JNIEnv *env, jobject obj )
     }
 
     if(ret==JNI_TRUE && fpixmapHandle!=0) {
-	    (*env)->SetIntField(env, obj, fpixmapHandle, (jint)pix);
+	    (*env)->SetLongField(env, obj, fpixmapHandle, (jlong)((PointerHolder)pix));
     }
 
     if(ret==JNI_TRUE && fwindowHandle!=0) {
-	    (*env)->SetIntField(env, obj, fwindowHandle, (jint)win);
+	    (*env)->SetLongField(env, obj, fwindowHandle, (jlong)((PointerHolder)win));
     }
 
     if(ret==JNI_TRUE && fdisplayHandle) {
-	    (*env)->SetIntField(env, obj, fdisplayHandle, (jint)disp);
+	    (*env)->SetLongField(env, obj, fdisplayHandle, (jlong)((PointerHolder)disp));
     }
 
     if(ret==JNI_TRUE && fglContext) {
-	    (*env)->SetIntField(env, obj, fglContext, (jint)gc);
+	    (*env)->SetLongField(env, obj, fglContext, (jlong)((PointerHolder)gc));
     }
 
 
     if(ret==JNI_TRUE && fpData) {
-	    (*env)->SetIntField(env, obj, fpData, (jint)pData);
+	    (*env)->SetLongField(env, obj, fpData, pData);
+    }
+
+    if(ret==JNI_TRUE && fownwind) {
+	    (*env)->SetBooleanField(env, obj, fownwind, jownwind);
     }
     return ret;
 }
 
 JNIEXPORT jboolean JNICALL
 Java_gl4java_GLContext_gljSwapNative( JNIEnv *env, jobject obj,
-				      jint disp,
-				      jint thisWin,
-				      jint glContext,
+				      jlong disp,
+				      jlong thisWin,
+				      jlong glContext,
 				      jboolean doubleBuffer
 				    )
 {
@@ -1226,95 +762,10 @@ Java_gl4java_GLContext_gljSwapNative( JNIEnv *env, jobject obj,
 	/* don't double buffer */
 	glXWaitGL();
     } else {
-	glXSwapBuffers( (Display *)disp, (Window)thisWin );
+	glXSwapBuffers( (Display *)((PointerHolder)disp), 
+	                (Window)((PointerHolder)thisWin) );
     }
 
     return JNI_TRUE;
-}
-
-/*
- * Name      : get_GC
- *
- * Parameters: win    - the X window use to the OpenGL context with
- *             visual - The visual to create the context for
- *             gc     - a pointer to a GLXContext structure. This is how
- *                      the created context will be returned to the caller
- *
- * Returns   : a pointer to a created GLXContext is returned through the
- *             gc argument.
- *             int - an error code: 0 means everything was fine
- *                                 -1 context creation failed
- *                                 -2 context/window association failed
- *
- * Purpose   : create an X window Graphics context and assocaite it with
- *             the window. It returns 0 if everything was fine, -1 if the
- *             context could not be created, -2 if the context could not
- *             be associated with the window
- */
-static int get_GC( Display *display, Window win, XVisualInfo *visual,
-                   GLXContext *gc, GLXContext gc_share)
-{
-    int trial = 2;
-
-    while(trial>0)
-    {
-    	switch(trial)
-	{
-	  case 2:
-	    *gc = glXCreateContext( display, visual, gc_share, GL_TRUE );
-	    break;
-	  case 1:
-	    *gc = glXCreateContext( display, visual, gc_share, GL_FALSE );
-	    break;
-	}
-    	trial--;
-
-        /* check if the context could be created */
-        if( *gc == NULL ) {
-	    continue;
-        }
-
-        /* associated the context with the X window */
-        if( glXMakeCurrent( display, win, *gc ) == False) {
-	    glXDestroyContext( display, *gc );
-	    continue;
-        } else return 0;
-    }
-
-    return -2;
-}
-
-static jboolean testX11Java()
-{
-    jboolean ret=JNI_TRUE;
-
-    /* NON DEPENDENCE CHECKS */
-
-    /* FIRST OF ALL CHECK IF A NATIVE POINTER OR X11-TYPE FITS IN ´jint´ */
-
-    if( sizeof(jint) < sizeof(Display *) )
-    {
-        fprintf(stderr,"GL4Java: (Display *) fits not in jint\n");
-	ret = JNI_FALSE;
-    }
-
-    if( sizeof(jint) < sizeof(GLXContext) )
-    {
-        fprintf(stderr,"GL4Java: GLXContext fits not in jint\n");
-	ret = JNI_FALSE;
-    }
-
-    if( sizeof(jint) < sizeof(Window) )
-    {
-        fprintf(stderr,"GL4Java: Window fits not in jint\n");
-	ret = JNI_FALSE;
-    }
-
-    if(ret==JNI_FALSE)
-    {
-	fflush(stderr);
-    }
-
-    return ret;
 }
 

@@ -22,6 +22,19 @@
 		#define LIBAPI
 	#endif
 
+	#ifndef USE_64BIT_POINTER
+		typedef int  PointerHolder;
+	#else
+		typedef long PointerHolder;
+	#endif
+
+	/* testJavaGLTypes does important implementation plattformspecific checks:
+	 *
+	 * o do fit the JNI <-> GL Variables-Type Mapping 
+	 * o IF ERROR OR VERBOSE -> DUMP JNI,GL Type-Length
+	 */
+	LIBAPI jboolean LIBAPIENTRY testJavaGLTypes(jboolean verbose);
+	  
 	LIBAPI void * LIBAPIENTRY getGLProcAddressHelper
 				         (const char * func, int * method,
 					  int debug, int verbose );

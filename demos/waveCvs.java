@@ -201,7 +201,6 @@ class waveCvs extends GLAnimCanvas
 	    /* Standard gl4java Init */
 	    if( glj.gljMakeCurrent() == false ) 
 	    {
-		System.out.println("wave-display: problem in use() method");
 		return;
 	    }
 
@@ -476,7 +475,6 @@ class waveCvs extends GLAnimCanvas
 
 	    if( glj.gljMakeCurrent() == false ) 
 	    {
-		    System.out.println("CtrlWin: problem in use() method");
 		    return;
 	    } else {
 		    gl.glFinish();

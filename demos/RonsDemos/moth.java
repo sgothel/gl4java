@@ -423,7 +423,7 @@ public class moth extends SimpleGLAnimApplet1
             gl.glTranslatef(0.0f, 1.6f, -5.0f);
 
                 /* draw lamp */
-            int qobj = glu.gluNewQuadric();
+            long qobj = glu.gluNewQuadric();
             glu.gluQuadricOrientation(qobj,GLU_OUTSIDE);
             glu.gluQuadricNormals(qobj,GLU_SMOOTH);
             glu.gluQuadricTexture(qobj,false);

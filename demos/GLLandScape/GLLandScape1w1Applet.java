@@ -1,13 +1,14 @@
 
 import gl4java.GLContext;
+import gl4java.GLFunc;
 import java.awt.*;
 import java.applet.*;
 import java.awt.event.*;
 
 public class GLLandScape1w1Applet extends Applet
-  implements MouseListener, KeyListener, ActionListener
+  implements MouseListener, KeyListener, ActionListener, ItemListener
 {
-	GLLandScape1w1 landScape = null;
+	public GLLandScape1w1 landScape = null;
 
 	Button bAddPlane = null;
 	Button bRemPlane = null;
@@ -19,9 +20,15 @@ public class GLLandScape1w1Applet extends Applet
 
 	Button bFps; TextField tFps;
 
+	Checkbox bUseRepaint = null;
+	Checkbox bUseFpsSleep = null;
+
 	boolean gameOn = true;
 
 	SpeedTimer tMySpeed = null;
+
+	GLThread gt1 = null;
+	GLThread gt2 = null;
 
 	public void init()
 	{
@@ -51,13 +58,21 @@ public class GLLandScape1w1Applet extends Applet
 		add("East", glFeatures);
 
 		Panel pFps = new Panel();
-		pFps.setLayout(new GridLayout(1,3));
+		pFps.setLayout(new GridLayout(1,5));
 		pFps.add(bInfo =new Button("info"));
 		pFps.add(bFps =new Button("get fps"));
 		pFps.add(tFps =new TextField());
 		bInfo.addMouseListener(this);
 		bFps.addMouseListener(this);
 		tFps.addActionListener(this);
+
+		bUseRepaint = new Checkbox("repaint", true);
+		bUseRepaint.addItemListener(this);
+		pFps.add(bUseRepaint);
+		bUseFpsSleep = new Checkbox("fps-sleep", true);
+		bUseFpsSleep.addItemListener(this);
+		pFps.add(bUseFpsSleep);
+
 		add("South", pFps);
 
 		if(w==0 && h==0)
@@ -79,9 +94,16 @@ public class GLLandScape1w1Applet extends Applet
 		add("Center", landScape);
 	} 
 
+	public void startTestThreads()
+	{
+		gt1 = new GLThread(landScape, GLFunc.GL_VENDOR, "gt1");
+		gt2 = new GLThread(landScape, GLFunc.GL_VERSION, "gt2");
+	        gt1.start();
+	        gt2.start();
+	}
+
 	public void destroy()
 	{
-	    landScape.stop();
 	    landScape.cvsDispose();
 	    landScape.removeMouseListener(this);   
 	    landScape.removeKeyListener(this);   
@@ -114,6 +136,7 @@ public class GLLandScape1w1Applet extends Applet
 				     gljLib + ", " + glLib + ", " + gluLib);
 
 		GLContext.gljNativeDebug = false;
+		GLContext.gljThreadDebug = false;
 		GLContext.gljClassDebug  = false;
 
 		GLLandScape1w1Applet window = 
@@ -141,12 +164,39 @@ public class GLLandScape1w1Applet extends Applet
 		Dimension ps = window.getPreferredSize();
 		f.setBounds(-100,-100,99,99);
 		f.setVisible(true);
-		f.setVisible(false);
+		//f.setVisible(false);
 		Insets i = f.getInsets();
 		f.setBounds(0,0,
 			    ps.width+i.left+i.right, 
 		            ps.height+i.top+i.bottom);
 		f.setVisible(true);
+
+		// ThreadTest
+		// window.startTestThreads();
+	}
+
+	public void itemStateChanged( ItemEvent evt )
+	{
+		ItemSelectable comp = evt.getItemSelectable();
+
+		if( comp.equals(bUseRepaint) )
+		{
+			if(landScape!=null)
+			{
+			  landScape.setUseRepaint(bUseRepaint.getState());
+			  System.out.println("LandScape uses repaint: "+
+			  	bUseRepaint.getState());
+			}
+		}
+		else if( comp.equals(bUseFpsSleep ) )
+		{
+			if(landScape!=null)
+			{
+			  landScape.setUseFpsSleep(bUseFpsSleep.getState());
+			  System.out.println("LandScape uses fps-sleep: "+
+				bUseFpsSleep.getState());
+		        }
+		}
 	}
 
         // Methods required for the implementation of MouseListener
@@ -215,12 +265,12 @@ public class GLLandScape1w1Applet extends Applet
 	    {
                 if ( key==KeyEvent.VK_LEFT )
 		{
-			landScape.myMove(landScape.TURNLEFT, 0.1f, true, true);
+			landScape.myMove(landScape.TURNLEFT, 0.1f, false);
 			tMySpeed.start();
 		}
 	        else if ( key==KeyEvent.VK_RIGHT )
 		{
-			landScape.myMove(landScape.TURNLEFT, -0.1f, true, true);
+			landScape.myMove(landScape.TURNLEFT, -0.1f, false);
 			tMySpeed.start();
 		}
 	        else if ( key==KeyEvent.VK_UP )
@@ -241,24 +291,24 @@ public class GLLandScape1w1Applet extends Applet
 			float v = tMySpeed.getSpeed();
 
 			if ( e.isShiftDown() )
-			        tMySpeed.setSpeed(v/2.0f);
+			        tMySpeed.setSpeed(v-2.0f);
 			else
 			        tMySpeed.setSpeed(v-1.0f);
 			tMySpeed.start();
 		}
                 else if ( key==KeyEvent.VK_PAGE_UP )
 		{
-			landScape.myMove(landScape.LOOKUP, 0.1f, true,true);
+			landScape.myMove(landScape.LOOKUP, 0.1f, false);
 			tMySpeed.start();
 		}
                 else if ( key==KeyEvent.VK_PAGE_DOWN )
 		{
-			landScape.myMove(landScape.LOOKUP, -0.1f, true,true);
+			landScape.myMove(landScape.LOOKUP, -0.1f, false);
 			tMySpeed.start();
 		}
                 else if ( key==KeyEvent.VK_END )
 		{
-			landScape.myMove(landScape.LOOKSET, 0f, true,true);
+			landScape.myMove(landScape.LOOKSET, 0f, false);
 			tMySpeed.start();
 		}
 	     }
@@ -306,7 +356,7 @@ public class GLLandScape1w1Applet extends Applet
 
 	 class SpeedTimer implements Runnable {
 	      protected Thread me = null;
-	      protected boolean to=false, started=false;
+	      protected boolean to=false;
 	      protected int _t;
 
 	      protected float speed = 0.0f;
@@ -315,51 +365,128 @@ public class GLLandScape1w1Applet extends Applet
 	      public SpeedTimer(GLLandScape1w1 ls, int t) 
 	      { _ls=ls; _t=t; }
 
-		    public void start()
+		    public synchronized void start()
 		    {
-		      if(me!=null) stop();
-		      to=false;
-		      started=true;
+		      if(me!=null && to) return;
+
+		      stop();
 
 		      me = new Thread(this);
 		      me.start();
 		    }
 
-		    public void stop() {
+		    public synchronized void stop() {
 		      if(me!=null)
 		      {
-			    me.stop();
 			    me=null;
-			    started=false;
-			    to=false;
+
+			    notifyAll();
+
+			    while(to)  {
+			    	try {
+					wait();
+				} catch (Exception e) {}
+			    }
 		      }	
 		    }	
 
 	      public void run() {
 		    if(me!=null)
 		    {
-			    try {me.sleep(_t,0);} catch (InterruptedException e){}
-			    to=true;
-			    while(speed>1.0f)
+			    synchronized (this) {
+			    	to=true;
+				notifyAll();
+			    }
+			    while(me!=null && (-0.2f>=speed || speed>=0.2f) )
 			    {
+				    try {me.sleep(_t,0);} catch (InterruptedException e){}
 			    	    speed/=2.0f;
 			            _ls.setMySpeed(speed);
-				    try {me.sleep(_t,0);} catch (InterruptedException e){}
+				    // System.out.println("timer: lower speed: "+speed);
 			    }
 			    speed = 0.0f;
 			    _ls.setMySpeed(0f);
+
+			    synchronized (this) {
+			    	to=false;
+				notifyAll();
+			    }
 		    }	
 	      }
 
 	      public boolean isActive() { return to; }
-	      public boolean isStarted() { return started; }
 
 	      public float getSpeed() { return speed; }
 	      public void setSpeed(float v) 
 	      { speed=v; 
 	        _ls.setMySpeed(speed);
+	        //System.out.println("timer: set speed: "+speed);
 	      }
 	 	
+	 }
+
+	 class GLThread implements Runnable {
+	      protected Thread me = null;
+	      protected boolean to=false;
+	      protected int _id;
+	      protected String _name;
+
+	      protected GLLandScape1w1 _ls;
+
+	      public GLThread(GLLandScape1w1 ls, int id, String name) 
+	      { _ls=ls; _id=id; _name=name;}
+
+		    public synchronized void start()
+		    {
+		      if(me!=null && to) return;
+
+		      stop();
+
+		      me = new Thread(this, _name);
+		      me.start();
+		    }
+
+		    public synchronized void stop() {
+		      if(me!=null)
+		      {
+			    me=null;
+
+			    notifyAll();
+
+			    while(to)  {
+			    	try {
+					wait();
+				} catch (Exception e) {}
+			    }
+		      }	
+		    }	
+
+	      public void run() {
+		    if(me!=null)
+		    {
+			    synchronized (this) {
+			    	to=true;
+				notifyAll();
+			    }
+			    while(me!=null)
+			    {
+			        if(_ls.cvsIsInit())
+				{
+				    if(GLContext.gljThreadDebug)
+			    	       _ls.getGLString(_id);
+				    else
+			    	        System.out.println("gt: "+_ls.getGLString(_id));
+				}
+			    }
+
+			    synchronized (this) {
+			    	to=false;
+				notifyAll();
+			    }
+		    }	
+	      }
+
+	      public boolean isActive() { return to; }
 	 }
 
 	class InfoWin extends Frame 

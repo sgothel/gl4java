@@ -171,15 +171,28 @@ public class morph3d extends SimpleGLAnimApplet1
 
 	public void init()
 	{
-	super.init();
-        Dimension d = getSize();
-        canvas = new morph3dCanvas(d.width, d.height);
-        add("Center", canvas);
+	  super.init();
+          Dimension d = getSize();
+          canvas = new morph3dCanvas(d.width, d.height);
+          add("Center", canvas);
 	}
 
 	public static void main( String args[] ) 
 	{
 		Frame mainFrame = new Frame("morph3d");
+
+		mainFrame.addWindowListener( new WindowAdapter()
+				{
+					public void windowClosed(WindowEvent e)
+					{
+						System.exit(0);
+					}
+					public void windowClosing(WindowEvent e)
+					{
+						windowClosed(e);
+					}
+				}
+			);
 
 	        GLContext.gljNativeDebug = true;
 	        GLContext.gljClassDebug = true;

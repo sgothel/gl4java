@@ -119,4 +119,12 @@
 	LIBAPI void * LIBAPIENTRY jnitoolsCreateNativeArray (JavaBasicType jbt, 
 							    int dataArrayLen, 
 							    const char * errText);
+
+	/**
+	 * It is very important that OnLoad returns
+	 * the right JNI Version Number ... !!
+	 */
+	JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM * vm, void *reserved);
+	JNIEXPORT void JNICALL JNI_OnUnload(JavaVM *vm, void *reserved);
+
 #endif

@@ -197,6 +197,7 @@ public class Lesson1 extends Applet
             
             //Swap buffers
             glj.gljSwap();
+            glj.gljFree();
         }
         
         

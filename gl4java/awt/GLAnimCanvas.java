@@ -83,6 +83,13 @@ import java.lang.Math;
  * because a GL-Context can be shared by many threads,
  * but one thread can have just one GL-Context !
  *
+ * <p>
+ *
+ * Since GL4Java 2.5.2 and using a JVM >= 1.3
+ * the multithreading support is stable !
+ *
+ * <p>
+ *
  * (comments welcome)
  * 
  * <p>
@@ -102,7 +109,7 @@ import java.lang.Math;
         <a href="GLAnimCanvas.html#ReInit()">ReInit - ReInitialisation after stop for setSuspended(false)</a>
  * </pre>
  *
- * @see GLCanvas
+ * @see gl4java.awt.GLCanvas
  * @version         2.0, 21. April 1999
  * @author      Sven Goethel
  * 
@@ -116,10 +123,17 @@ public class GLAnimCanvas extends GLCanvas
          *
          * A little GUI is supported !
          *
-         * @see GLAnimCanvas#run    
+         * @see gl4java.awt.GLAnimCanvas#run    
          */
         protected double FramesPerSec=20;
         protected long   mSecPerFrame=0;
+
+        protected static int    globalThreadNumber=0;
+
+        public static int getGlobalThreadNumber()
+	{
+		return globalThreadNumber;
+	}
 
 	/**
 	 * the delays ..
@@ -129,16 +143,16 @@ public class GLAnimCanvas extends GLCanvas
         /**
          * The thread  for  referencing Thread (Animation)
          *
-         * @see GLAnimCanvas#stop
-         * @see GLAnimCanvas#start
-         * @see GLAnimCanvas#run
+         * @see gl4java.awt.GLAnimCanvas#stop
+         * @see gl4java.awt.GLAnimCanvas#start
+         * @see gl4java.awt.GLAnimCanvas#run
          */      
         protected Thread killme = null;
 
         /**
          * Instead of using suspend (JAVA2)
          *
-         * @see GLAnimCanvas#run
+         * @see gl4java.awt.GLAnimCanvas#run
          */      
         protected boolean threadSuspended = false;
 
@@ -151,7 +165,7 @@ public class GLAnimCanvas extends GLCanvas
          *
          * Constructor
          *
-         * @see GLCanvas#GLCanvas
+         * @see gl4java.awt.GLCanvas#GLCanvas
          *
          */
         public GLAnimCanvas( int width, int height,
@@ -169,7 +183,7 @@ public class GLAnimCanvas extends GLCanvas
          *
          * Uses the default GLFunc and GLUFunc implementation !
          *
-         * @see GLCanvas#GLCanvas
+         * @see gl4java.awt.GLCanvas#GLCanvas
          *
          */
         public GLAnimCanvas( int width, int height )
@@ -206,16 +220,24 @@ public class GLAnimCanvas extends GLCanvas
 	 *
          * <p>
          *
+	 * You MUST encapsulate your OpenGL call's within:
+	 * <pre>
+		- glj.gljMakeCurrent()
+			YOUR OpenGL commands here !
+		- glj.gljFree()
+	 * </pre>
+         * <p>
+         *
          * You should set shallWeRender here,
          * to signalize the animation-loop 'run' to supsend
          * <p>
          * To restart the thread, just call setSuspended(false)
          *
-         * @see GLAnimCanvas#shallWeRender
-         * @see GLAnimCanvas#run
-         * @see GLAnimCanvas#setSuspended
-         * @see GLCanvas#sDisplay
-         * @see GLCanvas#paint
+         * @see gl4java.awt.GLAnimCanvas#shallWeRender
+         * @see gl4java.awt.GLAnimCanvas#run
+         * @see gl4java.awt.GLAnimCanvas#setSuspended
+         * @see gl4java.awt.GLCanvas#sDisplay
+         * @see gl4java.awt.GLCanvas#paint
          */ 
          public void display()
          {
@@ -229,7 +251,7 @@ public class GLAnimCanvas extends GLCanvas
 			return;
 		  }
 
-		  if( glj.gljMakeCurrent(true) == false ) 
+		  if( glj.gljMakeCurrent() == false ) 
 		  {
 		      if(glj.gljClassDebug)
 			 System.out.println("GLAnimCanvas problem in gljMakeCurrent() method");
@@ -248,7 +270,7 @@ public class GLAnimCanvas extends GLCanvas
          * ReInit should be overwritten by you,
          * to enter your re-initialisation within setSuspended(false) 
          * 
-         * @see GLAnimCanvas#setSuspended
+         * @see gl4java.awt.GLAnimCanvas#setSuspended
          */
         public void ReInit()
         {
@@ -271,8 +293,8 @@ public class GLAnimCanvas extends GLCanvas
          * <p>
          * 
          * @param b if true, uses repaint (default), otherwise directly sDisplay
-         * @see GLCanvas#sDisplay
-         * @see GLAnimCanvas#setUseFpsSleep
+         * @see gl4java.awt.GLCanvas#sDisplay
+         * @see gl4java.awt.GLAnimCanvas#setUseFpsSleep
          */
         public void setUseRepaint(boolean b)
         {
@@ -288,8 +310,8 @@ public class GLAnimCanvas extends GLCanvas
          * <p>
          * 
          * @param b if true, uses Fps sleeping, else not !
-         * @see GLCanvas#sDisplay
-         * @see GLAnimCanvas#setUseRepaint
+         * @see gl4java.awt.GLCanvas#sDisplay
+         * @see gl4java.awt.GLAnimCanvas#setUseRepaint
          */
         public void setUseFpsSleep(boolean b)
         {
@@ -324,9 +346,29 @@ public class GLAnimCanvas extends GLCanvas
         public synchronized void stop() 
         {
             killme = null;
-            threadSuspended=false;
-            notify();
+	    threadSuspended=false;
+
+            notifyAll();
         }
+
+        /**
+          * You should call this before releasing/dispose this Window ! 
+          * Also you can overwrite this class,
+          * to dispose your own elements, e.g. a Frame etc. - 
+          * but be shure that you call
+          * cvsDispose implementation call this one !
+          * 
+          * This function calls gljDestroy of GLContext !
+          *
+          * @see gl4java.GLContext#gljDestroy
+          * @see gl4java.awt.GLCanvas#cvsDispose
+          * @see gl4java.awt.GLCanvas#doCleanup
+          */
+    	public void cvsDispose()
+    	{
+		stop();
+		super.cvsDispose();
+	}
 
         /**
          * Should be set in display,
@@ -335,10 +377,11 @@ public class GLAnimCanvas extends GLCanvas
          * If shallWeRender is false,
          * this thread will suspend !
          *
-         * @see GLAnimCanvas#display
-         * @see GLAnimCanvas#run
+         * @see gl4java.awt.GLAnimCanvas#display
+         * @see gl4java.awt.GLAnimCanvas#run
          */
         protected boolean shallWeRender = true;
+        protected boolean isRunning     = false;
 
 	private long _fDelay = 0;
 	private long _fDelay_Frames = 10;
@@ -349,14 +392,18 @@ public class GLAnimCanvas extends GLCanvas
           *  The running loop for animations
           *  which initiates the call of display
           *
-          * @see GLAnimCanvas#shallWeRender
-          * @see GLAnimCanvas#display
-          * @see GLAnimCanvas#diplay
+          * @see gl4java.awt.GLAnimCanvas#shallWeRender
+          * @see gl4java.awt.GLAnimCanvas#display
           */
         public void run() 
         {
             Thread thisThread = Thread.currentThread();
 
+	    isRunning = true;
+
+	    synchronized (this) {
+	    	globalThreadNumber++;
+	    }
 
             while (killme==thisThread)
             {
@@ -370,8 +417,7 @@ public class GLAnimCanvas extends GLCanvas
 			      else 
 				      sDisplay();
 			  } else {
-			      // lets sleep ...
-			      synchronized (this) {
+                              synchronized (this) {
 				      threadSuspended=true;
 			      }
 			  }
@@ -399,7 +445,9 @@ public class GLAnimCanvas extends GLCanvas
 			   } 
 
                           Thread.currentThread().sleep(dFpsMilli, 0 );
-                       }
+                       } else {
+		          Thread.yield();
+		       }
 
                        if (threadSuspended) {
                            stopFpsCounter();
@@ -411,6 +459,15 @@ public class GLAnimCanvas extends GLCanvas
 		  } catch (InterruptedException e)
 	          {}
             }
+
+	    if(glj!=null)
+		    glj.gljFree(); // just to be sure ..
+
+	    synchronized (this) {
+	    	globalThreadNumber--;
+	    }
+
+	    isRunning = false;
         }
 
          /** 
@@ -422,8 +479,8 @@ public class GLAnimCanvas extends GLCanvas
 	  * @param suspend  if true the thread will be suspended,
 	  *                 if false, the thread will be (re)started
 	  *
-          * @see GLAnimCanvas#isAlive
-          * @see GLAnimCanvas#start
+          * @see gl4java.awt.GLAnimCanvas#isAlive
+          * @see gl4java.awt.GLAnimCanvas#start
           */
         public void setSuspended(boolean suspend)
         {
@@ -442,8 +499,8 @@ public class GLAnimCanvas extends GLCanvas
 	  * @param reInit   if true the ReInit will be called additionally,
 	  *                 where the user can set additional initialisations
 	  *
-          * @see GLAnimCanvas#isAlive
-          * @see GLAnimCanvas#start
+          * @see gl4java.awt.GLAnimCanvas#isAlive
+          * @see gl4java.awt.GLAnimCanvas#start
           */
         public synchronized void setSuspended(boolean suspend, boolean reInit)
         {
@@ -461,17 +518,17 @@ public class GLAnimCanvas extends GLCanvas
 			    ReInit();
 
 		    threadSuspended=false;
-		    notify();
+		    notifyAll();
 	    }
         }
 
         /**
          * is the thread alive, means is started and not died ?
          *
-         * @see GLAnimCanvas#run
-         * @see GLAnimCanvas#setSuspended
-         * @see GLAnimCanvas#start
-         * @see GLAnimCanvas#stop
+         * @see gl4java.awt.GLAnimCanvas#run
+         * @see gl4java.awt.GLAnimCanvas#setSuspended
+         * @see gl4java.awt.GLAnimCanvas#start
+         * @see gl4java.awt.GLAnimCanvas#stop
          */      
         public boolean isAlive()
 	{ 
@@ -483,10 +540,10 @@ public class GLAnimCanvas extends GLCanvas
          * is the thread suspended, means is started but waiting, 
 	 * or not alive (ok :-| - but it is practical)
          *
-         * @see GLAnimCanvas#run
-         * @see GLAnimCanvas#setSuspended
-         * @see GLAnimCanvas#start
-         * @see GLAnimCanvas#stop
+         * @see gl4java.awt.GLAnimCanvas#run
+         * @see gl4java.awt.GLAnimCanvas#setSuspended
+         * @see gl4java.awt.GLAnimCanvas#start
+         * @see gl4java.awt.GLAnimCanvas#stop
          */      
         public boolean isSuspended()
 	{ 
@@ -507,14 +564,14 @@ public class GLAnimCanvas extends GLCanvas
          * this function is called automatically by
          * start and setSuspended
          *
-         * @see GLAnimCanvas#start
-         * @see GLAnimCanvas#setSuspended
-         * @see GLAnimCanvas#resetFpsCounter
-         * @see GLAnimCanvas#stopFpsCounter
-         * @see GLAnimCanvas#getFps
-         * @see GLAnimCanvas#getFpsDuration
-         * @see GLAnimCanvas#getFpsFrames
-         * @see GLAnimCanvas#setVerboseFps
+         * @see gl4java.awt.GLAnimCanvas#start
+         * @see gl4java.awt.GLAnimCanvas#setSuspended
+         * @see gl4java.awt.GLAnimCanvas#resetFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#stopFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#getFps
+         * @see gl4java.awt.GLAnimCanvas#getFpsDuration
+         * @see gl4java.awt.GLAnimCanvas#getFpsFrames
+         * @see gl4java.awt.GLAnimCanvas#setVerboseFps
          */
         public void resetFpsCounter()
         {
@@ -535,14 +592,14 @@ public class GLAnimCanvas extends GLCanvas
          * All data's are print out on System.out 
          * if verboseFps is set !
          *
-         * @see GLAnimCanvas#run
-         * @see GLAnimCanvas#shallWeRender
-         * @see GLAnimCanvas#resetFpsCounter
-         * @see GLAnimCanvas#stopFpsCounter
-         * @see GLAnimCanvas#getFps
-         * @see GLAnimCanvas#getFpsDuration
-         * @see GLAnimCanvas#getFpsFrames
-         * @see GLAnimCanvas#setVerboseFps
+         * @see gl4java.awt.GLAnimCanvas#run
+         * @see gl4java.awt.GLAnimCanvas#shallWeRender
+         * @see gl4java.awt.GLAnimCanvas#resetFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#stopFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#getFps
+         * @see gl4java.awt.GLAnimCanvas#getFpsDuration
+         * @see gl4java.awt.GLAnimCanvas#getFpsFrames
+         * @see gl4java.awt.GLAnimCanvas#setVerboseFps
          */
         public void stopFpsCounter()
         {
@@ -571,14 +628,14 @@ public class GLAnimCanvas extends GLCanvas
          * <p>
          * verboseFps is set to true by default !
          *
-         * @see GLAnimCanvas#run
-         * @see GLAnimCanvas#shallWeRender
-         * @see GLAnimCanvas#resetFpsCounter
-         * @see GLAnimCanvas#stopFpsCounter
-         * @see GLAnimCanvas#getFps
-         * @see GLAnimCanvas#getFpsDuration
-         * @see GLAnimCanvas#getFpsFrames
-         * @see GLAnimCanvas#setVerboseFps
+         * @see gl4java.awt.GLAnimCanvas#run
+         * @see gl4java.awt.GLAnimCanvas#shallWeRender
+         * @see gl4java.awt.GLAnimCanvas#resetFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#stopFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#getFps
+         * @see gl4java.awt.GLAnimCanvas#getFpsDuration
+         * @see gl4java.awt.GLAnimCanvas#getFpsFrames
+         * @see gl4java.awt.GLAnimCanvas#setVerboseFps
          */
         public void setVerboseFps(boolean v)
         {
@@ -590,12 +647,12 @@ public class GLAnimCanvas extends GLCanvas
          * <p>
          * this data is avaiable after calling stopFpsCounter
          *
-         * @see GLAnimCanvas#resetFpsCounter
-         * @see GLAnimCanvas#stopFpsCounter
-         * @see GLAnimCanvas#getFps
-         * @see GLAnimCanvas#getFpsDuration
-         * @see GLAnimCanvas#getFpsFrames
-         * @see GLAnimCanvas#setVerboseFps
+         * @see gl4java.awt.GLAnimCanvas#resetFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#stopFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#getFps
+         * @see gl4java.awt.GLAnimCanvas#getFpsDuration
+         * @see gl4java.awt.GLAnimCanvas#getFpsFrames
+         * @see gl4java.awt.GLAnimCanvas#setVerboseFps
          */
         public double getFps()
         {
@@ -607,12 +664,12 @@ public class GLAnimCanvas extends GLCanvas
          * <p>
          * this data is avaiable after calling stopFpsCounter
          *
-         * @see GLAnimCanvas#resetFpsCounter
-         * @see GLAnimCanvas#stopFpsCounter
-         * @see GLAnimCanvas#getFps
-         * @see GLAnimCanvas#getFpsDuration
-         * @see GLAnimCanvas#getFpsFrames
-         * @see GLAnimCanvas#setVerboseFps
+         * @see gl4java.awt.GLAnimCanvas#resetFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#stopFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#getFps
+         * @see gl4java.awt.GLAnimCanvas#getFpsDuration
+         * @see gl4java.awt.GLAnimCanvas#getFpsFrames
+         * @see gl4java.awt.GLAnimCanvas#setVerboseFps
          */
         public long getFpsDuration()
         {
@@ -624,12 +681,12 @@ public class GLAnimCanvas extends GLCanvas
          * <p>
          * this data is avaiable after calling stopFpsCounter
          *
-         * @see GLAnimCanvas#resetFpsCounter
-         * @see GLAnimCanvas#stopFpsCounter
-         * @see GLAnimCanvas#getFps
-         * @see GLAnimCanvas#getFpsDuration
-         * @see GLAnimCanvas#getFpsFrames
-         * @see GLAnimCanvas#setVerboseFps
+         * @see gl4java.awt.GLAnimCanvas#resetFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#stopFpsCounter
+         * @see gl4java.awt.GLAnimCanvas#getFps
+         * @see gl4java.awt.GLAnimCanvas#getFpsDuration
+         * @see gl4java.awt.GLAnimCanvas#getFpsFrames
+         * @see gl4java.awt.GLAnimCanvas#setVerboseFps
          */
         public long getFpsFrames()
         {
@@ -651,7 +708,7 @@ public class GLAnimCanvas extends GLCanvas
          /** 
           * Just set the FramePerSecounds for Animation
 	  *
-          * @see GLAnimCanvas#getMaxFps    
+          * @see gl4java.awt.GLAnimCanvas#getMaxFps    
           */
         public void setAnimateFps(double fps)
         {
@@ -675,7 +732,7 @@ public class GLAnimCanvas extends GLCanvas
 	  * this value is avaiable after the thread is started
 	  * and the first frames are rendered !
 	  *
-          * @see GLAnimCanvas#setAnimateFps    
+          * @see gl4java.awt.GLAnimCanvas#setAnimateFps    
           */
         public double getMaxFps()
         {

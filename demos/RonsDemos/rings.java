@@ -352,7 +352,7 @@ public class rings extends SimpleGLAnimApplet1
              int slices,
              int stacks)
         {
-            int qobj = glu.gluNewQuadric();
+            long qobj = glu.gluNewQuadric();
 
             glu.gluQuadricDrawStyle(qobj,GLU_FILL);
             glu.gluQuadricNormals(qobj,GLU_SMOOTH);

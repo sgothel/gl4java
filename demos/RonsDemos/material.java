@@ -188,7 +188,7 @@ public class material extends Applet
             float low_shininess[] = { 5.0f };
             float high_shininess[] = { 100.0f };
             float mat_emission[] = {0.3f, 0.2f, 0.2f, 0.0f};
-            int qobj;
+            long qobj;
             
             gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             

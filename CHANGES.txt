@@ -1,12 +1,58 @@
 \begin{verbatim}
 
-Last Changes: 18th November 2000 (Version 2.5.0 - Release 0 beta 1 )
+Last Changes: 12th February  2001 (Version 2.5.2 - Release 0 )
 Started:      July 1997 (Version 0)
 
 -----------------
 TOP  = NEW
 DOWN = OLD
 -----------------
+
+12th February  2001 (Version 2.5.2 - Release 0 )
+	o Implements JDK >= 1.3.X 's JAWT
+	  The mechanism of fetching the native window handle (etc.),
+	  is - since JDK 1.3.0 - now an official standard !
+	  JAWT'S native lock's are also used.
+
+	  This feature is used within the "GL4JavaJauGljJNI13"
+	  native library, which is used dynamically if JVM >= 1.3 !
+	  Many thanxs to Kenneth B. Russel for 
+	  motivations: 
+	  	JDK 1.4 will no more support the old 
+	  	illegal style of fetching the native window handle !
+
+	  The MacOs's implementation of JAWT is currently
+	  missing ...
+
+	o Improved the mutlithreading behavior !
+	  Now - you MUST encapsulate all your rendering
+	  within gljMakeCurrent/gljFree !
+	  E.g. the implementation of GLCanvas's display method !
+
+	  This style was recommended all the time !
+	  
+	o Prepared for 64bit platforms !
+	  If you set the #define USE_64BIT_POINTER
+	  within the symbols.mak, the "long" type is used for
+	  Pointer conversion (cast) !
+
+	  Depending on the #define USE_64BIT_POINTER,
+	  the typedef PointerHolder is set.
+	  PointerHolder is used for type casting, which
+	  eliminates not just compiler warning, but also
+	  bad generated assembler type conversion code !
+
+	  All pointer holder's within the java classes are jlong !
+
+	  From now on, you MUST use the java "long" type to
+	  hold any pointers - also for the GLU stuff, e.g.
+
+ 	  WARNING - INCOMPATIBILITY
+	  =========================
+	  If you use any gluNew* function,
+	  you MUST change the l-value type to "long" 
+	  and recompile your java sources !
+		
 
 8th February  2001 (Version 2.5.1 - Release 0 )
 	o Bugfixed the JNI Tool Module Functions,

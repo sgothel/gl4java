@@ -28,7 +28,8 @@ public class Win32HandleAccess
 
   protected DrawingSurfaceInfo dsi;
   protected Win32DrawingSurface wds;
-  protected int window, depth;
+  protected long window;
+  protected int depth;
 
   protected void achieveData(java.awt.Component c, java.awt.Graphics g)
   {
@@ -47,7 +48,7 @@ public class Win32HandleAccess
 	if(wds!=null)
 	{
 		dsi.lock();
-		window = wds.getHDC();
+		window = (long) wds.getHDC();
 		depth = wds.getDepth();
 		/*
 			System.out.println("wds ="+wds);
@@ -65,7 +66,7 @@ public class Win32HandleAccess
  *
  * gets some structure for windows, and drawable on Win32
  */
-  public int getWinHandle(java.awt.Component c, java.awt.Graphics g)
+  public long getWinHandle(java.awt.Component c, java.awt.Graphics g)
   {
       achieveData(c, g);
       return window;

@@ -14,8 +14,8 @@ import java.awt.Graphics;
  */
 public interface WinHandleAccess
 {
-    public abstract int getWinHandle(Component component, Graphics g);
+    public abstract long getWinHandle(Component component, Graphics g);
 
-    public abstract int getWinDepth(Component component, Graphics g);
+    public abstract int  getWinDepth(Component component, Graphics g);
 
 }

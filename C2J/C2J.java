@@ -3,7 +3,7 @@ import java.util.*;
 
   public class C2J implements C2JConstants {
 
-    public static final String version = "C2J Parser Version 1.4 Beta" ;
+    public static final String version = "C2J Parser Version 1.5 Beta" ;
     public static final String vendor  = "Jausoft - Sven Goethel Software Development";
 
     public static final int EXPORT_JNI_JAVA        = 1;
@@ -673,22 +673,22 @@ import java.util.*;
       break;
     case GLUquadricObj:
       t = jj_consume_token(GLUquadricObj);
-          typeJava="int";
+          typeJava="long";
           cSrc += t.image+" ";
       break;
     case GLUnurbsObj:
       t = jj_consume_token(GLUnurbsObj);
-          typeJava="int";
+          typeJava="long";
           cSrc += t.image+" ";
       break;
     case GLUtesselator:
       t = jj_consume_token(GLUtesselator);
-          typeJava="int";
+          typeJava="long";
           cSrc += t.image+" ";
       break;
     case GLUtriangulatorObj:
       t = jj_consume_token(GLUtriangulatorObj);
-          typeJava="int";
+          typeJava="long";
           cSrc += t.image+" ";
       break;
     default:

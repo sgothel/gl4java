@@ -57,7 +57,7 @@ import java.util.*;
 
   public class C2J{
 
-    public static final String version = "C2J Parser Version 1.4 Beta" ;
+    public static final String version = "C2J Parser Version 1.5 Beta" ;
     public static final String vendor  = "Jausoft - Sven Goethel Software Development";
 
     public static final int EXPORT_JNI_JAVA        = 1;
@@ -636,19 +636,19 @@ CFuncVariable TypeSpecifierGL(CFuncVariable cfvar) :
 	  cSrc += t.image+" ";
 	} |
 	t=<GLUquadricObj> 
-	{ typeJava="int"; 
+	{ typeJava="long"; 
 	  cSrc += t.image+" ";
 	} |
 	t=<GLUnurbsObj> 
-	{ typeJava="int"; 
+	{ typeJava="long"; 
 	  cSrc += t.image+" ";
 	} |
 	t=<GLUtesselator> 
-	{ typeJava="int"; 
+	{ typeJava="long"; 
 	  cSrc += t.image+" ";
 	} |
 	t=<GLUtriangulatorObj> 
-	{ typeJava="int"; 
+	{ typeJava="long"; 
 	  cSrc += t.image+" ";
 	}
     )

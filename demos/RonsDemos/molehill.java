@@ -87,7 +87,7 @@ public class molehill extends Applet
         float pts2[] = new float[4*4*3];
         float pts3[] = new float[4*4*3];
         float pts4[] = new float[4*4*3];
-        int nurb;
+        long nurb;
         int u, v;
         
         public molehillCanvas(int w, int h)

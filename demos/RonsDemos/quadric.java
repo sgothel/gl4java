@@ -125,7 +125,7 @@ public class quadric extends Applet
             System.out.println("init(): " + this);
             reshape(getSize().width, getSize().height);
 
-            int qobj;
+            long qobj;
             float mat_ambient[] = { 0.5f, 0.5f, 0.5f, 1.0f };
             float mat_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
             float mat_shininess[] = { 50.0f };

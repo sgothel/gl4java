@@ -24,7 +24,8 @@ import com.ms.awt.GraphicsX;
 public class MSWin32HandleAccess 
 	implements gl4java.jau.awt.WinHandleAccess
 {
-    protected int window, depth;
+    protected long window;
+    protected int depth;
 
     /**
      * @dll.import("USER32",auto)
@@ -33,7 +34,7 @@ public class MSWin32HandleAccess
 
     protected void achieveData(java.awt.Component c, java.awt.Graphics g)
     {
-        window = WindowFromDC(((GraphicsX)g).gdc.pGetDC());
+        window = (long) WindowFromDC(((GraphicsX)g).gdc.pGetDC());
         depth = c.getColorModel().getPixelSize();
     }
 
@@ -41,7 +42,7 @@ public class MSWin32HandleAccess
      *
      * get the window handle
      */
-    public int getWinHandle(java.awt.Component c, java.awt.Graphics g)
+    public long getWinHandle(java.awt.Component c, java.awt.Graphics g)
     {
         achieveData(c, g);
         return window;

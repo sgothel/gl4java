@@ -10,40 +10,14 @@
  * September 1997
  */
 
-/* 
- * need to include the JAVA internal header files for macros and function
- * prototypes required to maipulated JAVA data structures and functions
- *
- * StubPreamble.h includes the structure and macro definitions neede to
- * convert JAVA data structures into C data structures.
- *
- */
-
-#ifdef _WIN32_
- 	#include "winstuff.h"
-#endif
-
-#include <stdio.h>
-#include <stdlib.h>
-
-#include <jni.h>
-
-/*
- * the next thing to include are special headers that were created by
- * JAVAH.  They include the C structure definitions for the JAVA classes
- */
-#include "gl4java_GLUFuncJauJNI.h"
 
 /*--------------------------------------------------------------------------
  * here on in is just regular apple pie C
  */
 
-/*
- * next put any specific header files that are necessary to implement
- * this native code
- */            
-#include<GL/gl.h>
-#include <GL/glu.h>
+#include "OpenGL_misc.h"
+
+#include "gl4java_GLUFuncJauJNI.h"
 
 #include "GLCallbackHelperJNI.h"
 #include "GLUCallbackJNI.h"

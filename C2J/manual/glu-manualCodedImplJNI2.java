@@ -27,7 +27,7 @@ public final String getClassVersion ( )
  * @see GLUFunc#gluNewQuadric
  */
 public final native void  gluQuadricCallback(
-                                  int qobj, int which,
+                                  long qobj, int which,
 			          Object methodClassInstance, 
 				  String methodName, 
 				  String signature
@@ -48,7 +48,7 @@ public final native void  gluQuadricCallback(
  * @see GLUFunc#gluNewNurbsRenderer
  */
 public final native void  gluNurbsCallback(
-			          int nobj, int which,
+			          long nobj, int which,
 			          Object methodClassInstance, 
 			          String methodName, 
 				  String signature
@@ -80,7 +80,7 @@ public final native void  gluNurbsCallback(
  * @see GLUFunc#gluNewTess
  */
 public final native void  gluTessCallback(
-				  int tobj, int which,
+				  long tobj, int which,
 			          Object methodClassInstance, 
 			          String methodName, 
 				  String signature,
@@ -97,7 +97,7 @@ public final native void  gluTessCallback(
  * @param qobj	the quadratic id, for which all callback-methods
  *              should be de-registered
  */
-public final native void  gluDeleteQuadric( int qobj );
+public final native void  gluDeleteQuadric( long qobj );
 
 /**
  * The Callback de-registry function.
@@ -105,7 +105,7 @@ public final native void  gluDeleteQuadric( int qobj );
  * @param nobj	the nurbs id, for which all callback-methods
  *              should be de-registered
  */
-public final native void  gluDeleteNurbsRenderer( int nobj );
+public final native void  gluDeleteNurbsRenderer( long nobj );
 
 /**
  * The Callback de-registry function.
@@ -113,5 +113,9 @@ public final native void  gluDeleteNurbsRenderer( int nobj );
  * @param tobj	the tesselation id, for which all callback-methods
  *              should be de-registered
  */
-public final native void  gluDeleteTess( int tobj );
+public final native void  gluDeleteTess( long tobj );
+
+public final native long  gluNewQuadric( );
+public final native long  gluNewNurbsRenderer( );
+public final native long  gluNewTess( );
 

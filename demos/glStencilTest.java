@@ -29,7 +29,6 @@ public class glStencilTest {
 	    Dimension d=new Dimension(w,h);
 	    if (!cvsIsInit()) return;
 	    if( glj.gljMakeCurrent() == false ) {
-		System.out.println("problem in use() method");
 		return;
 	    }
 	    setSize(d);
@@ -42,7 +41,6 @@ public class glStencilTest {
 	    int i;
 
 	    if( glj.gljMakeCurrent() == false ) {
-		System.out.println("problem in use() method");
 		return;
 	    }
 	  

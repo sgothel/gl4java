@@ -147,7 +147,7 @@ public class polyoff extends Applet
             list = gl.glGenLists(1);
             gl.glNewList (list, GL_COMPILE);
 
-            int qobj = glu.gluNewQuadric();
+            long qobj = glu.gluNewQuadric();
             glu.gluQuadricOrientation(qobj,GLU_OUTSIDE);
             glu.gluQuadricNormals(qobj,GLU_SMOOTH);
             glu.gluQuadricTexture(qobj,false);

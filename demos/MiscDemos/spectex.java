@@ -59,7 +59,7 @@ public class spectex extends SimpleGLAnimApplet1
         final float M_PI_2 = 1.57079632f;
 	int view = 0; /* 0 = front, 1 = top, 2 = bottom */
 
-	int Quadric;
+	long Quadric;
 	int Sphere;
 	float LightPos[/*4*/] = {10.0f, 10.0f, 10.0f, 1.0f};
 	float Delta = 1.0f;

@@ -17,6 +17,10 @@ public class glDemosCvs extends Applet
 	 *
 	 */
 
+	Panel pWave ;
+	Panel pOlympic ;
+	Panel pLogo ;
+	Panel pStar ;
 	Button ButtonFps; 
 	TextField TextFpsOlymp; 
 	TextField TextFpsLogo;
@@ -87,22 +91,22 @@ public class glDemosCvs extends Applet
 		add("Center", pAllCvs);
 
 		//	1. Wave
-	        Panel pWave = new Panel();
+	        pWave = new Panel();
 		pWave.setLayout(new GridLayout(1,2));
 		pAllCvs.add(pWave);
 
 		//	2. Olympic
-	        Panel pOlympic = new Panel();
+	        pOlympic = new Panel();
 		pOlympic.setLayout(new GridLayout(1,2));
 		pAllCvs.add(pOlympic);
 
 		//	3. Logo
-	        Panel pLogo = new Panel();
+	        pLogo = new Panel();
 		pLogo.setLayout(new GridLayout(1,2));
 		pAllCvs.add(pLogo);
 
 		//	3. Star
-	        Panel pStar = new Panel();
+	        pStar = new Panel();
 		pStar.setLayout(new GridLayout(1,2));
 		pAllCvs.add(pStar);
 
@@ -261,13 +265,9 @@ public class glDemosCvs extends Applet
 	  }
 
 	  public void destroy() {
-		cvsOlympic.stop();
 		cvsOlympic.cvsDispose();
-		cvsWave.stop();
 		cvsWave.cvsDispose();
-		cvsLogo.stop();
 		cvsLogo.cvsDispose();
-		cvsStar.stop();
 		cvsStar.cvsDispose();
 	  }
 
@@ -332,8 +332,55 @@ public class glDemosCvs extends Applet
 	{
 	 	Component comp = evt.getComponent();
 
-		if( comp.equals(ButtonFps) )
+                if ((evt.getModifiers() & evt.BUTTON3_MASK) != 0) 
 		{
+		    System.out.println("button3: "+comp);
+		    if(comp instanceof GLAnimCanvas)
+		    {
+		    	GLAnimCanvas glcvs = (GLAnimCanvas)comp;
+			glcvs.cvsDispose();
+
+			Container c = glcvs.getParent();
+			c.remove(glcvs);
+
+			glcvs.setVisible(true);
+
+			if(c instanceof Frame)
+			{
+				Frame of = (Frame)c;
+				of.dispose();
+				of=null;
+
+				Panel p = null;
+
+				if(glcvs.equals(cvsStar))
+					p = pStar;
+				else if(glcvs.equals(cvsLogo))
+					p = pLogo;
+				else if(glcvs.equals(cvsOlympic))
+					p = pOlympic;
+				else if(glcvs.equals(cvsWave))
+					p = pWave;
+				p.add(glcvs);
+				p.doLayout();
+			} else if(c instanceof Panel) 
+			{
+				Frame f = new Frame("EXTRA");
+				f.add(glcvs);
+				f.pack();
+				f.setVisible(true);
+			}
+			glcvs.start();
+
+			System.out.println("GLContextNumber: "+
+					GLContext.getNativeGLContextNumber());
+		    }
+		} else if ((evt.getModifiers() & evt.BUTTON1_MASK) != 0) 
+		{
+		    if( comp.equals(ButtonFps) )
+		    {
+			System.out.println("GLContextNumber: "+
+					GLContext.getNativeGLContextNumber());
 			double fps = 0;
 			int a1;
 
@@ -369,70 +416,73 @@ public class glDemosCvs extends Applet
 				fps=(double)a1/100.0;
 	                	TextFpsStar.setText(String.valueOf(fps));
 			}
-		}
-		else if( comp.equals(buttonInfo) )
-		{
-		  Frame fInfo = null;
-		  if(cvsWave!=null && cvsWave.getGLContext()!=null)
-		     fInfo = cvsWave.getGLContext().gljShowVersions();
-		  else if(cvsOlympic!=null && cvsOlympic.getGLContext()!=null)
-		     fInfo = cvsOlympic.getGLContext().gljShowVersions();
-		  else if(cvsLogo!=null && cvsLogo.getGLContext()!=null)
-		     fInfo = cvsLogo.getGLContext().gljShowVersions();
-		  else if(cvsStar!=null && cvsStar.getGLContext()!=null)
-		     fInfo = cvsStar.getGLContext().gljShowVersions();
-		}
-		else if( comp.equals(cvsWave) )
-		{
+		    }
+		    else if( comp.equals(buttonInfo) )
+		    {
+			  System.out.println("GLContextNumber: "+
+					GLContext.getNativeGLContextNumber());
+			  Frame fInfo = null;
+			  if(cvsWave!=null && cvsWave.getGLContext()!=null)
+			     fInfo = cvsWave.getGLContext().gljShowVersions();
+			  else if(cvsOlympic!=null && cvsOlympic.getGLContext()!=null)
+			     fInfo = cvsOlympic.getGLContext().gljShowVersions();
+			  else if(cvsLogo!=null && cvsLogo.getGLContext()!=null)
+			     fInfo = cvsLogo.getGLContext().gljShowVersions();
+			  else if(cvsStar!=null && cvsStar.getGLContext()!=null)
+			     fInfo = cvsStar.getGLContext().gljShowVersions();
+		    }
+		    else if( comp.equals(cvsWave) )
+		    {
 		     cvsWave.setSuspended(!cvsWave.isSuspended(),
 			                  evt.getClickCount()>1 // -> ReInit
 					 ); 
-		}
-		else if( comp.equals(cvsOlympic) )
-		{
+		    }
+		    else if( comp.equals(cvsOlympic) )
+		    {
 		     cvsOlympic.setSuspended(!cvsOlympic.isSuspended(),
 			                     evt.getClickCount()>1 // -> ReInit
 					    ); 
-		}
-		else if( comp.equals(cvsLogo) )
-		{
+		    }
+		    else if( comp.equals(cvsLogo) )
+		    {
 			cvsLogo.setSuspended(!cvsLogo.isSuspended(),
 			                     evt.getClickCount()>1 // -> ReInit
 					    ); 
-		}
-		else if( comp.equals(cvsStar) )
-		{
+		    }
+		    else if( comp.equals(cvsStar) )
+		    {
 			cvsStar.setSuspended(!cvsStar.isSuspended(),
 			                     evt.getClickCount()>1 // -> ReInit
 					    ); 
-		}
-		if( comp.equals(bReStartL) )
-		{
+		    }
+		    if( comp.equals(bReStartL) )
+		    {
 			if(cvsLogo!=null)
 			{
 			   cvsLogo.setSuspended(false, true);
 			}
-		}
-		if( comp.equals(bReStartO) )
-		{
+		    }
+		    if( comp.equals(bReStartO) )
+		    {
 			if(cvsOlympic!=null)
 			{
 			   cvsOlympic.setSuspended(false, true);
 			}
-		}
-		if( comp.equals(bReStartW) )
-		{
+		    }
+		    if( comp.equals(bReStartW) )
+		    {
 			if(cvsWave!=null)
 			{
 			   cvsWave.setSuspended(false, true);
 			}
-		}
-		if( comp.equals(bReStartS) )
-		{
+		    }
+		    if( comp.equals(bReStartS) )
+		    {
 			if(cvsStar!=null)
 			{
 			   cvsStar.setSuspended(false, true);
 			}
+		    }
 		}
 	}
 

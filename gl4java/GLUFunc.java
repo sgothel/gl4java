@@ -31,15 +31,19 @@ public String getNativeVersion ( ) ;
 public String getClassVendor ( )  ;
 public String getClassVersion ( ) ;
 
+public long gluNewQuadric( );
+public long gluNewNurbsRenderer( );
+public long gluNewTess( );
+
 public void  gluQuadricCallback(
-                                  int qobj, int which,
+                                  long qobj, int which,
 			          Object methodClassInstance, 
 				  String methodName, 
 				  String signature
 				  );
 
 public void  gluNurbsCallback(
-			          int nobj, int which,
+			          long nobj, int which,
 			          Object methodClassInstance, 
 			          String methodName, 
 				  String signature
@@ -47,7 +51,7 @@ public void  gluNurbsCallback(
 
 
 public void  gluTessCallback(
-				  int tobj, int which,
+				  long tobj, int which,
 			          Object methodClassInstance, 
 			          String methodName, 
 				  String signature,
@@ -58,14 +62,14 @@ public void  gluTessCallback(
 				  int voidArrayLen5
 				  );
 
-public void  gluDeleteQuadric( int qobj );
+public void  gluDeleteQuadric( long qobj );
 
-public void  gluDeleteNurbsRenderer( int nobj );
+public void  gluDeleteNurbsRenderer( long nobj );
 
-public void  gluDeleteTess( int tobj );
+public void  gluDeleteTess( long tobj );
 
 /**
- * C2J Parser Version 1.4 Beta
+ * C2J Parser Version 1.5 Beta
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -319,20 +323,11 @@ public void  gluDeleteTess( int tobj );
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUquadricObj * gluNewQuadric ( void ) ;
- * </pre> 
- */
-	public int gluNewQuadric (
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluQuadricDrawStyle ( GLUquadricObj * quadObject , GLenum drawStyle ) ;
  * </pre> 
  */
 	public void gluQuadricDrawStyle (
-		int quadObject,
+		long quadObject,
 		int drawStyle
 	) ;
 
@@ -343,7 +338,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluQuadricOrientation (
-		int quadObject,
+		long quadObject,
 		int orientation
 	) ;
 
@@ -354,7 +349,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluQuadricNormals (
-		int quadObject,
+		long quadObject,
 		int normals
 	) ;
 
@@ -365,7 +360,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluQuadricTexture (
-		int quadObject,
+		long quadObject,
 		boolean textureCoords
 	) ;
 
@@ -376,7 +371,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluCylinder (
-		int qobj,
+		long qobj,
 		double baseRadius,
 		double topRadius,
 		double height,
@@ -391,7 +386,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluSphere (
-		int qobj,
+		long qobj,
 		double radius,
 		int slices,
 		int stacks
@@ -404,7 +399,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluDisk (
-		int qobj,
+		long qobj,
 		double innerRadius,
 		double outerRadius,
 		int slices,
@@ -418,7 +413,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluPartialDisk (
-		int qobj,
+		long qobj,
 		double innerRadius,
 		double outerRadius,
 		int slices,
@@ -430,20 +425,11 @@ public void  gluDeleteTess( int tobj );
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUnurbsObj * gluNewNurbsRenderer ( void ) ;
- * </pre> 
- */
-	public int gluNewNurbsRenderer (
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluLoadSamplingMatrices ( GLUnurbsObj * nobj , const GLfloat modelMatrix [ 16 ] , const GLfloat projMatrix [ 16 ] , const GLint viewport [ 4 ] ) ;
  * </pre> 
  */
 	public void gluLoadSamplingMatrices (
-		int nobj,
+		long nobj,
 		float[] modelMatrix,
 		float[] projMatrix,
 		int[] viewport
@@ -456,7 +442,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluNurbsProperty (
-		int nobj,
+		long nobj,
 		int property,
 		float value
 	) ;
@@ -468,7 +454,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluGetNurbsProperty (
-		int nobj,
+		long nobj,
 		int property,
 		float[] value
 	) ;
@@ -480,7 +466,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluBeginCurve (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -490,7 +476,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluEndCurve (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -500,7 +486,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluNurbsCurve (
-		int nobj,
+		long nobj,
 		int nknots,
 		float[] knot,
 		int stride,
@@ -516,7 +502,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluBeginSurface (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -526,7 +512,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluEndSurface (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -536,7 +522,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluNurbsSurface (
-		int nobj,
+		long nobj,
 		int sknot_count,
 		float[] sknot,
 		int tknot_count,
@@ -556,7 +542,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluBeginTrim (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -566,7 +552,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluEndTrim (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -576,7 +562,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluPwlCurve (
-		int nobj,
+		long nobj,
 		int count,
 		float[] array,
 		int stride,
@@ -586,44 +572,35 @@ public void  gluDeleteTess( int tobj );
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUtesselator * gluNewTess ( void ) ;
- * </pre> 
- */
-	public int gluNewTess (
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluTessBeginPolygon ( GLUtesselator * tobj , void * polygon_data ) ;
  * </pre> 
  */
 	public void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		byte[] polygon_data
 	) ;
 	public void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		short[] polygon_data
 	) ;
 	public void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		int[] polygon_data
 	) ;
 	public void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		float[] polygon_data
 	) ;
 	public void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		double[] polygon_data
 	) ;
 	public void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		boolean[] polygon_data
 	) ;
 	public void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		long[] polygon_data
 	) ;
 
@@ -634,7 +611,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluTessBeginContour (
-		int tobj
+		long tobj
 	) ;
 
 /**
@@ -644,37 +621,37 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		byte[] vertex_data
 	) ;
 	public void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		short[] vertex_data
 	) ;
 	public void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		int[] vertex_data
 	) ;
 	public void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		float[] vertex_data
 	) ;
 	public void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		double[] vertex_data
 	) ;
 	public void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		boolean[] vertex_data
 	) ;
 	public void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		long[] vertex_data
 	) ;
@@ -686,7 +663,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluTessEndContour (
-		int tobj
+		long tobj
 	) ;
 
 /**
@@ -696,7 +673,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluTessEndPolygon (
-		int tobj
+		long tobj
 	) ;
 
 /**
@@ -706,7 +683,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluTessProperty (
-		int tobj,
+		long tobj,
 		int which,
 		double value
 	) ;
@@ -718,7 +695,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluTessNormal (
-		int tobj,
+		long tobj,
 		double x,
 		double y,
 		double z
@@ -731,7 +708,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluGetTessProperty (
-		int tobj,
+		long tobj,
 		int which,
 		double[] value
 	) ;
@@ -743,7 +720,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluBeginPolygon (
-		int tobj
+		long tobj
 	) ;
 
 /**
@@ -753,7 +730,7 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluNextContour (
-		int tobj,
+		long tobj,
 		int type
 	) ;
 
@@ -764,10 +741,10 @@ public void  gluDeleteTess( int tobj );
  * </pre> 
  */
 	public void gluEndPolygon (
-		int tobj
+		long tobj
 	) ;
 
-/* C2J Parser Version 1.4 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 
 
 
 }

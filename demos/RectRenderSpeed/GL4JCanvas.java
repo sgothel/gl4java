@@ -320,9 +320,9 @@ public void gl_display ()
   {
     if (glj.gljMakeCurrent () == false)
     {
-      System.out.println ("GL4JCanvas`gl_display- gljMakeCurrent"
+      System.out.println ("GL4JCanvas`gl_display- makeCurrent"
         +" is false");
-      loc_err = true;
+      return;
     }
   }
 

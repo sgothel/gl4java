@@ -361,7 +361,7 @@ public void display()
 public void puntVista()
 {
 	
-	if (cvsIsInit()==false || glj.gljMakeCurrent() == false)
+	if (cvsIsInit()==false )
 	{
 		System.out.println("-- Tenim algun problema glj.gljUse -3-");
 		return;
@@ -462,8 +462,6 @@ public void mouseDragged(MouseEvent e)
 	sl_alfaUsu.setValue(anclaAlfa+difX);		
 	sl_betaUsu.setValue(anclaBeta+difY);			
 
-	// puntVista(); JAU
-	// display(); JAU ... -> sDisplay() or repaint ...
 	repaint();
 }
 //---------------------------------------------------------------	

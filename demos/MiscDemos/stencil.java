@@ -261,7 +261,7 @@ public class stencil extends Applet
             gl.glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
             gl.glCallList(BLUEMAT);
 
-            int qobj = glu.gluNewQuadric();
+            long qobj = glu.gluNewQuadric();
             glu.gluQuadricOrientation(qobj,GLU_OUTSIDE);
             glu.gluQuadricNormals(qobj,GLU_SMOOTH);
             glu.gluQuadricTexture(qobj,false);

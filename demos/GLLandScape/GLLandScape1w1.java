@@ -187,7 +187,7 @@ class GLLandScape1w1 extends GLAnimCanvas
 
       Dimension dim = getSize();
       reshape(dim.width,dim.height);
-      myMove(FORWARD,mySpeed,true,false);
+      myMove(FORWARD,mySpeed,true);
       check_height();
       repaint();
       /* and start our working thread ... */
@@ -216,7 +216,7 @@ class GLLandScape1w1 extends GLAnimCanvas
       if(flat_shading == FALSE)
          gl.glShadeModel(GL_SMOOTH);
 
-      myMove(FORWARD,mySpeed,true,false);
+      myMove(FORWARD,mySpeed,true);
       check_height();
 
 
@@ -247,7 +247,6 @@ class GLLandScape1w1 extends GLAnimCanvas
 		    planes[i].theta =
 			((float)(random.nextInt() % 257))*0.1111f;
 		    planes[i].tick();
-		    if (isSuspended()) repaint();
 		    System.out.println("plane added");
 		    return;
 		}
@@ -261,7 +260,6 @@ class GLLandScape1w1 extends GLAnimCanvas
 		if (planes[i].speed != 0.0f)
 		{
 		    planes[i].speed = 0.0f;
-		    if (isSuspended()) repaint();
 		    System.out.println("plane removed");
 		    return;
 		}
@@ -432,7 +430,7 @@ class GLLandScape1w1 extends GLAnimCanvas
 
    /* Function that moves the eye / turns the angle of sight. */
    /* Updates scene if update. */
-   void myMove(int dir, float amount, boolean update, boolean fetchGLContext)
+   void myMove(int dir, float amount, boolean update)
    {
       float diff = (float)Math.sqrt(lookx * lookx + lookz * lookz);
       /*
@@ -448,7 +446,6 @@ class GLLandScape1w1 extends GLAnimCanvas
          alpha+=(float)((3.0*Math.PI)/2.0);
          float _alpha = (float) (alpha*180f/Math.PI );
        */
-      boolean do_repaint = false;
       lookx /= diff;
       lookz /= diff;
       //myDir=dir;
@@ -464,7 +461,6 @@ class GLLandScape1w1 extends GLAnimCanvas
             // lookx^2 + lookz^2 != 1 for some reason. Fix.
             lookx /= diff;
             lookz /= diff;
-            do_repaint = true;
             break;
          case STRAFELEFT:
             posx += lookz * amount;
@@ -472,15 +468,12 @@ class GLLandScape1w1 extends GLAnimCanvas
             break;
          case UP:
             posy += amount;
-            do_repaint = true;
             break;
          case LOOKUP:
             looky += amount;
-            do_repaint = true;
             break;
          case LOOKSET:
             looky = amount;
-            do_repaint = true;
             break;
       }
       int x = (int)(posx / (comp * 1.0f));
@@ -495,21 +488,10 @@ class GLLandScape1w1 extends GLAnimCanvas
          posz = MAP * comp;
       if (update)
       {
-	      if(fetchGLContext && glj.gljMakeCurrent() == false)
-	      {
-		 System.out.println("problem in use() method");
-		 return;
-	      }
 	      gl.glMatrixMode(GL_MODELVIEW); gl.glLoadIdentity();
               glu.gluLookAt(posx,posy,posz,
 			    posx+lookx, posy+looky,
 			    posz+lookz, 0.0f,1.0f,0.0f);
-
-	      if(fetchGLContext)
-		      glj.gljFree();
-
-	      if( do_repaint )
-		      repaint();
       }
    }
 
@@ -603,7 +585,6 @@ class GLLandScape1w1 extends GLAnimCanvas
 
    public void reshape(int w, int h)
    {
-      glj.gljResize(w,h);
       gl.glViewport(0,0,w,h);
       gl.glMatrixMode(GL_PROJECTION);
       gl.glLoadIdentity();
@@ -644,7 +625,7 @@ class GLLandScape1w1 extends GLAnimCanvas
 		    gl.glEnable(GL_TEXTURE_2D);
 		    texture_mapping = TRUE;
 		    glj.gljCheckGL();
-		    repaint();
+		    glj.gljFree();
 	    }
          }
       }
@@ -662,7 +643,7 @@ class GLLandScape1w1 extends GLAnimCanvas
 		    gl.glDisable(GL_TEXTURE_2D);
 		    texture_mapping = FALSE;
 		    glj.gljCheckGL();
-		    repaint();
+		    glj.gljFree();
 	    }
          }
       }
@@ -690,7 +671,7 @@ class GLLandScape1w1 extends GLAnimCanvas
 		    gl.glEnable(GL_FOG);
 		    land_fogging = TRUE;
 		    glj.gljCheckGL();
-		    repaint();
+		    glj.gljFree();
             }
          }
       }
@@ -708,7 +689,7 @@ class GLLandScape1w1 extends GLAnimCanvas
 		    gl.glDisable(GL_FOG);
 		    land_fogging = FALSE;
 		    glj.gljCheckGL();
-		    repaint();
+		    glj.gljFree();
             }
          }
       }
@@ -736,7 +717,7 @@ class GLLandScape1w1 extends GLAnimCanvas
 		    gl.glShadeModel(GL_FLAT);
 		    flat_shading = TRUE;
 		    glj.gljCheckGL();
-		    repaint();
+		    glj.gljFree();
             }
          }
       }
@@ -754,7 +735,7 @@ class GLLandScape1w1 extends GLAnimCanvas
 		    gl.glShadeModel(GL_SMOOTH);
 		    flat_shading = FALSE;
 		    glj.gljCheckGL();
-		    repaint();
+		    glj.gljFree();
             }
          }
       }
@@ -773,9 +754,26 @@ class GLLandScape1w1 extends GLAnimCanvas
       gl.glDeleteLists(theLand, 1);
       genLand();
       check_height();
-      repaint();
       setSuspended(false);
+      glj.gljFree();
    }
 
+   public String getGLString(int id)
+   {
+   	String result = "null";
+        if(glj!=null)
+	{
+	    if(glj.gljMakeCurrent() == false)
+	    {
+	       System.out.println("problem in use() method");
+	       return result;
+	    }
+	    result = gl.glGetString(id);
+	    glj.gljCheckGL();
+	    glj.gljFree();
+        }
+
+	return result;
+   }
 }
 

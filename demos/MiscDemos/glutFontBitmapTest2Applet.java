@@ -209,12 +209,6 @@ public class glutFontBitmapTest2Applet extends Applet
 			   float  axisY,
 			   float  axisZ)
 	    {
-		if( glj.gljMakeCurrent() == false ) 
-		{
-		    System.out.println("problem in use() method");
-		    return;
-		}
-		
 		 gl.glMatrixMode (GL_MODELVIEW);
 		 gl.glLoadIdentity ();
 		  
@@ -222,18 +216,10 @@ public class glutFontBitmapTest2Applet extends Applet
 		 gl.glRotatef(degree,axisX,axisY,axisZ);
 		 gl.glMultMatrixf(mPosObjRot);
 		 gl.glGetFloatv(GL_MODELVIEW_MATRIX,mPosObjRot);
-		 
-		 repaint();
 	    }
 	    
 	    void TranlateObj(float x,float y,float z)
 	    {
-		if( glj.gljMakeCurrent() == false ) 
-		{
-		    System.out.println("problem in use() method");
-		    return;
-		}
-	 
 		 gl.glMatrixMode (GL_MODELVIEW);
 		 gl.glLoadIdentity ();
 		  
@@ -241,8 +227,6 @@ public class glutFontBitmapTest2Applet extends Applet
 		 gl.glLoadMatrixf(mPosObjTrans);
 		 gl.glTranslatef(x,y,z);
 		 gl.glGetFloatv(GL_MODELVIEW_MATRIX,mPosObjTrans);
-		  
-		 repaint();
 	    }
 	    
 	    // entfernt rotationen aus aktueller matrix
@@ -296,6 +280,12 @@ public class glutFontBitmapTest2Applet extends Applet
             	    Point   dif=new Point(mousePoint.x-oldMousePoint.x,
             				  mousePoint.y-oldMousePoint.y);    
             	    
+		    if( glj.gljMakeCurrent() == false ) 
+		    {
+		        System.out.println("problem in use() method");
+		        return;
+		    }
+		
             	   if(e.isShiftDown()==true)
             	    TranlateObj((float)dif.x/6.0f,(float)dif.y/-6.0f,0f);
             	   else if(e.isAltDown()==true)
@@ -308,6 +298,11 @@ public class glutFontBitmapTest2Applet extends Applet
             	    RotateObj(dif.x,0f,1f,0f);
             	    RotateObj(dif.y,1f,0f,0f);
                    }
+
+	           glj.gljFree();
+
+		   repaint();
+
                 }
             }
             public void mouseMoved(MouseEvent e)

@@ -93,7 +93,7 @@ public class renormal extends SimpleGLAnimApplet1
             gl.glPushMatrix();
             gl.glScalef(scale, scale, scale);
 
-            int qobj = glu.gluNewQuadric();
+            long qobj = glu.gluNewQuadric();
             glu.gluQuadricOrientation(qobj,GLU_OUTSIDE);
             glu.gluQuadricNormals(qobj,GLU_SMOOTH);
             glu.gluQuadricTexture(qobj,false);

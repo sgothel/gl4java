@@ -59,7 +59,7 @@ public class pngTextureTestApplet extends Applet
 		Dimension ps = applet.getPreferredSize();
 		f.setBounds(-100,-100,99,99);
 		f.setVisible(true);
-		f.setVisible(false);
+		//f.setVisible(false);
 		Insets i = f.getInsets();
 		f.setBounds(0,0,
 			    ps.width+i.left+i.right, 
@@ -305,47 +305,6 @@ public class pngTextureTestApplet extends Applet
 		    glu.gluPerspective(60f,aspect,.01,100);
 	    }
 	   
-	    void RotateObj(float  degree,
-			   float  axisX,
-			   float  axisY,
-			   float  axisZ)
-	    {
-		if( glj.gljMakeCurrent() == false ) 
-		{
-		    System.out.println("problem in use() method");
-		    return;
-		}
-		
-		 gl.glMatrixMode (GL_MODELVIEW);
-		 gl.glLoadIdentity ();
-		  
-		 // kamera setzen
-		 gl.glRotatef(degree,axisX,axisY,axisZ);
-		 gl.glMultMatrixf(mPosObjRot);
-		 gl.glGetFloatv(GL_MODELVIEW_MATRIX,mPosObjRot);
-		 
-		 repaint();
-	    }
-	    
-	    void TranlateObj(float x,float y,float z)
-	    {
-		if( glj.gljMakeCurrent() == false ) 
-		{
-		    System.out.println("problem in use() method");
-		    return;
-		}
-	 
-		 gl.glMatrixMode (GL_MODELVIEW);
-		 gl.glLoadIdentity ();
-		  
-		 // kamera setzen
-		 gl.glLoadMatrixf(mPosObjTrans);
-		 gl.glTranslatef(x,y,z);
-		 gl.glGetFloatv(GL_MODELVIEW_MATRIX,mPosObjTrans);
-		  
-		 repaint();
-	    }
-	    
 	    // entfernt rotationen aus aktueller matrix
 	    double Billboard() 
 	    {
@@ -397,6 +356,12 @@ public class pngTextureTestApplet extends Applet
             	    Point   dif=new Point(mousePoint.x-oldMousePoint.x,
             				  mousePoint.y-oldMousePoint.y);    
             	    
+		    if( glj.gljMakeCurrent() == false ) 
+		    {
+		        System.out.println("problem in use() method");
+		        return;
+		    }
+		
             	   if(e.isShiftDown()==true)
             	    TranlateObj((float)dif.x/6.0f,(float)dif.y/-6.0f,0f);
             	   else if(e.isAltDown()==true)
@@ -409,12 +374,42 @@ public class pngTextureTestApplet extends Applet
             	    RotateObj(dif.x,0f,1f,0f);
             	    RotateObj(dif.y,1f,0f,0f);
                    }
+
+		   glj.gljFree();
+		   repaint();
+
                 }
             }
             public void mouseMoved(MouseEvent e)
             {
             }
 
+	    void RotateObj(float  degree,
+			   float  axisX,
+			   float  axisY,
+			   float  axisZ)
+	    {
+		 gl.glMatrixMode (GL_MODELVIEW);
+		 gl.glLoadIdentity ();
+		  
+		 // kamera setzen
+		 gl.glRotatef(degree,axisX,axisY,axisZ);
+		 gl.glMultMatrixf(mPosObjRot);
+		 gl.glGetFloatv(GL_MODELVIEW_MATRIX,mPosObjRot);
+	    }
+	    
+	    void TranlateObj(float x,float y,float z)
+	    {
+		 gl.glMatrixMode (GL_MODELVIEW);
+		 gl.glLoadIdentity ();
+		  
+		 // kamera setzen
+		 gl.glLoadMatrixf(mPosObjTrans);
+		 gl.glTranslatef(x,y,z);
+		 gl.glGetFloatv(GL_MODELVIEW_MATRIX,mPosObjTrans);
+		  
+	    }
+	    
 
 	}
 }

@@ -29,8 +29,8 @@ public class MacHandleAccess implements gl4java.jau.awt.WinHandleAccess
 	protected DrawingSurface		ds;
 	protected DrawingSurfaceInfo	dsi;
 	protected MacDrawingSurface		mds;
-	protected int					window,
-									depth;
+	protected long		window;
+	protected int		depth;
 	
 	
 	protected void achieveData(java.awt.Component c, java.awt.Graphics g)
@@ -55,7 +55,7 @@ public class MacHandleAccess implements gl4java.jau.awt.WinHandleAccess
 		{
 			dsi.lock();
 			
-			window = mds.getPort();
+			window = (long) mds.getPort();
 			depth = c.getColorModel().getPixelSize();
 					
 			dsi.unlock();
@@ -71,7 +71,7 @@ public class MacHandleAccess implements gl4java.jau.awt.WinHandleAccess
  *
  * gets some structure for windows, and drawable on Mac
  */
-	public int getWinHandle(java.awt.Component c, java.awt.Graphics g)
+	public long getWinHandle(java.awt.Component c, java.awt.Graphics g)
 	{
 		achieveData(c, g);
 		return window;

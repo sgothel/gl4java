@@ -16,40 +16,14 @@
  * September 1997
  */
 
-/* 
- * need to include the JAVA internal header files for macros and function
- * prototypes required to maipulated JAVA data structures and functions
- *
- * StubPreamble.h includes the structure and macro definitions neede to
- * convert JAVA data structures into C data structures.
- *
- */
-
-#ifdef _WIN32_
- 	#include "winstuff.h"
-#endif
-
-#include <stdio.h>
-#include <stdlib.h>
-
-#include <jni.h>
-
-/*
- * the next thing to include are special headers that were created by
- * JAVAH.  They include the C structure definitions for the JAVA classes
- */
-#include "gl4java_GLUFuncJauJNI.h"
 
 /*--------------------------------------------------------------------------
  * here on in is just regular apple pie C
  */
 
-/*
- * next put any specific header files that are necessary to implement
- * this native code
- */            
-#include<GL/gl.h>
-#include <GL/glu.h>
+#include "OpenGL_misc.h"
+
+#include "gl4java_GLUFuncJauJNI.h"
 
 #include "GLCallbackHelperJNI.h"
 #include "GLUCallbackJNI.h"
@@ -103,7 +77,7 @@ Java_gl4java_GLUFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 }
 
 static void _AddCallbackNode(JNIEnv *env,
-	                          jint qnt_obj, jint which,
+	                          jlong qnt_obj, jint which,
 			          jobject methodClassInstance, 
 			          jstring methodName, 
 				  jstring signature,
@@ -122,7 +96,7 @@ static void _AddCallbackNode(JNIEnv *env,
 	AddCallbackNode(env, methodClassInstance, strMethodName, strSignature,
 			arrayLen1, arrayLen2, arrayLen3,
 			arrayLen4, arrayLen5,
-			(void *)qnt_obj, which, glx);
+			(void *)((PointerHolder)qnt_obj), which, glx);
 	free(strMethodName);
 	free(strSignature);
 }
@@ -130,7 +104,7 @@ static void _AddCallbackNode(JNIEnv *env,
 
 JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluQuadricCallback( JNIEnv *env, jobject obj,
-	                          jint qobj, jint which,
+	                          jlong qobj, jint which,
 			          jobject methodClassInstance, 
 			          jstring methodName, 
 				  jstring signature)
@@ -138,8 +112,8 @@ Java_gl4java_GLUFuncJauJNI_gluQuadricCallback( JNIEnv *env, jobject obj,
 	switch(which)
 	{
 		case GLU_ERROR:
-			gluQuadricCallback((void *)qobj, which, 
-				           cbf_GLU_ERROR );
+			gluQuadricCallback((void *)((PointerHolder)qobj), 
+			                   which, cbf_GLU_ERROR );
 			break;
 		default:
 		    jnitoolsThrowByName(env, "java/lang/IllegalArgumentException", "Wrong Callback-Function type (\"which\") !");
@@ -154,7 +128,7 @@ Java_gl4java_GLUFuncJauJNI_gluQuadricCallback( JNIEnv *env, jobject obj,
 
 JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluNurbsCallback( JNIEnv *env, jobject obj,
-	                          jint nobj, jint which,
+	                          jlong nobj, jint which,
 			          jobject methodClassInstance, 
 			          jstring methodName, 
 				  jstring signature)
@@ -162,7 +136,7 @@ Java_gl4java_GLUFuncJauJNI_gluNurbsCallback( JNIEnv *env, jobject obj,
 	switch(which)
 	{
 		case GLU_ERROR:
-			gluNurbsCallback((void *)nobj, which, 
+			gluNurbsCallback((void *)((PointerHolder)nobj), which, 
 				         cbf_GLU_ERROR );
 			break;
 		default:
@@ -177,7 +151,7 @@ Java_gl4java_GLUFuncJauJNI_gluNurbsCallback( JNIEnv *env, jobject obj,
 
 JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluTessCallback( JNIEnv *env, jobject obj,
-	                          jint tobj, jint which,
+	                          jlong tobj, jint which,
 			          jobject methodClassInstance, 
 			          jstring methodName, 
 				  jstring signature,
@@ -190,51 +164,63 @@ Java_gl4java_GLUFuncJauJNI_gluTessCallback( JNIEnv *env, jobject obj,
 	switch(which)
 	{
 		case GLU_TESS_BEGIN:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_BEGIN );
 			break;
 		case GLU_TESS_BEGIN_DATA:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_BEGIN_DATA );
 			break;
 		case GLU_TESS_EDGE_FLAG:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_EDGE_FLAG );
 			break;
 		case GLU_TESS_EDGE_FLAG_DATA:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_EDGE_FLAG_DATA );
 			break;
 		case GLU_TESS_VERTEX:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_VERTEX );
 			break;
 		case GLU_TESS_VERTEX_DATA:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_VERTEX_DATA );
 			break;
 		case GLU_TESS_END:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_END );
 			break;
 		case GLU_TESS_END_DATA:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_END_DATA );
 			break;
 		case GLU_TESS_ERROR:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_ERROR );
 			break;
 		case GLU_TESS_ERROR_DATA:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_ERROR_DATA );
 			break;
 		case GLU_TESS_COMBINE:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_COMBINE );
 			break;
 		case GLU_TESS_COMBINE_DATA:
-			gluTessCallback((GLUtesselator *)tobj, which, 
+			gluTessCallback((GLUtesselator *)((PointerHolder)tobj), 
+			                which, 
 				        cbf_GLU_TESS_COMBINE_DATA );
 			break;
 		default:
@@ -250,30 +236,48 @@ Java_gl4java_GLUFuncJauJNI_gluTessCallback( JNIEnv *env, jobject obj,
 
 JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteQuadric( JNIEnv *env, jobject obj,
-					     jint qobj )
+					     jlong qobj )
 {
-	gluDeleteQuadric((void *)qobj);
-	RemoveCallbackNodes((void *)qobj);
+	gluDeleteQuadric((void *)((PointerHolder)qobj));
+	RemoveCallbackNodes((void *)((PointerHolder)qobj));
 }
 
 JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteNurbsRenderer( JNIEnv *env, jobject obj,
-						   jint nobj )
+						   jlong nobj )
 {
-	gluDeleteNurbsRenderer((void *)nobj);
-	RemoveCallbackNodes((void *)nobj);
+	gluDeleteNurbsRenderer((void *)((PointerHolder)nobj));
+	RemoveCallbackNodes((void *)((PointerHolder)nobj));
 }
 
 JNIEXPORT void JNICALL
 Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
-					  jint tobj )
+					  jlong tobj )
 {
-	gluDeleteTess((GLUtesselator *)tobj);
-	RemoveCallbackNodes((void *)tobj);
+	gluDeleteTess((GLUtesselator *)((PointerHolder)tobj));
+	RemoveCallbackNodes((void *)((PointerHolder)tobj));
+}
+
+JNIEXPORT jlong JNICALL
+Java_gl4java_GLUFuncJauJNI_gluNewQuadric( JNIEnv *env, jobject obj)
+{
+	return (jlong)((PointerHolder)gluNewQuadric());
+}
+
+JNIEXPORT jlong JNICALL
+Java_gl4java_GLUFuncJauJNI_gluNewNurbsRenderer( JNIEnv *env, jobject obj)
+{
+	return (jlong)((PointerHolder)gluNewNurbsRenderer());
+}
+
+JNIEXPORT jlong JNICALL
+Java_gl4java_GLUFuncJauJNI_gluNewTess( JNIEnv *env, jobject obj)
+{
+	return (jlong)((PointerHolder)gluNewTess());
 }
 
 /**
- * C2J Parser Version 1.4 Beta
+ * C2J Parser Version 1.5 Beta
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -1300,37 +1304,18 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUquadricObj * gluNewQuadric ( void ) ;
- * </pre> 
- */
-	JNIEXPORT jint JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluNewQuadric (
-		JNIEnv *env, jobject obj)
-	{
-		jint ret;
-
-
-		ret = (jint) gluNewQuadric (
-		);
-
-		return ret;
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluQuadricDrawStyle ( GLUquadricObj * quadObject , GLenum drawStyle ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluQuadricDrawStyle (
 		JNIEnv *env, jobject obj,
-		jint quadObject,
+		jlong quadObject,
 		jint drawStyle)
 	{
 
 		gluQuadricDrawStyle (
-			(GLUquadricObj *) quadObject,
+			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) drawStyle
 		);
 
@@ -1345,12 +1330,12 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluQuadricOrientation (
 		JNIEnv *env, jobject obj,
-		jint quadObject,
+		jlong quadObject,
 		jint orientation)
 	{
 
 		gluQuadricOrientation (
-			(GLUquadricObj *) quadObject,
+			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) orientation
 		);
 
@@ -1365,12 +1350,12 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluQuadricNormals (
 		JNIEnv *env, jobject obj,
-		jint quadObject,
+		jlong quadObject,
 		jint normals)
 	{
 
 		gluQuadricNormals (
-			(GLUquadricObj *) quadObject,
+			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) normals
 		);
 
@@ -1385,12 +1370,12 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluQuadricTexture (
 		JNIEnv *env, jobject obj,
-		jint quadObject,
+		jlong quadObject,
 		jboolean textureCoords)
 	{
 
 		gluQuadricTexture (
-			(GLUquadricObj *) quadObject,
+			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLboolean) textureCoords
 		);
 
@@ -1405,7 +1390,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluCylinder (
 		JNIEnv *env, jobject obj,
-		jint qobj,
+		jlong qobj,
 		jdouble baseRadius,
 		jdouble topRadius,
 		jdouble height,
@@ -1414,7 +1399,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	{
 
 		gluCylinder (
-			(GLUquadricObj *) qobj,
+			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) baseRadius,
 			(GLdouble) topRadius,
 			(GLdouble) height,
@@ -1433,14 +1418,14 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluSphere (
 		JNIEnv *env, jobject obj,
-		jint qobj,
+		jlong qobj,
 		jdouble radius,
 		jint slices,
 		jint stacks)
 	{
 
 		gluSphere (
-			(GLUquadricObj *) qobj,
+			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) radius,
 			(GLint) slices,
 			(GLint) stacks
@@ -1457,7 +1442,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluDisk (
 		JNIEnv *env, jobject obj,
-		jint qobj,
+		jlong qobj,
 		jdouble innerRadius,
 		jdouble outerRadius,
 		jint slices,
@@ -1465,7 +1450,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	{
 
 		gluDisk (
-			(GLUquadricObj *) qobj,
+			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) innerRadius,
 			(GLdouble) outerRadius,
 			(GLint) slices,
@@ -1483,7 +1468,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluPartialDisk (
 		JNIEnv *env, jobject obj,
-		jint qobj,
+		jlong qobj,
 		jdouble innerRadius,
 		jdouble outerRadius,
 		jint slices,
@@ -1493,7 +1478,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	{
 
 		gluPartialDisk (
-			(GLUquadricObj *) qobj,
+			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) innerRadius,
 			(GLdouble) outerRadius,
 			(GLint) slices,
@@ -1507,32 +1492,13 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUnurbsObj * gluNewNurbsRenderer ( void ) ;
- * </pre> 
- */
-	JNIEXPORT jint JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluNewNurbsRenderer (
-		JNIEnv *env, jobject obj)
-	{
-		jint ret;
-
-
-		ret = (jint) gluNewNurbsRenderer (
-		);
-
-		return ret;
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluLoadSamplingMatrices ( GLUnurbsObj * nobj , const GLfloat modelMatrix [ 16 ] , const GLfloat projMatrix [ 16 ] , const GLint viewport [ 4 ] ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluLoadSamplingMatrices (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jfloatArray modelMatrix,
 		jfloatArray projMatrix,
 		jintArray viewport)
@@ -1572,7 +1538,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluLoadSamplingMatrices (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(const GLfloat *) ptr1,
 			(const GLfloat *) ptr2,
 			(const GLint *) ptr3
@@ -1601,13 +1567,13 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluNurbsProperty (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jint property,
 		jfloat value)
 	{
 
 		gluNurbsProperty (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLenum) property,
 			(GLfloat) value
 		);
@@ -1623,7 +1589,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluGetNurbsProperty (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jint property,
 		jfloatArray value)
 	{
@@ -1640,7 +1606,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluGetNurbsProperty (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLenum) property,
 			(GLfloat *) ptr2
 		);
@@ -1660,11 +1626,11 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluBeginCurve (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluBeginCurve (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1678,11 +1644,11 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluEndCurve (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluEndCurve (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1696,7 +1662,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluNurbsCurve (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jint nknots,
 		jfloatArray knot,
 		jint stride,
@@ -1728,7 +1694,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluNurbsCurve (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) nknots,
 			(GLfloat *) ptr2,
 			(GLint) stride,
@@ -1756,11 +1722,11 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluBeginSurface (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluBeginSurface (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1774,11 +1740,11 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluEndSurface (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluEndSurface (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1792,7 +1758,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluNurbsSurface (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jint sknot_count,
 		jfloatArray sknot,
 		jint tknot_count,
@@ -1839,7 +1805,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluNurbsSurface (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) sknot_count,
 			(GLfloat *) ptr2,
 			(GLint) tknot_count,
@@ -1875,11 +1841,11 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluBeginTrim (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluBeginTrim (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1893,11 +1859,11 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluEndTrim (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluEndTrim (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1911,7 +1877,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluPwlCurve (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jint count,
 		jfloatArray array,
 		jint stride,
@@ -1930,7 +1896,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluPwlCurve (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) count,
 			(GLfloat *) ptr2,
 			(GLint) stride,
@@ -1946,32 +1912,13 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUtesselator * gluNewTess ( void ) ;
- * </pre> 
- */
-	JNIEXPORT jint JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluNewTess (
-		JNIEnv *env, jobject obj)
-	{
-		jint ret;
-
-
-		ret = (jint) gluNewTess (
-		);
-
-		return ret;
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluTessBeginPolygon ( GLUtesselator * tobj , void * polygon_data ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3B (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3B (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jbyteArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -1987,7 +1934,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -1997,9 +1944,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3S (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3S (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jshortArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -2015,7 +1962,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -2025,9 +1972,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3I (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3I (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jintArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -2043,7 +1990,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -2053,9 +2000,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3F (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3F (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jfloatArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -2071,7 +2018,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -2081,9 +2028,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3D (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3D (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -2099,7 +2046,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -2109,9 +2056,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3Z (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3Z (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jbooleanArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -2127,7 +2074,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -2137,9 +2084,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3J (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3J (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jlongArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -2155,7 +2102,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -2174,11 +2121,11 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluTessBeginContour (
 		JNIEnv *env, jobject obj,
-		jint tobj)
+		jlong tobj)
 	{
 
 		gluTessBeginContour (
-			(GLUtesselator *) tobj
+			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
@@ -2190,9 +2137,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3B (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3B (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jbyteArray vertex_data)
 	{
@@ -2220,7 +2167,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -2235,9 +2182,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3S (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3S (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jshortArray vertex_data)
 	{
@@ -2265,7 +2212,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -2280,9 +2227,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3I (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3I (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jintArray vertex_data)
 	{
@@ -2310,7 +2257,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -2325,9 +2272,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3F (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3F (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jfloatArray vertex_data)
 	{
@@ -2355,7 +2302,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -2370,9 +2317,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3D (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3D (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jdoubleArray vertex_data)
 	{
@@ -2400,7 +2347,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -2415,9 +2362,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3Z (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3Z (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jbooleanArray vertex_data)
 	{
@@ -2445,7 +2392,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -2460,9 +2407,9 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3J (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3J (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jlongArray vertex_data)
 	{
@@ -2490,7 +2437,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -2514,11 +2461,11 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluTessEndContour (
 		JNIEnv *env, jobject obj,
-		jint tobj)
+		jlong tobj)
 	{
 
 		gluTessEndContour (
-			(GLUtesselator *) tobj
+			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
@@ -2532,11 +2479,11 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluTessEndPolygon (
 		JNIEnv *env, jobject obj,
-		jint tobj)
+		jlong tobj)
 	{
 
 		gluTessEndPolygon (
-			(GLUtesselator *) tobj
+			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
@@ -2550,13 +2497,13 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluTessProperty (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jint which,
 		jdouble value)
 	{
 
 		gluTessProperty (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) which,
 			(GLdouble) value
 		);
@@ -2572,14 +2519,14 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluTessNormal (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdouble x,
 		jdouble y,
 		jdouble z)
 	{
 
 		gluTessNormal (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble) x,
 			(GLdouble) y,
 			(GLdouble) z
@@ -2596,7 +2543,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluGetTessProperty (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jint which,
 		jdoubleArray value)
 	{
@@ -2613,7 +2560,7 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 			}
 		}
 		gluGetTessProperty (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) which,
 			(GLdouble *) ptr2
 		);
@@ -2633,11 +2580,11 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluBeginPolygon (
 		JNIEnv *env, jobject obj,
-		jint tobj)
+		jlong tobj)
 	{
 
 		gluBeginPolygon (
-			(GLUtesselator *) tobj
+			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
@@ -2651,12 +2598,12 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluNextContour (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jint type)
 	{
 
 		gluNextContour (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) type
 		);
 
@@ -2671,13 +2618,13 @@ Java_gl4java_GLUFuncJauJNI_gluDeleteTess( JNIEnv *env, jobject obj,
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluEndPolygon (
 		JNIEnv *env, jobject obj,
-		jint tobj)
+		jlong tobj)
 	{
 
 		gluEndPolygon (
-			(GLUtesselator *) tobj
+			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
 
-/* C2J Parser Version 1.4 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 

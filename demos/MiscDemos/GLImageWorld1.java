@@ -64,7 +64,10 @@ public class GLImageWorld1 extends GLCanvas
 	 if(fetchGL)
 	 {
 		 if( glj.gljMakeCurrent() == false ) 
+		 {
 		      System.out.println("problem in use() method");
+		      return;
+	         }
 	 }
 
 	 TranlateObj(0f,0f,-10f);
@@ -346,12 +349,6 @@ public class GLImageWorld1 extends GLCanvas
 		   float  axisY,
 		   float  axisZ)
     {
-	if( glj.gljMakeCurrent() == false ) 
-	{
-	    System.out.println("problem in use() method");
-	    return;
-	}
-	
 	 gl.glMatrixMode (GL_MODELVIEW);
 	 gl.glLoadIdentity ();
 	  
@@ -359,18 +356,10 @@ public class GLImageWorld1 extends GLCanvas
 	 gl.glRotatef(degree,axisX,axisY,axisZ);
 	 gl.glMultMatrixf(mPosObjRot);
 	 gl.glGetFloatv(GL_MODELVIEW_MATRIX,mPosObjRot);
-	 
-	 repaint();
     }
     
     void TranlateObj(float x,float y,float z)
     {
-	if( glj.gljMakeCurrent() == false ) 
-	{
-	    System.out.println("problem in use() method");
-	    return;
-	}
- 
 	 gl.glMatrixMode (GL_MODELVIEW);
 	 gl.glLoadIdentity ();
 	  
@@ -378,8 +367,6 @@ public class GLImageWorld1 extends GLCanvas
 	 gl.glLoadMatrixf(mPosObjTrans);
 	 gl.glTranslatef(x,y,z);
 	 gl.glGetFloatv(GL_MODELVIEW_MATRIX,mPosObjTrans);
-	  
-	 repaint();
     }
     
     // entfernt rotationen aus aktueller matrix
@@ -433,6 +420,12 @@ public class GLImageWorld1 extends GLCanvas
 	    Point   dif=new Point(mousePoint.x-oldMousePoint.x,
 				  mousePoint.y-oldMousePoint.y);    
 	    
+	    if( glj.gljMakeCurrent() == false ) 
+	    {
+	        System.out.println("problem in use() method");
+	        return;
+	    }
+	
 	   if(e.isShiftDown()==true)
 	    TranlateObj((float)dif.x/6.0f,(float)dif.y/-6.0f,0f);
 	   else if(e.isAltDown()==true)
@@ -445,6 +438,9 @@ public class GLImageWorld1 extends GLCanvas
 	    RotateObj(dif.x,0f,1f,0f);
 	    RotateObj(dif.y,1f,0f,0f);
 	   }
+
+	   glj.gljFree();
+	   repaint();
 	}
     }
     public void mouseMoved(MouseEvent e)

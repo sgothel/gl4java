@@ -27,22 +27,11 @@ static const char * _lib_version_=  __LIB_VERSION__ ;
   static const char * _lib_vendor_ = "Jausoft - Sven Goethel Software Development"; 
 #endif
 
-#ifndef LIBAPIENTRY
-	#define LIBAPIENTRY
-#endif
-#ifndef LIBAPI
-	#define LIBAPI
-#endif
 #ifndef CALLBACK
 	#define CALLBACK
 #endif
 
-jboolean testJavaGLTypes(jboolean verbose);
-
-JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM * vm, void *reserved);
-JNIEXPORT void JNICALL JNI_OnUnload(JavaVM *vm, void *reserved);
-
-jboolean testJavaGLTypes(jboolean verbose)
+jboolean LIBAPIENTRY testJavaGLTypes(jboolean verbose)
 {
     jboolean ret=JNI_TRUE;
     jint i1 = (jint)0xaaff;
@@ -156,6 +145,12 @@ jboolean testJavaGLTypes(jboolean verbose)
      * GLbitfield     :       dito.
      */
 
+    if( sizeof(void *) > sizeof(PointerHolder) )
+    {
+        fprintf(stderr,"(void *) > (PointerHolder)\n");
+	ret = JNI_FALSE;
+    }
+
     if( sizeof(void *) > sizeof(jlong) )
     {
         fprintf(stderr,"(void *) > (jlong)\n");
@@ -208,8 +203,12 @@ jboolean testJavaGLTypes(jboolean verbose)
     fprintf(stderr,"jfloat %d\n", sizeof(jfloat)); 
     fprintf(stderr,"jdouble %d\n", sizeof(jdouble)); 
 
-    fflush(stderr);
+    fprintf(stderr,"\nPointerHolder %d\n", sizeof(PointerHolder)); 
 
+    fprintf(stderr, "GL4Java: useJAWT=%d\n\n",
+	(int) Java_gl4java_GLContext_useJAWT( 0, 0 ) );
+
+    fflush(stderr);
     return ret;
 }
 
@@ -231,19 +230,6 @@ Java_gl4java_GLContext_gljGetNativeLibVendorNative(JNIEnv *env, jobject obj )
 {
     return (*env)->NewStringUTF(env, _lib_vendor_);
 }
-
-JNIEXPORT jint JNICALL
-JNI_OnLoad(JavaVM * vm, void *reserved)
-{
-    return 0x00010001; /* old JDK 1.1 JNI :-) */
-}
-
-JNIEXPORT void JNICALL
-JNI_OnUnload(JavaVM *vm, void *reserved)
-{
-    /* old JNI :-) */
-}
-
 
 /**
  * Experimental Code, not done yet !

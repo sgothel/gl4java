@@ -59,7 +59,9 @@ import javax.swing.*;
  * </pre>
  * <p>        
  *
- * @see GLAnimJPanel
+ * @see gl4java.swing.GLAnimJPanel
+ * @see gl4java.awt.GLCanvas
+ *
  * @version 	2.0, 21. April 1999
  * @author      Sven Goethel
  * 
@@ -83,8 +85,8 @@ public class GLJPanel extends JPanel
      * This value is updated after a GLContext is created with the
      * original updated value of GLContext !
      *
-     * @see GLJPanel#preInit
-     * @see GLJPanel#paint
+     * @see gl4java.swing.GLJPanel#preInit
+     * @see gl4java.swing.GLJPanel#paint
      */
     protected int stencilBits = 0;
 
@@ -93,8 +95,8 @@ public class GLJPanel extends JPanel
      * This value is updated after a GLContext is created with the
      * original updated value of GLContext !
      *
-     * @see GLJPanel#preInit
-     * @see GLJPanel#paint
+     * @see gl4java.swing.GLJPanel#preInit
+     * @see gl4java.swing.GLJPanel#paint
      */
     protected int accumSize = 0;
 
@@ -103,8 +105,8 @@ public class GLJPanel extends JPanel
      * This value is updated after a GLContext is created with the
      * original updated value of GLContext !
      *
-     * @see GLJPanel#preInit
-     * @see GLJPanel#paint
+     * @see gl4java.swing.GLJPanel#preInit
+     * @see gl4java.swing.GLJPanel#paint
      */
     protected boolean stereoView = false;
 
@@ -113,32 +115,32 @@ public class GLJPanel extends JPanel
     * This value is updated after a GLContext is created with the
     * original updated value of GLContext !
     *
-    * @see GLJPanel#preInit
-    * @see GLJPanel#paint
+    * @see gl4java.swing.GLJPanel#preInit
+    * @see gl4java.swing.GLJPanel#paint
     */
     protected boolean rgba = true;    
 
    /**
     * The context with witch display lists and textures will be shared.
     *
-    * @see GLJPanel#preInit
-    * @see GLJPanel#paint
+    * @see gl4java.swing.GLJPanel#preInit
+    * @see gl4java.swing.GLJPanel#paint
     */
     protected GLContext sharedGLContext;	
 
    /**
     * The data to hold the offscreen pixels on the java side !
     *
-    * @see GLJPanel#offImagePixels
-    * @see GLJPanel#paint
+    * @see gl4java.swing.GLJPanel#offImagePixels
+    * @see gl4java.swing.GLJPanel#paint
     */
     protected BufferedImage offImage = null;
 
    /**
     * The data to hold the offscreen pixels on the GL side !
     *
-    * @see GLJPanel#offImage
-    * @see GLJPanel#paint
+    * @see gl4java.swing.GLJPanel#offImage
+    * @see gl4java.swing.GLJPanel#paint
     */
     protected byte[] offImagePixels = null;
 
@@ -149,9 +151,9 @@ public class GLJPanel extends JPanel
     * the offscreen pixmap is used in this size,
     * not in the components-size (-> faster if smaller)
     *
-    * @see GLJPanel#paint
-    * @see GLJPanel#setOffScreenSize
-    * @see GLJPanel#getOffScreenSize
+    * @see gl4java.swing.GLJPanel#paint
+    * @see gl4java.swing.GLJPanel#setOffScreenSize
+    * @see gl4java.swing.GLJPanel#getOffScreenSize
     */
     protected Dimension offScrnSize = null;
     protected boolean customOffScrnSize=false;
@@ -269,7 +271,7 @@ public class GLJPanel extends JPanel
      *
      * @return 		void
      *
-     * @see	GLJPanel#paint
+     * @see	gl4java.swing.GLJPanel#paint
      */ 
     public final Window getTopLevelWindow()
     { return topLevelWindow; }
@@ -281,8 +283,8 @@ public class GLJPanel extends JPanel
     * the offscreen pixmap is used in this size,
     * not in the components-size (-> faster if smaller)
     *
-    * @see GLJPanel#offScrnSize
-    * @see GLJPanel#setOffScreenSize
+    * @see gl4java.swing.GLJPanel#offScrnSize
+    * @see gl4java.swing.GLJPanel#setOffScreenSize
     */
     public Dimension getOffScreenSize()
     { return offScrnSize; }
@@ -294,8 +296,8 @@ public class GLJPanel extends JPanel
     * the offscreen pixmap is used in this size,
     * not in the components-size (-> faster if smaller)
     *
-    * @see GLJPanel#offScrnSize
-    * @see GLJPanel#getOffScreenSize
+    * @see gl4java.swing.GLJPanel#offScrnSize
+    * @see gl4java.swing.GLJPanel#getOffScreenSize
     */
     public void setOffScreenSize(Dimension size)
     {
@@ -327,11 +329,11 @@ public class GLJPanel extends JPanel
      * in your derivation.
      *
      * @see gl4java.GLContext#GLContext
-     * @see GLJPanel#cvsIsInit
-     * @see GLJPanel#sDisplay
-     * @see GLJPanel#display
-     * @see GLJPanel#preInit
-     * @see GLJPanel#init
+     * @see gl4java.swing.GLJPanel#cvsIsInit
+     * @see gl4java.swing.GLJPanel#sDisplay
+     * @see gl4java.swing.GLJPanel#display
+     * @see gl4java.swing.GLJPanel#preInit
+     * @see gl4java.swing.GLJPanel#init
      */
     public synchronized final void paintComponent(Graphics g)
     {
@@ -430,8 +432,8 @@ public class GLJPanel extends JPanel
      *
      * @return 		void
      *
-     * @see GLJPanel#paint
-     * @see GLJPanel#display
+     * @see gl4java.swing.GLJPanel#paint
+     * @see gl4java.swing.GLJPanel#display
      */ 
     public synchronized final void sDisplay()
     {
@@ -562,8 +564,8 @@ public class GLJPanel extends JPanel
      *
      * @return 		void
      *
-     * @see GLJPanel#sDisplay
-     * @see GLJPanel#paint
+     * @see gl4java.swing.GLJPanel#sDisplay
+     * @see gl4java.swing.GLJPanel#paint
      */ 
     public void display()
     {
@@ -578,12 +580,11 @@ public class GLJPanel extends JPanel
      *
      * @return 		void
      *
-     * @see	GLJPanel#paint
-     * @see	GLJPanel#doubleBuffer
-     * @see	GLJPanel#stereoView
-     * @see	GLJPanel#rgba
-     * @see	GLJPanel#stencilBits
-     * @see	GLJPanel#accumSize
+     * @see	gl4java.swing.GLJPanel#paint
+     * @see	gl4java.swing.GLJPanel#stereoView
+     * @see	gl4java.swing.GLJPanel#rgba
+     * @see	gl4java.swing.GLJPanel#stencilBits
+     * @see	gl4java.swing.GLJPanel#accumSize
      */ 
     public void preInit()
     {
@@ -598,7 +599,7 @@ public class GLJPanel extends JPanel
      *
      * @return 		void
      *
-     * @see	GLJPanel#paint
+     * @see	gl4java.swing.GLJPanel#paint
      */ 
     public void init()
     {
@@ -613,7 +614,7 @@ public class GLJPanel extends JPanel
      *
      * @return 		void
      *
-     * @see	GLJPanel#cvsDispose
+     * @see	gl4java.swing.GLJPanel#cvsDispose
      */
     public void doCleanup()
     {
@@ -626,8 +627,8 @@ public class GLJPanel extends JPanel
      *
      * @return 	boolean
      *
-     * @see	GLJPanel#paint
-     * @see	GLJPanel#init
+     * @see	gl4java.swing.GLJPanel#paint
+     * @see	gl4java.swing.GLJPanel#init
      */ 
     public boolean cvsIsInit()
     {
@@ -662,8 +663,8 @@ public class GLJPanel extends JPanel
      * @param height	the new height
      * @return 		void
      *
-     * @see GLJPanel#paint
-     * @see GLJPanel#sDisplay
+     * @see gl4java.swing.GLJPanel#paint
+     * @see gl4java.swing.GLJPanel#sDisplay
      */ 
     public void reshape( int width, int height )
     {
@@ -689,8 +690,8 @@ public class GLJPanel extends JPanel
      * @param e		the element, which is resized
      * @return 		void
      *
-     * @see GLJPanel#paint
-     * @see GLJPanel#reshape
+     * @see gl4java.swing.GLJPanel#paint
+     * @see gl4java.swing.GLJPanel#reshape
      */ 
     public void componentResized(ComponentEvent e)
     {
@@ -807,7 +808,7 @@ public class GLJPanel extends JPanel
       * This function calls gljDestroy of GLContext !
       *
       * @see gl4java.GLContext#gljDestroy
-      * @see GLJPanel#doCleanup
+      * @see gl4java.swing.GLJPanel#doCleanup
       */
     public void cvsDispose()
     {

@@ -22,21 +22,7 @@
  * The other procs are implemented with JNI !
  */
 
-#ifdef _WIN32_
-	#include "winstuff.h"
-#endif
-
-#include "GL/gl.h"
-
-#include <stdio.h>
-
-/*--------------------------------------------------------------------------
- * here on in is just regular apple pie C
- */
-
-#include <GL\gl.h>
-#include <gl\glu.h>
-#include <wingdi.h>
+#include "OpenGL_misc.h"
 
 #define CLASS_NAME "GL4JavaOglRenderingWindowClass"
 #define WINDOW_NAME "GL4JavaOglRenderingWindow"
@@ -107,10 +93,10 @@ __declspec(dllexport) void OGLWindowMsgPumpJDirect(void)
 		}
     }   /* OGLWindowMsgPumpJDirect() */
 
-__declspec(dllexport) void moveOGLWindowNativeJDirect(int _hdc, int x, int y, int width, int height)
+__declspec(dllexport) void moveOGLWindowNativeJDirect(long _hdc, int x, int y, int width, int height)
 	{
 	HWND hwnd, hwndParent;
-	HDC hdc = (HDC)_hdc;
+	HDC hdc = (HDC)((PointerHolder)_hdc);
     RECT rect;
     int parentx = 0, parenty = 0;
     int insetsleft = 0, insetstop = 0;
@@ -137,7 +123,7 @@ __declspec(dllexport) void moveOGLWindowNativeJDirect(int _hdc, int x, int y, in
 		}
 	}	/* moveOGLWindowNativeJDirect() */
 
-__declspec(dllexport) int createOGLWindowNativeJDirect(int hwndParent, int x, int y, int width, int height)
+__declspec(dllexport) long createOGLWindowNativeJDirect(long hwndParent, int x, int y, int width, int height)
 	{
 	HWND hwnd;
     HDC hdc;
@@ -150,7 +136,7 @@ __declspec(dllexport) int createOGLWindowNativeJDirect(int hwndParent, int x, in
 		 y,
 		 width,
 		 height,
-		 (HWND)hwndParent,
+		 (HWND)((PointerHolder)hwndParent),
 		 NULL,
 		 NULL,
 		 NULL)) == NULL)
@@ -160,14 +146,14 @@ __declspec(dllexport) int createOGLWindowNativeJDirect(int hwndParent, int x, in
 		return(0);
 		}
     hdc = GetDC(hwnd);
-    moveOGLWindowNativeJDirect((int)hdc, x, y, width, height);
-    return (int)hdc;
+    moveOGLWindowNativeJDirect((long)((PointerHolder)hdc), x, y, width, height);
+    return (long)((PointerHolder)hdc);
 	}	/* createOGLWindowNativeJDirect() */
 
-__declspec(dllexport) void destroyOGLWindowNativeJDirect(int _hdc)
+__declspec(dllexport) void destroyOGLWindowNativeJDirect(long _hdc)
 	{
 	HWND hwnd;
-	HDC hdc = (HDC)_hdc;
+	HDC hdc = (HDC)((PointerHolder)_hdc);
 
 	if (hdc != NULL)
 		{

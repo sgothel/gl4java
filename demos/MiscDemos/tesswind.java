@@ -175,7 +175,7 @@ public class tesswind extends Applet {
 
 	double currentWinding = GLU_TESS_WINDING_ODD;
 	int currentShape = 0;
-	int tobj;
+	long tobj;
 	int list;
 
 	public void init() {

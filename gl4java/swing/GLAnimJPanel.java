@@ -102,7 +102,7 @@ import java.lang.Math;
         <a href="GLAnimJPanel.html#ReInit()">ReInit - ReInitialisation after stop for setSuspended(false)</a>
  * </pre>
  *
- * @see GLCanvas
+ * @see gl4java.awt.GLCanvas
  * @version         2.0, 21. April 1999
  * @author      Sven Goethel
  * 
@@ -116,7 +116,7 @@ public class GLAnimJPanel extends GLJPanel
          *
          * A little GUI is supported !
          *
-         * @see GLAnimJPanel#run    
+         * @see gl4java.swing.GLAnimJPanel#run    
          */
         protected double FramesPerSec=20;
         protected long   mSecPerFrame=0;
@@ -129,16 +129,16 @@ public class GLAnimJPanel extends GLJPanel
         /**
          * The thread  for  referencing Thread (Animation)
          *
-         * @see GLAnimJPanel#stop
-         * @see GLAnimJPanel#start
-         * @see GLAnimJPanel#run
+         * @see gl4java.swing.GLAnimJPanel#stop
+         * @see gl4java.swing.GLAnimJPanel#start
+         * @see gl4java.swing.GLAnimJPanel#run
          */      
         protected Thread killme = null;
 
         /**
          * Instead of using suspend (JAVA2)
          *
-         * @see GLAnimJPanel#run
+         * @see gl4java.swing.GLAnimJPanel#run
          */      
         protected boolean threadSuspended = false;
 
@@ -222,7 +222,7 @@ public class GLAnimJPanel extends GLJPanel
          *
          * Uses the default GLFunc and GLUFunc implementation !
          *
-         * @see GLCanvas#GLCanvas
+         * @see gl4java.awt.GLCanvas#GLCanvas
          *
          */
         public GLAnimJPanel( )
@@ -264,11 +264,11 @@ public class GLAnimJPanel extends GLJPanel
          * <p>
          * To restart the thread, just call setSuspended(false)
          *
-         * @see GLAnimJPanel#shallWeRender
-         * @see GLAnimJPanel#run
-         * @see GLAnimJPanel#setSuspended
-         * @see GLCanvas#sDisplay
-         * @see GLCanvas#paint
+         * @see gl4java.swing.GLAnimJPanel#shallWeRender
+         * @see gl4java.swing.GLAnimJPanel#run
+         * @see gl4java.swing.GLAnimJPanel#setSuspended
+         * @see gl4java.awt.GLAnimCanvas#sDisplay
+         * @see gl4java.awt.GLAnimCanvas#paint
          */ 
          public void display()
          {
@@ -282,7 +282,7 @@ public class GLAnimJPanel extends GLJPanel
          * ReInit should be overwritten by you,
          * to enter your re-initialisation within setSuspended(false) 
          * 
-         * @see GLAnimJPanel#setSuspended
+         * @see gl4java.swing.GLAnimJPanel#setSuspended
          */
         public void ReInit()
         {
@@ -305,8 +305,8 @@ public class GLAnimJPanel extends GLJPanel
          * <p>
          * 
          * @param b if true, uses repaint (default), otherwise directly sDisplay
-         * @see GLCanvas#sDisplay
-         * @see GLAnimJPanel#setUseFpsSleep
+         * @see gl4java.awt.GLAnimCanvas#sDisplay
+         * @see gl4java.swing.GLAnimJPanel#setUseFpsSleep
          */
         public void setUseRepaint(boolean b)
         {
@@ -322,8 +322,8 @@ public class GLAnimJPanel extends GLJPanel
          * <p>
          * 
          * @param b if true, uses Fps sleeping, else not !
-         * @see GLCanvas#sDisplay
-         * @see GLAnimJPanel#setUseRepaint
+         * @see gl4java.awt.GLAnimCanvas#sDisplay
+         * @see gl4java.swing.GLAnimJPanel#setUseRepaint
          */
         public void setUseFpsSleep(boolean b)
         {
@@ -369,8 +369,8 @@ public class GLAnimJPanel extends GLJPanel
          * If shallWeRender is false,
          * this thread will suspend !
          *
-         * @see GLAnimJPanel#display
-         * @see GLAnimJPanel#run
+         * @see gl4java.swing.GLAnimJPanel#display
+         * @see gl4java.swing.GLAnimJPanel#run
          */
         protected boolean shallWeRender = true;
 
@@ -383,9 +383,8 @@ public class GLAnimJPanel extends GLJPanel
           *  The running loop for animations
           *  which initiates the call of display
           *
-          * @see GLAnimJPanel#shallWeRender
-          * @see GLAnimJPanel#display
-          * @see GLAnimJPanel#diplay
+          * @see gl4java.swing.GLAnimJPanel#shallWeRender
+          * @see gl4java.swing.GLAnimJPanel#display
           */
         public void run() 
         {
@@ -456,8 +455,8 @@ public class GLAnimJPanel extends GLJPanel
 	  * @param suspend  if true the thread will be suspended,
 	  *                 if false, the thread will be (re)started
 	  *
-          * @see GLAnimJPanel#isAlive
-          * @see GLAnimJPanel#start
+          * @see gl4java.swing.GLAnimJPanel#isAlive
+          * @see gl4java.swing.GLAnimJPanel#start
           */
         public void setSuspended(boolean suspend)
         {
@@ -476,8 +475,8 @@ public class GLAnimJPanel extends GLJPanel
 	  * @param reInit   if true the ReInit will be called additionally,
 	  *                 where the user can set additional initialisations
 	  *
-          * @see GLAnimJPanel#isAlive
-          * @see GLAnimJPanel#start
+          * @see gl4java.swing.GLAnimJPanel#isAlive
+          * @see gl4java.swing.GLAnimJPanel#start
           */
         public synchronized void setSuspended(boolean suspend, boolean reInit)
         {
@@ -502,10 +501,10 @@ public class GLAnimJPanel extends GLJPanel
         /**
          * is the thread alive, means is started and not died ?
          *
-         * @see GLAnimJPanel#run
-         * @see GLAnimJPanel#setSuspended
-         * @see GLAnimJPanel#start
-         * @see GLAnimJPanel#stop
+         * @see gl4java.swing.GLAnimJPanel#run
+         * @see gl4java.swing.GLAnimJPanel#setSuspended
+         * @see gl4java.swing.GLAnimJPanel#start
+         * @see gl4java.swing.GLAnimJPanel#stop
          */      
         public boolean isAlive()
 	{ 
@@ -517,10 +516,10 @@ public class GLAnimJPanel extends GLJPanel
          * is the thread suspended, means is started but waiting, 
 	 * or not alive (ok :-| - but it is practical)
          *
-         * @see GLAnimJPanel#run
-         * @see GLAnimJPanel#setSuspended
-         * @see GLAnimJPanel#start
-         * @see GLAnimJPanel#stop
+         * @see gl4java.swing.GLAnimJPanel#run
+         * @see gl4java.swing.GLAnimJPanel#setSuspended
+         * @see gl4java.swing.GLAnimJPanel#start
+         * @see gl4java.swing.GLAnimJPanel#stop
          */      
         public boolean isSuspended()
 	{ 
@@ -541,14 +540,14 @@ public class GLAnimJPanel extends GLJPanel
          * this function is called automatically by
          * start and setSuspended
          *
-         * @see GLAnimJPanel#start
-         * @see GLAnimJPanel#setSuspended
-         * @see GLAnimJPanel#resetFpsCounter
-         * @see GLAnimJPanel#stopFpsCounter
-         * @see GLAnimJPanel#getFps
-         * @see GLAnimJPanel#getFpsDuration
-         * @see GLAnimJPanel#getFpsFrames
-         * @see GLAnimJPanel#setVerboseFps
+         * @see gl4java.swing.GLAnimJPanel#start
+         * @see gl4java.swing.GLAnimJPanel#setSuspended
+         * @see gl4java.swing.GLAnimJPanel#resetFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#stopFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#getFps
+         * @see gl4java.swing.GLAnimJPanel#getFpsDuration
+         * @see gl4java.swing.GLAnimJPanel#getFpsFrames
+         * @see gl4java.swing.GLAnimJPanel#setVerboseFps
          */
         public void resetFpsCounter()
         {
@@ -569,14 +568,14 @@ public class GLAnimJPanel extends GLJPanel
          * All data's are print out on System.out 
          * if verboseFps is set !
          *
-         * @see GLAnimJPanel#run
-         * @see GLAnimJPanel#shallWeRender
-         * @see GLAnimJPanel#resetFpsCounter
-         * @see GLAnimJPanel#stopFpsCounter
-         * @see GLAnimJPanel#getFps
-         * @see GLAnimJPanel#getFpsDuration
-         * @see GLAnimJPanel#getFpsFrames
-         * @see GLAnimJPanel#setVerboseFps
+         * @see gl4java.swing.GLAnimJPanel#run
+         * @see gl4java.swing.GLAnimJPanel#shallWeRender
+         * @see gl4java.swing.GLAnimJPanel#resetFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#stopFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#getFps
+         * @see gl4java.swing.GLAnimJPanel#getFpsDuration
+         * @see gl4java.swing.GLAnimJPanel#getFpsFrames
+         * @see gl4java.swing.GLAnimJPanel#setVerboseFps
          */
         public void stopFpsCounter()
         {
@@ -605,14 +604,14 @@ public class GLAnimJPanel extends GLJPanel
          * <p>
          * verboseFps is set to true by default !
          *
-         * @see GLAnimJPanel#run
-         * @see GLAnimJPanel#shallWeRender
-         * @see GLAnimJPanel#resetFpsCounter
-         * @see GLAnimJPanel#stopFpsCounter
-         * @see GLAnimJPanel#getFps
-         * @see GLAnimJPanel#getFpsDuration
-         * @see GLAnimJPanel#getFpsFrames
-         * @see GLAnimJPanel#setVerboseFps
+         * @see gl4java.swing.GLAnimJPanel#run
+         * @see gl4java.swing.GLAnimJPanel#shallWeRender
+         * @see gl4java.swing.GLAnimJPanel#resetFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#stopFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#getFps
+         * @see gl4java.swing.GLAnimJPanel#getFpsDuration
+         * @see gl4java.swing.GLAnimJPanel#getFpsFrames
+         * @see gl4java.swing.GLAnimJPanel#setVerboseFps
          */
         public void setVerboseFps(boolean v)
         {
@@ -624,12 +623,12 @@ public class GLAnimJPanel extends GLJPanel
          * <p>
          * this data is avaiable after calling stopFpsCounter
          *
-         * @see GLAnimJPanel#resetFpsCounter
-         * @see GLAnimJPanel#stopFpsCounter
-         * @see GLAnimJPanel#getFps
-         * @see GLAnimJPanel#getFpsDuration
-         * @see GLAnimJPanel#getFpsFrames
-         * @see GLAnimJPanel#setVerboseFps
+         * @see gl4java.swing.GLAnimJPanel#resetFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#stopFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#getFps
+         * @see gl4java.swing.GLAnimJPanel#getFpsDuration
+         * @see gl4java.swing.GLAnimJPanel#getFpsFrames
+         * @see gl4java.swing.GLAnimJPanel#setVerboseFps
          */
         public double getFps()
         {
@@ -641,12 +640,12 @@ public class GLAnimJPanel extends GLJPanel
          * <p>
          * this data is avaiable after calling stopFpsCounter
          *
-         * @see GLAnimJPanel#resetFpsCounter
-         * @see GLAnimJPanel#stopFpsCounter
-         * @see GLAnimJPanel#getFps
-         * @see GLAnimJPanel#getFpsDuration
-         * @see GLAnimJPanel#getFpsFrames
-         * @see GLAnimJPanel#setVerboseFps
+         * @see gl4java.swing.GLAnimJPanel#resetFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#stopFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#getFps
+         * @see gl4java.swing.GLAnimJPanel#getFpsDuration
+         * @see gl4java.swing.GLAnimJPanel#getFpsFrames
+         * @see gl4java.swing.GLAnimJPanel#setVerboseFps
          */
         public long getFpsDuration()
         {
@@ -658,12 +657,12 @@ public class GLAnimJPanel extends GLJPanel
          * <p>
          * this data is avaiable after calling stopFpsCounter
          *
-         * @see GLAnimJPanel#resetFpsCounter
-         * @see GLAnimJPanel#stopFpsCounter
-         * @see GLAnimJPanel#getFps
-         * @see GLAnimJPanel#getFpsDuration
-         * @see GLAnimJPanel#getFpsFrames
-         * @see GLAnimJPanel#setVerboseFps
+         * @see gl4java.swing.GLAnimJPanel#resetFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#stopFpsCounter
+         * @see gl4java.swing.GLAnimJPanel#getFps
+         * @see gl4java.swing.GLAnimJPanel#getFpsDuration
+         * @see gl4java.swing.GLAnimJPanel#getFpsFrames
+         * @see gl4java.swing.GLAnimJPanel#setVerboseFps
          */
         public long getFpsFrames()
         {
@@ -685,7 +684,7 @@ public class GLAnimJPanel extends GLJPanel
          /** 
           * Just set the FramePerSecounds for Animation
 	  *
-          * @see GLAnimJPanel#getMaxFps    
+          * @see gl4java.swing.GLAnimJPanel#getMaxFps    
           */
         public void setAnimateFps(double fps)
         {
@@ -709,7 +708,7 @@ public class GLAnimJPanel extends GLJPanel
 	  * this value is avaiable after the thread is started
 	  * and the first frames are rendered !
 	  *
-          * @see GLAnimJPanel#setAnimateFps    
+          * @see gl4java.swing.GLAnimJPanel#setAnimateFps    
           */
         public double getMaxFps()
         {

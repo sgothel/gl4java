@@ -102,7 +102,7 @@ public class nurbs extends SimpleGLAnimApplet1
 	};
 
 
-	int theNurb;
+	long theNurb;
 
         public gldemo(int w, int h)
         {

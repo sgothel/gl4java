@@ -97,13 +97,18 @@ CNATIVEDIR  		= CNativeCode
 
 LIBMAJOR		= 2
 LIBMINOR		= 5
-LIBBUGFIX		= 1
+LIBBUGFIX		= 2
 RELEASE                 = 0
 
 #
 # The demo release number
 #
 DEMORELEASE		= 3
+
+#lib GLContext
+LIBBASENAME1c 		= GL4JavaJauGljJNI13
+LIBNAME1c 		= lib$(LIBBASENAME1c)
+LIBRARY1c 		= $(LIBNAME1c).so
 
 #lib GLContext
 LIBBASENAME1b 		= GL4JavaJauGljJNI12
@@ -274,11 +279,11 @@ FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 
 FILES.class 		= ${FILES.java:.java=.class}
 
-FILES_mac.java		= gl4java/jau/awt/macintosh/MacHandleAccess.java 
+FILES_mac.java		= gl4java/jau/awt/macintosh/MacHandleAccess.java
 
 FILES_mac.class 	= ${FILES_mac.java:.java=.class}
 
-FILES_w32.java		= gl4java/jau/awt/windows/Win32HandleAccess.java 
+FILES_w32.java		= gl4java/jau/awt/windows/Win32HandleAccess.java
 
 FILES_w32.class 	= ${FILES_w32.java:.java=.class}
 
@@ -294,14 +299,23 @@ FILES_x11.class 	= ${FILES_x11.java:.java=.class}
 
 #lib GLContext
 FILES1.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
+			  $(CNATIVEDIR)/OpenGL_X11_common.c	 \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jnitools.c	         \
 			  $(CNATIVEDIR)/GLCallbackHelperJNI.c
 
 FILES1b.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
+			  $(CNATIVEDIR)/OpenGL_X11_common.c	 \
 			  $(CNATIVEDIR)/OpenGL_misc.c		 \
 			  $(CNATIVEDIR)/jni12tools.c	         \
 			  $(CNATIVEDIR)/GLCallbackHelperJNI.c
+
+FILES1c.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
+			  $(CNATIVEDIR)/OpenGL_X11_common.c	 \
+			  $(CNATIVEDIR)/jawt_misc.c		 \
+			  $(CNATIVEDIR)/OpenGL_misc.c		 \
+			  $(CNATIVEDIR)/jni12tools.c	         \
+			  $(CNATIVEDIR)/GLCallbackHelperJNI.c 
 
 #lib GLFunc - 1
 FILES2.c		= $(CNATIVEDIR)/OpenGL_JauJNI_dynfuncs.c
@@ -341,6 +355,7 @@ FILES7b.c		= $(CNATIVEDIR)/OpenGLU_JauJNI12tst_funcs.c \
 #lib GLFunc - 3
 FILES1.o 		= ${FILES1.c:.c=.o}
 FILES1b.o 		= ${FILES1b.c:.c=.o}
+FILES1c.o 		= ${FILES1c.c:.c=.o}
 FILES2.o 		= ${FILES2.c:.c=.o}
 FILES2b.o 		= ${FILES2b.c:.c=.o}
 FILES3.o 		= ${FILES3.c:.c=.o}
@@ -401,6 +416,7 @@ x11			: cleanup gljni \
 			  makeJar \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY1) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY1b) \
+		 	  $(HOME_LIB_DIR)/$(LIBRARY1c) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY2) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY2b) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY3) \
@@ -452,75 +468,93 @@ $(HOME_LIB_DIR)/$(LIBRARY1b): $(FILES1b.o)
 	         $(LIBNAME1b) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
 	         $(FILES1b.o) $(LIBS)
 
+$(HOME_LIB_DIR)/$(LIBRARY1c): $(FILES1c.o)
+	rm -f ${HOME_LIB_DIR}/${LIBNAME1c}.*
+	$(MKEXP) $(LIBNAME1c) $(FILES1c.o)
+	$(MKLIB) $(HOME_LIB_DIR) \
+	         $(LIBNAME1c) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
+	         $(FILES1c.o) $(LIBS) -L$(JAVAOSLIB) \
+		 -ljawt
+
 $(HOME_LIB_DIR)/$(LIBRARY2): $(FILES2.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME2}.*
 	$(MKEXP) $(LIBNAME2) $(FILES2.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME2) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES2.o) $(LIBS) -L$(HOME_LIB_DIR) -l$(LIBBASENAME1)
+	         $(FILES2.o) $(LIBS) -L$(HOME_LIB_DIR) \
+		 -l$(LIBBASENAME1)
 
 $(HOME_LIB_DIR)/$(LIBRARY2b): $(FILES2b.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME2b}.*
 	$(MKEXP) $(LIBNAME2b) $(FILES2b.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME2b) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES2b.o) $(LIBS) -L$(HOME_LIB_DIR) -l$(LIBBASENAME1b)
+	         $(FILES2b.o) $(LIBS) -L$(HOME_LIB_DIR) \
+		 -l$(LIBBASENAME1b)
 
 $(HOME_LIB_DIR)/$(LIBRARY3): $(FILES3.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME3}.*
 	$(MKEXP) $(LIBNAME3) $(FILES3.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME3) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES3.o) $(LIBS) -L$(HOME_LIB_DIR) -l$(LIBBASENAME1)
+	         $(FILES3.o) $(LIBS) -L$(HOME_LIB_DIR) \
+		 -l$(LIBBASENAME1)
 
 $(HOME_LIB_DIR)/$(LIBRARY3b): $(FILES3b.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME3b}.*
 	$(MKEXP) $(LIBNAME3b) $(FILES3b.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME3b) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES3b.o) $(LIBS) -L$(HOME_LIB_DIR) -l$(LIBBASENAME1b)
+	         $(FILES3b.o) $(LIBS) -L$(HOME_LIB_DIR) \
+		 -l$(LIBBASENAME1b)
 
 $(HOME_LIB_DIR)/$(LIBRARY4): $(FILES4.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME4}.*
 	$(MKEXP) $(LIBNAME4) $(FILES4.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME4) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES4.o) $(LIBS) -L$(HOME_LIB_DIR) -l$(LIBBASENAME1)
+	         $(FILES4.o) $(LIBS) -L$(HOME_LIB_DIR) \
+		 -l$(LIBBASENAME1)
 
 $(HOME_LIB_DIR)/$(LIBRARY5): $(FILES5.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME5}.*
 	$(MKEXP) $(LIBNAME5) $(FILES5.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME5) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES5.o) $(LIBS) -L$(HOME_LIB_DIR) -l$(LIBBASENAME1)
+	         $(FILES5.o) $(LIBS) -L$(HOME_LIB_DIR) \
+		 -l$(LIBBASENAME1)
 
 $(HOME_LIB_DIR)/$(LIBRARY6): $(FILES6.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME6}.*
 	$(MKEXP) $(LIBNAME6) $(FILES6.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME6) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES6.o) $(LIBS) -L$(HOME_LIB_DIR) -l$(LIBBASENAME1)
+	         $(FILES6.o) $(LIBS) -L$(HOME_LIB_DIR) \
+		 -l$(LIBBASENAME1)
 
 $(HOME_LIB_DIR)/$(LIBRARY6b): $(FILES6b.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME6b}.*
 	$(MKEXP) $(LIBNAME6b) $(FILES6b.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME6b) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES6b.o) $(LIBS) -L$(HOME_LIB_DIR) -l$(LIBBASENAME1b)
+	         $(FILES6b.o) $(LIBS) -L$(HOME_LIB_DIR) \
+		 -l$(LIBBASENAME1b)
 
 $(HOME_LIB_DIR)/$(LIBRARY7): $(FILES7.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME7}.*
 	$(MKEXP) $(LIBNAME7) $(FILES7.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME7) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES7.o) $(LIBS) -L$(HOME_LIB_DIR) -l$(LIBBASENAME1)
+	         $(FILES7.o) $(LIBS) -L$(HOME_LIB_DIR) \
+		 -l$(LIBBASENAME1)
 
 $(HOME_LIB_DIR)/$(LIBRARY7b): $(FILES7b.o)
 	rm -f ${HOME_LIB_DIR}/${LIBNAME7b}.*
 	$(MKEXP) $(LIBNAME7b) $(FILES7b.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
 	         $(LIBNAME7b) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES7b.o) $(LIBS) -L$(HOME_LIB_DIR) -l$(LIBBASENAME1b)
+	         $(FILES7b.o) $(LIBS) -L$(HOME_LIB_DIR) \
+		 -l$(LIBBASENAME1b)
 
 ######################################################################
 # NEEDED DEPENDENCYs FOR GENERATED FILES ...
@@ -795,12 +829,14 @@ unix2binpkg: pbinpkg java2binpkg
 	cd $(HOME_LIB_DIR) ; \
 	zip -9 $(THISDIR)/binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).zip \
 		$(LIBRARY1) $(LIBRARY2) $(LIBRARY3) \
-		$(LIBRARY1b) $(LIBRARY2b) $(LIBRARY3b)
+		$(LIBRARY1b) $(LIBRARY2b) $(LIBRARY3b) \
+		$(LIBRARY1c)
 	rm -f binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).tar.gz
 	cd $(HOME_LIB_DIR) ; \
 	tar cf $(THISDIR)/binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).tar \
 		$(LIBNAME1).* $(LIBNAME2).* \
 		$(LIBNAME1b).* $(LIBNAME2b).* \
+		$(LIBNAME1c).* \
 		$(LIBNAME3).* $(LIBNAME3b).* \
 		$(LIBNAME4).* $(LIBNAME5).* \
 		$(LIBNAME6).* $(LIBNAME7).* \

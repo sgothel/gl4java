@@ -17,7 +17,6 @@ public class CrossColorJPanel extends GLJPanel
 
 	public void display() 
 	{
-	    System.out.println("i");
 	    int i;
 
 	    gl.glPushMatrix();

@@ -577,6 +577,7 @@ class GLLandScape1 extends GLAnimCanvas
 		    gl.glEnable(GL_TEXTURE_2D);
 		    texture_mapping = TRUE;
 		    glj.gljCheckGL();
+		    glj.gljFree();
 		    repaint();
 	    }
          }
@@ -595,6 +596,7 @@ class GLLandScape1 extends GLAnimCanvas
 		    gl.glDisable(GL_TEXTURE_2D);
 		    texture_mapping = FALSE;
 		    glj.gljCheckGL();
+		    glj.gljFree();
 		    repaint();
 	    }
          }
@@ -623,6 +625,7 @@ class GLLandScape1 extends GLAnimCanvas
 		    gl.glEnable(GL_FOG);
 		    land_fogging = TRUE;
 		    glj.gljCheckGL();
+		    glj.gljFree();
 		    repaint();
             }
          }
@@ -641,6 +644,7 @@ class GLLandScape1 extends GLAnimCanvas
 		    gl.glDisable(GL_FOG);
 		    land_fogging = FALSE;
 		    glj.gljCheckGL();
+		    glj.gljFree();
 		    repaint();
             }
          }
@@ -669,6 +673,7 @@ class GLLandScape1 extends GLAnimCanvas
 		    gl.glShadeModel(GL_FLAT);
 		    flat_shading = TRUE;
 		    glj.gljCheckGL();
+		    glj.gljFree();
 		    repaint();
             }
          }
@@ -687,6 +692,7 @@ class GLLandScape1 extends GLAnimCanvas
 		    gl.glShadeModel(GL_SMOOTH);
 		    flat_shading = FALSE;
 		    glj.gljCheckGL();
+		    glj.gljFree();
 		    repaint();
             }
          }
@@ -706,6 +712,7 @@ class GLLandScape1 extends GLAnimCanvas
       gl.glDeleteLists(theLand, 1);
       genLand();
       check_height();
+      glj.gljFree();
       repaint();
       setSuspended(false);
    }

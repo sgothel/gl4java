@@ -25,15 +25,19 @@ public String getNativeVersion ( ) ;
 public String getClassVendor ( )  ;
 public String getClassVersion ( ) ;
 
+public long gluNewQuadric( );
+public long gluNewNurbsRenderer( );
+public long gluNewTess( );
+
 public void  gluQuadricCallback(
-                                  int qobj, int which,
+                                  long qobj, int which,
 			          Object methodClassInstance, 
 				  String methodName, 
 				  String signature
 				  );
 
 public void  gluNurbsCallback(
-			          int nobj, int which,
+			          long nobj, int which,
 			          Object methodClassInstance, 
 			          String methodName, 
 				  String signature
@@ -41,7 +45,7 @@ public void  gluNurbsCallback(
 
 
 public void  gluTessCallback(
-				  int tobj, int which,
+				  long tobj, int which,
 			          Object methodClassInstance, 
 			          String methodName, 
 				  String signature,
@@ -52,9 +56,9 @@ public void  gluTessCallback(
 				  int voidArrayLen5
 				  );
 
-public void  gluDeleteQuadric( int qobj );
+public void  gluDeleteQuadric( long qobj );
 
-public void  gluDeleteNurbsRenderer( int nobj );
+public void  gluDeleteNurbsRenderer( long nobj );
 
-public void  gluDeleteTess( int tobj );
+public void  gluDeleteTess( long tobj );
 

@@ -27,7 +27,8 @@ public class X11HandleAccess
 {
   protected DrawingSurfaceInfo dsi;
   protected X11DrawingSurface wds;
-  protected int window, depth;
+  protected long window;
+  protected int depth;
 
   protected void achieveData(java.awt.Component c, java.awt.Graphics g)
   {
@@ -46,7 +47,7 @@ public class X11HandleAccess
 	if(wds!=null)
 	{
 		dsi.lock();
-		window = wds.getDrawable();
+		window = (long) wds.getDrawable();
 		depth = wds.getDepth();
 
 		/*
@@ -67,7 +68,7 @@ public class X11HandleAccess
  *
  * gets some structure for windows, and drawable on X11
  */
-  public int getWinHandle(java.awt.Component c, java.awt.Graphics g)
+  public long getWinHandle(java.awt.Component c, java.awt.Graphics g)
   {
       achieveData(c, g);
       return window;

@@ -267,7 +267,7 @@ implements GLUTFunc, GLEnum, GLUEnum
 	protected GLFunc  gl  = null;
 	protected GLUFunc glu = null;
 
-	protected int quadObj=0;
+	protected long quadObj=0;
 
 	protected final void initQuadObj()
 	{

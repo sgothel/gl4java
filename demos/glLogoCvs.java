@@ -106,7 +106,6 @@ class glLogoCvs extends GLAnimCanvas
 	  /* Standard GL4Java Init */
 	  if( glj.gljMakeCurrent() == false ) 
 	  {
-		System.out.println("problem in use() method");
 		return;
 	  }
 

@@ -43,7 +43,7 @@ public class GljMSJDirect extends Object
      */
     private static native void OGLWindowMsgPumpJDirect();
 
-    public static final int createOGLWindowNative(int hwndParent, 
+    public static final long createOGLWindowNative(long hwndParent, 
     					          int x, int y, 
 						  int width, 
 						  int height)
@@ -52,26 +52,26 @@ public class GljMSJDirect extends Object
     /**
      * @dll.import("GL4JavaGljMSJDirect", auto)
      */
-    private static native int createOGLWindowNativeJDirect(int hwndParent, 
+    private static native long createOGLWindowNativeJDirect(long hwndParent, 
     					                  int x, int y, 
 							  int width, 
 							  int height);
 
-    public static final void destroyOGLWindowNative(int hdc)
+    public static final void destroyOGLWindowNative(long hdc)
     { destroyOGLWindowNativeJDirect(hdc); }
 
     /**
      * @dll.import("GL4JavaGljMSJDirect")
      */
-    private static native void destroyOGLWindowNativeJDirect(int hdc);
+    private static native void destroyOGLWindowNativeJDirect(long hdc);
 
-    public static final void moveOGLWindowNative(int hdc, int x, int y, int width, int height)
+    public static final void moveOGLWindowNative(long hdc, int x, int y, int width, int height)
     { moveOGLWindowNativeJDirect(hdc, x, y, width, height); }
 
     /**
      * @dll.import("GL4JavaGljMSJDirect")
      */
-    private static native void moveOGLWindowNativeJDirect(int hdc, int x, int y, int width, int height);
+    private static native void moveOGLWindowNativeJDirect(long hdc, int x, int y, int width, int height);
 
 }
 

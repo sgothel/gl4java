@@ -351,6 +351,7 @@ public class Lesson7 extends Applet
             
             //Swap buffers
             glj.gljSwap();
+            glj.gljFree();
         }
         
         // Methods required for the implementation of MouseListener
@@ -396,6 +397,10 @@ public class Lesson7 extends Applet
  	 	 */
  		public void keyPressed(KeyEvent e)
 		{
+		    //Ensure GL is initialised correctly
+		    if (glj.gljMakeCurrent(true) == false)
+			return;
+
 			switch(e.getKeyCode())
 			{
 				//Switch ON/OFF light when L is pressed
@@ -473,6 +478,8 @@ public class Lesson7 extends Applet
 					break;
 				}
 			}
+		    glj.gljFree();
+
 		}
 
 

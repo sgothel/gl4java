@@ -62,7 +62,7 @@ import java.awt.event.*;
  * </pre>
  * <p>        
  *
- * @see GLAnimCanvas
+ * @see gl4java.awt.GLAnimCanvas
  * @version 	2.0, 21. April 1999
  * @author      Sven Goethel
  * 
@@ -87,8 +87,8 @@ public class GLCanvas extends Canvas
      * This value is updated after a GLContext is created with the
      * original updated value of GLContext !
      *
-     * @see GLCanvas#preInit
-     * @see GLCanvas#paint
+     * @see gl4java.awt.GLCanvas#preInit
+     * @see gl4java.awt.GLCanvas#paint
      */
     protected boolean doubleBuffer = true;
 
@@ -97,8 +97,8 @@ public class GLCanvas extends Canvas
      * This value is updated after a GLContext is created with the
      * original updated value of GLContext !
      *
-     * @see GLCanvas#preInit
-     * @see GLCanvas#paint
+     * @see gl4java.awt.GLCanvas#preInit
+     * @see gl4java.awt.GLCanvas#paint
      */
     protected int stencilBits = 0;
 
@@ -114,8 +114,8 @@ public class GLCanvas extends Canvas
      * The output value, after the constructor returns,
      * it is the summary of all accumulation bits of all components !
      *
-     * @see GLCanvas#preInit
-     * @see GLCanvas#paint
+     * @see gl4java.awt.GLCanvas#preInit
+     * @see gl4java.awt.GLCanvas#paint
      */
     protected int accumSize = 0;
 
@@ -124,8 +124,8 @@ public class GLCanvas extends Canvas
      * This value is updated after a GLContext is created with the
      * original updated value of GLContext !
      *
-     * @see GLCanvas#preInit
-     * @see GLCanvas#paint
+     * @see gl4java.awt.GLCanvas#preInit
+     * @see gl4java.awt.GLCanvas#paint
      */
     protected boolean stereoView = false;
 
@@ -134,8 +134,8 @@ public class GLCanvas extends Canvas
     * This value is updated after a GLContext is created with the
     * original updated value of GLContext !
     *
-    * @see GLCanvas#preInit
-    * @see GLCanvas#paint
+    * @see gl4java.awt.GLCanvas#preInit
+    * @see gl4java.awt.GLCanvas#paint
     */
     protected boolean rgba = true;    
 
@@ -144,16 +144,16 @@ public class GLCanvas extends Canvas
     * This value is updated after a GLContext is created with the
     * original updated value of GLContext !
     *
-    * @see GLCanvas#preInit
-    * @see GLCanvas#paint
+    * @see gl4java.awt.GLCanvas#preInit
+    * @see gl4java.awt.GLCanvas#paint
     */
     protected boolean createOwnWindow = false;
 
    /**
-    * The context with witch display lists and textures will be shared.
+    * The context with wich display lists and textures will be shared.
     *
-    * @see GLCanvas#preInit
-    * @see GLCanvas#paint
+    * @see gl4java.awt.GLCanvas#preInit
+    * @see gl4java.awt.GLCanvas#paint
     */
     protected GLContext sharedGLContext;	
 
@@ -240,7 +240,7 @@ public class GLCanvas extends Canvas
      * @param g		the Graphics Context
      * @return 		void
      *
-     * @see	GLCanvas#paint
+     * @see	gl4java.awt.GLCanvas#paint
      */ 
     public void update(Graphics g)
     {
@@ -260,7 +260,7 @@ public class GLCanvas extends Canvas
      *
      * @return 		void
      *
-     * @see	GLCanvas#paint
+     * @see	gl4java.awt.GLCanvas#paint
      */ 
     public final Window getTopLevelWindow()
     { return topLevelWindow; }
@@ -283,11 +283,11 @@ public class GLCanvas extends Canvas
      * in your derivation.
      *
      * @see gl4java.GLContext#GLContext
-     * @see GLCanvas#cvsIsInit
-     * @see GLCanvas#sDisplay
-     * @see GLCanvas#display
-     * @see GLCanvas#preInit
-     * @see GLCanvas#init
+     * @see gl4java.awt.GLCanvas#cvsIsInit
+     * @see gl4java.awt.GLCanvas#sDisplay
+     * @see gl4java.awt.GLCanvas#display
+     * @see gl4java.awt.GLCanvas#preInit
+     * @see gl4java.awt.GLCanvas#init
      */
     public synchronized final void paint( Graphics g )
     {
@@ -342,10 +342,6 @@ public class GLCanvas extends Canvas
 		if(glj!=null && glj.gljIsInit())
 			cvsInitialized=true;
 	} 
-	/*
-	if( mustResize ) size = getSize();
-	g.setClip(0, 0, size.width, size.height ) ;
-	*/
 	sDisplay();
     }
 
@@ -358,12 +354,12 @@ public class GLCanvas extends Canvas
      *
      * @return 		void
      *
-     * @see	GLCanvas#paint
-     * @see	GLCanvas#doubleBuffer
-     * @see	GLCanvas#stereoView
-     * @see	GLCanvas#rgba
-     * @see	GLCanvas#stencilBits
-     * @see	GLCanvas#accumSize
+     * @see	gl4java.awt.GLCanvas#paint
+     * @see	gl4java.awt.GLCanvas#doubleBuffer
+     * @see	gl4java.awt.GLCanvas#stereoView
+     * @see	gl4java.awt.GLCanvas#rgba
+     * @see	gl4java.awt.GLCanvas#stencilBits
+     * @see	gl4java.awt.GLCanvas#accumSize
      */ 
     public void preInit()
     {
@@ -378,7 +374,7 @@ public class GLCanvas extends Canvas
      *
      * @return 		void
      *
-     * @see	GLCanvas#paint
+     * @see	gl4java.awt.GLCanvas#paint
      */ 
     public void init()
     {
@@ -393,7 +389,7 @@ public class GLCanvas extends Canvas
      *
      * @return 		void
      *
-     * @see	GLCanvas#cvsDispose
+     * @see	gl4java.awt.GLCanvas#cvsDispose
      */
     public void doCleanup()
     {
@@ -406,8 +402,8 @@ public class GLCanvas extends Canvas
      *
      * @return 	boolean
      *
-     * @see	GLCanvas#paint
-     * @see	GLCanvas#init
+     * @see	gl4java.awt.GLCanvas#paint
+     * @see	gl4java.awt.GLCanvas#init
      */ 
     public boolean cvsIsInit()
     {
@@ -433,8 +429,8 @@ public class GLCanvas extends Canvas
      *
      * @return 		void
      *
-     * @see GLCanvas#paint
-     * @see GLCanvas#display
+     * @see gl4java.awt.GLCanvas#paint
+     * @see gl4java.awt.GLCanvas#display
      */ 
     public synchronized final void sDisplay()
     {
@@ -447,7 +443,7 @@ public class GLCanvas extends Canvas
 
 	if( mustResize )
 	{
-	    if( (ok = glj.gljMakeCurrent()) == true )
+	    if( glj.gljMakeCurrent() == true )
 	    {
 		size = getSize();
 		glj.gljResize( size.width, size.height ) ;
@@ -455,6 +451,7 @@ public class GLCanvas extends Canvas
 		mustResize = false;
 		invalidate();
 		repaint(100);
+		glj.gljFree();
 	    }
 	}
 	if(ok) 
@@ -471,6 +468,15 @@ public class GLCanvas extends Canvas
      * (and sDisplay is called by paint !).
      * The derived-class (Your Subclass) will redefine this, to draw it's own...
      *
+     * <p>
+     *
+     * You MUST encapsulate your OpenGL call's within:
+     * <pre>
+    	- glj.gljMakeCurrent()
+		YOUR OpenGL commands here !
+    	- glj.gljFree()
+     * </pre>
+     *
      * BE SURE, if you want to call 'display' by yourself
      * (e.g. in the run method for animation)
      * YOU HAVE TO CALL sDisplay !
@@ -480,8 +486,10 @@ public class GLCanvas extends Canvas
      *
      * @return 		void
      *
-     * @see GLCanvas#sDisplay
-     * @see GLCanvas#paint
+     * @see gl4java.awt.GLCanvas#sDisplay
+     * @see gl4java.awt.GLCanvas#paint
+     * @see gl4java.GLContext#gljMakeCurrent
+     * @see gl4java.GLContext#gljSwap
      */ 
     public void display()
     {
@@ -508,8 +516,8 @@ public class GLCanvas extends Canvas
      * @param height	the new height
      * @return 		void
      *
-     * @see GLCanvas#paint
-     * @see GLCanvas#sDisplay
+     * @see gl4java.awt.GLCanvas#paint
+     * @see gl4java.awt.GLCanvas#sDisplay
      */ 
     public void reshape( int width, int height )
     {
@@ -533,8 +541,8 @@ public class GLCanvas extends Canvas
      * @param e		the element, which is resized
      * @return 		void
      *
-     * @see GLCanvas#paint
-     * @see GLCanvas#reshape
+     * @see gl4java.awt.GLCanvas#paint
+     * @see gl4java.awt.GLCanvas#reshape
      */ 
     public void componentResized(ComponentEvent e)
     {
@@ -644,7 +652,7 @@ public class GLCanvas extends Canvas
       * This function calls gljDestroy of GLContext !
       *
       * @see gl4java.GLContext#gljDestroy
-      * @see GLCanvas#doCleanup
+      * @see gl4java.awt.GLCanvas#doCleanup
       */
     public void cvsDispose()
     {
@@ -664,11 +672,13 @@ public class GLCanvas extends Canvas
 			   context, so it all works out fine. */
 			try
 			{
-				glj.gljFree();
-				doCleanup();
-				//locks and free's GLContext	
 				glj.setEnabled(false); 
+
+				setVisible(false);
+				doCleanup();
+
 				glj.gljDestroy();
+				glj = null;
         			needCvsDispose = false;
 			}
 			catch (Exception ex)

@@ -12,7 +12,6 @@ import java.lang.reflect.*;
 /**
  * The function-declaration holder !
  *
- * @see CFuncVariable
  * @version 	1.00, 12. Novemeber 1999
  * @author      Sven Goethel
  * 

@@ -31,7 +31,7 @@ public String getClassVersion ( ) ;
 
 public static final String[] GL_PROC_NAMES = {
 /**
- * C2J Parser Version 1.4 Beta
+ * C2J Parser Version 1.5 Beta
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLFuncJauJNI ! 
@@ -474,11 +474,11 @@ public static final String[] GL_PROC_NAMES = {
 		"glMultiTexCoord4ivARB", 
 		"glMultiTexCoord4sARB", 
 		"glMultiTexCoord4svARB", 
-/* C2J Parser Version 1.4 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 
 		null
 };
 /**
- * C2J Parser Version 1.4 Beta
+ * C2J Parser Version 1.5 Beta
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLFuncJauJNI ! 
@@ -7431,7 +7431,7 @@ public static final String[] GL_PROC_NAMES = {
 		short[] v
 	) ;
 
-/* C2J Parser Version 1.4 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 
 
 
 }

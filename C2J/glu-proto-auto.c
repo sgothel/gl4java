@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 1.4 Beta
+ * C2J Parser Version 1.5 Beta
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -860,37 +860,18 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUquadricObj * gluNewQuadric ( void ) ;
- * </pre> 
- */
-	JNIEXPORT jint JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluNewQuadric (
-		JNIEnv *env, jobject obj)
-	{
-		jint ret;
-
-
-		ret = (jint) gluNewQuadric (
-		);
-
-		return ret;
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluQuadricDrawStyle ( GLUquadricObj * quadObject , GLenum drawStyle ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluQuadricDrawStyle (
 		JNIEnv *env, jobject obj,
-		jint quadObject,
+		jlong quadObject,
 		jint drawStyle)
 	{
 
 		gluQuadricDrawStyle (
-			(GLUquadricObj *) quadObject,
+			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) drawStyle
 		);
 
@@ -905,12 +886,12 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluQuadricOrientation (
 		JNIEnv *env, jobject obj,
-		jint quadObject,
+		jlong quadObject,
 		jint orientation)
 	{
 
 		gluQuadricOrientation (
-			(GLUquadricObj *) quadObject,
+			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) orientation
 		);
 
@@ -925,12 +906,12 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluQuadricNormals (
 		JNIEnv *env, jobject obj,
-		jint quadObject,
+		jlong quadObject,
 		jint normals)
 	{
 
 		gluQuadricNormals (
-			(GLUquadricObj *) quadObject,
+			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLenum) normals
 		);
 
@@ -945,12 +926,12 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluQuadricTexture (
 		JNIEnv *env, jobject obj,
-		jint quadObject,
+		jlong quadObject,
 		jboolean textureCoords)
 	{
 
 		gluQuadricTexture (
-			(GLUquadricObj *) quadObject,
+			(GLUquadricObj *) (PointerHolder) quadObject,
 			(GLboolean) textureCoords
 		);
 
@@ -965,7 +946,7 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluCylinder (
 		JNIEnv *env, jobject obj,
-		jint qobj,
+		jlong qobj,
 		jdouble baseRadius,
 		jdouble topRadius,
 		jdouble height,
@@ -974,7 +955,7 @@
 	{
 
 		gluCylinder (
-			(GLUquadricObj *) qobj,
+			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) baseRadius,
 			(GLdouble) topRadius,
 			(GLdouble) height,
@@ -993,14 +974,14 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluSphere (
 		JNIEnv *env, jobject obj,
-		jint qobj,
+		jlong qobj,
 		jdouble radius,
 		jint slices,
 		jint stacks)
 	{
 
 		gluSphere (
-			(GLUquadricObj *) qobj,
+			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) radius,
 			(GLint) slices,
 			(GLint) stacks
@@ -1017,7 +998,7 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluDisk (
 		JNIEnv *env, jobject obj,
-		jint qobj,
+		jlong qobj,
 		jdouble innerRadius,
 		jdouble outerRadius,
 		jint slices,
@@ -1025,7 +1006,7 @@
 	{
 
 		gluDisk (
-			(GLUquadricObj *) qobj,
+			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) innerRadius,
 			(GLdouble) outerRadius,
 			(GLint) slices,
@@ -1043,7 +1024,7 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluPartialDisk (
 		JNIEnv *env, jobject obj,
-		jint qobj,
+		jlong qobj,
 		jdouble innerRadius,
 		jdouble outerRadius,
 		jint slices,
@@ -1053,7 +1034,7 @@
 	{
 
 		gluPartialDisk (
-			(GLUquadricObj *) qobj,
+			(GLUquadricObj *) (PointerHolder) qobj,
 			(GLdouble) innerRadius,
 			(GLdouble) outerRadius,
 			(GLint) slices,
@@ -1067,32 +1048,13 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUnurbsObj * gluNewNurbsRenderer ( void ) ;
- * </pre> 
- */
-	JNIEXPORT jint JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluNewNurbsRenderer (
-		JNIEnv *env, jobject obj)
-	{
-		jint ret;
-
-
-		ret = (jint) gluNewNurbsRenderer (
-		);
-
-		return ret;
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluLoadSamplingMatrices ( GLUnurbsObj * nobj , const GLfloat modelMatrix [ 16 ] , const GLfloat projMatrix [ 16 ] , const GLint viewport [ 4 ] ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluLoadSamplingMatrices (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jfloatArray modelMatrix,
 		jfloatArray projMatrix,
 		jintArray viewport)
@@ -1114,7 +1076,7 @@
 			ptr3 = (*env)->GetIntArrayElements(env, viewport, 0);
 		}
 		gluLoadSamplingMatrices (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(const GLfloat *) ptr1,
 			(const GLfloat *) ptr2,
 			(const GLint *) ptr3
@@ -1143,13 +1105,13 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluNurbsProperty (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jint property,
 		jfloat value)
 	{
 
 		gluNurbsProperty (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLenum) property,
 			(GLfloat) value
 		);
@@ -1165,7 +1127,7 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluGetNurbsProperty (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jint property,
 		jfloatArray value)
 	{
@@ -1177,7 +1139,7 @@
 			ptr2 = (*env)->GetFloatArrayElements(env, value, &isCopiedArray2);
 		}
 		gluGetNurbsProperty (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLenum) property,
 			(GLfloat *) ptr2
 		);
@@ -1197,11 +1159,11 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluBeginCurve (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluBeginCurve (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1215,11 +1177,11 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluEndCurve (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluEndCurve (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1233,7 +1195,7 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluNurbsCurve (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jint nknots,
 		jfloatArray knot,
 		jint stride,
@@ -1255,7 +1217,7 @@
 			ptr4 = (*env)->GetFloatArrayElements(env, ctlarray, &isCopiedArray4);
 		}
 		gluNurbsCurve (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) nknots,
 			(GLfloat *) ptr2,
 			(GLint) stride,
@@ -1283,11 +1245,11 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluBeginSurface (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluBeginSurface (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1301,11 +1263,11 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluEndSurface (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluEndSurface (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1319,7 +1281,7 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluNurbsSurface (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jint sknot_count,
 		jfloatArray sknot,
 		jint tknot_count,
@@ -1351,7 +1313,7 @@
 			ptr7 = (*env)->GetFloatArrayElements(env, ctlarray, &isCopiedArray7);
 		}
 		gluNurbsSurface (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) sknot_count,
 			(GLfloat *) ptr2,
 			(GLint) tknot_count,
@@ -1387,11 +1349,11 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluBeginTrim (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluBeginTrim (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1405,11 +1367,11 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluEndTrim (
 		JNIEnv *env, jobject obj,
-		jint nobj)
+		jlong nobj)
 	{
 
 		gluEndTrim (
-			(GLUnurbsObj *) nobj
+			(GLUnurbsObj *) (PointerHolder) nobj
 		);
 
 	}
@@ -1423,7 +1385,7 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluPwlCurve (
 		JNIEnv *env, jobject obj,
-		jint nobj,
+		jlong nobj,
 		jint count,
 		jfloatArray array,
 		jint stride,
@@ -1437,7 +1399,7 @@
 			ptr2 = (*env)->GetFloatArrayElements(env, array, &isCopiedArray2);
 		}
 		gluPwlCurve (
-			(GLUnurbsObj *) nobj,
+			(GLUnurbsObj *) (PointerHolder) nobj,
 			(GLint) count,
 			(GLfloat *) ptr2,
 			(GLint) stride,
@@ -1453,32 +1415,13 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUtesselator * gluNewTess ( void ) ;
- * </pre> 
- */
-	JNIEXPORT jint JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluNewTess (
-		JNIEnv *env, jobject obj)
-	{
-		jint ret;
-
-
-		ret = (jint) gluNewTess (
-		);
-
-		return ret;
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluTessBeginPolygon ( GLUtesselator * tobj , void * polygon_data ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3B (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3B (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jbyteArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -1489,7 +1432,7 @@
 			ptr1 = (*env)->GetByteArrayElements(env, polygon_data, &isCopiedArray1);
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -1499,9 +1442,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3S (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3S (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jshortArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -1512,7 +1455,7 @@
 			ptr1 = (*env)->GetShortArrayElements(env, polygon_data, &isCopiedArray1);
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -1522,9 +1465,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3I (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3I (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jintArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -1535,7 +1478,7 @@
 			ptr1 = (*env)->GetIntArrayElements(env, polygon_data, &isCopiedArray1);
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -1545,9 +1488,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3F (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3F (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jfloatArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -1558,7 +1501,7 @@
 			ptr1 = (*env)->GetFloatArrayElements(env, polygon_data, &isCopiedArray1);
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -1568,9 +1511,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3D (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3D (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -1581,7 +1524,7 @@
 			ptr1 = (*env)->GetDoubleArrayElements(env, polygon_data, &isCopiedArray1);
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -1591,9 +1534,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3Z (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3Z (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jbooleanArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -1604,7 +1547,7 @@
 			ptr1 = (*env)->GetBooleanArrayElements(env, polygon_data, &isCopiedArray1);
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -1614,9 +1557,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__I_3J (
+	Java_gl4java_GLUFuncJauJNI_gluTessBeginPolygon__J_3J (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jlongArray polygon_data)
 	{
 		jboolean isCopiedArray1 = JNI_FALSE;
@@ -1627,7 +1570,7 @@
 			ptr1 = (*env)->GetLongArrayElements(env, polygon_data, &isCopiedArray1);
 		}
 		gluTessBeginPolygon (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(void *) ptr1
 		);
 
@@ -1646,11 +1589,11 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluTessBeginContour (
 		JNIEnv *env, jobject obj,
-		jint tobj)
+		jlong tobj)
 	{
 
 		gluTessBeginContour (
-			(GLUtesselator *) tobj
+			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
@@ -1662,9 +1605,9 @@
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3B (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3B (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jbyteArray vertex_data)
 	{
@@ -1682,7 +1625,7 @@
 			ptr2 = (*env)->GetByteArrayElements(env, vertex_data, &isCopiedArray2);
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -1697,9 +1640,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3S (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3S (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jshortArray vertex_data)
 	{
@@ -1717,7 +1660,7 @@
 			ptr2 = (*env)->GetShortArrayElements(env, vertex_data, &isCopiedArray2);
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -1732,9 +1675,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3I (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3I (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jintArray vertex_data)
 	{
@@ -1752,7 +1695,7 @@
 			ptr2 = (*env)->GetIntArrayElements(env, vertex_data, &isCopiedArray2);
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -1767,9 +1710,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3F (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3F (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jfloatArray vertex_data)
 	{
@@ -1787,7 +1730,7 @@
 			ptr2 = (*env)->GetFloatArrayElements(env, vertex_data, &isCopiedArray2);
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -1802,9 +1745,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3D (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3D (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jdoubleArray vertex_data)
 	{
@@ -1822,7 +1765,7 @@
 			ptr2 = (*env)->GetDoubleArrayElements(env, vertex_data, &isCopiedArray2);
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -1837,9 +1780,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3Z (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3Z (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jbooleanArray vertex_data)
 	{
@@ -1857,7 +1800,7 @@
 			ptr2 = (*env)->GetBooleanArrayElements(env, vertex_data, &isCopiedArray2);
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -1872,9 +1815,9 @@
 		}
 	}
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLUFuncJauJNI_gluTessVertex__I_3D_3J (
+	Java_gl4java_GLUFuncJauJNI_gluTessVertex__J_3D_3J (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdoubleArray coords,
 		jlongArray vertex_data)
 	{
@@ -1892,7 +1835,7 @@
 			ptr2 = (*env)->GetLongArrayElements(env, vertex_data, &isCopiedArray2);
 		}
 		gluTessVertex (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble *) ptr1,
 			(void *) ptr2
 		);
@@ -1916,11 +1859,11 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluTessEndContour (
 		JNIEnv *env, jobject obj,
-		jint tobj)
+		jlong tobj)
 	{
 
 		gluTessEndContour (
-			(GLUtesselator *) tobj
+			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
@@ -1934,11 +1877,11 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluTessEndPolygon (
 		JNIEnv *env, jobject obj,
-		jint tobj)
+		jlong tobj)
 	{
 
 		gluTessEndPolygon (
-			(GLUtesselator *) tobj
+			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
@@ -1952,13 +1895,13 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluTessProperty (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jint which,
 		jdouble value)
 	{
 
 		gluTessProperty (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) which,
 			(GLdouble) value
 		);
@@ -1974,14 +1917,14 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluTessNormal (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jdouble x,
 		jdouble y,
 		jdouble z)
 	{
 
 		gluTessNormal (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLdouble) x,
 			(GLdouble) y,
 			(GLdouble) z
@@ -1998,7 +1941,7 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluGetTessProperty (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jint which,
 		jdoubleArray value)
 	{
@@ -2010,7 +1953,7 @@
 			ptr2 = (*env)->GetDoubleArrayElements(env, value, &isCopiedArray2);
 		}
 		gluGetTessProperty (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) which,
 			(GLdouble *) ptr2
 		);
@@ -2030,11 +1973,11 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluBeginPolygon (
 		JNIEnv *env, jobject obj,
-		jint tobj)
+		jlong tobj)
 	{
 
 		gluBeginPolygon (
-			(GLUtesselator *) tobj
+			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
@@ -2048,12 +1991,12 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluNextContour (
 		JNIEnv *env, jobject obj,
-		jint tobj,
+		jlong tobj,
 		jint type)
 	{
 
 		gluNextContour (
-			(GLUtesselator *) tobj,
+			(GLUtesselator *) (PointerHolder) tobj,
 			(GLenum) type
 		);
 
@@ -2068,13 +2011,13 @@
 	JNIEXPORT void JNICALL
 	Java_gl4java_GLUFuncJauJNI_gluEndPolygon (
 		JNIEnv *env, jobject obj,
-		jint tobj)
+		jlong tobj)
 	{
 
 		gluEndPolygon (
-			(GLUtesselator *) tobj
+			(GLUtesselator *) (PointerHolder) tobj
 		);
 
 	}
 
-/* C2J Parser Version 1.4 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 

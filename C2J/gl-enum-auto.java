@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 1.4 Beta
+ * C2J Parser Version 1.5 Beta
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-enum-auto.orig.h . . .
  * Destination-Class: gl4java_GLEnum ! 
@@ -1314,4 +1314,4 @@
 	public static final int GL_ZERO	= 0x0;
 	public static final int GL_ZOOM_X	= 0x0D16;
 	public static final int GL_ZOOM_Y	= 0x0D17;
-/* C2J Parser Version 1.4 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 

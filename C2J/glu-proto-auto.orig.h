@@ -34,7 +34,6 @@ extern GLint  gluBuild2DMipmaps( GLenum target, GLint components,
                                            GLint width, GLint height,
                                            GLenum format,
                                            GLenum type, const void *data );
-extern GLUquadricObj*  gluNewQuadric( void );
 extern void  gluQuadricDrawStyle( GLUquadricObj *quadObject,
                                             GLenum drawStyle );
 extern void  gluQuadricOrientation( GLUquadricObj *quadObject,
@@ -58,7 +57,6 @@ extern void  gluPartialDisk( GLUquadricObj *qobj, GLdouble innerRadius,
                                        GLdouble outerRadius, GLint slices,
                                        GLint loops, GLdouble startAngle,
                                        GLdouble sweepAngle );
-extern GLUnurbsObj*  gluNewNurbsRenderer( void );
 extern void  gluLoadSamplingMatrices( GLUnurbsObj *nobj,
                                                 const GLfloat modelMatrix[16],
                                                 const GLfloat projMatrix[16],
@@ -87,7 +85,6 @@ extern void  gluEndTrim( GLUnurbsObj *nobj );
 extern void  gluPwlCurve( GLUnurbsObj *nobj, GLint count,
                                     GLfloat *array, GLint stride,
                                     GLenum type );
-extern GLUtesselator*  gluNewTess( void );
 extern void  gluTessBeginPolygon( GLUtesselator *tobj,
 					    void *polygon_data );
 extern void  gluTessBeginContour( GLUtesselator *tobj );

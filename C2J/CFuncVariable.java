@@ -174,12 +174,12 @@ public class CFuncVariable
 
 		res+=typeC;
 
-		if(arrayNumber>0||isGLUPtrObject)
+		if(arrayNumber>0 || isGLUPtrObject)
 			res+=" ";
 		for(j=0; j<arrayNumber; j++)
 			res+="*";
 		if(isGLUPtrObject)
-			res+="*";
+			res+="*) (PointerHolder";
 		return res;
 	}
 }

@@ -40,6 +40,7 @@ public class gears extends SimpleGLAnimApplet1
 	public static void main( String args[] ) 
 	{
 		int i = 0;
+		String gljLib = null;
 		String glLib = null;
 		String gluLib = null;
 		boolean perftest=false;
@@ -49,6 +50,11 @@ public class gears extends SimpleGLAnimApplet1
 			if(args[i].equals("-perftest"))
 			{
 				perftest=true;
+			} else if(args[i].equals("-gljLib"))
+			{
+				i++;
+				if(args.length>i)
+					gljLib=args[i];
 			} else if(args[i].equals("-glLib"))
 			{
 				i++;
@@ -67,15 +73,31 @@ public class gears extends SimpleGLAnimApplet1
 
 		if(!perftest)
 		{
-			GLContext.gljNativeDebug = true;
-			GLContext.gljClassDebug = true;
+			GLContext.gljNativeDebug = false;
+			GLContext.gljThreadDebug = false;
+			GLContext.gljClassDebug = false;
 		}
 
-		System.out.println("loading libs(gl, glu): "+
-		        glLib+", "+gluLib+": "+
-			GLContext.loadNativeLibraries(null, glLib, gluLib));
+		if(perftest)
+			GLContext.gljClassDebug=true;
+		GLContext.loadNativeLibraries(gljLib, glLib, gluLib);
+		if(perftest)
+			GLContext.gljClassDebug=false;
 
 		Frame mainFrame = new Frame("gears");
+
+		mainFrame.addWindowListener( new WindowAdapter()
+				{
+					public void windowClosed(WindowEvent e)
+					{
+						System.exit(0);
+					}
+					public void windowClosing(WindowEvent e)
+					{
+						windowClosed(e);
+					}
+				}
+			);
 
 		gears applet = new gears();
 
@@ -90,6 +112,9 @@ public class gears extends SimpleGLAnimApplet1
 				applet.canvas.getUseFpsSleep());
 			System.out.println("useRepaint: "+
 				applet.canvas.getUseRepaint());
+
+			System.out.println("useFpsSleep: "+
+				applet.canvas.getUseFpsSleep());
 		}
 
 		applet.start();
@@ -104,7 +129,7 @@ public class gears extends SimpleGLAnimApplet1
         /* Local GLAnimCanvas extension class */
 
 
-    private class gearsCanvas extends GLAnimCanvas implements MouseListener, MouseMotionListener
+    public class gearsCanvas extends GLAnimCanvas implements MouseListener, MouseMotionListener
     {
         private static final float M_PI = 3.14159265f;
 

@@ -149,7 +149,7 @@ public class softshadow extends Applet
 
                 /* make display lists for sphere and cone; for efficiency */
 
-            int sphere, cone, base;
+            long sphere, cone, base;
 
             gl.glNewList(SPHERE, GL_COMPILE);
             sphere = glu.gluNewQuadric();

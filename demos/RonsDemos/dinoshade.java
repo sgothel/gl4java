@@ -611,7 +611,7 @@ public class dinoshade extends SimpleGLAnimApplet1
             {
                     /* Draw a yellow ball at the light source. */
                 gl.glTranslatef(lightPosition[0], lightPosition[1], lightPosition[2]);
-                int qobj = glu.gluNewQuadric();
+                long qobj = glu.gluNewQuadric();
                 glu.gluQuadricOrientation(qobj,GLU_OUTSIDE);
                 glu.gluQuadricNormals(qobj,GLU_SMOOTH);
                 glu.gluQuadricTexture(qobj,false);

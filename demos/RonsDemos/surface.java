@@ -102,7 +102,7 @@ public class surface extends Applet
     {
         float ctlpoints[] = new float [4*4*3];
         boolean showPoints = false;
-        int theNurb;
+        long theNurb;
 
         public surfaceCanvas(int w, int h)
         {

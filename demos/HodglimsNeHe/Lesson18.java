@@ -107,7 +107,7 @@ public class Lesson18 extends Applet
     int part2;     // End Of Disc
     int p1=0;      // Increase 1
     int p2=1;      // Increase 2
-    int quadratic; // Storage For Our Quadratic Objects
+    long quadratic; // Storage For Our Quadratic Objects
     int object=0;  // Which Object To Draw
 
     public renderCanvas(int w, int h) {
@@ -278,7 +278,11 @@ public class Lesson18 extends Applet
     }
 
     public void display() {
-      //Clear The Screen And The Depth Buffer
+      //Ensure GL is initialised correctly
+      if (glj.gljMakeCurrent(true) == false)
+	return;
+    
+//Clear The Screen And The Depth Buffer
       gl.glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
       //Reset The View
       gl.glLoadIdentity();
@@ -332,12 +336,17 @@ public class Lesson18 extends Applet
 
       //Swap buffers
       glj.gljSwap();
+      glj.gljFree();
     }
 
     public void keyTyped(KeyEvent e) {
       //We are not handling any keyboard events yet
     }
     public void keyPressed(KeyEvent e) {
+		    //Ensure GL is initialised correctly
+		    if (glj.gljMakeCurrent(true) == false)
+			return;
+
       switch(e.getKeyCode()) {
         //Switch ON/OFF light when L is pressed
         case KeyEvent.VK_L:
@@ -398,6 +407,8 @@ public class Lesson18 extends Applet
           }
           break;
       }
+		    glj.gljFree();
+
     }
     public void keyReleased(KeyEvent e) {
       switch(e.getKeyCode()) {

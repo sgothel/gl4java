@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 1.4 Beta
+ * C2J Parser Version 1.5 Beta
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -253,20 +253,11 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUquadricObj * gluNewQuadric ( void ) ;
- * </pre> 
- */
-	public final native int gluNewQuadric (
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluQuadricDrawStyle ( GLUquadricObj * quadObject , GLenum drawStyle ) ;
  * </pre> 
  */
 	public final native void gluQuadricDrawStyle (
-		int quadObject,
+		long quadObject,
 		int drawStyle
 	) ;
 
@@ -277,7 +268,7 @@
  * </pre> 
  */
 	public final native void gluQuadricOrientation (
-		int quadObject,
+		long quadObject,
 		int orientation
 	) ;
 
@@ -288,7 +279,7 @@
  * </pre> 
  */
 	public final native void gluQuadricNormals (
-		int quadObject,
+		long quadObject,
 		int normals
 	) ;
 
@@ -299,7 +290,7 @@
  * </pre> 
  */
 	public final native void gluQuadricTexture (
-		int quadObject,
+		long quadObject,
 		boolean textureCoords
 	) ;
 
@@ -310,7 +301,7 @@
  * </pre> 
  */
 	public final native void gluCylinder (
-		int qobj,
+		long qobj,
 		double baseRadius,
 		double topRadius,
 		double height,
@@ -325,7 +316,7 @@
  * </pre> 
  */
 	public final native void gluSphere (
-		int qobj,
+		long qobj,
 		double radius,
 		int slices,
 		int stacks
@@ -338,7 +329,7 @@
  * </pre> 
  */
 	public final native void gluDisk (
-		int qobj,
+		long qobj,
 		double innerRadius,
 		double outerRadius,
 		int slices,
@@ -352,7 +343,7 @@
  * </pre> 
  */
 	public final native void gluPartialDisk (
-		int qobj,
+		long qobj,
 		double innerRadius,
 		double outerRadius,
 		int slices,
@@ -364,20 +355,11 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUnurbsObj * gluNewNurbsRenderer ( void ) ;
- * </pre> 
- */
-	public final native int gluNewNurbsRenderer (
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluLoadSamplingMatrices ( GLUnurbsObj * nobj , const GLfloat modelMatrix [ 16 ] , const GLfloat projMatrix [ 16 ] , const GLint viewport [ 4 ] ) ;
  * </pre> 
  */
 	public final native void gluLoadSamplingMatrices (
-		int nobj,
+		long nobj,
 		float[] modelMatrix,
 		float[] projMatrix,
 		int[] viewport
@@ -390,7 +372,7 @@
  * </pre> 
  */
 	public final native void gluNurbsProperty (
-		int nobj,
+		long nobj,
 		int property,
 		float value
 	) ;
@@ -402,7 +384,7 @@
  * </pre> 
  */
 	public final native void gluGetNurbsProperty (
-		int nobj,
+		long nobj,
 		int property,
 		float[] value
 	) ;
@@ -414,7 +396,7 @@
  * </pre> 
  */
 	public final native void gluBeginCurve (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -424,7 +406,7 @@
  * </pre> 
  */
 	public final native void gluEndCurve (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -434,7 +416,7 @@
  * </pre> 
  */
 	public final native void gluNurbsCurve (
-		int nobj,
+		long nobj,
 		int nknots,
 		float[] knot,
 		int stride,
@@ -450,7 +432,7 @@
  * </pre> 
  */
 	public final native void gluBeginSurface (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -460,7 +442,7 @@
  * </pre> 
  */
 	public final native void gluEndSurface (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -470,7 +452,7 @@
  * </pre> 
  */
 	public final native void gluNurbsSurface (
-		int nobj,
+		long nobj,
 		int sknot_count,
 		float[] sknot,
 		int tknot_count,
@@ -490,7 +472,7 @@
  * </pre> 
  */
 	public final native void gluBeginTrim (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -500,7 +482,7 @@
  * </pre> 
  */
 	public final native void gluEndTrim (
-		int nobj
+		long nobj
 	) ;
 
 /**
@@ -510,7 +492,7 @@
  * </pre> 
  */
 	public final native void gluPwlCurve (
-		int nobj,
+		long nobj,
 		int count,
 		float[] array,
 		int stride,
@@ -520,44 +502,35 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLUtesselator * gluNewTess ( void ) ;
- * </pre> 
- */
-	public final native int gluNewTess (
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern void gluTessBeginPolygon ( GLUtesselator * tobj , void * polygon_data ) ;
  * </pre> 
  */
 	public final native void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		byte[] polygon_data
 	) ;
 	public final native void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		short[] polygon_data
 	) ;
 	public final native void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		int[] polygon_data
 	) ;
 	public final native void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		float[] polygon_data
 	) ;
 	public final native void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		double[] polygon_data
 	) ;
 	public final native void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		boolean[] polygon_data
 	) ;
 	public final native void gluTessBeginPolygon (
-		int tobj,
+		long tobj,
 		long[] polygon_data
 	) ;
 
@@ -568,7 +541,7 @@
  * </pre> 
  */
 	public final native void gluTessBeginContour (
-		int tobj
+		long tobj
 	) ;
 
 /**
@@ -578,37 +551,37 @@
  * </pre> 
  */
 	public final native void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		byte[] vertex_data
 	) ;
 	public final native void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		short[] vertex_data
 	) ;
 	public final native void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		int[] vertex_data
 	) ;
 	public final native void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		float[] vertex_data
 	) ;
 	public final native void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		double[] vertex_data
 	) ;
 	public final native void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		boolean[] vertex_data
 	) ;
 	public final native void gluTessVertex (
-		int tobj,
+		long tobj,
 		double[] coords,
 		long[] vertex_data
 	) ;
@@ -620,7 +593,7 @@
  * </pre> 
  */
 	public final native void gluTessEndContour (
-		int tobj
+		long tobj
 	) ;
 
 /**
@@ -630,7 +603,7 @@
  * </pre> 
  */
 	public final native void gluTessEndPolygon (
-		int tobj
+		long tobj
 	) ;
 
 /**
@@ -640,7 +613,7 @@
  * </pre> 
  */
 	public final native void gluTessProperty (
-		int tobj,
+		long tobj,
 		int which,
 		double value
 	) ;
@@ -652,7 +625,7 @@
  * </pre> 
  */
 	public final native void gluTessNormal (
-		int tobj,
+		long tobj,
 		double x,
 		double y,
 		double z
@@ -665,7 +638,7 @@
  * </pre> 
  */
 	public final native void gluGetTessProperty (
-		int tobj,
+		long tobj,
 		int which,
 		double[] value
 	) ;
@@ -677,7 +650,7 @@
  * </pre> 
  */
 	public final native void gluBeginPolygon (
-		int tobj
+		long tobj
 	) ;
 
 /**
@@ -687,7 +660,7 @@
  * </pre> 
  */
 	public final native void gluNextContour (
-		int tobj,
+		long tobj,
 		int type
 	) ;
 
@@ -698,7 +671,7 @@
  * </pre> 
  */
 	public final native void gluEndPolygon (
-		int tobj
+		long tobj
 	) ;
 
-/* C2J Parser Version 1.4 Beta:  Java program parsed successfully. */ 
+/* C2J Parser Version 1.5 Beta:  Java program parsed successfully. */ 

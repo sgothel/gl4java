@@ -128,7 +128,6 @@ class starCvs extends GLAnimCanvas
 	    /* Standard gl4java Init */
 	    if( glj.gljMakeCurrent() == false ) 
 	    {
-		System.out.println("problem in use() method");
 		return;
 	    }
 
