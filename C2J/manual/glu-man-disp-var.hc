@@ -20,3 +20,18 @@ GLUquadricObj* (CALLBACK * disp__gluNewQuadric) ( void ) = NULL;
 GLUnurbsObj* (CALLBACK * disp__gluNewNurbsRenderer) ( void ) = NULL;
 
 GLUtesselator* (CALLBACK * disp__gluNewTess) ( void ) = NULL;
+
+void (CALLBACK * disp__gluTessBeginContour) ( GLUtesselator* ) = NULL;
+
+void (CALLBACK * disp__gluTessBeginPolygon) ( GLUtesselator* , GLvoid* ) = NULL;
+
+void (CALLBACK * disp__gluTessEndContour) ( GLUtesselator* ) = NULL;
+
+void (CALLBACK * disp__gluTessEndPolygon) ( GLUtesselator* ) = NULL;
+
+void (CALLBACK * disp__gluTessNormal) ( GLUtesselator*, GLdouble, GLdouble, GLdouble ) = NULL;
+
+void (CALLBACK * disp__gluTessProperty) ( GLUtesselator*, GLenum, GLdouble ) = NULL;
+
+void (CALLBACK * disp__gluTessVertex ) ( GLUtesselator*, GLdouble*, GLvoid*) = NULL;
+

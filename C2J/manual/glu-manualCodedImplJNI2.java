@@ -9,7 +9,7 @@ public final String getClassVendor ( )
 { return "Jausoft - Sven Goethel Software Development"; }
 
 public final String getClassVersion ( ) 
-{ return "2.8.1.0"; }
+{ return "2.8.3.0"; }
 
 
 /**
@@ -223,4 +223,24 @@ public final int gluUnProject(double winx,
 
 	return r;
 }
+
+public final native void gluTessBeginContour (long tess);
+public final native void gluTessBeginPolygon (long tess, boolean[] data);
+public final native void gluTessBeginPolygon (long tess, short[] data);
+public final native void gluTessBeginPolygon (long tess, byte[] data);
+public final native void gluTessBeginPolygon (long tess, int[] data);
+public final native void gluTessBeginPolygon (long tess, long[] data);
+public final native void gluTessBeginPolygon (long tess, float[] data);
+public final native void gluTessBeginPolygon (long tess, double[] data);
+public final native void gluTessEndContour (long tess);
+public final native void gluTessEndPolygon (long tess);
+public final native void gluTessNormal (long tess, double valueX, double valueY, double valueZ);
+public final native void gluTessProperty (long tess, int which, double data);
+public final native void gluTessVertex ( long tess, double[] location, boolean[] data );
+public final native void gluTessVertex ( long tess, double[] location, byte[] data );
+public final native void gluTessVertex ( long tess, double[] location, short[] data );
+public final native void gluTessVertex ( long tess, double[] location, int[] data );
+public final native void gluTessVertex ( long tess, double[] location, long[] data );
+public final native void gluTessVertex ( long tess, double[] location, float[] data );
+public final native void gluTessVertex ( long tess, double[] location, double[] data );
 

@@ -26,6 +26,21 @@ GLUquadricObj* (CALLBACK * disp__gluNewQuadric) ( void ) = NULL;
 GLUnurbsObj* (CALLBACK * disp__gluNewNurbsRenderer) ( void ) = NULL;
 
 GLUtesselator* (CALLBACK * disp__gluNewTess) ( void ) = NULL;
+
+void (CALLBACK * disp__gluTessBeginContour) ( GLUtesselator* ) = NULL;
+
+void (CALLBACK * disp__gluTessBeginPolygon) ( GLUtesselator* , GLvoid* ) = NULL;
+
+void (CALLBACK * disp__gluTessEndContour) ( GLUtesselator* ) = NULL;
+
+void (CALLBACK * disp__gluTessEndPolygon) ( GLUtesselator* ) = NULL;
+
+void (CALLBACK * disp__gluTessNormal) ( GLUtesselator*, GLdouble, GLdouble, GLdouble ) = NULL;
+
+void (CALLBACK * disp__gluTessProperty) ( GLUtesselator*, GLenum, GLdouble ) = NULL;
+
+void (CALLBACK * disp__gluTessVertex ) ( GLUtesselator*, GLdouble*, GLvoid*) = NULL;
+
 /**
  * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
@@ -106,20 +121,6 @@ GLUtesselator* (CALLBACK * disp__gluNewTess) ( void ) = NULL;
 	GLint (CALLBACK * disp__gluScaleImage )(GLenum, GLsizei, GLsizei, GLenum, const void *, GLsizei, GLsizei, GLenum, GLvoid *) = NULL;
 
 	void (CALLBACK * disp__gluSphere )(GLUquadric *, GLdouble, GLint, GLint) = NULL;
-
-	void (CALLBACK * disp__gluTessBeginContour )(GLUtesselator *) = NULL;
-
-	void (CALLBACK * disp__gluTessBeginPolygon )(GLUtesselator *, GLvoid *) = NULL;
-
-	void (CALLBACK * disp__gluTessEndContour )(GLUtesselator *) = NULL;
-
-	void (CALLBACK * disp__gluTessEndPolygon )(GLUtesselator *) = NULL;
-
-	void (CALLBACK * disp__gluTessNormal )(GLUtesselator *, GLdouble, GLdouble, GLdouble) = NULL;
-
-	void (CALLBACK * disp__gluTessProperty )(GLUtesselator *, GLenum, GLdouble) = NULL;
-
-	void (CALLBACK * disp__gluTessVertex )(GLUtesselator *, GLdouble *, GLvoid *) = NULL;
 
 	GLint (CALLBACK * disp__gluUnProject )(GLdouble, GLdouble, GLdouble, const GLdouble *, const GLdouble *, const GLint *, GLdouble *, GLdouble *, GLdouble *) = NULL;
 

@@ -116,27 +116,6 @@
 	disp__gluSphere = (void (CALLBACK *)(GLUquadric *, GLdouble, GLint, GLint))
 	  GET_GL_PROCADDRESS ("gluSphere");
 
-	disp__gluTessBeginContour = (void (CALLBACK *)(GLUtesselator *))
-	  GET_GL_PROCADDRESS ("gluTessBeginContour");
-
-	disp__gluTessBeginPolygon = (void (CALLBACK *)(GLUtesselator *, GLvoid *))
-	  GET_GL_PROCADDRESS ("gluTessBeginPolygon");
-
-	disp__gluTessEndContour = (void (CALLBACK *)(GLUtesselator *))
-	  GET_GL_PROCADDRESS ("gluTessEndContour");
-
-	disp__gluTessEndPolygon = (void (CALLBACK *)(GLUtesselator *))
-	  GET_GL_PROCADDRESS ("gluTessEndPolygon");
-
-	disp__gluTessNormal = (void (CALLBACK *)(GLUtesselator *, GLdouble, GLdouble, GLdouble))
-	  GET_GL_PROCADDRESS ("gluTessNormal");
-
-	disp__gluTessProperty = (void (CALLBACK *)(GLUtesselator *, GLenum, GLdouble))
-	  GET_GL_PROCADDRESS ("gluTessProperty");
-
-	disp__gluTessVertex = (void (CALLBACK *)(GLUtesselator *, GLdouble *, GLvoid *))
-	  GET_GL_PROCADDRESS ("gluTessVertex");
-
 	disp__gluUnProject = (GLint (CALLBACK *)(GLdouble, GLdouble, GLdouble, const GLdouble *, const GLdouble *, const GLint *, GLdouble *, GLdouble *, GLdouble *))
 	  GET_GL_PROCADDRESS ("gluUnProject");
 

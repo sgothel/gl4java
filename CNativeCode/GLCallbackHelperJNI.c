@@ -18,6 +18,7 @@
 */
 
 static CallbackNode * pCallbackNodeRoot = 0;
+static void *curCbObj = 0;
 
 void LIBAPIENTRY PrintCallbackEntry(const char *title, CallbackEntry * cbe)
 {
@@ -129,13 +130,16 @@ CallbackNode * LIBAPIENTRY FindCallbackNode(GLenum which, jlong glx)
 				cbe->methodName, cbe->signature,
 				cbe->which, (long)(cbe->glx));
 
-			if(cbe->which==which && cbe->glx==glx)
+			if( cbe->which == which && cbe->glx == glx && 
+			    ((curCbObj == NULL) || (cbe->cb_obj == curCbObj)) 
+			  )
 				break;
 			cbn=cbn->next;
 		}
 	#else
 		while(cbn!=NULL && 
-		      (cbn->this->which!=which || cbn->this->glx!=glx)
+		      (cbn->this->which!=which || cbn->this->glx!=glx || 
+		       cbn->this->cb_obj!=curCbObj)
 		     )
 			cbn=cbn->next;
 	#endif
@@ -237,4 +241,14 @@ jlong  LIBAPIENTRY GetCurrentGLContext()
         #endif
 }
 
+
+void* LIBAPIENTRY GetCurrentCallbackObject()
+{
+	return curCbObj;  
+}
+
+void LIBAPIENTRY SetCurrentCallbackObject(void* newCbObj)
+{
+	curCbObj = newCbObj;  
+}
 

@@ -304,62 +304,6 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluTessBeginContour ( GLUtesselator * tess ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessBeginContour )(GLUtesselator *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessBeginPolygon ( GLUtesselator * tess , GLvoid * data ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessBeginPolygon )(GLUtesselator *, GLvoid *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessEndContour ( GLUtesselator * tess ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessEndContour )(GLUtesselator *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessEndPolygon ( GLUtesselator * tess ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessEndPolygon )(GLUtesselator *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessNormal ( GLUtesselator * tess , GLdouble valueX , GLdouble valueY , GLdouble valueZ ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessNormal )(GLUtesselator *, GLdouble, GLdouble, GLdouble);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessProperty ( GLUtesselator * tess , GLenum which , GLdouble data ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessProperty )(GLUtesselator *, GLenum, GLdouble);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessVertex ( GLUtesselator * tess , GLdouble * location , GLvoid * data ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessVertex )(GLUtesselator *, GLdouble *, GLvoid *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
    extern GLint gluUnProject ( GLdouble winX , GLdouble winY , GLdouble winZ , const GLdouble * model , const GLdouble * proj , const GLint * view , GLdouble * objX , GLdouble * objY , GLdouble * objZ ) ;
  * </pre> 
  */

@@ -67,4 +67,7 @@
 
 	LIBAPI jlong  LIBAPIENTRY GetCurrentGLContext();
 
+	LIBAPI void* LIBAPIENTRY GetCurrentCallbackObject();
+	LIBAPI void  LIBAPIENTRY SetCurrentCallbackObject(void* newCbObj);
+
 #endif

@@ -109,3 +109,25 @@ public int gluUnProject(double winx,
                         double[] obj);
 
 
+public void gluTessBeginContour (long tess) ;
+public void gluTessBeginPolygon (long tess, boolean[] data) ;
+public void gluTessBeginPolygon (long tess, byte[] data) ;
+public void gluTessBeginPolygon (long tess, short[] data) ;
+public void gluTessBeginPolygon (long tess, int[] data) ;
+public void gluTessBeginPolygon (long tess, long[] data) ;
+public void gluTessBeginPolygon (long tess, float[] data) ;
+public void gluTessBeginPolygon (long tess, double[] data) ;
+
+public void gluTessEndContour (long tess) ;
+public void gluTessEndPolygon (long tess) ;
+public void gluTessNormal (long tess, double valueX, double valueY, double valueZ) ;
+public void gluTessProperty (long tess, int which, double data) ;
+
+public void gluTessVertex ( long tess, double[] location, boolean[] data ) ;
+public void gluTessVertex ( long tess, double[] location, byte[] data ) ;
+public void gluTessVertex ( long tess, double[] location, short[] data ) ;
+public void gluTessVertex ( long tess, double[] location, int[] data ) ;
+public void gluTessVertex ( long tess, double[] location, long[] data ) ;
+public void gluTessVertex ( long tess, double[] location, float[] data ) ;
+public void gluTessVertex ( long tess, double[] location, double[] data ) ;
+

@@ -25,6 +25,21 @@ LIBAPI GLUquadricObj* (CALLBACK * disp__gluNewQuadric) ( void );
 LIBAPI GLUnurbsObj* (CALLBACK * disp__gluNewNurbsRenderer) ( void );
 
 LIBAPI GLUtesselator* (CALLBACK * disp__gluNewTess) ( void );
+
+LIBAPI void (CALLBACK * disp__gluTessVertex )(GLUtesselator *, GLdouble *, GLvoid *);
+
+LIBAPI void (CALLBACK * disp__gluTessBeginContour)(GLUtesselator* tess);
+
+LIBAPI void (CALLBACK * disp__gluTessBeginPolygon)(GLUtesselator* tess, GLvoid* data);
+
+LIBAPI void (CALLBACK * disp__gluTessEndContour)(GLUtesselator* tess);
+
+LIBAPI void (CALLBACK * disp__gluTessEndPolygon)(GLUtesselator* tess);
+
+LIBAPI void (CALLBACK * disp__gluTessNormal)(GLUtesselator* tess, GLdouble valueX, GLdouble valueY, GLdouble valueZ);
+
+LIBAPI void (CALLBACK * disp__gluTessProperty)(GLUtesselator* tess, GLenum which, GLdouble data);
+
 /**
  * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
@@ -327,62 +342,6 @@ LIBAPI GLUtesselator* (CALLBACK * disp__gluNewTess) ( void );
  * </pre> 
  */
 	LIBAPI void (CALLBACK * disp__gluSphere )(GLUquadric *, GLdouble, GLint, GLint);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessBeginContour ( GLUtesselator * tess ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessBeginContour )(GLUtesselator *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessBeginPolygon ( GLUtesselator * tess , GLvoid * data ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessBeginPolygon )(GLUtesselator *, GLvoid *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessEndContour ( GLUtesselator * tess ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessEndContour )(GLUtesselator *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessEndPolygon ( GLUtesselator * tess ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessEndPolygon )(GLUtesselator *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessNormal ( GLUtesselator * tess , GLdouble valueX , GLdouble valueY , GLdouble valueZ ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessNormal )(GLUtesselator *, GLdouble, GLdouble, GLdouble);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessProperty ( GLUtesselator * tess , GLenum which , GLdouble data ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessProperty )(GLUtesselator *, GLenum, GLdouble);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessVertex ( GLUtesselator * tess , GLdouble * location , GLvoid * data ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessVertex )(GLUtesselator *, GLdouble *, GLvoid *);
 
 /**
  * Original Function-Prototype :

@@ -23,6 +23,22 @@ public interface GLUFunc14
 	extends GLUFunc 
 {
 
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluTessBeginPolygon ( GLUtesselator * tess , GLvoid * data ) ;
+ * </pre> 
+ */
+public void gluTessBeginPolygon ( long tess, Buffer data) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluTessVertex ( GLUtesselator * tess , GLdouble * location , GLvoid * data ) ;
+ * </pre> 
+ */
+public void gluTessVertex ( long tess, double[] location, Buffer data) ;
+
 
 public String gluErrorString ( int errorCode ) ;
 
@@ -133,6 +149,28 @@ public int gluUnProject(double winx,
                         int[] viewport,
                         double[] obj);
 
+
+public void gluTessBeginContour (long tess) ;
+public void gluTessBeginPolygon (long tess, boolean[] data) ;
+public void gluTessBeginPolygon (long tess, byte[] data) ;
+public void gluTessBeginPolygon (long tess, short[] data) ;
+public void gluTessBeginPolygon (long tess, int[] data) ;
+public void gluTessBeginPolygon (long tess, long[] data) ;
+public void gluTessBeginPolygon (long tess, float[] data) ;
+public void gluTessBeginPolygon (long tess, double[] data) ;
+
+public void gluTessEndContour (long tess) ;
+public void gluTessEndPolygon (long tess) ;
+public void gluTessNormal (long tess, double valueX, double valueY, double valueZ) ;
+public void gluTessProperty (long tess, int which, double data) ;
+
+public void gluTessVertex ( long tess, double[] location, boolean[] data ) ;
+public void gluTessVertex ( long tess, double[] location, byte[] data ) ;
+public void gluTessVertex ( long tess, double[] location, short[] data ) ;
+public void gluTessVertex ( long tess, double[] location, int[] data ) ;
+public void gluTessVertex ( long tess, double[] location, long[] data ) ;
+public void gluTessVertex ( long tess, double[] location, float[] data ) ;
+public void gluTessVertex ( long tess, double[] location, double[] data ) ;
 
 /**
  * C2J Parser Version 3.0
@@ -1159,147 +1197,6 @@ public int gluUnProject(double winx,
 		double radius,
 		int slices,
 		int stacks
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessBeginContour ( GLUtesselator * tess ) ;
- * </pre> 
- */
-	public void gluTessBeginContour (
-		long tess
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessBeginPolygon ( GLUtesselator * tess , GLvoid * data ) ;
- * </pre> 
- */
-	public void gluTessBeginPolygon (
-		long tess,
-		byte[] data
-	) ;
-	public void gluTessBeginPolygon (
-		long tess,
-		short[] data
-	) ;
-	public void gluTessBeginPolygon (
-		long tess,
-		int[] data
-	) ;
-	public void gluTessBeginPolygon (
-		long tess,
-		float[] data
-	) ;
-	public void gluTessBeginPolygon (
-		long tess,
-		double[] data
-	) ;
-	public void gluTessBeginPolygon (
-		long tess,
-		boolean[] data
-	) ;
-	public void gluTessBeginPolygon (
-		long tess,
-		long[] data
-	) ;
-	public void gluTessBeginPolygon (
-		long tess,
-		Buffer data
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessEndContour ( GLUtesselator * tess ) ;
- * </pre> 
- */
-	public void gluTessEndContour (
-		long tess
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessEndPolygon ( GLUtesselator * tess ) ;
- * </pre> 
- */
-	public void gluTessEndPolygon (
-		long tess
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessNormal ( GLUtesselator * tess , GLdouble valueX , GLdouble valueY , GLdouble valueZ ) ;
- * </pre> 
- */
-	public void gluTessNormal (
-		long tess,
-		double valueX,
-		double valueY,
-		double valueZ
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessProperty ( GLUtesselator * tess , GLenum which , GLdouble data ) ;
- * </pre> 
- */
-	public void gluTessProperty (
-		long tess,
-		int which,
-		double data
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessVertex ( GLUtesselator * tess , GLdouble * location , GLvoid * data ) ;
- * </pre> 
- */
-	public void gluTessVertex (
-		long tess,
-		double[] location,
-		byte[] data
-	) ;
-	public void gluTessVertex (
-		long tess,
-		double[] location,
-		short[] data
-	) ;
-	public void gluTessVertex (
-		long tess,
-		double[] location,
-		int[] data
-	) ;
-	public void gluTessVertex (
-		long tess,
-		double[] location,
-		float[] data
-	) ;
-	public void gluTessVertex (
-		long tess,
-		double[] location,
-		double[] data
-	) ;
-	public void gluTessVertex (
-		long tess,
-		double[] location,
-		boolean[] data
-	) ;
-	public void gluTessVertex (
-		long tess,
-		double[] location,
-		long[] data
-	) ;
-	public void gluTessVertex (
-		long tess,
-		double[] location,
-		Buffer data
 	) ;
 
 /**

@@ -38,6 +38,27 @@
     disp__gluNewTess= ( GLUtesselator* (CALLBACK *) (void) )
     	GET_GL_PROCADDRESS("gluNewTess");
 
+    disp__gluTessVertex = (void (CALLBACK *)(GLUtesselator *, GLdouble *, GLvoid *))
+	GET_GL_PROCADDRESS ("gluTessVertex");
+
+    disp__gluTessBeginContour = (void (CALLBACK *)(GLUtesselator* tess))
+	GET_GL_PROCADDRESS ("gluTessBeginContour");
+
+    disp__gluTessBeginPolygon = (void (CALLBACK *)(GLUtesselator* tess, GLvoid* data))
+	GET_GL_PROCADDRESS ("gluTessBeginPolygon");
+
+    disp__gluTessEndContour = (void (CALLBACK *)(GLUtesselator* tess))
+	GET_GL_PROCADDRESS ("gluTessEndContour");
+
+    disp__gluTessEndPolygon = (void (CALLBACK *)(GLUtesselator* tess))
+	GET_GL_PROCADDRESS ("gluTessEndPolygon");
+
+    disp__gluTessNormal = (void (CALLBACK *)(GLUtesselator* tess, GLdouble valueX, GLdouble valueY, GLdouble valueZ))
+	GET_GL_PROCADDRESS ("gluTessNormal");
+
+    disp__gluTessProperty = (void (CALLBACK *)(GLUtesselator* tess, GLenum which, GLdouble data))
+	GET_GL_PROCADDRESS ("gluTessProperty");
+
 /**
  * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
@@ -155,27 +176,6 @@
 
 	disp__gluSphere = (void (CALLBACK *)(GLUquadric *, GLdouble, GLint, GLint))
 	  GET_GL_PROCADDRESS ("gluSphere");
-
-	disp__gluTessBeginContour = (void (CALLBACK *)(GLUtesselator *))
-	  GET_GL_PROCADDRESS ("gluTessBeginContour");
-
-	disp__gluTessBeginPolygon = (void (CALLBACK *)(GLUtesselator *, GLvoid *))
-	  GET_GL_PROCADDRESS ("gluTessBeginPolygon");
-
-	disp__gluTessEndContour = (void (CALLBACK *)(GLUtesselator *))
-	  GET_GL_PROCADDRESS ("gluTessEndContour");
-
-	disp__gluTessEndPolygon = (void (CALLBACK *)(GLUtesselator *))
-	  GET_GL_PROCADDRESS ("gluTessEndPolygon");
-
-	disp__gluTessNormal = (void (CALLBACK *)(GLUtesselator *, GLdouble, GLdouble, GLdouble))
-	  GET_GL_PROCADDRESS ("gluTessNormal");
-
-	disp__gluTessProperty = (void (CALLBACK *)(GLUtesselator *, GLenum, GLdouble))
-	  GET_GL_PROCADDRESS ("gluTessProperty");
-
-	disp__gluTessVertex = (void (CALLBACK *)(GLUtesselator *, GLdouble *, GLvoid *))
-	  GET_GL_PROCADDRESS ("gluTessVertex");
 
 	disp__gluUnProject = (GLint (CALLBACK *)(GLdouble, GLdouble, GLdouble, const GLdouble *, const GLdouble *, const GLint *, GLdouble *, GLdouble *, GLdouble *))
 	  GET_GL_PROCADDRESS ("gluUnProject");

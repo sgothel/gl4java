@@ -5,7 +5,7 @@
 static const char _gl_n_a_string[] = "GL-String not avaiable !";
 
 static const char * _gl_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _gl_lib_version_="2.8.1.0";
+static const char * _gl_lib_version_="2.8.3.0";
 
 /* ---------------------------------------------------------------------- */
 

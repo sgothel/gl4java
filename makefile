@@ -373,7 +373,8 @@ FILES1.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI_funcs.c   \
 			  $(CNATIVEDIR)/glf.c                    \
 			  $(CNATIVEDIR)/GLF_JNI_funcs.c          \
-			  $(CNATIVEDIR)/GLUCallbackJNI.c
+			  $(CNATIVEDIR)/GLUCallbackJNI.c         \
+			  $(CNATIVEDIR)/MemoryManager.c  
 
 FILES2.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
 			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
@@ -388,7 +389,8 @@ FILES2.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI12_funcs.c \
 			  $(CNATIVEDIR)/glf.c                    \
 			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
-			  $(CNATIVEDIR)/GLUCallbackJNI.c
+			  $(CNATIVEDIR)/GLUCallbackJNI.c         \
+			  $(CNATIVEDIR)/MemoryManager.c  
 
 FILES3.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
@@ -405,7 +407,8 @@ FILES3.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI12_funcs.c \
 			  $(CNATIVEDIR)/glf.c                    \
 			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
-			  $(CNATIVEDIR)/GLUCallbackJNI.c
+			  $(CNATIVEDIR)/GLUCallbackJNI.c         \
+			  $(CNATIVEDIR)/MemoryManager.c  
 
 FILES4.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
@@ -425,7 +428,8 @@ FILES4.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/gl4java_utils_DirectBufferCleanup.c \
 			  $(CNATIVEDIR)/glf.c                    \
 			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
-			  $(CNATIVEDIR)/GLUCallbackJNI.c
+			  $(CNATIVEDIR)/GLUCallbackJNI.c         \
+			  $(CNATIVEDIR)/MemoryManager.c  
 
 FILES3_NF.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
@@ -442,7 +446,8 @@ FILES3_NF.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI12nf_funcs.c \
 			  $(CNATIVEDIR)/glf.c                    \
 			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
-			  $(CNATIVEDIR)/GLUCallbackJNI.c
+			  $(CNATIVEDIR)/GLUCallbackJNI.c         \
+			  $(CNATIVEDIR)/MemoryManager.c  
 
 FILES3_TST.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
@@ -459,7 +464,8 @@ FILES3_TST.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI12tst_funcs.c \
 			  $(CNATIVEDIR)/glf.c                    \
 			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
-			  $(CNATIVEDIR)/GLUCallbackJNI.c
+			  $(CNATIVEDIR)/GLUCallbackJNI.c         \
+			  $(CNATIVEDIR)/MemoryManager.c  
 
 FILES1.o 		= ${FILES1.c:.c=.o}
 FILES2.o 		= ${FILES2.c:.c=.o}
@@ -672,6 +678,9 @@ $(CNATIVEDIR)/GLCallbackHelperJNI.o: $(CNATIVEDIR)/jnitools.h
 
 $(CNATIVEDIR)/GLUCallbackJNI.o: $(CNATIVEDIR)/jnitools.h \
 				$(CNATIVEDIR)/GLCallbackHelperJNI.h
+
+$(CNATIVEDIR)/MemoryManager.o:  $(CNATIVEDIR)/jnitools.h \
+				$(CNATIVEDIR)/MemoryManager.h
 
 ######################################################################
 #
