@@ -311,6 +311,7 @@ public class GLAnimCanvas extends GLCanvas
         public synchronized void setUseRepaint(boolean b)
         {
                 useRepaint = b;
+                recomputeAWTThreadRendering();
         }
 
         /**

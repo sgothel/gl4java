@@ -174,6 +174,22 @@ public class GLCanvas extends Canvas
     // The list of GLEventListeners
     private GLEventListenerList listeners = new GLEventListenerList();
 
+    // Indicates whether init() has been called yet.
+    private volatile boolean initCalled = false;
+
+    // Indicates whether the canvas will permit any calls to init() or
+    // display() from within the paint() method.
+    private boolean enableAWTThreadRendering;
+
+    void recomputeAWTThreadRendering() {
+      // Switches to false under the following circumstances:
+      //  - this is (precisely a) GLAnimCanvas; subclassing may change
+      //    the code flow significantly enough that this optimization
+      //    breaks
+      //  - useRepaint is false
+      enableAWTThreadRendering = !((getClass() == GLAnimCanvas.class) && !getUseRepaint());
+    }
+
     static {
 	if(GLContext.doLoadNativeLibraries(null, null, null)==false)
 	  System.out.println("GLCanvas could not load def. native libs.");
@@ -216,6 +232,7 @@ public class GLCanvas extends Canvas
 
 	setSize(size);
 
+        recomputeAWTThreadRendering();
     }
 
     /**
@@ -316,6 +333,7 @@ public class GLCanvas extends Canvas
 
 	setSize(size);
 
+        recomputeAWTThreadRendering();
     }
 
     /**
@@ -448,7 +466,10 @@ public class GLCanvas extends Canvas
 		                (float)col.getGreen()/255.0f, 
 		                (float)col.getBlue()/255.0f, 0.0f);
 
-                init();
+                if (enableAWTThreadRendering) {
+                    init();
+                    initCalled = true;
+                }
 
 		// fetch the top-level window ,
 		// to add us as the windowListener
@@ -485,10 +506,28 @@ public class GLCanvas extends Canvas
 		/* force a reshape, to be sure .. */
 	        mustResize = true;
     		isInit = true;
+
+                /* if we are not allowed to render from the AWT
+                   thread, release the OpenGL context for the
+                   animation thread to use */
+                if (!enableAWTThreadRendering) {
+                    // makeCurrent() necessary to make GLContext
+                    // realize that JAWT lock has to be released...
+                    glj.gljMakeCurrent();
+                    glj.gljFree();
+                }
 	} 
 
-        sDisplay();
+        if (enableAWTThreadRendering) {
+            sDisplay();
+        }
     }
+
+    // Package-private hack to make this work similarly to old
+    // releases. This avoids ever calling sDisplay() from the AWT
+    // thread if the component is a GLAnimCanvas and if
+    // setUseRepaint(false) has been called.
+    boolean getUseRepaint() { return true; }
 
     /**
      *
@@ -653,7 +692,7 @@ public class GLCanvas extends Canvas
 
 	if(!cvsIsInit()) return;
 
-	if( mustResize )
+	if( mustResize && initCalled )
 	{
 	    if( glj.gljMakeCurrent() == true )
 	    {
@@ -661,8 +700,10 @@ public class GLCanvas extends Canvas
 		glj.gljResize( size.width, size.height ) ;
 	        reshape(size.width, size.height);
 		mustResize = false;
-		invalidate();
-		repaint(100);
+                if (enableAWTThreadRendering) {
+                    invalidate();
+                    repaint(100);
+                }
 		glj.gljFree(true); /* force freeing the context here .. */
 	    }
 	}
@@ -742,6 +783,13 @@ public class GLCanvas extends Canvas
         listeners.sendPreDisplayEvent(this);
 
         if (glj.gljMakeCurrent()) {
+            if (!enableAWTThreadRendering) {
+                if (!initCalled) {
+                    init();
+                    initCalled = true;
+                }
+            }
+
             listeners.sendDisplayEvent(this);
 
 	    glj.gljSwap();
