@@ -150,5 +150,5 @@
 		 const char *func, int *method, int debug, int verbose);
 
         LIBAPI void LIBAPIENTRY fetch_GL_FUNCS 
-		(const char * libGLName, const char * libGLUName, int force);
+		(const char * libGLName, const char * libGLUName, int force, int reload);
 #endif

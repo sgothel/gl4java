@@ -13,3 +13,6 @@ int (CALLBACK * disp__glXGetConfig) (Display *, XVisualInfo *, int, int *) = NUL
 Bool (CALLBACK * disp__glXMakeCurrent) (Display *, GLXDrawable, GLXContext) = NULL;
 void (CALLBACK * disp__glXSwapBuffers) (Display *, GLXDrawable) = NULL;
 
+/* NVidia support */
+void* (CALLBACK * disp__glXAllocateMemoryNV)(int, float, float, float) = NULL;
+void  (CALLBACK * disp__glXFreeMemoryNV)    (void*)                    = NULL;

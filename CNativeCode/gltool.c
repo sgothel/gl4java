@@ -523,21 +523,22 @@ void * LIBAPIENTRY getGLProcAddressHelper
 
 
 void LIBAPIENTRY fetch_GL_FUNCS (const char * libGLName, 
-			         const char * libGLUName, int force)
+			         const char * libGLUName, int force, int reload)
 {
   static int _firstRun = 1;
 
-  if(force)
-  {
-	unloadGLLibrary();
-        _firstRun = 1;
+  if (!reload) {
+    if(force) {
+      unloadGLLibrary();
+      _firstRun = 1;
+    }
+
+    if(!_firstRun)
+      return;
+
+    if(!loadGLLibrary (libGLName, libGLUName))
+      return;
   }
-
-  if(!_firstRun)
-  	return;
-
-  if(!loadGLLibrary (libGLName, libGLUName))
-  	return;
 
   #define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (libGLName, libGLUName, (a), NULL, 0, 0);
 
@@ -547,11 +548,11 @@ void LIBAPIENTRY fetch_GL_FUNCS (const char * libGLName,
   _firstRun=0;
 
 #ifdef _X11_
-  fetch_GLX_FUNCS (libGLName, libGLUName, force);
+  fetch_GLX_FUNCS (libGLName, libGLUName, force, reload);
 #endif
 
 #ifdef _WIN32_
-  fetch_WGL_FUNCS (libGLName, libGLUName, force);
+  fetch_WGL_FUNCS (libGLName, libGLUName, force, reload);
 #endif
 
 }

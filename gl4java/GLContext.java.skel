@@ -2449,6 +2449,14 @@ public class GLContext extends Object
 
 	notifyAll(); // notify gljFree after action is done ..
 
+        // Workaround for problem on Windows where extensions do not
+        // become visible until the first time an OpenGL context is
+        // made current (at least with NVidia's drivers).
+        if (firstContextMakeCurrent) {
+          firstContextMakeCurrent = false;
+          gljFetchGLFunctions0(null, null, false, true);
+        }
+
 	return result;
     }
 
@@ -2730,15 +2738,43 @@ public class GLContext extends Object
      */
     public final static native boolean gljFetchOSGLFunctions 
 			( String gllibname, String glulibname, boolean force );
-    public final static native boolean gljFetchGLFunctions 
-			( String gllibname, String glulibname, boolean force );
+    public final static boolean gljFetchGLFunctions(String gllibname,
+                                                    String glulibname,
+                                                    boolean force) {
+      return gljFetchGLFunctions0(gllibname, glulibname, force, false);
+    }
+
+    // This routine is used internally only. On Windows it appears
+    // that extensions only become visible once an OpenGL context is
+    // made current for the first time (at least with NVidia's
+    // drivers). To avoid making drastic changes to the code
+    // structure, we reload all of the OpenGL functions the first time
+    // a context is made current. (This could be made more efficient
+    // by only loading extensions' routines at this time.)
+    private volatile static boolean firstContextMakeCurrent = true;
+    private final static native boolean gljFetchGLFunctions0(String gllibname,
+                                                             String glulibname,
+                                                             boolean force,
+                                                             boolean reload);
 
     /**
      * This functions checks the existence of 
      * the GL functions !
      */
-    public final static native boolean gljTestGLProc 
-    					( String name, boolean verbose );
+    public final static boolean gljTestGLProc ( String name, boolean verbose ) {
+      // Special case any routines which are exposed in a different fashion
+      if (name.equals("glAllocateMemoryNV")) {
+        int os = getNativeOSType();
+        if (os == OsWindoof) {
+          name = "wglAllocateMemoryNV";
+        } else if (os == OsX11) {
+          name = "glXAllocateMemoryNV";
+        } // else will fail anyway; fall through
+      }
+      return gljTestGLProc0(name, verbose);
+    }
+
+    private static final native boolean gljTestGLProc0(String name, boolean verbose);
 
     /**
      * This functions reads the pixel from the GL frame

@@ -91,7 +91,7 @@
 	 */
 	LIBAPI void LIBAPIENTRY fetch_GLX_FUNCS 
 				(const char * libGLName, 
-					 const char * libGLUName, int force);
+					 const char * libGLUName, int force, int reload);
 
 	LIBAPI int LIBAPIENTRY x11gl_myErrorHandler(
 				  Display *pDisp, XErrorEvent *p_error);

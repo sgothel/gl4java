@@ -19,18 +19,20 @@
  * use fetch_GL_FUNCS (gltool.c) instead
  */
 void LIBAPIENTRY fetch_WGL_FUNCS (const char * libGLName, 
-			          const char * libGLUName, int force)
+			          const char * libGLUName, int force, int reload)
 {
   static int _firstRun = 1;
 
-  if(force)
-        _firstRun = 1;
+  if (!reload) {
+    if(force)
+      _firstRun = 1;
 
-  if(!_firstRun)
-  	return;
+    if(!_firstRun)
+      return;
 
-  if(!loadGLLibrary (libGLName, libGLUName))
-  	return;
+    if(!loadGLLibrary (libGLName, libGLUName))
+      return;
+  }
 
   #define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (libGLName, libGLUName, (a), NULL, 1, 0);
 

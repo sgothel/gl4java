@@ -28,7 +28,7 @@
 	 */
 	LIBAPI void LIBAPIENTRY fetch_WGL_FUNCS 
 				(const char * libGLName, 
-					 const char * libGLUName, int force);
+					 const char * libGLUName, int force, int reload);
 
 
 	LIBAPI void LIBAPIENTRY setPixelFormatByGLCapabilities( 

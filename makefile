@@ -198,7 +198,8 @@ FILES_WITH_NATIVES_13 = \
 ifdef JAVAC_14
 FILES_WITH_NATIVES_14 = \
 	$(PACKAGEDIR)/GLFunc14JauJNI.java \
-	$(PACKAGEDIR)/GLUFunc14JauJNI.java
+	$(PACKAGEDIR)/GLUFunc14JauJNI.java \
+	$(PACKAGEDIR)/utils/DirectBufferCleanup.java
 else
 FILES_WITH_NATIVES_14 = 
 endif
@@ -415,6 +416,7 @@ FILES4.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI12_funcs.c \
 			  $(CNATIVEDIR)/OpenGL_JauJNI14_funcs.c  \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI14_funcs.c \
+			  $(CNATIVEDIR)/gl4java_utils_DirectBufferCleanup.c \
 			  $(CNATIVEDIR)/glf.c                    \
 			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c

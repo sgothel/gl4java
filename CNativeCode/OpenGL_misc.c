@@ -793,6 +793,9 @@ Java_gl4java_GLContext_gljFetchOSGLFunctions (
 	JNIEnv *env, jclass jclass,
 	jstring gllibname, jstring glulibname, jboolean force )
 {
+        // FIXME: this routine is currently unused by the GL4Java
+        // implementation and should be removed in a subsequent
+        // release
 	const char * gllib;
 	const char * glulib;
 
@@ -808,42 +811,44 @@ Java_gl4java_GLContext_gljFetchOSGLFunctions (
         (*env)->ReleaseStringUTFChars(env, glulibname, glulib);
 
 #ifdef _X11_
-        fetch_GLX_FUNCS (libGLName, libGLUName, (force==JNI_TRUE)?1:0);
+        fetch_GLX_FUNCS (libGLName, libGLUName, (force==JNI_TRUE)?1:0, 0);
 #endif
 
 #ifdef _WIN32_
-        fetch_WGL_FUNCS (libGLName, libGLUName, (force==JNI_TRUE)?1:0);
+        fetch_WGL_FUNCS (libGLName, libGLUName, (force==JNI_TRUE)?1:0, 0);
 #endif
 
 	return JNI_TRUE;
 }
 
 JNIEXPORT jboolean JNICALL
-Java_gl4java_GLContext_gljFetchGLFunctions (
+Java_gl4java_GLContext_gljFetchGLFunctions0 (
 	JNIEnv *env, jclass jclass,
-	jstring gllibname, jstring glulibname, jboolean force )
+	jstring gllibname, jstring glulibname, jboolean force, jboolean reload )
 {
 	const char * gllib;
 	const char * glulib;
 
-        gllib = (*env)->GetStringUTFChars(env, gllibname, 0);
-        glulib = (*env)->GetStringUTFChars(env, glulibname, 0);
+        if (!reload) {
+          gllib = (*env)->GetStringUTFChars(env, gllibname, 0);
+          glulib = (*env)->GetStringUTFChars(env, glulibname, 0);
 
-	strncpy (libGLName, gllib, 798);
-	strncpy (libGLUName, glulib, 798);
-	libGLName[799] = 0;
-	libGLUName[799] = 0;
+          strncpy (libGLName, gllib, 798);
+          strncpy (libGLUName, glulib, 798);
+          libGLName[799] = 0;
+          libGLUName[799] = 0;
 
-        (*env)->ReleaseStringUTFChars(env, gllibname, gllib);
-        (*env)->ReleaseStringUTFChars(env, glulibname, glulib);
+          (*env)->ReleaseStringUTFChars(env, gllibname, gllib);
+          (*env)->ReleaseStringUTFChars(env, glulibname, glulib);
+        }
 
-        fetch_GL_FUNCS (libGLName, libGLUName, (force==JNI_TRUE)?1:0);
+        fetch_GL_FUNCS (libGLName, libGLUName, (force==JNI_TRUE)?1:0, (reload==JNI_TRUE)?1:0);
 
 	return JNI_TRUE;
 }
 
 JNIEXPORT jboolean JNICALL
-Java_gl4java_GLContext_gljTestGLProc (
+Java_gl4java_GLContext_gljTestGLProc0 (
 	JNIEnv *env, jobject obj, jstring name, jboolean verbose )
 {
      jboolean res;
