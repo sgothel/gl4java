@@ -11,8 +11,8 @@ import java.net.*;
  * The TextureGrabber's implementations are used to
  * save the pixels of the GL Context to a file !
  *
- * @see TextureTool
- * @see	GLImageCanvas
+ * @see gl4java.utils.textures.TextureTool
+ * @see	gl4java.awt.GLImageCanvas
  */   
 public abstract class TextureGrabber
 implements GLEnum, GLUEnum

@@ -26,9 +26,9 @@ import java.lang.Math;
  * </pre>
  *
  * <p>
- * There are two ways of using a GLAnimCanvas: the {@link
- * gl4java.GLEventListener} model or the subclassing model. Earlier
- * versions of OpenGL for Java only supported the subclassing model.
+ * There are two ways of using a GLAnimCanvas: 
+ * the {@link gl4java.drawable.GLEventListener} model or the subclassing model. 
+ * Earlier versions of OpenGL for Java only supported the subclassing model.
  * The default implementations of {@link gl4java.awt.GLCanvas#init}, 
  * {@link gl4java.awt.GLCanvas#display}, 
  * {@link gl4java.awt.GLCanvas#reshape} and 
@@ -412,7 +412,7 @@ public class GLAnimCanvas extends GLCanvas
 	private boolean _fDelayRun=false;
 
          /** 
-          * Forcec this thread to release it's GLContext !
+          * Force this thread to release it's GLContext !
 	  * 
 	  * To ensure this, this thread enables itself,
 	  * and calls gljFree(true) to force the release !

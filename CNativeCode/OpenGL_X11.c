@@ -516,7 +516,6 @@ Java_gl4java_GLContext_gljMakeCurrentNative( JNIEnv *env, jobject obj,
 	                         (Window)((PointerHolder)thisWin), 
 	                         (GLXContext)((PointerHolder)glContext) ) ) 
 	    {
-   extern GLenum glGetError ( void ) ;
 		fprintf(stderr, "GL4Java: gljMakeCurrent failed with GC\n  Another thread may be use it now ...\n");
 		fflush(stderr);
 		ret = JNI_FALSE;

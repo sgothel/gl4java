@@ -86,7 +86,7 @@ public interface GLEventListener
       call to {@link gl4java.GLFunc#glViewport}; note that for
       convenience the component has already called {@link
       gl4java.GLContext#gljResize}(width, height) and {@link
-      gl4java.GLFunc.glViewport}(0, 0, width, height) when this method
+      gl4java.GLFunc#glViewport}(0, 0, width, height) when this method
       is called, so the client may not have to do anything in this
       method. At the time this method is called, the drawable has
       already made its associated GLContext current by a call to

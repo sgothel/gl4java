@@ -26,7 +26,7 @@ import javax.swing.*;
  * <p>
  *
  * There are two ways of using a GLJPanel: the {@link
- * gl4java.GLEventListener} model or the subclassing model. Earlier
+ * gl4java.drawable.GLEventListener} model or the subclassing model. Earlier
  * versions of the system only supported the subclassing model. The
  * default implementations of {@link #init}, {@link #display},
  * {@link #reshape} and {@link #doCleanup}
@@ -657,7 +657,7 @@ public class GLJPanel extends JPanel
      *
      * <p>
      * The default implementation of display() sends display events to
-     * all {@link gl4java.GLEventListener}s associated with this
+     * all {@link gl4java.drawable.GLEventListener}s associated with this
      * GLJPanel, and automatically calls {@link
      * gl4java.GLContext#gljMakeCurrent} and {@link
      * gl4java.GLContext#gljFree} as necessary.

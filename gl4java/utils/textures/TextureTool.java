@@ -13,7 +13,8 @@ import java.net.*;
  * This Class implements basic functions,
  * which are used by all TextureLoader implementations !
  *
- * @see TextureLoader
+ * @see gl4java.utils.textures.TextureTool
+ * @see gl4java.awt.GLImageCanvas
  */   
 public abstract class TextureTool
 implements GLEnum, GLUEnum
@@ -156,6 +157,12 @@ implements GLEnum, GLUEnum
   		} while (format[0]==0 && /* format[0]!=glFormat && */
                    	 textWidth>1 && textHeight>1); 
 
+		if(format[0]==0) 
+		{
+			System.out.println("GL-ERROR: text size cannot be negotiated  !\n");
+			error=true;
+		}
+
 	}
 
 	/**
@@ -241,6 +248,7 @@ implements GLEnum, GLUEnum
 		    {
 			// glu failure
 			error=true;
+			System.out.println("GL-ERROR: cannot gluScaleImage !\n");
 		    } else {
 			pixel = buffer;
 		    }
@@ -365,6 +373,7 @@ implements GLEnum, GLUEnum
 		    {
 			// glu failure
 			error=true;
+			System.out.println("GL-ERROR: cannot gluScaleImage !\n");
 		    } else {
 			pixel = buffer;
 			imageWidth=w;

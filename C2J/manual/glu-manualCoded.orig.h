@@ -8,3 +8,4 @@ extern void gluTessCallback( GLUtriangulatorObj *tobj, GLenum which,
 */
 
 extern const GLubyte* gluGetString( GLenum name );
+

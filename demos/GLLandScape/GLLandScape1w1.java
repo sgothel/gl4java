@@ -151,7 +151,10 @@ class GLLandScape1w1 extends GLAnimCanvas
       random = new Random(System.currentTimeMillis());
       planes = new GlutPlaneObj[MAX_PLANES];
       for (i = 0; i < MAX_PLANES; i++)
+      {
+        System.out.println("init .. plane: "+i);
 	planes[i] = new GlutPlaneObj(gl, glu);
+      }
 
       // srand((unsigned)time(NULL));
       makeTexture();

@@ -9,7 +9,7 @@ public final String getClassVendor ( )
 { return "Jausoft - Sven Goethel Software Development"; }
 
 public final String getClassVersion ( ) 
-{ return "2.8.0.0"; }
+{ return "2.8.0.4"; }
 
 
 /**
@@ -118,4 +118,114 @@ public final native void  gluDeleteTess( long tobj );
 public final native long  gluNewQuadric( );
 public final native long  gluNewNurbsRenderer( );
 public final native long  gluNewTess( );
+
+/**
+ * Wrapper for original gluProject,
+ * where the orig. last three arguments are wrapped 
+ * mapped in one array: (winx[1], winy[1], winz[1]) <-> win[3]
+ *
+ * @param obj array of the three obj x,y,z input components
+ * @param win array of the three win x,y,z output components
+ * @see gl4java.GLUFunc#gluProject
+ */
+public final int gluProject(double obj[],
+                            double[] modelMatrix,
+                            double[] projMatrix,
+                            int[] viewport,
+                            double[] win)
+{
+	return gluProject( obj[0], obj[1], obj[2],
+			   modelMatrix, projMatrix, viewport, win);
+}
+
+/**
+ * Wrapper for original gluProject,
+ * where the orig. last three arguments are wrapped 
+ * mapped in one array: (winx[1], winy[1], winz[1]) <-> win[3]
+ *
+ * @param win array of the three win x,y,z output components
+ * @see gl4java.GLUFunc#gluProject
+ */
+public final int gluProject(double objx,
+                            double objy,
+                            double objz,
+                            double[] modelMatrix,
+                            double[] projMatrix,
+                            int[] viewport,
+                            double[] win)
+{
+	double x[] = { 0 };
+	double y[] = { 0 };
+	double z[] = { 0 };
+
+	if(win!=null && win.length>=3)
+	{
+		x[0]=win[0]; y[0]=win[1]; z[0]=win[2];
+	}
+	
+	int r = gluProject(objx, objy, objz, modelMatrix, projMatrix,
+                             viewport, x, y, z);
+
+	if(win!=null && win.length>=3)
+	{
+		win[0]=x[0]; win[1]=y[0]; win[2]=z[0];
+	}
+
+	return r;
+}
+
+/**
+ * Wrapper for original gluUnProject,
+ * where the orig. last three arguments are wrapped 
+ * mapped in one array: (objx[1], objy[1], objz[1]) <-> obj[3]
+ *
+ * @param win array of the three win x,y,z input components
+ * @param obj array of the three obj x,y,z output components
+ * @see gl4java.GLUFunc#gluUnProject
+ */
+public final int gluUnProject(double win[],
+                              double[] modelMatrix,
+                              double[] projMatrix,
+                              int[] viewport,
+                              double[] obj)
+{
+	return gluUnProject(win[0], win[1], win[2],
+                            modelMatrix, projMatrix, viewport, obj);
+}
+
+/**
+ * Wrapper for original gluUnProject,
+ * where the orig. last three arguments are wrapped 
+ * mapped in one array: (objx[1], objy[1], objz[1]) <-> obj[3]
+ *
+ * @param obj array of the three obj x,y,z output components
+ * @see gl4java.GLUFunc#gluUnProject
+ */
+public final int gluUnProject(double winx,
+                              double winy,
+                              double winz,
+                              double[] modelMatrix,
+                              double[] projMatrix,
+                              int[] viewport,
+                              double[] obj)
+{
+	double x[] = { 0 };
+	double y[] = { 0 };
+	double z[] = { 0 };
+
+	if(obj!=null && obj.length>=3)
+	{
+		x[0]=obj[0]; y[0]=obj[1]; z[0]=obj[2];
+	}
+	
+	int r = gluUnProject(winx, winy, winz, modelMatrix, projMatrix,
+                             viewport, x, y, z);
+
+	if(obj!=null && obj.length>=3)
+	{
+		obj[0]=x[0]; obj[1]=y[0]; obj[2]=z[0];
+	}
+
+	return r;
+}
 

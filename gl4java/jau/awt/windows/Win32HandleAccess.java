@@ -17,7 +17,7 @@ import sun.awt.DrawingSurfaceInfo;
  * variables that we need to set up the OpenGL drawing
  * ontext 
  *
- * @see WinHandleAccess
+ * @see gl4java.jau.awt.WinHandleAccess
  * @version 	0.1, 7. JULY 1998
  * @author      Sven Goethel
  * 

@@ -100,7 +100,7 @@ CNATIVEDIR  		= CNativeCode
 LIBMAJOR		= 2
 LIBMINOR		= 8
 LIBBUGFIX		= 0
-RELEASE                 = 0
+RELEASE                 = 5
 
 #
 # The demo release number
@@ -239,6 +239,7 @@ FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/awt/GLCanvas.java   \
 		  $(PACKAGEDIR)/awt/GLAnimCanvas.java \
 		  $(PACKAGEDIR)/awt/GLImageCanvas.java \
+		  $(PACKAGEDIR)/applet/SimpleGLApplet1.java \
 		  $(PACKAGEDIR)/applet/SimpleGLAnimApplet1.java \
 		  $(PACKAGEDIR)/swing/GLJPanel.java \
 		  $(PACKAGEDIR)/swing/GLAnimJPanel.java \

@@ -16,7 +16,7 @@ import com.ms.awt.GraphicsX;
  * variables that we need to set up the OpenGL drawing
  * ontext 
  *
- * @see WinHandleAccess
+ * @see gl4java.jau.awt.WinHandleAccess
  * @version     0.1, 3. JULY 1999
  * @author      Ron Cemer
  * 

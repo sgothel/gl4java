@@ -29,7 +29,7 @@ import java.security.*;
  * can/should be loaded right here !
  *
  * <pre>
- 	<a href="GLContext.html#loadNativeLibraries(java.lang.String, java.lang.String, java.lang.String)">loadNativeLibraries</a>
+ 	<a href="GLContext.html#doLoadNativeLibraries(java.lang.String, java.lang.String, java.lang.String)">doLoadNativeLibraries</a>
  	<a href="GLContext.html#createGLFunc(java.lang.String)">createGLFunc</a>
  	<a href="GLContext.html#createGLUFunc(java.lang.String)">createGLUFunc</a>
         <p>
@@ -124,7 +124,7 @@ import java.security.*;
         THIS FUNCTIONS ARE FOR USERS PURPOSES:
 	======================================
 
- 	<a href="GLContext.html#loadNativeLibraries(java.lang.String, java.lang.String, java.lang.String)">loadNativeLibraries</a>
+ 	<a href="GLContext.html#doLoadNativeLibraries(java.lang.String, java.lang.String, java.lang.String)">doLoadNativeLibraries</a>
  	<a href="GLContext.html#createGLFunc(java.lang.String)">createGLFunc</a>
  	<a href="GLContext.html#createGLUFunc(java.lang.String)">createGLUFunc</a>
  	<a href="GLContext.html#gljIsInit()">gljIsInit</a>
@@ -393,8 +393,6 @@ public class GLContext extends Object
      */
     protected Component _compHeavy = null;
 
-    protected Thread awtThread = null;
-
    /**
     * Variable to tell is where windows or not (X11) 
     * Usally X11 ;-))
@@ -604,7 +602,7 @@ public class GLContext extends Object
      *
      * <p> 
      *
-     * The user must call loadNativeLibrary !
+     * The user must call doLoadNativeLibrary !
      * E.g. he can add the default loader like this:
      * <pre>
 	    static {
@@ -643,7 +641,7 @@ public class GLContext extends Object
         if(libsLoaded) return true;
 
         if(gljClassDebug)
-	    System.out.println("GLContext.loadNativeLibraries will do it !");
+	    System.out.println("GLContext.doLoadNativeLibraries will do it !");
 
         jvmVendor = java.lang.System.getProperty("java.vendor");
         jvmVersion = java.lang.System.getProperty("java.version");
@@ -1144,11 +1142,6 @@ public class GLContext extends Object
 			  System.out.println("got empty Graphics");
 		} else
 		  System.out.println("got empty Component");
-
-		awtThread = Thread.currentThread();
-
-	        if(gljThreadDebug)
-		     System.out.println("GLContext: locked awt-Thread: "+awtThread);
 
 		if(_comp!=null && _gr!=null)
 		{
@@ -2213,7 +2206,7 @@ public class GLContext extends Object
 
 	Thread thisThread = Thread.currentThread();
 
-        if (ctxThread!=null && ctxThread==thisThread && glContext==gljGetCurrentContext())
+        if (ctxThread==thisThread && glContext==gljGetCurrentContext())
 	     return true;
 
         return false;
@@ -2296,22 +2289,27 @@ public class GLContext extends Object
 	     if(gljThreadDebug && !dbgPrinted)
 	     {
 		     System.out.println("wait-switch: "+thisThread);
-		     System.out.println("\tctxThread="+ctxThread+", next="+nextThread);
-		     dbgPrinted=true;
+	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
 	     }
 
-	     /** 
-	      * Force freeing this threads context .. to avoid a deadlock ..
-	      * This makes sense, because it is possible,
-	      * that the same thread enters this point twice,
-	      * before calling gljFree !
-	      */
-	     if(gljThreadDebug && !dbgPrinted)
+	     if(ctxThread==thisThread)
 	     {
-	         System.out.println("wait-current: "+thisThread+" for earmarked: "+nextThread);
-	         System.out.println("\tfreeing context force .. ctxThread="+ctxThread);
+	         /** 
+	          * Force freeing this threads context .. to avoid a deadlock ..
+	          * This makes sense, because it is possible,
+	          * that the same thread enters this point twice,
+	          * before calling gljFree !
+	          */
+	         if(gljThreadDebug && !dbgPrinted)
+	         {
+	             System.out.println("wait-current: "+thisThread+" for earmarked: "+nextThread);
+	             System.out.println("\tfreeing context force .. ctxThread="+ctxThread);
+	         }
+
+	         gljFree(true); // force freeing the context
 	     }
-	     gljFree(true); // force freeing the context
+
+	     dbgPrinted=true;
 
 	     try {
 		  // wait till earmarked nextThread has its chance ..
@@ -2335,7 +2333,7 @@ public class GLContext extends Object
 	     if(gljThreadDebug && !dbgPrinted)
 	     {
 		     System.out.println("wait-earmarked: "+thisThread);
-		     System.out.println("\tctxThread="+ctxThread+", next="+nextThread);
+	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
 		     dbgPrinted=true;
 	     }
              if( _comp instanceof GLRunnable )
@@ -2361,12 +2359,16 @@ public class GLContext extends Object
 	boolean result = false;
 
 	/* is this thread allready owning the context ? */
-        if ( ctxThread==thisThread )
+        if ( gljIsCurrent() )
 	{
 		result = lockJAWT(_comp, windowHandle, gljThreadDebug);
 		if(gljThreadDebug)
 		     System.out.println("MakeCurrent: "+thisThread+" no CTX change, allready own, lockJAWT: "+result);
 		return result;
+	} else if( ctxThread!=null && ctxThread!=thisThread ) {
+	     System.out.println("MakeCurrent: ctxThread ain't zero, funny failure");
+	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	     return result;
 	}
 
 	ctxThread = thisThread ; // blocking asap ..
@@ -2376,11 +2378,10 @@ public class GLContext extends Object
 		if(nextThread==thisThread)
 		{
 		     System.out.println("MakeCurrent: "+thisThread+" <EarMarked Run>");
-		     System.out.println("\tctxThread="+ctxThread+", next:=NULL");
 	        } else {
-		     System.out.println("MakeCurrent: "+thisThread);
-		     System.out.println("\tctxThread="+ctxThread+", next="+nextThread);
+		     System.out.println("MakeCurrent: "+thisThread+" <New>");
 		}
+	        System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
 	}
 
 	/**
@@ -2397,7 +2398,14 @@ public class GLContext extends Object
 	 */
 	if(!result)
 	{
-		ctxThread=null;
+	        if(gljThreadDebug)
+		{
+			     System.out.println("Native MakeCurrent failed");
+			     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+			     Exception e = new Exception();
+			     e.printStackTrace();
+		}
+
 		if(hasJAWTSurfaceChanged(windowHandle))
 		{
 			/**
@@ -2570,6 +2578,7 @@ public class GLContext extends Object
 	- the force flag is true
 	- this thread is the AWT thread
 	- the component of this context does _not_ implement GLRunnable
+	- the calling thread is not the thread, this GLRunnable component holds !
      * </pre>
      * 
      * <p>
@@ -2589,7 +2598,21 @@ public class GLContext extends Object
 	boolean result = true;
 	Thread thisThread = Thread.currentThread();
 
-        if( thisThread == awtThread || (_comp instanceof GLRunnable) == false)
+	if ( ctxThread!=thisThread )
+	{
+	     if(gljThreadDebug)
+	     {
+	         System.out.println("gljFree: denied, not holding context ! ");
+	         System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	         Exception e = new Exception();
+	         e.printStackTrace();
+	     }
+	     return true;
+	}
+
+        if( (_comp instanceof GLRunnable) == false ||
+	    ((GLRunnable)_comp).ownsThread(thisThread) == false
+	  )
 		force=true;
 
 	/**
@@ -2597,23 +2620,28 @@ public class GLContext extends Object
 	 * request this context ...
 	 * or the force-flag is true
 	 */
-        if ( force==true ||
-	     ( nextThread!=null && nextThread!=thisThread && ctxThread==thisThread )
-	   )
+        if ( force==true || ( nextThread!=null && nextThread!=thisThread ) )
 	{
         	result = gljFreeNative ( _comp, displayHandle,
 		                         windowHandle,
 		                         glContext);
+
 		ctxThread = null ;
-		notifyAll();
+
 	        if(gljThreadDebug)
-		     System.out.println("gljFree: "+thisThread+" gljFreeNative result: "+result);
+		{
+		     System.out.println("gljFree: gljFreeNative result: "+result);
+	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	        }
 	} else {
     		result = unlockJAWT(windowHandle, false);
-		notifyAll();
 		if(gljThreadDebug)
-	     		System.out.println("gljFree: "+thisThread+" no CTX change, no requests, unlockJAWT: "+result);
+		{
+	     	     System.out.println("gljFree: no CTX change, no requests, unlockJAWT: "+result);
+	     	     System.out.println("\tctxstate thisThread="+thisThread+", ctxThread="+ctxThread+", nextThread="+nextThread+", thisContext="+glContext+", currentContext="+gljGetCurrentContext());
+	        }
 	}
+	notifyAll();
 
 	return result;
     }
@@ -2682,10 +2710,10 @@ public class GLContext extends Object
 
     /**
      * This functions fetches/dispatches the GL/GLU functions,
-     * which must be allready loaded via the loadNativeLibraries
+     * which must be allready loaded via the doLoadNativeLibraries
      * function !
      *
-     * @see	gl4java.GLContext#loadNativeLibraries
+     * @see	gl4java.GLContext#doLoadNativeLibraries
      */
     public final static native boolean gljFetchOSGLFunctions 
 			( String gllibname, String glulibname, boolean force );

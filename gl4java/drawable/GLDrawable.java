@@ -34,7 +34,7 @@ public interface GLDrawable
      *
      * This is the rendering-method called by 
      * e.g.: {@link gl4java.awt.GLCanvas#display} or by 
-     * {@link gl4java.GLThread#run}.
+     * {@link gl4java.GLRunnable#run}.
      * 
      * <p>
      * The default implementation of display() sends 
@@ -84,6 +84,16 @@ public interface GLDrawable
      * @see gl4java.drawable.GLEventListener#postDisplay
      */
     public void display();
+
+    /**
+     * this function can be called to force a repaint
+     *
+     * Repaints this component. 
+     *
+     * This method causes a call to this component's update method 
+     * as soon as possible.
+     */
+    public void repaint();
 
     /**
      * the components listener's should be implemented also !

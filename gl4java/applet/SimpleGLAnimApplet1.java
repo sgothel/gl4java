@@ -80,12 +80,12 @@ public class SimpleGLAnimApplet1 extends Applet
 
         setCheckButtons();
     
-	buttonInfo.addMouseListener(this);
+	buttonInfo.addActionListener(this);
 	checkUseRepaint.addItemListener(this);
 	checkUseFpsSleep.addItemListener(this);
 	checkUseYield.addItemListener(this);
-	buttonReStart.addMouseListener(this);
-	buttonFps.addMouseListener(this);
+	buttonReStart.addActionListener(this);
+	buttonFps.addActionListener(this);
         canvas.addMouseListener(this);
 	textFps.addActionListener(this);
 
@@ -99,12 +99,12 @@ public class SimpleGLAnimApplet1 extends Applet
     {
 	if(GLContext.gljClassDebug)
 		System.out.println("SGLApplet stop ..");
-	buttonInfo.removeMouseListener(this);
+	buttonInfo.removeActionListener(this);
 	checkUseRepaint.removeItemListener(this);
 	checkUseFpsSleep.removeItemListener(this);
 	checkUseYield.removeItemListener(this);
-	buttonReStart.removeMouseListener(this);
-	buttonFps.removeMouseListener(this);
+	buttonReStart.removeActionListener(this);
+	buttonFps.removeActionListener(this);
         canvas.removeMouseListener(this);
 
         canvas.cvsDispose();
@@ -150,13 +150,12 @@ public class SimpleGLAnimApplet1 extends Applet
     {
     }
     
-    Container _cont = null;
+    Container _origCont = null;
+    Frame _saveFrame = null;
 
     public void mouseClicked( MouseEvent evt )
     {
 	Component comp = evt.getComponent();
-
-	System.out.println("SimpleApplet click: "+evt);
 
 	if ( ( (evt.getModifiers() & evt.BUTTON1_MASK) != 0 ) &&
 	     evt.getClickCount()==2 )
@@ -176,24 +175,24 @@ public class SimpleGLAnimApplet1 extends Applet
 		System.out.println("GLContextNumber: "+
 				GLContext.getNativeGLContextNumber());
 
-		glcvs.setVisible(true);
-
-		if(c instanceof Frame)
+		if(_origCont !=null && c == _saveFrame)
 		{
-			Frame of = (Frame)c;
-			of.dispose();
-			of=null;
+			_saveFrame.dispose();
+			_saveFrame=null;
 
-			_cont.add(canvas);
-			_cont.doLayout();
-		} else if(c instanceof Panel) 
+			_origCont.add(canvas);
+			_origCont.doLayout();
+			_origCont = null;
+		} else if( _saveFrame ==null && _origCont == null )
 		{
-			_cont=c;
-			Frame f = new Frame("EXTRA");
-			f.add(glcvs);
-			f.pack();
-			f.setVisible(true);
+			_origCont = c;
+			_saveFrame = new Frame("EXTRA");
+			_saveFrame.add(glcvs);
+			_saveFrame.pack();
+			_saveFrame.setVisible(true);
 		}
+		glcvs.setVisible(true);
+		glcvs.repaint();
 		glcvs.start();
 
 		System.out.println("\nadded+started: "+glcvs);
@@ -203,29 +202,6 @@ public class SimpleGLAnimApplet1 extends Applet
 	    }
 	    return;
 	} 
-
-	if( canvas!=null && comp.equals(buttonFps) )
-	{
-		double fps = 0;
-		int a1;
-
-		canvas.stopFpsCounter();
-		fps=canvas.getFps();
-		a1=(int)(fps*100.0);
-		fps=(double)a1/100.0;
-		textFps.setText(String.valueOf(fps));
-		canvas.resetFpsCounter();
-	} else if( comp.equals(buttonInfo) )
-	{
-	  if(fInfo==null && canvas!=null && canvas.getGLContext()!=null)
-	     fInfo = showGLInfo();
-	}
-	else if( comp.equals(buttonReStart) )
-	{
-		canvas.setSuspended(!canvas.isSuspended(),
-				     evt.getClickCount()>1 // -> ReInit
-				    ); 
-	}
     }
 
     public void itemStateChanged( ItemEvent evt )
@@ -266,8 +242,8 @@ public class SimpleGLAnimApplet1 extends Applet
     {
 	    Object source = event.getSource();
 
-	    if ( source == textFps)
-	    {
+	if ( source == textFps)
+	{
 		      try {
 			double FramesPerSec=
 			  Double.valueOf(textFps.getText()).doubleValue();
@@ -279,8 +255,26 @@ public class SimpleGLAnimApplet1 extends Applet
 		      } catch (NumberFormatException s)   {
 			 System.out.println("wrong fps format, use float ..");
 		      }         
+	} else if( canvas!=null && source.equals(buttonFps) )
+	{
+		double fps = 0;
+		int a1;
 
-	    }
+		canvas.stopFpsCounter();
+		fps=canvas.getFps();
+		a1=(int)(fps*100.0);
+		fps=(double)a1/100.0;
+		textFps.setText(String.valueOf(fps));
+		canvas.resetFpsCounter();
+	} else if( source.equals(buttonInfo) )
+	{
+	  if(fInfo==null && canvas!=null && canvas.getGLContext()!=null)
+	     fInfo = showGLInfo();
+	}
+	else if( canvas!=null && source.equals(buttonReStart) )
+	{
+		canvas.setSuspended(!canvas.isSuspended(), false);
+	}
     }
 
 	public void windowOpened(WindowEvent e)

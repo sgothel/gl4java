@@ -7,6 +7,12 @@
 static JAWT     _awt ;
 static jboolean _awt_init = JNI_FALSE ;
 
+static long mem_used = 0L;
+static int  gdsi = 0;
+static int  gds  = 0;
+
+static jboolean jawtdebug  = JNI_FALSE;
+
 jboolean LIBAPIENTRY
 jawt_create_offscreen (JNIEnv *env, JAWTDataHolder **ppJData, jboolean verbose) 
 {
@@ -21,6 +27,7 @@ jawt_create_offscreen (JNIEnv *env, JAWTDataHolder **ppJData, jboolean verbose)
   }
   
   *ppJData = calloc(1, sizeof(JAWTDataHolder));
+  mem_used += sizeof(JAWTDataHolder);
 
   // Get the drawing surface
   (*ppJData)->ds  			= NULL;
@@ -33,6 +40,9 @@ jawt_create_offscreen (JNIEnv *env, JAWTDataHolder **ppJData, jboolean verbose)
   (*ppJData)->lock 			= JAWT_LOCK_ERROR ;
   (*ppJData)->offScreen			= 1;
   (*ppJData)->result 			= JNI_TRUE;
+
+  if(verbose || jawtdebug)
+     fprintf(stdout, "GL4Java-JAWT INFO (eo create offscr): mem %ld\n", mem_used);
 
   return JNI_TRUE;
 }
@@ -52,6 +62,10 @@ jawt_create_open (JNIEnv *env, jobject component,
   }
   
   *ppJData = calloc(1, sizeof(JAWTDataHolder));
+  mem_used += sizeof(JAWTDataHolder);
+
+  if(verbose || jawtdebug)
+     fprintf(stdout, "GL4Java-JAWT INFO (create open): mem %ld\n", mem_used);
 
   // Get the drawing surface
   (*ppJData)->ds  			= NULL;
@@ -87,7 +101,11 @@ jawt_free_close_unlock (JNIEnv *env, JAWTDataHolder **ppJData, jboolean verbose)
 	  res = jawt_close_unlock(env, *ppJData, verbose);
 
   free(*ppJData);
+  mem_used -= sizeof(JAWTDataHolder);
   *ppJData=NULL;
+
+  if(verbose || jawtdebug)
+     fprintf(stdout, "GL4Java-JAWT INFO (eo free close unlock): mem %ld\n", mem_used);
 
   return res;
 }
@@ -133,16 +151,16 @@ jawt_open (JNIEnv *env, jobject component, JAWTDataHolder *pJData, jboolean verb
  
   // Get the drawing surface
   pJData->ds  			= _awt.GetDrawingSurface(env, component);
+  gds++;
   pJData->result 		= pJData->ds != NULL;
 
   if(verbose && pJData->result==JNI_FALSE)
   {
-     if(verbose)
-     {
-         fprintf(stderr, "GL4Java-JAWT: open failed -> GetDrawingSurface()==NULL\n");
-         fflush(stderr);
-     }
+     fprintf(stderr, "GL4Java-JAWT: open failed -> GetDrawingSurface()==NULL\n");
+     fflush(stderr);
   }
+  if(verbose || jawtdebug)
+     fprintf(stdout, "GL4Java-JAWT INFO (eo open): gds=%d\n", gds);
 
   return pJData->result;
 }
@@ -160,9 +178,15 @@ jawt_close_unlock (JNIEnv *env, JAWTDataHolder *pJData, jboolean verbose)
 
   // Free the drawing surface
   if(pJData->ds!=0)
+  {
 	  _awt.FreeDrawingSurface(pJData->ds);
+	  gds--;
+  }
   pJData->ds=0;
  
+  if(verbose || jawtdebug)
+     fprintf(stdout, "GL4Java-JAWT INFO (eo close unlock): gds=%d\n", gds);
+
   return  pJData->result;
 }
 
@@ -233,7 +257,12 @@ jawt_lock (JNIEnv *env, JAWTDataHolder *pJData, jboolean ignoreSurfaceChanged,
 
   // Get the drawing surface info
   pJData->dsi = pJData->ds->GetDrawingSurfaceInfo(pJData->ds);
+  gdsi++;
   exc = (*env)->ExceptionOccurred(env);
+
+  if(verbose || jawtdebug)
+     fprintf(stdout, "GL4Java-JAWT INFO (eo lock): gdsi=%d\n", gdsi);
+
   if(exc) {
           if(verbose)
           {
@@ -322,7 +351,12 @@ jawt_unlock (JNIEnv *env, JAWTDataHolder *pJData, jboolean verbose)
   {
 	  // Free the drawing surface info
 	  pJData->ds->FreeDrawingSurfaceInfo(pJData->dsi);
+	  gdsi--;
 	  exc = (*env)->ExceptionOccurred(env);
+
+	  if(verbose || jawtdebug)
+	     fprintf(stdout, "GL4Java-JAWT INFO (eo unlock): gdsi=%d\n", gdsi);
+
 	  if(exc) {
 		  if(verbose)
 		  {

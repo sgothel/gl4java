@@ -14,8 +14,8 @@ import java.net.*;
  * This abstract Class defines the interface
  * for ALL texture loaders !
  *
- * @see TextureTool
- * @see	GLImageCanvas
+ * @see gl4java.utils.textures.TextureTool
+ * @see	gl4java.awt.GLImageCanvas
  */   
 public abstract class TextureLoader
 extends TextureTool

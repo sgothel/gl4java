@@ -27,7 +27,7 @@ import java.lang.Math;
  *
  * <p>
  * There are two ways of using a GLAnimJPanel: the {@link
- * gl4java.GLEventListener} model or the subclassing model. Earlier
+ * gl4java.drawable.GLEventListener} model or the subclassing model. Earlier
  * versions of the system only supported the subclassing model. The
  * default implementations of {@link #init}, {@link #display},
  * {@link #reshape} and {@link #doCleanup}
@@ -154,7 +154,7 @@ public class GLAnimJPanel extends GLJPanel
         protected boolean threadSuspended = false;
 
         static {
-	    if(GLContext.loadNativeLibraries(null, null, null)==false)
+	    if(GLContext.doLoadNativeLibraries(null, null, null)==false)
 	      System.out.println("GLAnimJPanel could not load def. native libs.");
         }
 
