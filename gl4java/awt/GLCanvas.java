@@ -189,7 +189,8 @@ public class GLCanvas extends Canvas
       //    the code flow significantly enough that this optimization
       //    breaks
       //  - useRepaint is false
-      enableAWTThreadRendering = !((getClass() == GLAnimCanvas.class) && !getUseRepaint());
+      enableAWTThreadRendering = 
+        ! ( (getClass() == GLAnimCanvas.class) && !getUseRepaint() );
     }
 
     static {
