@@ -1,0 +1,786 @@
+%\documentclass[a4paper]{report}
+%\usepackage{german}
+
+%
+%\begin{document}
+%
+%\begin{titlepage}
+%  {\LARGE
+%      \begin{tabular}{p{20mm}l}
+%	      \multicolumn{2}{r}{\bf FH--Bielefeld}\\[4mm]
+%	      \hline \\[3mm]
+%	      & Einf"uhrung\\
+%	      & f"ur\\
+%	      & OpenGL \& Java\\[5mm]
+%	      & Atilla Kolac\\[5mm]
+%	      & Labor f"ur Parallelverarbeitung \\
+%	      & FH-Bielefeld\\[5mm]
+%	      \hline \\[20mm]
+%	      & \today
+%      \end{tabular}
+%      }
+%\end{titlepage}
+%
+%\tableofcontents
+%
+
+\chapter{OpenGL Einf"uhrung\ddag}
+
+\section{Was ist OpenGL?}
+OpenGL \cite{Woo97} \cite{Fosner97} wurde von Silicon Graphics,Inc.(SGI) entwickelt und ist eine verbreitete
+Hardware- und Betriebsunabh"angige Bibliothek f"ur die Erstellung von 
+dreidimensionalen Grafiken.
+GL steht hierbei f"ur Grafics Library.
+
+Au"serdem stellt OpenGL eine unabh"angige Programmierschnittstelle dar.
+Wobei f"ur die Hardwareseite eine geeignete Implementation programmiert werden
+kann. Die Softwareschnittstelle besteht aus ca. 120 Kommandos, die zur
+Spezifikation von Objekten und Operationen ben"otigt werden.
+OpenGL ist client- und serverf"ahig. Das Protokoll welches OpenGL-Befehle 
+"ubermittelt, ist identisch. Dadurch k"onnen OpenGL-Programme
+im Netzwerk ablaufen, in denen client und server Rechner verschiedenen
+Typs sind. Dies erreicht man indem die Kommandos zum Ablauf von Windows-Tasks
+oder zur Interaktion mit dem Benutzer nicht in dem OpenGL-Programm implementiert
+werden. Sondern diese Aufgaben werden direkt mit der 
+Fensteroberfl"achenprogrammierung der
+entsprechenden Hardware mit"ubernommen.
+
+Der Sinn der OpenGL-Bibliothek ist es, zwei- und dreidimensionale Objekte in 
+einem Frame Buffer zu \emph{rendern}. Dieser ist mit einem Pixelspeicher in der Grafik-
+Hardware eines PC vergleichbar. 
+OpenGL ist streng prozedural. Das hei"st,
+da"s nicht das Aussehen eines Objektes beschrieben wird sondern wie das 
+Objekt gezeichnet wird. Hierzu bedient sich OpenGL zwei - oder dreidimensionalen
+\emph{Vertices}. Diese repr"asentieren einen Punkt, z.B. den Endpunkt einer Linie 
+oder eines Polygons. Die n"achste Ebene sind \emph{Primitive}, die aus einem oder
+mehreren \emph{Vertices} bestehen.
+
+Wie Vertices zu Primitiven zusammengesetzt werden und in ein Frame Buffer 
+gezeichnet werden, wird durch eine Vielzahl von Einstellm"oglichkeiten 
+kontrolliert.
+
+Mit OpenGL kann man weiterhin Oberfl"achen zeichnen, Beleuchtungsspezifikationen
+anwenden und Texturen verwenden.
+
+Die wichtigsten Schritte bis zum Rendern einer Szene
+
+\begin{enumerate}
+
+\item Aus den geometrischen Primitiven werden Formen konstruiert und damit
+mathematische Beschreibungen der Objekte erstellt. 
+OpenGL sieht Punkte, Linien, Polygone, Bilder und Bitmaps als Primitive an.
+
+\item Die Objekte werden im dreidimensionalen Raum arrangiert und der gew"unschte 
+\emph{Blickpunkt} "uber der Szene wird ausgesucht.
+
+\item Die Farben aller Objekte werden berechnet.
+Zwar sind die Farben f"ur die Objekte im Programm definiert,
+m"ussen jedoch neu berechnet werden falls sich das Objekt bewegt oder die 
+Schattierung sich "andert.
+
+\item Die mathematische Beschreibung von Objekten und den ihnen beigef"ugten
+Farbinformationen werden in Bildschiermpixel konvertiert.
+Dieser Proze"s wird \emph{Rasterung} genannt.
+
+\end{enumerate}
+
+
+Alle Daten, ob sie nun Geometrien oder Pixel beschreiben, k"onnen in einer
+\emph{Display List} gesichert werden.
+OpenGL unterscheidet zwischen zwei Berechnungsformen: 
+Die Berechnung der Grafik wird sofort ausgef"uhrt (\emph{immediate-mode}).
+Das bedeutet wenn das Kommando zum Zeichnen eines Objektes abgesetzt wird,
+wird das Objekt gezeichnet. Dieser Modus ist in OpenGL voreingestellt.
+Weiterhin lassen sich Kommandos in einer \emph{Display List} sichern, um sie sp"ater
+auszuf"uhren.
+Die sofortige Ausf"uhrung der Grafik l"asst sich einfacher programmieren,
+das Sichern in einer Liste ist effizienter.
+
+\section{Grundlagen}
+
+\subsection{Client- Serverprotokoll}
+
+\subsection{Datentypen}
+
+\subsection{Beleuchtung}
+OpenGL berechnet die Farben jedes Pixels, bevor die Szene dargestellt wird
+und speichert sie im Frame Buffer ab. Dabei wird das in der Szene benutzte Licht
+berechnet, und die Art, wie die Objekte in der Szene das Licht reflektieren 
+oder absorbieren sollen.
+Ein unbeleuchtetes dreidimensionales Objekt kann nicht von einem 
+zweidimensionalen Objekt unterschieden werden.
+Denn auf einer zweidimensionalen Fl"ache, sprich unser Bildschirm, 
+wird die dreidimensionalit"at durch die Art der Beleuchtung und der
+Schattierung erreicht.
+Das zeigt, wie wesentlich die Beziehung zwischen Objekten und dem Licht 
+in einer dreidimensionalen Szene ist.
+OpenGL stellt Licht und Schatten durch Zerlegung der Objektoberfl"ach in
+bestimmte rote, gr"une und blaue Komponenten dar.
+Der Ort der Lichtquelle, sein Einstrahlungswinkel und Art m"ussen programmiert
+werden.
+
+Das Beleuchtungsmodell in OpenGL besteht aus vier Komponenten:
+\emph{emitted, ambient, diffuse und specular}.
+Alle vier Komponenten bewirken eine unterschiedliche Beleuchtungsart.
+Sie werden getrennt angegeben und danach zusammenaddiert,
+so das die Szene in das gew"unschte Licht gesetzt wird.
+
+\section{Die Programmierung}
+
+\subsection{Namenskonvention}
+
+\subsection{Die Kommandosyntax}
+OpenGL-Kommandos beginnen in der Programmiersprache C 
+mit dem Pr"afix \emph{gl}, 
+jedes Wort beginnt mit einem Gro"sbuchstaben ( z.B. glClearColor() ).
+Konstanten beginnen mit dem gleichen Pr"afix, 
+allerdings werden sie in Gro"sbuchstaben geschrieben und durch Unterstriche 
+verbunden ( z.B. GL\_CLEAR\_BUFFER\_BIT ).
+in dem Kommando \emph{glColor3f()} steht 3 f"ur die Anzahl der gegebenen Argumente,
+f steht f"ur die Gleitkommazahlen.
+
+Die ANSI-C-Implementation von OpenGL erm"oglicht bis zu 8 verschiedene
+Datentypen.
+Die Datentypen umfassen 8, 16 und 32-Bit-Integer, im signed- und unsigned-
+Format und 32- oder 64-Bit-Gleitkommazahlen.
+Einige OpenGL-Kommandos sind mit dem Endbuchstaben v versehen, was darauf hindeutet, da"s
+das Kommando einen Zeiger auf einen Vektor oder Feld beinhaltet.
+
+\subsection{Die Bibliotheken}
+OpenGL bietet eine Anzahl leistungsf"ahiger und einfacher Kommandos zum Rendern.
+Alle komplexen Zeichnungen m"ussen mit diesen Kommandos ausgef"uhrt werden.
+Deshalb ist es m"oglich, eine eigene Bibliothek zu schreiben, die auf 
+OpenGL aufsetzt. Damit l"a"st sich z.B. die Behandlung der Fenster vereinfachen.
+
+Hier sind zwei sehr verbreite Bibliotheken aufgelistet:
+\begin{itemize}
+\item Die \emph{OpenGL Utility Library (GLU)} enth"alt einige Routinen die einfachere
+OpenGL Kommandos benutzt. Es werden Funktionen zur Vereinbarung von Matrizen f"ur
+besondere Betrachtungsorientierungen und Projektionen und zum Rendern von Oberfl"achen
+definiert.
+GLU-Funktionen sind durch den Pr"afix \emph{glu} zu erkennen.
+
+\item Die OpenGL-Erweiterung f"ur das X-Windows System (GLX)  sieht die Erzeugung 
+eines OpenGL-Kontextes vor und die Hinzuf"ugung eines Fensters, in dem gezeichnet
+werden kann (drawable window), falls auf einem Rechner mit X-Window System 
+gearbeitet wird.
+GLX-Funktionen besitzen das Pr"afix \emph{glx}.
+\end{itemize}
+ 
+Hinzukommen noch eine gro"se Anzahl weiterer Bibliotheken, die wir hier 
+verst"andlicherweise nicht aufz"ahlen k"onnen.
+
+
+ 
+\subsection{Die OpenGL Windows-Programmierung}
+Bevor die OpenGL-Bibliothek unter MS-Windows verwendet werden kann, m"ussen 
+eine Reihe von Initialisierungsschritte ausgef"uhrt werden.
+Jede Windows-OpenGL-Applikation mu"s seinen \emph{Rendering Context} ( OpenGL-Seite )
+mit seinem \emph{Device Context} ( Windows-Seite ) verbinden. Hierzu mu"s zuerst die 
+Win32-Funktion \emph{SetPixelFormat} und danach die Funktion \emph{wglCreateContext} mit
+dem Device Context Handle Parameter aufgerufen werden. Ist dies erfolgreich,
+gibt wglCreateContext einen Rendering Context Handle des Typs \emph{HGLRC} zur"uck.
+OpenGL unter Windows kennt zwei Typen von Pixel-Modi:
+Einen Modus, der die direkte Angabe von Pixelfarben erlaubt.
+Und ein Modus, der die Auswahl der Farbe aus einer Palette unterst"utzt.
+
+Es gibt spezielle Anforderungen durch OpenGL an ein Ausgabefenster.
+Es mu"s mit den Fensterstilen \emph{WS\_CLIPSIBLINGS} und \emph{WS\_CLIPCHILDREN} initialisiert
+sein um OpenGL Kompabilit"at zu gew"ahrleisten. 
+Um die Perfomance der Applikation zu erh"ohen, sollte das Fenster einen
+NULL-Hintergrund haben, da dieser sowieso durch die OpenGL-Bibliothek
+gel"oscht wird.
+Bevor ein Rendering Context verwendet werden kann, mu"s er mit der wglMakeCurrent
+Funktion als der aktuelle Context bestimmt werden. Ist der Rendering Context
+bereit um Kommandos entgegenzunehmen k"onnen weitere Initialisierung-Routinen
+aufgerufen werden. Z.B. um den Frame Buffer zu l"oschen, Koordinatentransformationen
+aufzusetzen, Lichtquellen zu konfigurieren oder andere Optionen zu setzen.
+
+Ein solcher Initialisierungsschritt, der nicht ausgelassen werden darf,
+ist der Aufruf der \emph{glViewport}-Funktion. Sie initialisiert oder modifiziert
+die gr"o"se des\emph{ Rendering Viewports}. Typischerweise wird diese Funktion
+ganz zu Anfang der Applikation aufgerufen und dann jedesmal wenn sie eine
+\emph{WM\_SIZE}-Meldung erh"alt. Diese zeigt eine Gr"o"sen"anderung des Fensters an.
+
+
+\chapter{Java Einf"uhrung\ddag}
+
+Weitere englischsprachige Dokumentationen sind von Sun Microsystems erh"altlich\cite{JavaTuto}.
+
+\section{Was ist Java?}
+Sun Microsystems stellte Mitte 1995 sein Java Language Enviroment (kurz Java)
+offiziell vor.
+
+Java ist eine objektorientierte Programmiersprache und 
+ist Plattformunabh"angig.
+
+Java-Programme k"onnen entweder lokal auf einem Rechner ausgef"uhrt werden,
+oder aber auch "uber das Internet gestartet werden.
+
+\section{Grundlagen}
+
+\subsection{Die Entwicklungsumgebung}
+Sun Microsystems stellt f"ur die Plattformen Solaris(Sparc), Solaris(Intel) und Win32(Intel)\footnote{Windows 95 und Windows NT} die Java-Entwicklungsumgebung \emph{Java Development Kit (JDK)} kostenlos zur Verf"ugung. 
+IBM stellt ihrerseits f"ur Windows 3.1(Intel), AIX(RS6000) und OS/2(Intel) die JDK zur Verf"ugung.
+
+Die JDK enth"alt den Java-Compiler, die JVM und die standard Bibliothek, sowie
+den Java-Debugger. Der Compiler als auch der Debugger sind Kommandozeilentools und enthalten keine GUI.
+ 
+Mittlerweilen ist auch das \emph{Java Runtime Environment (JRE)} ver"offentlicht, welches lediglich die JVM und die standard Bibliothek enth"alt. Eigene Java-Applikationen k"onnen mit dem JRE geb"undelt und herausgegeben werden.
+
+Der Java-Compiler generiert aus dem Java-Sourcecode den Java-Bytecode, wobei
+dieser Java-Bytecode von der Java-Virtuellen-Maschiene (JVM) interpretiert wird.
+
+Der Java-Sourcecode enth"alt die Klassendefinitionen.
+In der Regel gibt es je Klassendefinition eine Quelldatei.
+Der Dateiname der Quelldatei setzt sich zusammen aus dem Klassennamen und der Dateinamensendung \emph{.java}. Z.B. ist die Klassendefinition fuer \emph{Foo} in der Datei \emph{Foo.java} enthalten. Gross- und Kleinschreibung ist hierbei zu beachten.
+
+Der Java-Compiler "ubersetzt die Quelldatei mit der Namensendung \emph{.java} in die Zieldatei f"ur den Java-Bytecode mit der Namensendung \emph{.class}.
+Z.B. erzeugt der Aufruf von 
+
+\begin{verbatim}
+javac Foo.java
+\end{verbatim}
+
+die Datei \emph{Foo.class}.
+
+Das compilierte Java-Programm, der Java-Bytecode, kann z.B. mittels
+
+\begin{verbatim}
+java Foo
+\end{verbatim}
+
+aufgerufen werden. Dieser Aufruf startet die JVM und beginnt das Programm
+\emph{Foo} abzuarbeiten.
+
+\subsection{Java-Virtuelle-Maschine (JVM)}
+Die JVM simuliert eine komplette Betriebssystemumgebung
+und ist in der Lage den Java-Bytecode abzuarbeiten.
+Hiermit sind Java-Programme Plattform unabh"angig, da die JVM
+auf verschiedenen Plattformen ein Einheitliches Java-System zur 
+Verf"ugung stellen.
+
+Mittels der JVM und den standard Java-Bibliotheken kann ein Java-Programm
+\begin{itemize}
+	\item auf das Netzwerk/Internet zugreifen
+	\item eine grafische Oberfl"ache besitzen (AWT)
+	\item auf native Funktionen zugreifen (JNI)
+	\item auf Datenbanken zugreifen (jdbc)
+	\item wiederverwendbare Komponente besitzen (Beans)
+	\item gemeinsame standardisierte Objekte mit Java und 
+	nicht-Java Applikationen austauschen (Corba/RMI)
+	\item etc.
+\end{itemize}
+
+\subsection{Java-Interpreter und JIT-Compiler}
+Der Java-Interpreter ist bestandteil der JVM. Der Java-Bytecode wird von dem Java-Interpreter abgearbeitet. Der JIT-Compiler (Just-In-Time-Compiler) ist eine Erweiterung des Java-Interpreters und "ubersetzt den Java-Bytecode blockweise in plattformspezifischen Machienencode.
+
+\section{Java-Applets und Java-Applikationen}
+Java-Programme lassen sich grob in zwei Kategorien teilen:
+Java-Applikationen bezeichnen eigenst"andige Programme, welche innerhalb des ausf"uhrenden Rechners (Client) gestartet werden. Der Client fungiert hier gleichzeitig als Server. Java-Applikationen haben die M"oglichkeit auf das Dateisystem des Clients, bzw. Server zuzugreifen.
+Z.B. kann die Java-Applikation Foo mittels 
+
+\begin{verbatim}
+java Foo
+\end{verbatim}
+
+aufgerufen werden. Hierf"ur werden lediglich die JVM und die entsprechenden \emph{.class}-Files ben"otigt.
+
+Ein Java-Applet wird auf einem Server abgelegt. Das Applet wird auf dem Client "ubertragen und dort lokal ausgef"uhrt. Im Gegensatz zur Java-Applikation kann das Applet nicht auf Daten ausserhalb der JVM zugreifen. Somit kann ein Applet die Sicherheit des Systems nicht gef"ahrden.
+Java-Applets werden innerhalb einer HTML\footnote{Hypertext Markup Language, Textformat f"ur World-Wide-Web(WWW) Seiten}-Seite aufgerufen.
+
+Das Applet wird mittels des Internet, bzw. Intranet, auf den Client "ubetragen.
+Hierf"ur kann ein Java-F"ahiger-WWW-Browser oder der \emph{appletviewer} des JDK benutzt werden. Z.B. kann das Java-Applet Foo eingebettet in der HTML-Seite \emph{Foo.html} mittels 
+\begin{verbatim}
+appletviewer http://www.server.de/Foo.html
+\end{verbatim}
+aufgerufen werden.
+Mittlerweile haben die meisten Unternehmen Java lizensiert 
+und in ihren Web-Browsern unterst"utzt.
+Dadurch lassen sich Web-Seiten interaktiver gestalten.
+
+
+\section{Objekt-Orientierte-Sprache}
+
+\subsection{Was ist Objektorientierung?}
+Java ist eine reine Objekt Orientierte Programmiersprache.
+Im Gegensatz zu einer prozeduralen Programmiersprache, die sich durch einen
+linearen Programmflu"s und einer klaren Trennung von Daten und 
+Funktionen auszeichnet verkn"upft das objektorientierte Programmieren Daten und 
+Methoden\footnote{Methoden ist der objektorientierte Name f"ur Funktionen} 
+zu einem Objekt.
+Objekte eines Typs lassen sich zu einer Objektklasse zusammenfassen.
+Klassen sind Beschreibungen eines Datenmodells (Prototypen)
+von denen sich beliebig viele Objekte generieren lassen.
+In den Klassen werden sowohl die Daten als auch die damit verbundenen 
+Operationen festgelegt.
+
+\subsection{Klassen und Methoden}
+In Java wird eine Klasse mittels des Schl"usselwortes \emph{class} (Analog zu
+Klassen in C++) aufgerufen.
+
+Der Zugriff auf Daten und Methoden k"onnen innerhalb einer Klasse 
+f"ur andere Klassen mittels \emph{public}-deklaration erlaubt, bzw. 
+mit \emph{private}- oder \emph{protected}-deklaration verboten werden.
+
+Z.B. definiert die Klasse Feuerzeug Daten und Methoden f"ur Objekte des selben Typs.
+
+\begin{verbatim}
+public class Feuerzeug 
+{ 
+	/* Gasinhalt in Liter */
+	private float gasInhalt; 
+
+        /* 1 milliliter pro Zuendung */	
+	private float finalize gasProZuendung = 0.001 
+
+	/* Oeffentliche Methode fuer das Zuenden des Feuerzeugs.
+           Beachte: Das Zuenden kostet Gas !
+	*/
+	public boolean zuende()
+	{
+		if(gasInhalt<gasProZuendung)
+			return false;
+		gasInhalt-=gasProZuendung;
+		return true;
+	}
+}
+\end{verbatim}
+
+
+Eine Methode ist unmittelbar an ein Objekt bzw. die dazugeh"origen Daten
+gebunden. Methoden k"onnen in Java auch "uberladen werden.
+Z.B. 
+
+\begin{verbatim}
+public class Feuerzeug 
+{ 
+	...
+
+	// Feuerzeug ganz aufladen
+	void aufLaden()
+	{
+		...
+	}
+
+	// Feuerzeug mit definierter Menge 'vol' aufladen
+	void aufLaden( float vol )
+	{
+		...
+	}
+
+}
+\end{verbatim}
+
+
+Durch Methoden werden bestimmte Funktionen eines Objektes beschrieben.
+Sie werden in Java mittels des \emph{.} Operators aufgerufen.
+
+Objekt.Methode (....)
+
+Konstruktoren sind spezielle Methoden, die bei der Aktivierung von Objekten 
+aufgerufen werden und deren Instanzierung und Initialisierung "ubernehmen.
+Konstruktoren benutzen den gleichen Namen wie die verwendete Klasse.
+
+Klasse Objekt=new KLasse (...)
+
+erzeugt aus der Klasse ein Objekt, daf"ur reserviert es 
+Speicher f"ur dieses Objekt
+und initialisiert es mit den entsprechenden Werten ( evt. als Argumente "ubergeben).
+
+\subsection{Vererbung}
+
+Vererbung bezeichnet den Mechanismus des Ableitens einer Klasse aus einer 
+"ubergeordneten Klasse (Einfachvererbung).
+Die Daten und Methoden der "ubergeordneten Klasse, 
+Oberklasse oder Superklasse genannt,
+werden an die Subklasse weitergegeben (vererbt).
+Die vererbten Methoden k"onnen dort auch "uberschrieben, bzw. "uberladen
+werden.
+
+Die Klassen der standard Bibliothek sind in der Regel alle von der superklasse
+\emph{Object} abgeleitet. Die Klasse \emph{Object} definiert einige elementare Methoden (equals, string, getclass), welche von allen Subklassen benutzt, bzw. neu definiert werden k"onnen.
+
+Im Gegensatz zu C++ k"onnen in Java keine Operatoren "uberladen, bzw. neu definiert werden. Als L"osung werden in Java standard Methoden verwendet, wie z.B. die Methode \emph{equals} der Superklasse \emph{Object}.
+
+\subsection{Packages}
+
+Ein wesentlicher Vorteil der objektorientierten Programmierung ist die
+einfache Wiederverwendung bestehenden Programmcodes.
+Klassenbibliotheken bieten Programmierern die m"oglichkeit 
+bestehende Klassen in Ihrer Applikation einzubinden.
+Es existieren eine Reihe von standard Klassenbibliotheken (Packages) f"ur 
+unterschiedliche Zwecke wie z.B. Grafik, Netzwerkaktivit"aten und Ein-und
+Ausgabefunktionen.
+Packages werden mit dem \emph{import}-Befehl in den Programmcode eingebunden.
+Die Zusammenfassung von mehreren Klassen in Packages erleichtert 
+die Realisierung und Modularisierung gro"ser Systeme.
+Packages dienen ebenfalls der einfachen Wiederverwendung.
+
+\section{System-Managment}
+
+\subsection{Garbage-Collector}
+Ein in Java integrierter Garbage-Collector sorgt f"ur die automatische
+Freigabe nicht mehr ben"otigter Speicherbereiche.
+Dadurch werden potentielle Fehler vermieden, wie sie z.B. bei doppelter Speicherfreigabe in ANSI-C vorkommen k"onnen.
+W"ahrend der Laufzeit eines Java-Programmes arbeitet im Hintergrund der 
+Garbage Collector als Thread niedriger Priorit"at.
+
+\subsection{Exceptions}
+Mit den Exceptions besitzt Java einen Mechanismus zur strukturierten 
+Behandlung von Fehlern, die w"ahrend der Programmausf"uhrung auftreten.
+Tritt ein Laufzeitfehler (z.B. ein Array-Zugriff au"serhalb der Array-Grenzen), 
+so wird ein eine entsprechende Exception generiert (\emph{throw}).
+Diese Exception kann, bzw. mu"s innerhalb eines \emph{try-catch}-Blocks 
+abgefangen werden (\emph{catch}). 
+
+Das Grundprinzip des Exception-Mechanismus in Java kann wie folgt beschrieben
+werden:
+Wird eine Exception ausgel"ost, arbeitet die JVM den Stack soweit zur"uck,
+bis sie eine entsprechende \emph{catch}-Anweisung findet. Wird keine geeignete gefunden, gibt die JVM eine Fehlermeldung aus.
+
+Eine Exception kann an jeder Stelle der Aufrufkette (Stack) abgefangen werden.
+Methoden, welche in der Deklaration angeben eine Exception ausl"osen zu k"onnen, m"ussen innerhalb eines \emph{try-catch} Blocks aufgerufen werden.
+
+Das Behandeln von Exceptions mit der try-catch-Anweisung sieht etwa
+folgenderma"sen aus :
+
+\begin{verbatim}
+try {
+    Anweisung;  
+     
+    ...
+    }
+catch ( Exceptiontyp1 x ) {
+    Anweisung;  
+
+   ...
+   }
+catch ( Exceptiontyp2 x ) {
+    Anweisung;  
+
+   ...
+   }
+\end{verbatim}
+
+\section{Grafisches User Interface (GUI)}
+
+\subsection{Was ist eine GUI?}
+AWT
+Swing ..
+
+\subsection{Abstract Window Toolkit (AWT)}
+
+\subsection{Events}
+
+Benutzer-Interaktion !
+
+Bei der Programmierung unter einer grafischen Oberfl"ache erfolgt die
+Kommunikation zwischen Betriebssystem und Anwendungsprogramm durch den 
+Austausch von Nachrichten.
+Die Anwendung wird dabei "uber alle Arten von Ereignissen und 
+Zustands"anderungen vom Betriebssystem informiert.
+Dazu z"ahlen z.B. Mausklicks, Bewegung des Mauszeigers, oder Ver"anderungen 
+der Fenstergr"o"se oder dessen Lage.
+Jedes dieser Ereignisse oder \emph{ Events} l"ost eine Nachricht aus, die an das 
+aktive Fenster gesendet wird. Dadurch wird dort der Aufruf einer \emph{Callback}-Methode
+ausgel"ost. Das Programm kann auf ein \emph{Even}t reagieren, indem es die zugeh"orige
+Methode "uberlagert und mit der gew"unschten Funktionalit"at ausstattet.
+Die unter Java m"oglichen Events lassen sich grob in folgende Klassen
+unterteilen :
+\begin{itemize}
+\item Maus-Events
+\item Tastatur-Events
+\item Fenster-Events
+\item Action-Events
+\item Komponenten-Events
+\end{itemize}
+
+Z.B. wird ein Mausklick mit den Methoden \emph{mouseDown} und \emph{mouseUp} der 
+Klasse \emph{Component} behendelt.
+Wenn die Maustaste gedr"uckt wird, ruft das AWT die Methode \emph{mouseDown} auf,
+l"asst man sie los wird die Methode \emph{mouseUp} aufgerufen.
+
+public boolean mouseDown(Event e, int x, int y);
+public boolean mouseUp(Event e. int x, int y);
+
+Der erste Parameter beider Methoden ist eine Instanz Klasse \emph{Event}.
+Die beiden anderen Parameter geben die Position in der Client-Area an,
+an der die Maustaste gedr"uckt bzw. losgelassen wurde.
+Ein Objekt der Klasse \emph{Event} repr"asentiert das Ereignis, durch das die
+Nachricht ausgel"ost wurde.
+Ein \emph{Event}-Objekt besitzt eine Reihe "offentlicher Instanzmerkmale
+wie z.B.:
+
+
+\begin{tabular}{|l|l|}
+\hline
+Element & Bedeutung \\
+\hline
+public int x; &	x-Koordinate des Mauszeigers bei Tastatur- \\
+              & und Mausereignissen \\
+\hline
+public int y; &	y-Koordinate des Mauszeigers bei Tastatur- \\
+              & und Mausereignissen \\
+\hline
+public long when; & Zeitpunkt des Ereignisses \\
+\hline
+public int key; & ASCII-Wert der gedrückten Taste bei \\
+                & Tastaturereignissen bzw. Wert der Funktionstaste \\
+\hline
+public int modifiers; &	Eine Kombination der Konstanten \\
+                      & \emph{Event.ALT\_MASK, Event.CTRL\_MASK,} \\
+                      & \emph{Event.META\_MASK, Event.SHIFT\_MASK} \\
+\hline
+\end{tabular}
+
+
+\section{Multithreading}
+
+\subsection{Was ist Multithreading?}
+
+Durch die Weiterentwicklungen im Bereich der Betriebssystemtechnologie
+wurde das Konzept der \emph{Threads} in den letzten Jahren immer popul"arer.
+Und durch bereitstellung der Basis von Library-Routinen auch konventionellen 
+Programmiersprachen zur Verf"ugung gestellt.
+Java hat \emph{Threads} direkt in die Sprache integriert und mit den erforderlichen
+Hilfsmitteln als Konstrukt zur Nebenl"aufigkeit implementiert.
+Ein \emph{Thread} ist ein eigenst"andiges Programmierfragment, das parallel
+zu anderen \emph{Threads} laufen kann.
+Der Laufzeit-Overhead zur Erzeugung und Verwaltung ist deutlich geringer
+als bei gew"ohnlichen Prozessen und kann in den meisten Programmen 
+vernachl"assigt werden.
+\emph{Threads} sollen unter anderem die Implementierung grafischer Anwendungen
+erleichtern, die durch Simulation komplexer Abl"aufe oft nebenl"aufig sind.
+\emph{Threads} k"onnen auch dazu verwendet werden, die Bedienbarkeit von 
+Dialoganwendungen zu verbessern, indem rechenintensive Anwendungen
+im Hintergrund ablaufen.
+
+\subsection{Programmierung von Threads}
+
+\emph{Threads} werden in Java durch die Klasse\emph{ Thread} und das Interface \emph{Runnable}
+implementiert. in beiden F"allen wird der \emph{Thread-Body}, also der
+parallel auszuf"uhrende Code, in Form der "uberlagerten Methode \emph{run} zur
+Verf"ugung gestellt. Die Kommunikation kann dann durch Zugriff auf die 
+Instanz- oder Klassenvariablen oder durch Aufruf beliebiger Methoden,
+die innerhalb von \emph{run} sichtbar sind, erfolgen.
+Zur Synchronisation stellt Java das aus der Betriebssystemtheorie bekannte
+Konzept des \emph{Monitors} zur Verf"ugung. Dises  erlaubtes, kritische Abschnitte
+innerhalb korrekt geklammerter Programmfragmente und Methoden zu kapseln.
+Somit wird der Zugriff auf gemeinsam benutzte Datenstrukturen koordiniert.
+Dar"uber hinaus stellt Java Funktionen zur Verwaltung von \emph{Threads}.
+Diese erlauben es, \emph{Threads} in Gruppen zusammenzufassen, zu priorisieren
+und Informationen "uber Eigenschaften von \emph{Threads} zu gewinnen.
+Das \emph{Schedulling} kann dabei wahlweise unterbrechend oder nichtunterbrechend
+implementiert sein.
+Die Sprachspezifikation legt dies nicht fest, aber in den meisten 
+Java-Implementierungen wird dies von den M"oglichkeiten des darunter liegenden
+Betriebssystems abh"angen.
+
+Die Klasse \emph{Thread} ist Bestandteil des Packages \emph{java.lang} und steht damit
+allen Anwendungen standartm"a"sig zur Verf"ugung.
+\emph{Thread} stellt die Basismethoden zur Erzeugung, Kontrolle und zum Beenden von 
+\emph{Threads} zur Verf"ugung. Um ein konkreten \emph{Thread} zu erzeugen, mu"s eine
+eigene Klasse aus \emph{Thread} abgeleitet und die Methode \emph{run} "uberlagert werden.
+Mit Hilfe des Aufrufs der Methode \emph{start} wird der \emph{Thread} gestartet und die weitere
+Ausf"uhrung an die Methode \emph{run} "ubertragen.
+\emph{start}wird nach dem starten des \emph{Threads} beendet, und der Aufrufer kann paralell
+zum neu erzeugten \emph{ Thread} fortfahren.
+Die "ubliche Vorgehensweise, einen \emph{Thread} zu beenden, besteht darin, die Methode \emph{stop}
+der Klasse \emph{Thread} aufzurufen.
+In diesem Fall wird der \emph{Thread} angehalten und aus der Liste der aktiven \emph{Threads}entfernt.
+Mit Hilfe der Methoden \emph{suspend} und \emph{resume} ist es m"oglich, einen \emph{Thread} vor"ubergehend
+ zu unterbrechen. Durch \emph{suspend} wird die Ausf"uhrug unterbrochen, und durch \emph{resume}
+wird der \emph{Thread} (genauer gesagt: die Methode \emph{run})an der Stelle fortgesetzt, an der die
+Unterbrechung erfolgte.
+
+
+\section{Java Native Interface (JNI)}
+
+\subsection{Was ist JNI?}
+Java stellt mit den sogenannten \emph{nativen} Methoden die M"oglichkeit,
+nicht in Java geschriebene Programmes oder Abl"aufe in die Laufzeitbibliothek
+ mit einzubinden.
+Gr"unde für die Implementierung von \emph{nativen} Methoden sind folgende:
+\begin{itemize}
+\item das man spezielle F"ahigkeiten der einzelnen Rechner oder der 
+Betriebssysteme nutzen kann; die die Java-Bibliothek nicht bereitstellt.
+Dazu geh"ort z.B. der Anschlu"s an neue Peripherieger"ate oder Steckkarten,
+der Zugriff auf verschiedene Netztypen oder die Verwendung eines eindeutigen
+Merkmals des vorhandenen Betriebssystems.
+Solche F"ahigkeiten werden derzeit von der Java-Umgebung nicht bereitgestellt
+und m"ussen daher \emph{au"serhalb} von Java in einer anderen Sprache (meist 
+C oder eine mit C vertr"aglichen Sprache) implementiert werden.
+\item Ein weiterer Grund ist die Performance des auszuf"uhrenden Programms.
+Falls man den von Java zur Verf"ugung gestellten JIT-Compiler f"ur die 
+Erh"ohung der Geschwindigkeit nicht einsetzen will, kann man f"ur den 
+Geschwindigkeitsorientierten Teil ( z.B. kritische innere Schleifen ),
+in C geschriebene \emph{native} Methoden einsetzen.
+Die Java-Klassenbibliothek nutzt diese M"oglichkeit bei bestimmten 
+kritischen Systemklassen selbst, um die Effiziens des Systems zu steigern.
+\item Jedoch ist wohl der Hauptgrund f"ur den Einsatz von nativen Methoden in 
+Java-Klassen der; da"s man auf diese Art und Weise schon existierende Programme
+ohne sie erst umzuschreiben, relativ einfach in Java einbinden kann.
+Diese M"oglichkeit haben wir in der Diplomarbeit auch genutzt.
+Die 3D-OpenGL-Animationen sind in C geschrieben und wurden sozusagen
+in Java eingebettet, doch dazu sp"ater mehr.
+\end{itemize}
+
+\subsection{Grundlagen der JNI}
+
+Dynamische Bibliothek
+	Unix: lib<Name>.so, LD\_LIBRARY\_PATH
+	WIN: <Name>.dll, SYSTEMVERZEICHNIS
+
+\subsection{Vorgehensweise}
+
+Um ein Interface zwischen Java und dem C-Code zu erstellen, sind im wesenlichen
+f"unf Schritte erforderlich :
+\begin{enumerate}
+	\item Erstellen der Java-JNI Funktionsdeklaration
+	\item Generierung der C-Header Datei
+	\item Erstellen der C-JNI Functionen
+	\item Laden der JNI-Bibliothek in Java
+	\item Linken der Dynamischen Bibliothek
+\end{enumerate}
+
+\subsection{Erstellen der Java-JNI Funktionsdeklaration}
+Den Java-Code mit der deklarierten \emph{nativen} Methode zu schreiben und zu 
+"Ubersetzen.
+
+Um \emph{native} Methoden in Java-Klassen zu benutzen, mu"s man in der Deklaration
+der Methode lediglich das schl"usselwort \emph{native} einf"ugen.
+
+wie z.B. 
+\begin{verbatim}
+public nativ void Methodenname();
+\end{verbatim}
+
+Und die Methode System.loadLibrary() in die Klasse mit einbinden.
+Das Schl"usselwort \emph{native} zeigt dem javac-Compiler und dem java-Interpreter
+das sie nach einem Methodenrumpf in einer dynamisch-ladbaren Bibliothek
+Ausschau halten m"ussen.
+Um die gew"unschte Bibliothek letzendlich wirklich aufzurufen, wird sie mit der
+Methode \emph{System.loadLibrary()} aus dem System-Package von Java eingelesen.
+Java durchsucht alle Pfade die in dem Betriebssystem-Umgebungsvariable
+angegeben wurden.
+Alternativ steht die Methode\emph{ Runtime.getRuntime().loadLibrary()} und die 
+Methode \emph{System.load()} zur Verf"ugung.
+Letztrige liest eine Klassen-Bibliothek anhand ihres vollst"andigen 
+Pfadnamens ein. So k"onnen auch Bibliotheken au"serhalb des Suchpfades 
+benutzt werden.
+Die "Ubersetzung des Java-Codes kann wie "ublich ausgef"uhrt werden.
+
+\subsection{Generierung der C-Header Datei}
+Der n"achste Schritt ist es, die "ubersetzte Datei \emph{Datei.class} dazu zu benutzen, um die
+entsprechende Header-Datei \emph{Datei.h} zu erzeugen.
+Dazu wird das \emph{javah}-Tool aus der JDK-Distribution eingesetzt.
+Per Default wird die neue h-Datei im gleichen Verzeichnis angelegt. Mit der 
+Option -d kann ein anderes Verzeichnis angegeben werden. 
+Dies ist zu raten da noch diverse andere Dateien erzeugt werden m"ussen und
+schnell die "Ubersicht verloren gehen kann.
+Der Aufruf 
+
+\begin{verbatim}
+javah -jni Datei
+\end{verbatim}
+
+erzeugt das C-Headerfile \emph{Datei.h}. 
+
+In der Header-Datei wird durch die typedef-struct-Anweisung der \emph{nativen}
+C-Routine mitgeteilt, wie die Daten in der Java-Klasse angeordnet sind. Die einzelnen Variablen
+in der Struktur k"onnen benutzt werden, um die Klassen
+und Instanz-Variablen von Java zu benutzen.
+Weiterhin wird in dem h.File ein Prototype angegeben, um die Methode aus dem 
+objektorientierten Namensraum der Java Klasse in den C-Namensraum zu 
+"uberf"uhren.
+Der Name einer Funktion, der eine \emph{native} Methode implementiert, ergibt sich 
+dabei immer aus dem Packet-Namen, dem Klassen-Namen und dem Namen der nativen
+Methode von Java, getrennt durch einen Unterstrich.
+
+\subsection{Erstellen der C-JNI Functionen}
+Nun m"ussen die nativen Methoden implementiert werden.
+"Ublicherweise werden die Implementationsdateien mit dem Klassennamen und einer
+eindeutigen Endung z.B. \emph{Datei.c} versehen.
+Die Implementationsdatei mu"s die Datei \emph{jni.h} mittels \#include-Anweisung einbinden. \emph{jni.h} ist im \emph{include} Verzeichniss des JDK enthalten.
+Ebenfalls muss die mittels \emph{javah -jni} erzeugte Headerdatei eingebunden werden. 
+Der Funktionskopf in der Implementationsdatei muss den 
+generierten Prototypen aus der Headerdatei entsprechen.
+
+Diese Fehlerart macht sich noch nicht beim Linken sondern erst zur Laufzeit 
+des Programms bemerkbar und ist daher m"uhsam zu beheben.
+
+\subsection{Erstellung der Dynamischen Bibliothek}
+
+Nachdem nun alle ben"otigten Dateien vorhanden sind, mu"s die 
+Implemtierungsdatei nur noch "ubersetzt und mit der Java-Bibliothek  
+zu einer dynamischen Bibliothek zusammen gelinkt werden.
+  
+\subsection{Datenaustausch zwischen Java und C}
+
+Jedem elementaren Typ in Java wird ein Typ in der Prototype-Funktion
+und damit auch in C zugeordnet
+Ein char in Java ist nach dem UNICODE kodiert, im Gegensatz zu ASCII in C.
+Dem Java-Typ String kann nur eine Struktur zugeordnet werden. 
+Funktionen zur Umwandlung von UNICODE und ASCII sowie die Definition
+String-Strukturen finden sich in der Header-Datei wieder javaString.h .
+ 
+Variablen nicht als Parameter einer Methode sondern als Klassenvariable
+anzulegen ist objektorientiert und erm"oglicht einen einfachen Zugriff
+von C aus. Dieser Zugriff kann als 'Call by Reference' bezeichnet werden.
+"Ubergibt man die Variablen als Parameter ist der Zugriff ein
+Call by Value.
+Alle Klassenvariablen werden im .h-File zu einem \emph{struct} zusammengefa"st.
+Auf diesen erh"alt die aufgerufene C-Funktion als Parameter ein
+Handle-Pointer.
+Das in \emph{StubPreamble.h} definierte, \emph{unhand()}-Makro erm"oglicht den Zugriff
+auf die einzelnen Klassenvariablen. Das \emph{unhand()}-Makro "ubernimmt einen
+Pointer auf das Handle einer Klasse und gibt einen Pointer auf die im 
+.h-File erzeugte Klassenstruktur zur"uck.
+"Uber den R"uckgabewert des Makros lassen sich die Instance-Variablen
+der Java-Klasse direkt auswerten und ver"andern.
+
+\subsubsection{Strings}
+Wie schon erw"ahnt bilden \emph{Strings} in Java eine eigene Klasse.
+M"ochte man einen \emph{String} von Java nach C oder umgekehrt "ubergeben,
+mu"s man \emph{javaString.h} im C-Implementationsfile mit einbinden.
+In \emph{javaString.h} finden sich die Typdefintionen und Funktionen um \emph{Strings}
+von Java nach C und umgekehrt zu transformieren.
+So gibt es noch weitere Methoden um \emph{Strings} zu bearbeiten, wie z.B.
+\emph{MoveString\_GetString(), CString()} oder \emph{makeJavaString()}.
+Java-\emph{Strings} bilden eine eigene Klasse, somit wird bei der Konvertierung nicht 
+nur ein elementarer Typ sondern eine ganze Klasse an die \emph{native} Methode
+durchgereicht. Dieses Konzept l"a"st sich auch auf andere Klassen erweitern.
+
+\subsubsection{Felder}
+\emph{Felder} werden von Java nach C "ubergeben indem vom \emph{javah}-Tool ein 
+Funktionsparameter von Typ \emph{struct HArrayOf<Objekt> *} erzeugt wird.
+Dieser Handle enth"alt ein Element \emph{body} mit dem auf die Feldelemente 
+zugegriffen werden kann.
+Der Zugriff auf das Feld erfolgt mit dem \emph{unhand()}-Makro und dem
+\emph{body}-Element.
+
+\subsubsection{Speichermanagment}
+in Java wird die Speicherverwaltung automatisch vom \emph{Garbage-Collector} 
+erledigt indem er die Methode \emph{dispose()} aus der Java-Klasse ausf"uhrt.
+Wird in einer C-Funktion einer \emph{nativen} Methode Speicher angelegt,
+so h"angt die Vorgehensweise des Programmierers beim Freigeben,
+von der Art des Speichers ab.
+Bei normalen Speicherbereichen f"ur die interne C-Anwendung mu"s der 
+Programmierer sich explizit um die Freigabe k"ummern. 
+Da der Java-Interpreter von diesem Speicher nichts wei"s,
+m"ussen eigene \emph{native} Methoden implementiert werden um ihn freizugeben.
+In C erzeugte Speicherbereiche von Java-Objekten werden nicht unbedingt
+vom \emph{Garbage-Collector} gefunden. Diese Java-Objekte, also Instanzen 
+einer bestimmten Java-Klasse, k"onnen auch aus Java heraus freigegeben 
+werden. Eine einfache Variante der Freigabe ist der explizite Aufruf
+der Methode \emph{dispose()} wenn die Instanz nicht mehr ben"otigt wird.
+%
+%\begin{thebibliography}{99}
+%	\bibitem{1} Mary Campione and Kathy Walrath; The Java Tutorial; Sun Microsystems; http://www.javasoft.com/docs/books/tutorial/index.html
+%	\bibitem{2} Ron Fosner; OpenGL Programming for Windows 95 and Windows NT; Addison Wesley Second Printing April 1997; http://www.aw.com/devpress
+%	\bibitem{3} Woo, Mason; OpenGL programming guide 2nd ed., Addison Wesley Developer Press April 1997, ISBN 0-0201-46138-2; http://www.aw.com/devpress
+%\end{thebibliography}
+%
+%\end{document}
+% 

@@ -1,0 +1,82 @@
+
+===============================================
+
+using native gears
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk118
+
+dirname: too many arguments
+Try `dirname --help' for more information.
+java version "1.1.8"
+JAVA_COMPILER mwjit
+
+dirname: too many arguments
+Try `dirname --help' for more information.
+libmwjit.so: cannot open shared object file: No such file or directory (libmwjit.so)
+Warning: JIT compiler "mwjit" not found. Will use interpreter.
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.3 beta
+GL RENDERER: Mesa GLX Indirect
+GL VENDOR  : Precision Insight, Inc.
+453 frames in 5.004 seconds = 90.5275779376499 FPS
+455 frames in 5.001 seconds = 90.98180363927214 FPS
+454 frames in 5.003 seconds = 90.74555266839896 FPS
+456 frames in 5.009 seconds = 91.03613495707725 FPS
+454 frames in 5.003 seconds = 90.74555266839896 FPS
+456 frames in 5.01 seconds = 91.0179640718563 FPS
+453 frames in 5.005 seconds = 90.5094905094905 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk122
+
+java version "1.2.2"
+Classic VM (build Linux_JDK_1.2.2_FCS, native threads, nojit)
+JAVA_COMPILER
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.3 beta
+GL RENDERER: Mesa GLX Indirect
+GL VENDOR  : Precision Insight, Inc.
+450 frames in 5.007 seconds = 89.87417615338526 FPS
+450 frames in 5.009 seconds = 89.83829107606309 FPS
+452 frames in 5.007 seconds = 90.2736169362892 FPS
+454 frames in 5.009 seconds = 90.63685366340586 FPS
+452 frames in 5.002 seconds = 90.36385445821672 FPS
+454 frames in 5.005 seconds = 90.70929070929071 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk13
+
+java version "1.3.0beta"
+Java(TM) 2 Runtime Environment, Standard Edition (build Blackdown-1.3.0beta-b02)
+Classic VM (build Blackdown-1.3.0beta-b02, native threads, nojit)
+JAVA_COMPILER
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.3 beta
+GL RENDERER: Mesa GLX Indirect
+GL VENDOR  : Precision Insight, Inc.
+447 frames in 5.007 seconds = 89.27501497902936 FPS
+449 frames in 5.01 seconds = 89.62075848303394 FPS
+450 frames in 5.005 seconds = 89.91008991008991 FPS
+451 frames in 5.002 seconds = 90.16393442622952 FPS
+450 frames in 5.005 seconds = 89.91008991008991 FPS
+452 frames in 5.009 seconds = 90.23757236973447 FPS
+
+

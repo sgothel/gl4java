@@ -1,0 +1,131 @@
+
+===============================================
+
+using native gears
+GL_RENDERER   = GeForce 256/AGP
+GL_VERSION    = 1.2.1
+GL_VENDOR     = NVIDIA Corporation
+GL_EXTENSIONS = GL_ARB_multitexture GL_ARB_texture_compression GL_ARB_texture_cube_map GL_ARB_texture_env_add GL_ARB_transpose_matrix GL_EXT_abgr GL_EXT_bgra GL_EXT_blend_color GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_compiled_vertex_array GL_EXT_fog_coord GL_EXT_packed_pixels GL_EXT_paletted_texture GL_EXT_point_parameters GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_specular_color GL_EXT_shared_texture_palette GL_EXT_stencil_wrap GL_EXT_texture_compression_s3tc GL_EXT_texture_edge_clamp GL_EXT_texture_env_add GL_EXT_texture_env_combine GL_EXT_texture_cube_map GL_EXT_texture_filter_anisotropic GL_EXT_texture_lod GL_EXT_texture_lod_bias GL_EXT_texture_object GL_EXT_vertex_array GL_EXT_vertex_weighting GL_KTX_buffer_region GL_NV_blend_square GL_NV_fence GL_NV_fog_distance GL_NV_light_max_exponent GL_NV_register_combiners GL_NV_texgen_emboss GL_NV_texgen_reflection GL_NV_texture_env_combine4 GL_NV_vertex_array_range GL_S3_s3tc GL_SGIS_multitexture GL_SGIS_texture_lod 
+5380 frames in 5 seconds = 1076 FPS
+5452 frames in 5 seconds = 1090.4 FPS
+5496 frames in 5 seconds = 1099.2 FPS
+5495 frames in 5 seconds = 1099 FPS
+5496 frames in 5 seconds = 1099.2 FPS
+5496 frames in 5 seconds = 1099.2 FPS
+5494 frames in 5 seconds = 1098.8 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk118-ibm
+
+java full version "JDK 1.1.8 IBM build l118-19991221 (JIT enabled: jitc)"
+JAVA_COMPILER jitc
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2.1
+GL RENDERER: GeForce 256/AGP
+GL VENDOR  : NVIDIA Corporation
+4969 frames in 5.0 seconds = 993.8 FPS
+4937 frames in 5.0 seconds = 987.4 FPS
+5065 frames in 5.0 seconds = 1013.0 FPS
+5062 frames in 5.0 seconds = 1012.4 FPS
+5066 frames in 5.0 seconds = 1013.2 FPS
+5062 frames in 5.0 seconds = 1012.4 FPS
+5053 frames in 5.0 seconds = 1010.6 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk118_v1
+
+java version "1.1.8"
+JAVA_COMPILER tya
+
+ TYA 1.5 (for J117 / Linux). Copyright (c) 1997,98,99 The TYA Team
+ Contact  The TYA Team   via Albrecht Kleine  <kleine@ak.sax.de>
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2.1
+GL RENDERER: GeForce 256/AGP
+GL VENDOR  : NVIDIA Corporation
+5132 frames in 5.0 seconds = 1026.4 FPS
+5174 frames in 5.0 seconds = 1034.8 FPS
+5180 frames in 5.0 seconds = 1036.0 FPS
+5180 frames in 5.0 seconds = 1036.0 FPS
+5179 frames in 5.0 seconds = 1035.8 FPS
+5179 frames in 5.0 seconds = 1035.8 FPS
+5166 frames in 5.0 seconds = 1033.2 FPS
+5179 frames in 5.0 seconds = 1035.8 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk1.2-sun
+
+java version "1.2.2"
+Classic VM (build 1.2.2_006, native threads, javacomp)
+JAVA_COMPILER javacomp
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2.1
+GL RENDERER: GeForce 256/AGP
+GL VENDOR  : NVIDIA Corporation
+5112 frames in 5.0 seconds = 1022.4 FPS
+5168 frames in 5.0 seconds = 1033.6 FPS
+5176 frames in 5.0 seconds = 1035.2 FPS
+5178 frames in 5.0 seconds = 1035.6 FPS
+5177 frames in 5.0 seconds = 1035.4 FPS
+5178 frames in 5.0 seconds = 1035.6 FPS
+5168 frames in 5.0 seconds = 1033.6 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk1.3-ibm
+
+java full version "J2RE 1.3.0 IBM build cxdev-20000502"
+JAVA_COMPILER jitc
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2.1
+GL RENDERER: GeForce 256/AGP
+GL VENDOR  : NVIDIA Corporation
+5079 frames in 5.0 seconds = 1015.8 FPS
+5229 frames in 5.0 seconds = 1045.8 FPS
+5230 frames in 5.0 seconds = 1046.0 FPS
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk1.3-sun
+
+java version "1.3.0beta_refresh"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.3.0beta_refresh-b09)
+Java HotSpot(TM) Client VM (build 1.3.0beta-b07, mixed mode)
+JAVA_COMPILER
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2.1
+GL RENDERER: GeForce 256/AGP
+GL VENDOR  : NVIDIA Corporation
+4894 frames in 5.0 seconds = 978.8 FPS
+5043 frames in 5.0 seconds = 1008.6 FPS
+5063 frames in 5.0 seconds = 1012.6 FPS
+5065 frames in 5.0 seconds = 1013.0 FPS
+5065 frames in 5.0 seconds = 1013.0 FPS
+5064 frames in 5.0 seconds = 1012.8 FPS
+
+

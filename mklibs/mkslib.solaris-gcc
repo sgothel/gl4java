@@ -1,0 +1,63 @@
+#!/bin/sh
+
+# Make a Solaris shared library
+# contributed by Arno Hahma (arno@nitro.pp.utu.fi)
+# Improved by Sven Goethel <s_goethel@bielefeld.netsurf.de>
+# 	goal: same tool for any machines ...
+# 	
+
+# First argument is name of output library
+# 	without dirname and suffix
+# second and third are the major and minor number
+# Rest of arguments are object files
+
+set -x
+
+LIBDIR=$1
+shift 1
+
+LIBRARY=$1
+shift 1
+
+LIBMAJOR=$1
+shift 1
+
+LIBMINOR=$1
+shift 1
+
+LIBBUGFIX=$1
+shift 1
+
+
+OBJECTS=$*
+
+# the following provided by Thomas Hiller (Hiller@tu-harburg.d400.de)
+
+VERSION="${LIBMAJOR}.${LIBMINOR}.${LIBBUGFIX}"
+
+LIBNAME=${LIBRARY}.so
+
+echo "Building shared object $LIBRARY.so.$VERSION and the archive library $LIBRARY.a"
+rm -f ${LIBDIR}/${LIBNAME}*
+
+gcc -G -o ${LIBDIR}/${LIBNAME}.${VERSION} ${OBJECTS}
+
+( cd ${LIBDIR} ; 
+  ln -s ${LIBNAME}.${VERSION} ${LIBNAME}.${LIBMAJOR}.${LIBMINOR} 
+)
+
+( cd ${LIBDIR} ; 
+  ln -s ${LIBNAME}.${LIBMAJOR}.${LIBMINOR} ${LIBNAME}.${LIBMAJOR} 
+)
+
+( cd ${LIBDIR} ; 
+  ln -s ${LIBNAME}.${LIBMAJOR} ${LIBNAME} 
+)
+
+# Print a reminder about shared libs:
+echo
+echo "******Be sure to add" ${LIBDIR}" to your LD_LIBRARY_PATH variable"
+echo
+sleep 2
+
+

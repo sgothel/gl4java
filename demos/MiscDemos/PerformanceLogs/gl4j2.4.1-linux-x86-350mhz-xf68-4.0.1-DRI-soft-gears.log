@@ -1,0 +1,137 @@
+
+===============================================
+
+using native gears
+GL_RENDERER   = Mesa GLX Indirect
+GL_VERSION    = 1.2 Mesa 3.3 beta
+GL_VENDOR     = Precision Insight, Inc.
+GL_EXTENSIONS = GL_EXT_abgr GL_EXT_blend_color GL_EXT_blend_minmax GL_EXT_blend_subtract 
+455 frames in 5.002 seconds = 90.9636 FPS
+464 frames in 5.003 seconds = 92.7444 FPS
+471 frames in 5.01 seconds = 94.012 FPS
+471 frames in 5.008 seconds = 94.0495 FPS
+471 frames in 5.009 seconds = 94.0307 FPS
+471 frames in 5.008 seconds = 94.0495 FPS
+470 frames in 5.002 seconds = 93.9624 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk118-ibm
+
+java full version "JDK 1.1.8 IBM build l118-19991221 (JIT enabled: jitc)"
+JAVA_COMPILER jitc
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.3 beta
+GL RENDERER: Mesa GLX Indirect
+GL VENDOR  : Precision Insight, Inc.
+446 frames in 5.004 seconds = 89.12869704236611 FPS
+445 frames in 5.006 seconds = 88.89332800639232 FPS
+455 frames in 5.004 seconds = 90.92725819344525 FPS
+455 frames in 5.003 seconds = 90.94543274035578 FPS
+455 frames in 5.002 seconds = 90.96361455417833 FPS
+455 frames in 5.002 seconds = 90.96361455417833 FPS
+454 frames in 5.005 seconds = 90.70929070929071 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk118_v1
+
+java version "1.1.8"
+JAVA_COMPILER tya
+
+ TYA 1.5 (for J117 / Linux). Copyright (c) 1997,98,99 The TYA Team
+ Contact  The TYA Team   via Albrecht Kleine  <kleine@ak.sax.de>
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.3 beta
+GL RENDERER: Mesa GLX Indirect
+GL VENDOR  : Precision Insight, Inc.
+461 frames in 5.0 seconds = 92.2 FPS
+462 frames in 5.005 seconds = 92.3076923076923 FPS
+463 frames in 5.008 seconds = 92.4520766773163 FPS
+463 frames in 5.007 seconds = 92.47054124226084 FPS
+463 frames in 5.008 seconds = 92.4520766773163 FPS
+463 frames in 5.007 seconds = 92.47054124226084 FPS
+462 frames in 5.01 seconds = 92.21556886227545 FPS
+462 frames in 5.002 seconds = 92.36305477808877 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk1.2-sun
+
+java version "1.2.2"
+Classic VM (build 1.2.2_006, native threads, javacomp)
+JAVA_COMPILER javacomp
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.3 beta
+GL RENDERER: Mesa GLX Indirect
+GL VENDOR  : Precision Insight, Inc.
+461 frames in 5.004 seconds = 92.12629896083135 FPS
+463 frames in 5.008 seconds = 92.4520766773163 FPS
+464 frames in 5.007 seconds = 92.67026163371281 FPS
+464 frames in 5.005 seconds = 92.70729270729271 FPS
+464 frames in 5.006 seconds = 92.6887734718338 FPS
+464 frames in 5.008 seconds = 92.65175718849841 FPS
+462 frames in 5.001 seconds = 92.38152369526094 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk1.3-ibm
+
+java full version "J2RE 1.3.0 IBM build cxdev-20000502"
+JAVA_COMPILER jitc
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.3 beta
+GL RENDERER: Mesa GLX Indirect
+GL VENDOR  : Precision Insight, Inc.
+456 frames in 5.006 seconds = 91.09069117059528 FPS
+459 frames in 5.006 seconds = 91.68997203355973 FPS
+459 frames in 5.005 seconds = 91.70829170829171 FPS
+459 frames in 5.003 seconds = 91.74495302818309 FPS
+455 frames in 5.009 seconds = 90.83649431024156 FPS
+462 frames in 5.0 seconds = 92.4 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk1.3-sun
+
+java version "1.3.0beta_refresh"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.3.0beta_refresh-b09)
+Java HotSpot(TM) Client VM (build 1.3.0beta-b07, mixed mode)
+JAVA_COMPILER
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.3 beta
+GL RENDERER: Mesa GLX Indirect
+GL VENDOR  : Precision Insight, Inc.
+462 frames in 5.009 seconds = 92.23397883809143 FPS
+461 frames in 5.007 seconds = 92.07110045935691 FPS
+463 frames in 5.005 seconds = 92.50749250749251 FPS
+462 frames in 5.007 seconds = 92.27082085080887 FPS
+466 frames in 5.005 seconds = 93.10689310689311 FPS
+466 frames in 5.004 seconds = 93.12549960031976 FPS
+464 frames in 5.005 seconds = 92.70729270729271 FPS
+
+

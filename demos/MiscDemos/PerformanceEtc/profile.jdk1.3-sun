@@ -1,0 +1,52 @@
+
+export NS_JAVA=
+# export DYN_JAVA=true # some motif bugs are there :-(
+export DYN_JAVA=
+
+export JAVA_HOME=/usr/local/lib/jdk1.3-sun
+export JDK_HOME=$JAVA_HOME
+
+unset JAVA_COMPILER
+export TYA_LOGFILE=
+
+export HOTJAVA_HOME=/usr/local/lib-java/HotJava
+export SWING_HOME=
+
+THREADS_FLAG=native
+export THREADS_FLAG
+
+CLASSPATH=.
+
+#
+# 1st the PATH for classes
+#
+for i in /usr/local/projects/java \
+	 $HOME/lib/classes \
+	 /usr/local/lib-java \
+         							; do
+	test -e $i && CLASSPATH=$CLASSPATH:$i
+done
+
+#
+# 2nd the JAR/ZIP-Archives for classes
+#
+for i in $HOME/lib/classes/*.jar \
+	 /usr/local/lib-java/*.jar \
+         							; do
+	test -e $i && CLASSPATH=$CLASSPATH:$i
+done
+export CLASSPATH
+
+#
+# Be sure to respect, that the latter directory in this
+# for-loop is the first entry in the PATH env-var !!!!!
+#
+for i in /usr/local/lib-java/JavaCC/bin \
+	 /usr/local/lib-java/bin \
+	 /usr/local/lib-java/JSDK/bin \
+	 $JAVA_HOME/bin \
+                                        ; do
+	test -e $i && PATH=$i:$PATH
+done
+export PATH
+

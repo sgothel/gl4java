@@ -1,0 +1,721 @@
+/*
+
+  C grammar defintion for use with JavaCC
+  Contributed by Doug South (dsouth@squirrel.com.au) 21/3/97
+
+  This parser assumes that the C source file has been preprocessed : all
+  #includes have been included and all macros have been expanded. I accomplish
+  this with "gcc -P -E <source file> > <output file>".
+
+  There is a problem with compiler specific types, such as __signed, __const,
+  __inline__, etc. These types can be added as typedef types before the parser
+  is run on a file. See main() for an example. I have also found a strange little
+  compiler specific "type" if you can call it that. It is __attribute__, but it
+  does not seem to be used as a type. I found that just deleting the __attribute__
+  and the following "offensive" code works.
+
+  This grammar also prints out all the types defined while parsing the file. This
+  is done via a call to printTypes() when the parser is complete. If you do not want
+  this, just comment out the printTypes() method call in the production rule
+  TranslationUnit(), which BTW is the root node for parsing a C source file.
+
+  I have not in anyway extensively tested this grammar, in fact it is barely tested,
+  but I imagine it is better to have a starting point for a C grammar other than from
+  scratch. It has not been optimized in anyway, my main aim was to get a parser that
+  works. Lookahead may not be optimum at choice points and may even be insufficient at
+  times. I choose to err on the side of not optimum if I made a choice at all.
+
+  If you use this grammar, I would appreciate hearing from you. I will try to maintain
+  this grammar to the best of my ability, but at this point in time, this is only a side
+  hobby (unless someone wants to pay me for doing JavaCC work!). In that regards, I am
+  interested in hearing bugs and comments.
+
+  TODO:
+
+    Insert the appropiate code to enable C source trees from this grammar.
+
+  */
+
+PARSER_BEGIN(C2C)
+
+import java.util.*;
+
+  public class C2C{
+
+    public static String src ;
+
+    // Hastable for storing typedef types
+    private static Hashtable types = new Hashtable();
+
+    // Stack for determining when the parser
+    // is parsing a typdef definition.
+    private static Stack typedefParsingStack = new Stack();
+
+    // Returns true if the given string is
+    // a typedef type.
+    private static boolean isType(String type){
+
+   	  if(types.get(type) != null){
+   		  return true;
+      }
+   	  return false;
+    }
+
+    // Add a typedef type to those already defined
+    private static void addType(String type){
+   	  types.put(type, Boolean.TRUE);
+    }
+
+    // Prints out all the types used in parsing the c source
+    private static void printTypes(){
+
+      Enumeration enum = types.keys();
+
+      while(enum.hasMoreElements()){
+        System.out.println(enum.nextElement());
+      }
+    }
+
+    // Run the parser
+    public static void main ( String args [ ] ) {
+      C2C parser ;
+
+  	  // Hack to include type "special types"
+	    types.put("__signed__", Boolean.TRUE);
+	    types.put("__const", Boolean.TRUE);
+	    types.put("__inline__", Boolean.TRUE);
+	    types.put("__signed", Boolean.TRUE);
+
+      if(args.length == 0){
+        System.out.println("C Parser Version 0.1Alpha:  Reading from standard input . . .");
+        parser = new C2C(System.in);
+      }
+      else if(args.length == 1){
+        System.out.println("C Parser Version 0.1Alpha:  Reading from file " + args[0] + " . . ." );
+      try {
+        parser = new C2C(new java.io.FileInputStream(args[0]));
+      }
+      catch(java.io.FileNotFoundException e){
+        System.out.println("C Parser Version 0.1:  File " + args[0] + " not found.");
+        return ;
+        }
+      }
+      else {
+        System.out.println("C Parser Version 0.1Alpha:  Usage is one of:");
+        System.out.println("         java C2C < inputfile");
+        System.out.println("OR");
+        System.out.println("         java C2C inputfile");
+        return ;
+      }
+      try {
+	src = new String();
+        parser.TranslationUnit();
+        System.out.println("/* C Parser Version 0.1Alpha:  Java program parsed successfully. */");
+      }
+      catch(ParseError e){
+        System.out.println("/* C Parser Version 0.1Alpha:  Encountered errors during parse. */");
+      }
+      System.out.println(src);
+    }
+  }
+
+PARSER_END(C2C)
+
+SKIP : {
+ " "
+|  "\t"
+|  "\n"
+|  "\r"
+|  <"//" (~["\n","\r"])* ("\n" | "\r" | "\r\n")>
+|  <"/*" (~["*"])* "*" ("*" | ~["*","/"] (~["*"])* "*")* "/">
+}
+
+TOKEN : {
+ <INTEGER_LITERAL: <DECIMAL_LITERAL> (["l","L"])? | <HEX_LITERAL> (["l","L"])? | <OCTAL_LITERAL> (["l","L"])?>
+|  <#DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])*>
+|  <#HEX_LITERAL: "0" ["x","X"] (["0"-"9","a"-"f","A"-"F"])+>
+|  <#OCTAL_LITERAL: "0" (["0"-"7"])*>
+|  <FLOATING_POINT_LITERAL: (["0"-"9"])+ "." (["0"-"9"])* (<EXPONENT>)? (["f","F","d","D"])? | "." (["0"-"9"])+ (<EXPONENT>)? (["f","F","d","D"])? | (["0"-"9"])+ <EXPONENT> (["f","F","d","D"])? | (["0"-"9"])+ (<EXPONENT>)? ["f","F","d","D"]>
+|  <#EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+>
+|  <CHARACTER_LITERAL: "\'" (~["\'","\\","\n","\r"] | "\\" (["n","t","b","r","f","\\","\'","\""] | ["0"-"7"] (["0"-"7"])? | ["0"-"3"] ["0"-"7"] ["0"-"7"])) "\'">
+|  <STRING_LITERAL: "\"" (~["\"","\\","\n","\r"] | "\\" (["n","t","b","r","f","\\","\'","\""] | ["0"-"7"] (["0"-"7"])? | ["0"-"3"] ["0"-"7"] ["0"-"7"]))* "\"">
+}
+
+TOKEN : {
+	<CONTINUE: "continue"> |
+	<VOLATILE: "volatile"> |
+	<REGISTER: "register"> |
+	<UNSIGNED: "unsigned"> |
+	<TYPEDEF: "typedef"> |
+	<DFLT: "default"> |
+	<DOUBLE: "double"> |
+	<SIZEOF: "sizeof"> |
+	<SWITCH: "switch"> |
+	<RETURN: "return"> |
+	<EXTERN: "extern"> |
+	<STRUCT: "struct"> |
+	<STATIC: "static"> |
+	<SIGNED: "signed"> |
+	<WHILE: "while"> |
+	<BREAK: "break"> |
+	<UNION: "union"> |
+	<CONST: "const"> |
+	<FLOAT: "float"> |
+	<SHORT: "short"> |
+	<ELSE: "else"> |
+	<CASE: "case"> |
+	<LONG: "long"> |
+	<ENUM: "enum"> |
+	<AUTO: "auto"> |
+	<VOID: "void"> |
+	<CHAR: "char"> |
+	<GOTO: "goto"> |
+	<FOR: "for"> |
+	<INT: "int"> |
+	<IF: "if"> |
+	<DO: "do"> |
+	<GLbyte: "GLbyte"> |
+	<GLshort: "GLshort"> |
+	<GLint: "GLint"> |
+	<GLfloat: "GLfloat"> |
+	<GLclampf: "GLclampf"> |
+	<GLdouble: "GLdouble"> |
+	<GLclampd: "GLclampd"> |
+	<GLubyte: "GLubyte"> |
+	<GLboolean: "GLboolean"> |
+	<GLushort: "GLushort"> |
+	<GLuint: "GLuint"> |
+	<GLenum: "GLenum"> |
+	<GLbitfield: "GLbitfield"> 
+}
+
+TOKEN : {
+ <IDENTIFIER: <LETTER> (<LETTER> | <DIGIT>)*>
+|  <#LETTER: ["$","A"-"Z","_","a"-"z"]>
+|  <#DIGIT: ["0"-"9"]>
+}
+
+void TranslationUnit() : {}
+{
+	(ExternalDeclaration())+
+	{ /* printTypes(); */ }
+}
+
+void ExternalDeclaration() : {}
+{
+	( LOOKAHEAD( FunctionDefinition() ) FunctionDefinition() | Declaration())
+}
+
+void FunctionDefinition() : {}
+{
+	[LOOKAHEAD(DeclarationSpecifiers()) DeclarationSpecifiers()] Declarator() [ DeclarationList() ]
+	CompoundStatement()
+}
+
+void Declaration() : {}
+{
+	DeclarationSpecifiers() [ InitDeclaratorList() ] 
+	";" { src=src+";\n"; } 
+}
+
+void DeclarationList() : {}
+{
+	( LOOKAHEAD(Declaration()) Declaration() )+
+}
+
+void DeclarationSpecifiers() : {}
+{
+	  StorageClassSpecifier() [ LOOKAHEAD(DeclarationSpecifiers())
+	        DeclarationSpecifiers() ] |
+	  TypeSpecifier()  [ LOOKAHEAD(DeclarationSpecifiers())
+	        DeclarationSpecifiers() ] |
+	  TypeQualifier() [ LOOKAHEAD(DeclarationSpecifiers())
+	        DeclarationSpecifiers() ]
+}
+
+void StorageClassSpecifier() : 
+{ Token t; }
+{
+	( t=<AUTO> { src=src+t.image+" "; }| 
+	  t=<REGISTER> { src=src+t.image+" "; }| 
+	  t=<STATIC> { src=src+t.image+" "; }| 
+	  t=<EXTERN> { src=src+t.image+" "; }| 
+	  t=<TYPEDEF> { src=src+t.image+" "; }
+	{
+		typedefParsingStack.push(Boolean.TRUE);
+	} )
+}
+
+void TypeSpecifier() :
+{ Token t; }
+{
+	( t=<VOID> { src=src+t.image+" "; } | 
+	  t=<CHAR> { src=src+t.image+" "; } |  
+	  t=<SHORT> { src=src+t.image+" "; } | 
+	  t=<INT> { src=src+t.image+" "; }| 
+	  t=<LONG> { src=src+t.image+" "; }|
+	  t=<FLOAT> { src=src+t.image+" "; }| 
+	  t=<DOUBLE> { src=src+t.image+" "; }| 
+	  t=<SIGNED> { src=src+t.image+" "; }|
+	  t=<UNSIGNED> { src=src+t.image+" "; }| 
+	  StructOrUnionSpecifier() | 
+	  EnumSpecifier() | 
+	  LOOKAHEAD( { isType(getToken(1).image) } )TypedefName() )
+}
+
+void TypeQualifier() : 
+{ Token t; }
+{
+	( t=<CONST> { src=src+t.image+" "; } | 
+	  t=<VOLATILE> { src=src+t.image+" "; } )
+}
+
+void StructOrUnionSpecifier() : 
+{ Token t; }
+{
+	{
+	    typedefParsingStack.push(Boolean.FALSE);
+	}
+
+	StructOrUnion() ( LOOKAHEAD(3) 
+	  [ t=<IDENTIFIER> { src=src+t.image+" "; } ] 
+	  "{" { src=src+"{\n"; } StructDeclarationList() 
+	  "}" { src=src+"}\n"; } | 
+	  t=<IDENTIFIER> { src=src+t.image+" "; })
+	{
+		typedefParsingStack.pop();
+	}
+}
+
+void StructOrUnion() : 
+{ Token t; }
+{
+	( t=<STRUCT> { src=src+t.image+" "; } | 
+	  t=<UNION> { src=src+t.image+" "; } )
+}
+
+void StructDeclarationList() : {}
+{
+	(StructDeclaration())+
+}
+
+void InitDeclaratorList() : {}
+{
+	InitDeclarator() (
+	  "," { src=src+", "; } InitDeclarator())*
+	{
+		// Finished with a typedefDeclaration??
+		if(!(typedefParsingStack.empty()) && ((Boolean)typedefParsingStack.peek()).booleanValue()){
+		   	typedefParsingStack.pop();
+	  }
+	}
+}
+
+void InitDeclarator() : {}
+{
+	Declarator() [ "=" { src=src+"= "; } Initializer() ]
+}
+
+void StructDeclaration() : {}
+{
+	SpecifierQualifierList() StructDeclaratorList() 
+	";" { src=src+";\n"; }
+}
+
+void SpecifierQualifierList() : {}
+{
+	  TypeSpecifier() [ LOOKAHEAD(SpecifierQualifierList())
+	        SpecifierQualifierList() ]|
+	  TypeQualifier() [ LOOKAHEAD(SpecifierQualifierList())
+	        SpecifierQualifierList() ]
+}
+
+void StructDeclaratorList() : {}
+{
+	StructDeclarator() ( "," { src=src+", "; } StructDeclarator() )*
+}
+
+void StructDeclarator() : {}
+{
+	( LOOKAHEAD(3) Declarator() | [ Declarator() ] 
+	  ":" { src=src+": "; } ConstantExpression() )
+}
+
+void EnumSpecifier() : 
+{ Token t; }
+{
+	t=<ENUM> { src=src+t.image+" "; } ( LOOKAHEAD(3) 
+	  [ t=<IDENTIFIER> { src=src+t.image+" "; } ] 
+	  "{" { src=src+"{\n"; } EnumeratorList() 
+	  "}" { src=src+"}\n"; } | 
+	  t=<IDENTIFIER> { src=src+t.image+" "; } )
+}
+
+void EnumeratorList() : {}
+{
+	Enumerator() ("," { src=src+",\n"; } Enumerator())*
+}
+
+void Enumerator() : 
+{ Token t; }
+{
+	t=<IDENTIFIER> { src=src+t.image+" "; } 
+	  [ "=" { src=src+"= "; } ConstantExpression() ]
+}
+
+void Declarator() : {}
+{
+	[ Pointer() ] DirectDeclarator()
+}
+
+void DirectDeclarator() : { Token t;}
+{
+	( t = <IDENTIFIER>
+	{ src=src+t.image+" "; 
+	  if(!(typedefParsingStack.empty()) && 
+	     ((Boolean)typedefParsingStack.peek()).booleanValue())
+	  {
+		    addType(t.image);
+	  }
+	}
+	 | "(" { src=src+"( "; } Declarator() ")" { src=src+") "; } )
+
+	( "[" { src=src+"[ "; } [ ConstantExpression() ] "]" { src=src+"] "; } |
+	    LOOKAHEAD(3) "(" { src=src+"( "; } ParameterTypeList() 
+	    ")" { src=src+") "; } |
+	    "(" { src=src+"( "; } [ IdentifierList() ] ")" { src=src+") "; } )*
+}
+
+void Pointer() : {}
+{
+	"*" { src=src+"* "; } [ TypeQualifierList() ] [ Pointer() ]
+}
+
+void TypeQualifierList() : {}
+{
+	(TypeQualifier())+
+}
+
+void ParameterTypeList() : {}
+{
+	ParameterList() ["," { src=src+", "; } "..." { src=src+"..."; } ]
+}
+
+void ParameterList() : {}
+{
+	ParameterDeclaration() (LOOKAHEAD(2) 
+	"," { src=src+", "; } ParameterDeclaration())*
+}
+
+void ParameterDeclaration() : {}
+{
+	DeclarationSpecifiers() ( LOOKAHEAD(Declarator()) Declarator() | [ AbstractDeclarator() ] )
+}
+
+void IdentifierList() : 
+{ Token t; }
+{
+	t=<IDENTIFIER> { src=src+t.image+" "; } 
+	  ("," { src=src+", "; } t=<IDENTIFIER> { src=src+t.image+" "; } )*
+}
+
+void Initializer() : {}
+{
+	( AssignmentExpression() |
+	  "{" { src=src+"{\n"; } InitializerList() 
+	  ["," { src=src+", "; } ] "}" { src=src+"}\n"; } )
+}
+
+void InitializerList() : {}
+{
+	Initializer() (LOOKAHEAD(2) "," { src=src+", "; } Initializer())*
+}
+
+void TypeName() : {}
+{
+	SpecifierQualifierList() [ AbstractDeclarator() ]
+
+}
+
+void AbstractDeclarator() : {}
+{
+	( LOOKAHEAD(3) Pointer() |
+	  [Pointer()] DirectAbstractDeclarator() )
+}
+
+void DirectAbstractDeclarator() : {}
+{
+	( LOOKAHEAD(2) 
+	  "(" { src=src+"( "; } AbstractDeclarator() 
+	  ")" { src=src+") "; } |
+	  "[" { src=src+"[ "; } [ConstantExpression()] 
+	  "]" { src=src+"] "; } |
+	  "(" { src=src+"( "; } [ParameterTypeList()] 
+	  ")" { src=src+") "; } )
+	  ( 
+	    "[" { src=src+"[ "; } [ ConstantExpression() ] 
+	    "]" { src=src+"] "; } | 
+	    "(" { src=src+"( "; } [ ParameterTypeList() ] 
+	    ")" { src=src+") "; } )*
+}
+
+void TypedefName() : 
+{ Token t; }
+{
+	t=<IDENTIFIER> { src=src+t.image+" "; }
+}
+
+void Statement() : {}
+{
+	( LOOKAHEAD(2) LabeledStatement() |
+	  ExpressionStatement() |
+	  CompoundStatement() |
+	  SelectionStatement() |
+	  IterationStatement() |
+	  JumpStatement() )
+}
+
+void LabeledStatement() : 
+{ Token t; }
+{
+	( t=<IDENTIFIER> { src=src+t.image+" "; }
+	  ":" { src=src+": "; } Statement() |
+	  t=<CASE> { src=src+t.image+" "; } ConstantExpression() 
+	  ":"{ src=src+": "; }  Statement() |
+	  t=<DFLT> { src=src+t.image+" "; }
+	  ":"{ src=src+": "; }  Statement() )
+}
+
+void ExpressionStatement() : {}
+{
+	[ Expression() ] ";"{ src=src+";\n"; } 
+}
+
+void CompoundStatement() : {}
+{
+	"{" { src=src+"{\n"; } [ LOOKAHEAD(DeclarationList()) DeclarationList() ]
+	    [ StatementList() ]
+	"}"{ src=src+"}\n"; } 
+}
+
+void StatementList() : {}
+{
+	(Statement())+
+}
+
+void SelectionStatement() :
+{ Token t; }
+{
+	( t=<IF> { src=src+t.image+" "; }
+	  "(" { src=src+"( "; } Expression() 
+	  ")" { src=src+")\n"; } Statement() [ LOOKAHEAD(2) 
+	  t=<ELSE> { src=src+t.image+" "; } Statement() ] |
+	  t=<SWITCH> { src=src+t.image+" "; }
+	  "(" { src=src+"( "; } Expression() 
+	  ")" { src=src+")\n"; } Statement() )
+}
+
+void IterationStatement() : 
+{ Token t; }
+{
+	( t=<WHILE> { src=src+t.image+" "; } 
+	  "(" { src=src+"( "; } Expression() 
+	  ")" { src=src+")\n"; } Statement() |
+	  t=<DO> { src=src+t.image+"\n"; } Statement() 
+	  t=<WHILE> { src=src+t.image+" "; } 
+	  "(" { src=src+"( "; } Expression() 
+	  ")" ";" { src=src+");\n"; } |
+	  t=<FOR> { src=src+t.image+" "; }
+	  "(" { src=src+"( "; } [ Expression() ] 
+	  ";" { src=src+"; "; } [ Expression() ] 
+	  ";" { src=src+"; "; } [ Expression() ] 
+	  ")" { src=src+")\n"; } 
+	  Statement() )
+}
+
+void JumpStatement() : 
+{ Token t; }
+{
+	( t=<GOTO> { src=src+t.image+" "; } t=<IDENTIFIER> { src=src+t.image+" "; } 
+	  ";" { src=src+";\n"; } |
+	  t=<CONTINUE> { src=src+t.image+" "; } ";" { src=src+";\n"; } |
+	  t=<BREAK> { src=src+t.image+" "; } ";" { src=src+";\n"; } |
+	  t=<RETURN> { src=src+t.image+" "; } 
+	  [ Expression() ] ";" { src=src+";\n"; } )
+}
+
+void Expression() : {}
+{
+	AssignmentExpression() ( "," { src=src+", "; } AssignmentExpression() )*
+}
+
+void AssignmentExpression() : {}
+{
+	  LOOKAHEAD(UnaryExpression() AssignmentOperator()) UnaryExpression() AssignmentOperator() AssignmentExpression() |
+	  LOOKAHEAD(3) ConditionalExpression()
+}
+
+void AssignmentOperator() : {}
+{
+	( "=" { src=src+"= "; } | 
+	  "*=" { src=src+"*= "; } | 
+	  "/=" { src=src+"/= "; } | 
+	  "%=" { src=src+"%= "; } | 
+	  "+=" { src=src+"+= "; } | 
+	  "-=" { src=src+"-= "; } | 
+	  "<<=" { src=src+"<<= "; } | 
+	  ">>=" { src=src+">>= "; } | 
+	  "&=" { src=src+"&= "; } | 
+	  "^=" { src=src+"^= "; } | 
+	  "|=" { src=src+"|= "; } )
+}
+
+void ConditionalExpression() : {}
+{
+	LogicalORExpression() 
+	  [ "?" { src=src+"? "; } Expression() ":" { src=src+": "; } 
+	    ConditionalExpression() ]
+}
+
+void ConstantExpression() : {}
+{
+	ConditionalExpression()
+}
+
+void LogicalORExpression() : {}
+{
+	LogicalANDExpression() 
+	  [ "||" { src=src+"|| "; } LogicalORExpression() ]
+}
+
+void LogicalANDExpression() : {}
+{
+	InclusiveORExpression() 
+	  [ "&&" { src=src+"&& "; } LogicalANDExpression() ]
+}
+
+void InclusiveORExpression() : {}
+{
+	ExclusiveORExpression() 
+	  [ "|" { src=src+"| "; } InclusiveORExpression() ]
+}
+
+void ExclusiveORExpression() : {}
+{
+	ANDExpression() 
+	  [ "^" { src=src+"^ "; } ExclusiveORExpression() ]
+}
+
+void ANDExpression() : {}
+{
+	EqualityExpression() 
+	  [ "&" { src=src+"& "; } ANDExpression() ]
+}
+
+void EqualityExpression() : {}
+{
+	RelationalExpression() 
+	  [ ( "==" { src=src+"== "; } | "!=" { src=src+"!= "; } ) 
+	    EqualityExpression() ]
+}
+
+void RelationalExpression() : {}
+{
+	ShiftExpression() 
+	  [ ( "<" { src=src+"< "; } | 
+	      ">" { src=src+"> "; } | 
+	      "<=" { src=src+"<= "; } | 
+	      ">=" { src=src+">= "; } ) RelationalExpression() ]
+}
+
+void ShiftExpression() : {}
+{
+	AdditiveExpression() 
+	  [ ( "<<" { src=src+"<< "; } | ">>" { src=src+">> "; } ) ShiftExpression() ]
+}
+
+void AdditiveExpression() : {}
+{
+	MultiplicativeExpression() 
+	  [ ( "+" { src=src+"+ "; } | "-" { src=src+"- "; } ) AdditiveExpression() ]
+}
+
+void MultiplicativeExpression() : {}
+{
+	CastExpression() 
+	  [ ( "*" { src=src+"* "; } | 
+	      "/" { src=src+"/ "; } | 
+	      "%" { src=src+"% "; } ) MultiplicativeExpression() ]
+}
+
+void CastExpression() : 
+{ String help1= new String(); 
+  String help2= new String(); 
+}
+{
+	( LOOKAHEAD( "(" TypeName(help1) ")" CastExpression(help2) ) 
+	  { src=src+"( "+help1+") "+help2; }
+	  "(" { src=src+"( "; } TypeName() ")" { src=src+") "; } CastExpression() |
+	  UnaryExpression() )
+}
+
+void UnaryExpression() : 
+{ Token t; }
+{
+	( LOOKAHEAD(3) PostfixExpression() |
+	  "++" { src=src+"++ "; } UnaryExpression() |
+	  "--" { src=src+"-- "; } UnaryExpression() |
+	  UnaryOperator() CastExpression() |
+	  t=<SIZEOF> { src=src+t.image+" "; } 
+	    ( LOOKAHEAD(UnaryExpression() ) UnaryExpression() | 
+	  "(" { src=src+"( "; } TypeName() ")" { src=src+") "; } ) )
+}
+
+void UnaryOperator() : {}
+{
+	( "&" { src=src+"& "; } | 
+	  "*" { src=src+"* "; } | 
+	  "+" { src=src+"+ "; } | 
+	  "-" { src=src+"- "; } | 
+	  "~" { src=src+"~ "; } | 
+	  "!" { src=src+"! "; } )
+}
+
+void PostfixExpression() : 
+{ Token t; }
+{
+      PrimaryExpression() 
+      	( "[" { src=src+"[ "; } Expression() "]" { src=src+"] "; } |
+      "(" { src=src+"( "; } 
+        [ LOOKAHEAD(ArgumentExpressionList() ) ArgumentExpressionList() ] 
+	")" { src=src+") "; } |
+      "." { src=src+". "; } t=<IDENTIFIER> { src=src+t.image+" "; } |
+      "->" { src=src+"-> "; } t=<IDENTIFIER> { src=src+t.image+" "; } |
+      "++" { src=src+"++ "; } |
+      "--" { src=src+"-- "; } )*
+}
+
+void PrimaryExpression() :
+{ Token t; }
+{
+	( t=<IDENTIFIER> { src=src+t.image+" "; } |
+	  Constant() |
+	  "(" { src=src+"( "; } Expression() ")" { src=src+") "; }  )
+}
+
+void ArgumentExpressionList() : 
+{ }
+{
+	AssignmentExpression()
+	( "," { src=src+", "; } AssignmentExpression() )*
+}
+
+void Constant() :
+{ Token t; }
+{
+ t=<INTEGER_LITERAL> { src=src+t.image+" "; } |
+ t=<FLOATING_POINT_LITERAL> { src=src+t.image+" "; } |
+ t=<CHARACTER_LITERAL> { src=src+t.image+" "; } |
+ t=<STRING_LITERAL> { src=src+t.image+" "; }
+}
+

@@ -1,0 +1,1573 @@
+\documentclass{report} % Must use LaTex 2e
+\usepackage{html,a4}
+\latex{\usepackage{german}}
+
+\begin{document}
+
+\renewcommand{\thefootnote}{\alph{footnote}}
+\renewcommand{\thempfootnote}{\alph{mpfootnote}}
+
+\originalTeX
+
+\pagestyle{headings}
+
+\begin{titlepage}
+  {\LARGE
+      \begin{tabular}{p{20mm}l}
+              & \htmladdnormallink{GL4Java}{http://www.jausoft.com}\\[3mm]
+	      & Implementation Of A Native OpenGL-Interface \\
+	      & to Java, X-Window and Windows (95/NT)\\[3mm]
+	      & \emph{Version 2.4.0 Release 0}\\[5mm]
+	      & \htmladdnormallink{Sven Goethel}{mailto:gl4java@jausoft.com} \\[25mm] 
+	      & Jausoft - Sven Goethel Software development \\[25mm]
+%	      \hline \\[20mm]
+	      & 29. December 1997 (Diploma Thesis Closing)\\[50mm]
+	      & 26th June 2000 (Last Changes)
+      \end{tabular}
+      }
+\end{titlepage}
+
+May be you want to check the follwing news about GL4Java directly:
+\begin{itemize}
+	\item The GL4Java top level homepage at \htmladdnormallink{http://www.jausoft.com}{http://www.jausoft.com}.
+	\item The JavaDoc package-documentation at \htmladdnormallink{packages.html}{packages.html}.
+	\item \emph{Download} GL4Java at \ref{download}, page \pageref{download}.
+	\item The \emph{versions} file at \ref{versions}, page \pageref{versions}.
+	\item The \emph{changes} file at \ref{changes}, page \pageref{changes}.
+	\item The \emph{license} of GL4Java at \ref{license}, page \pageref{license}.
+	\item The \emph{thanxs} file at \ref{thanxs}, page \pageref{thanxs}.
+\end{itemize}
+
+
+\tableofcontents
+
+\chapter{Introduction}
+
+\section{GL4Java Homepage}
+Since GL4Java Version 1.0.2 the GL4Java-Homepage has its new top-level homepage.
+
+\htmladdnormallink{http://www.jausoft.com}{http://www.jausoft.com} contains the top level homepage about GL4Java. Some links to other users are located here.
+
+\section{About GL4Java}
+
+Sorry that this English is not very good ;-) But I guess it's
+better to write little english for everybody than to write German for
+only a few.
+\htmladdnormallink{Atilla Kolac}{mailto:a_kolac@bielefeld.netsurf.de}
+and I
+are working on the implementation of GL4Java\cite{GL4JavaHome}
+for our diploma thesis under the supervision 
+of Prof. Dr. Wolfgang Bunse\cite{ProfBunse}.
+
+Now, i do still maintain GL4Java\cite{GL4JavaHome}.
+
+The purpose of GL4Java is to use Java as a platform independed
+programming language for OpenGL applications.
+
+The development of GL4Java may be continued by us or other persons, 
+if there are interesting users.
+
+We would be very lucky, if we get some response, critic, inspirations,
+bugfixes and participation. 
+
+\section{About this Document}
+
+This document was layouted with \LaTeX\ on Linux.
+We used english as the main language, because this documentation is
+published on the WWW-Server of the FH-Bielefeld\cite{GL4JavaHome2}. To convert this \LaTeX\ documentation we used latex2html\cite{Dragos96}.
+The appendix includes the introduction about OpenGL and Java in the german language. We used german for these parts, because there are many documentations in the english language for these purposes \cite{Woo97} \cite{Fosner97} \cite{JavaTuto}. This appendix is not included in the html files.
+
+The paperware we have to produce for the FH-Bielefeld includes a printout of
+the javadoc-html pages of the base GL4Java classes.
+We include a link to the javadoc pages in chapter \ref{GL4JavaHtml}, page \pageref{GL4JavaHtml}.
+
+
+
+\section{Who wrote which part?}
+The diploma thesis is splitten into two diploma theses:
+\begin{itemize}
+	\item Sven Goethel: Implementation Of A Native OpenGL-Interface to Java and X-Window
+	\item Atilla Kolac: Implementation Of A Native OpenGL-Interface to Java and Windows-NT
+\end{itemize}
+Because we both worked together in design, implementation and documentation,
+we publish one documentation and one package.
+
+To help others to distinguish who of us is responsible for which part,
+we marked Sven Goethel's tasks with a \dag, we marked Atilla Kolac's part with a \ddag, and we marked the parts which are written by both of us with nothing at all.
+If the chapter is marked, the whole chapter was written by this person.
+If only some sections are marked, only the specific section was written by this person.
+If nothing is marked both persons wrote those chapter.
+
+Since Version 1.1.0 Sven Goethel maintains this package.
+
+\section{The Procedure\dag}
+\subsection{History}
+The OpenGL interface for Java work was started by Leo Chan\cite{Chan97}.
+He implements the library with Java 1.0.2 native calls and with an extra window for OpenGL-Rendering.
+
+Leo Chan's works was continued by Adam King\cite{King97}.
+His OpenGL4Java is able
+to be compiled with Java 1.1 and the OpenGL-Rendering is done in the calling
+Java-Frame. He still uses the Java 1.0.2 native calls.
+
+Tommy Reilly\cite{Reilly97}
+participated to Adam King's work and the project's title changed to Jogl.
+Jogl's big points lies in it's powerfull autoconfig and in it's
+improved X-Window System functions - so mostly all Unices are supported.
+Another point is the Win32 support. Sources and a precompiled dll are
+distributed.
+Jogl still differs from the true OpenGL naming convention.
+
+Because of newly communication results, we are thinking about
+joining the Jogl project. This does not means, that there will be no more
+GL4Java ! We still support the GL4Java, with the OpenGL like API (naming
+conventions) !
+
+\subsection{Our Work}
+We started developing GL4Java with Adam King's\cite{King97} OpenGL4Java.
+As a matter of asynchronise development, 
+the changes from Java 1.0.2 to JNI 1.1 native calls 
+were made within the Jogl and GL4Java project parallel
+- because we did not know of each others development.
+
+Actual results and later changes in Jogl are ported and will be ported to GL4Java.
+Like Jogl, GL4Java uses the Java 1.1 Java-Native-Interface (JNI).
+Many incompatible changes to OpenGL4Java/Jogl were made, see the chapter \ref{changes} at page \pageref{changes}.
+
+One big point of GL4Java is the used OpenGL naming convention,
+support for glu* and glut* functions (glut support in the near future).
+
+GL4Java extends OpenGL's API with an own naming convention.
+Specialised known windowing functions, like glXSwapBuffers, have the prefix
+glj, like gljSwap. 
+
+Also the GLFrame class adds itself as a ComponentListener,
+so we have a event-handler in java, like reshape for glut !
+
+If we uses a own created Color-Window as the GL-Window
+(not usefull for AIX, LINUX AND SOLARIS YET),
+gljResize will be called if the componentResized is called (ComponentListener)
+to resize the own created Window !
+
+\subsection{Status}
+We can announce the following stats about GL4Java Version 2.1.0.0
+\begin{itemize}
+	\item Stable versions with precompiled librarys for Linux, SunOS (Solaris), Windows (95/NT) and Macintosh.
+	\item Runs on Java 1.1.5 and higher, tested on:
+	\begin{itemize}
+              	\item JDK 1.1.7 (win32 (plus jit), linux (plus jit (tya v3.0)))
+		\item JDK 1.2 (Win32, Linux (Pre-V1,native,no-jit), Macintosh, ...)
+		\item Java2 (Java1.2) Plug-In on Netscape 4.5 (Win32)
+		\item Netscape 4.5 (Win32/Unix)
+		\item MS-JVM (build 3186) Win32
+		\item InternetExplorer4.0 with MS-JVM (build 3186) Win32
+	\end{itemize}
+	\item AIX stable version with some multithreading difficulties
+	\item Many demonstrations of GL4Java, which also uses many Java GUI
+	features.
+	\item \htmladdnormallink{A JavaDoc HTML-Documentation}{packages.html}
+\end{itemize}
+
+\subsection{Targets}
+If you use Mesa as your OpenGL driver, 
+you should use Mesa Version 3.0 or higher !
+
+The actual implementation of GL4Java supports the following UNICES
+
+\begin{itemize}
+	\item AIX (RS/6000) 4.2 with $\geq$ JDK 1.1.5 (without JIT\_COMPILER option)
+	\item Linux (x86) 2.X with Mesa-3.0 and Metro-Link's GL and Xi's Accelerated OpenGL + $\geq$ JDK 1.1.7
+	\item SunOS (Sparc) 5.X with Mesa-2.4 GL with $\geq$ JDK 1.1.5 (green threads)
+	\item SGI-Irix 
+	\item Macintosh 
+\end{itemize}
+
+but if you know about programming, i guess it only makes little afford to
+support your unix.
+
+And the following Windows
+\begin{itemize}
+	\item Windows NT 4.0 \& 95/98 (x86) with MS OpenGL-Library + $\geq$ JDK 1.1.7
+	\item Windows NT 4.0 \& 95/98 (x86) with MS OpenGL-Library + $\geq$ MS-JVM (build 3186)
+\end{itemize}
+
+\chapter{Installation\dag}
+\label{download}
+
+\section{Obtain GL4Java}
+You can download GL4Java at \htmladdnormallink{http://www.jausoft.com/Files/Java/1.1.X/GL4Java}{http://www.jausoft.com/Files/Java/1.1.X/GL4Java}, where you may can find older versions and new demos either.
+
+Then go to this chapter and click on the following list,
+or just download the appropiate file.
+
+Please use some \emph{Save Link to ...} function of your browser !
+
+It could happen that your browser unzip the package automatically,
+then 'gunzip' or 'tar xzf' does not work of course - just use 'tar xf' then !
+
+Windows users can use the WinZip utility to extract the tar-gzipped files,
+but be sure to NOT convert LF/CR characters, because these files are binary !
+
+\begin{itemize}
+
+	\item \htmladdnormallink{The precompiled binaries for all the machines}{../../binpkg} !
+
+	\item \htmladdnormallink{The demos: GL4Java2.4.0.0-demos-v1.zip}{../../archive/} The demos (sources and classes) for you to enjoy !
+
+	\item \htmladdnormallink{The source: GL4Java2.4.0.0-src.tar.gz}{../../archive/} All sources no precompiled binaries no demos !
+
+	\item \htmladdnormallink{The docs: GL4Java2.4.0.0-doc.zip}{../../archive/} This Documentation (html$+$postscript) plus javadoc-package-documentation !
+
+\end{itemize}
+
+\subsection{GL4Java's Version Numbers}
+\label{versions}
+Here is a little descriptions what the versions mean.
+
+\begin{verbatim}
+	binpkg/gl4javaX.Y.Z.R.zip	               (the JAR file)
+	binpkg/libGL4JavaX.Y.Z.R-<UNIX-TYPE>.tar.gz    (the native libs - unix)
+	binpkg/libGL4JavaX.Y.Z.R-<WIN32-TYPE>.zip      (the native libs - win32)
+
+        archive/GL4JavaX.Y.Z.R-demos.zip  (demos      - for users :-)
+        archive/GL4JavaX.Y.Z.R-src.tgz    (everything - for developers :-)
+        archive/GL4JavaX.Y.Z.R-doc.tgz    (everything - for readers :-)
+
+        (where X is the major, Y the minor, Z the bugfix and R the release 
+	 library version number ! 
+	 Take a look at VERSIONS.txt for a closer description !
+	)
+
+\end{verbatim}
+
+\subsubsection{Version Compatibility}
+\input{../VERSIONS.txt}
+
+\section{GL4Java's Directory structure}
+\label{dirstruct}
+
+\bigskip
+
+\latex{\begin{minipage}{15cm}}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+
+\begin{center}
+
+\begin{tabular}{ll}
+{\tt ./ } & this is the directory, \\
+		        	&		where you extract this package\\
+ & \\
+{\tt ./GL4Java } & GL4Java root directory \\
+ & \\
+{\tt ./GL4Java/gl4java }        	&		java-package\footnote[1]{within the src-package}\\
+{\tt ./GL4Java/gl4java/awt }        	&		java-package\footnotemark[1]\\
+{\tt ./GL4Java/gl4java/jau/awt }       	&		java-package\footnotemark[1]\\
+{\tt ./GL4Java/gl4java/system }       	&		java-package\footnotemark[1]\\
+ & \\
+{\tt ./GL4Java/sun/awt/macintosh }	&		additional java-package\footnotemark[1]\\
+{\tt ./GL4Java/sun/awt/motif }		&		additional java-package\footnotemark[1]\\
+{\tt ./GL4Java/sun/awt/windows } 	&		additional java-package\footnotemark[1]\\
+ & \\
+{\tt ./GL4Java/CNativeCode }   	&		native code\footnotemark[1]\\
+ & \\
+{\tt ./GL4Java/demos }			&		GL4Java demos\footnote[2]{within the demo-package}\\
+{\tt ./GL4Java/demos/natives }		&		same demos as native implementation\footnotemark[2]\\
+ & \\
+{\tt ./GL4Java/mklibs }		&		shell-scripts to do dynamic libs\\
+				&		for different plattforms\footnotemark[1] \\
+				& \\
+{\tt ./GL4Java/binpkg }		&		the precompiled binaries\footnote[3]{for the binary installation}\\
+{\tt ./GL4Java/binpkg/gl4javaX.Y.Z.R.zip } 	&	GL4Java Java-Archive\footnotemark[3]\\
+ & \\
+{\tt ./GL4Java/binpkg/libGL4JavaX.Y.Z.R-<WIN32-TYPE>.zip } &  ... for Windows 32\footnotemark[3]\\
+{\tt ./GL4Java/binpkg/libGL4JavaX.Y.Z.R-<UNIX-TYPE>.tar.gz } & ... for Unices\footnotemark[3]\\
+{\tt ./GL4Java/CClassHeaders }		&	temporaery dir for javah\footnotemark[1] \\
+ & \\
+{\tt ./GL4Java/C2J }			&	the C2J cross-compiler\footnotemark[1] \\
+				&	used to create OpenGL and GLU wrappers \\
+{\tt ./GL4Java/C2J/manual }		&	manual wrappers (see above)\footnotemark[1] \\
+ & \\
+{\tt ./GL4Java/docs }			&	documentation target dir\footnote[4]{within the doc-package} \\
+{\tt ./GL4Java/docs/html }		&	the html-documentation\footnotemark[4] \\
+{\tt ./GL4Java/docs/html/icons }	&	icons for latex2html\footnotemark[4]\\
+{\tt ./GL4Java/docs/html/images }	&	icons for javadoc\footnotemark[4]\\
+ & \\
+{\tt ./GL4Java/docs-src	 }	&	doc source for tex-doc\footnotemark[1] \\
+{\tt ./GL4Java/archive }		&	all archives (*.tar.gz) resides here\footnote[5]{not within any package} ! \\
+ & \\
+{\tt ./GL4Java/Win32BC5 }		&	the target dir for Win32 development\\
+				&	(Borland C Version 5.0)\footnotemark[1] \\
+{\tt ./GL4Java/Win32VC5 }		&	the target dir for Win32 development \\
+				&	(MS Visual C Version 5.0)\footnotemark[1] \\
+\end{tabular}
+
+\end{center}
+
+\latex{\end{minipage}}
+
+
+\section{Step by Step}
+
+You can choose between an automatic installation with the GL4Java Installer
+and a manual installation !
+
+\subsection{\htmladdnormallink{GL4Java Installer}{../../INSTALLER.txt}}
+\label{GL4JavaInstaller}
+\begin{latexonly}
+\input{../INSTALLER.txt}
+\end{latexonly}
+
+\subsection{\htmladdnormallink{Manual Binary Installation}{../../INSTALL.txt}}
+\label{BinInstall}
+\begin{latexonly}
+\input{../INSTALL.txt}
+\end{latexonly}
+
+\subsubsection{\htmladdnormallink{Java2 Installation}{../../Java2.txt}}
+\label{Java2Install}
+\begin{latexonly}
+\input{../Java2.txt}
+\end{latexonly}
+
+\subsubsection{\htmladdnormallink{Netscape Installation}{../../Netscape.txt}}
+\label{NetscapeInstall}
+\begin{latexonly}
+\input{../Netscape.txt}
+\end{latexonly}
+
+\subsubsection{\htmladdnormallink{Microsoft JVM Installation}{../../MS-JVM.txt}}
+\label{MSJVMInstall}
+\begin{latexonly}
+\input{../MS-JVM.txt}
+\end{latexonly}
+
+\subsection{Source Installation}
+\label{srcinstall}
+
+\subsubsection{Prerequisites}
+
+You must allready have the following installed:
+
+
+\latex{\begin{minipage}{15cm}}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+
+\begin{enumerate}
+
+
+	\item Common
+
+	\begin{enumerate}
+
+	    \item JDK $\geq$  1.1.7 
+	    \item JavaCC\cite{JavaCC} (chapter \ref{devenv}, page \pageref{devenv})
+	    \item bash (chapter \ref{devenv}, page \pageref{devenv})
+	    \item GNU make (chapter \ref{devenv}, page \pageref{devenv})
+	    \item GNU tools (chapter \ref{devenv}, page \pageref{devenv})
+	    \item Netscape Communicator 4.5 (optional)
+
+	\end{enumerate}
+	
+	\item UNIX/X11
+
+	\begin{enumerate}
+	    \item ( GL + GLU ) or ( MesaGL + MesaGLU Version 2.4 or higher)
+	      AND glut (only for c-demos yet)
+
+	      We are looking for libGL.so AND libGLU.so in your library PATH,
+	      so please create a symbolic link from the Mesa libs,
+	      to the abstract one's !!
+
+	    \item X11R6 (XFree86 works fine ;-)
+
+	    \item Unix standard file-utilities (tar, gzip, ...)
+
+	    \item LaTeX and LaTeX2Html\cite{Dragos96} (to generate the documentation)
+
+	\end{enumerate}
+
+	\item Windows 32 (NT \& 95)
+
+	\begin{enumerate}
+	    \item MS-OpenGL and GLU library installed - \emph{\bf must} !
+	    	See if you have opengl32.dll AND glu32.dll 
+		installed in your library path
+		(c:/winnt/system32 OR c:/windows/system)
+
+	    \item WinZip (to extract zip and tar-gzip files), be sure to disable the option LF/CR conversion in TAR-Archives ! You can also use the jar command-line tool of the JDK for zip files !
+
+	    \item Unix standard utilities (make, ksh (bash), tar ...)
+	    	E.g. GNU-Win32 Project from Cygnus\cite{GnuWin32}, make sure to have zip installed also !
+
+	    \item LaTeX and LaTeX2Html\cite{Dragos96} (not testet - to generate the documentation)
+
+	    \item For compiling GL4Java for the MS-JVM,
+		  be sure you have the new MS-JVM machine (build 3186) installed.
+
+	\end{enumerate}
+    \end{enumerate}
+
+\latex{\end{minipage}}
+
+\subsubsection{Compilation}
+
+	{\center{\bf UNICEs and WINDOWs users}}
+
+You CAN (not a must) follow the Installation procedure above,
+just be sure to copy the libs to your LD\_LIBRARY\_PATH
+which should be the path in symbols.mak 'HOME\_LIB\_DIR' see below (UNICEs) !!
+Also you should use a symbolic link OR edit CLASSPATH
+to make 'GL4Java' and 'sun' visible in you CLASSPATH
+(copy is not recommended - see below !!! ) !
+
+You MUST follow the Installation procedure above,
+if you want to USE GL4Java with JAVA2-JRE, JAVA2-Plug-In, 
+Netscape 4.5 (Win32/Unix) JVM or MS-JVM/InternetExplorer.
+
+Just procede the Installation procedure AFTER the compilation !
+
+Login as root (or any other), 
+obtain the source archive for GL4Java. 
+
+copy the .tar.gz file to a directory such as /usr/local and 
+cd to that directory, then unpack the file: 
+
+\begin{verbatim}
+   cd /usr/local	( or where ever you placed the file )
+   gunzip GL4JavaX.Y.Z-Rn-src.tar.gz ; tar xvf GL4JavaX.Y.Z-Rn-src.tar
+   gunzip GL4JavaX.Y.Z-Rn-doc.tar.gz ; 
+   tar xvf GL4JavaX.Y.Z-Rn-doc.tar (optional :-)
+\end{verbatim}
+
+X is the major, Y the minor and Z the bugfix library version number,
+and Rn (e.g. R2) is the release number, where no 
+changes in the libs where made !
+
+A new directory will be created called GL4Java.
+
+Go to the directory GL4Java, 
+which is the root-directory of GL4Java - so we stay here for the following 
+procedures !
+
+You will see some 'symbols.mak.$<$machine$>$' files.
+Choose the right 'symbols.mak.$<$machine$>$' file, or create one.
+Some older actual non-maintained files can be found under symbols.mak-old !
+Edit your choosen or created 'symbols.mak.$<$machine$>$', so it will fit to
+your OS configuration - all macros !
+Copy the file 'symbols.mak.$<$your-machine$>$' to 'symbols.mak'.
+Do not forget to add your 'HOME\_LIB\_DIR' (set in symbols.mak) to your
+LD\_LIBRARY\_PATH (UNICEs). The created lib will be copied to 'HOME\_LIB\_DIR'
+by automatic (via tar - symbolic links are still alive ;-) !
+
+Next - you have to be sure, that the root-directory of GL4Java,
+where the directories \emph{gl4java} and \emph{sun} exists,
+is in your CLASSPATH.
+E.g.: Assume you have expanded the package in the directory
+\emph{/usr/local}.
+
+\begin{verbatim}
+	
+	For sh/ksh:    CLASSPATH=$CLASSPATH:/usr/local/GL4Java
+	   or
+	for csh:	set CLASSPATH=(/usr/local/GL4Java $CLASSPATH)
+	  or
+	for WINDOW's  check out your GUI's
+
+\end{verbatim}
+This is evt. obsolete, if you have added the THISDIR path in the CLASSPATH 
+of the symbols.mak's JAVAC definition, look into these files !
+You must also use the macro 'DEST\_CLASSES\_DIR' (symbols.mak), where all
+generated class-files will be copied into, when created.
+You can also invoke ´make classcpy´ to force copy all class-files to 
+'DEST\_CLASSES\_DIR'. Also the gl4java.jar file is generated there !
+
+Because GL4Java supports Netscape's JVM with JNI, we do try
+to ask for a privilege to run native DLL's.
+Because this ask - the 'netscape' package is included in the file 
+\emph{capsapi\_classes.zip} which is used in the \emph{JAVAC} macro definition
+in \emph{symbols.mak}.
+
+This is evt. obsolete, if you have entered the file 'capsapi\_classes.zip'
+in the CLASSPATH of the symbols.mak's JAVAC definition, look into these files !
+
+	{\center{\bf UNICEs users}}
+
+Next create the library, class-files and all is needed with (for Unix/X11):
+
+\begin{verbatim}
+    make x11
+\end{verbatim}
+
+The Unix makefile-action does the complete creation :-)
+The default shared-library files for Unice's are :
+\begin{verbatim}
+	  	GLContext:	libGL4JavaJauGljJNI.so
+		GLFuncJauJNI:	libGL4JavaJauGLJNI.so
+		GLUFuncJauJNI:	libGL4JavaJauGLUJNI.so
+
+		This *.so files stands for the versions files
+		with all symbolic links, e.g.:
+
+		  libGL4JavaJauGljJNI.so     -> libGL4JavaJauGljJNI.so.2.1
+		  libGL4JavaJauGljJNI.so.2.1 -> libGL4JavaJauGljJNI.so.2.1.2
+		  libGL4JavaJauGljJNI.so.2.1.2
+			
+\end{verbatim}
+		
+They are moved to the HOME\_LIB\_DIR (see above)
+or copied with the "-a" option to keep the symbolic links alive !
+                            
+
+	{\center{\bf WINDOWs users}}
+
+Next create the class-files and all preparations with (Win32):
+
+\begin{verbatim}
+    make w32
+\end{verbatim}
+
+The Windows makefile-action only creates the tool (gljni) and
+all Java classes and C-wrappers.
+An additional C compiler invocation must be done (see \ref{WinCompile},
+page \pageref{WinCompile}) to create the 
+default shared-library files:
+\begin{verbatim}
+	  	GLContext     (SUN-JNI):	GL4JavaJauGljJNI.dll
+		GLFuncJauJNI  (SUN-JNI):	GL4JavaJauGLJNI.dll
+		GLUFuncJauJNI (SUN-JNI):	GL4JavaJauGLUJNI.dll
+	  	GLContext     (MS-JVM) :	GL4JavaGljMSJDirect.dll
+\end{verbatim}
+
+To run GL4Java within MS-JVM and InternetExplorer, 
+please see \ref{MSJVMInstall}, page \pageref{MSJVMInstall}.
+
+	{\center{\bf UNICEs and WINDOWs users}}
+
+To run GL4Java within Netscape, 
+please \ref{NetscapeInstall}, page \pageref{NetscapeInstall}.
+
+For a complete description of the makefile invokations see \ref{makeinvoke},
+page \pageref{makeinvoke}.
+
+Next create the demos with.
+
+\begin{verbatim}
+   cd demos
+   make
+\end{verbatim}
+
+   If all goes well, just type e.g.: 'java glDemosCvs'
+   in this directory, and
+   you should see a demo manager for all the GL4Java demos we have written.
+
+   To allow JAVA2's appletviewer or Java2-Plug-In using JNI native libs,
+   just look at GL4Java/demo/Java2Applet.bat 
+   (You have to change the gl4java.policy file) !
+
+   You can - of course - use your 'policytool',
+   which is shipped with JAVA2 !
+
+   To use the demo Applets for Java2-Plug-In from www.jausoft.com,
+   please add the following lines to your java.policy file:
+
+\begin{verbatim}
+	grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/-"
+	{
+	  permission java.security.AllPermission;
+	};
+\end{verbatim}
+
+   You can also compare the totally native glut version 
+   against the java version.
+   The glut versions do exist in the demos path also (under native).
+
+\subsection{Windows Source Installation\ddag}
+\label{WinCompile}
+
+To compile GL4Java, we still use MS Visual C++ 6.0 !
+We also assume that Windows is installed under c:/WIN\_NT !
+The compiler flags are set to Pentium Pro (686 / PII) 
+with the optimizimg Intel compiler !
+
+Also Java2 SDK is installed under c:/java2 !
+Also MS Java SDK is installed under c:/MSJAVASDK !
+
+Please check all location in the makefile !
+
+\latex{\begin{minipage}{15cm}}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+
+\begin{enumerate}
+	\item If you have installed cygwin32 and it's bash and make, etc...
+	  AND set it up very well (CLASSPATH, PATH, ...)
+	  you can invoke the makefile\footnote[2]{in the GL4Java directory, the main one} with {\tt make w32 }
+	  to create all java-depended stuff and the C-wrappers.
+
+	\item Befor going any further, check if the files
+	  opengl32.dll glu.dll\footnotemark[1], glu32.dll exist
+	  in c:/WIN\_NT/system32 OR c:/windows/system !
+	  IF not get MS-OpenGL Lib (opengl32.dll, glu32.dll) !
+
+	\item Go with the Explorer to the directory Win32VC6
+	      and open the workspace Win32VC6.dsw !
+
+	\item Now, you should fix some option in the project file,
+	  we used:
+
+	  The order of this path is important !
+
+	  INCLUDEPATH:
+	  \begin{verbatim}
+		  c:/projects/java-1.1.X/GL4Java/CClassHeaders; \
+		  c:/projects/java-1.1.X/GL4Java/CNativeCode; \
+		  c:/java2/include; \
+		  c:/java2/include/windows \
+		  <the MSVC60 SDK PATH's ...>
+	  \end{verbatim}
+
+	  LIBPATH:
+	  \begin{verbatim}
+		  c:/WIN_NT/system32; \
+		  <the MSVC60 SDK PATH's ...>
+	  \end{verbatim}
+
+	  WHERE:
+	  Java2 is installed under {\tt c:/java2 }
+	  GL4Java is installed under {\tt d:/projects/java-1.1.X/GL4Java }
+
+	\item Now just compile each project and the targets are 
+	      placed in the lib directory !
+
+	\item Copy the generated dll's (in the libs-directory)
+	      to your windows system32 directory,
+	      or (better) to your /java2/jre/bin directory .
+
+\end{enumerate}
+
+\latex{\end{minipage}}
+
+\section{Hacking}
+
+For a complete description of the makefile invokations see \ref{makeinvoke},
+page \pageref{makeinvoke}.
+
+You can call 'make x11' for Unix/X11, or 'make w32' for Windows or 'make mac' for Macintosh to create all wrapper classes, Java classes, etc. For Unix/X11 users the native libraries are created also.
+
+If you want to modify the sources, you have to edit the \*.skel files !!!
+E.g.: You should modify 'gl4java/GLContext.java.skel' instead of 'gl4java/GLContext.java', because 'gl4java/GLContext.java' will be generated !!!!
+Check the 'makefile' for more details !
+
+{\bf Again:} Look for *.skel files and modify these, because they will be
+taken to create the target source files without the prefix .skel !!!
+
+Documentation for sources will be created later !!
+Check \htmladdnormallink{gl4java.GLContext.html}{gl4java.GLContext.html}.
+
+For a \emph{step by step} instruction, please see chapter \ref{srcinstall} on page \pageref{srcinstall}.
+
+\chapter{Design\dag}
+
+Since Version 2.0.0 R1 the object model of GL4Java is completly changed !
+But it is very easy to port existing 1.X.X RX GL4Java stuff to the new 
+object model. The script \htmladdnormallink{../../demos/change2GL4JavaV2.sh}{change2GL4JavaV2.sh} will help.
+
+GL4Java is designed to use the native OpenGL library, which should be installed
+on each platform. Instead of writing an own OpenGL library, we just write a wrapper to access the nativ platform dependend OpenGL library.
+
+\section{Native-Call to OpenGL}
+Native programs are written in a programing language, where the compiler
+is able to produce binary code for the platforms processor.
+These OpenGL programs will use the platforms OpenGL library.
+\emph{Use} means, that they load the library and call the procedures which 
+exists in the loaded library.
+
+\section{Java-Call to OpenGL}
+The java program should act like a native program. Java programs should use
+the native OpenGL library on the specific platform.
+The java program must load the wrapper library, which will load the OpenGL library. Like the OpenGL library, the wrapper library is platform depended and will be load in runtime, a so called dynamic library.
+The platform independed java OpenGL application needs the platform depended wrapper library and all librarys the wrapper library needs, e.g.: the OpenGL library etc. .
+To run a java OpenGL application, the user must have the OpenGL library installed and must install the wrapper library - that's all.
+The java OpenGL applications have the performance like an native OpenGL application. The only reason for a performance less than the native one are the costs for the java procedures (to modify data etc.). The passing through of data from java to OpenGL and vice versa needs no special converting features, thus the passing does not consume much time.
+
+
+\subsection{JNI to OpenGL}
+
+\subsubsection{Data Type Mappings}
+Because java should pass it´s data without any time consuming convertion,
+we need a data type mapping style, where the OpenGL data types\cite{Woo97} fits in the 
+java types and vice versa.
+The first and important criteria for a type match is the size of bytes.
+The secound and convinient criteria is to find aequivalent types in java,
+where less or no data converting must be done by the wrapper library and the 
+java OpenGL programmer himself.
+Except for the marked OpenGL types we found a fine type matching which
+fullfill our needs. All \emph{unsigned} types must match in a byte-size 
+java aequivalent, so a special java-casting must be done by the java OpenGL programmer. Because java programmer uses arrays, we generate the GL4Java function for all Java-Array-Types, to achieve compatibility with the \emph{GLvoid *} 
+(see below).
+
+OpenGL Data Types Mapping to Java Types.
+\label{datamap}
+
+\bigskip
+
+\latex{\begin{minipage}{15cm}}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+
+\begin{center}
+\begin{tabular}{lllll}
+\hline
+Data Type & C-Type & JNI-Type & Java-Type & OpenGL Type \\
+\hline
+8-bit integer & unsigned char & jboolean & boolean & GLboolean \\
+ & & & & \\
+8-bit integer & signed char & jbyte & byte & GLbyte \\
+ & & & & \\
+8-bit unsigned integer & unsigned char & jbyte\footnote[1]{No Java matching for unsigned, using extra conversion} & byte\footnotemark[1] & GLubyte, \\
+ & & & & \\
+16-bit integer & short & jshort & short & GLshort \\
+ & & & & \\
+16-bit unsigned integer & unsigned short & jshort\footnotemark[1] & short\footnotemark[1] & GLushort \\
+ & & & & \\
+32-bit integer & int or long & jint & int & GLint, \\
+ & & & & GLsizei \\
+ & & & & \\
+32-bit unsigned integer & unsigned int or & jint\footnotemark[1] & int\footnotemark[1] & GLuint, \\
+                        & unsigned int & & & GLenum, \\
+ & & & & GLbitfield \\
+ & & & & \\
+32-bit floating-point & float & jfloat & float & GLfloat, \\
+ & & & & GLclampf \\
+ & & & & \\
+64-bit floating-point & double & jdouble & double & GLdouble, \\
+ & & & & GLclampd \\
+ & & & & \\
+32-bit integer & void * & jbyteArray\footnote[2]{No Java matching for pointers, using any arrays} & byte[]\footnotemark[2] & GLvoid * \\
+ & & jshortArray\footnotemark[2] & short[]\footnotemark[2] & GLvoid * \\
+ & & jintArray\footnotemark[2] & int[]\footnotemark[2] & GLvoid * \\
+ & & jfloatArray\footnotemark[2] & float[]\footnotemark[2] & GLvoid * \\
+ & & jdoubleArray\footnotemark[2] & double[]\footnotemark[2] & GLvoid * \\
+ & & jbooleanArray\footnotemark[2] & boolean[]\footnotemark[2] & GLvoid * \\
+ & & jlongArray\footnotemark[2] & long[]\footnotemark[2] & GLvoid * \\
+\end{tabular}
+\end{center}
+
+\latex{\end{minipage}}
+
+
+\subsubsection{JNI Generation}
+\label{jnidesign}
+
+The wrapper library which is called by the java application is specified by 
+the Java Native Interface (JNI)\cite{JavaTuto}. All native functions, which should be called by the java application must be declared as a native function in a java class.
+E.g.:
+\begin{verbatim}
+public native void glClear ( int mask ) ;     
+\end{verbatim}
+The JNI compiler creates a header file for the C programming language, e.g. \emph{foo.h}.
+This header file can be copied as an template to the C definition file, e.g. \emph{foo.c}. This definition file can modified to add the needed function bodies.
+The function bodies, the functions, only has to call its C function out of the OpenGL library with a standard data type convertion.
+
+In the begining we wrote some of the OpenGL wrapper functions by ourself,
+but later we learned that we can not guarante that all functions are wrapped and that all functions were almost bug free.
+
+To simplify the writing of the apropiate wrapper functions, we created a 
+C-Header-File to Java-Native-Declarations plus C-Wrapper-Functions
+generator. We named this generator \emph{C2J}.
+
+Details see chapter \ref{c2jimpl} on page \pageref{c2jimpl}.
+
+\section{OpenGL's Connection to the Windowing-System}
+\label{windesign}
+OpenGL is specified as a 3D rendering machine. To view the rendering results,
+we need an visual output device, e.g. the monitor ;-).
+To simplify the monitor output OpenGL uses an existing operating system, 
+which allows graphical output on the screen. The X-Window-System or MS-Windows is a well known an often distributed graphical interface, where the X-Window-System is avaiable on many platforms.
+The common tasks, means the minimum need, of a library which connects the OpenGL machine to the Windowing-System are:
+\begin{itemize}
+	\item connect the OpenGL machine to a window
+	\begin{itemize}
+		\item create a window
+		\item connect the window handel to the OpenGL handle/context
+		\item set up the window properties, e.g. colors
+		\item close the window
+	\end{itemize}
+	\item re-rendering with OpenGL when the window must be refreshed
+\end{itemize}
+
+See the java class implementation in chapter \ref{sunpack} on page \pageref{sunpack} to find the platforms window handle.
+
+\subsection{X-Window-System}
+OpenGL's interface to the X-Window-System (X)\cite{Barkakati97} is the GLX library.
+The GLX library\cite{Woo97} can connect the OpenGL machine\footnote{a instance of the OpenGL machine, the OpenGL context - in detail} to X.
+GLX supports all criteria specified above.
+
+\subsection{MS-Windows}
+OpenGL's interface to MS-Windows (MSW) is the WGL library.
+The WGL library\cite{Fosner97} can connect the OpenGL machine\footnote{a instance of the OpenGL machine, the OpenGL context - in detail} to MSW.
+MSW supports all criteria specified above.
+
+\section{OpenGL's Connection to the AWT}
+\label{glconawt}
+The Abstract Window Toolkit (AWT) is the windowing system of the java machine. 
+The AWT is included in the standard java package. The AWT for Unix and MS-Windows uses native functions of the windowing system, to take advantages of the existing windowing system.
+To achieve the platform window-handle, we use the (since GL4Java Version 1.1.0)
+the following classes:
+\begin{itemize}
+	\item sun.awt.DrawingSurface
+	\item sun.awt.DrawingSurfaceInfo
+	\item sun.awt.X11DrawingSurface (for X11/motif)
+	\item sun.awt.Win32DrawingSurface (for Windows 32-bit)
+\end{itemize}
+
+Of course, these classes are not explicit for user purposes,
+but they do provide us with interfaces to achieve the needed native window handle. We got this technique from Java3D's Canvas3D (decompiled it ...).
+You can see this implementation in:
+\begin{itemize}
+	\item sun/awt/motif/X11HandleAccess.java
+	\item sun/awt/window/Win32HandleAccess.java
+\end{itemize}
+
+\section{OpenGL Mapping to Java}
+The JNI and data-type mapping (see \ref{datamap} on page \pageref{datamap})
+is allready specified above.
+
+What still need to be specified is the place of the java OpenGL native 
+function declarations and which OpenGL librarys should be wrapped.
+
+\subsection{Convinient Placement}
+Because OpenGL is not an object-orientated API, OpenGL programmers does not
+use methods. To support the same OpenGL environment, we will use a java class,
+which contains:
+\begin{itemize}
+	\item window control
+	\item OpenGL functions
+\end{itemize}
+
+\subsection{Keeping the OpenGL C-API}
+
+\subsubsection{The Naming Convention}
+The GL4Java interface supports the OpenGLFrame class, 
+which contains all OpenGL and GLU functions (glut in the near future :-) !
+The naming convention of all gl* and glu* functions in the 
+OpenGLFrame class is exactly the same as in the original,
+so there are no problems in porting C code.
+Datatypes java does not support will by supported by binary compatible types, 
+e.g. for \emph{unsigned byte} in 
+\emph{glColor4ubv}, GL4Java uses a \emph{byte}-array !
+
+
+\chapter{Development Environment}
+\label{devenv}
+We use a directory structure as described above (see \ref{dirstruct}, page \pageref{dirstruct}).
+Many well known Unix tools will be used, included some java tools.
+
+\section{Unix Tools\dag}
+We use the follwing standard tools as our develeopment environment:
+\begin{enumerate}
+	\item c-compiler and linker (GNU-C, ...)
+	\item debugger (gdb, xxgdb)
+	\item JavaCC\cite{JavaCC} (a java lex \& yacc parser generator)
+	\item bash, make (GNU or other)
+	\item tar \& gzip as our archive toolkit
+\end{enumerate}
+
+\section{Windows Tools\ddag}
+All above named Unix tools are avaiable under MS-Windows 32 with the
+GNU-Win32 project by Cygnus\cite{GnuWin32}.
+We need an additional MS-Windows compiler, MC-Visual-C++ or Borland-C++
+are appropiate MS-Windows compilers.
+We took the Borland compiler, because of it's accessible,
+but we guess it does not make a different.
+
+\chapter{Implementation}
+\label{implementation}
+
+\section{Makefile\dag}
+\label{makefile}
+To manage the project, we wrote a makefile (used with make).
+Our makefile is able to generate the complete code, the demos, the documentation and the archived packages.
+The makefile resides in the projects root directory and is splitten
+into two files:
+\begin{itemize}
+	\item makefile (where all common rules resides)
+	\item symbols.mak (where all platform depended rules and macros resides)
+\end{itemize}
+
+A symbols.mak\* file must be created or copied \& edited for each platform
+and linked to symbols.mak. We support some symbols.mak files like:
+
+\begin{itemize}
+	\item symbols.mak.aix
+	\item symbols.mak.linux
+	\item symbols.mak.solaris
+	\item symbols.mak.win32
+\end{itemize}
+
+\subsection{Makefile Invokation}
+\label{makeinvoke}
+
+Here is the part of the makefile, which describes the different
+actions, which are possible !
+
+\begin{verbatim}
+#
+# for general creation (java + native-lib) invoke:
+#
+# make x11	: create java and native lib for unix/x11
+# make w32	: create java and native lib for windows32
+# make mac	: create java and native lib for Macintosh
+#
+#
+# to copy the class-files to DEST_CLASSES_DIR, invoke:
+#
+# make classcpy
+#
+# 
+# to save the native-library invoke after general creation:
+#
+# make unix2binpkg	: put the created unix-lib to the binpkg-dir
+# make win2binpkg	: put the created win-lib to the binpkg-dir
+# make mac2binpkg	: put the created macintosh-lib to the binpkg-dir
+#
+#
+# to create the complete html documentation invoke
+#
+# make htmldoc		: unix
+# make javadoc		: unix (javadoc only)
+# make htmldocw32	: win32
+# make javadocw32	: win32 (javadoc only)
+#
+#
+# to put all together as an tar-gzip archive in the archive-dir, invoke:
+#
+# make archiv
+#
+#
+# for cleanup (without archive and binpkg !!) invoke:
+#
+# make clean		: only temp-files (java, native)
+# make cleannative	: only temp-files (native)
+# make cleanall		: all temp-,java-,and native-files
+#
+\end{verbatim}
+
+\subsection{Make-Scripts to generate the librarys\dag}
+
+To support a platform independed creation for the wrapper libraries for
+the different Unix platforms, we wrote a shell script therefor,
+which will be invoked by the makefile.
+
+The following files contains the apropiate scripts:
+
+\latex{\begin{minipage}{15cm}}
+
+\begin{center}
+\begin{tabular}{ll}
+\tt mklibs/mkexp.aix &  \\
+\tt mklibs/mklib.aix &  \\
+\tt mklibs/mklib.linux &  \\
+\tt mklibs/mklib.solaris &  \\
+\tt mklibs/mkslib.aix &  \\
+\tt mklibs/mkslib.linux &  \\
+\tt mklibs/mkslib.solaris &  \\
+\end{tabular}
+\end{center}
+
+\latex{\end{minipage}}
+
+
+\section{C2J Version 1.0\dag}
+\label{c2jimpl}
+As decribed in chapter \ref{jnidesign} on page \pageref{jnidesign}, we use C2J as our OpenGL wrapper functions generator.
+C2J is our JNI and MSJDirect file generator.  C2J creates the java native function declarations and the C functions. C2J gets a modified Mesa-OpenGL header file as it's input
+and generates the java native declarations in one file, and the complete C functions in another file. 
+C2J is written in an Extended Backus Naur Form (EBNF) of the JavaCC\cite{JavaCC}parser generator.
+We modified the C parser provided with the JavaCC to write C2J.
+
+The C2J syntax can seen in \htmladdnormallink{GL4Java/C2J/C2J.jj}{./C2J.html} !
+
+The C2J output files are glued with the other parts needed by the java class
+and the C definition-file to the complete sources.
+
+The new C2J Version supports the following new features:
+\begin{enumerate}
+\item Only the glGetString, gluGetString and gluErrorString functions must be written manualy now !!!!
+
+\item Better compatibility with \emph{GLvoid *} arguments.
+  This means 
+\begin{verbatim}
+	"byte[]", "short[]", "int[]",
+	"float[]", "double[]", "boolean[]", "long[]"
+\end{verbatim}
+  functions are generated !
+
+\item Better MS-JDirect (MS-JVM) integeration !
+\end{enumerate}
+
+
+The source files are:
+
+\latex{\begin{minipage}{15cm}}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+
+\begin{center}
+\begin{tabular}{ll}
+\tt C2J/C2J.jj & the parser definition (input for JavaCC) \\
+\tt C2J/makefile	 &			the lokal makefile \\
+\tt C2J/gl-enum-auto.orig	 &		the OpenGL enumeration part, C2J input  \\
+\tt C2J/gl-proto-auto.orig	 &		the OpenGL declaration part, C2J input  \\
+\tt C2J/glu-enum-auto.orig &   the GLU enumeration part\\
+\tt C2J/glu-proto-auto.orig & the GLU declarartion part \\
+\tt C2J/manual/gl-manualCoded.orig & the GL manual coded C2J input \\
+\tt C2J/manual/glu-manualCoded.orig &the GL manual coded C2J input part \\
+\tt C2J/manual/gl-enum-manualCoded.java & the GL manual coded java part \\
+\tt C2J/manual/glu-enum-manualCoded.java & the GLU manual coded java part \\
+\tt C2J/manual/glu-manualCodedImplJNI.c & the GLU manual coded c part \\
+\tt C2J/manual/glu-manualCodedImplJNI.h & the GLU manual coded c part \\
+\tt C2J/manual/glu-manualCodedImplJNI.java & the GLU manual coded java part \\
+\tt C2J/manual/glu-manualCodedImplMSJVM.java & the GLU manual coded java part \\
+\tt C2J/manual/glu-manualCodedVirt.java  & the GLU manual coded java part \\
+\tt C2J/manual/gl-manualCodedImplJNI.c & the GL manual coded c part \\
+\tt C2J/manual/gl-manualCodedVirt.java & the GL manual coded java part \\
+\tt C2J/manual/gl-manualCodedImplJNI.java & the GL manual coded java part \\
+\tt C2J/manual/gl-manualCodedImplMSJVM.java & the GL manual coded java part \\
+\end{tabular}
+\end{center}
+
+\latex{\end{minipage}}
+
+
+
+\section{GLEnum}
+\label{glenum}
+
+Since Version 2.0.0, GLEnum is the interface, where all C-API OpenGL enumerations are defined as static final.
+This class is generated, for details see chapter \ref{c2jimpl} on page \pageref{c2jimpl}.
+
+\section{GLUEnum}
+\label{glenum}
+
+Since Version 2.0.0, GLUEnum is the interface, where all C-API GLU enumerations are defined as static final.
+This class is generated, for details see chapter \ref{c2jimpl} on page \pageref{c2jimpl}.
+
+\section{GLFunc}
+\label{glfunc}
+
+Since Version 2.0.0, GLFunc is the interface, where all C-API OpenGL functions are specified.
+This class is almost generated, for details see chapter \ref{c2jimpl} on page \pageref{c2jimpl}.
+
+\section{GLFuncJauJNI}
+
+Since Version 2.0.0, GLFuncJauJNU is one implementation of the interface GLFunc.
+This class is almost generated, for details see chapter \ref{c2jimpl} on page \pageref{c2jimpl}.
+
+\section{GLUFunc}
+\label{glufunc}
+
+Since Version 2.0.0, GLUFunc is the interface, where all C-API GLU functions are specified.
+This class is almost generated, for details see chapter \ref{c2jimpl} on page \pageref{c2jimpl}.
+
+\section{GLUFuncJauJNI}
+
+Since Version 2.0.0, GLUFuncJauJNU is one implementation of the interface GLUFunc.
+This class is almost generated, for details see chapter \ref{c2jimpl} on page \pageref{c2jimpl}.
+
+\section{GLContext}
+\label{glcontext}
+
+Since Version 2.0.0, GLContext is the central java class for the OpenGL bindings and it is defined as a package member of the java package gl4java.
+GLContext trys to connect the OpenGL machine to the AWT window of
+the given Component, which is represented by the platform specific window.
+
+GLContext also can loads all the needed libraries and GLFunc and GLUFunc
+implementations.
+
+These are the basic source files, look at \ref{gl4javabasefiles}, page \pageref{gl4javabasefiles}.
+
+\section{GLFrame}
+\label{glframe}
+
+Since Version 2.0.0, GLFrame is moved out !
+
+\section{GLCanvas}
+\label{glcanvas}
+
+Since Version 2.0.0, GLCanvas is one AWT toolkit implementation for the OpenGL bindings and it is defined as a package member of the java package gl4java.awt.
+GLCanvas is derived from AWT's Canvas. While creation GLCanvas 
+trys to create a GLContext instance to connect the OpenGL machine to the AWT window, which is represented by the platform specific window.
+
+Also the refresh signal is routed to OpenGL, so OpenGL can re-render.
+
+These are the basic source files, look at \ref{gl4javabasefiles}, page \pageref{gl4javabasefiles}.
+
+\section{GLAnimCanvas\dag\ddag}
+\label{glanimcanvas}
+
+Since Version 2.0.0, GLAnimCanvas is one AWT toolkit implementation for the OpenGL bindings and it is defined as a package member of the java package gl4java.awt.
+GLAnimCanvas is derived from GLCanvas.
+GLAnimCanvas addds thread support for animation, thats where the Anim stands for in GLAnimCanvas.
+
+\latex{\begin{minipage}{15cm}}
+\label{gl4javabasefiles}
+
+\begin{center}
+\begin{tabular}{ll}
+\tt gl4java/GLEnum.java & The OpenGL Enumerates as an  interface. \\
+\tt gl4java/GLUEnum.java & The GLU Enumerates as an  interface. \\
+ & \\
+\tt gl4java/GLFunc.java & The OpenGL functions interface. \\
+\tt gl4java/GLUFunc.java & The GLU functions interface. \\
+ & \\
+\tt gl4java/GLFuncJauJNI.java & One OpenGL functions implementation. \\
+\tt gl4java/GLUFuncJauJNI.java & One GLU functions implementation. \\
+ & \\
+\tt gl4java/GLContext.java & The OpenGL-Context Window service, and lib and class loader. \\
+ & \\
+\tt gl4java/GL4JavaInitException.java & Our Exception \\
+ & \\
+\tt gl4java/awt/GLCanvas.java & One OpenGL AWT binding  \\
+\tt gl4java/awt/GLAnimCanvas.java & Another OpenGL AWT binding  \\
+ & \\
+\tt gl4java/jau/awt/WinHandleAccess.java & Interface to the platform's \\
+                                         & windowing system  \\
+\end{tabular}
+\end{center}
+
+\latex{\end{minipage}}
+
+
+Java OpenGL programmers can derive their classes either from GLCanvas.
+See the annotated Example in chapter \ref{olympicCvs} on page \ref{olympicCvs}.
+
+See the Html-Source documentation for details (see \ref{GL4JavaHtml} on page \pageref{GL4JavaHtml}).
+
+\section{Extensions for the sun-package\dag\ddag}
+\label{sunpack}
+
+Like described in chapter \ref{windesign} on page \pageref{windesign},
+we need to find out the platforms window handle to connect it with the OpenGL machine.
+
+The used motif and windows sub-packages are not defined as a standard,
+but they exist as long Java 1.0.2 exist and they are the only way to
+find out the unique AWT window's platform-window-handle from the java-side.
+
+See the Html-Source documentation for details (see \ref{GL4JavaHtml} on page \pageref{GL4JavaHtml}).
+
+Here are the apropiate source files:
+
+\latex{\begin{minipage}{15cm}}
+
+\begin{center}
+\begin{tabular}{ll}
+\tt sun/awt/motif/X11HandleAccess.java & X-Window-System glue \\
+\tt sun/awt/windows/Win32HandleAccess.java & MS-Windows glue \\
+\tt sun/awt/macintosh/MacHandleAccess.java & Macintosh glue \\
+\end{tabular}
+\end{center}
+See also \ref{glconawt} on page \pageref{glconawt}.
+
+\latex{\end{minipage}}
+
+\section{The Native Wrapper-Library Code\dag\ddag}
+\latex{\begin{minipage}{15cm}}
+
+As described in chapter \ref{windesign} on page \pageref{windesign}
+we need a connection between the platform depended window system and OpenGL.
+
+Here are the apropiate source files:
+
+\begin{center}
+\begin{tabular}{ll}
+\tt CNativeCode/OpenGL\_Win32.c & MS-Windows window access \\
+\tt CNativeCode/OpenGL\_X11.c &  X-Window-System window access\\
+\tt CNativeCode/OpenGL\_misc.c &  common miscelaneos sources \\
+\tt CNativeCode/OpenGLU\_funcs.c.skel & common GLU source-part \\
+\tt CNativeCode/OpenGLU\_funcs.c & glued source from the *.skel and C2J output \\
+\tt CNativeCode/OpenGL\_funcs.c.skel & common GL source-part\\
+\tt CNativeCode/OpenGL\_funcs.c & glued source from the *.skel and C2J output \\
+\tt CNativeCode/gl.aix.not.c & Dummy GL functions not defined in AIX OpenGL library \\
+\tt CNativeCode/gl.aix.not.h & Dummy GL functions not defined in AIX OpenGL library \\
+\tt CNativeCode/gl.win32.not.c & Dummy GL functions not defined in MS-Windows OpenGL library \\
+\tt CNativeCode/gl.win32.not.h & Dummy GL functions not defined in MS-Windows OpenGL library \\
+\tt CNativeCode/winstuff.h & Miscelaneous declarations missing in MS-Windows \\
+\end{tabular}
+\end{center}
+
+\latex{\end{minipage}}
+
+See the Source documentation for details.
+
+
+\chapter{Examples\dag\ddag}
+
+\section{The olympicCvs GLAnimCanvas derivation}
+\label{olympicCvs}
+\begin{verbatim}
+/**
+ * @(#) olympicCvs.java
+ */
+
+import gl4java.awt.GLAnimCanvas;
+import java.awt.*;
+import java.awt.event.*;
+import java.lang.Math;
+
+
+class olympicCvs extends GLAnimCanvas
+{
+/**
+ * Instead of using suspend (JAVA2)
+ *
+ * @see run
+ */      
+	protected boolean threadSuspended = true;
+
+	static final double M_PI= 3.141592654;
+	static final double M_2PI= 2*3.141592654;
+
+	static final int 
+		XSIZE=   100,
+		YSIZE=   75,
+		RINGS= 5,
+		BLUERING= 0,
+		BLACKRING= 1,
+		REDRING= 2,
+		YELLOWRING =3,
+		GREENRING =4,
+		BACKGROUND =8,
+		BLACK = 0,
+		RED=1,
+		GREEN=2,
+		YELLOW=3,
+		BLUE=4,
+		MAGENTA=5,
+		CYAN=6,
+		WHITE=7;
+
+	byte rgb_colors[][];
+	int mapped_colors[];
+	float dests[][];
+	float offsets[][];
+	float angs[];
+	float rotAxis[][];
+	int iters[];
+	int theTorus;
+
+        float lmodel_ambient[] = {0.0f, 0.0f, 0.0f, 0.0f};
+        float lmodel_twoside[] = {0.0f, 0.0f, 0.0f, 0.0f};
+        float lmodel_local[] = {0.0f, 0.0f, 0.0f, 0.0f};
+        float light0_ambient[] = {0.1f, 0.1f, 0.1f, 1.0f};
+        float light0_diffuse[] = {1.0f, 1.0f, 1.0f, 0.0f};
+        float light0_position[] = {0.8660254f, 0.5f, 1f, 0f};
+        float light0_specular[] = {1.0f, 1.0f, 1.0f, 0.0f};
+        float bevel_mat_ambient[] = {0.0f, 0.0f, 0.0f, 1.0f};
+        float bevel_mat_shininess[] = {40.0f, 0f, 0f, 0f};
+        float bevel_mat_specular[] = {1.0f, 1.0f, 1.0f, 0.0f};
+        float bevel_mat_diffuse[] = {1.0f, 0.0f, 0.0f, 0.0f};
+
+	public olympicCvs (int w, int h, 
+			   String glClass, String gluClass )
+	{
+		super(w, h, glClass, gluClass );
+	}
+
+        public void init() 
+	{
+		rgb_colors=new byte[RINGS][3];
+		mapped_colors=new int [RINGS];
+		dests=new float [RINGS][3];
+		offsets=new float[RINGS][3];
+		angs=new float[RINGS];
+		rotAxis=new float[RINGS][3];
+		iters=new int[RINGS];
+
+		int i;
+		float top_y = 1.0f;
+		float bottom_y = 0.0f;
+		float top_z = 0.15f;
+		float bottom_z = 0.69f;
+		float spacing = 2.5f;
+
+		ReInit();
+		for (i = 0; i < RINGS; i++) {
+		  rgb_colors[i][0] = rgb_colors[i][1] = rgb_colors[i][2] = (byte)0;
+		}
+		rgb_colors[BLUERING][2] = (byte)255;
+		rgb_colors[REDRING][0] = (byte)255;
+		rgb_colors[GREENRING][1] = (byte)255;
+		rgb_colors[YELLOWRING][0] = (byte)255;
+		rgb_colors[YELLOWRING][1] = (byte)255;
+		mapped_colors[BLUERING] = BLUE;
+		mapped_colors[REDRING] = RED;
+		mapped_colors[GREENRING] = GREEN;
+		mapped_colors[YELLOWRING] = YELLOW;
+		mapped_colors[BLACKRING] = BLACK;
+
+		dests[BLUERING][0] = -spacing;
+		dests[BLUERING][1] = top_y;
+		dests[BLUERING][2] = top_z;
+
+		dests[BLACKRING][0] = 0.0f;
+		dests[BLACKRING][1] = top_y;
+		dests[BLACKRING][2] = top_z;
+
+		dests[REDRING][0] = spacing;
+		dests[REDRING][1] = top_y;
+		dests[REDRING][2] = top_z;
+
+		dests[YELLOWRING][0] = -spacing / 2.0f;
+		dests[YELLOWRING][1] = bottom_y;
+		dests[YELLOWRING][2] = bottom_z;
+
+		dests[GREENRING][0] = spacing / 2.0f;
+		dests[GREENRING][1] = bottom_y;
+		dests[GREENRING][2] = bottom_z;
+
+		theTorus = gl.glGenLists(1);
+		gl.glNewList(theTorus, GL_COMPILE);
+		FillTorus(0.1f, 8, 1.0f, 25);
+		gl.glEndList();
+
+		gl.glEnable(GL_CULL_FACE);
+		gl.glCullFace(GL_BACK);
+		gl.glEnable(GL_DEPTH_TEST);
+		gl.glClearDepth(1.0);
+
+		gl.glLightfv(GL_LIGHT0, GL_AMBIENT, light0_ambient);
+		gl.glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diffuse);
+		gl.glLightfv(GL_LIGHT0, GL_SPECULAR, light0_specular);
+		gl.glLightfv(GL_LIGHT0, GL_POSITION, light0_position);
+		gl.glEnable(GL_LIGHT0);
+
+		gl.glLightModelfv(GL_LIGHT_MODEL_LOCAL_VIEWER, lmodel_local);
+		gl.glLightModelfv(GL_LIGHT_MODEL_TWO_SIDE, lmodel_twoside);
+		gl.glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
+		gl.glEnable(GL_LIGHTING);
+
+		gl.glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
+
+		gl.glMaterialfv(GL_FRONT, GL_AMBIENT, bevel_mat_ambient);
+		gl.glMaterialfv(GL_FRONT, GL_SHININESS, bevel_mat_shininess);
+		gl.glMaterialfv(GL_FRONT, GL_SPECULAR, bevel_mat_specular);
+		gl.glMaterialfv(GL_FRONT, GL_DIFFUSE, bevel_mat_diffuse);
+
+		gl.glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE);
+		gl.glEnable(GL_COLOR_MATERIAL);
+		gl.glShadeModel(GL_SMOOTH);
+
+		gl.glMatrixMode(GL_PROJECTION);
+		glu.gluPerspective(45f, 1.33f, 0.1f, 100.0f);
+		gl.glMatrixMode(GL_MODELVIEW);
+                glj.gljCheckGL();
+	}
+
+	public void display()
+	{
+	  int i;
+
+	  /* Standard GL4Java Init */
+	  if( glj.gljMakeCurrent(true) == false ) 
+	  {
+		System.out.println("problem in use() method");
+		System.exit(0);
+		return;
+	  }
+
+	  gl.glPushMatrix();
+
+	  gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	  glu.gluLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0);
+
+	  for (i = 0; i < RINGS; i++) {
+	    gl.glColor3ubv(rgb_colors[i]);
+	    gl.glPushMatrix();
+	    gl.glTranslatef(dests[i][0] + offsets[i][0], dests[i][1] + offsets[i][1],
+	      dests[i][2] + offsets[i][2]);
+	    gl.glRotatef(angs[i], rotAxis[i][0], rotAxis[i][1], rotAxis[i][2]);
+	    gl.glCallList(theTorus);
+	    gl.glPopMatrix();
+	  }
+
+	  gl.glPopMatrix();
+	  glj.gljSwap();
+	  glj.gljCheckGL();
+	  glj.gljFree();
+	}
+
+	public void animationCalc() 
+	{
+	          int i, j;
+
+		  for (i = 0; i < RINGS; i++) {
+		    if (iters[i]!=0) {
+		      for (j = 0; j < 3; j++) {
+			offsets[i][j] = Clamp(iters[i], offsets[i][j]);
+		      }
+		      angs[i] = Clamp(iters[i], angs[i]);
+		      iters[i]--;
+		    }
+		  }
+	          if (iters[0]==0)
+		  {
+			  shallWeRender=false;
+		  }
+	}
+
+	public void ReInit()
+	{
+	  int i;
+	  float deviation;
+
+	  deviation = MyRand() / 2;
+	  deviation = deviation * deviation;
+	  for (i = 0; i < RINGS; i++) {
+	    offsets[i][0] = MyRand();
+	    offsets[i][1] = MyRand();
+	    offsets[i][2] = MyRand();
+	    angs[i] = (float) (260.0 * MyRand());
+	    rotAxis[i][0] = MyRand();
+	    rotAxis[i][1] = MyRand();
+	    rotAxis[i][2] = MyRand();
+	    iters[i] = ( int ) (deviation * MyRand() + 60.0);
+	  }
+	}
+
+	public void FillTorus(float rc, int numc, float rt, int numt)
+	{
+	  int i, j, k;
+	  double s, t;
+	  float x, y, z;
+
+	  for (i = 0; i < numc; i++) {
+	    gl.glBegin(GL_QUAD_STRIP);
+	    for (j = 0; j <= numt; j++) {
+	      for (k = 1; k >= 0; k--) {
+		s = (i + k) % numc + 0.5;
+		t = j % numt;
+
+		x = (float) Math.cos(t * M_2PI / numt) * (float) Math.cos(s * M_2PI / numc);
+		y = (float) Math.sin(t * M_2PI / numt) * (float) Math.cos(s * M_2PI / numc);
+		z = (float) Math.sin(s * M_2PI / numc);
+		gl.glNormal3f(x, y, z);
+
+		x = (rt + rc * (float) Math.cos(s * M_2PI / numc)) * (float) Math.cos(t * M_2PI / numt);
+		y = (rt + rc * (float) Math.cos(s * M_2PI / numc)) * (float) Math.sin(t * M_2PI / numt);
+		z = rc * (float) Math.sin(s * M_2PI / numc);
+		gl.glVertex3f(x, y, z);
+	      }
+	    }
+	    gl.glEnd();
+	  }
+	}
+
+	public float Clamp(int iters_left, float t)
+	{
+
+	  if (iters_left < 3) {
+	    return 0.0f;
+	  }
+	  return (iters_left - 2) * t / iters_left;
+	}
+
+	public float MyRand()
+	{
+	  // return 10.0 * (drand48() - 0.5);
+	  return (float) ( 10.0 * (Math.random() - 0.5) );
+	}
+
+}
+\end{verbatim}
+
+\section{Further Examples\dag\ddag}
+Please look in the directory demos to look at the samples.
+You can start the glDemosCvs (gl4java.awt.GLAnimCanvas) java application to see them all running.
+
+\chapter{Further Documentation\dag}
+
+\subsection{\htmladdnormallink{Readme}{../../README.txt}}
+\label{readme}
+\begin{latexonly}
+\input{../README.txt}
+\end{latexonly}
+
+\subsection{\htmladdnormallink{Changes}{../../CHANGES.txt}}
+\label{changes}
+\begin{latexonly}
+\input{../CHANGES.txt}
+\end{latexonly}
+
+\subsection{\htmladdnormallink{License}{../../LICENSE.txt}}
+\label{license}
+\begin{latexonly}
+\input{../LICENSE.txt}
+\end{latexonly}
+
+\section{Package-Documentation (javadoc)}
+\label{GL4JavaHtml}
+To look at the javadoc generated source documentation, go to
+\htmladdnormallink{packages.html}{packages.html}.
+
+Only the paperware produced for the FH-Bielefeld contains a printout of this pages as an extra appendix.
+
+\section{Important Links}
+
+At our homepage we generated some important links at
+\htmladdnormallink{../../LINKS.html}{../../LINKS.html}.
+
+
+\chapter{Resume}
+\section{Contact us}
+Like we described in the Foreword, we would be very thankfull for any response.
+\begin{itemize}
+ \item \htmladdnormallink{gl4java@jausoft.com}{mailto:gl4java@jausoft.com} 1st email adress
+ \item \htmladdnormallink{a\_kolac@bielefeld.netsurf.de}{mailto:a_kolac@bielefeld.netsurf.de} 2nd email adress
+ \item \htmladdnormallink{Homepage: http://www.jausoft.com}{http://www.jausoft.com}
+\end{itemize}
+
+\subsection{\htmladdnormallink{Thanxs}{../../THANXS.txt}}
+\label{thanxs}
+\begin{latexonly}
+\input{../THANXS.txt}
+\end{latexonly}
+
+\appendix
+
+\latex{\input{OGLJavaBasic.tex}}
+
+\begin{thebibliography}{99}
+	\bibitem{SGI97} Silicon Graphics: OpenGL; \htmladdnormallink{http://www.opengl.org}{http://www.opengl.org}
+
+	\bibitem{Woo97} Woo, Mason: OpenGL Programming Guide 2nd Edition; Addison Wesley Developer Press April 1997; ISBN 0-0201-46138-2; \htmladdnormallink{http://www.aw.com/devpress}{http://www.aw.com/devpress}
+
+	\bibitem{Fosner97} Ron Fosner: OpenGL Programming for Windows 95 and Windows NT; Addison Wesley Second Printing April 1997; \htmladdnormallink{http://www.aw.com/devpress}{http://www.aw.com/devpress}
+	
+	\bibitem{Barkakati97} Nabajyoti Barkakati: X Window System Programming; Sams Publishing Secound Edition
+
+	\bibitem{JavaTuto} Mary Campione and Kathy Walrath: The Java Tutorial; Sun Microsystems; \htmladdnormallink{http://www.javasoft.com/docs/books/tutorial/index.html}{http://www.javasoft.com/docs/books/tutorial/index.html}
+
+	\bibitem{Chan97} Leo Chan (lchan@cgl.uwaterloo.ca): OpenGL4Java; \htmladdnormallink{http://ftp.cgl.uwaterloo.ca/pub/software/meta/OpenGL4java.html}{http://ftp.cgl.uwaterloo.ca/pub/software/meta/OpenGL4java.html}
+
+	\bibitem{King97} Adam King (adam@opcom.ca): OpenGL4Java; \htmladdnormallink{http://www.magma.ca/\%7Eaking/java}{http://www.magma.ca/\%7Eaking/java}
+
+	\bibitem{Reilly97} Tommy Reilly (tom@pajato.com): Jogl; \htmladdnormallink{http://www.pajato.com/jogl}{http://www.pajato.com/jogl}
+
+	\bibitem{JavaCC} Sun Microsystems: JavaCC Version 1.1; \htmladdnormallink{http://www.metamata.com/JavaCC/}{http://www.metamata.com/JavaCC/}
+
+	\bibitem{Kopka} Helmut Kopka: \LaTeX\ : Eine Einf"uhrung; Addison-Wesley 1991; ISBN 3-89319-338-3 
+
+	\bibitem{GnuWin32} Cygnus Solutions, GNU-Win32 Project Version b18; \htmladdnormallink{http://www.cygnus.com/misc/gnu-win32}{http://www.cygnus.com/misc/gnu-win32}
+
+	\bibitem{ProfBunse} Prof. Dr. Wolfgang Bunse (bunse@fhzinfo.fh-bielefeld.de); Fachhochschule Bielefeld; \htmladdnormallink{http://www.fh-bielefeld.de}{http://www.fh-bielefeld.de}
+
+	\bibitem{GL4JavaHome} Goethel: GL4Java Homepage; \htmladdnormallink{http://www.jausoft.com}{http://www.jausoft.com}
+
+	\bibitem{Dragos96} Nikos Drakos (nikos@cbl.leeds.ac.uk): Latex2Html; \htmladdnormallink{http://cbl.leeds.ac.uk/nikos/tex2html/doc/latex2html/latex2html.html}{http://cbl.leeds.ac.uk/nikos/tex2html/doc/latex2html/latex2html.html}
+
+\end{thebibliography}
+
+\end{document}

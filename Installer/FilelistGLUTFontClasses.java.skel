@@ -1,0 +1,11 @@
+
+public class FilelistGLUTFontClasses 
+	implements FilelistOS
+{
+    public static final String version = "_MAJV_._MINV_._BUGV_._RELV_";
+
+    public static final String archiv = "../binpkg/gl4java_MAJV_._MINV_._BUGV_._RELV_-glutfonts-classes.zip" ;
+
+    public String getVersion() { return version; }
+    public String getArchiv() { return archiv; }
+}

@@ -1,0 +1,11 @@
+
+public class FilelistGL4JArchiv 
+	implements FilelistOS
+{
+    public static final String version = "_MAJV_._MINV_._BUGV_._RELV_";
+
+    public static final String archiv = "../binpkg/gl4java_MAJV_._MINV_._BUGV_._RELV_-jar.zip" ;
+
+    public String getVersion() { return version; }
+    public String getArchiv() { return archiv; }
+}

@@ -1,0 +1,1314 @@
+\begin{verbatim}
+
+Last Changes: 18th November 2000 (Version 2.5.0 - Release 0 beta 1 )
+Started:      July 1997 (Version 0)
+
+-----------------
+TOP  = NEW
+DOWN = OLD
+-----------------
+
+18th November  2000 (Version 2.5.0 - Release 0 )
+	o Added this source tree to CVS at GL4Java.sourceforge.net !
+	  (the binary only directories:
+	  	archive
+		binpkg
+           are kept empty)
+
+	o Moved "sun.awt.windows.*" -> "gl4java.jau.awt.windows.*"
+	  One changes to access the new location is made in:
+	  	gl4java.GLContext 
+
+	o Changed the gl4java.awt.GLAnimCanvas error/warning
+	  printout. Now, the "problem in use() method" 
+	  is printed out only, if gl4java.GLContext.gljClassDebug
+	  is set to true !
+	  Also the above error text is splitted in two more
+	  comprehensive error text.
+
+	o The native method
+		gl4java.GLContext.gljGetCurrentContext
+	  is added for those, who things they need it ...
+
+18th September 2000 (Version 2.4.1 - Release 2 )
+
+	o Added Apple MAC OS9.0 PPC support !!
+	  This is based upone Gerard Ziemski's
+	  sources.
+
+	  - Included a special Mac distribution:
+	  	- Installer Disk-Image with AppleScript Installation !
+	  	- Demo Disk-Image !
+
+	o Fixed & Added Demos:
+		- added Hodglim's NeHe port
+		- all demos are now in doubleBuffer mode !
+		- all demos does requestFocus right,
+		  for key-input !
+
+18th August 2000 (Version 2.4.1 - Release 0 )
+
+	o Improved the Installer code to Version 2.04 !
+	  Please read about this in Installer/CHANGES.txt !
+
+	  	Mostly the standalone installation process is improved !
+
+	o Removed the special MAC library names,
+	  now the MAC should use the default ...
+
+	o Added 2 new native libraries for testing purpose:
+		[lib]GL4JavaJauGLJNItst[.so | .dll]
+		[lib]GL4JavaJauGLUJNItst[.so | .dll]
+	  
+	  These libs does check, if given arrays arguments
+	  are handled with the JNI_COPY method or not.
+
+	  If they are handled with the JNI_COPY method,
+	  a warning is printed !
+
+	o Added a new native library set:
+		[lib]GL4JavaJauGljJNI12[.so | .dll]
+		[lib]GL4JavaJauGLJNI12[.so | .dll]
+		[lib]GL4JavaJauGLJNI12tst[.so | .dll]
+		[lib]GL4JavaJauGLUJNI12[.so | .dll]
+		[lib]GL4JavaJauGLUJNI12tst[.so | .dll]
+	  This new JNI12 set, respects the new JNI features 			
+			- GetPrimitiveArrayCritical
+			- ReleasePrimitiveArrayCritical
+	  this new libraries are automatically loaded,
+	  if the JVM is >= 1.2 !
+	  So array copies should be avoided, 
+	  especially in JVM >= 1.3 (+ hotspot) !!
+
+	  This task is done with the new C2J, and with a
+	  new jni12tools.c module.
+
+	  Check out the gl4java.util.Test section below !
+
+	o Added a performance test shell in demos/MiscDemos:
+
+		PerformanceCheck.sh
+
+	  where allready existing test exist under:
+	  	./PerformanceLogs/
+
+	  This script uses the native and the java gears demo.
+	  (In the future, may be we add more native/java comparable demos)
+
+	  The java demos is tested with all installed JVM's,
+	  which environment setup scripts are located under
+	  	./PerformanceEtc/profile.jdk* !
+
+	o Added gl4java.util.Test !
+	  This class's purpose is to just start derivations of
+	  	gl4java.awt.GLCanvas
+	  	gl4java.awt.GLAnimCanvas
+	  	gl4java.applet.SimpleGLAnimApplet1
+
+	  So there is no need for the old
+	  and dirty inner class game, just for testing ...
+	  Just to make those demos (GL*Canvas) public ...
+
+	  I have added two little SHELL scripts
+	  	demos/test.sh
+	  	demos/test-jnitst.sh
+	  	demos/test-jni12tst.sh
+	  which starts the (1st argument) java testclass with
+	  	- default libs -, or
+	  	*JNItst*, or
+		*JNI12tst* libraries !
+	  The purpose for the two last ones
+	  is to force the usage of the special JNI libs.
+	  The JNI and JNI12 functions can be tested this way,
+	  if some array is copied !
+
+	o Using the JAVA_HOME environment variable
+	  within the symbols.mak files ...
+
+	o Added new arguments for gl4java.GLContext.main(..) !
+	  Now, it is more usable ... more verbose
+
+	o Added a better error tolerant X11 Visual fetching mechanims.
+	  All glXGetConfig's are now tested for all avaiable visuals,
+	  if no visual is offered ...
+
+	o Respecting the accumulator bits size with/in:
+		gl4java.GLContext.accumSize (new constructor also)
+		gl4java.awt.GLCanvas.accumSize (for usage in e.g. preInit)
+
+	o Removing the whole non-dynamic code part,
+	  to make things clear !
+	  The "#define _GL_DYNAMIC_BINDING_" is no more needed !
+
+ 	o Removing the compilation depending define
+	  _HAS_GLXGETPROCADDRESSARB_ !
+	  The existence of glXGetProcAddressARB, glXGetProcAddressEXT or
+	  glXGetProcAddress is queried during runtime within
+	  	- libGL.so and libglx.so (only the first time with dlsym) !
+
+	o Optimized the Array handling in the JNI part !
+	  IF (the array parameter is const) OR 
+	     (copy is not used within the JVM)
+	  THEN
+	  	Release<type>ArrayElements(X,X,X,JNI_ABORT/*just release*/)
+	  ELSE
+	  	Release<type>ArrayElements(X,X,X,0 /*copy back*/)
+	  FIN
+
+	  Also, the redundant Set<type>ArrayRegion call is removed !
+
+	o Optimizing the gl4java/utils/glut/GLUTFuncLightImpl teapot
+	  implementation !
+
+26. June 2000 (Version 2.4.0 - Release 0 )
+
+    -- Major Changes
+
+	o All changes makes it possible to have only one 
+	  native library for one platform !
+
+	o Changing dynamically to the mode: create an own overlapped window,
+	  if the native java window does not support the needed properties,
+	  e.g. double buffering !
+
+	o Added "repaint" calls in GLCanvas,
+	  if: 
+	      - A GL Context is made and initialized AND
+	  	- GLCanvas is resized
+		- the mouse is clicked on GLCanvas
+	        - the top level window is moved
+	        - the top level window is activated
+	  This must be done, because of missing natural repaint events
+	  for Unices with own created windows !
+
+	o (X11) Added usage of the accumulation buffer,
+	  the previous version missed to set the values for the
+	  visual attribute list !
+
+	o Added usage of:
+	     X11: glXGetProcAddressARB(<GL-Func-Name>) 
+	          and dlsym(<GL-Func-Name>)
+
+	     Win32: wglGetProcAddress(<GL-Func-Name>)
+	            and getProcAddress(<GL-Func-Name>)
+
+	     Mac: aglGetProcAddress(<GL-Func-Name>) ?
+
+	  in all generated OpenGL function calls.
+	  This is achieved by the new C2J compiler.
+	  No statical linkage is needed anymore for the OpenGL
+	  functions, so no dummy functions must be generated for
+	  some missing OpenGL 1.2 functions of a implementation.
+	  	If glXGetProcAddressARB is not supported by your X11/GL libs,
+	  you can not use the define _HAS_GLXGETPROCADDRESSARB_
+	  in symbols.mak - then, only the dlsym mechanism will be used !
+
+	  GLContext.gljTestGLProc (<GL-Func-Name>) is added,
+	  which uses the *GetProcAddress* methods, described above.
+
+          GLContext.gljGetVersions() adds a string with one line 
+	  for all known OpenGL functions with the information if it does
+	  exist in the underlying GL implementation.
+
+	  This new feature is only used, if
+	  	#define _GL_DYNAMIC_BINDING_
+	  is set e.g. in symbols.mak !
+	  Then you have to use/link the special generated files by C2J:
+	  	OpenGL_JauJNI*_dynfuncs.c
+	  instead of OpenGL_JauJNI*_funcs.c for static binding.
+
+	o Added support for Offscreen-Rendering and Swing:
+		gl4java.GLContext.createOffScreenCtx(...)
+		gl4java.swing.*
+	  Please check the demos in: demos/GLSwingDemos !
+	  You can also read the SwingUsage.txt file !
+	  (Thanxs to www.desys.com !)
+
+	o Using Mesa 3.3 beta headers for the GL & GLU function
+	  creation (C2J) !
+
+    -- Minor Changes
+
+	o Added "GLContext.gljMakeCurrent()", and put the old one
+	  "gljMakeCurrent(boolean)" to deprecated !
+	  It makes no sense to explicit release the GL context,
+	  because on all OS it does release the GL context automatically,
+	  if a new one is attached !
+
+	o Steven Hugg added more Png texture features:
+		- grayscale, gray-alpha, rgb, rgb-alpha
+		
+
+01. April 2000 (Version 2.3.1 - Release 1 )
+
+	o Changed the Installer code to Version 2.02 !
+	  Please read about this in Installer/CHANGES.txt !
+
+	  Now a new binary installer package is provided,
+	  to be able to download the installer and run it 
+	  as an application !
+	  
+	o Bugfixes for some java jdk117 incompatibilities !
+	  (Thanxs to gerard ziemski for finding this out !)
+	  I have used some Java2 features :-(,
+	  but - Gerard stated this true - we need jdk117 compatibility !
+
+	  The following code is changed:
+	  	gl4java.utils.textures.AWTTextureLoader:
+		  No packages:
+		     import java.awt.Color.*;
+		     import java.awt.color.*;
+		  No java.awt.image.BufferedImage,
+		  so we just guess, it is 24bit RGB data !
+
+		gl4java.awt.GLImageCanvas:
+		  No java.awt.Component.getWidth/Height methods !
+		  Using cvsGet* method !
+
+	        A FEW DEMOs: demos/RonCemers/*.java,
+		where the KeyEvent.VK_KP_* is used (deleted) !
+
+	o For the binary port to the SGI-IRIX-65-MIPS
+	  machine, the following files were added:
+	  	- symbols.mak.sgi-irix65-mips
+		- mklibs/mkslib.irix6.2
+		- CNativeCode/gl.sgi-irix65.not.c
+		- CNativeCode/gl.sgi-irix65.not.h
+
+30. March 2000 (Version 2.3.1 - Release 0 )
+
+	o Reversed the time order of this FILE :-) !
+	  PLEASE read this File - before you ask !
+	  Please check the JavaDOC API and the DEMOS
+	  also - befor you ask !
+	  THANXS !
+
+	o All changes in this revision only affect the JAVA-CLASSES,
+	  regarding:
+	      - gl4java.utils.textures.*
+		  - Complete rework (class hierarchie, IS compatible) !
+		  - Allows URL/uri arguments to load textures !
+		  - New TextureLoader implementations:
+		  	- AWTTextureLoader
+			- TGATextureLoader
+		  - TextureTool with new functionality (scale/texImage2D*)
+
+		  - Please have a lock at gl4java.awt.GLImageCanvas
+		    and in the demos:
+		    	- demos/MiscDemos/GLImageViewerCanvas.java
+		    	- demos/MiscDemos/GLImageViewerWorld.java
+				- check out my transparent jaulogo,
+				  loaded with the png-loader !
+
+	      - gl4java.utils.*
+	      	  - New Class Tool.java to achieve some informations !
+		    General purpose, static methods should be placed
+		    here ...
+
+	      - gl4java.awt.*
+	      	  - New Class GLImageCanvas.java, which uses
+		    a lot of the new functionality of the 
+		    package gl4java.utils.textures !
+		    Please have a lock in the demo:
+		    	demos/MiscDemos/GLImageViewerCanvas.java
+		    where you have a little image-loader/saver
+		    based on OpenGL :-)) !
+
+
+28. March 2000 (Version 2.3.0 - Release 0 )
+
+	o Added Shared GL-Context feature !
+	  Just look into the demos/MiscDemos/SharedGLContext* Files !
+	  Your shared GLContext should be set in GL[Anim]Canvas,
+	  like the stencilBits, etc. Use the attribute "sharedGLContext" !
+	  OS Impl.: Please add the feature in the native get_GC method !
+	  (Thanxs to "Artiste on the Web" for initiating and for the
+	   first X11 implementation.)
+
+	o Modified the TextureLoader Class, to support:
+		- Files and InputStreams !
+          This works like the TextureGrabber base class,
+	  so the all input media is broken down to an InputStream !
+
+	o Added a Graphics.setClip(..) call to the GLCanvas paint method !
+	  This is needed for e.g. Macintosh machine !
+	  (Thanxs to Martin Orton !)
+
+	o Added/Modified demos:
+		demos/RonsDemos/FullScreenGears (application, new)
+		  (Thanxs to Virgil Wall !)
+		demos/MiscDemos/SharedGLContext* (see above, new)
+
+	  Some Demo's under:
+		demos/MiscDemos/
+		demos/GLLandScape/
+	  uses the new main method, which supports win32jvm !
+	  (Thanxs to Virgil Wall !)
+
+14. March 2000 (Version 2.2.0 - Release 1 )
+
+	o BugFix of the Win32 JNI JVM native library:
+		- Java_gl4java_GLContext_gljResizeNative
+		With correct arguments now.
+	o Distinguish the Win32 x86 native package
+	between MSJVM and StdJVM -> lesser download size !
+
+6. March 2000 (Version 2.2.0 - Release 0 )
+
+	o The pointer conversion to the "long" type did not worked for
+	  Netscape under linux !
+	  A "bus error" occures, while using "long" in the native part !
+	  So all pointer presentations are kept "int" !!
+
+	o All GLU Callback Functions (Tessellators, ...)
+	  are now supported while using the JNI reflections
+	  and seeking the fitting method for method-type 
+	  and gl-context !
+	  Please have a look in Tesselation.txt !
+
+	o Added GLUT Font support !
+	  Thanxs to Pontus Lidman (Mathcore) for supporting
+	  GL4Java with GLUT font support !
+	  The special package: 
+		gl4java.utils.glut.fonts
+	  provides the new GLUT class:
+	        GLUTFuncLightImplWithFonts
+	  which is derived from the GLUT class:
+		gl4java.utils.glut.GLUTFuncLightImpl
+	  This new package provides font support 
+	  and contains the font data and the font-class 
+	  code generation code.
+
+	  This new package gl4java.utils.glut.fonts
+	  is distributet in an own jar/zip file:
+		  gl4java2.2.0.0-glutfonts-classes.zip
+		  gl4java2.2.0.0-glutfonts-jar.zip
+	  This is done, because of its size - about 200kBytes !
+	  But this optional package is selected
+	  within the Installer as the default ;-) !
+
+	  Look at demos/MiscDemos/glutFont*Test.html
+	  for the new font demos !
+
+	o Added texture grabber class:
+		gl4java.utils.textures.TGATextureGrabber implements
+		gl4java.utils.textures.TextureGrabber
+	  this default impl. uses the TGA file type,
+	  to save the opengl framebuffer !
+          Thanxs to Erwin 'KLR8' Vervaet for the TGA writer code !
+	  The demos: tessdemo, tesswind and morph3d 
+	  include a snapshot menue, if started as an application !
+
+	o In class gl4java.awt.GLCanvas, 
+	  the following attributes are made public:
+	    public GLFunc gl = null;
+	    public GLUFunc glu = null;
+
+	  The following attribute stays protected and can be fetched
+	  by the method: "public final GLContext getGLContext()"
+	    protected GLContext glj = null;
+
+	o The stencilBits configuration for stencil-bit number setup
+	  for X11 and Win32 system is implemented !
+
+	  The OpenGL Stencil feature works now !
+
+	  The usage of the stencil buffer does work now !
+	  	Look at demos/MiscDemos/stencil.html
+	  for the new stencil demo !
+
+	  Changes in:
+	  	Native: X11, Win32, Win32JDirect
+			TODO: Macintosh
+
+		Java: gl4java.GLContext, gl4java.awt.GLCanvas
+
+	o The new Flag GLContext::createOwnWindow 
+	  (mapped in GLCanvas, like doubleBuffer, stencilBits, ...)
+	  controlls the behavior of the native window code.
+	  If createOwnWindow equals true, 
+	  an new overlayed window is created.
+	  This is sometimes needed for some machines, 
+	  like SGI's Irix or maybe IBM's AIX !
+	  This flag can be forced to be always true,
+	  by setting the compile definition:
+	    #define GL4JAVA_FORCE_X11_OWN_WINDOW
+	    ( gcc -D GL4JAVA_FORCE_X11_OWN_WINDOW ... )
+	  This should be always set for IRIX !
+	  At this time some refresh problems occure,
+	  if the window comes on top again.
+
+	  Changes in:
+	  	Native: X11
+
+		Java: gl4java.GLContext, gl4java.awt.GLCanvas
+
+	o C2J bugfix 1.2
+	  - GLUtesselator is now supported !
+	  - All GLU methods are now implemented !
+	  - Added support for NULL/null pointer arrays,
+	    so you can call e.g. 
+	    	"glu.gluTessBeginPolygon(tobj, (double[])null);"
+	    The C-JNI part does handle it now !
+
+24. January 2000 (Version 2.1.3 - Release 2 )
+
+	o This version is based upon Mesa 3.1,
+	  the older versions are based upon Mesa 3.0
+	  (For GL and GLU function creation (C2J), etc.)
+	  So we do support:
+	  	OpenGL 1.2
+		GLU    1.2
+	  But be sure, that your underlying OpenGL native library
+	  does support OpenGL 1.2 and GLU 1.2 also !!!
+
+	o Now supports - in respect to Mesa 3.1:
+		- GL_EXT_stencil_wrap
+		- GL_NV_texgen_reflection
+		- GL_PGI_misc_hints
+		- GL_EXT_compiled_vertex_array
+		- GL_EXT_clip_volume_hint
+
+	  - The following extensions are skipped from Mesa 3.1:
+		- GL_INGR_blend_func_separate
+		- GL_ARB_multitexture
+
+	o C2J has changed to respect the new Mesa Version 3.1
+	  All "void *" Arguments of one function are mapped to all java
+	  array-types. 
+
+14. Dezember 1999 (Version 2.1.3 - Release 1)
+
+	For MesaNvidia 3.1 (Linux-x86) ONLY !
+
+	o Changed the version for Mesa-NVidia to MesaNvidia 3.1 (Linux-x86)
+		- This is done in the Installer,
+		- and the CNative/gl.nvidia.not.c file !
+
+	o Added installation instructions for the png.jar archive !			
+07. Dezember 1999 (Version 2.1.3 - Release 0 )
+
+	o Added Ron Cemer's Installer to this repository.
+          This is a changed version - version 2.00,
+	  which based upon Ron's orig. version 1.05 !
+	  Please read the Installer/CHANGES.txt !
+
+	o Added geometric GLUT support: gl4java.utils.glut !
+	  See some demos in demos/MiscDemos !
+	  This is a lightweight implementation,
+	  meaning that the SGI sources are used !
+
+	o Added more Demos, e.g. morph3d !
+
+	o Added PNG-TextureLoader support in gl4java.utils.textures !
+	  This packages uses the LGPL png classes:
+		  Copyright (c) 1998,1999  Six-Legged Software
+          Please read the PNG-*.txt files !
+
+	  The 1st code, which usese the PNG class,
+	  and the original scale-code is written by:
+	  Max Rheiner  <mrn@paus.ch> !
+
+	  Check the demo: demos/MiscDemos/pngTextureTestApplet.java !
+
+18. November 1999 (Version 2.1.2 - Release 2 )
+
+	o Some errors moved into the DEMOS section !
+	  - GL_TRUE and GL_FALSE are now set to the new boolean ...
+
+        o Ron Cemer's Demos are adapted and modified
+	  to achieve more compatibility. See demos/RonsDemos/index.html !
+
+	o A new Class "gl4java/applet/SimpleGLAnimApplet1.java"
+	  is made and used by all animation classes of Ron Cemer !
+	  This package (gl4java/applet) is now part of the 
+	  distribution !
+
+	  Please update at least the java archive/classes 
+	  (especially the Windows-Users, where the native libs
+	   has no changes ! )
+
+	o ReWork of the X11-Window-System part,
+	  which achieve the XVisual.
+	  This is another try, because the Irix-Systems
+	  have some troubles .... :-(
+
+14. November 1999 (Version 2.1.2 - Release 1 )
+
+	o ReFactoring of the C2J Parser,
+	  which generates all the Java/C native glue !
+	  	
+		- Complete re-work to select all information
+		  into objects while parsing,
+		  instead of just printing them out !
+
+		- Printing the objects (functions-declarations)
+		  in different formats:
+		  	- JNI-Java Code
+			- JNI-C Code
+			- MSJDirect Code
+
+		- Handels "void *" in the argument-list in the way,
+		  that each functions will be generate SEVEN times
+		  with the following type-substitutions:
+		  	"byte[]", "short[]", "int[]",
+			"float[]", "double[]", "boolean[]", "long[]"
+		  Only 1 "void *" in the arg-lidt can be handled now.
+		  This is enough for OpenGL ;-)
+
+		  The function overloading is done 
+		  with the Java function signature,
+		  so a ANSI-C compiler is enough !
+
+		- Handels double Pointers -> [][] - and more ;-) !
+
+		- Handels "const" arguments correct:
+			- no more SetArray calls
+
+		- Gives semantic error messages,
+		  if something can not be handled !
+		  E.g.: More than 1 "void *" argument,
+		  or a pointer-type as the function-type !
+
+	o Because of the essential changes of C2J
+	  The following benefits for GL4Java exist:
+
+		- Only the glGetString, gluGetString gluErrorString
+		  functions must be written manualy now !!!!
+
+		- Better compatibility with "GLvoid *" arguments.
+		  This means - not just "byte[]" can be used -
+		  	"byte[]", "short[]", "int[]",
+			"float[]", "double[]", "boolean[]", "long[]"
+		  functions are generated !
+
+		- Better MS-JDirect (MS-JVM) integeration !
+
+	o Complete OpenGL 1.2 support (if native OpenGL supports it) !
+	  So missing functions like:
+		void glEnableClientState( GLenum cap );
+		void glDisableClientState( GLenum cap );
+	  do exist now.
+	  This is because of the new C2J !
+
+	o Nearly Complete GLU 1.1 support - Except :
+		- gluScaleImage (Only byte[] i/o is supported)
+
+		- The following are not supported,
+		  because they do use function-pointers:
+			- gluQuadricCallback
+			- gluNurbsCallback
+			- gluTessCallback
+	  This is because of the new C2J !
+
+	o Changed all "native pointer" presentation in Java 
+	  from "int" to "long" !
+	  I guess this provides a better compatibility to 
+	  64 bit machines with 64 bits per adress !
+
+	o Win32: Added ALL EXT functions which exists in MSVC 6.0 header files
+	  to the gl4java_bin_ext function in gl.win32.ext.c !
+	  
+14. Oktober 1999 (Version 2.1.1 - Release 0 )
+
+	o Added to the demo-package:
+		- Ron's demos 
+		- RectRenderSpeed
+
+30. AUGUST 1999 (Version 2.1.0 - Release 1 )
+
+	o Added symbols.mak and gl.not.c for NVIDIA Mesa GLX Module
+
+	o X11: Fixed XVisualInfo query, while just setting a prefix now, 
+	  instead of using the found XVisualInfo (RGBA, DOUBLEBUFFER) !
+	  This fixes the double buffering problem with 
+	  some hardware accelerated OpenGL driver !
+
+	o Merged MSJVM port
+		- Ron Cemers port to the MS-JVM is merged.
+		  The following MS-JVM (build 3186) is needed:
+			  "Microsoft (R) VM for Java, 5.0 Release 5.0.0.3186"
+		  New classes for MS-JVM:
+			. gl4java.system.GljMSJDirect
+			. gl4java.GLFuncMSJDirect
+			. gl4java.GLUFuncMSJDirect
+			. sun.awt.windows.MSWin32HandleAccess
+		  New native library for MS-JVM:
+		  	. GL4JavaGljMSJDirect
+		  New documentation for MS-JVM:
+		  	. MS-JVM.txt
+			. README.RonCemer (updated original)
+		  	
+		- The MS-Java-SDK >= 2.0 is needed 
+ 		  (A SUN std. JDK is still needed)
+		- To give the port a better distinguish,
+		  I droped the JDirect stuff outta gl4java.GLContext
+		  to gl4java.system.GljMSJDirect
+		- gl4java.system.GljMSJDirect,
+		  gl4java.GLFuncMSJDirect,
+		  gl4java.GLUFuncMSJDirect and
+		  sun.awt.windows.MSWin32HandleAccess is compiled ONLY
+		  with the MS-Java-Compiler ;-) !
+		- gl4java.system.GljMSJDirect,
+		  gl4java.GLFuncMSJDirect,
+		  gl4java.GLUFuncMSJDirect do have the MS-Java state:
+		  "@security(checkDllCalls=off)", so if you have
+		  the classes and dll installed, you can run
+		  the applet within the MS-IE 4.0 :-) without cab's !
+		- The old glj* native methods and the new glj*JDirect
+		  native methods are improved:
+			- function arguments, instead of object retrieving
+			  (for the old ones, like Ron's -> faster)
+			- straight usage of "static" "final", if usabel !
+		- The method "doCleanup" and the paranoia implementation
+		  of "cvsDispose" is taken over from Ron 
+		  within gl4java.awt.GLCanvas
+		- glj.gljResize() is now called within the paint method,
+		  instead of the reshape method, which is for 
+		  users-overwrite purpose - so you cannot forget it.
+		  This is important - especially for the MS-JVM, to
+		  resize the own created native window !
+		  
+	o Prepared for merging Macintosh port
+		- I hope gl4java.GLContext and the other std. java-classes
+		  must not be changed ...
+
+	o Switched to MS-Visual-C++ 6.0 (Borland deleted)
+
+	o Moved glDemosCvs to an Applet ;-)
+	  Hmm - MS-IE is faster than Netscape (under Win32) with GL4Java ... 
+
+	o Added visual properties in gl4java.GLContext:
+		- doubleBuffer
+		- stereoView
+	  These can be set with the constructor now
+	  and are updated after creating the OpenGL-Context,
+	  while quering with glXGetConfig/getPixelFormat../... !
+	  If one of these properties is invalid for the hardware,
+	  the native stuff in GL4Java has to "fall back" and set the
+	  java flags correct !
+	  These states can be queried with gl4java.GLContext !
+
+	o Added gljSetEnabled()/gljIsEnabled() to gl4java.GLContext !
+
+	o Added doubleBuffer, stereoView to
+	  gl4java.awt.GLCanvas as transparent params (visual-properties)
+	  to use for the gl4java.GLContext constructor !
+
+	o Added preInit() to gl4java.awt.GLCanvas to give the user a chance
+	  to modify the default visual-properties !
+
+	o Now using Ron's "capsapi_classes.zip" within compilation
+	  of GL4Java, to prevent the users to add some
+	  netscape or other java-api's to his classpath !
+	  Look at symbols.mak !
+
+11. JUNE 1999 (Version 2.0.2 - Release 1)
+
+	o Fixed gl4java.awt.GLAnimCanvas !
+
+	  - Now the fps rate is adapted for every frame - all the time.
+	    No more stocking animations !!!
+
+	  - Set the default fps value to 20 :-) !
+
+	o The X11 native function gljSwap()
+	  does not call glXWaitX and glXWaitGL anymore (-> faster ?!) !
+	  I hope this is not needed - please tell if so !
+
+	o The gl.solaris.not.c file is repaired !
+
+        o Now the makefile uses the zip-utility again.
+	  I registered, that the java-jar zip-files
+	  could not be read by WinZip :-( !
+
+	o all zip archives should be readable for win32/tools.
+
+01. JUNE 1999 (Version 2.0.1 - Release 2)
+
+	o Added files:
+		- VERSIONS.txt (describes the version numbers)
+		- THANXS.txt   (for all the helping hands ...)
+
+ 	o The gl4java.jar package of the previous version included
+	  encryption information which where wrong.
+	  This bug diabled Netscape from using the JAR archive :( !
+	  This is now fixed :) !
+
+	o Tested GL4Java with jdk1.2-pre-v1 on Linux, it works !
+	  You must disable JIT and enable NATIVE THREADS !
+
+	o Removed native-libs other than 
+		- libGL4Java-Linux-glibc-2.X-mesa3.0pthreads-x86
+		- libGL4Java-Win32-x86
+
+        o Now having UNIXTYPE/WIN32TYPE defined 
+          instead of UNIXLIBDIR/WIN32LIBDIR in symbols.mak,
+          where only the OS is specified - not the GL4Java version !
+          Now - a tar-gz/zip file is generated for the specific 
+          OS-type - not a directory. The filename contains the
+          GL4Java name+version and the OS type information !
+	  This is also done for the gl4java.jar file !
+
+	o No more GL4Java*bin archive exists !
+	  Now all needed files for a binary-installation
+	  (the native-libs and gl4java.jar) moved to the 'binpkg' directory !
+	  Have a more closer look at INSTALL.txt !
+
+18. MAY 1999 (Version 2.0.1 - Release 1)
+
+	o Netscape 4.5 (Win32) PrivilegeManager usage was incorrect
+	  (used 30caps...), now using "UniversalLinkAccess" !
+
+	  This now works for me within Win95 and WinNT !
+
+	o Made some bugfixes within the source code include-file-names
+	  and the gl.solaris.not.* files and the makefile
+	  (thanxs Odell Reynolds)
+
+	o added support for the Win32 OpenGL-EXT functions,
+	  wich are now loaded via 'wglGetProcAddress' the very first time !
+
+	o added 'glColorTableEXT' support within GLFunc and its implementations.
+
+20. APRIL 1999 (Version 2.0.0 - Release 1)
+
+	o This new Major Release announces a new implementation !
+
+  	  GL4Java V 2.X.X.X uses a new object model, which allows
+  	  separation of GLEnum, GLUEnum, GLFunc*, GLUFunc* and GLContext !
+
+	  GLFunc*
+	  	implements GLEnum
+  
+	  GLUFunc*
+	  	implements GLUEnum
+
+	  GLContext
+	  	has_a	   GLFunc*
+	  	has_a	   GLUFunc*
+  
+  	  For compatibility issues, 
+  	  i do provide the class gl4java.awt.GLCanvas,
+  	  which:
+	  	implements 	GLEnum
+	  	implements 	GLUEnum
+  		has_a		GLFuncJauJNI
+  		has_a		GLUFuncJauJNI
+  		has_a	 	GLContex
+  		is_a		Canvas
+  
+  	  The little changes the user must do in his sources are:
+  		change: GL4Java.GLCanvas   -> gl4java.awt.GLCanvas
+  		change: gljGetFpsCounter   -> cvsGetFpsCounter
+  		change: gljResetFpsCounter -> cvsResetFpsCounter
+  		change: gljGetWidth        -> cvsGetWidth
+  		change: gljGetHeight       -> cvsGetHeight
+  		change: gljDispose         -> cvsDispose  
+  		change: gljUse() 	   -> glj.gljMakeCurrent(true)
+  		change: glj* 		   -> glj.glj*
+  		change: gl* 		   -> gl.gl*
+  		change: glu* 		   -> glu.glu*
+		change: GLCanvas.glClassDebug  -> GLContext.gljClassDebug
+		change: GLCanvas.glNativeDebug -> GLContext.gljNativeDebug
+		change: glClassDebug           -> GLContext.gljClassDebug
+		change: glNativeDebug          -> GLContext.gljNativeDebug
+
+  
+  		The little shell script change2GL4JavaV2.sh
+  		will do this for you while using sed !
+
+		The function 'GLContext.loadNativeLibraries(null,null,null)'
+		is called in the static part of GLCanvasV2 !
+		If you do not use GLCanvasV2, call it by yourself !
+
+		If the given paramter 'libName's' is zero
+		by calling GLContext.loadNativeLibraries,
+		the default library-names are used - see below !
+  
+  	  Look in the new documentation and the demos,
+  	  which explain the new model !
+  
+  	  So far ...
+
+	o Added the sun.awt.macintosh.MacHandleAccess.java class,
+	  and the appropriate Code to GLContext for
+	  fetching the WinHandle and the library !
+	  This is done to support Gerard Ziemski's Macinstosh-Port !
+
+	  The default native library for Win32 and Unice's is :
+	  	GLContext:	GL4JavaJauGljJNI
+		GLFuncJauJNI:	GL4JavaJauGLJNI
+		GLUFuncJauJNI:	GL4JavaJauGLUJNI
+		
+	  The default native library for Macintosh is :
+	  	GLContext:	GL4JavaMacGZGljJNI
+		GLFuncJauJNI:	GL4JavaMacGZGLJNI
+		GLUFuncJauJNI:	GL4JavaMacGZGLUJNI
+
+	   These lib-names are used, 
+	   if 'GLContext.loadNativeLibraries( String gljLibName,
+	   i				      String glLibName, 
+	   				      String gluLibName )'
+	   is called with an null argument !
+
+	o updated documentation
+	  now using java2's javadoc ;-)
+
+	o now, only a MS OpenGL binding is supported,
+ 	  because SGI does not support their library anymore :-( !
+
+19. APRIL 1999 (Version 1.2.0 R2)
+
+	o Netscape 4.5 (Win32) PrivilegeManager usage only if we are
+	  running the Netscape JVM !
+
+	o Java-PlugIn for Browser works.
+	  Added Java2 Plugin HTML-Pages in demos (demos/*J2P.html) !
+	  Tested with Win32,Netscape,Java2 !
+	  See INSTALL.txt for docu.
+
+	o Added static main function in GLCanvas and GLFrame,
+	  to just checking the library loading !
+
+	o supporting explicit library loading with static function
+	  loadNativeLibrary in GLCanvas and GLFrame
+
+	o debugged gljDispose: using topLevelWindow only if != null :-)
+
+18. APRIL 1999 (Version 1.2.0 R1)
+
+	o Added Netscape 4.5 (Win32) support !
+	  Because Netscape JVM supports JNI, we do try
+	  to ask for a privilege :-) to run native DLL's !
+
+	  Please read the chapter <Source Installation>,
+	  <Binary Installation> in the given documentation, or the 
+	  INSTALL.txt file for changes !
+
+	  This task is done for Eloi Maduell
+	  who asked for it :-) - thanxs !
+
+	o Docs supports now JAVA2
+
+	o boolean gljIsInit();
+	  is added - to query if the users init function is allready done !
+	  Now - we can call start and stop while doing animations
+	  directly from the applets class.
+	  Look in the demo directory at:
+
+	  	glOlympicCvsApplet and glLogoCvsApplet
+
+	  Also gljIsInit is used to query we are able to render,
+	  better than just check if we just got the gl-context !
+
+	o Updated dummyGL.java and dummyGLCvs.java, also
+	  olympicCvs.java and glLogoCvs.java and
+	  glOlympicCvsApplet, glLogoCvsApplet !
+	  
+	  The above files are now JAVA2 and applet clean !
+
+	o Added Java2Applet.bat and Java2AppletB.bat with gl4java.policy
+	  to use JAVA2 appletviewer ! 
+	  (you have to change the gl4java.policy file) !
+
+	o make creates now a GL4Java.jar file - also :-)
+
+	o added Elois Maduell Texture Test JApplet which uses PPM.
+	  Moddified his one to use JAVA2 Swing, and Netscape !
+
+25. JAN 1999 (Version 1.1.0 - Release 3 )
+
+	o added glXWaitX after glXWaitGL in OpenGL_X11.c.skel
+
+	o tested with MetroX Metro-Extreme-3D (OpenGL - Hardwareaccelerated)
+	  this works, but there is flickering while animation,
+	  and i do not know why - checked it with native/x11/glX* 
+	  dem testGL2 where no flickering is :-(
+	  Also Metro3D does not have any GL-EXT funcs ...
+
+	o merged Leung Yau Wai´s Win32 patch.
+	  he checked minimized the "not implemented Win32" functions :-)
+	  Thanxs Leung !
+	  The problem was to use BC5 OpenGL include files,
+	  which are not complete ;-(
+	  So i put the SGI-OpenGL-Include-Path to the first place :-)))
+
+15. JAN 1999 (Version 1.1.0 - Release 2 )
+
+	o added a SunOS 5.X patch for Sun´s OpenGL library
+	  included a new define _GL_SOLARIS_ with it´s
+	  c-stubs in CNativeCode directory
+	
+	o Linux: changed to glibc and Mesa3.0 with pthreads
+
+	o added precompiled SunOS lib linked against mesa
+
+	o the demos/native/x11 are now compiler-clean
+	  please check the makefile
+
+	o changed the license to lgpl, see LICENSE.TXT
+
+	o documentation changes:
+		- german OpenGL intro is not more included in the html-version
+		- now using LaTeX2Html Version 98.2 beta8
+
+
+06. JULI 1998 (Version 1.1.0)
+
+        o Creating new GL4Java top class GLCanvas,
+          which support and is derived from Canvas.
+          Now it is possible, to use a canvas to render OpenGL :-)
+          New Files:
+                o GL4Java/GLCanvas.java
+                o LIBRARIES: GL4JavaCanvas AND GL4JavaCanvas32
+        
+        o debugging of some JNI functions - thanxs to Java 1.2 beta 3,
+          which shows me the errors :-)
+
+        o Using a new way to achieve the native Window-Handle.
+          Fetched the methods from the Canvas3d Class outta Java3d-Package :-)
+          Now GL4Java runs with Java 1.1.6 and higher (also Java 1.2 beta 3)
+           - changed sun.awt.motif.*DataAccess -> sun.awt.motif.X11HandleAccess
+           - changed sun.awt.windows.*DataAccess -> sun.awt.motif.Win32HandleAccess
+           - changed GL4Java.*DataAccess -> sun.awt.motif.WinHandleAccess
+
+        o Some rework for makefiles :-)
+
+        o LaTeX Documentation-Update :-)
+           - Now we do support a postscript version !   
+
+        o GLCanvas examples (check glDemosCvs)
+
+        o The precompiled Win32 versions are made with:
+                - BC5, Intel-Compiler, Optimisations, Pentium-Optimisations !
+        
+        o added a MSVC 5.0 Project directory WIN32VC.
+          i used this one to perfom debugging :-)
+
+24. JUNI 1998 (Version 1.0.2)
+
+        o using tar archives in binpkg for the unix-libs ..
+          no symbolic-links are needed anymore, so we can put this
+          project on a vfat filesystem for convinient crossdevelopment
+
+        o changed all demos.
+          now, the demos (included the dummyGL.java)
+          using a frame-per-secound method with repaint and sleep
+          to create animation !
+
+        o if the native library GL4Java is not found,
+          GL4Java32 will be loaded.
+          GL4Java32 is only for Windows32 users,
+          and uses only MS native libs: opengl32.dll and glu32.dll
+          (see chapter ´Binary Installation´ in the documentation) !!!
+
+        o improvements in the makefile,
+          better distinguish of win32 and unix users !
+          Now win32-users can REALY use the makefile :-)
+
+        o LaTeX-documentation update, with a better
+          installation description for unix & win32
+
+        - This work is done to prepare for rework GL4Java.
+          GL4Java should support canvas :-)
+
+23. Feb 1998 (Still Version 1.0.1)
+
+        o fixing the documentation (LaTeX stuff)
+
+        o using JavaCC Version 0.7.1, modified C2J for this purpose
+
+03. Nov 1997 (Version 1.0.1)
+
+        o fixed mkslib.<OS> scripts for all OS !
+
+        o tested AIX V 4.2 port - it works - but should work better :-))
+
+21. Okt 1997 (Version 1.0.0)
+        
+        o X11 (SunOS 5.X - Solaris) works with green threads
+
+        o Found out that if we use Mesa, we need to use Version 2.4 or higher
+
+        o Added the BUGFIX Version Number !
+
+
+19. Okt 1997 (Version 1.0)
+
+          o 'sDisplay' changes.
+          'sDisplay' now has NO more semaphore's.
+          'sDisplay' actually uses 'gljFree' (see above) to avoid 
+          GL Context problems.
+          'sDisplay' sets the actual Thread to highes priority before
+          calling 'display' AND resets its priority after 'display'.
+          We now do not have to care about another reentranced thread.
+          We beleave (;-) 'gljFree' and 'priority settings' are enough.
+          'sDisplay' is still a 'synchronized' method !
+
+        o Multi Threading  works
+
+        o X11 (Linux) works
+
+        o X11 (Solaris, Aix) still have to be checked !
+          (but we guessing that they will work ;-)
+
+        o Windows 32 (Windows NT, Windows 95) works 
+          (We use SGI DLL's !)
+        
+
+15. OKT 1997 (Version 1.0 beta5 )
+        
+        o Added ´void reshape (int,int)´ for the resize.
+          This is not like the deprecated 1.0 API,
+          but like glut´s reshape callback function !
+          ´reshape´ will be invoked, when sDisplay 
+          check the flag ´mustResize´ and it´s true.
+          ´mustResize´ is set by ´componentResize´ !
+          ´GLFrame.reshape´ implements the default GL behavior,
+          but if you want to - you can overload it now ;-)))
+
+        o Added ´GLFrame´ as a windowListener 
+          to act for ´windowClosing´ !
+
+          ´windowClosing´ calls ´gljDestroy´ (see lower) AND ´dispose´ !
+
+        o Added ´gljFree´, ´gljDestroy´ .
+          ´gljFree´ releases the GL Context AND
+          ´gljDestroy´ destroys it !
+
+          ´gljFree´ is always invoked after ´sDisplay´ called ´display´ !
+          This is needed while having some GL Context problems in
+          glXMakeCurrent (or wglMakeCurrent ;-) for some plattforms. 
+          The Java Event Thread wants to set gc as current, but its allready
+          has a gc set current. So we just release (NOT destroy) the GC !
+
+          ´gljDestroy´ is invoked by ´windowClosing´ ;-)))
+
+        o ´setVisible´ MUST be invoked by the subclass´s constructor 
+          after calling the super-class constructor at the end.
+          We have saw that the class global arrays with agregat-initializing
+          were not initialized yet :-( !
+
+        o updated all demos AND added ´glLogo´ and ´glDemos´.
+
+          ´glDemos´ manages invocation of all demos ;-))
+          Incl. multi-threading :-)))
+
+
+10. OKT 1997 (Version 1.0 beta2 )
+
+        o Solaris SunOs 5.5 is created and all the following 
+          changes  and bugfixes were found while porting to Solaris !
+          The bugs could be found, because Solaris has a multithreading
+          X11 Server ! The development under linux does not show
+          those reentrance-problems all the time.
+
+        o 'componentResize' won't call glViewport direct.
+          It will set a resize flag, and the next paint invocation
+          will doing the resize-action ...
+
+          o paint now invokes 'sDisplay' instead of invoking
+          'display' direct.
+          'sDisplay' has a semaphore, which avoids reentrance of
+          the 'display' method !
+          If 'sDisplay' has the semaphore, it will calls 'display' !
+          Also ´sDisplay´ is a ´synchronized´ method,
+          which will push the 2nd thread to the wait-list
+          and notify the one after completion !
+
+        o All demo's are now updated 
+          (invokation of 'sDisplay' in run-method, instead of 'display')
+          AND are WORKING well (as green- and native-threads !).
+
+08. OKT 1997 (Version 1.0 beta1 )
+        
+        o Because of the lower described Major changes,
+          we moved to version 1.0 !
+
+        o Nearly *ALL* GL and GLU functions are supported.
+          All JNI interfaces are no created by cross-compilation
+          of manually fixed MESA Header-Files with the 
+          cross-compiler C2J !
+          C2J is a derivation of the BNF C-Parser delivered with
+          the SUN's javaCC 0.6.1 !
+          So, C2J (C2J.jj) can be compiled with jdk and javacc.
+          C2J creates with Mesa's prototypes (a bit manipulated,
+          so they will fit C2J) the needed java-prototypes AND
+          the c-interface for the JNI-library !
+          C2J is shipped within this package !
+          The JNI-Interface just mapps the function.
+          Neither the java class nor the JNI-Lib checks arguments !
+          We perform a type mapping check to see if the
+          suggested GL-types fits to JNI-types at GL-Initialisation !
+
+        o The sun.awt.motiv.* and sun.awt.windows.* classes (java)
+          are taken from Jogl V 0.7 (THANXS).
+          We renamed 'em a bit, so NO naming confusion will occure,
+          while using GL4Java AND Jogl in the same CLASSPATH !
+
+        o GL4Java takes the Window-Handle direct from java
+          (also taken from Jogl -- puhh).
+          Because the use of the sun.* package, we do not know,
+          if the platform specific classes do exist tommorow.
+          SUN said "DO NOT USE THE sun.* classes ;-))".
+          Anyway - we still can rewind the procedure to get the window handle.
+          Ooops - I forgot - SO it's poosible now to have many frames
+          with the same NAME (Yes we still using Frames) !
+
+        o The Windows port was taken from Jogl V 0.7 (THANXS)
+          But still not compiled ....
+
+        o The function gljIsInit  is obsolete,
+          use gljUse now !
+
+        o All demos are updated AND ´wave´ is added !
+          (Textures and GLU functions do work ;-))
+
+        o Yes - We added some HTML documentation !
+
+
+30. SEPT 1997 (Version 0.4)
+
+        o created mklibs/mklib.<os> -> mklibs/mkslib.<os>
+          to create * ONLY * shared librarys.
+          This is a step for binary distribution !
+          Also all symbols.mak.<os> uses for other shared librarys
+          (MesaGL, m, MesaGLU, ...) * ONLY * the '-l<BaseLibName>'
+          construct - so the created shared library will find the other 
+          librarys via the LD_LIBRARY_PATH. E.g.: '-lMesaGL' !
+          I must say i am not that sure about all the shared dynamic
+          library stuff - but i testet it for solaris, ***
+          - and it works. So we can download the 'libGL4Java.so' library
+          for each target/os - check whether all libs are in
+          the LD_LIBRARY_PATH - and it's done.
+        o checked in demos if we can use 'Thread.yield()' while
+          the thread-running-loop after direct re-rendering 
+          (direct -> not via 'repaint' - via direct method call) !
+          This works fine for: aix, solaris, ***!
+        o setup the homepage at 
+          <http://parallel.fh-bielefeld.de/pv/news/gl4java.html>.
+          Some syntax fixes ;-) and * BINARY * support for
+          solaris, *** !
+        o Preparation for Win32.
+          We just could do it with BC++ 5.0, instaed of using 
+          gnuwin32 (cygnus32/mingw32).
+          We tried the GNU compiler much, but we could not compile
+          a OpenGL demo, because we could not link with the DLL´s :-(((.
+        o removed the single concatenated list of a data structur,
+          which holds the gl-context, win-handle.
+          Added those handles in GLFrame (direct ;-).
+          This is mainly don for Win32 support !
+        o Added glViewport direct into GLFrame´s componentResize
+          callback-function. So derivation´s do not need to do that !
+        o Added glGetError and gljCheckGL, where the last performs
+          a glGetError AND throws - catches an exception to print the
+          source lines - where the check was performed
+        o All glGet*v does resturn their values back to java - now ;-)
+        o Code Clean Up : 
+                * no more java actions in wrapper class
+                * just a passthrough of data´s in native class
+                * because of the non-data-parsing (speedup),
+                  we will check all GL <-> JNI type mappings at startup once.
+        o Added Jogl's sun.awt.motiv.* sun.awt.windows.* classes,
+          to support window handle grabbing by java !
+          This makes it possible to show the native method's the window
+          handle, instead of using the window-title to identify.
+          Now it is possible (theoretical) to use a canvas (like Jogl)
+          as a OpenGL drawable component instead of a frame. BUT we believe
+          that this is not that usefull - or is it ?!
+        o GLFrame has the public method ´display´ (like glut),
+          which will be called automatical by GLFrame's paint !
+          So the derivation can easy use ´display´.
+          Also paint is needed for grabbing the window-handle by java,
+          befor GLFrame initializes the OpenGL-Context !
+        o All demos and the 'dummyGL.java' are updated !
+
+16. SEPT 1997 (Version 0.3)
+
+        o added compiler FLAGS :
+                o __CREATE_OWN_WINDOW__
+                  NOT to use the original Java Window,
+                  so a color-window created by our own will be used  !
+                  This FLAG is actually NOT used for AIX, LINUX and SOLARIS !
+        
+14. SEPT 1997
+
+        o spended very much time to port GL4Java to AIX 4.2.
+        o CHANGES for AIX:
+                o must use X11 lib in : '/usr/lpp/X11/lib'
+                  - and so i used the GL lib in : '/usr/lpp/OpenGL/lib' either.
+                  The X11 lib located in '/usr/lib' does not work with
+                  the JDK :-(.
+                o must use JDK 1.1.1 OR
+                  JDK 1.1.2 without JIT (export JAVA_COMPILER=).
+                  The JIT forces the program to exit.
+                o must use the Java-Window itself, instead of
+                  creating an own child-win !
+                  Because the color's are not established in the 
+                  own-win.
+        o NOW GL4Java runs on AIX 4.2 :-)))
+        o corrected skelleton 'demos/dummyGL.java'
+        o modified GLFrame class - initialisation will be done 
+          in the constructor. so the constructor takes now two more 
+          arguments, the width and the height of the Window !
+
+10. SEPT 1997 
+        o taken some improvements from jogl v 0.5 for the
+          X-Window System functions
+        o renamed the java-package an the top-level directory to 'GL4Java'
+          to avoid name-concurrency with other implementations
+        o the actual top-level directory is now GL4Java,
+          no more java-1.1.X and mklib* links were archived
+          (to avoid confusion).
+        o changed the 'javac' debug-flag '-g' to optimization '-O'
+        o openOpenGL now greps the correct windows width and height
+          from the JavaWin-Size
+        o added gljResize to resize the GL-Window
+          This is done with the native call XResizeWindow.
+        o GLFrame is a ComponentListener,
+          so a Resize _IS_ be tracked and passed to gljResize.
+          If the java win is resized, the GL-Win is resized either !
+          Your derived GLFrame-Method componentResized
+          should call super.componentResized(e) to be shure
+          that the super class makes the resize !
+          Your derivation must NOT addComponentListener, because super does ..
+        o improved cube demo with eyes control panel
+        o actual dummyGL.java skelleton for your GL4Java portings ..
+
+August/September 1997:
+        
+        o renamed the directory to OpenGL4Java
+        o renamed the library to GL4Java ! 
+        o created a new makefile 
+          (now just one for the lib, and one for the demos)
+        o make support about the symbols.mak.<machine> descriptor-files
+          for linux(gl and mesa), solaris(mesa), aix
+        o portet all 1.0.2 native calls to 1.1.X JNI calls
+        o changed the naming convention to the strict convention
+          of OpenGL. IE. glColor3f, gluPerspective, GL_DEPTH, etc.
+        o renamed most of all java and c overheads in the wrapper
+          functions - and passing all arguments straight to the
+          OpenGL-Library.
+        o renamed use and swap to gljUse and gljSwap,
+          according to a correct naming convention 
+          - with glj for gl java !
+        o moved all gl-functions to OpenGLFrame for a more easier porting.
+          no class instance prefix must be added !
+          now gljInit creates the OpenGL initialisation,
+          and gljIsInit checks for OpenGL initialisation !
+        o added some glu* and gl* functions
+        o added some demos in the directory demos
+          also added a c-version for the demos to be able to
+          compare the GL4Java with OpenGL.
+        o added X-Error functions to be informed about X11 errors.
+        o added more selective X procedures to get the true 
+          java-window. this is done while porting GL4Java to aix.
+          this porting is not successfully done.
+
+July 24, 1997:
+
+        Added genLists(), callList(), newList()
+        Fixed a couple of minor bugs
+
+\end{verbatim}

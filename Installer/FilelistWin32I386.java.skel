@@ -1,0 +1,11 @@
+
+public class FilelistWin32I386
+	implements FilelistOS
+{
+    public String version = "_MAJV_._MINV_._BUGV_._RELV_";
+
+    public String archiv = "../binpkg/libGL4Java_MAJV_._MINV_._BUGV_._RELV_-Win32-x86.zip";
+
+    public String getVersion() { return version; }
+    public String getArchiv() { return archiv; }
+}

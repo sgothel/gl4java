@@ -1,0 +1,38 @@
+#! /bin/sh
+
+LATEX=latex
+DVIPS=dvips
+PS2PDF=ps2pdf
+LATEX2HTML=latex2html
+ 
+echo Argument = $1
+echo using tools : $LATEX $LATEX2HTML
+
+if [ \( "$1" = "GL4Java" \) -o \( -z "$1" \) ] ; then
+	rm -rf GL4Java
+        rm -f *.log *.aux *.toc *.dvi *.ps
+	$LATEX GL4Java.tex
+	$LATEX GL4Java.tex
+	$LATEX GL4Java.tex
+	$DVIPS GL4Java.dvi
+	mv GL4Java.ps ../docs/.
+	$LATEX2HTML -html_version 4.0,table,math,i18n -prefix "glj_" \
+	            -show_section_numbers \
+		    -split +2 \
+		    -index GL4Java.html \
+		    -contents GL4Java.html \
+		    -no_footnode \
+		    -iso_language EN \
+		    GL4Java.tex
+	cd GL4Java
+	rm -f .*
+	rm -f *.pl
+        rm -f *.log *.aux *.toc *.dvi
+	cd ..
+        rm -f *.log *.aux *.toc *.dvi *.ps
+	cp -rf GL4Java/glj_* GL4Java/GL4Java.html ../docs/html/.
+	cp -rf GL4Java/GL4Java.css ../docs/html/.
+	rm -rf GL4Java
+fi	
+
+rm -f *.log *.aux 

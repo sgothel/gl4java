@@ -1,0 +1,11 @@
+
+public class FilelistSGIIrix62Mips
+	implements FilelistOS
+{
+    public static final String version = "_MAJV_._MINV_._BUGV_._RELV_";
+
+    public static final String archiv = "../binpkg/libGL4Java_MAJV_._MINV_._BUGV_._RELV_-SGI-IRIX-65-mips.zip";
+
+    public String getVersion() { return version; }
+    public String getArchiv() { return archiv; }
+}

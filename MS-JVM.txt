@@ -1,0 +1,73 @@
+\begin{verbatim}
+
+With GL4Java Version 2.1.0 Release 0, 
+GL4Java do supports the MS-JVM plattform,
+which means GL4Java-Applets runs under the MS InternetExplorer >= 4.0 !
+
+Please read INSTALL.txt first !
+
+Prerequisites
+==============
+
+Be sure to have:
+
+The new MS-JVM machine (build 3186) installed:
+
+	Microsoft (R) VM for Java, 5.0 Release 5.0.0.3186
+
+(The following version does NOT Work:
+	Microsoft (R) VM for Java (tm), 4.0 Release 4.79.0.2424)
+
+You can get it from the Microsoft-Webside's: 
+	http://www.microsoft.com/java/
+	http://www.microsoft.com/java/vm/dl_vm40.htm
+
+Extracted the gl4java.jar, gl4java-glutfonts.jar AND png.jar archive 
+(with WinZip or the jar command-line-tool)
+to: C:\WINDOWS\Java\TRUSTLIB,
+so you have the new directories:
+
+		  C:\WINDOWS\Java\TRUSTLIB\com\sixlegs
+		  C:\WINDOWS\Java\TRUSTLIB\gl4java
+		  C:\WINDOWS\Java\TRUSTLIB\sun
+		  C:\WINDOWS\Java\TRUSTLIB\META-INF
+
+Delete the new directory C:\WINDOWS\Java\TRUSTLIB\META-INF !
+
+Then copy the native library (DLL) GL4JavaGljMSJDirect.dll
+to C:\WINDOWS\SYSTEM[32]
+
+		  C:\WINDOWS\SYSTEM32\GL4JavaGljMSJDirect.dll (WINNT)
+
+		  or
+
+		  C:\WINDOWS\SYSTEM\GL4JavaGljMSJDirect.dll   (WIN9X)
+
+
+Notes:
+======
+
+Be sure to have a MS-JVM installed on your system,
+e.g. the one installed within MS-IE 4.0 !
+
+Applets, Security:
+======================================
+  Because now you have installed the GL4Java system on your local
+  system. All Applet's using GL4Java can run !
+  
+  If not - please try to modify your MS-IE security setup !
+
+This Port to the MS-JVM is written by Ron Cemer
+and merged into the GL4Java official source tree by Sven Goethel.
+
+TODO:
+=====
+
+Support a better window update for the GL4Java OpenGL windows !
+
+Support query Double-Buffer and STEREO, like X11 !
+
+An Easy Installation Tool :-) That's Ron's sweating either. 
+
+\end{verbatim}
+

@@ -1,0 +1,14 @@
+<BLOCKQUOTE>
+* Java and all Java-based trademarks and logos are trademarks or registered 
+trademarks of Sun Microsystems,Inc. in the United States and other countries. 
+<BR>
+* Solaris is trademark of Sun Microsystems,Inc.<BR>
+* OpenGL is a registered trademark of SGI.<BR>
+* Windows and Windows NT are registered trademarks of Microsoft Corporation. <BR>
+* IRIX is a registerd trademark of SGI in the United States and other countries.<BR>
+* Mac is a registered trademark of Apple Computer, Inc. <BR>
+* Netscape is a trademark of Netscape Communications Corp.<BR>
+* The names of products and corporations are trademarks or registered trademarks of respective corporation.
+<P>
+</BLOCKQUOTE>
+

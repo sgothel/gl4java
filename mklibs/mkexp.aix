@@ -1,0 +1,93 @@
+#!/bin/ksh
+
+# Make an AIX EXPORT FILE FOR shared library (tricky!!!)
+# Based on a script from Athanasios G. Gaitatzes (gaitat@vnet.ibm.com)
+# Improved by Greg Thompson <gregt@visix.com> -gt
+#
+# Improved by Sven Goethel <s_goethel@bielefeld.netsurf.de>
+# 	goal: same tool for any machines ...
+# 	
+
+# First argument is name of output library
+# 	without dirname and suffix
+#
+# Rest of arguments are object files WHICH SHOULD BE IN THE EXPORT LIST !!
+#
+
+
+# Name of the library which clients will link with (ex: libMesaGL)
+BASENAME=$1
+
+# BASENAME = LIBRARY without .a suffix
+LIBRARY=${BASENAME}.so
+
+# Name of exports file
+EXPFILE=${BASENAME}.exp
+
+# List of object files to put into library
+shift 1
+OBJECTS=$*
+
+
+# Remove any old files from previous make
+rm -f ${EXPFILE}
+
+# Pick a way to use nm -gt
+NM=${NM-/bin/nm -eC}
+
+# Determine which version of AIX this is
+AIXVERSION=`uname -v`
+
+# Make exports (.exp) file header
+echo "#! ${LIBRARY}" > ${EXPFILE}
+
+# Append list of exported symbols to exports file -gt
+case ${AIXVERSION}
+{
+    3*)
+	${NM} ${OBJECTS} | awk -F'|' '{
+	    if ($3 != "extern" || substr($7,1,1) == " ") continue
+	    sub ("  *", "", $1); sub ("  *", "", $7)
+	    if ( (($7 == ".text") || ($7 == ".data") || ($7 == ".bss"))  \
+		    && ( substr($1,1,1) != ".")) {
+		if (substr ($1, 1, 7) != "__sinit" &&
+			substr ($1, 1, 7) != "__sterm") {
+		    if (substr ($1, 1, 5) == "__tf1")
+			print (substr ($1, 7))
+		    else if (substr ($1, 1, 5) == "__tf9")
+			print (substr ($1, 15))
+		    else
+			print $1
+		}
+	    }
+	}' | sort -u >> ${EXPFILE}
+	;;
+
+    4*)
+	${NM} ${OBJECTS} | awk '{
+	    if ((($2 == "T") || ($2 == "D") || ($2 == "B")) \
+		    && ( substr($1,1,1) != ".")) {
+		if (substr ($1, 1, 7) != "__sinit" &&
+			substr ($1, 1, 7) != "__sterm") {
+		    if (substr ($1, 1, 5) == "__tf1")
+			print (substr ($1, 7))
+		    else if (substr ($1, 1, 5) == "__tf9")
+			print (substr ($1, 15))
+		    else
+			print $1
+		}
+	    }
+	}' | sort -u >> ${EXPFILE}
+	;;
+}
+
+# This next line is a hack to allow full compatibility with IBM's OpenGL
+# libraries.  IBM mistakenly exports glLoadIdentity from the libGLU.a
+# library.  We have to do the same thing.  Problem reported by Yemi Adesanya
+# (adesanya@afsmail.cern.ch) and Patrick Brown (pbrown@austin.ibm.com)
+if [ "${BASENAME}" = libMesaGLU ] ; then
+    echo "glLoadIdentity" >> ${EXPFILE}
+fi
+
+
+

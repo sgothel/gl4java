@@ -1,0 +1,33 @@
+GL4Java & Swing using Offscreen-Rendering
+=========================================
+
+The demos are located in:
+	demos/GLSwingDemos
+
+Start the demos with:
+	java GLSwingDemoApplet
+	java InternalGLFrameDemo1 
+
+Status:
+=======
+
+Using Offscreen OpenGL rendering,
+if true overlapping Swing components are needed !
+
+Otherwise, please use the normal GLCanvas,
+because of fast direct rendering !
+
+The future X11 implementation should respect GLX Version 1.3
+with its PBuffer, which uses the direct rendering (-> hardware acceleration).
+
+The future Win32 implementation should find a way to use the
+hardware accelerated offscreen rendering !
+
+All other suggestions failed while testing.
+Tests for the other ways are still exists in the test directory !
+
+Suggestions are wellcome !
+
+Sven Goethel
+08. June 2000
+26. June 2000

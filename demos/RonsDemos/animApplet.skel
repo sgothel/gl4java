@@ -1,0 +1,125 @@
+/**
+ * Skeleton for animated applets (applets which automatically and
+ * continually redraw without intervention).
+ */
+
+/**
+ * @(#) [place applet name here].java
+ * @(#) author: [place author here] (converted to Java by Ron Cemer)
+ */
+
+import java.applet.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.lang.*;
+import java.util.*;
+import java.io.*;
+import java.util.*;
+import gl4java.GLContext;
+import gl4java.awt.GLAnimCanvas;
+
+public class myapplet extends Applet 
+{
+    myappletCanvas canvas = null;
+
+
+        /* Initialize the applet */
+
+
+	public void init()
+	{
+        Dimension d = getSize();
+        setLayout(new BorderLayout());
+        canvas = new myappletCanvas(d.width, d.height);
+        add("Center", canvas);
+	}
+
+
+        /* Start the applet */
+
+
+    public void start()
+    {
+        canvas.start();
+    }
+
+
+        /* Stop the applet */
+
+
+    public void stop()
+    {
+        canvas.stop();
+    }
+
+
+        /* Destroy the applet */
+
+
+    public void destroy()
+    {
+        canvas.stop();
+        canvas.destroy();
+    }
+
+
+        /* Local GLAnimCanvas extension class */
+
+
+    private class myappletCanvas extends GLAnimCanvas
+    {
+        public myappletCanvas(int w, int h)
+        {
+            super(w, h);
+            GLContext.gljNativeDebug = false;
+            GLContext.gljClassDebug = false;
+            setAnimateFps(60.0);
+        }
+    
+        public void preInit()
+        {
+            doubleBuffer = true;
+            stereoView = false;
+        }
+    
+        public void init()
+        {
+            System.out.println("init(): " + this);
+            reshape(getSize().width, getSize().height);
+
+// Put OpenGL initialization code here.
+                
+            glj.gljCheckGL();
+        }
+    
+        public void destroy()
+        {
+            System.out.println("destroy(): " + this);
+
+// Put any special takedown code here.
+
+            cvsDispose();
+        }
+    
+        public void reshape(int width, int height)
+        {
+            gl.glViewport(0,0,width,height);
+
+// Put any custom reshape code here.
+
+        }
+
+        public void display()
+        {
+            if (glj.gljMakeCurrent(true) == false) return;
+
+// Put drawing code here.
+
+            glj.gljSwap();
+            glj.gljCheckGL();
+            glj.gljFree();
+    
+            if (!isSuspended()) repaint();  // Animate at full speed.
+        }
+    }
+}

@@ -1,0 +1,91 @@
+\begin{verbatim}
+
+With GL4Java Version 2.0.1 Release 2, 
+GL4Java do supports the Netscape 4.5 Win32-JVM and Unix plattform !
+
+<Version 2.0.0 Release 1 and Version 2.0.1 Release 1
+ has a bug within the capabilities call and the JAR package >
+
+Please read INSTALL.txt first !
+
+WINDOW 95/98/NT:
+=================
+
+Be sure to have:
+
+		  ./Netcape/Communicator/Program/Java/classes/png.jar
+		  ./Netcape/Communicator/Program/Java/classes/gl4java.jar
+		  ./Netcape/Communicator/Program/Java/classes/gl4java-glutfonts.jar
+
+		  ./Netcape/Communicator/Program/Java/bin/GL4JavaJauGljJNI.dll
+		  ./Netcape/Communicator/Program/Java/bin/GL4JavaJauGLJNI.dll
+		  ./Netcape/Communicator/Program/Java/bin/GL4JavaJauGLUJNI.dll
+
+
+UNIX (Linux/Solaris/...):
+=========================
+
+Be sure to have:
+
+		  /opt/netscape/java/classes/gl4java-glutfonts.jar
+		  /opt/netscape/java/classes/png.jar
+
+The nativ libraries must be installed on a directory,
+which is in your LD_LIBRARY_PATH environment !!
+E.g.:
+		/usr/lib/libGL4JavaJauGLJNI.so
+		/usr/lib/libGL4JavaJauGLJNI.so.2
+		/usr/lib/libGL4JavaJauGLJNI.so.2.1
+		/usr/lib/libGL4JavaJauGLJNI.so.2.1.2
+		/usr/lib/libGL4JavaJauGLJNInf.so
+		/usr/lib/libGL4JavaJauGLJNInf.so.2
+		/usr/lib/libGL4JavaJauGLJNInf.so.2.1
+		/usr/lib/libGL4JavaJauGLJNInf.so.2.1.2
+		/usr/lib/libGL4JavaJauGLUJNI.so
+		/usr/lib/libGL4JavaJauGLUJNI.so.2
+		/usr/lib/libGL4JavaJauGLUJNI.so.2.1
+		/usr/lib/libGL4JavaJauGLUJNI.so.2.1.2
+		/usr/lib/libGL4JavaJauGLUJNInf.so
+		/usr/lib/libGL4JavaJauGLUJNInf.so.2
+		/usr/lib/libGL4JavaJauGLUJNInf.so.2.1
+		/usr/lib/libGL4JavaJauGLUJNInf.so.2.1.2
+		/usr/lib/libGL4JavaJauGljJNI.so
+		/usr/lib/libGL4JavaJauGljJNI.so.2
+		/usr/lib/libGL4JavaJauGljJNI.so.2.1
+		/usr/lib/libGL4JavaJauGljJNI.so.2.1.2
+
+All symbolic links and the file itself,
+use "cp -a" to keep the symbolic links alive !
+
+Also you should be sure to have a CLASSPATH for Netscape set 
+like this:
+	CLASSPATH=/opt/netscape/java/classes:.
+	for i in /opt/netscape/java/classes/*.jar ; do
+		CLASSPATH=$CLASSPATH:$i
+	done
+	echo $CLASSPATH
+	export CLASSPATH
+
+or just make the default whith:
+
+	CLASSPATH=
+	export CLASSPATH
+
+Applets/Security:
+======================
+You can check Netscape with the Java-Applets-Html-File's
+	demos/glLogoCvsApplet.html
+	demos/glOlympicCvsApplet.html
+	demos/testTextPPM1.html (copy swingall.jar of Swing1.1 to 
+		                 ./Netcape/Communicator/Program/Java/classes )
+
+You will be asked to grant the asked privilege,
+so trust GL4Java and say yes !
+
+TODO:
+=====
+
+Test other plattforms :-)
+
+\end{verbatim}
+

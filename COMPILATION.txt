@@ -1,0 +1,234 @@
+\begin{verbatim}
+
+SOURCE INSTALLATION
+===================
+
+  Prerequisites
+  =============
+
+  You must allready have the following installed:
+
+    1.  Common
+
+        (a) JDK >= 1.2
+
+        (b) JavaCC >= 1.1
+
+        (c) bash
+
+        (d) GNU make
+
+        (e) GNU tools
+
+	(f) Java PNG archive (com.sixlegs.image.png)
+		Copy the png.jar file into a CLASSPATH-directory, 
+		e.g. <JAVA_HOME>/jre/lib/ext/png.jar !
+
+		You can get a copy from the jausoft website also:
+
+http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/binpkg/png-1.0a-jar.zip
+
+
+    2.  UNIX/X11
+
+        (a) ( GL + GLU ) or ( MesaGL + MesaGLU Version 2.4 or higher)
+            We are looking for libGL.so AND libGLU.so in your library PATH, so
+            please create a symbolic link from the Mesa libs, to the abstract
+            one's !!
+	    Please be sure to use a GLU Version >= 1.2 !!
+
+        (b) X11R6 (XFree86 works fine ;-) 3.6, or >= 4.0
+
+        (c) Unix standard file-utilities (tar, gzip, ...)
+
+        (d) LaTeX and LaTeX2Html (to generate the documentation)
+
+    3.  Windows 32 (NT & 95)
+        (a) MS-OpenGL and GLU library installed ! 
+	    See if you have opengl32.dll AND glu32.dll 
+	    installed in your library path 
+	    (c:/winnt/system32 OR c:/windows/system)
+
+        (b) WinZip (to extract zip and tar-gzip files), be sure to disable the
+            option LF/CR conversion in TAR-Archives ! You can also use the jar
+            command-line tool of the JDK for zip files !
+
+        (c) Unix standard utilities (make, ksh (bash), tar ...) E.g. GNU-Win32
+            Project from Cygnus[_1_1], make sure to have zip installed also !
+        (d) LaTeX and LaTeX2Html (not testet - to generate the documentation)
+
+        (e) For compiling GL4Java for the MS-JVM, be sure you have the new MS-
+            JVM machine (build 3186) installed.
+
+
+  Obtain GL4Java
+  ===============
+
+	Official TAR-BALL
+	=================
+
+Login as root (or any other), obtain the source archive for GL4Java.
+
+http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/archive/
+
+Copy the .tar.gz file to a directory such as /usr/local and cd to that
+directory, then unpack the file:
+   cd /usr/local	( or where ever you placed the file )
+   gunzip GL4JavaX.Y.Z-Rn-src.tar.gz ; tar xvf GL4JavaX.Y.Z-Rn-src.tar
+   gunzip GL4JavaX.Y.Z-Rn-doc.tar.gz ;
+   tar xvf GL4JavaX.Y.Z-Rn-doc.tar (optional :-)
+
+X is the major, Y the minor and Z the bugfix library version number, and Rn
+(e.g. R2) is the release number, where no changes in the libs where made !
+
+A new directory will be created called GL4Java.
+
+
+	Anonymous CVS Access (Developer Version)
+	========================================
+
+This project's SourceForge CVS repository can be checked out through anonymous
+(pserver) CVS with the following instruction set. 
+The module you wish to check out must be specified as the modulename. 
+When prompted for a password for anonymous, simply press the Enter key. 
+
+cvs -d:pserver:anonymous@cvs.GL4Java.sourceforge.net:/cvsroot/GL4Java login 
+ 
+cvs -z3 -d:pserver:anonymous@cvs.GL4Java.sourceforge.net:/cvsroot/GL4Java co GL4Java 
+
+Updates from within the module's directory do not need the -d parameter.
+
+
+
+  Compilation
+  ===========
+
+	UNICEs and WINDOWs users
+	=========================
+
+Go to the directory GL4Java, 
+which is the root-directory of GL4Java 
+- so we stay here for the following procedures !
+
+You will see some 'symbols.mak.<machine>' files. 
+Choose the right 'symbols.mak.<machine>' file, or create one. 
+Edit your choosen or created 'symbols.mak.<machine>', 
+so it will fit to your OS configuration - mind all macros !
+
+Copy the file 'symbols.mak.<your-machine>' to 'symbols.mak',
+a symbolic link for unices is recomended.
+
+The created lib will be copied to 'HOME_LIB_DIR' by automatic 
+(via tar - symbolic links are still alive ;-) !
+
+All compiled java class files and the are copied into the directory
+'DEST_CLASSES_DIR' !
+This class-copy procedure can be forced later with the make call:
+	´make classcpy´.
+The gl4java.jar archive is generated in the directory 'DEST_CLASSES_DIR' also.
+
+Because GL4Java supports Netscape's JVM & JNI, 
+we do try to ask for a privilege to run native DLL's. 
+Because this requested privilege - the 'netscape' security-classes are
+delivered in the file ´capsapi_classes.zip´ which is used in the JAVAC macro
+definition in symbols.mak.
+
+
+	UNICEs users
+	============
+
+Do not forget to add your 'HOME_LIB_DIR' (set in symbols.mak) 
+to your LD_LIBRARY_PATH !
+
+Next create the library, class-files and all is needed with (for Unix/X11):
+    make x11
+
+The Unix makefile-action does the complete creation :-) 
+
+The shared libraries are moved to the HOME_LIB_DIR (see above) 
+or copied with the "-a" option to keep the symbolic links alive !
+
+	WINDOWs users
+	==============
+
+Next create the class-files and all preparations with (Win32):
+    make w32
+
+The Windows makefile-action only creates the tool (gljni) and all Java classes
+and C-wrappers. An additional C compiler invocation must be done.
+
+To compile GL4Java, we still use MS Visual C++ 6.0 ! We also assume that
+Windows is installed under c:/WIN_NT ! The compiler flags are set to Pentium
+Pro (686 / PII) with the optimizimg Intel compiler !
+Also Java2 SDK is installed under c:/java2 ! Also MS Java SDK is installed
+under c:/MSJAVASDK !
+Please check all location in the makefile !
+
+  1.  If you have installed cygwin32 and it's bash and make, etc... AND set it
+      up very well (CLASSPATH, PATH, ...) you can invoke the makefile_b with
+      make w32 to create all java-depended stuff and the C-wrappers.
+
+  2.  Befor going any further, check if the files opengl32.dll glu.dll_a,
+      glu32.dll exist in c:/WIN_NT/system32 OR c:/windows/system ! IF not get
+      MS-OpenGL Lib (opengl32.dll, glu32.dll) !
+
+  3.  Go with the Explorer to the directory Win32VC6 and open the workspace
+      Win32VC6.dsw !
+
+  4.  Now, you should fix some option in the project file, we used:
+      The order of this path is important !
+      INCLUDEPATH:
+      		  c:/projects/java-1.1.X/GL4Java/CClassHeaders; \
+      		  c:/projects/java-1.1.X/GL4Java/CNativeCode; \
+      		  c:/java2/include; \
+      		  c:/java2/include/windows \
+      		  <the MSVC60 SDK PATH's ...>
+      LIBPATH:
+      		  c:/WIN_NT/system32; \
+      		  <the MSVC60 SDK PATH's ...>
+      WHERE: Java2 is installed under c:/java2 GL4Java is installed under d:/
+      projects/java-1.1.X/GL4Java
+
+  5.  Now just compile each project and the targets are placed in the lib
+      directory !
+
+  6.  Copy the generated dll's (in the libs-directory) to your windows system32
+      directory, or (better) to your /java2/jre/bin directory .
+
+	UNICEs and WINDOWs users
+	=========================
+
+If all goes well, just type e.g.: 
+	'java gl4java.GLContext -info'
+
+This will just test the bindings and gives you some informations !
+
+
+Next create the demos with.
+   cd demos
+   make
+
+If all goes well, just type e.g.: 
+	'java glDemosCvs' 
+
+in this directory, 
+and you should see a demo manager for all the GL4Java demos we have written.
+
+To allow JAVA2's appletviewer or Java2-Plug-In using JNI native libs, 
+just look at GL4Java/demo/Java2Applet.bat 
+(You have to change the gl4java.policy file) !
+
+You can - of course - use your 'policytool', which is shipped with JAVA2 !
+To use the demo Applets for Java2-Plug-In from www.jausoft.com, please add the
+following lines to your java.policy file:
+	grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/-"
+	{
+	  permission java.security.AllPermission;
+	};
+You can also compare the totally native glut version against the java version.
+The glut versions do exist in the demos path also (under native).
+
+Sven Goethel
+2000-11-18
+
+\end{verbatim}

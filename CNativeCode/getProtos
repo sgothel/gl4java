@@ -1,0 +1,11 @@
+#! /bin/sh
+
+rm a.h
+
+for i in $(cat aaa.txt); do 
+	echo looking for $i
+	sed -n "/$i(/,/);/w a.tmp.h" /usr/local/src/mesa/include/GL/gl.h
+	cat a.tmp.h >> a.h
+done 
+
+rm a.tmp.h

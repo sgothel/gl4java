@@ -1,0 +1,11 @@
+
+public class FilelistLinuxPPCGlibcXF86
+	implements FilelistOS
+{
+    public static final String version = "_MAJV_._MINV_._BUGV_._RELV_";
+
+    public static final String archiv = "../binpkg/libGL4Java_MAJV_._MINV_._BUGV_._RELV_-Linux-glibc2-xf86-ppc.zip";
+
+    public String getVersion() { return version; }
+    public String getArchiv() { return archiv; }
+}

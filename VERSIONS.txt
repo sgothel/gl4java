@@ -1,0 +1,43 @@
+\begin{verbatim}
+
+All about the GL4Java Version Numbers
+=====================================
+
+The GL4Java version-string is X.Y.Z.R:
+       
+       X - The major version number, 
+           this only changes if the architecture has changed significant AND
+           some or complete incompatibilities in the Java-API are drawn.
+	   Synchronisation to other ports needed.
+ 
+       Y - The minor version number,
+           this may change if some changes or add-ons are made 
+	   without incompatibility in the Java-API/ Java-Files.
+	   Synchronisation to other ports is recommended.
+ 
+       Z - The bugfix number,
+           this may change for bugfix purposes in the
+           Java- or Native-Files !
+	   Synchronisation to other ports is not needed.
+ 
+       R - The release number,
+           for changes in native-libs, packaging, etc.
+	   Synchronisation to other ports is not needed.
+ 
+ The reason for synchronisation within X and Y is because 
+ the GL4Java compatibility !
+
+ A GL4Java X.Y.x.x application with an defined X and Y should run on all
+ implementations !
+ 
+ Another goal is that the gl4java.jar file of version X.Y.xx.xx can be used
+ for any machine ! 
+ 
+ My proposal is (from now on 2.0.0.1) to being synchronized for X and Y !
+ Everybody has to make an GL4Java-RFC to all developers on GL4Java
+ (actually three interests :-).
+
+ Please add yourself to the GL4Java mailinglist !
+ Look at http://www.jausoft.com/gl4java !
+ 
+\end{verbatim}

@@ -1,0 +1,30 @@
+#
+# Uses: Linux2.0X-glibc-pthreads-mesa3.0pthreads
+#
+
+CC = cc 
+
+CCINCL = -I/usr/local/include -I/usr/local/mesa/include -I/usr/X11R6/include
+CCLIBS = -L/usr/X11R6/lib -L/usr/local/lib -L/usr/local/mesa/lib \
+         -lGL -lGLU -lglut \
+	 -lXmu -lXt -lSM -lICE -lXext -lX11 -lXi -lXext -lX11 -lm -lpthread
+
+
+C_APPL_FILES		= cube.c olympic.c testGL1.c testGL2.c wave.c
+
+
+.SUFFIXES 		: .c .o
+
+.c.o:
+	$(CC) -c -o $@ $< $(CCINCL) 2>&1 | tee -a errors
+	$(CC) -o ${@:.o=} $@ $(CCINCL) $(CCLIBS) 2>&1 | tee -a errors
+
+all: ${C_APPL_FILES:.c=.o}
+
+
+clean: 
+	rm -f *.o *~ errors
+
+cleanall: clean
+	rm -f ${C_APPL_FILES:.c=}
+

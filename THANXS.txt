@@ -1,0 +1,54 @@
+\begin{verbatim}
+
+I want to THANK :
+
+	o The GNU & GNU/Linux community, and all the brave folks, who
+	  wrote open sourced free (L)GPL'ed software.
+	  Without them, a project like this is impossible !
+
+        o Leo Chan for porting the OpenGL library to java the first time !
+
+        o Adam King for porting Leo Changs version to integrate 
+          the OpenGL-Rendering into the Java-Frame !
+
+        o Tommy Reilly for participating and much improvements
+
+        o Atilla Kolac for participating in GL4Java while his and mine
+	  diploma thesis work.
+
+	o Leung Yau Wai for debugging Win32 !
+
+	o Eloi Maduell for keeping me working on the Netscape support
+	  and his texture examples.
+
+	o Lee Elson & Odell Reynolds (both NASA)
+	  for makeing the source code more compatible 
+	  and creating binaries for other unices.
+
+	o Gerard Ziemski for porting GL4Java to the MACintosh !
+
+	o Ron Cemer (www.3dstockcharts.com)
+	  for start porting GL4Java to the MS-JVM 
+	  and writing the 1st version of the INSTALLER !
+
+	o Pontus Lidman (Mathcore) for adding
+	  GLUT Font support for GL4Java !
+
+	o www.desys.com for paying me a fee,
+	  to support offscreen rendering and swing integration !
+
+	o Max Gilead, for maintaining the FAQ and answering so many
+	  questions in the mailinglist, and ...
+
+	o Ervin Vervaet (Java MD3 Viewer), Max Gilead (Fictor), 
+	  Aetius (SurfaceGL), Jean-Yves BRUD, and many other 
+	  - for helping being GL4Java bug clean.
+
+	o E3Futura & TeatreSoft for inviting me to the 
+	  www.campus-party.org (2k)
+	  and makes my appearance to it possible.
+
+	o And all the many others, who are not named here ...
+
+\end{verbatim}
+

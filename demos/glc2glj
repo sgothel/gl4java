@@ -1,0 +1,32 @@
+#! /bin/sh
+
+echo "will replace all decimal numbers to java-float constants"
+echo "$1 -> $1.new"
+sed -e '/[0-9][0-9]*\.[0-9][0-9]*/s//&f/g' \
+    -e '/GLbyte/s//byte/g' \
+    -e '/GLshort/s//short/g' \
+    -e '/GLint/s//int/g' \
+    -e '/GLfloat/s//float/g' \
+    -e '/GLclampf/s//float/g' \
+    -e '/GLdouble/s//double/g' \
+    -e '/GLclampd/s//double/g' \
+    -e '/GLubyte/s//byte/g' \
+    -e '/GLboolean/s//boolean/g' \
+    -e '/GLushort/s//short/g' \
+    -e '/GLuint/s//int/g' \
+    -e '/GLenum/s//int/g' \
+    -e '/GLbitfield/s//int/g' \
+    -e '/GLUquadricObj  *\*/s//long /g' \
+    -e '/GLUnurbsObj  *\*/s//long /g' \
+    -e '/GLUtesselator  *\*/s//long /g' \
+    -e '/GLUtriangulatorObj  *\*/s//long /g' \
+    -e '/cos/s//(float)Math.cos/g' \
+    -e '/sin/s//(float)Math.sin/g' \
+    -e '/sqrt/s//(float)Math.sqrt/g' \
+    -e '/pow/s//(float)Math.pow/g' \
+    -e '/\#define/s//static final int/g' \
+    -e '/glut[A-Z]/s//glut.&/g' \
+    -e '/glu[A-Z]/s//glu.&/g' \
+    -e '/gl[A-Z]/s//gl.&/g' \
+    $1 > $1.new
+

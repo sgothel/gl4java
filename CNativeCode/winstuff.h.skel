@@ -1,0 +1,33 @@
+#ifndef __WINSTUFF__
+	#define __WINSTUFF__
+
+	#include <windows.h>
+
+	/**
+	 * Out of the Document:
+	 * 	http://java.sun.com/products/jdk/faq/jni-j2sdk-faq.html
+	 * So if you have trouble with the type __int64,
+	 * please use this #define !!!
+	 */
+	#ifdef FOOBAR_COMPILER
+          #define __int64 signed_64_bit_type
+        #endif
+
+	/*
+   	#include "gl.win32.not.h"
+	#include "gl.win32.ext.h"
+	*/
+
+   	#define __LIB_VERSION__ __SED_LIB_VERSION__
+
+	#ifdef LIBAPIENTRY
+		#undef LIBAPIENTRY
+	#endif
+	#ifdef LIBAPI
+		#undef LIBAPI
+	#endif
+
+	#define LIBAPI	        __declspec(dllexport)
+	#define LIBAPIENTRY    __stdcall
+#endif
+

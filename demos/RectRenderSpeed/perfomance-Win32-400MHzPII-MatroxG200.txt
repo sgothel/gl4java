@@ -1,0 +1,247 @@
+I used platform:
+
+Matrox G200 with new driver !
+Windows NT 4.0 SP5 !
+329 MB RAM !
+400 MhZ PII !
+
+Running under Java2 & Cygwin32-Bash & ShellScript GL4JTests2.sh !
+
+
+args: help 0 1 2 3 100 101 102 103
+Arguments:
+	help - print this help
+	dbl  - use doublebuffer
+	<mode> - render mode, where mode is one of the following integer values :
+  0 - Immediate + FLAT   + ColorIndex +           glRect
+  1 - Immediate + FLAT   + ColorIndex +           glRectiv
+  2 - Immediate + FLAT   + ColorIndex + POLYGON + glVertex2i(x2,y2);
+  3 - Immediate + FLAT   + ColorIndex + QUADS   + glVertex2i(x2,y2);
+ 10 - Immediate + FLAT   + RGB        +           glRect
+ 11 - Immediate + FLAT   + RGB        +           glRectiv
+ 12 - Immediate + FLAT   + RGB        + POLYGON + glVertex2i(x2,y2);
+ 13 - Immediate + FLAT   + RGB        + QUADS   + glVertex2i(x2,y2);
+ 20 - Immediate + SMOOTH + ColorIndex +           glRect
+ 21 - Immediate + SMOOTH + ColorIndex +           glRectiv
+ 22 - Immediate + SMOOTH + ColorIndex + POLYGON + glVertex2i(x2,y2);
+ 23 - Immediate + SMOOTH + ColorIndex + QUADS   + glVertex2i(x2,y2);
+ 30 - Immediate + SMOOTH + RGB        +           glRect
+ 31 - Immediate + SMOOTH + RGB        +           glRectiv
+ 32 - Immediate + SMOOTH + RGB        + POLYGON + glVertex2i(x2,y2);
+ 33 - Immediate + SMOOTH + RGB        + QUADS   + glVertex2i(x2,y2);
+100 - COMPILED  + FLAT   + ColorIndex +           glRect
+101 - COMPILED  + FLAT   + ColorIndex +           glRectiv
+102 - COMPILED  + FLAT   + ColorIndex + POLYGON + glVertex2i(x2,y2);
+103 - COMPILED  + FLAT   + ColorIndex + QUADS   + glVertex2i(x2,y2);
+110 - COMPILED  + FLAT   + RGB        +           glRect
+111 - COMPILED  + FLAT   + RGB        +           glRectiv
+112 - COMPILED  + FLAT   + RGB        + POLYGON + glVertex2i(x2,y2);
+113 - COMPILED  + FLAT   + RGB        + QUADS   + glVertex2i(x2,y2);
+120 - COMPILED  + SMOOTH + ColorIndex +           glRect
+121 - COMPILED  + SMOOTH + ColorIndex +           glRectiv
+122 - COMPILED  + SMOOTH + ColorIndex + POLYGON + glVertex2i(x2,y2);
+123 - COMPILED  + SMOOTH + ColorIndex + QUADS   + glVertex2i(x2,y2);
+130 - COMPILED  + SMOOTH + RGB        +           glRect
+131 - COMPILED  + SMOOTH + RGB        +           glRectiv
+132 - COMPILED  + SMOOTH + RGB        + POLYGON + glVertex2i(x2,y2);
+133 - COMPILED  + SMOOTH + RGB        + GL_QUADS+ glVertex2i(x2,y2);
+
+
+trying mode: 0
+>MODE 0: FrontBuffer  + IMMEDIATE + Flat   + ColorIndex +           glRect
+>Time for fetching Seis-Data: 0.631
+>Time for map color-table: 0.05
+>`gl_display(immediate)- rectangles rendered: 1000000
+>relative time: (immediate only)
+... elapsed time: 60.858 Sec
+... rate: 60.858000000000004 SPMR (Sec Per Million Rectangles)
+>absolute time: (immediate and calculations)
+... elapsed time: 61.549 Sec
+... rate: 61.549 SPMR (Sec Per Million Rectangles)
+trying mode: 1
+>MODE 1: FrontBuffer  + IMMEDIATE + Flat   + ColorIndex +           glRectiv
+>Time for fetching Seis-Data: 0.631
+>Time for map color-table: 0.04
+>`gl_display(immediate)- rectangles rendered: 1000000
+>relative time: (immediate only)
+... elapsed time: 67.547 Sec
+... rate: 67.547 SPMR (Sec Per Million Rectangles)
+>absolute time: (immediate and calculations)
+... elapsed time: 68.218 Sec
+... rate: 68.218 SPMR (Sec Per Million Rectangles)
+trying mode: 2
+>MODE 2: FrontBuffer  + IMMEDIATE + Flat   + ColorIndex + POLYGON + glVertex2i
+>Time for fetching Seis-Data: 0.631
+>Time for map color-table: 0.05
+>`gl_display(immediate)- rectangles rendered: 1000000
+>relative time: (immediate only)
+... elapsed time: 8.782 Sec
+... rate: 8.782 SPMR (Sec Per Million Rectangles)
+>absolute time: (immediate and calculations)
+... elapsed time: 9.473 Sec
+... rate: 9.473 SPMR (Sec Per Million Rectangles)
+trying mode: 3
+>MODE 3: FrontBuffer  + IMMEDIATE + Flat   + ColorIndex + QUADS   + glVertex2i
+>Time for fetching Seis-Data: 0.631
+>Time for map color-table: 0.04
+>`gl_display(immediate)- rectangles rendered: 1000000
+>relative time: (immediate only)
+... elapsed time: 7.051 Sec
+... rate: 7.051 SPMR (Sec Per Million Rectangles)
+>absolute time: (immediate and calculations)
+... elapsed time: 7.722 Sec
+... rate: 7.722 SPMR (Sec Per Million Rectangles)
+trying mode: 100
+>MODE 100: FrontBuffer  + COMPILED  + Flat   + ColorIndex +           glRect
+>Time for fetching Seis-Data: 0.63
+>Time for map color-table: 0.051
+>`gl_display(displayList)- rectangles put in displayList: 1000000
+>relative time: (display-list only)
+... elapsed time: 2.894 Sec
+... rate: 2.894 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list and calculations)
+... elapsed time: 3.575 Sec
+... rate: 3.575 SPMR (Sec Per Million Rectangles)
+... elapsed time: 56.571 Sec
+... rate: 56.571 SPMR (Sec Per Million Rectangles)
+>relative time: (display-list called)
+... elapsed time: 52.996 Sec
+... rate: 52.996 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list compiled+called+calculations)
+... elapsed time: 56.571 Sec
+... rate: 56.571 SPMR (Sec Per Million Rectangles)
+trying mode: 101
+>MODE 101: FrontBuffer  + COMPILED  + Flat   + ColorIndex +           glRectiv
+>Time for fetching Seis-Data: 0.631
+>Time for map color-table: 0.04
+>`gl_display(displayList)- rectangles put in displayList: 1000000
+>relative time: (display-list only)
+... elapsed time: 4.867 Sec
+... rate: 4.867 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list and calculations)
+... elapsed time: 5.548 Sec
+... rate: 5.548 SPMR (Sec Per Million Rectangles)
+... elapsed time: 59.245 Sec
+... rate: 59.245000000000005 SPMR (Sec Per Million Rectangles)
+>relative time: (display-list called)
+... elapsed time: 53.707 Sec
+... rate: 53.707 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list compiled+called+calculations)
+... elapsed time: 59.255 Sec
+... rate: 59.255 SPMR (Sec Per Million Rectangles)
+trying mode: 102
+>MODE 102: FrontBuffer  + COMPILED  + Flat   + ColorIndex + POLYGON + glVertex2i
+>Time for fetching Seis-Data: 0.641
+>Time for map color-table: 0.05
+>`gl_display(displayList)- rectangles put in displayList: 1000000
+>relative time: (display-list only)
+... elapsed time: 25.947 Sec
+... rate: 25.947 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list and calculations)
+... elapsed time: 26.899 Sec
+... rate: 26.899 SPMR (Sec Per Million Rectangles)
+... elapsed time: 34.35 Sec
+... rate: 34.35 SPMR (Sec Per Million Rectangles)
+>relative time: (display-list called)
+... elapsed time: 7.391 Sec
+... rate: 7.391 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list compiled+called+calculations)
+... elapsed time: 34.35 Sec
+... rate: 34.35 SPMR (Sec Per Million Rectangles)
+trying mode: 103
+>MODE 103: FrontBuffer  + COMPILED  + Flat   + ColorIndex + QUADS   + glVertex2i
+>Time for fetching Seis-Data: 0.791
+>Time for map color-table: 0.05
+>`gl_display(displayList)- rectangles put in displayList: 1000000
+>relative time: (display-list only)
+... elapsed time: 7.671 Sec
+... rate: 7.671 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list and calculations)
+... elapsed time: 10.796 Sec
+... rate: 10.796 SPMR (Sec Per Million Rectangles)
+... elapsed time: 16.314 Sec
+... rate: 16.314 SPMR (Sec Per Million Rectangles)
+>relative time: (display-list called)
+... elapsed time: 5.498 Sec
+... rate: 5.498 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list compiled+called+calculations)
+... elapsed time: 16.334 Sec
+... rate: 16.334 SPMR (Sec Per Million Rectangles)
+
+args: help 112 113
+Arguments:
+	help - print this help
+	dbl  - use doublebuffer
+	<mode> - render mode, where mode is one of the following integer values :
+  0 - Immediate + FLAT   + ColorIndex +           glRect
+  1 - Immediate + FLAT   + ColorIndex +           glRectiv
+  2 - Immediate + FLAT   + ColorIndex + POLYGON + glVertex2i(x2,y2);
+  3 - Immediate + FLAT   + ColorIndex + QUADS   + glVertex2i(x2,y2);
+ 10 - Immediate + FLAT   + RGB        +           glRect
+ 11 - Immediate + FLAT   + RGB        +           glRectiv
+ 12 - Immediate + FLAT   + RGB        + POLYGON + glVertex2i(x2,y2);
+ 13 - Immediate + FLAT   + RGB        + QUADS   + glVertex2i(x2,y2);
+ 20 - Immediate + SMOOTH + ColorIndex +           glRect
+ 21 - Immediate + SMOOTH + ColorIndex +           glRectiv
+ 22 - Immediate + SMOOTH + ColorIndex + POLYGON + glVertex2i(x2,y2);
+ 23 - Immediate + SMOOTH + ColorIndex + QUADS   + glVertex2i(x2,y2);
+ 30 - Immediate + SMOOTH + RGB        +           glRect
+ 31 - Immediate + SMOOTH + RGB        +           glRectiv
+ 32 - Immediate + SMOOTH + RGB        + POLYGON + glVertex2i(x2,y2);
+ 33 - Immediate + SMOOTH + RGB        + QUADS   + glVertex2i(x2,y2);
+100 - COMPILED  + FLAT   + ColorIndex +           glRect
+101 - COMPILED  + FLAT   + ColorIndex +           glRectiv
+102 - COMPILED  + FLAT   + ColorIndex + POLYGON + glVertex2i(x2,y2);
+103 - COMPILED  + FLAT   + ColorIndex + QUADS   + glVertex2i(x2,y2);
+110 - COMPILED  + FLAT   + RGB        +           glRect
+111 - COMPILED  + FLAT   + RGB        +           glRectiv
+112 - COMPILED  + FLAT   + RGB        + POLYGON + glVertex2i(x2,y2);
+113 - COMPILED  + FLAT   + RGB        + QUADS   + glVertex2i(x2,y2);
+120 - COMPILED  + SMOOTH + ColorIndex +           glRect
+121 - COMPILED  + SMOOTH + ColorIndex +           glRectiv
+122 - COMPILED  + SMOOTH + ColorIndex + POLYGON + glVertex2i(x2,y2);
+123 - COMPILED  + SMOOTH + ColorIndex + QUADS   + glVertex2i(x2,y2);
+130 - COMPILED  + SMOOTH + RGB        +           glRect
+131 - COMPILED  + SMOOTH + RGB        +           glRectiv
+132 - COMPILED  + SMOOTH + RGB        + POLYGON + glVertex2i(x2,y2);
+133 - COMPILED  + SMOOTH + RGB        + GL_QUADS+ glVertex2i(x2,y2);
+
+
+trying mode: 112
+>MODE 112: FrontBuffer  + COMPILED  + Flat   + RGB        + POLYGON + glVertex2i
+>Time for fetching Seis-Data: 0.641
+>Time for map color-table: 0.05
+>`gl_display(displayList)- rectangles put in displayList: 1000000
+>relative time: (display-list only)
+... elapsed time: 8.372 Sec
+... rate: 8.372 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list and calculations)
+... elapsed time: 9.073 Sec
+... rate: 9.073 SPMR (Sec Per Million Rectangles)
+... elapsed time: 15.563 Sec
+... rate: 15.563 SPMR (Sec Per Million Rectangles)
+>relative time: (display-list called)
+... elapsed time: 6.49 Sec
+... rate: 6.49 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list compiled+called+calculations)
+... elapsed time: 15.563 Sec
+... rate: 15.563 SPMR (Sec Per Million Rectangles)
+trying mode: 113
+>MODE 113: FrontBuffer  + COMPILED  + Flat   + RGB        + QUADS   + glVertex2i
+>Time for fetching Seis-Data: 0.631
+>Time for map color-table: 0.05
+>`gl_display(displayList)- rectangles put in displayList: 1000000
+>relative time: (display-list only)
+... elapsed time: 6.159 Sec
+... rate: 6.159 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list and calculations)
+... elapsed time: 6.84 Sec
+... rate: 6.84 SPMR (Sec Per Million Rectangles)
+... elapsed time: 12.147 Sec
+... rate: 12.147 SPMR (Sec Per Million Rectangles)
+>relative time: (display-list called)
+... elapsed time: 5.317 Sec
+... rate: 5.317 SPMR (Sec Per Million Rectangles)
+>absolute time: (display-list compiled+called+calculations)
+... elapsed time: 12.157 Sec
+... rate: 12.157 SPMR (Sec Per Million Rectangles)

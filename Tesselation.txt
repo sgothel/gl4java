@@ -1,0 +1,30 @@
+
+Since GL4Java 2.2.0, tesselation is supported !
+================================================
+
+Please look in the sources and/or javadoc
+of: 
+	gl4java.GLUTFunc
+
+There exist also many demos:
+
+	demos/MiscDemos/tess
+	demos/MiscDemos/tessdemo
+	demos/MiscDemos/tesswind
+
+DETAILS
+=======
+
+The native callback manager of GL4Java seeks the 
+callback function with:
+	- callback method-type (the "which" argument of the Callback function)
+	- the current gl-context
+
+Because the callback manager functions do not know the 
+tessellator/nurbs/quadratics id,
+only ONE callback-method for one gl-context and "which"-method
+is supported !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Sven Goethel
+http://www.jausoft.com
+7th March 2000

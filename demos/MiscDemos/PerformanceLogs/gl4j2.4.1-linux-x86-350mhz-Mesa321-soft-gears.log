@@ -1,0 +1,130 @@
+
+===============================================
+
+using native gears
+GL_RENDERER   = Mesa X11
+GL_VERSION    = 1.2 Mesa 3.2.1
+GL_VENDOR     = Brian Paul
+GL_EXTENSIONS = GL_EXT_blend_color GL_EXT_blend_minmax GL_EXT_blend_logic_op GL_EXT_blend_subtract GL_EXT_packed_pixels GL_EXT_paletted_texture GL_EXT_point_parameters GL_EXT_polygon_offset GL_EXT_vertex_array GL_EXT_texture_object GL_EXT_texture3D GL_MESA_window_pos GL_MESA_resize_buffers GL_EXT_shared_texture_palette GL_EXT_rescale_normal GL_EXT_abgr GL_SGIS_texture_edge_clamp GL_EXT_stencil_wrap GL_INGR_blend_func_separate GL_ARB_multitexture GL_NV_texgen_reflection GL_PGI_misc_hints GL_EXT_compiled_vertex_array GL_EXT_clip_volume_hint
+492 frames in 5.004 seconds = 98.3213 FPS
+510 frames in 5.007 seconds = 101.857 FPS
+510 frames in 5.007 seconds = 101.857 FPS
+510 frames in 5.007 seconds = 101.857 FPS
+510 frames in 5.006 seconds = 101.878 FPS
+510 frames in 5.006 seconds = 101.878 FPS
+510 frames in 5.007 seconds = 101.857 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk118-ibm
+
+java full version "JDK 1.1.8 IBM build l118-19991221 (JIT enabled: jitc)"
+JAVA_COMPILER jitc
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+Xt error: attempt to add non-widget child "dsm" to parent "MToolkit app" which supports only widgets
+SIGABRT received at bfffdc98 in /lib/libpthread.so.0. Processing terminated
+Writing stack trace to javacore4308.txt ... OK
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk118_v1
+
+java version "1.1.8"
+JAVA_COMPILER tya
+
+ TYA 1.5 (for J117 / Linux). Copyright (c) 1997,98,99 The TYA Team
+ Contact  The TYA Team   via Albrecht Kleine  <kleine@ak.sax.de>
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.2.1
+GL RENDERER: Mesa X11
+GL VENDOR  : Brian Paul
+500 frames in 5.003 seconds = 99.94003597841295 FPS
+501 frames in 5.004 seconds = 100.11990407673862 FPS
+502 frames in 5.009 seconds = 100.21960471151925 FPS
+502 frames in 5.01 seconds = 100.1996007984032 FPS
+502 frames in 5.008 seconds = 100.23961661341853 FPS
+502 frames in 5.009 seconds = 100.21960471151925 FPS
+502 frames in 5.004 seconds = 100.3197442046363 FPS
+502 frames in 5.007 seconds = 100.25963650888757 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk1.2-sun
+
+java version "1.2.2"
+Classic VM (build 1.2.2_006, native threads, javacomp)
+JAVA_COMPILER javacomp
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.2.1
+GL RENDERER: Mesa X11
+GL VENDOR  : Brian Paul
+499 frames in 5.007 seconds = 99.66047533453167 FPS
+501 frames in 5.006 seconds = 100.07990411506192 FPS
+502 frames in 5.003 seconds = 100.3397961223266 FPS
+501 frames in 5.0 seconds = 100.2 FPS
+502 frames in 5.008 seconds = 100.23961661341853 FPS
+502 frames in 5.003 seconds = 100.3397961223266 FPS
+501 frames in 5.009 seconds = 100.01996406468356 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk1.3-ibm
+
+java full version "J2RE 1.3.0 IBM build cxdev-20000502"
+JAVA_COMPILER jitc
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.2.1
+GL RENDERER: Mesa X11
+GL VENDOR  : Brian Paul
+498 frames in 5.005 seconds = 99.5004995004995 FPS
+500 frames in 5.0 seconds = 100.0 FPS
+500 frames in 5.0 seconds = 100.0 FPS
+501 frames in 5.009 seconds = 100.01996406468356 FPS
+497 frames in 5.0 seconds = 99.4 FPS
+504 frames in 5.001 seconds = 100.77984403119376 FPS
+
+
+
+===============================================
+
+using gears on ./PerformanceEtc/profile.jdk1.3-sun
+
+java version "1.3.0beta_refresh"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.3.0beta_refresh-b09)
+Java HotSpot(TM) Client VM (build 1.3.0beta-b07, mixed mode)
+JAVA_COMPILER
+
+loading libs(gl, glu): null, null: true
+useFpsSleep: false
+useRepaint: false
+GL VERSION : 1.2 Mesa 3.2.1
+GL RENDERER: Mesa X11
+GL VENDOR  : Brian Paul
+498 frames in 5.0 seconds = 99.6 FPS
+499 frames in 5.007 seconds = 99.66047533453167 FPS
+500 frames in 5.0 seconds = 100.0 FPS
+498 frames in 5.007 seconds = 99.46075494307969 FPS
+501 frames in 5.0 seconds = 100.2 FPS
+501 frames in 5.0 seconds = 100.2 FPS
+500 frames in 5.008 seconds = 99.84025559105432 FPS
+
+

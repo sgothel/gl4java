@@ -1,0 +1,1305 @@
+/*
+
+  This C2J parser is able to convert 
+  C-Declarations to 
+  	- Java's JNI functions declaration
+	- The JNI C-Glue functions for native methods 
+	  with the same name !!
+	- Special support for OpenGL/GLU declarations,
+	  because C2J is developed to develop GL4Java
+	  - an OpenGL language mapping to Java !!!
+
+  LGPL Licensed - copyright by Sven Goethel,
+  1999 Jausoft - Sven Goethel Software Development
+
+  C2J based upon:
+  ===============
+
+  C grammar defintion for use with JavaCC
+  Contributed by Doug South (dsouth@squirrel.com.au) 21/3/97
+
+  This parser assumes that the C source file has been preprocessed : all
+  #includes have been included and all macros have been expanded. I accomplish
+  this with "gcc -P -E <source file> > <output file>".
+
+  There is a problem with compiler specific types, such as __signed, __const,
+  __inline__, etc. These types can be added as typedef types before the parser
+  is run on a file. See main() for an example. I have also found a strange little
+  compiler specific "type" if you can call it that. It is __attribute__, but it
+  does not seem to be used as a type. I found that just deleting the __attribute__
+  and the following "offensive" code works.
+
+  This grammar also prints out all the types defined while parsing the file. This
+  is done via a call to printTypes() when the parser is complete. If you do not want
+  this, just comment out the printTypes() method call in the production rule
+  TranslationUnit(), which BTW is the root node for parsing a C source file.
+
+  I have not in anyway extensively tested this grammar, in fact it is barely tested,
+  but I imagine it is better to have a starting point for a C grammar other than from
+  scratch. It has not been optimized in anyway, my main aim was to get a parser that
+  works. Lookahead may not be optimum at choice points and may even be insufficient at
+  times. I choose to err on the side of not optimum if I made a choice at all.
+
+  If you use this grammar, I would appreciate hearing from you. I will try to maintain
+  this grammar to the best of my ability, but at this point in time, this is only a side
+  hobby (unless someone wants to pay me for doing JavaCC work!). In that regards, I am
+  interested in hearing bugs and comments.
+
+  TODO:
+
+    Insert the appropiate code to enable C source trees from this grammar.
+
+  */
+
+PARSER_BEGIN(C2J)
+
+import java.util.*;
+
+  public class C2J{
+
+    public static final String version = "C2J Parser Version 1.4 Beta" ;
+    public static final String vendor  = "Jausoft - Sven Goethel Software Development";
+
+    public static final int EXPORT_JNI_JAVA        = 1;
+    public static final int EXPORT_JNI_JAVA_FINAL  = 2;
+    public static final int EXPORT_MSJDIRECT_JAVA  = 3;
+    public static final int EXPORT_JNI_C           = 4; // strong binding
+    public static final int EXPORT_JNI_C_DYN       = 5; // dyn. binding
+    public static final int EXPORT_GL_FUNC_NAMES   = 10;
+
+    public static final int MODIFIER_JNI_CRITICAL_ARRAY = 1;
+    public static final int MODIFIER_JNI_COPY_CHECK = 2; // experimental trial ..
+
+    public static int     exportMode;
+    public static int     exportModifier;
+    public static boolean verbose=false ;
+    public static boolean syntaxVerbose=false ;
+    public static boolean echoMode=false ;
+    public static String  clazzName;
+    public static String  dllname;
+
+    public static int     lastEnumValue=0;
+
+    // 
+    // Holder of the parsed c-code
+    //
+    public static String cSrc;
+
+    // Hastable for storing typedef types
+    private static Hashtable types = new Hashtable();
+
+    // Stack for determining when the parser
+    // is parsing a typdef definition.
+    private static Stack typedefParsingStack = new Stack();
+
+    // Returns true if the given string is
+    // a typedef type.
+    private static boolean isType(String type){
+
+   	  if(types.get(type) != null){
+   		  return true;
+      }
+   	  return false;
+    }
+
+    // Add a typedef type to those already defined
+    private static void addType(String type){
+   	  types.put(type, Boolean.TRUE);
+	  cSrc += "\n\t/* WARNING TYPE ADDED : "+type+" */\n";
+    }
+
+    // Prints out all the types used in parsing the c source
+    private static void printTypes(){
+
+      Enumeration enum = types.keys();
+
+      while(enum.hasMoreElements()){
+        System.out.println(enum.nextElement());
+      }
+    }
+
+    public static void printUsage()
+    {
+        System.out.println("Usage is one of:");
+        System.out.println("         java C2J [-v] [-s] [-echo] [jnic|jnijava|jnijavaf|msjava|echo] <ClassName> < inputfile");
+        System.out.println("OR");
+        System.out.println("         java C2J [-v] [-s] [-echo] [-jnic-criticalarray] [-jnic-trial] [jnic|jnic-dyn|jnijava|msjava <dllname>|glfnames] <ClassName> inputfile");
+        System.out.println("     , inputfile is a C-HeaderFile (Preprocessed).");
+        System.out.println("     , where <ClassName> must be full qualified with an underscore instead of an dot - if not in (any) Java-Mode.");
+        System.out.println("     , where -v means verbose");
+        System.out.println("     , where -s means including the syntax-states in Output commentary");
+        System.out.println("     , where -echo means including the parsed C-Code in Output commentary");
+        System.out.println("     , where -jnic-criticalarray includes experimental JNI-C Code");
+        System.out.println("     , where -jnic-trial includes experimental JNI-C Code");
+        System.out.println("     , where jnic produces JNI-C Code (strong binding)");
+        System.out.println("     , where jnic-dyn produces JNI-C Code (dynamic binding)");
+        System.out.println("     , where jnijava produces JNI-Java Code (non final)");
+        System.out.println("     , where jnijavaf produces JNI-Java Code (final)");
+        System.out.println("     , where msjava <dllname> produces MSJVM-Java Code for the DLL <dllname>");
+        System.out.println("     , where glfnames produces all GL function names");
+        System.out.println("     , where echo just prints the parsed C-Code\n");
+        System.out.println("     E.g.");
+        System.out.println("          java C2J jnic myPackage_myClass a.h > a.c");
+        System.out.println("          java C2J jnijava myPackage_myClass a.h > a.java");
+        System.out.println("          java C2J jnijavaf myPackage_myClass a.h > aFinalMethods.java");
+        System.out.println("          java C2J msjava OPENGL32 myPackage_myClass a.h > aMSVersion.java");
+        System.out.println("          java C2J -echo myPackage_myClass a.h > aCopy.h");
+        System.out.println("     ( ALL OpenGL GL<type>'s are mapped to JNI types )");
+    }
+
+    // Run the parser
+    public static void main ( String args [ ] ) 
+    {
+      C2J parser ;
+
+  	  // Hack to include type "special types"
+	  /*
+	    types.put("__signed__", Boolean.TRUE);
+	    types.put("__const", Boolean.TRUE);
+	    types.put("__inline__", Boolean.TRUE);
+	    types.put("__signed", Boolean.TRUE);
+	  */
+
+      int i;
+      String inputFile = null;
+
+      exportMode = -1; /* error */
+      exportModifier = 0;
+      verbose=false;
+      echoMode=false;
+
+      if(args.length==0)
+      {
+	printUsage();
+	return;
+      }
+
+      for(i=0; i<args.length ; i++)
+      {
+        if(exportMode<=0)
+	{
+		if( args[i].equals("-v") )
+			verbose=true;
+		if( args[i].equals("-s") )
+			syntaxVerbose=true;
+		else if( args[i].equals("-echo") )
+		{
+			echoMode = true;
+		}
+		else if( args[i].equals("-jnic-criticalarray") )
+		{
+		        exportModifier |= MODIFIER_JNI_CRITICAL_ARRAY ;
+		}
+		else if( args[i].equals("-jnic-trial") )
+		{
+		        exportModifier |= MODIFIER_JNI_COPY_CHECK ;
+		}
+		else if( args[i].equals("jnic") )
+		{
+			exportMode = EXPORT_JNI_C;
+		}
+		else if( args[i].equals("jnic-dyn") )
+		{
+			exportMode = EXPORT_JNI_C_DYN;
+		}
+		else if( args[i].equals("jnijava") )
+		{
+			exportMode = EXPORT_JNI_JAVA;
+		}
+		else if( args[i].equals("jnijavaf") )
+		{
+			exportMode = EXPORT_JNI_JAVA_FINAL;
+		}
+		else if( args[i].equals("glfnames") )
+		{
+			exportMode = EXPORT_GL_FUNC_NAMES;
+		}
+		else if( args[i].equals("msjava") && i+1<args.length )
+		{
+			exportMode = EXPORT_MSJDIRECT_JAVA;
+			i++;
+			dllname = args[i];
+		}
+	} else if (clazzName==null) {
+      		clazzName = args[i];
+	} else if(inputFile==null) {
+      		inputFile = args[i];
+	} else
+		exportMode=0;
+      }
+
+      String info = new String();
+
+      if(inputFile==null)
+      {
+        info += "/**\n * "+version+"\n * "+vendor+"\n * Reading from standard input . . .";
+        info += "\n * Destination-Class: "+clazzName+ " ! \n */\n";
+      } else {
+        info += "/**\n * "+version+"\n * "+vendor+"\n * Reading from file: "+inputFile+" . . .";
+        info += "\n * Destination-Class: "+clazzName+ " ! \n */\n";
+      }
+      System.err.println(info);
+      System.out.println(info);
+
+      if(inputFile==null)
+      {
+        parser = new C2J(System.in);
+      }
+      else {
+       try {
+		parser = new C2J(new java.io.FileInputStream(inputFile));
+       }
+       catch(java.io.FileNotFoundException e){
+        	System.out.println("/* File " + inputFile + " not found. */");
+        	return ;
+       }
+      }
+
+      try {
+
+	cSrc     = new String();
+
+        parser.TranslationUnit();
+        System.out.println("/* "+version+":  Java program parsed successfully. */ ");
+      }
+      catch(ParseException e){
+        System.out.println("/* "+version+":  Encountered errors during parse. */ ");
+        System.out.println("/* ");
+        System.out.println(e);
+        System.out.println(" */");
+      }
+    }
+  }
+
+PARSER_END(C2J)
+
+SKIP : {
+ " "
+|  "\t"
+|  "\n"
+|  "\r"
+|  <"//" (~["\n","\r"])* ("\n" | "\r" | "\r\n")>
+|  <"/*" (~["*"])* "*" ("*" | ~["*","/"] (~["*"])* "*")* "/">
+}
+
+TOKEN : {
+ <INTEGER_LITERAL: <DECIMAL_LITERAL> (["l","L"])? | <HEX_LITERAL> (["l","L"])? | <OCTAL_LITERAL> (["l","L"])?>
+|  <#DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])*>
+|  <#HEX_LITERAL: "0" ["x","X"] (["0"-"9","a"-"f","A"-"F"])+>
+|  <#OCTAL_LITERAL: "0" (["0"-"7"])*>
+|  <FLOATING_POINT_LITERAL: (["0"-"9"])+ "." (["0"-"9"])* (<EXPONENT>)? (["f","F","d","D"])? | "." (["0"-"9"])+ (<EXPONENT>)? (["f","F","d","D"])? | (["0"-"9"])+ <EXPONENT> (["f","F","d","D"])? | (["0"-"9"])+ (<EXPONENT>)? ["f","F","d","D"]>
+|  <#EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+>
+|  <CHARACTER_LITERAL: "\'" (~["\'","\\","\n","\r"] | "\\" (["n","t","b","r","f","\\","\'","\""] | ["0"-"7"] (["0"-"7"])? | ["0"-"3"] ["0"-"7"] ["0"-"7"])) "\'">
+|  <STRING_LITERAL: "\"" (~["\"","\\","\n","\r"] | "\\" (["n","t","b","r","f","\\","\'","\""] | ["0"-"7"] (["0"-"7"])? | ["0"-"3"] ["0"-"7"] ["0"-"7"]))* "\"">
+}
+
+TOKEN : {
+	<CONTINUE: "continue"> |
+	<VOLATILE: "volatile"> |
+	<REGISTER: "register"> |
+	<UNSIGNED: "unsigned"> |
+	<TYPEDEF: "typedef"> |
+	<DFLT: "default"> |
+	<DOUBLE: "double"> |
+	<SIZEOF: "sizeof"> |
+	<SWITCH: "switch"> |
+	<RETURN: "return"> |
+	<EXTERN: "extern"> |
+	<STRUCT: "struct"> |
+	<STATIC: "static"> |
+	<SIGNED: "signed"> |
+	<WHILE: "while"> |
+	<BREAK: "break"> |
+	<UNION: "union"> |
+	<CONST: "const"> |
+	<FLOAT: "float"> |
+	<SHORT: "short"> |
+	<ELSE: "else"> |
+	<CASE: "case"> |
+	<LONG: "long"> |
+	<ENUM: "enum"> |
+	<AUTO: "auto"> |
+	<VOID: "void"> |
+	<CHAR: "char"> |
+	<GOTO: "goto"> |
+	<FOR: "for"> |
+	<INT: "int"> |
+	<IF: "if"> |
+	<DO: "do"> |
+	<GLvoid: "GLvoid"> |
+	<GLbyte: "GLbyte"> |
+	<GLshort: "GLshort"> |
+	<GLint: "GLint"> |
+	<GLsizei: "GLsizei"> |
+	<GLfloat: "GLfloat"> |
+	<GLclampf: "GLclampf"> |
+	<GLdouble: "GLdouble"> |
+	<GLclampd: "GLclampd"> |
+	<GLubyte: "GLubyte"> |
+	<GLboolean: "GLboolean"> |
+	<GLushort: "GLushort"> |
+	<GLuint: "GLuint"> |
+	<GLenum: "GLenum"> |
+	<GLbitfield: "GLbitfield"> |
+	<GLUquadricObj: "GLUquadricObj"> | 
+	<GLUnurbsObj: "GLUnurbsObj"> |
+	<GLUtesselator: "GLUtesselator"> |
+	<GLUtriangulatorObj: "GLUtriangulatorObj"> 
+}
+
+TOKEN : {
+ <IDENTIFIER: <LETTER> (<LETTER> | <DIGIT>)*>
+|  <#LETTER: ["$","A"-"Z","_","a"-"z"]>
+|  <#DIGIT: ["0"-"9"]>
+}
+
+void TranslationUnit() : {}
+{
+	(ExternalDeclaration())+
+	{ /* printTypes(); */ }
+}
+
+void ExternalDeclaration() : 
+{ CFuncDeclaration cfunc = null; }
+{
+	( LOOKAHEAD( FunctionDefinition() ) 
+	  cfunc = FunctionDefinition() | cfunc = Declaration(null)
+        )
+	{ 
+          if(echoMode)
+	  {
+	      System.out.println("/**");
+	      System.out.println(" * Original Function-Prototype :");
+	      System.out.println(" * <pre> ");
+	      System.out.print  ("   ");
+	      System.out.print(cSrc);
+	      System.out.println(" * </pre> ");
+	      System.out.println(" */");
+	      cSrc=new String();
+	  }
+	  if(verbose)
+	  {
+	     String tmp = new String();
+
+	     tmp += "/*\n";
+
+	     if(cfunc!=null)
+		     tmp += cfunc.toString();
+             else
+		     tmp += "NO CFUNC INSTANCE";
+
+	     tmp += "\n*/";
+
+	     System.out.println(tmp);
+	  }
+
+	  if(cfunc==null)
+	  {
+	  	System.err.println("ERROR(ExternalDeclaration): no CFuncDeclaration instance received !");
+		return;
+	  }
+	  if(!cfunc.isValid())
+	  {
+	  	String name = null;
+	  	if(cfunc.funcSpec!=null)
+		{
+			name=cfunc.funcSpec.identifier;
+			if(name==null)
+				name=cfunc.funcSpec.toString();
+		}
+		if(name==null)
+			name="<UNKNOWN>";
+	  	System.err.println("WARNING(ExternalDeclaration): Function :<"+
+		                   name+"> can not be proceded - invalid !");
+		return;
+	  }
+
+          switch(exportMode)
+	  {
+	    case EXPORT_JNI_JAVA        :
+		System.out.println(cfunc.toJniJavaCode(false));
+	    	break;
+	    case EXPORT_JNI_JAVA_FINAL  :
+		System.out.println(cfunc.toJniJavaCode(true));
+	    	break;
+	    case EXPORT_JNI_C     :
+	    case EXPORT_JNI_C_DYN :
+		System.out.println(cfunc.toJniCCode(clazzName, exportMode, 
+		                                    exportModifier));
+	    	break;
+	    case EXPORT_GL_FUNC_NAMES:
+		System.out.println("\t\t\""+cfunc.funcSpec.identifier+"\", ");
+	        break;
+	    case EXPORT_MSJDIRECT_JAVA  :
+		System.out.println(cfunc.toMsJDirectCode(dllname));
+	    	break;
+	  }
+	}
+}
+
+CFuncDeclaration FunctionDefinition() : 
+{ CFuncDeclaration cfunc= new CFuncDeclaration(); }
+{
+	[ LOOKAHEAD(DeclarationSpecifiers(null)) DeclarationSpecifiers(cfunc)] 
+	  Declarator(cfunc) [ DeclarationList(cfunc) ]
+	CompoundStatement()
+	{
+		return cfunc;
+	}
+}
+
+CFuncDeclaration Declaration(CFuncDeclaration cfunc) : 
+{ if(cfunc==null) cfunc = new CFuncDeclaration(); }
+{
+	DeclarationSpecifiers(cfunc) [ InitDeclaratorList(cfunc) ] 
+	";" 
+	{
+		cSrc += ";\n"; 
+		return cfunc;
+	}
+}
+
+void DeclarationList(CFuncDeclaration cfunc) : {}
+{
+	( LOOKAHEAD(Declaration(null)) Declaration(cfunc) )+
+}
+
+void DeclarationSpecifiers(CFuncDeclaration cfunc) : 
+{ CFuncVariable cfvar=null; 
+  if(cfunc!=null) cfvar=cfunc.getLastIncompleteVar();
+}
+{
+	  StorageClassSpecifier(cfunc)
+	    [ LOOKAHEAD(DeclarationSpecifiers(null))
+	        DeclarationSpecifiers(cfunc) ] 
+	  |
+	  cfvar=TypeSpecifier(cfvar)  
+	  { 
+	    if(cfunc!=null)
+	    {
+	    	cfunc.setWorkingVar(cfvar);
+	    }
+	  }
+	  [ LOOKAHEAD(DeclarationSpecifiers(null))
+	  DeclarationSpecifiers(cfunc) ] |
+	  cfvar=TypeQualifier(cfvar) 
+	  { 
+	    if(cfunc!=null)
+	    {
+	    	cfunc.setWorkingVar(cfvar);
+	    }
+	  }
+	  [ LOOKAHEAD(DeclarationSpecifiers(null))
+	  DeclarationSpecifiers(cfunc) ]
+}
+
+void StorageClassSpecifier(CFuncDeclaration cfunc) : 
+{ Token t; }
+{
+	( t=<AUTO> { cSrc += t.image+" "; } | 
+	  t=<REGISTER> { cSrc += t.image+" "; }| 
+	  t=<STATIC> { cSrc += t.image+" "; } | 
+	  t=<EXTERN> { cSrc += t.image+" "; }| 
+	  t=<TYPEDEF> { cSrc += t.image+" "; }
+	{
+		   typedefParsingStack.push(Boolean.TRUE);
+	} )
+}
+
+CFuncVariable TypeSpecifier(CFuncVariable cfvar) :
+{ String typeJava; Token t=null; boolean isVoid=false; }
+{
+	( 
+	  (
+	      ( 
+		t=<VOID> 
+		{ typeJava=t.image;
+		  isVoid=true;
+		  cSrc += t.image+" ";
+		} |
+		t=<CHAR> 
+		{ typeJava="byte";
+		  cSrc += t.image+" ";
+		} |
+		t=<SHORT> 
+		{ typeJava=t.image;
+		  cSrc += t.image+" ";
+		} |
+		t=<INT> 
+		{ typeJava=t.image;
+		  cSrc += t.image+" ";
+		} |
+		t=<FLOAT> 
+		{ typeJava=t.image;
+		  cSrc += t.image+" ";
+		} |
+		t=<DOUBLE> 
+		{ typeJava=t.image;
+		  cSrc += t.image+" ";
+		} |
+		t=<UNSIGNED> 
+		{ typeJava="int";
+		  cSrc += t.image+" ";
+		} |
+		t=<SIGNED> 
+		{ typeJava="int";
+		  cSrc += t.image+" ";
+		} |
+		t=<LONG> 
+		{ typeJava=t.image;
+		  cSrc += t.image+" ";
+		}
+	      )
+	      {
+	        if(cfvar==null)
+			cfvar = new CFuncVariable();
+
+		cfvar.typeC     = t.image;
+		cfvar.typeJava  = typeJava;
+		cfvar.isVoid	= isVoid;
+
+		return cfvar;
+	      }
+	      | cfvar=TypeSpecifierGL(cfvar) 
+	      { return cfvar; }
+	  ) | 
+	  StructOrUnionSpecifier() | 
+	  EnumSpecifier() |
+	  LOOKAHEAD( { isType(getToken(1).image) } ) TypedefName() 
+	)
+	{ return null; }
+}
+
+CFuncVariable TypeSpecifierGL(CFuncVariable cfvar) :
+{ String typeJava; Token t=null; boolean isVoid=false; }
+{
+      (
+	t=<GLvoid> 
+	{ typeJava="void"; 
+	  cSrc += t.image+" ";
+	  isVoid=true;
+	} |
+	t=<GLbyte> 
+	{ typeJava="byte"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLshort> 
+	{ typeJava="short"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLint> 
+	{ typeJava="int"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLsizei> 
+	{ typeJava="int"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLfloat> 
+	{ typeJava="float"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLclampf> 
+	{ typeJava="float"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLdouble> 
+	{ typeJava="double"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLclampd> 
+	{ typeJava="double"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLubyte> 
+	{ typeJava="byte"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLboolean> 
+	{ typeJava="boolean"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLushort> 
+	{ typeJava="short"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLuint> 
+	{ typeJava="int"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLenum> 
+	{ typeJava="int"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLbitfield> 
+	{ typeJava="int"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLUquadricObj> 
+	{ typeJava="int"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLUnurbsObj> 
+	{ typeJava="int"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLUtesselator> 
+	{ typeJava="int"; 
+	  cSrc += t.image+" ";
+	} |
+	t=<GLUtriangulatorObj> 
+	{ typeJava="int"; 
+	  cSrc += t.image+" ";
+	}
+    )
+    {
+	if(cfvar==null)
+		cfvar = new CFuncVariable();
+	cfvar.typeC     = t.image;
+	cfvar.typeJava  = typeJava;
+	cfvar.isVoid	= isVoid;
+
+	return cfvar;
+    }
+}
+
+CFuncVariable TypeQualifier(CFuncVariable cfvar) : 
+{ Token t; }
+{
+	( t=<CONST> 
+	  { cSrc += t.image+" "; 
+	    if(cfvar==null)
+		cfvar = new CFuncVariable();
+	    cfvar.isConst=true;
+	    return cfvar;
+	  } | 
+	  t=<VOLATILE> { cSrc += t.image+" "; return cfvar; } )
+}
+
+void StructOrUnionSpecifier() : 
+{ Token t; }
+{
+	{
+	    typedefParsingStack.push(Boolean.FALSE);
+	}
+
+	StructOrUnion() ( LOOKAHEAD(3) 
+	  [ t=<IDENTIFIER> 
+	  { 
+	    cSrc += t.image+" ";
+	    if(syntaxVerbose)
+		cSrc += "/*StrucOrUnionSpec*/"; 
+	  } 
+	  ] 
+	  "{" { cSrc += "{\n"; } StructDeclarationList() 
+	  "}" { cSrc += "}\n"; } | 
+	  t=<IDENTIFIER> 
+	  { 
+	    cSrc += t.image+" ";
+	    if(syntaxVerbose)
+		cSrc += "/*StrucOrUnionSpec2*/"; 
+	  } 
+	  )
+	{
+		typedefParsingStack.pop();
+	}
+}
+
+void StructOrUnion() : 
+{ Token t; }
+{
+	( t=<STRUCT> { cSrc += t.image+" "; } | 
+	  t=<UNION> { cSrc += t.image+" "; } )
+}
+
+void StructDeclarationList() : {}
+{
+	(StructDeclaration())+
+}
+
+void InitDeclaratorList(CFuncDeclaration cfunc) : {}
+{
+	InitDeclarator(cfunc) (
+	  "," { cSrc += ", "; } InitDeclarator(cfunc))*
+	{
+		// Finished with a typedefDeclaration??
+		if(!(typedefParsingStack.empty()) && ((Boolean)typedefParsingStack.peek()).booleanValue()){
+		   	typedefParsingStack.pop();
+	  }
+	}
+}
+
+void InitDeclarator(CFuncDeclaration cfunc) : {}
+{
+	Declarator(cfunc) [ "=" { cSrc += "= "; } Initializer() ]
+}
+
+void StructDeclaration() : {}
+{
+	SpecifierQualifierList(null) StructDeclaratorList() 
+	";" { cSrc += ";\n"; }
+}
+
+CFuncVariable SpecifierQualifierList(CFuncVariable cfvar) : {}
+{
+	  cfvar=TypeSpecifier(cfvar) [ LOOKAHEAD(SpecifierQualifierList(null))
+	        SpecifierQualifierList(cfvar) ]
+	  { return cfvar; } |
+	  cfvar=TypeQualifier(cfvar) [ LOOKAHEAD(SpecifierQualifierList(null))
+	        SpecifierQualifierList(cfvar) ]
+	  { return cfvar; }
+}
+
+void StructDeclaratorList() : {}
+{
+	StructDeclarator() ( "," { cSrc += ", "; } StructDeclarator() )*
+}
+
+void StructDeclarator() : {}
+{
+	( LOOKAHEAD(3) Declarator(null) | [ Declarator(null) ] 
+	  ":" { cSrc += ": "; } ConstantExpression() )
+}
+
+void EnumSpecifier() : 
+{ Token t; }
+{
+	t=<ENUM> { cSrc += t.image+" "; } ( LOOKAHEAD(3) 
+	  [ t=<IDENTIFIER> { cSrc += t.image+" "; } ] 
+	  "{" { cSrc += "{\n"; } EnumeratorList() 
+	  "}" { cSrc += "}\n"; } | 
+	  t=<IDENTIFIER> { cSrc += t.image+" "; } )
+}
+
+void EnumeratorList() :
+{ lastEnumValue=0; }
+{
+	Enumerator() ("," { cSrc += ",\n"; } Enumerator())*
+	{ cSrc += "\n\t;\n"; }
+}
+
+void Enumerator() : 
+{ Token t; int startIdx; }
+{
+	t=<IDENTIFIER> { cSrc += "\t"+t.image+" "; startIdx=-1; } 
+	  [ "=" { cSrc += "= "; startIdx=cSrc.length(); } ConstantExpression() ]
+	{ 
+	   System.out.print("\tpublic static final int "+t.image+"\t= ");
+	   if(startIdx>=0)
+	   {
+	   	String valStr = cSrc.substring(startIdx, cSrc.length()).trim();
+	   	System.out.print(valStr);
+		int val = 0;
+		try {
+			val=Integer.decode(valStr).intValue();
+			lastEnumValue=val;
+		} catch (Exception ex) {
+			System.err.println("Error while decoding for <"+
+			                   t.image+">: <"+valStr+">");
+			lastEnumValue++;
+		}
+	   } else {
+		lastEnumValue++;
+	   	System.out.print(lastEnumValue);
+	   }
+	   System.out.println(";");
+	}
+}
+
+void Declarator(CFuncDeclaration cfunc) :
+{  CFuncVariable cfvar=null; }
+{
+	{ if(cfunc!=null)
+	    cfvar = cfunc.getWorkingVar(); 
+	}
+	[ Pointer(cfvar) ] DirectDeclarator(cfunc)
+}
+
+void DirectDeclarator(CFuncDeclaration cfunc) : 
+{ Token t; }
+{
+	( 
+	  t = <IDENTIFIER>
+	  { cSrc+=t.image+" "; 
+
+	    if(syntaxVerbose)
+	       cSrc += "/*DirectDecl1*/ "; 
+
+	    if(!(typedefParsingStack.empty()) && 
+	       ((Boolean)typedefParsingStack.peek()).booleanValue())
+	    {
+		    addType(t.image);
+	    }
+
+	    if(cfunc==null)
+	    	return;
+
+	    //
+	    // Complete the variable declarations in the holder !
+	    // 
+	    CFuncVariable cfvar = cfunc.getWorkingVar();
+
+	    cfvar.identifier=t.image;
+	    cfvar.complete=true;
+	  }
+
+	  | 
+	  
+	  "(" 
+	  { cSrc += "( ";
+	    if(syntaxVerbose)
+		cSrc += "/*DirectDecl2*/ "; 
+	  } 
+	  Declarator(cfunc) 
+	  ")" { cSrc += ") "; } 
+	)
+
+	( 
+	  "[" { cSrc += "[ "; } 
+	  [ ConstantExpression() ] 
+	  "]" 
+	  { cSrc += "] "; 
+	    if(cfunc!=null)
+	    {
+		    CFuncVariable cfvar = (CFuncVariable)
+		    	cfunc.argList.elementAt(cfunc.argList.size()-1);
+		    cfvar.arrayNumber++;
+	    }
+	  } 
+	  |
+
+	  LOOKAHEAD(3) 
+	  "(" 
+	  { 
+	    cSrc += "( "; 
+	    if(syntaxVerbose)
+		cSrc += "/*DirectDecl3*/ "; 
+	  }
+	  [ ParameterTypeList(cfunc) ]
+	  ")" 
+	  { cSrc += ") "; } 
+
+	  |
+
+	  "(" 
+	  { 
+	    cSrc += "( "; 
+	    if(syntaxVerbose)
+		cSrc += "/*DirectDecl4*/ "; 
+	  }
+	  IdentifierList() 
+	  ")" { cSrc += ") "; } )*
+}
+
+void Pointer(CFuncVariable cfvar) : {}
+{
+	"*" 
+	{ 
+	  cSrc += "* "; 
+	  if(cfvar!=null)
+	  {
+		  if(cfvar.typeC!=null)
+		  {
+		  	/**
+			 * No Pointer - These GLU Types are allready
+			 * "long" values for java -> pointer 
+			 */
+		  	if(cfvar.typeC.equals("GLUquadricObj") ||
+		  	   cfvar.typeC.equals("GLUnurbsObj") ||
+		  	   cfvar.typeC.equals("GLUtesselator") ||
+		  	   cfvar.typeC.equals("GLUtriangulatorObj")
+			  )
+			{
+				cfvar.isGLUPtrObject=true;
+				return;
+			}
+		  }
+		  cfvar.arrayNumber++;
+	  }
+	}
+	[ TypeQualifierList(null) ] [ Pointer(cfvar) ]
+}
+
+void TypeQualifierList(CFuncVariable cfvar) : {}
+{
+	(TypeQualifier(cfvar))+
+}
+
+void ParameterTypeList(CFuncDeclaration cfunc) : {}
+{
+	ParameterList(cfunc) 
+	["," { cSrc += ", "; } "..." { cSrc += "..."; } ]
+}
+
+void ParameterList(CFuncDeclaration cfunc) : {}
+{
+	ParameterDeclaration(cfunc) (LOOKAHEAD(2) 
+	"," { cSrc += ", "; } ParameterDeclaration(cfunc))*
+}
+
+void ParameterDeclaration(CFuncDeclaration cfunc) : {}
+{
+	DeclarationSpecifiers(cfunc) 
+	( LOOKAHEAD(Declarator(null)) Declarator(cfunc) | 
+	[ AbstractDeclarator() ] )
+	{
+		if(cfunc!=null)
+		{
+		    CFuncVariable cfvar = cfunc.getLastIncompleteVar();
+		    if(cfvar!=null)
+		    {
+			    /** 
+			      * We may must squash the "void" Argument
+			      * E.g. void function(void) !
+			      */
+			    if(cfvar.isVoid)
+			    {
+			    	cfunc.argList.removeElementAt(
+					cfunc.argList.size()-1);
+				return;
+			    }
+			    /** 
+			      * We have a regular argument,
+			      * so we must add an instance name here ...
+			      */
+			    cfvar.identifier="arg"+(cfunc.argList.size()-1);
+			    cfvar.complete=true;
+	            }
+		}
+	}
+}
+
+/**
+ * 
+ * J2C Declaration Changes END (JAU)
+ *
+ */
+
+void IdentifierList() : 
+{ Token t; }
+{
+	t=<IDENTIFIER> 
+	{ cSrc += t.image+" "; 
+	  if(syntaxVerbose)
+	    cSrc += "/*IdentifierList*/ "; 
+	} 
+	("," { cSrc += ", "; } t=<IDENTIFIER> 
+	{ cSrc += t.image+" "; 
+	  if(syntaxVerbose)
+	    cSrc += "/*IdentifierList2*/ "; 
+	} 
+	)*
+}
+
+void Initializer() : {}
+{
+	( AssignmentExpression() |
+	  "{" { cSrc += "{\n"; } InitializerList() 
+	  ["," { cSrc += ", "; } ] "}" { cSrc += "}\n"; } )
+}
+
+void InitializerList() : {}
+{
+	Initializer() (LOOKAHEAD(2) "," { cSrc += ", "; } Initializer())*
+}
+
+void TypeName() : {}
+{
+	SpecifierQualifierList(null) [ AbstractDeclarator() ]
+}
+
+void AbstractDeclarator() : {}
+{
+	( LOOKAHEAD(3) Pointer(null) |
+	  [Pointer(null)] DirectAbstractDeclarator() )
+}
+
+void DirectAbstractDeclarator() : {}
+{
+	( LOOKAHEAD(2) 
+	  "(" { cSrc += "( "; } AbstractDeclarator() 
+	  ")" { cSrc += ") "; } |
+	  "[" { cSrc += "[ "; } [ConstantExpression()] 
+	  "]" { cSrc += "] "; } |
+	  "(" { cSrc += "( "; } [ParameterTypeList(null)] 
+	  ")" { cSrc += ") "; } )
+	  ( 
+	    "[" { cSrc += "[ "; } [ ConstantExpression() ] 
+	    "]" { cSrc += "] "; } | 
+	    "(" { cSrc += "( "; } [ ParameterTypeList(null) ] 
+	    ")" { cSrc += ") "; } )*
+}
+
+void TypedefName() : 
+{ Token t; }
+{
+	t=<IDENTIFIER> { cSrc += t.image+" /*TypedefName*/"; }
+}
+
+void Statement() : {}
+{
+	( LOOKAHEAD(2) LabeledStatement() |
+	  ExpressionStatement() |
+	  CompoundStatement() |
+	  SelectionStatement() |
+	  IterationStatement() |
+	  JumpStatement() )
+}
+
+void LabeledStatement() : 
+{ Token t; }
+{
+	( t=<IDENTIFIER> 
+	  { cSrc += t.image+" "; 
+	    if(syntaxVerbose)
+		cSrc += "/*LabeledStatement*/ "; 
+	  }
+	  ":" { cSrc += ": "; } Statement() |
+	  t=<CASE> { cSrc += t.image+" "; } ConstantExpression() 
+	  ":"{ cSrc += ": "; }  Statement() |
+	  t=<DFLT> { cSrc += t.image+" "; }
+	  ":"{ cSrc += ": "; }  Statement() )
+}
+
+void ExpressionStatement() : {}
+{
+	[ Expression() ] ";"{ cSrc += ";\n"; } 
+}
+
+void CompoundStatement() : {}
+{
+	"{" { cSrc += "{\n"; } [ LOOKAHEAD(DeclarationList(null)) DeclarationList(null) ]
+	    [ StatementList() ]
+	"}"{ cSrc += "}\n"; } 
+}
+
+void StatementList() : {}
+{
+	(Statement())+
+}
+
+void SelectionStatement() :
+{ Token t; }
+{
+	( t=<IF> { cSrc += t.image+" "; }
+	  "(" { cSrc += "( "; } Expression() 
+	  ")" { cSrc += ")\n"; } Statement() [ LOOKAHEAD(2) 
+	  t=<ELSE> { cSrc += t.image+" "; } Statement() ] |
+	  t=<SWITCH> { cSrc += t.image+" "; }
+	  "(" { cSrc += "( "; } Expression() 
+	  ")" { cSrc += ")\n"; } Statement() )
+}
+
+void IterationStatement() : 
+{ Token t; }
+{
+	( t=<WHILE> { cSrc += t.image+" "; } 
+	  "(" { cSrc += "( "; } Expression() 
+	  ")" { cSrc += ")\n"; } Statement() |
+	  t=<DO> { cSrc += t.image+"\n"; } Statement() 
+	  t=<WHILE> { cSrc += t.image+" "; } 
+	  "(" { cSrc += "( "; } Expression() 
+	  ")" ";" { cSrc += ");\n"; } |
+	  t=<FOR> { cSrc += t.image+" "; }
+	  "(" { cSrc += "( "; } [ Expression() ] 
+	  ";" { cSrc += "; "; } [ Expression() ] 
+	  ";" { cSrc += "; "; } [ Expression() ] 
+	  ")" { cSrc += ")\n"; } 
+	  Statement() )
+}
+
+void JumpStatement() : 
+{ Token t; }
+{
+	( t=<GOTO> { cSrc += t.image+" "; } 
+	  t=<IDENTIFIER> 
+	  { cSrc += t.image+" "; 
+	    if(syntaxVerbose)
+		cSrc += "/*JumpStat*/ "; 
+	  } 
+	  ";" { cSrc += ";\n"; } |
+	  t=<CONTINUE> { cSrc += t.image+" "; } ";" { cSrc += ";\n"; } |
+	  t=<BREAK> { cSrc += t.image+" "; } ";" { cSrc += ";\n"; } |
+	  t=<RETURN> { cSrc += t.image+" "; } 
+	  [ Expression() ] ";" { cSrc += ";\n"; } )
+}
+
+void Expression() : {}
+{
+	AssignmentExpression() ( "," { cSrc += ", "; } AssignmentExpression() )*
+}
+
+void AssignmentExpression() : {}
+{
+	  LOOKAHEAD(UnaryExpression() AssignmentOperator()) UnaryExpression() AssignmentOperator() AssignmentExpression() |
+	  LOOKAHEAD(3) ConditionalExpression()
+}
+
+void AssignmentOperator() : {}
+{
+	( "=" { cSrc += "= "; } | 
+	  "*=" { cSrc += "*= "; } | 
+	  "/=" { cSrc += "/= "; } | 
+	  "%=" { cSrc += "%= "; } | 
+	  "+=" { cSrc += "+= "; } | 
+	  "-=" { cSrc += "-= "; } | 
+	  "<<=" { cSrc += "<<= "; } | 
+	  ">>=" { cSrc += ">>= "; } | 
+	  "&=" { cSrc += "&= "; } | 
+	  "^=" { cSrc += "^= "; } | 
+	  "|=" { cSrc += "|= "; } )
+}
+
+void ConditionalExpression() : {}
+{
+	LogicalORExpression() 
+	  [ "?" { cSrc += "? "; } Expression() ":" { cSrc += ": "; } 
+	    ConditionalExpression() ]
+}
+
+void ConstantExpression() : {}
+{
+	ConditionalExpression()
+}
+
+void LogicalORExpression() : {}
+{
+	LogicalANDExpression() 
+	  [ "||" { cSrc += "|| "; } LogicalORExpression() ]
+}
+
+void LogicalANDExpression() : {}
+{
+	InclusiveORExpression() 
+	  [ "&&" { cSrc += "&& "; } LogicalANDExpression() ]
+}
+
+void InclusiveORExpression() : {}
+{
+	ExclusiveORExpression() 
+	  [ "|" { cSrc += "| "; } InclusiveORExpression() ]
+}
+
+void ExclusiveORExpression() : {}
+{
+	ANDExpression() 
+	  [ "^" { cSrc += "^ "; } ExclusiveORExpression() ]
+}
+
+void ANDExpression() : {}
+{
+	EqualityExpression() 
+	  [ "&" { cSrc += "& "; } ANDExpression() ]
+}
+
+void EqualityExpression() : {}
+{
+	RelationalExpression() 
+	  [ ( "==" { cSrc += "== "; } | "!=" { cSrc += "!= "; } ) 
+	    EqualityExpression() ]
+}
+
+void RelationalExpression() : {}
+{
+	ShiftExpression() 
+	  [ ( "<" { cSrc += "< "; } | 
+	      ">" { cSrc += "> "; } | 
+	      "<=" { cSrc += "<= "; } | 
+	      ">=" { cSrc += ">= "; } ) RelationalExpression() ]
+}
+
+void ShiftExpression() : {}
+{
+	AdditiveExpression() 
+	  [ ( "<<" { cSrc += "<< "; } | ">>" { cSrc += ">> "; } ) ShiftExpression() ]
+}
+
+void AdditiveExpression() : {}
+{
+	MultiplicativeExpression() 
+	  [ ( "+" { cSrc += "+ "; } | "-" { cSrc += "- "; } ) AdditiveExpression() ]
+}
+
+void MultiplicativeExpression() : {}
+{
+	CastExpression() 
+	  [ ( "*" { cSrc += "* "; } | 
+	      "/" { cSrc += "/ "; } | 
+	      "%" { cSrc += "% "; } ) MultiplicativeExpression() ]
+}
+
+void CastExpression() : 
+{ String help1= new String(); 
+  String help2= new String(); 
+}
+{
+	( LOOKAHEAD( "(" TypeName(help1) ")" CastExpression(help2) ) 
+	  { cSrc += "( "+help1+") "+help2; }
+	  "(" { cSrc += "( "; } TypeName() ")" { cSrc += ") "; } CastExpression() |
+	  UnaryExpression() )
+}
+
+void UnaryExpression() : 
+{ Token t; }
+{
+	( LOOKAHEAD(3) PostfixExpression() |
+	  "++" { cSrc += "++ "; } UnaryExpression() |
+	  "--" { cSrc += "-- "; } UnaryExpression() |
+	  UnaryOperator() CastExpression() |
+	  t=<SIZEOF> { cSrc += t.image+" "; } 
+	    ( LOOKAHEAD(UnaryExpression() ) UnaryExpression() | 
+	  "(" { cSrc += "( "; } TypeName() ")" { cSrc += ") "; } ) )
+}
+
+void UnaryOperator() : {}
+{
+	( "&" { cSrc += "& "; } | 
+	  "*" { cSrc += "* "; } | 
+	  "+" { cSrc += "+ "; } | 
+	  "-" { cSrc += "- "; } | 
+	  "~" { cSrc += "~ "; } | 
+	  "!" { cSrc += "! "; } )
+}
+
+void PostfixExpression() : 
+{ Token t; }
+{
+      PrimaryExpression() 
+      	( "[" { cSrc += "[ "; } Expression() "]" { cSrc += "] "; } |
+      "(" { cSrc += "( "; } 
+        [ LOOKAHEAD(ArgumentExpressionList() ) ArgumentExpressionList() ] 
+	")" { cSrc += ") "; } |
+      "." { cSrc += ". "; } t=<IDENTIFIER> { cSrc += t.image+" "; } |
+      "->" { cSrc += "-> "; } t=<IDENTIFIER> { cSrc += t.image+" "; } |
+      "++" { cSrc += "++ "; } |
+      "--" { cSrc += "-- "; } )*
+}
+
+void PrimaryExpression() :
+{ Token t; }
+{
+	( t=<IDENTIFIER> 
+	  { cSrc += t.image+" "; 
+	    if(syntaxVerbose)
+		cSrc += "/*PrimaryExpr*/ "; 
+	  } |
+	  Constant() |
+	  "(" { cSrc += "( "; } Expression() ")" { cSrc += ") "; }  )
+}
+
+void ArgumentExpressionList() : 
+{ }
+{
+	AssignmentExpression()
+	( "," { cSrc += ", "; } AssignmentExpression() )*
+}
+
+void Constant() :
+{ Token t; }
+{
+ t=<INTEGER_LITERAL> { cSrc += t.image+" "; } |
+ t=<FLOATING_POINT_LITERAL> { cSrc += t.image+" "; } |
+ t=<CHARACTER_LITERAL> { cSrc += t.image+" "; } |
+ t=<STRING_LITERAL> { cSrc += t.image+" "; }
+}
+

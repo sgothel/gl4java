@@ -1,0 +1,52 @@
+\begin{verbatim}
+
+GL4Java - INSTALLER - Web-Applet !
+===================================
+
+You can install GL4Java directly from the Web,
+while using the URL:
+
+	http://www.jausoft.com/Files/Java/1.1.X/GL4Java/Installer/
+
+The Web-Installer works for:
+	- Netscape >= 4.5
+	- MS-IE Explorer 
+	- JDK-Appletviewer 
+	- Hotjava-Browser
+
+	For the two last ones, 
+	make sure, if you use Java2, 
+	you have to edit the jre/lib/security/java.policy file
+	- or you should allow your JDK 1.1.X appletviewer to have
+	full system access !
+
+Sven Goethel !
+
+
+
+GL4Java - INSTALLER - Application !
+===================================
+
+Just download the Installer:
+	http://www.jausoft.com/Files/Java/1.1.X/GL4Java/binpkg
+
+		GL4JavaX.Y.Z.R-INSTALLER.zip
+
+With this package you are able to install GL4Java stand-alone !
+
+All needed files fir the installation
+will be downloaded to your local hard disk,
+if they does not exist !
+
+Extract the package !
+
+Just go into the directory "GL4Java/Installer"
+an call:
+
+	./install.sh	-> Unix
+	./install.bat   -> Win32
+
+And follow the instructions !
+
+
+\end{verbatim}

@@ -1,0 +1,27 @@
+
+grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/-" 
+{
+  permission java.security.RuntimePermission;
+};
+
+grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/RonsDemos/-" 
+{
+  permission java.security.RuntimePermission;
+};
+
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/demos/RonsDemos/-" {
+  permission java.security.RuntimePermission;
+};
+
+grant codeBase "http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/demos/-" {
+  permission java.security.RuntimePermission;
+};
+
+grant codeBase "file://f/java-1.1.X/GL4Java/demos/-" {
+  permission java.security.AllPermission;
+};
+
+grant codeBase "file://f/java-1.1.X/GL4Java/demos/RonsDemos/-" {
+  permission java.security.AllPermission;
+};
+

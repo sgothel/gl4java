@@ -1,0 +1,67 @@
+\begin{verbatim}
+
+With GL4Java Version 2.0.0 Release 1, 
+GL4Java do supports the Java2 plattform !
+
+Please read INSTALL.txt first !
+
+Prerequisites
+==============
+
+Be sure to have:
+
+		  ./jre/lib/ext/gl4java.jar	      : for Java2 or JRE
+		  ./jre/lib/ext/gl4java-glutfonts.jar : for Java2 or JRE
+	          ./jre/lib/ext/png.jar          : for Java2 or JRE 
+
+		  For Windows32: Java2-Plug-In, Java2, JRE
+
+			  ./jre/bin/GL4JavaJauGljJNI.dll
+			  ./jre/bin/GL4JavaJauGLJNI.dll
+			  ./jre/bin/GL4JavaJauGLUJNI.dll
+
+		  For Unix: Java2-Plug-In, Java2, JRE
+
+			  ./jre/lib/<machine>/libGL4JavaJauGljJNI.so*
+			  ./jre/lib/<machine>/libGL4JavaJauGLJNI.so*
+			  ./jre/lib/<machine>/libGL4JavaJauGLUJNI.so*
+
+			  * => all symbolic links and the file itself,
+			       use "cp -a" to keep the symbolic links alive !
+
+			  e.g. linux:
+
+				  ./jre/lib/i386/green-threads/.
+
+			  Be sure to copy the linked lib-files also !
+
+
+Java2-Plug-In, Appletviewer, Security:
+======================================
+  To allow JAVA2's appletviewer and Plug-In using JNI native libs,
+  just look at GL4Java/demo/Java2Applet.bat 
+  (You have to change the GL4Java.policy file) !
+
+  You can - of course - use your 'policytool',
+  which is shipped with JAVA2 !
+
+  You can check JAVA2-Plug-In with the Java-Applets-Html-File's
+	demos/glLogoCvsAppletJ2P.html
+	demos/glOlympicCvsAppletJ2P.html
+	demos/testTextPPM1J2P.html
+
+  To use the demo Applets for Java2-Plug-In from www.jausoft.com,
+  please add the following lines to your java.policy file:
+
+grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/-" {
+  permission java.security.AllPermission;
+};
+
+
+TODO:
+=====
+
+Test other plattforms :-)
+
+\end{verbatim}
+

@@ -1,0 +1,9 @@
+va2v122 trying setting the environment variable
+JAVA_OPENGL_NATIVE when running under -native.
+
+This preloads the OpenGL libraries and the underlying kernel execution
+vehicles are initialized right and work correctly under pthreads. 
+
+------------------
+
+otherwise you may get a segmentation fault !

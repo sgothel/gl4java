@@ -1,0 +1,92 @@
+#!/bin/ksh
+
+# Make an AIX shared library (tricky!!!)
+# Based on a script from Athanasios G. Gaitatzes (gaitat@vnet.ibm.com)
+# Improved by Greg Thompson <gregt@visix.com> -gt
+#
+# Improved by Sven Goethel <s_goethel@bielefeld.netsurf.de>
+# 	goal: same tool for any machines ...
+# 	
+
+# First argument is name of output library
+# 	without dirname and suffix
+# second and third are the major and minor number
+# Rest of arguments are object files
+#
+
+LIBDIR=$1
+shift 1
+
+LIBRARY=$1
+shift 1
+
+LIBMAJOR=$1
+shift 1
+
+LIBMINOR=$1
+shift 1
+
+LIBBUGFIX=$1
+shift 1
+
+
+OBJECTS=$*
+
+# the following provided by Thomas Hiller (Hiller@tu-harburg.d400.de)
+
+VERSION="${LIBMAJOR}.${LIBMINOR}.${LIBBUGFIX}"
+
+LIBNAME=${LIBRARY}.so
+EXPFILE=${LIBRARY}.exp
+
+# Remove any old files from previous make
+rm -f ${LIBDIR}/${LIBNAME}*
+
+# Determine which version of AIX this is
+AIXVERSION=`uname -v`
+
+# Pick a way to tell the linker there's no entrypoint -gt
+case ${AIXVERSION}
+{
+	3*)
+		ENTRY='-e _nostart'
+		;;
+	4*)
+		ENTRY=-bnoentry
+		;;
+	*)
+		echo "Error in mklib.aix!"
+		exit 1
+		;;
+}
+
+
+# Make the shared lib file
+ld -o ${LIBDIR}/${LIBNAME}.${VERSION} \
+    ${OBJECTS} ${ENTRY} -bM:SRE -bE:${EXPFILE} \
+   -blibpath:/usr/lib/threads:/usr/lib:/lib -lc_r \
+   -L${JAVA_HOME}/lib/aix/native_threads -ljava
+
+( cd ${LIBDIR} ; 
+  ln -s ${LIBNAME}.${VERSION} ${LIBNAME}.${LIBMAJOR}.${LIBMINOR} 
+)
+
+( cd ${LIBDIR} ; 
+  ln -s ${LIBNAME}.${LIBMAJOR}.${LIBMINOR} ${LIBNAME}.${LIBMAJOR} 
+)
+
+( cd ${LIBDIR} ; 
+  ln -s ${LIBNAME}.${LIBMAJOR} ${LIBNAME} 
+)
+
+#NOTES
+# AIX 4.x /usr/bin/nm -B patch from ssclift@mach.me.queensu.ca (Simon Clift)
+# Robustified symbol extraction for AIX 3 and 4
+#   Greg Thompson <gregt@visix.com>
+
+# Print a reminder about shared libs:
+echo
+echo "******Be sure to add" ${LIBDIR}"/lib to your LD_LIBRARY_PATH variable"
+echo
+sleep 2
+

@@ -1,0 +1,1 @@
+#include <stdio.h>int main(){	printf("GL4Java-Main NOP called (DLL)!");	return 0;}

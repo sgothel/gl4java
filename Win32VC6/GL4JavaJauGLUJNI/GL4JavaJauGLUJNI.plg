@@ -1,0 +1,37 @@
+<html>
+<body>
+<pre>
+<h1>Erstellungsprotokoll</h1>
+<h3>
+--------------------Konfiguration: GL4JavaJauGLUJNI - Win32 Release--------------------
+</h3>
+<h3>Befehlszeilen</h3>
+Erstellen der temporären Datei  "D:\TEMP\RSPA6.tmp" mit Inhalten
+[
+/nologo /MT /W3 /GX /O2 /I "d:\java2\include" /I "d:\java2\include\win32" /I "..\..\CCLassHeaders" /I "..\..\CNativeCode" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WIN32_" /D "_MSVC_" /D "_MT" /D "_GL_DYNAMIC_BINDING_" /Fo"../temp/" /Fd"../temp/" /FD /c 
+"Y:\PROJECTS\JAVA\GL4JAVA\CNativeCode\GLUCallbackJNI.c"
+"Y:\PROJECTS\JAVA\GL4JAVA\CNativeCode\OpenGLU_JauJNI_funcs.c"
+]
+Creating command line "cl.exe @D:\TEMP\RSPA6.tmp" 
+Erstellen der temporären Datei  "D:\TEMP\RSPA7.tmp" mit Inhalten
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib glu32.lib ../libs/GL4JavaJauGljJNI.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"../libs/GL4JavaJauGLUJNI.pdb" /machine:I386 /out:"../libs/GL4JavaJauGLUJNI.dll" /implib:"../libs/GL4JavaJauGLUJNI.lib" 
+\PROJECTS\JAVA\GL4JAVA\WIN32VC6\temp\GLUCallbackJNI.obj
+\PROJECTS\JAVA\GL4JAVA\WIN32VC6\temp\OpenGLU_JauJNI_funcs.obj
+]
+Erstellen der Befehlzeile "link.exe @D:\TEMP\RSPA7.tmp"
+<h3>Ausgabefenster</h3>
+Kompilierung läuft...
+GLUCallbackJNI.c
+OpenGLU_JauJNI_funcs.c
+Generieren von Code...
+Linker-Vorgang läuft...
+   Bibliothek ../libs/GL4JavaJauGLUJNI.lib und Objekt ../libs/GL4JavaJauGLUJNI.exp wird erstellt
+
+
+
+<h3>Ergebnisse</h3>
+GL4JavaJauGLUJNI.dll - 0 Fehler, 0 Warnung(en)
+</pre>
+</body>
+</html>

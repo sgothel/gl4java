@@ -1,0 +1,2251 @@
+/**
+ * @(#) GLContext.java
+ */
+
+
+package gl4java;
+
+import gl4java.jau.awt.WinHandleAccess;
+
+import java.awt.*;
+import java.applet.Applet;
+import java.awt.event.*;
+import java.lang.reflect.*;
+
+/**
+ * The base manager class for the OpenGL language mapping for Java !
+ *
+ * <p>
+ * If you are interessting in further Documentation and/or
+ * the history of GL4Java follow the following link.
+ * 
+ * <pre>
+        <a href="../GL4Java.html">The GL4Java Documentation</a>
+ * </pre>
+ * <p>
+ *
+ * All native libraries and GLFunc* and GLUFunc* implementations
+ * can/should be loaded right here !
+ *
+ * <pre>
+ 	<a href="GLContext.html#loadNativeLibraries(java.lang.String, java.lang.String, java.lang.String)">loadNativeLibraries</a>
+ 	<a href="GLContext.html#createGLFunc(java.lang.String)">createGLFunc</a>
+ 	<a href="GLContext.html#createGLUFunc(java.lang.String)">createGLUFunc</a>
+        <p>
+        To check the library versions, you can start the 
+ 	<a href="GLContext.html#main(java.lang.String[])">main</a>
+        function with <code>java gl4java.GLContext</code>
+ * </pre>
+ *
+ * <p>
+ *
+ * This class creates a GLContext in the constructor which fits to the native Window 
+ * of the given Component !
+ *
+ * <pre>
+   	<a href="GLContext.html#GLContext(java.awt.Component, gl4java.GLFunc, gl4java.GLUFunc>
+ * </pre>
+ *
+ * <p>
+ *
+ * If you want to port any OpenGL program to GL4Java,
+ * you can use 'glc2glj'. This easy kornshell-sed script converts
+ * many types and Math function calls ;-). E.g.: All C double constant literals
+ * will be changed to floats (0.0 -> 0.0f) and all sin, cos, .. functions
+ * will get the '(float)Math.' prefix !
+ *
+ * <pre>
+	<a href="../../../demos/glc2glj">glc2glj - A simple c to java converter for C- and GL-types</a>
+ * </pre>
+ * <p>
+ *
+ * The native libraries are plattform depended. 
+ *
+ * <pre>
+	  The default native library for Win32 and Unice's is :
+	  <p>
+	  	GLContext:	GL4JavaJauGljJNI
+		GLFuncJauJNI:	GL4JavaJauGLJNI
+		GLUFuncJauJNI:	GL4JavaJauGLUJNI
+	  <p>
+		Note:
+	  <p>
+	  The default native library for Macintosh is :
+	  <p>
+	  	GLContext:	GL4JavaMacGZGljJNI
+		GLFuncJauJNI:	GL4JavaMacGZGLJNI
+		GLUFuncJauJNI:	GL4JavaMacGZGLUJNI
+	  <p>
+	  <p>
+	  To check wich version and vendors are currently used,
+	  just call while a GLContext is created :
+	  <p>
+	  <a href="GLContext.html#gljShowVersions()">gljShowVersions</a>
+	  <p>
+	  Where an own Frame is opened !
+ * </pre>
+ *
+ * Make sure that this library is installed in your library path.
+ * The library path is for Unices one path of the environment 
+ * variable ´LD_LIBRARY_PATH´ and for Windows 32 
+ * ´c:/winnt/system32´ (WinNT) or 'c:/windows/system' (Windows 95) .
+ * Or it should be installed in the 'jre/bin' or 
+ * 'Netscape/communicator/Program/java/bin'  path !
+ *
+ * <p>
+ *
+ * To have a convinient usage, e.g. automatic resizing, GLContext
+ * and painting/gl-rendering, some classes in the package gl4java.awt
+ * may help you.
+ * 
+ * <pre>
+          E.g.: <a href="awt/GLCanvas.html">gl4java.awt.GLCanvas</a> 
+	  <p>
+	  <a href="awt/GLCanvas.html#init()">init</a> to create the java-stuff and GL-inits 
+	  <a href="awt/GLCanvas.html#display()">display</a> to render one frame, called by paint
+	  <a href="awt/GLCanvas.html#reshape(int, int)">reshape</a> to reshape (window resize)
+          <p>
+          Or look for animation at 
+	  <a href="awt/GLAnimCanvas.html">gl4java.awt.GLAnimCanvas</a> !
+ * </pre>
+ *
+ * <p>
+ *
+ * IF you remove/release a The component which is binded to this GLContext,
+ * you have to release the GLContext also - while calling:
+ *
+ * <pre>
+ 	<a href="GLContext.html#gljDestroy()">gljDestroy</a>
+ * </pre>
+ *
+ * before releasing/dispose it´s Window !
+ * 
+ * <p>
+ *
+ * We also define our own OpenGL extension. This extension functions
+ * start with the prefix glj like you can see here:
+ *
+ * <pre>
+        THIS FUNCTIONS ARE FOR USERS PURPOSES:
+	======================================
+
+ 	<a href="GLContext.html#loadNativeLibraries(java.lang.String, java.lang.String, java.lang.String)">loadNativeLibraries</a>
+ 	<a href="GLContext.html#createGLFunc(java.lang.String)">createGLFunc</a>
+ 	<a href="GLContext.html#createGLUFunc(java.lang.String)">createGLUFunc</a>
+ 	<a href="GLContext.html#gljGetNativeLibVersion()">gljGetNativeLibVersion</a>
+ 	<a href="GLContext.html#gljGetClassVersion()">gljGetClassVersion</a>
+	<a href="GLContext.html#gljShowVersions()">gljShowVersions</a>
+ 	<a href="GLContext.html#gljCheckGL()">gljCheckGL</a>
+ 	<a href="GLContext.html#gljCheckGLTypes()">gljCheckGLTypes</a>
+ 	<a href="GLContext.html#gljResize(int, int)">gljResize</a>
+ 	<a href="GLContext.html#gljSwap()">gljSwap</a>
+ 	<a href="GLContext.html#gljIsInit()">gljIsInit</a>
+ 	<a href="GLContext.html#gljMakeCurrent(boolean)">gljMakeCurrent</a>
+ 	<a href="GLContext.html#gljDestroy()">gljDestroy</a>
+ 	<a href="GLContext.html#gljFree()">gljFree</a>
+
+ * </pre>
+ * <p>
+ *
+ * You can see our example demo sources:
+ * <pre>
+	<a href="../../../demos/olympicCvs.java">olympicCvs.java as java source</a>
+	<a href="../../../demos/glLogoCvs.java">glLogoCvs.java as java source</a>
+	<a href="../../../demos/glDemosCvs.java">glDemosCvs.java as java source</a>
+ * </pre>
+ * <p>
+ *
+ * If you are interessting in further Documentation, downloading the latest
+ * version,  and/or the history of GL4Java click on the following link.
+ * 
+ * <pre>
+	<a href="http://www.jausoft.com/gl4java.html">The GL4Java Homepage</a>
+ * </pre>
+ * <p>
+ *
+ * @see WinDataAccess
+ * @version 	2.00, 21. April 1999
+ * @author      Sven Goethel
+ * 
+ */
+public class GLContext extends Object 
+	implements Runnable
+{
+
+    protected boolean isInitialized = false;
+
+   /**
+    * Flag is the native library is loaded.
+    * The native library is loaded at startup.
+    * If we failed loading the lib., 
+    * gljMakeCurrent and gljIsInit will return false.
+    *
+    * @see GLContext#gljMakeCurrent
+    * @see GLContext#gljIsInit
+    */
+    protected static boolean libsLoaded 	        = false;
+
+    /**
+     * The default GLContext native library for Windows 95/NT && MS-JVM
+     *
+     */
+    public static final String defGljMSWinLib   = "GL4JavaGljMSJDirect" ;
+
+    /**
+     * The default GLContext native library for all 
+     *
+     */
+    public static final String defGljLib   = "GL4JavaJauGljJNI" ;
+
+    /**
+     * The default GLFunc implementation 
+     *
+     */
+    public static final String defGLFuncClass 	   = "GLFuncJauJNI" ;
+
+    /**
+     * The default GLFunc native library for all
+     */
+    public static final String defGLFuncLib = "GL4JavaJauGLJNI" ;
+
+    /**
+     * The default GLUFunc implementation 
+     *
+     */
+    public static final String defGLUFuncClass = "GLUFuncJauJNI" ;
+
+    /**
+     * The default GLUFunc native library for all
+     */
+    public static final String defGLUFuncLib = "GL4JavaJauGLUJNI" ;
+
+
+   /**
+    * the version of this java-class
+    *
+    * <Major>.<Minor>.<BugFix>.<Release>
+    *
+    * Each <Value> is dezimal !
+    */
+    public static final String version             = __SED_CLASS_VERSION__ ;
+
+   /**
+    * Flag's to enable/disable verbose Information.
+    * Usually for debugging.
+    */
+    public static boolean gljClassDebug 	= false;
+    public static boolean gljNativeDebug 	= false;
+    
+   /**
+    * We will store the GL Context right here.
+    *
+    * @see GLContext#createGLContext
+    * @see GLContext#gljInit
+    */
+    protected int glContext=0;	
+
+   /**
+    * The context with witch display lists and textures will be shared.
+    *
+    * @see GLContext#createGLContext
+    * @see GLContext#gljInit
+    */
+    protected GLContext sharedGLContext;	
+    protected int sharedGLContextNative= 0; // No sharing by default.	
+
+   /**
+    * Xwindow data AND Windows data for the widget
+    *
+    * @see GLContext#createGLContext
+    * @see GLContext#gljInit
+    */
+    protected int pixmapHandle=0;     // unique handle for the Pixmap
+    protected int windowHandle=0;     // unique handle for this widget's window
+    protected int displayHandle=0;    // unqiue handle to the display
+
+   /**
+    * MS-JDirect-Window data for the MS-JVM interface
+    *
+    * @see GLContext#createGLContext
+    * @see GLContext#gljInit
+    */
+    private int createwinx;
+    private int createwiny;
+    private int createwinw;
+    private int createwinh;
+    private boolean threadRunning = false;
+    private boolean destroyWindow = false;
+    protected Container containerWindow = null;
+
+   /**
+    * The custom set offscreen Size
+    *
+    * If this is set to != null, 
+    * the offscreen pixmap is used in this size,
+    * not in the components-size (-> faster if smaller)
+    *
+    * Must be set via createOffScreenCtx
+    *
+    * @see GLJPanel#paint
+    * @see GLJPanel#createOffScreenCtx
+    */
+    protected Dimension offScrnSize = null;
+
+   /**
+    * Windows data AND flag is Window-Handel is read (for X11 also) ! 
+    *
+    * @see GLContext#createGLContext
+    * @see GLContext#gljInit
+    */
+    int pData = 0;  // stores the pointer structure that holds windows info
+
+    /**
+     * Flag to check, if the OpenGL-Context is active !
+     *
+     * @see	GLCanvas#gljIsEnabled
+     * @see	GLCanvas#gljSetEnabled
+     */
+    protected boolean glEnabled = true;
+
+   /**
+    * Do we use offscreen rendering 
+    *  X11: pixmap eq window-ressources, 
+    *       window eq. GLXPixmap a GLXDrawable
+    *       glContext eq. GLXContext
+    *
+    * This is set via the constructor !
+    * 
+    * @see GLContext#GLContext
+    */
+    protected boolean offScreenRenderer = false;    
+
+   /**
+    * Do we use doubleBuffer - of course !
+    * This is the default visual property ... !
+    *
+    * This is set via the constructor !
+    * 
+    * @see GLContext#isDoubleBuffer
+    * @see GLContext#GLContext
+    */
+    protected boolean doubleBuffer = true;    
+
+    /**
+     * Visual pre-set for stencil-bit number, default: 0
+     *
+     * @see GLContext#GLContext
+     */
+    protected int stencilBits = 0;
+
+    /**
+     * Visual pre-set for accumulator-size number, default: 0
+     *
+     * This value has a special behavior.
+     * For input - within the contructor,
+     * it is the value for each component !
+     *
+     * The output value, after the constructor returns,
+     * it is the summary of all accumulation bits of all components !
+     *
+     * @see GLContext#GLContext
+     */
+    protected int accumSize = 0;
+
+   /**
+    * Do we use stereoView - not yet ;-) !
+    * This is the default visual property ... !
+    *
+    * This is set via the constructor !
+    * 
+    * @see GLContext#isStereoView
+    * @see GLContext#GLContext
+    */
+    protected boolean stereoView = false;    
+
+   /**
+    * Do we use True-Color RGBA  - of course ;-) !
+    * This is the default visual property ... !
+    *
+    * This is set via the constructor !
+    * 
+    * @see GLContext#isRGBA
+    * @see GLContext#GLContext
+    */
+    protected boolean rgba = true;    
+
+   /**
+    * We normally do not have to create an own Window !
+    * This is the default visual property ... !
+    * But some machines, like SGI's Irix, 
+    * must use an own created overlapped window !
+    * For these machines, a compiler flag is set, 
+    * so that this value is alsways set to true !
+    *
+    * This is set via the constructor !
+    * 
+    * @see GLContext#isOwnWindowCreated
+    * @see GLContext#GLContext
+    */
+    protected boolean createOwnWindow = false;
+
+   /**
+    * The resize flag, which indicates a resize for the next paint function !
+    * This flag will bes set in 'componentResized'
+    * and will be cleared after resize (glViewport) in sDisplay !!
+    *
+    * @see gl4java.awt.GLCanvas#sDisplay
+    */
+    protected boolean mustResize = false;
+
+    protected Dimension size = null;
+
+    /**
+     * the light- or heavy component
+     * where GL commands should be drawn
+     */
+    protected Component _comp = null;
+
+    /**
+     * the heavy component
+     * where GL commands should be drawn
+     *
+     * if the _comp component is a swing (light)
+     * component, this component contains its heavy parent !
+     */
+    protected Component _compHeavy = null;
+
+   /**
+    * Variable to tell is where windows or not (X11) 
+    * Usally X11 ;-))
+    *
+    * Ok - lets give one to the Max :-) 
+    */
+    public static final int
+       OsWindoof	= -1,
+       OsUnknown	=  0,
+       OsX11	   	=  1,
+       OsMac		=  2; // for Gerard Ziemski's port
+ 
+    private static int osType=OsUnknown;
+  
+    private static boolean isNetscapeJvm = false;
+    private static boolean isMicrosoftJvm = false;
+    private static boolean useMSJDirect = false;
+    private static String jvmVendor = null;
+    private static String jvmVersion = null;
+    private static int    jvmVersionMajor = 1; // min. defaults
+    private static int    jvmVersionMinor = 1; // min. defaults
+    private static String osName = null;
+
+   /**
+    * Get the native GL Context !
+    *
+    * @see GLContext#glContext
+    */
+    public final long getNativeGLContext() { return (long)glContext; }
+
+   /**
+    * Get the native Window Handle !
+    *
+    * @see GLContext#windowHandle
+    */
+    public final long getNativeWindoHandle() { return (long)windowHandle; }
+
+   /**
+    * Get the optional shared GL Context !
+    *
+    * @see GLContext#sharedGLContext
+    */
+    public final GLContext getSharedGLContext() { return sharedGLContext; }
+
+   /**
+    * Get the native OS-Type !
+    *
+    * @see GLContext#osType
+    * @see GLContext#OsWindoof
+    * @see GLContext#OsUnknown
+    * @see GLContext#OsX11
+    * @see GLContext#OsMac
+    */
+    public final int getNativeOSType() { return osType; }
+
+   /**
+    * Query the visual property ... !
+    *
+    * After a GLContext is created, this property can be queried !
+    *
+    * @see GLContext#doubleBuffer
+    * @see GLContext#GLContext
+    */
+    public final boolean isDoubleBuffer() { return doubleBuffer; }
+
+   /**
+    * Query the visual property ... !
+    *
+    * After a GLContext is created, this property can be queried !
+    *
+    * @see GLContext#stereoView
+    * @see GLContext#GLContext
+    */
+    public final int getStencilBitNumber() { return stencilBits; }
+
+   /**
+    * Query the visual property ... !
+    *
+    * After a GLContext is created, this property can be queried !
+    *
+    * @see GLContext#GLContext
+    */
+    public final int getAccumSize() { return accumSize; }
+
+   /**
+    * Query the visual property ... !
+    *
+    * After a GLContext is created, this property can be queried !
+    *
+    * @see GLContext#stereoView
+    * @see GLContext#GLContext
+    */
+    public final boolean isStereoView() { return stereoView; }
+
+   /**
+    * Query the visual property ... !
+    *
+    * After a GLContext is created, this property can be queried !
+    *
+    * @see GLContext#rgba
+    * @see GLContext#GLContext
+    */
+    public final boolean isRGBA() { return rgba; }
+
+   /**
+    * Query the visual property ... !
+    *
+    * After a GLContext is created, this property can be queried !
+    *
+    * @see GLContext#createOwnWindow
+    * @see GLContext#GLContext
+    */
+    public final boolean isOwnWindowCreated() { return createOwnWindow; }
+
+    /**
+     * Support of loading the native library seperatly.
+     *
+     * Link with the native OpenGL library.  If we cannot link, an exception
+     * is thrown.  
+     * The name of the library is named e.g.: "GL4JavaJauGljJNI" at the 
+     * Java level, or "libGL4JavaJauGljJNI.so" at the solaris level,
+     * or "GL4JavaJauGljJNI.dll" at the win32 level :-).
+     *
+     * @param gljLibName The name of the GLContex native library.
+     *                   If gljLibName==null, the default library will be used !
+     *
+     * @param glLibName  The name of the GLFunc native library.
+     *                   If glLibName==null, the default library will be used !
+     *
+     * @param gluLibName The name of the GLUFunc native library.
+     *                   If gluLibName==null, the default library will be used !
+     *
+     * @return 		boolean, true if succesfull !
+     *
+     * @see	GLContext#defGljLib   
+     *
+     * @see	GLContext#defGLFuncLib 
+     *
+     * @see	GLContext#defGLUFuncLib 
+     */
+    public static boolean loadNativeLibraries ( String gljLibName,
+    						String glLibName,
+						String gluLibName
+					      )
+    {
+        if(libsLoaded) return true;
+
+	String libNames[] = null;
+
+        jvmVendor = java.lang.System.getProperty("java.vendor");
+        jvmVersion = java.lang.System.getProperty("java.version");
+
+        if(gljClassDebug)
+	{
+		System.out.println("jvm vendor: "+jvmVendor);
+		System.out.println("jvm version: "+jvmVersion);
+        }
+
+	int i0 = 0;
+	int i1 = jvmVersion.indexOf(".", i0);
+        String strhlp = null;
+	if(i1>0)
+	{
+	    strhlp = jvmVersion.substring(i0,i1);
+	    try {
+	      jvmVersionMajor = Integer.valueOf(strhlp).intValue();
+	    } catch (Exception e) 
+	    {System.out.println("Not a number: "+strhlp+" ("+jvmVersion+")");}
+	}
+	i0 = i1+1;
+	i1 = jvmVersion.indexOf(".", i0);
+	if( i1 < 0 )
+		i1 = jvmVersion.length(); // no 2nd dot, no bug version number
+
+	if( 0<i0 && i0<i1 )
+	{
+	    strhlp = jvmVersion.substring(i0,i1);
+	    try {
+	      jvmVersionMinor = Integer.valueOf(strhlp).intValue();
+	    } catch (Exception e) 
+	    {System.out.println("Not a number: "+strhlp+" ("+jvmVersion+")");}
+	}
+
+        if(gljClassDebug)
+	{
+		System.out.println("jvm version (parsed): "+
+				   "major: "+jvmVersionMajor+
+		                   ", minor: "+jvmVersionMinor);
+        }
+
+        isNetscapeJvm = jvmVendor!=null && jvmVendor.indexOf("Netscape")>=0 ;
+        isMicrosoftJvm = jvmVendor!=null && jvmVendor.indexOf("Microsoft")>=0 ;
+
+ 	// Determine the OS
+ 	osName = System.getProperty( "os.name" );
+ 	if( osName.startsWith( "Wind" ) )
+	   osType = OsWindoof;
+ 	else if( osName.startsWith( "Mac OS" ) )
+	   osType = OsMac;
+	else /* oops - lets guess unix/x11 :-) */
+	   osType = OsX11;
+
+	String jniEXTsuff = "";
+
+	if( jvmVersionMajor>=2 ||
+	       ( jvmVersionMajor==1 && jvmVersionMinor>=2 )
+	  )
+	{
+		jniEXTsuff = "12";
+	}
+
+	if(gljLibName==null)
+	    gljLibName = defGljLib+jniEXTsuff;
+	if(glLibName==null)
+	    glLibName  = defGLFuncLib+jniEXTsuff;
+	if(gluLibName==null)
+	    gluLibName = defGLUFuncLib+jniEXTsuff;
+
+	if ( (osType==OsWindoof) && (isMicrosoftJvm) )
+	{
+	   // JDirect loads the GL libraries automatically,
+	   // so we don't have to.
+	   libNames = new String[4];
+	   libNames[0]= gljLibName;
+	   libNames[1]= glLibName;
+	   libNames[2]= gluLibName;
+	   libNames[3]= defGljMSWinLib;
+	   useMSJDirect = true;
+	} else {
+	   /* For MAC, Win32+SunJVM, Unices ... 
+	    */
+	   libNames = new String[3];
+	   libNames[0]= gljLibName;
+	   libNames[1]= glLibName;
+	   libNames[2]= gluLibName;
+	   useMSJDirect = false;
+	}
+
+	if(isNetscapeJvm)
+	{
+	  System.out.println("Netscape JVM try to get Privileges");
+	  try {
+	        Class privmgr = 
+			Class.forName("netscape.security.PrivilegeManager");
+		Class[] parameterTypes = new Class[1];
+		parameterTypes[0] = Class.forName("java.lang.String");
+		Method m = privmgr.getMethod("enablePrivilege",parameterTypes);
+		Object args[] = new Object[1];
+		args[0] = (Object)(new String("UniversalLinkAccess"));
+		m.invoke(privmgr,args);
+		/*
+		netscape.security.PrivilegeManager.enablePrivilege
+			("UniversalLinkAccess");
+		*/
+		System.out.println("Netscape-Privilege: enabled UniversalLinkAccess priv.");
+	  } catch (Exception ex) 
+	  { 
+		System.out.println("Not enabled Netscape-Privilege: UniversalLinkAccess priv.");
+	  }
+	}
+
+	/* load libs */
+	int libNumber = 0;
+	String _libName = null ;
+        boolean libLoaded[] = new boolean[libNames.length];
+
+	for(libNumber=0; libNumber<libNames.length; libNumber++)
+	    libLoaded[libNumber]=false;
+
+	for(libNumber=0; libNumber<libNames.length; libNumber++)
+	{
+		do {
+		      try {
+			System.loadLibrary( libNames[libNumber] );  
+			libLoaded[libNumber]=true;
+			if(gljClassDebug)
+			{
+			    System.out.println("loaded native library: "+
+			    			libNames[libNumber]);
+			}
+		      } catch ( UnsatisfiedLinkError e) {
+			System.out.println
+			( "Sorry, can't find the library: "+
+			  libNames[libNumber]+"\n"+e );
+			
+			libNames[libNumber]=null; // stop trying ... :-(
+		      }
+		} while( libLoaded[libNumber]==false && 
+		         libNames[libNumber]!=null );
+	}
+
+	for(libNumber=0; libNumber<libNames.length; libNumber++)
+	{
+		if(libLoaded[libNumber]==false) break;
+	}
+	if(libNumber==libNames.length) 
+	{
+		libsLoaded=true;
+	}
+
+	return libsLoaded;
+    }
+ 
+    /** 
+     * no no no .. the user has to choose !
+     *
+     * The user must call loadNativeLibrary !
+     * 
+     * @see GLContext#loadNativeLibrary
+     *
+     * static {
+     * 	if(!libLoaded)
+     * 		loadNativeLibrares(null, null, null);
+     * }
+     */
+
+    /**
+     * Test to load the native library, GLFunc and GLUFunc implementation !
+     * If succesfull, a Frame will created and the GL-Infos (vendor, ...)
+     * are shown in it !
+     *
+     * @param args, a list of args, 
+     *
+     *    -gljlib   <glj-libname> gl4java-glj-lib native library
+     *    -gllib    <gl-libname> gl4java-gl-lib native library
+     *    -glulib   <glu-libname> gl4java-glu-lib native library
+     *    -glclass  <gl-class> gl4java-gl-class java GLFunc implementation
+     *    -gluclass <glu-class> gl4java-glu-class java GLUFunc implementation
+     *    -info     creates a GLContext and prints all avaiable information of GL/GLU and GL4Java
+     *    -infotxt  like -info, but exits straight after -info !
+     *
+     *    without any arguments, a help screen is shown 
+     */
+    public static void main( String args[] ) 
+    {
+     	String gljLibName = null;
+     	String glLibName = null;
+     	String gluLibName = null;
+     	String glName = defGLFuncClass;
+     	String gluName = defGLUFuncClass;
+	boolean info=false;
+	boolean exitImmediatly=false;
+	int i = 0;
+	boolean ok=true;
+
+	if(args.length==0)
+	{
+		System.out.println("usage: java gl4java.GLContext <options>, where options can be: ");
+		System.out.println("	-gljlib <glj-libname> \t choose a custom the gl4java-glj-lib native library (default: GL4JavaJauGljJNI)");
+		System.out.println("	-gllib <gl-libname> \t choose a custom the gl4java-gl-lib native library (default: GL4JavaJauGLJNI)");
+		System.out.println("	-glulib <glu-libname> \t choose a custom the gl4java-glu-lib native library (default: GL4JavaJauGLUJNI");
+		System.out.println("	-glclass <gl-class> \t choose a custom the gl4java-gl-class java GLFunc implementation (default: GLFuncJauJNI)");
+		System.out.println("	-gluclass <glu-class> \t choose a custom the gl4java-glu-class java GLUFunc implementation (default: GLUFuncJauJNI)");
+		System.out.println("	-info \t creates a GLContext and prints all avaiable information of GL/GLU and GL4Java");
+		System.out.println("	-infotxt \t like -info, but exits straight after -info !");
+	        System.exit(0);
+	}
+
+	while(args.length>i)
+	{
+		if(args[i].equals("-gljlib")) {
+			if(args.length>++i) gljLibName=args[i];
+		} else if(args[i].equals("-gllib")) {
+			if(args.length>++i) glLibName=args[i];
+		} else if(args[i].equals("-glulib")) {
+			if(args.length>++i) gluLibName=args[i];
+		} else if(args[i].equals("-glclass")) {
+			if(args.length>++i) glName=args[i];
+		} else if(args[i].equals("-gluclass")) {
+			if(args.length>++i) gluName=args[i];
+		} else if(args[i].equals("-info")) {
+			info=true;
+		} else if(args[i].equals("-infotxt")) {
+			info=true;
+			exitImmediatly=true;
+		} else {
+		  System.out.println("illegal arg "+i+": "+args[i]);
+		  ok=false;
+		}
+		i++;
+	}
+
+	GLContext.gljNativeDebug = true;
+	GLContext.gljClassDebug = true;
+
+	GLFunc  gl = null;
+	GLUFunc glu = null;
+
+	if(GLContext.loadNativeLibraries(gljLibName, glLibName, gluLibName))
+		System.out.println("native Libraries loaded succesfull");
+	else {
+		System.out.println("native library NOT loaded complete");
+		ok=false;
+	}
+
+	if( (gl=GLContext.createGLFunc(glName)) !=null)
+		System.out.println("GLFunc implementation "+glName+" created succesfull");
+	else {
+		System.out.println("GLFunc implementation "+glName+" not created");
+		ok=false;
+	}
+	if( (glu=GLContext.createGLUFunc(gluName)) !=null)
+		System.out.println("GLUFunc implementation "+gluName+" created succesfull");
+	else {
+	        System.out.println("GLUFunc implementation "+gluName+" not created");
+		ok=false;
+	}
+
+	if( info && ok==true) {
+		Frame f = new Frame("GL4Java Info");
+		f.setSize(10, 10);
+
+		f.pack();
+		f.setVisible(true);
+
+		GLContext glj = new GLContext(f, gl, glu);
+
+		Frame fInfo = glj.gljShowVersions();
+
+                fInfo.addWindowListener
+		                   ( new WindowAdapter()
+                                      {
+                                        public void windowClosed(WindowEvent e)
+                                        {
+                                           // button exit
+                                           System.exit(0);
+                                        }
+                                      }
+                                    );              
+
+	        glj.gljDestroy();
+
+		if(exitImmediatly)
+		   System.exit(0);
+	}
+    }
+		
+    public static String getJVMVendor() { return jvmVendor; }
+    public static boolean isNetscapeJVM() { return isNetscapeJvm; }
+    public static boolean isMicrosoftJVM() { return isMicrosoftJvm; }
+ 
+    /**
+     * Used to hold the user given GLFunc implementation
+     */
+    private GLFunc gl 	= null;
+
+    /**
+     * Used to hold the user given GLUFunc implementation
+     */
+    private GLUFunc glu = null;
+
+   /**
+    *
+    * Constructor
+    *
+    * This privat constructor is for all possible
+    * compinations and is called from the customized
+    * constructors.
+    *
+    *  First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _createOwnWindow the flag for the visual property
+    * @param _offScreenRenderer the flag for the visual property
+    * @param _doubleBuffer the flag for the visual property
+    * @param _stereoView  the flag for the visual property
+    * @param _rgba	  the flag for the visual property
+    * @param _stencilBits the flag for the visual property
+    * @param _accumSize   the flag for the visual property
+    * @param _sharedGLContext the shared GLContext
+    * @param _offScrnSize the fixed offscreen pixmap size
+    *
+    */
+    protected GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
+		         boolean _createOwnWindow, boolean _offScreenRenderer,
+                         boolean _doubleBuffer, boolean _stereoView,
+		         boolean _rgba,
+		         int _stencilBits,
+		         int _accumSize,
+		         GLContext _sharedGLContext,
+    			 Dimension _offScrnSize
+                       )
+    {
+		super( );
+
+		_comp = comp ;  // the light- or heavy component
+		gl    = glf ;
+		glu   = gluf ;
+	        createOwnWindow = _createOwnWindow;
+	        offScreenRenderer = _offScreenRenderer;
+		doubleBuffer=_doubleBuffer;
+		stereoView=_stereoView;
+		rgba=_rgba;
+		stencilBits=_stencilBits;
+		accumSize=_accumSize;
+		offScrnSize= _offScrnSize;
+
+		this.sharedGLContext  = _sharedGLContext;
+		if(sharedGLContext != null) 
+			sharedGLContextNative =
+				(int)sharedGLContext.getNativeGLContext();
+
+		// fetch the heavy peer component in temporary var. comp
+		while(comp!=null &&
+		      (comp.getPeer() instanceof java.awt.peer.LightweightPeer)
+		     )
+			comp=comp.getParent();
+
+		_compHeavy = comp ;  // the heavy component
+
+    		Graphics  _gr = null;
+
+		if(_compHeavy!=null)
+		{
+			if( ! _comp.isVisible() )
+				setVisible(true); // use our own ...
+
+
+			_gr = _compHeavy.getGraphics();
+			if(_gr==null)
+			  System.out.println("got empty Graphics");
+		} else
+		  System.out.println("got empty Component");
+
+		if(_comp!=null && _gr!=null)
+		{
+			int i = 0;
+			do {
+				createGLContext(_gr); // uses _comp
+				if(gljIsInit()==false)
+				{
+				    try
+				    {
+				      Thread.sleep( 100 );
+				    }
+				    catch( Exception e )
+				    { }
+				}
+				i++;
+			} while(gljIsInit()==false && i<5) ;
+		}
+
+	        if(gljClassDebug)
+		{
+			if(gljIsInit())
+			  System.out.println(">>> GLContext() succeded");
+			else
+			  System.out.println(">>> GLContext() failed");
+		}
+    }
+
+   /**
+    *
+    * Constructor
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _createOwnWindow the flag for the visual property
+    * @param _doubleBuffer the flag for the visual property
+    * @param _stereoView  the flag for the visual property
+    * @param _rgba	  the flag for the visual property
+    * @param _stencilBits the flag for the visual property
+    * @param _accumSize   the flag for the visual property
+    * @param _sharedGLContext the shared GLContext
+    *
+    */
+    public GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
+		      boolean _createOwnWindow,
+                      boolean _doubleBuffer, boolean _stereoView,
+		      boolean _rgba,
+		      int _stencilBits,
+		      int _accumSize,
+		      GLContext _sharedGLContext
+                    )
+    {
+    	this(comp, glf, gluf, 
+	      _createOwnWindow, false /* offscreen renderer */,
+	      _doubleBuffer,
+	      _stereoView,
+	      _rgba,
+	      _stencilBits,
+	      _accumSize,
+	      _sharedGLContext,
+	      null /* offscreen size */
+	    );
+    }
+
+   /**
+    *
+    * Constructor
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _createOwnWindow the flag for the visual property
+    * @param _doubleBuffer the flag for the visual property
+    * @param _stereoView  the flag for the visual property
+    * @param _rgba	  the flag for the visual property
+    * @param _stencilBits the flag for the visual property
+    * @param _accumSize   the flag for the visual property
+    *
+    */
+    public GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
+		      boolean _createOwnWindow,
+                      boolean _doubleBuffer, boolean _stereoView,
+		      boolean _rgba,
+		      int _stencilBits,
+		      int _accumSize
+                    )
+    {
+    	this(comp, glf, gluf, 
+	      _createOwnWindow, false /* offscreen renderer */,
+	      _doubleBuffer,
+	      _stereoView,
+	      _rgba,
+	      _stencilBits,
+	      _accumSize,
+	      null /* sharedGLContext */,
+	      null /* offscreen size */
+	    );
+    }
+
+   /**
+    *
+    * Constructor
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _createOwnWindow the flag for the visual property
+    * @param _doubleBuffer the flag for the visual property
+    * @param _stereoView  the flag for the visual property
+    * @param _rgba	  the flag for the visual property
+    * @param _stencilBits the flag for the visual property
+    *
+    */
+    public GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
+		      boolean _createOwnWindow,
+                      boolean _doubleBuffer, boolean _stereoView,
+		      boolean _rgba,
+		      int _stencilBits
+                    )
+    {
+    	this(comp, glf, gluf, 
+	      _createOwnWindow, false /* offscreen renderer */,
+	      _doubleBuffer,
+	      _stereoView,
+	      _rgba,
+	      _stencilBits,
+	      0 /* accumSize */,
+	      null /* sharedGLContext */,
+	      null /* offscreen size */
+	    );
+    }
+
+   /**
+    *
+    * Constructor
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _doubleBuffer the flag for the visual property
+    * @param _stereoView  the flag for the visual property
+    * @param _rgba	  the flag for the visual property
+    * @param _stencilBits the flag for the visual property
+    *
+    */
+    public GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
+                      boolean _doubleBuffer, boolean _stereoView,
+		      boolean _rgba,
+		      int _stencilBits,
+		      int _accumSize
+                    )
+    {
+    	this(comp, glf, gluf, 
+	      false /* ownWindow */, false /* offscreen renderer */,
+	      _doubleBuffer,
+	      _stereoView,
+	      _rgba,
+	      _stencilBits,
+	      _accumSize,
+	      null /* sharedGLContext */,
+	      null /* offscreen size */
+	    );
+    }
+
+   /**
+    *
+    * Constructor
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _doubleBuffer the flag for the visual property
+    * @param _stereoView  the flag for the visual property
+    * @param _rgba	  the flag for the visual property
+    * @param _stencilBits the flag for the visual property
+    *
+    */
+    public GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
+                      boolean _doubleBuffer, boolean _stereoView,
+		      boolean _rgba,
+		      int _stencilBits
+                    )
+    {
+    	this(comp, glf, gluf, 
+	      false /* ownWindow */, false /* offscreen renderer */,
+	      _doubleBuffer,
+	      _stereoView,
+	      _rgba,
+	      _stencilBits,
+	      0 /* accumSize */,
+	      null /* sharedGLContext */,
+	      null /* offscreen size */
+	    );
+    }
+
+   /**
+    *
+    * Constructor
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _doubleBuffer the flag for the visual property
+    * @param _stereoView  the flag for the visual property
+    * @param _rgba	  the flag for the visual property
+    * @param _stencilBits the flag for the visual property
+    *
+    */
+    public GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
+                      boolean _doubleBuffer, boolean _stereoView,
+		      boolean _rgba
+                    )
+    {
+    	this(comp, glf, gluf, 
+	      false /* ownWindow */, false /* offscreen renderer */,
+	      _doubleBuffer,
+	      _stereoView,
+	      _rgba,
+	      0, /* _stencilBits */
+	      0 /* accumSize */,
+	      null /* sharedGLContext */,
+	      null /* offscreen size */
+	    );
+    }
+
+   /**
+    *
+    * Constructor
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * ! WARNING ! This flag is just for testing purpose !!!
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _doubleBuffer the flag for the visual property
+    * @param _stereoView  the flag for the visual property
+    *
+    */
+    public GLContext( Component comp, GLFunc glf, GLUFunc gluf, 
+                      boolean _doubleBuffer, boolean _stereoView
+                    )
+    {
+    	this(comp, glf, gluf, 
+	      false /* ownWindow */, false /* offscreen renderer */,
+	      _doubleBuffer,
+	      _stereoView,
+	      true /* _rgba */,
+	      0, /* _stencilBits */
+	      0 /* accumSize */,
+	      null /* sharedGLContext */,
+	      null /* offscreen size */
+	    );
+    }
+
+   /**
+    *
+    * Constructor
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * We use a visual with doubleBuffer and NO stereoView !
+    * Do not force a new native window !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	the users component for the gl-context
+    * @param glf	the users selected GLFunc implementation
+    * @param glf	the users selected GLUFunc implementation
+    */
+    public GLContext( Component comp, GLFunc glf, GLUFunc gluf )
+    {
+    	this(comp, glf, gluf, 
+	      false /* ownWindow */, false /* offscreen renderer */,
+	      true /* _doubleBuffer */,
+	      false /* _stereoView */,
+	      true /* _rgba */,
+	      0, /* _stencilBits */
+	      0 /* accumSize */,
+	      null /* sharedGLContext */,
+	      null /* offscreen size */
+	    );
+    }
+
+   /**
+    *
+    * Constructor Function for offscreen rendering !
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _stereoView  the flag for the visual property
+    * @param _rgba	  the flag for the visual property
+    * @param _stencilBits the flag for the visual property
+    * @param _sharedGLContext the shared GLContext
+    *
+    * @return             the created offscreen context
+    */
+    public static final GLContext createOffScreenCtx
+    		       ( Component comp, GLFunc glf, GLUFunc gluf, 
+                         boolean _stereoView,
+		         boolean _rgba,
+		         int _stencilBits,
+		         int _accumSize,
+		         GLContext _sharedGLContext
+                       )
+    {
+    	return new GLContext(comp, glf, gluf, 
+		      false /* _createOwnWindow */, 
+		      true /* offscreen renderer */,
+		      false /* _doubleBuffer */,
+		      _stereoView,
+		      _rgba,
+		      _stencilBits,
+		      _accumSize,
+		      _sharedGLContext,
+		      null
+		    );
+    }
+
+   /**
+    *
+    * Constructor Function for offscreen rendering !
+    *
+    * First the GLContext is fetched from the Component itself !
+    * To do so, the Component is set visible if it is not !
+    *
+    * If a GLContext is fetched, it is current !
+    *
+    * @param comp	  the users component for the gl-context
+    * @param glf	  the users selected GLFunc implementation
+    * @param glf	  the users selected GLUFunc implementation
+    * @param _stereoView  the flag for the visual property
+    * @param _rgba	  the flag for the visual property
+    * @param _stencilBits the flag for the visual property
+    * @param _sharedGLContext the shared GLContext
+    * @param _offScrnSize the fixed offscreen pixmap size
+    *
+    * @return             the created offscreen context
+    */
+    public static final GLContext createOffScreenCtx
+    		       ( Component comp, GLFunc glf, GLUFunc gluf, 
+                         boolean _stereoView,
+		         boolean _rgba,
+		         int _stencilBits,
+		         int _accumSize,
+		         GLContext _sharedGLContext,
+    			 Dimension _offScrnSize
+                       )
+    {
+    	return new GLContext(comp, glf, gluf, 
+		      false /* _createOwnWindow */, 
+		      true /* offscreen renderer */,
+		      false /* _doubleBuffer */,
+		      _stereoView,
+		      _rgba,
+		      _stencilBits,
+		      _accumSize,
+		      _sharedGLContext,
+		      _offScrnSize
+		    );
+    }
+
+    /**
+     * Used to set the user given GLFunc implementation
+     */
+    public final void setGLFunc(GLFunc _gl) { gl = _gl; }
+
+    /**
+     * Used to set the user given GLUFunc implementation
+     */
+    public final void setGLUFunc(GLUFunc _glu) { glu = _glu; }
+
+    /**
+     * Used to return the user given GLFunc implementation
+     */
+    public final GLFunc getGLFunc() { return gl; }
+
+    /**
+     * Used to return the user given GLUFunc implementation
+     */
+    public final GLUFunc getGLUFunc() { return glu; }
+
+    /**
+     * Support of loading a vendors GLFunc implementation
+     *
+     * Try to load the Class, if succesfull we do return the instance of it.
+     * Else null is returned !
+     *
+     * The Class-Name is: "GL4Java." + vendorClass + ".class" !
+     *
+     * @param vendorClass  The name of the GLFunc implementation.
+     *                     If vendorSuffix==null, the default implementation 
+     *			   "GLFuncJauJNI" (-> GL4Java.GLFuncJauJNI.class ) 
+     *			   will be used !
+     *
+     * @return 		GLFunc, the implementation's instance if exists 
+     *			and valid, or null
+     *
+     * @see	GLContext#defGLFuncClass   
+     */
+    public static final GLFunc createGLFunc(String vendorClass)
+    {
+        String access_name = "gl4java.";
+	GLFunc gl = null;
+	Object clazz = null;
+
+	if(vendorClass==null) 
+	{
+	    vendorClass = defGLFuncClass ;
+	}
+
+	String clazzName   = access_name + vendorClass ;
+
+	try {
+		clazz = Class.forName(clazzName).newInstance();
+	} catch (Exception ex) {
+		// thats ok :-)
+		System.out.println("could not create instance of: "+ clazzName);
+	}
+	if(clazz !=null && (clazz instanceof GLFunc))
+		gl = (GLFunc) clazz;
+	else
+		System.out.println("Not a GLFunc implementation: "+ clazzName);
+
+	return gl;
+    }
+
+    /**
+     * Support of loading a vendors GLUFunc implementation
+     *
+     * Try to load the Class, if succesfull we do return the instance of it.
+     * Else null is returned !
+     *
+     * The Class-Name is: "GL4Java." + vendorClass + ".class" !
+     *
+     * @param vendorClass  The name of the GLUFunc implementation.
+     *                     If vendorSuffix==null, the default implementation 
+     *			   "GLUFuncJauJNI" (-> GL4Java.GLUFuncJauJNI.class ) 
+     *			   will be used !
+     *
+     * @return 		GLUFunc, the implementation's instance if exists 
+     *			and valid, or null
+     *
+     * @see	GLContext#defGLUFuncClass   
+     */
+    public static final GLUFunc createGLUFunc(String vendorClass)
+    {
+        String access_name = "gl4java.";
+	GLUFunc glu = null;
+	Object clazz = null;
+
+	if(vendorClass==null) 
+	{
+	    vendorClass = defGLUFuncClass ;
+	}
+
+
+	String clazzName   = access_name + vendorClass ;
+
+	try {
+		clazz = Class.forName(clazzName).newInstance();
+	} catch (Exception ex) {
+		// thats ok :-)
+		System.out.println("could not create instance of: "+ clazzName);
+	}
+	if(clazz!=null && (clazz instanceof GLUFunc))
+		glu = (GLUFunc) clazz;
+	else
+		System.out.println("Not a GLUFunc implementation: "+ clazzName);
+		
+
+	return glu;
+    }
+
+   /**
+    *
+    * Own setVisible
+    * This one set's us visible - and wait's for that result !
+    *
+    * @param visible	boolean: visible==true, hide==false
+    * @return 		void
+    */ 
+    public void setVisible( boolean visible )
+    {
+    	    int i= 0;
+
+	    _comp.setVisible( visible );
+
+	    while( _comp.isVisible() != visible  && i<5) 
+	    {
+		_comp.setVisible( visible );
+
+	        try
+	        {
+		    Thread.sleep( 100 );
+	        }
+	        catch( Exception e )
+	        {
+		    System.out.println( "GLContext:setVisible: Error - " + e );
+	        }
+		i++;
+	    }
+	    if(i>=5)
+	      System.out.println( "GLContext:setVisible: Error, could not set to "+visible); 
+    }
+
+   /**
+    *
+    * createGLContext gets the window handle and calls gljInit,
+    * so the gl-context will be initialised here.
+    *
+    * this method will be invoked by the constructor
+    *
+    * this method is left public - this time,
+    * to allow the user to to it again later - if it was not succesfull !
+    *
+    * @param g		the graphics reference, 
+    *			where we will get the native window handle from.
+    *
+    * @return 		void
+    *
+    * @see GLContext#GLContext
+    */ 
+    public final void createGLContext(Graphics g)
+    {
+        String access_name = "gl4java.jau.awt.";
+        WinHandleAccess win_access = null;
+
+	try {
+	    if(gljClassDebug)
+	      System.out.println(">>> createGLContext");
+ 
+          if(pData == 0)
+	  {
+	    if ( useMSJDirect )
+	    {
+	          if(gljClassDebug)
+			  System.out.println("using MSJDirect ...");
+
+		  win_access = (WinHandleAccess)
+		    Class.forName(access_name + "windows.MSWin32HandleAccess").newInstance();
+                  /* _comp should be a subclass of Canvas, and its parent
+                     class should be of type Panel, Frame or Window.  If not,
+                     this all falls apart. */
+
+		  /* This part is now rewritten, 
+	             to respect direkt Windows (Frames and Dialogs)
+		     and Applets .. */
+
+                  Component ob = _comp;
+
+		  while ( (ob instanceof Window)==false &&
+		  	  (ob instanceof Applet)==false
+			)
+		  {
+                      ob = ob.getParent();
+                  }
+
+		  containerWindow = (Container)ob;
+
+		  /* refetch the Graphics component */
+		  g = ob.getGraphics();
+		  if(g==null)
+		    System.out.println("GL4Java-MSJVM: got empty Graphics");
+
+		  pData = (int)win_access.getWinHandle(ob,g);
+
+		  if (pData != 0)
+		  {
+			Point p1;
+			try
+			{
+				p1 = _comp.getLocationOnScreen();
+			}
+			catch (Exception e)
+			{
+				p1 = _comp.getLocation();
+				Point p2 = containerWindow.getLocation();
+				p1.x += p2.x;
+				p1.y += p2.y;
+				Insets is = containerWindow.getInsets();
+				p1.x += is.left;
+				p1.y += is.top;
+			}
+			Rectangle r = _comp.getBounds();
+			createwinx = p1.x;
+			createwiny = p1.y;
+			createwinw = r.width;
+			createwinh = r.height;
+			windowHandle = 0;
+			threadRunning = true;
+			destroyWindow = false;
+			Thread th = new Thread(this);
+			th.start();
+			while ( (windowHandle == 0) && (threadRunning) )
+			{
+				try
+				{
+					Thread.currentThread().sleep(100);
+				}
+				catch( Exception e )
+				{ }
+			}
+		  }
+ 	    } else if(osType==OsWindoof)
+	    {
+		  win_access = (WinHandleAccess) 
+		    Class.forName(access_name + "windows.Win32HandleAccess").newInstance();
+		  pData = (int) win_access.getWinHandle(_compHeavy, g);
+		  windowHandle = pData;
+	    }
+            else if(osType==OsMac)
+            {
+		  win_access = (WinHandleAccess)
+			Class.forName(access_name + "macintosh.MacHandleAccess").newInstance();
+		  pData = (int) win_access.getWinHandle(_compHeavy, g);
+		  windowHandle = pData;
+            }     
+	    else /* X11 */
+	    {
+		  win_access = (WinHandleAccess) 
+		    Class.forName(access_name + "motif.X11HandleAccess").newInstance();
+		  pData = (int) win_access.getWinHandle(_compHeavy, g);
+		  windowHandle = pData;
+	    }
+	  }
+
+	  if(offScrnSize!=null)
+	  {
+		  createwinw = offScrnSize.width;
+		  createwinh = offScrnSize.height;
+	  } else {
+		  Rectangle r = _comp.getBounds();
+		  createwinw = r.width;
+		  createwinh = r.height;
+	  }
+
+	  /* try to establish a context to OpenGL */
+	  try 
+	  {
+		    gljInit();
+	  }
+	  catch( GL4JavaInitException e ) 
+	  {
+		    System.out.println( "can't create a GL context\n");
+	  }
+    
+	} catch (Exception e) {
+	      System.out.println( "An exception is thrown, while creating a GL context\n");
+	      System.out.println(e);
+	      e.printStackTrace();
+	}
+    }
+
+    /* glj* stuff */
+    			
+   /**
+    *
+    * Initializes the gl-context. 
+    * gljInit is called by createGLContext (which is calles by the first paint)!
+    *
+    * Also gljInit will call the init method after GL initialisation,
+    * so the user can override ´init´ to initialize his own stuff !
+    *
+    * @return 		void
+    * @exception 	GL4Java.GL4JavaInitException 
+    *			this class throws an exception 
+    *			if the native call to create a OpenGL context failed.
+    * @see GLContext#createGLContext
+    * @see gl4java.awt.GLCanvas#paint
+    * @see gl4java.awt.GLCanvas#init
+    */ 
+    protected final synchronized void gljInit() 
+      throws GL4JavaInitException 
+    {
+	if( libsLoaded==false ) return ;
+
+	if(pData==0 && !offScreenRenderer)
+	{
+	    System.out.println("could not open a GL widget -- Win CONTEXT");
+            throw new GL4JavaInitException ();
+	}
+
+	if(gljClassDebug)
+	  System.out.println(">>> gljInit");
+
+        if( openOpenGLNative() == false ) 
+        {
+	    if ( useMSJDirect )
+	    {
+		destroyWindow = true;
+		while (threadRunning)
+		{
+			try
+			{
+				Thread.currentThread().sleep(100);
+			}
+			catch( Exception e )
+			{ }
+		}
+		pData = 0;
+		windowHandle = 0;
+	    }
+	    System.out.println("could not open a GL widget -- GL CONTEXT");
+            throw new GL4JavaInitException ();
+          } else {
+	    isInitialized = true;
+	}
+    }
+
+    /**
+     * For MSJVM Only !
+     *
+     * This functions fetches the window-handle within a special thread !
+     */
+    public void run()
+    {
+	if ( !useMSJDirect )
+	{
+		System.err.println("GL4Java-MSJVM-Run: INTERNAL ERROR"); 
+		System.exit(0);
+	}
+
+	pData = gl4java.system.GljMSJDirect.createOGLWindowNative( 
+					      pData,
+	                                      createwinx,createwiny,
+					      createwinw,createwinh);
+	if (pData != 0)
+	{
+		windowHandle = pData;
+		while (!destroyWindow)
+		{
+			gl4java.system.GljMSJDirect.OGLWindowMsgPump();
+			try
+			{
+				Thread.currentThread().sleep(10);
+			}
+			catch( Exception e )
+			{ }
+		}
+		destroyWindow = false;
+		gl4java.system.GljMSJDirect.destroyOGLWindowNative(
+								windowHandle);
+		windowHandle = 0;
+		pData = 0;
+		gl4java.system.GljMSJDirect.OGLWindowMsgPump();
+	}
+	threadRunning = false;
+    }
+
+   /**
+    *
+    * Checks if the gl-context is Initializes
+    * If returns true,
+    * gljInit is allready called and a valid gl-context is achieved.
+    *
+    * No glMakeCurrent is done - 
+    * like gljMakeCurrent (important for more gl-context) !
+    * 
+    * <p>
+    *
+    * The user can use this method to check if he can start rendering
+    * and to be sure his initialisation (init) is done !
+    *
+    * <p>
+    *
+    * If you use gl4java.awt.GLCanvas, you should use the cvsIsInit
+    * method !
+    * <p>
+    *
+    * @return 		boolean
+    * @see GLContext#gljInit
+    * @see gl4java.awt.GLCanvas#cvsIsInit
+    */ 
+    public final boolean gljIsInit() 
+    {
+	return isInitialized;
+    }
+
+    /**
+     * Resizes the gl-viewport
+     *
+     * Should be called, if the component is resized.
+     * The user should take advantage of this functionality.
+     *
+     * Be sure to resize not within the event-method of the
+     * ComponentHandler, you better resize while normal painting.
+     * This can be done while using a boolean flag ;-)
+     * 
+     * Look at GLComponent !
+     */
+    public final void gljResize(int width, int height)
+    {
+    	if ( ! isInitialized || !glEnabled ) return;
+
+	if(offScreenRenderer)
+	{
+		//JAU: TODO
+		return;
+	}
+
+	if ( useMSJDirect )
+        {
+		try
+		{
+			Point p = _comp.getLocationOnScreen();
+			gl4java.system.GljMSJDirect.moveOGLWindowNative(
+					     windowHandle,p.x,p.y,width,height);
+		}
+		catch (Exception e)
+		{ }
+	}
+        else
+                gljResizeNative( createOwnWindow,
+		                 displayHandle, windowHandle,
+		                 width,height);
+    }
+
+    private final native void gljResizeNative( boolean isOwnWindow,
+				               int disp, int thisWin,
+				               int width, int height );
+
+    /**
+     * native C function to open the OpenGLwidget
+     */
+    protected final native boolean openOpenGLNative();
+
+    /**
+     * native C function to check the gl types.
+     * At this time, all GL* types will be checked if they fit's
+     * in the used java JNI types.
+     *
+     * this checks is allready performed, while the GL context is
+     * fetched with gljInit !
+     *
+     * BUT we used this function, to perform a check without an
+     * X11-connection to our AIX host ;-))
+     * So a call to this function is not needed !
+     */
+    public static final boolean gljCheckGLTypes()
+    {
+        return gljCheckGLTypesNative();
+    }
+
+    private static final native boolean gljCheckGLTypesNative();
+
+    public final boolean gljCheckGL()
+    {
+	int ec = gl.glGetError();
+
+	if(ec!=GLFunc.GL_NO_ERROR)
+	{
+		String errStr = glu.gluErrorString(ec);
+
+		try
+		{
+		   throw new Exception();
+		}
+		catch (Exception e)
+		{
+		   System.out.println("GL ERROR : "+errStr);
+		   System.out.println("GL ERROR : "+ec+" == 0x"+Integer.toHexString(ec));
+		   e.printStackTrace();
+		   System.out.println();
+		   System.out.flush();
+		}
+
+		return false;
+	}
+	return true;
+    }
+
+   /**
+    *
+    * gljMakeCurrent checks whether GL4Java is initializes 
+    * AND makes the GL-Context current for this thread.
+    *
+    * It's more save to use ´gljMakeCurrent´, instead of
+    * ´gljMakeCurrentNative´, because we do check if GL is initalised !
+    *
+    * @return 		boolean
+    */ 
+    public final boolean gljMakeCurrent()
+    {
+    	if ( ! isInitialized || !glEnabled )
+	    return false;
+
+        return  gljMakeCurrentNative( displayHandle,
+				      windowHandle,
+				      glContext);
+    }
+
+
+   /**
+    *
+    * gljMakeCurrent checks whether GL4Java is initializes 
+    * AND makes the GL-Context current for this thread.
+    *
+    * It's more save to use ´gljMakeCurrent´, instead of
+    * ´gljMakeCurrentNative´, because we do check if GL is initalised !
+    *
+    * @param	freeContextFirst is obsolete !
+    *
+    * @return 		boolean
+    *
+    * @deprecated The argument freeContextFirst is obsolete !
+    */ 
+    public final boolean gljMakeCurrent(boolean freeContextFirst)
+    {
+    	if ( ! isInitialized || !glEnabled )
+	    return false;
+
+        return  gljMakeCurrentNative( displayHandle,
+				      windowHandle,
+				      glContext);
+    }
+
+    private static final native boolean gljMakeCurrentNative(
+    						int disp, 
+    					        int thisWin,
+					        int glContext);
+
+   /**
+    *
+    * gljGetCurrentContext fetches the current native
+    * GL-Context, which is attached to this _native_ thread !
+    *
+    * @return 		int
+    */ 
+    public static final native int gljGetCurrentContext();
+
+    /**
+     *
+     * gljDestroy free´s AND destroy´s the GL Context
+     *
+     * This function should be called when removing 
+     * a GLContext !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     *
+     * @return 		void
+     *
+     * @see GLContext#gljMakeCurrent
+     * @see GLContext#gljSwap
+     */ 
+     public final synchronized boolean gljDestroy()
+     {
+        boolean result = true;
+
+        if (!gljDestroyNative()) 
+		result = false;
+
+        windowHandle = 0;
+        glContext = 0;
+	pixmapHandle = 0;
+
+
+	if ( useMSJDirect )
+	{
+		destroyWindow = false;
+		gl4java.system.GljMSJDirect.destroyOGLWindowNative( pData );
+		windowHandle = 0;
+		gl4java.system.GljMSJDirect.OGLWindowMsgPump();
+	}
+
+        pData = 0;
+
+        return result;
+    }
+
+     private final native boolean gljDestroyNative();
+
+    /**
+     *
+     * gljFree free´s the GL Context
+     *
+     * This could be called after at last in your display function,
+     * if you have GC problems ....
+     *
+     * @return 		void
+     *
+     * @see GLContext#gljMakeCurrent
+     * @see GLContext#gljSwap
+     * @see gl4java.awt.GLCanvas#sDisplay
+     */ 
+    public final boolean gljFree()
+    {
+    	if ( ! isInitialized ) return false;
+
+        return gljFreeNative ( displayHandle,
+		               windowHandle,
+		               glContext);
+    }
+
+     private static final native boolean gljFreeNative( int disp, 
+    					                int thisWin,
+					                int glContext );
+
+    /**
+     * swap method are for double buffering
+     */
+    public final boolean gljSwap()
+    {
+    	if ( ! isInitialized ) return false;
+
+        return gljSwapNative( displayHandle,
+			      windowHandle,
+			      glContext,
+			      doubleBuffer);
+    }
+
+    private static final native boolean gljSwapNative( int disp, 
+    					              int thisWin,
+					              int glContext,
+						      boolean doubleBuffer );
+
+    /**
+     * This function enables, disables the GL-Context !
+     * If false is given, the openGL renderer/context is 
+     * disabled and disconected (gljFree is called, if initialized) !
+     *
+     * If disabled, gljMakeCurrent returns always false !
+     *
+     * @return 	boolean
+     *
+     * @see	GLContext#gljIsEnabled
+     * @see     GLContext#gljMakeCurrent
+     */ 
+    public void setEnabled(boolean b)
+    {
+        glEnabled = b;
+    	if ( b==false && isInitialized ) 
+		gljFree();
+    }
+
+    /**
+     * This function queries, if the GL-Context is enabled !
+     *
+     * @return 	boolean
+     *
+     * @see	GLContext#setEnabled
+     * @see     GLContext#gljMakeCurrent
+     */ 
+    public boolean isEnabled()
+    {
+        return glEnabled;
+    }
+
+    /**
+     * This functions checks the existence of 
+     * the GL functions !
+     */
+    public final static native boolean gljTestGLProc 
+    					( String name, boolean verbose );
+
+    /**
+     * This functions reads the pixel from the GL frame
+     * and puts it into the pixelDest array,
+     * while converting them correctly to the AWT pixel format,
+     * using GL_RGB[A] and BufferedImage.TYPE_INT[A]RGB !
+     */
+    public final static native void gljReadPixelGL2AWT (
+			int x, int y, int width, int height,
+			int format, int type, int bufferName,
+			byte[] pixelGL, int[] pixelDest);
+
+    /**
+     * Experimental Code, not done yet !
+     * This one is to upspeed the Offscreen rendering engine for e.g. Swing !
+     *
+     * This functions reads the pixel from the GL frame
+     * and puts it into the pixelDest array,
+     * while using hardware correct AWT and GL pixel format,
+     * using GL_BGR[A]_EXT and BufferedImage.TYPE_[34]BYTE_[A]BGR !
+     *
+     * ATTENTION: This functions runs only if hardware supports this,
+     * e.g. on Win32 platforms !!!
+     */
+    public final static native void gljReadPixelGL2AWT (
+			int x, int y, int width, int height,
+			int format, int type, int bufferName,
+			byte[] pixelGLDest);
+
+    /**
+     * Experimental Code, not done yet !
+     * This one is to upspeed the Offscreen rendering engine for e.g. Swing !
+     */
+    public final native void gljCpyOffScrnImg2Buffer(int width, int height, int format, byte[] pixelDest);
+
+    /**
+     * Experimental Code, not done yet !
+     * This one is to upspeed the Offscreen rendering engine for e.g. Swing !
+     */
+    public final native void gljCpyOffScrnImg2Buffer(int width, int height, int format, int[] pixelDest);
+
+    /**
+     * native C function to achieve the native lib vendor !
+     *
+     * now it is possible to check the native-lib at runtime !
+     */
+    public final static String gljGetNativeLibVendor()
+    {
+        return gljGetNativeLibVendorNative();
+    }
+
+    private final static native String gljGetNativeLibVendorNative();
+
+    /**
+     * native C function to achieve the native lib version !
+     *
+     * now it is possible to check the native-lib at runtime !
+     */
+    public final static String gljGetNativeLibVersion()
+    {
+        return gljGetNativeLibVersionNative();
+    }
+
+    private final static native String gljGetNativeLibVersionNative();
+
+    /**
+     * function to achieve the java-class version !
+     *
+     * now it is possible to check the java-class at runtime !
+     */
+    public final static String gljGetClassVersion()
+    { return version; }
+
+    /**
+     * function to achieve the java-class vendor !
+     *
+     * now it is possible to check the java-class at runtime !
+     */
+    public final static String gljGetClassVendor()
+    { return "Jausoft - Sven Goethel Software Development"; }
+
+    /**
+     * function to achieve complete version info
+     *
+     * Be sure that the native library must be loaded !
+     */
+    public final String gljGetVersions()
+    {
+	return gljGetVersions(false);
+    }
+
+    public final String gljGetVersions(boolean verbose)
+    {
+      if(libsLoaded==false || gl==null || glu==null || !gljIsInit())
+      	return null;
+
+      String info1= "GL4Java - LGPL-Version"                       + "\n" +
+      	            "-------------------------------------------------\n" +
+      	            "-------------------------------------------------\n" +
+		    "Java-Class         : GL4Java.GLContext           \n" +
+		    "          : Version: "+gljGetClassVersion()   + "\n" +
+		    "            Vendor : "+gljGetClassVendor()    + "\n" +
+		    "Native-Library     : GL4Java.GLContext           \n" +
+		    "            Version: "+gljGetNativeLibVersion()+"\n" +
+		    "            Vendor : "+gljGetNativeLibVendor() +"\n" +
+      	            "-------------------------------------------------\n" +
+		    "Java-Class         : GL4Java.GLFunc impl.        \n" +
+		    "          : Version: "+gl.getClassVersion()   + "\n" +
+		    "            Vendor : "+gl.getClassVendor()    + "\n" +
+		    "Native-Library     : GL4Java.GLFunc impl.        \n" +
+		    "            Version: "+gl.getNativeVersion()  + "\n" +
+		    "            Vendor : "+gl.getNativeVendor()   + "\n" +
+      	            "-------------------------------------------------\n" +
+		    "Java-Class         : GL4Java.GLUFunc impl.       \n" +
+		    "          : Version: "+glu.getClassVersion()  + "\n" +
+		    "            Vendor : "+glu.getClassVendor()   + "\n" +
+		    "Native-Library     : GL4Java.GLUFunc impl.       \n" +
+		    "            Version: "+glu.getNativeVersion() + "\n" +
+		    "            Vendor : "+glu.getNativeVendor()  + "\n" +
+      	            "-------------------------------------------------\n" +
+		    "\n" ;
+
+        String glVen = gl.glGetString(GLFunc.GL_VENDOR);
+	String glRen = gl.glGetString(GLFunc.GL_RENDERER);
+	String glVer = gl.glGetString(GLFunc.GL_VERSION);
+	String glExt = gl.glGetString(GLFunc.GL_EXTENSIONS);
+	String gluVer = glu.gluGetString(GLUFunc.GLU_VERSION);
+	String gluExt = glu.gluGetString(GLUFunc.GLU_EXTENSIONS);
+
+     String info2=      "OpenGL - Versions                              \n" +
+      	                "-----------------------------------------------\n" +
+	                "GL  VENDOR: "+glVen+"\n"+
+			"GL  RENDERER: "+glRen+"\n"+
+			"GL  VERSION: "+glVer+"\n"+
+			"GL  EXTENSIONS: "+glExt+"\n"+
+			"GLU VERSION: "+gluVer+"\n"+
+			"GLU EXTENSIONS: "+gluExt+"\n"+"\n" ;
+	
+     String info3=      "OpenGL - Function Test ("+ 
+     			GLFunc.GL_PROC_NAMES.length +" Functions)       \n" +
+      	                "-----------------------------------------------\n";
+
+     if(verbose)
+     {
+	 System.out.println(info1);
+	 System.out.println(info2);
+	 System.out.println(info3);
+     }
+	 
+     String h;	
+     String tmp;
+
+     for(int i=0; i<GLFunc.GL_PROC_NAMES.length; i++)
+     {
+        h=GLFunc.GL_PROC_NAMES[i];
+	if(h==null) break;
+
+     	if(gljTestGLProc (h, verbose))
+		tmp= "OK  : "+h+"\n";
+	else
+		tmp= "NOPE: "+h+"\n";
+	    
+	info3 += tmp;
+     }
+
+     return info1+"\n"+info2+"\n"+info3;
+    }
+
+    /**
+     * function to show complete version info into an extra Frame
+     *
+     * Be sure that the native library must be loaded !
+     */
+    public final Frame gljShowVersions()
+    {
+	Frame f = new Frame("GL4Java Version");
+	TextArea info= new TextArea(25, 80);
+	info.setEditable(false);
+	f.add(info);
+	f.setSize(600, 400);
+
+	f.pack();
+	f.setVisible(true);
+
+	String str = "null string";
+	if( gljMakeCurrent(true) == false ) 
+	{
+		str="problem in use() method\n";
+	} else {
+		str=gljGetVersions(gljNativeDebug);
+		if(str==null)
+			str="could not get versions";
+		System.out.println(str);
+		gljFree();
+	}
+	info.append(str);
+
+	f.addWindowListener
+			   ( new WindowAdapter()
+			      {
+				public void windowClosing(WindowEvent e)
+				{
+				   // button window menu ... :-)
+				   e.getWindow().dispose();
+				}
+			      }
+			    );              
+
+	return f;
+    }
+
+}
+

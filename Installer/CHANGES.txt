@@ -1,0 +1,82 @@
+\begin{verbatim}
+
+                              GL4Java Installer
+                     Copyright (c) 1999 Ronald B. Cemer
+
+                            GL4Java Installer 2.04
+               Copyright (c) 1999 Ronald B. Cemer, Sven Goethel
+		
+This is the CHANGES file for the GL4Java Installer !
+
+This CHANGES starts with version 2.00 !
+
+GL4Java Installer 2.00 is based upon version 1.05, by Ron Cemer !
+
+Last Changes: 19. August 2000 (Version 2.04)
+
+-----------------
+TOP  = new
+DOWN = old
+-----------------
+
+August 19, 2000 (Version 2.04):
+
+	- Improved the standalone installation.
+		- The Installer has now its own binpkg zip archiv, 
+		  to be downloaded !
+		- Unix and Dos startscripts are supported !
+		- All needed Files for the installation procedure
+		  are fetched from the jausoft website, 
+		  during the installation, if they does not exist localy !
+
+	- Added machine info printouts ...
+
+June 08, 2000 (Version 2.03):
+
+	- Adding Linux-PowerPC
+	- Respecting GL4Java 2.4.0, only one generic GL vendor exists :)
+	- If no JVM vendor can be fetched, a SUN-JVM compatible one
+	  is expected.
+
+April 01, 2000 (Version 2.02):
+
+	- Adding Sun-JVM 1.1.X & Sun-Java2 support for the
+		- appletviewer/hotjava-browser/Java2-PlugIn
+		- application (java -cp GL4JInst.jar GL4JInst)
+
+        - Now it is possible, to bundle the directories:
+		./Installer
+		./binpkg
+	  together - to run the installer as a standalone application !
+
+Dezember 07, 1999 (Version 2.00 - Sven Goethel):
+
+	Starting integrating the Installer to the GL4Java Homepage !
+
+	This version 2.00 is based upon the original version 1.05,
+	by Ron Cemer !
+
+	- Splitting the class GL4JInst into:
+		GL4JInst
+		MachineCtrl
+		FilelistOS (interface for:)
+			FilelistJavaArchiv
+			FilelistJavaClasses
+			FilelistLinuxI386GlibcMesaNVidia
+			FilelistLinuxI386GlibcMesaSoft
+			FilelistWin32I386
+			FilelistWin95I386OpenGL
+		FilelistTool
+		FileTool
+
+	  This is done in the nature to achive the know-how
+	  of Ron's code, so I had to do a little clean-up ;-)
+
+	- The Applet-Tag parameter is *not* supported know !
+
+	- The archive files are fetched directly
+	  out of the ../binpkg directory.
+	  The archive files are created with the makefile 
+	  of GL4Java
+
+\end{verbatim}

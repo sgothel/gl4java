@@ -1,0 +1,261 @@
+\begin{verbatim}
+
+WHERE DO YOU GET the actual version of GL4Java ?
+================================================
+
+  Unix, Windows, ...
+  ===================
+	http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/
+
+	binpkg/png-1.0a-jar.zip	      	               (the PNG-JAR file)
+	binpkg/gl4javaX.Y.Z.R-jar.zip	               (the JAR file)
+	binpkg/gl4javaX.Y.Z.R-glutfonts-jar.zip	       (the JAR file)
+	binpkg/gl4javaX.Y.Z.R-classes.zip	       (the classes in a ZIP)
+	binpkg/gl4javaX.Y.Z.R-glutfonts-classes.zip    (the classes in a ZIP)
+	binpkg/libGL4JavaX.Y.Z.R-<UNIX-TYPE>.tar.gz    (the native libs - unix)
+	binpkg/libGL4JavaX.Y.Z.R-<WIN32-TYPE>.zip      (the native libs - win32)
+
+        archive/GL4JavaX.Y.Z.R-demos.zip  (demos            - for users :-)
+        archive/GL4JavaX.Y.Z.R-src.tgz    (sources no demos - for developers :-)
+        archive/GL4JavaX.Y.Z.R-doc.tgz    (everything       - for the patiente :-)
+
+        (where X is the major, Y the minor, Z the bugfix and R the release 
+	 library version number ! 
+	 Take a look at VERSIONS.txt for a closer description !
+	)
+
+
+The Documentation
+=================
+
+It is recommended to check the documentation (so much work on it ;-).
+Just download the file 'GL4JavaX.Y.Z-doc.tgz' and un-gzip and un-tar it
+(Windows users may use WinZip here :-)
+
+Now you can read the HTML-Documentation with:
+	<YourHtmlBrowser> GL4Java/docs/html/GL4Java.html
+
+Or you can read the Postscript version with:
+	<YourPostScriptViewer> GL4Java/docs/GL4Java.ps
+
+Special Java2 Installation file:
+	Java2.txt
+
+Special Netscape Installation file:
+	Netscape.txt
+
+Special MS-JVM Installation file:
+	MS-JVM.txt
+
+
+YOU MUST ALLREADY HAVE THE FOLLOWING INSTALLED:
+===============================================
+
+        COMMON:
+        =======
+            o >= jdk 1.1.5 (for using)
+            o >= jdk 1.2   (for developing)
+
+
+              tested:
+              	jdk1.1.7 (win32 (plus jit), linux (plus jit (tya v3.0)))
+		jdk1.2   (win32, linux (Pre-V1,native,no-jit))
+		Java2 (Java1.2) Plug-In on Netscape 4.5 (Win32)
+		Netscape 4.5 (Win32)
+
+        UNIX / X11 :
+        ============
+            o ( GL + GLU ) or ( MesaGL + MesaGLU Version 3.0 or higher)
+              AND glut (only for c-demos yet)
+
+              We are looking for libGL.so AND libGLU.so in your library PATH,
+              so please create a symbolic link from the Mesa libs,
+              to the abstract one's !!
+
+            o X11R6 (XFree86 works fine ;-)
+
+            o Unix standard file-utilities (tar, gzip, ...)
+
+        WINDOWS 32 (NT & 95)
+        ====================
+            o M$ OpenGL and GLU library - !!!! MUST !!!!
+
+            	see if you have opengl32.dll AND glu32.dll 
+        	installed in your library path
+        	(c:/winnt/system32 OR c:/windows/system)
+
+	    o For running GL4Java within MS-JVM:
+	      Be sure you have the new MS-JVM machine (build 3186) installed:
+
+		Microsoft (R) VM for Java, 5.0 Release 5.0.0.3186
+
+            o Unix standard file-utilities (tar, gzip, ...)
+              OR WinZip (can extract tar-files ;-)
+
+
+Installation procedure for UNIX/WINDOWs BINARY DISTRIBUTION: 
+============================================================
+
+        UNICE and WINDOWs USERS JAVA ARCHIVE
+        =====================================
+
+
+o Choose a version number X.Y.Z.R !
+  Be shure that the version numbers X.Y are the same
+  for the gl4java.jar file and the native libraries !
+  The closest version number match provides the best compatibility !
+
+o download the gl4java.jar files, which is zipped in 
+
+	binpkg/gl4javaX.Y.Z.R-jar.zip	               (the JAR file)
+	binpkg/gl4javaX.Y.Z.R-glutfonts-jar.zip	       (the JAR file)
+
+o unzip the downloaded gl4javaX.Y.Z.R*-jar.zip files,
+  this will result a file called gl4java.jar and gl4java-glutfonts.jar !
+
+o download the png.jar file, which is zipped in 
+
+	binpkg/png-1.0a-jar.zip	      	               (the PNG-JAR file)
+
+o unzip the downloaded png-1.0a-jar.zip file,
+  this will result a file called png.jar !
+
+o Add gl4java.jar AND png.jar to your CLASSPATH (echo \$CLASSPATH)
+  if you use Java 1.1.X !
+
+o If you use JAVA2 or JRE - copy gl4java.jar AND png.jar  to :
+		  ./jre/lib/ext/.
+
+o If you use JAVA2 Plug-In copy gl4java.jar AND png.jar to :
+		  ./jre/lib/.
+  (looks like a bug, because the Java2-PlugIn does not find
+   the gl4java.jar file in the ./jre/lib/ext directory )
+
+
+        UNICE USERS NATIVE LIBRARY
+        ============================
+
+o download the native libraries, which is zipped in 
+
+	binpkg/libGL4JavaX.Y.Z.R-<UNIX-TYPE>.tar.gz    (the native libs - unix)
+
+o change to a directory which is within your LD_LIBRARY_PATH
+  environment variable !
+  (Look at 'echo $LD_LIBRARY_PATH').
+
+o unpack the downloaded libGL4JavaX.Y.Z.R-<UNIX-TYPE>.tar.gz,
+  this will result some files called libGL4Java*.so* !
+  If you want to copy the extracted library files,
+  be sure to use 'cp -a' to keep the symbolic links alive !
+
+o If you use JAVA2, JAVA2-Plug-In or JRE - copy the libs to :
+		  ./jre/lib/<machine>/.
+	e.g. linux:
+		  ./jre/lib/i386/.
+		  
+		  or 
+
+		  ./jre/lib/i386/green-threads/.
+
+  Be sure to use 'cp -a' to keep the symbolic links alive !
+
+o If you want to use Netscape 4.5 or above,
+  please read Netscape.txt
+
+
+
+        WINDOWs USERS NATIVE LIBRARY
+        ============================
+
+o download the native libraries, which is zipped in 
+
+	binpkg/libGL4JavaX.Y.Z.R-<WIN32-TYPE>.zip      (the native libs - win32)
+
+o unzip the downloaded libGL4JavaX.Y.Z.R-<WIN32-TYPE>.zip,
+  this will result some files called GL4Java*.dll !
+
+o Then copy the libraries
+  to c:/winnt/system32 (WINNT), c:/windows/system (WIN9X)
+  or where the other's *.dll files exits !
+
+  You can also copy the files (better) to /java2/jre/bin if using java2 !
+
+o If you use JAVA2, JAVA2-Plug-In or JRE - copy the libs also to :
+		  ./jre/bin/.
+
+o If you want to use Netscape 4.5 or above,
+  please read Netscape.txt
+
+o If you use MS-JVM (MS-InternetExplorer >=4.0)
+  please read MS-JVM.txt
+  
+
+        UNICE and WINDOWs USERS
+        =======================
+
+o You can check the installation and the used library versions with:
+	java gl4java.GLContext
+
+o You can now download the demos-archive GL4JavaX.Y.Z.R-demos.zip
+  This will create the directory GL4Java/demos !
+  Just try the demos while typing:
+          cd demos
+          java glDemosCvs
+
+  This will invoke the demo-manager !
+
+o To allow JAVA2's appletviewer using JNI native libs,
+  just look at GL4Java/demo/Java2Applet.bat 
+  (You have to change the gl4java.policy file) !
+
+  You can - of course - use your 'policytool',
+  which is shipped with JAVA2 !
+
+  To use the demo Applets for Java2-Plug-In from www.jausoft.com,
+  please add the following lines to your java.policy file:
+
+grant codeBase "http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/-" {
+  permission java.security.AllPermission;
+};
+
+
+o You can check JAVA2-Plug-In with the Java-Applets-Html-File's
+	demos/glLogoCvsAppletJ2P.html
+	demos/glOlympicCvsAppletJ2P.html
+	demos/testTextPPM1J2P.html
+
+o You can check Netscape Win32-JVM with the Java-Applets-Html-File's
+	demos/glLogoCvsApplet.html
+	demos/glOlympicCvsApplet.html
+	demos/testTextPPM1.html (copy swingall.jar of Swing1.1 to 
+		                 ./Netcape/Communicator/Program/Java/classes )
+
+o You can check MS-InternetExplorer >= 4.0 with the Java-Applets-Html-File's
+	demos/glLogoCvsApplet.html
+	demos/glOlympicCvsApplet.html
+	demos/testTextPPM1.html (extract swingall.jar of Swing1.1 to 
+  				 C:\WINDOWS\Java\TRUSTLIB - and delete
+  				 C:\WINDOWS\Java\TRUSTLIB\META-INF !)
+
+o you will find further documentations in docs/html/GL4Java.html
+  or docs/GL4Java.ps !
+  (Download GL4JavaX.Y.Z.R-doc.tgz,
+   or check it online - search for it at www.jausoft.com :-)
+
+
+have a lot of fun, responses and ideas are welcome !
+
+Sven Goethel
+
+6th July 1998
+22 April 1999
+1st June 1999
+2nd September 1999
+16th Novemeber 1999
+7th March 2000
+
+
+---------------------
+
+\end{verbatim}
+

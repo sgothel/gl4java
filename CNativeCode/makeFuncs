@@ -1,0 +1,4 @@
+#! /bin/sh
+
+sed 's/;/{	fprintf(stderr,"function not implemented in SGI-Irix65-GL\n");}/g' a.h > a.c
+
