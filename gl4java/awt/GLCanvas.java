@@ -90,7 +90,6 @@ public class GLCanvas extends Canvas
 
     protected Dimension size = null;
     protected boolean mustResize = false;
-    protected boolean isInit = false;
 
     protected boolean needCvsDispose = false;
 
@@ -173,6 +172,9 @@ public class GLCanvas extends Canvas
 
     // The list of GLEventListeners
     private GLEventListenerList listeners = new GLEventListenerList();
+
+    // Indicates whether init() is _almost_ called ...
+    private volatile boolean initCalledAlmost = false;
 
     // Indicates whether init() has been called yet.
     private volatile boolean initCalled = false;
@@ -467,9 +469,16 @@ public class GLCanvas extends Canvas
 		                (float)col.getBlue()/255.0f, 0.0f);
 
                 if (enableAWTThreadRendering) {
+		    if(GLContext.gljClassDebug)
+			System.out.println("GLCanvas init() will be called now (by AWTThreadRendering) !");
                     init();
-                    initCalled = true;
+		    initCalled = true;
+
+		    /* force a reshape, to be sure .. */
+		    mustResize = true;
                 }
+
+	        initCalledAlmost = true;
 
 		// fetch the top-level window ,
 		// to add us as the windowListener
@@ -502,10 +511,6 @@ public class GLCanvas extends Canvas
 		/* to be able for RESIZE event's */
 		addComponentListener(this);
 		addMouseListener(this);
-
-		/* force a reshape, to be sure .. */
-	        mustResize = true;
-    		isInit = true;
 
                 /* if we are not allowed to render from the AWT
                    thread, release the OpenGL context for the
@@ -599,7 +604,7 @@ public class GLCanvas extends Canvas
      */ 
     public boolean cvsIsInit()
     {
-	return isInit && glj!=null && glj.gljIsInit();
+	return initCalledAlmost && glj!=null && glj.gljIsInit();
     }
 
     /**
@@ -690,32 +695,49 @@ public class GLCanvas extends Canvas
     {
         boolean ok = true;
 
-	if(!cvsIsInit()) return;
-
-	if( mustResize && initCalled )
+        if ( cvsIsInit() )
 	{
-	    if( glj.gljMakeCurrent() == true )
+
+            if ( !initCalled && !enableAWTThreadRendering &&
+	         glj.gljMakeCurrent() ) 
 	    {
-		size = getSize();
-		glj.gljResize( size.width, size.height ) ;
-	        reshape(size.width, size.height);
-		mustResize = false;
-                if (enableAWTThreadRendering) {
-                    invalidate();
-                    repaint(100);
-                }
-		glj.gljFree(true); /* force freeing the context here .. */
+		    if(GLContext.gljClassDebug)
+			System.out.println("GLCanvas init() will be called now (by rendering thread) !");
+                    init();
+		    initCalled = true;
+
+		    /* force a reshape, to be sure .. */
+		    mustResize = true;
+
+		    /* force freeing the context here .. */
+		    glj.gljFree(true); 
+            }
+
+	    if( mustResize )
+	    {
+		    if( glj.gljMakeCurrent() == true )
+		    {
+			size = super.getSize();
+			glj.gljResize( size.width, size.height ) ;
+			reshape(size.width, size.height);
+			mustResize = false;
+
+			if (enableAWTThreadRendering) {
+			    invalidate();
+			    repaint(100);
+			}
+
+			/* force freeing the context here .. */
+			glj.gljFree(true); 
+		    }
 	    }
+
+	    long _s = System.currentTimeMillis();
+
+	    if(ok) display();
+
+	    _f_dur = System.currentTimeMillis()-_s;
 	}
-
-	long _s = System.currentTimeMillis();
-
-	if(ok) 
-	{
-	        display();
-	}
-
-	_f_dur = System.currentTimeMillis()-_s;
     }
 
     /**
@@ -740,6 +762,7 @@ public class GLCanvas extends Canvas
 	{
 		for_all(gl4java.GLEventListener)
 			SEND display
+
 		gljSwap()
 		gljFree()
 
@@ -780,23 +803,20 @@ public class GLCanvas extends Canvas
      */
     public void display()
     {
-        listeners.sendPreDisplayEvent(this);
+        if( cvsIsInit() )
+	{
+            listeners.sendPreDisplayEvent(this);
 
-        if (glj.gljMakeCurrent()) {
-            if (!enableAWTThreadRendering) {
-                if (!initCalled) {
-                    init();
-                    initCalled = true;
-                }
-            }
+            if ( glj.gljMakeCurrent() ) 
+	    {
+            	listeners.sendDisplayEvent(this);
 
-            listeners.sendDisplayEvent(this);
+	    	glj.gljSwap();
+            	glj.gljCheckGL();
+            	glj.gljFree();
 
-	    glj.gljSwap();
-            glj.gljCheckGL();
-            glj.gljFree();
-
-            listeners.sendPostDisplayEvent(this);
+            	listeners.sendPostDisplayEvent(this);
+	    }
         }
     }
 
@@ -974,7 +994,8 @@ public class GLCanvas extends Canvas
 		System.out.println("GLCanvas cvsDispose (doit="+
 			( (glj != null) && glj.gljIsInit() ) +")");
 	  
-	isInit = false;
+	initCalled = false;
+	initCalledAlmost = false;
 
 	removeComponentListener(this);
 	removeMouseListener(this);
