@@ -53,7 +53,11 @@ else
 	JAVA14_CLASSES =
 endif
 
-all: cleanup $(JAVA13_CLASSES) $(JAVA14_CLASSES)
+all: cleanup java13demos java14demos
+
+java13demos: $(JAVA13_CLASSES)
+
+java14demos: $(JAVA14_CLASSES)
 
 $(JAVA13_CLASSES)       : $(JAVA13_SOURCES)
 	$(JAVAC_13) -O -deprecation $^ | tee -a errors
