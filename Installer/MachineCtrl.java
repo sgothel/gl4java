@@ -834,13 +834,57 @@ public class MachineCtrl
     {
         boolean ok = true;
 	String str = null;
+	File f = null;
+	String fname=null;
+	boolean fexist=false, fisdir=false;
+
+        if (isNetscapeJvm)
+        {
+            try
+            {
+		netscape.security.PrivilegeManager.enablePrivilege
+			("UniversalFileAccess");
+		netscape.security.PrivilegeManager.enablePrivilege
+			("UniversalExecAccess");
+		netscape.security.PrivilegeManager.enablePrivilege
+			("UniversalConnect");
+		netscape.security.PrivilegeManager.enablePrivilege
+			("UniversalFdRead");
+            }
+            catch (Exception e)
+            { 
+                errstr = new String 
+                ("Netscape denied privileges, or a failure occurred.\n"+
+                 "Here is the exception that was caught:\n"+e+"\n");
+		return false;
+            }
+        }
+        else if (isMicrosoftJvm)
+        {
+	    try
+	    {
+		com.ms.security.PolicyEngine.assertPermission                                     (com.ms.security.PermissionID.FILEIO);
+		com.ms.security.PolicyEngine.assertPermission
+		                  (com.ms.security.PermissionID.PROPERTY);
+		com.ms.security.PolicyEngine.assertPermission
+		                  (com.ms.security.PermissionID.SYSTEM);
+            }
+	    catch (Exception e)
+            { 
+                errstr = new String 
+                ("Microsoft VM denied privileges, or a failure occurred.\n"+
+                 "Here is the exception that was caught:\n"+e+"\n");
+		return false;
+            }
+	}
 
 	try {
-		String fname;
 		fname = tf_browser_classes.getText().replace('\\','/');
 		fname = fname.trim();
-		File f = new File(fname);
-		if(f.exists() && f.isDirectory())
+		f = new File(fname);
+		fexist=f.exists();
+		fisdir=f.isDirectory();
+		if(f!=null && fexist && fisdir )
 		{
 			browser_classes = fname;
 			System.out.println("Set Classes-Dir to: "+
@@ -848,21 +892,44 @@ public class MachineCtrl
 		} else {
 			str = new String ("directory <"+
 			tf_browser_classes.getText().trim()+
-			"> is invalid");
+			"> is invalid ");
+			if(f!=null) {
+				str+= "( exist="+ fexist +
+				      ", isDir="+fisdir+ ")";
+			} else {
+				str+= "( f is NULL )";
+			}
 			ok=false;
+			tf_browser_classes.requestFocus();
+			tf_browser_classes.getToolkit().beep();
 		}
 	} catch (Exception ex) {
-			str = new String ("directory <"+
+			ex.printStackTrace();
+			str = new String ("EXCEPTION directory <"+
 			tf_browser_classes.getText().trim()+
-			"> is invalid\n"+ex);
+			"> is invalid ");
+			if(f!=null) {
+				str+= "( exist="+ fexist +
+				      ", isDir="+fisdir+ ")";
+			} else {
+				str+= "( f is NULL )";
+			}
 			ok=false;
+			tf_browser_classes.requestFocus();
+			tf_browser_classes.getToolkit().beep();
 	}
+
+	fname=null;
+	fexist=false;
+	fisdir=false;
+
 	try {
-		String fname;
 		fname = tf_browser_natives.getText().replace('\\','/');
 		fname = fname.trim();
-		File f = new File(fname);
-		if(f.exists() && f.isDirectory())
+		f = new File(fname);
+		fexist=f.exists();
+		fisdir=f.isDirectory();
+		if(f!=null && fexist && fisdir )
 		{
 			browser_natives = fname;
 			System.out.println("Set Native-Dir to: "+
@@ -870,18 +937,35 @@ public class MachineCtrl
 		} else {
 			str = new String ("directory <"+
 			tf_browser_natives.getText().trim()+
-			"> is invalid");
+			"> is invalid ");
+			if(f!=null) {
+				str+= "( exist="+ fexist +
+				      ", isDir="+fisdir+ ")";
+			} else {
+				str+= "( f is NULL )";
+			}
 			ok=false;
+			tf_browser_natives.requestFocus();
+			tf_browser_natives.getToolkit().beep();
 		}
 	} catch (Exception ex) {
-			str = new String ("directory <"+
+			ex.printStackTrace();
+			str = new String ("EXCEPTION directory <"+
 			tf_browser_natives.getText().trim()+
-			"> is invalid\n"+ex);
+			"> is invalid ");
+			if(f!=null) {
+				str+= "( exist="+ fexist +
+				      ", isDir="+fisdir+ ")";
+			} else {
+				str+= "( f is NULL )";
+			}
 			ok=false;
+			tf_browser_natives.requestFocus();
+			tf_browser_natives.getToolkit().beep();
 	}
 	if(!ok && str!=null)
 	{
-		System.out.println("\007\n"+str+"\n");
+		System.out.println(str);
 	}
 	return ok;
     }
@@ -891,8 +975,15 @@ public class MachineCtrl
     	Object src = e.getSource();
         if (src.equals(buttonOk) || src.equals(buttonCancel))
 	{
-        	if (src.equals(buttonOk) && checkTextFields()==false)
+        	if (src.equals(buttonOk) )
+		{
+                        /* checkTextFields() is called by GL4JInst,
+			   before the installation will begin !
+			   If everything is fine, GL4JInst will
+			   dispose our dialog !
+			 */ 
 			return;
+		}
 		if(dialog!=null)
 		{
 			dialog.setVisible(false);
@@ -912,7 +1003,7 @@ public class MachineCtrl
 	    fd.setDirectory(tf_browser_classes.getText());
 	    fd.show();
 	    tf_browser_classes.setText(fd.getDirectory());
-	    checkTextFields();
+	    //checkTextFields();
 	} else if(src.equals(buttonFileNatives)) 
 	{
 	    FileDialog fd = 
@@ -920,7 +1011,7 @@ public class MachineCtrl
 	    fd.setDirectory(tf_browser_natives.getText());
 	    fd.show();
 	    tf_browser_natives.setText(fd.getDirectory());
-	    checkTextFields();
+	    //checkTextFields();
 	} else if(src.equals(goToJausoftGL4Java) && applet!=null) 
 	{
 		try {

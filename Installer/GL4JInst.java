@@ -24,7 +24,7 @@ public class GL4JInst
     static private final String gl4javaWWW = 
     			"http://www.jausoft.com/Files/Java/1.1.X/GL4Java/Installer";
 
-    static private final String version = "2.04";
+    static private final String version = "2.05";
 
     static private final String cannot_install_title =
         "Cannot install GL4Java";
@@ -701,6 +701,8 @@ public class GL4JInst
 	}
         if (e.getActionCommand().equals("Start Installation"))
 	{
+		if(mctrl.checkTextFields()==false)
+			return;
 		if(mctrl.dialog!=null)
 		{
 			mctrl.dialog.setVisible(false);

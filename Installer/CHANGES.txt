@@ -3,7 +3,7 @@
                               GL4Java Installer
                      Copyright (c) 1999 Ronald B. Cemer
 
-                            GL4Java Installer 2.04
+                              GL4Java Installer
                Copyright (c) 1999 Ronald B. Cemer, Sven Goethel
 		
 This is the CHANGES file for the GL4Java Installer !
@@ -12,12 +12,27 @@ This CHANGES starts with version 2.00 !
 
 GL4Java Installer 2.00 is based upon version 1.05, by Ron Cemer !
 
-Last Changes: 19. August 2000 (Version 2.04)
+Last Changes: 18. November 2000 (Version 2.05)
 
 -----------------
 TOP  = new
 DOWN = old
 -----------------
+
+November 18, 2000 (Version 2.05):
+
+	- Added needed privileges to the directory checking methods
+	  in MachineCtrl.java !
+
+	- Added Focus-Lost Event to the both 
+	  directory input fields !
+
+	  So the just entered path is checked,
+	  even if you just leave the input-field with tab
+	  or a mouse click to the nowwhere .. 
+
+	- If the path is not correct, the focus to the input-field
+	  is requested !
 
 August 19, 2000 (Version 2.04):
 
