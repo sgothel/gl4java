@@ -1,5 +1,6 @@
 #include <string.h>
 #include "jnitools.h"
+#include "jawt_misc.h"
 
 #include "gltool.h"
 
@@ -540,5 +541,6 @@ JNIEXPORT void JNICALL
 JNI_OnUnload(JavaVM *vm, void *reserved)
 {
 	unloadGLLibrary();
+	jawt_unload();
 }
 

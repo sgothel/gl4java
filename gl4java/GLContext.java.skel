@@ -713,8 +713,16 @@ public class GLContext extends Object
 
 	else 
 
+	/**
+	 * JAU - now, let's give IBM a try with awt ..
+	 *
 	if( jvmVersionMajor==1 && jvmVersionMinor>=3 
 	    && !isIBMJvm && !isMicrosoftJvm 
+	  )
+	 */
+
+	if( jvmVersionMajor==1 && jvmVersionMinor>=3 
+	    && !isMicrosoftJvm 
 	  )
 	{
 		jniEXTsuff="13";
@@ -847,7 +855,7 @@ public class GLContext extends Object
 				return new Boolean(false);
 		if (useJAWT()) {
                         if (!loadJAWT()) {
-                          System.err.println("ERROR while loading jawt.dll/libjawt.so");
+                          System.err.println("ERROR while loading [j]awt.dll/lib[j]awt.so");
                           return new Boolean(false);
                         }
 		}
@@ -2186,17 +2194,63 @@ public class GLContext extends Object
     protected static final boolean loadJAWT() {
       // Locate jawt.dll/libjawt.so by looking through
       // java.library.path and sun.boot.library.path
-      String jawtName = makeLibName("jawt");
-      String libpath = findInPath(System.getProperty("java.library.path"), jawtName);
+      String jawtName0 = makeLibName("jawt");
+      String jawtName1 = makeLibName("awt");
+      boolean found = false;
+
+      String libpath = findInPath(System.getProperty("java.library.path"), jawtName0);
+
       if (libpath == null) {
-        libpath = findInPath(System.getProperty("sun.boot.library.path"), jawtName);
+        libpath = findInPath(System.getProperty("sun.boot.library.path"), jawtName0);
+      } else if (gljClassDebug) {
+		System.err.println("Located: " + jawtName0 + ", within: java.library.path: "+
+                                   System.getProperty("java.library.path"));
+		found = true;
       }
+
       if (libpath == null) {
-        System.err.println("Unable to locate " + jawtName);
+      	      /**
+	       * E.g. IBM's JVM
+	       */
+	      if (gljClassDebug)
+	      {
+		System.err.println("Unable to locate " + jawtName0);
+		System.err.println("  java.library.path = " + System.getProperty("java.library.path"));
+		System.err.println("  sun.boot.library.path = " + System.getProperty("sun.boot.library.path"));
+		System.err.println("  trying " + jawtName1);
+	      }
+
+      	      libpath = findInPath(System.getProperty("java.library.path"), jawtName1);
+      } else if (gljClassDebug && !found) {
+		System.err.println("Located: " + jawtName0 + ", within: sun.boot.library.path: "+
+                                   System.getProperty("sun.boot.library.path"));
+		found = true;
+      }
+
+      if (libpath == null)  {
+        libpath = findInPath(System.getProperty("java.library.path"), jawtName1);
+      } 
+
+      if (libpath == null)  {
+        libpath = findInPath(System.getProperty("sun.boot.library.path"), jawtName1);
+      } else if (gljClassDebug && !found) {
+		System.err.println("Located: " + jawtName1 + ", within: java.library.path: "+
+                                   System.getProperty("java.library.path"));
+		found = true;
+      }
+
+      if (libpath == null) {
+        System.err.println("Unable to locate neither " + jawtName0 +
+	                   " nor " + jawtName1 );
         System.err.println("  java.library.path = " + System.getProperty("java.library.path"));
         System.err.println("  sun.boot.library.path = " + System.getProperty("sun.boot.library.path"));
         return false;
+      } else if (gljClassDebug && !found) {
+		System.err.println("Located: " + jawtName0 + ", within: sun.boot.library.path: "+
+                                   System.getProperty("sun.boot.library.path"));
+		found = true;
       }
+
       return loadJAWT0(libpath);
     }
 

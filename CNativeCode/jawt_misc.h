@@ -59,8 +59,9 @@
 		  jboolean result;
 	} JAWTDataHolder;
 	 
-	LIBAPI jboolean LIBAPIENTRY
-	jawt_init (char* jawtLibName); 
+	LIBAPI jboolean LIBAPIENTRY jawt_init (char* jawtLibName); 
+
+	LIBAPI void LIBAPIENTRY jawt_unload();
 
 	LIBAPI jboolean LIBAPIENTRY
 	jawt_create_offscreen (JNIEnv *env, JAWTDataHolder **ppJData, 

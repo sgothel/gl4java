@@ -16,38 +16,91 @@ static int  gds  = 0;
 
 static jboolean jawtdebug  = JNI_FALSE;
 
+#ifdef _WIN32_ 
+  static HMODULE hDLL_JAWT = 0;
+#endif
+
+#ifdef _X11_ 
+  static void * libHandleJAWT = 0;
+#endif
+
+
 jboolean LIBAPIENTRY
 jawt_init (char* jawtLibName)
 {
+
 #ifdef _WIN32_ 
-  HMODULE lib = LoadLibrary(jawtLibName);
-  if (lib == NULL) {
+
+  if ( hDLL_JAWT==NULL )
+	  hDLL_JAWT = LoadLibrary(jawtLibName);
+
+  if ( hDLL_JAWT==NULL )
+  {
     printf("  jawt_init: LoadLibrary failed\n");
     return JNI_FALSE;
   }
-  JAWT_GetAWT_fn = (JAWT_GetAWT_fn_t*) GetProcAddress(lib, "_JAWT_GetAWT@8");
+
+  JAWT_GetAWT_fn = (JAWT_GetAWT_fn_t*) 
+  	GetProcAddress(hDLL_JAWT, "_JAWT_GetAWT@8");
+
   if (JAWT_GetAWT_fn == NULL) {
     printf("  jawt_init: GetProcAddress failed\n");
     return JNI_FALSE;
   }
   return JNI_TRUE;
+
 #endif
 
 #ifdef _X11_ 
-  void* lib = dlopen(jawtLibName, RTLD_LAZY | RTLD_GLOBAL);
-  if (lib == NULL) {
+
+  if ( libHandleJAWT == NULL )
+	  libHandleJAWT = dlopen(jawtLibName, RTLD_LAZY | RTLD_GLOBAL);
+
+  if ( libHandleJAWT == NULL) {
     printf("  jawt_init: dlopen failed\n");
     return JNI_FALSE;
   }
-  JAWT_GetAWT_fn = (JAWT_GetAWT_fn_t*) dlsym(lib, "JAWT_GetAWT");
+
+  JAWT_GetAWT_fn = (JAWT_GetAWT_fn_t*) dlsym(libHandleJAWT, "JAWT_GetAWT");
+
   if (JAWT_GetAWT_fn == NULL) {
     printf("  jawt_init: dlsym failed\n");
     return JNI_FALSE;
   }
+
   return JNI_TRUE;
+
 #endif
 
   return JNI_FALSE;
+}
+
+void LIBAPIENTRY
+jawt_unload ()
+{
+
+#ifdef _WIN32_ 
+
+  if ( hDLL_JAWT!=NULL )
+  {
+	  JAWT_GetAWT_fn = NULL;
+	  FreeLibrary(hDLL_JAWT);
+	  hDLL_JAWT = NULL;
+  }
+
+#endif
+
+#ifdef _X11_ 
+
+  if ( libHandleJAWT != NULL )
+  {
+	  JAWT_GetAWT_fn = NULL;
+	  dlClose(libHandleJAWT);
+	  libHandleJAWT = NULL;
+  }
+
+#endif
+
 }
 
 jboolean LIBAPIENTRY
