@@ -25,6 +25,100 @@ tessellator/nurbs/quadratics id,
 only ONE callback-method for one gl-context and "which"-method
 is supported !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+Tesselation FAQ:
+=================
+
+Jean-Yves BRUD asked:
+
+> What is the meaning of parameter signature ?
+> If my callback method name is myVertexCallBack (for a GLU_TESS_VERTEX
+> callback),
+> what is the value of the signature parameter ?
+
+public void  gluTessCallback(     int tobj, int which,
+			          Object methodClassInstance, 
+			          String methodName, 
+				  String signature,
+				  int voidArrayLen1,
+				  int voidArrayLen2,
+				  int voidArrayLen3,
+				  int voidArrayLen4,
+				  int voidArrayLen5
+				  );
+
+
+Example (tessdemo.java line 337):
+	glu.gluTessCallback ( tobj, GLU_TESS_VERTEX, gl,
+			      "glVertex2fv", "([F)V",
+			      2, 0, 0, 0, 0);
+
+The signature "([F)V" is the original java style signature of the
+argument-list, your callback method takes (here: glVertex2fv) !
+
+	void glVertex2fv( const GLfloat v[2] ) 
+
+	(...) := within the brackets are function arguments signature part
+	[F    := float array
+	V     := void - 
+                 the signature part after the brackets 
+		 means the return value
+
+Read SUN's Java Documentation for Java-Callback methods:
+         http://java.sun.com/docs/books/tutorial/native1.1/implementing/method.html
+
+Here you can find the mapping of function arguments to its corresponding
+string signature representation !
+
+Jean-Yves BRUD asked:
+
+>
+> What is the meaning of the 5 parameters: voidArrayLen1, voidArrayLen2,
+> voidArrayLen3,
+> voidArrayLen4, voidArrayLen5, and what value do I need to put ?
+>
+
+public void  gluTessCallback(     int tobj, int which,
+			          Object methodClassInstance, 
+			          String methodName, 
+				  String signature,
+				  int voidArrayLen1,
+				  int voidArrayLen2,
+				  int voidArrayLen3,
+				  int voidArrayLen4,
+				  int voidArrayLen5
+				  );
+
+The maximum number of arrays within the argumentlist of 
+a GLU Callback function for Tesselation is 5 !
+
+So, the arguments voidArrayLen[1-5] refines the expected
+size of the arrays, 
+which are passed into and from the java callback funtion.
+
+	OpenGL-Machine <-> GL4Java-Callback-Handler <-> Java-Callback-Method
+
+E.g. (tessdemo.java):
+         glu.gluTessCallback ( tobj, GLU_TESS_COMBINE, this,
+                                "combine_callback", "([D[D[F[F)V",
+                                2, 0, 0, 2, 0);
+
+        public void combine_callback( double coords[/*3*/],
+                               double vertex_data[/*4xn(=0)*/],
+                               float weight[/*4*/], float[/*m(=2)*/] data )
+        {
+           data[0] = (float) coords[0];
+           data[1] = (float) coords[1];
+        }
+
+You can see, we do use the arrays "data" and "coords" with a size of 2 !
+You are not allowed to use nonsense sizes, because this can hurt your
+application with a segementation fault !
+(Well the GL4Java Callback functions checks
+ the array sizes to OpenGL's maximum, .. but be kind of ..)
+
+The OpenGL machine calls GL4Java's callback function,
+which dispatches the call (incl. data) to your java callback function !
+
 Sven Goethel
 http://www.jausoft.com
-7th March 2000
+8th February 2001
