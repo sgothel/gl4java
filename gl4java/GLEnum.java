@@ -27,7 +27,7 @@ public interface GLEnum
 /**
  * C2J Parser Version 1.4 Beta
  * Jausoft - Sven Goethel Software Development
- * Reading from file: gl-enum-auto.orig . . .
+ * Reading from file: gl-enum-auto.orig.h . . .
  * Destination-Class: gl4java_GLEnum ! 
  */
 

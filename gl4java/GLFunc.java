@@ -33,7 +33,7 @@ public static final String[] GL_PROC_NAMES = {
 /**
  * C2J Parser Version 1.4 Beta
  * Jausoft - Sven Goethel Software Development
- * Reading from file: gl-proto-auto.orig . . .
+ * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLFuncJauJNI ! 
  */
 
@@ -480,7 +480,7 @@ public static final String[] GL_PROC_NAMES = {
 /**
  * C2J Parser Version 1.4 Beta
  * Jausoft - Sven Goethel Software Development
- * Reading from file: gl-proto-auto.orig . . .
+ * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLFuncJauJNI ! 
  */
 

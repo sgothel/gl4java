@@ -419,7 +419,7 @@ mac			: cleanup gljni \
                           $(CNATIVEDIR)/winstuff.h 
 
 
-w32			: cleanup gljni \
+w32			: cleanupw32 gljni \
 	                  $(FILES_w32.class) \
 	                  $(FILES_msw32.class) \
 			  $(FILES.class) \
@@ -626,8 +626,27 @@ $(CNATIVEDIR)/GLUCallbackJNI.o: $(CNATIVEDIR)/jnitools.h \
 #
 ######################################################################
 
-cleanup:
+cleanup: $(CHEADERDIR) archive binpkg
 	rm -f errors
+
+cleanupw32: cleanup Win32VC6/libs Win32VC6/temp
+
+
+Win32VC6/libs:
+	mkdir -p Win32VC6/libs
+
+Win32VC6/temp:
+	mkdir -p Win32VC6/temp
+
+archive:
+	mkdir archive
+
+binpkg:
+	mkdir binpkg
+
+
+$(CHEADERDIR):
+	mkdir $(CHEADERDIR)
 
 # clean out the *.o files and machine generated files from javah
 cleannative:
@@ -644,7 +663,7 @@ cleannative:
 
 # clean out the *.o files and machine generated files from javah
 clean: cleannative
-	rm -f CClassHeaders/* errors gl4java/*~ CNativeCode/*~ \
+	rm -f $(CHEADERDIR)/* errors gl4java/*~ CNativeCode/*~ \
 	      $(FILE.gen1.h) $(FILE.gen2.h) \
 	      $(FILE.gen3.h) $(FILE.gen4.h) $(FILE.gen5.h) \
 	      gl4java/GLContext.java 
@@ -827,15 +846,15 @@ archivsrc: archivclean
 		GL4Java/*.txt GL4Java/symbols.mak.*  GL4Java/makefile  \
 		GL4Java/capsapi_classes.zip \
 		GL4Java/*.html  GL4Java/C2J  \
-		GL4Java/CClassHeaders GL4Java/CNativeCode GL4Java/gl4java \
+		GL4Java/$(CHEADERDIR) GL4Java/CNativeCode GL4Java/gl4java \
 		GL4Java/Win32VC6 \
 		GL4Java/MacOS9PPC/MacOS9PPC \
 		GL4Java/MacOS9PPC/java11X \
 		GL4Java/docs-src GL4Java/mklibs \
 		GL4Java/Installer/*.java GL4Java/Installer/*.skel \
 		GL4Java/Installer/*.sh GL4Java/Installer/*.bat \
-		GL4Java/Installer/*.txt GL4Java/Installer/*.html \
-		GL4Java/Installer/*.crt
+		GL4Java/Installer/*.txt GL4Java/Installer/*.html 
+
 	cd archive; \
 	        $(GZIP) -9 GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-src.tar
 	

@@ -141,7 +141,7 @@ public native void  gluDeleteTess( int tobj );
 /**
  * C2J Parser Version 1.4 Beta
  * Jausoft - Sven Goethel Software Development
- * Reading from file: glu-proto-auto.orig . . .
+ * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNInf ! 
  */
 
