@@ -9,7 +9,7 @@ public final String getClassVendor ( )
 { return "Jausoft - Sven Goethel Software Development"; }
 
 public final String getClassVersion ( ) 
-{ return "2.8.0.4"; }
+{ return "2.8.0.8"; }
 
 
 /**
@@ -54,6 +54,11 @@ public final native void  gluNurbsCallback(
 				  String signature
 				  );
 
+
+/**
+extern void  gluNurbsCallbackData (GLUnurbs* nurb, GLvoid* userData);
+extern void  gluNurbsCallbackDataEXT (GLUnurbs* nurb, GLvoid* userData);
+**/
 
 /**
  * The Callback registry function.
@@ -158,11 +163,6 @@ public final int gluProject(double objx,
 	double y[] = { 0 };
 	double z[] = { 0 };
 
-	if(win!=null && win.length>=3)
-	{
-		x[0]=win[0]; y[0]=win[1]; z[0]=win[2];
-	}
-	
 	int r = gluProject(objx, objy, objz, modelMatrix, projMatrix,
                              viewport, x, y, z);
 
@@ -213,11 +213,6 @@ public final int gluUnProject(double winx,
 	double y[] = { 0 };
 	double z[] = { 0 };
 
-	if(obj!=null && obj.length>=3)
-	{
-		x[0]=obj[0]; y[0]=obj[1]; z[0]=obj[2];
-	}
-	
 	int r = gluUnProject(winx, winy, winz, modelMatrix, projMatrix,
                              viewport, x, y, z);
 

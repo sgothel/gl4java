@@ -14,4 +14,5 @@ package gl4java;
  */
 public interface GLUEnum 
 {
+	public static final double GLU_TESS_MAX_COORD = 1.0e150;
 

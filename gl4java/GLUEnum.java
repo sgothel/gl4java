@@ -20,34 +20,52 @@ package gl4java;
  */
 public interface GLUEnum 
 {
+	public static final double GLU_TESS_MAX_COORD = 1.0e150;
 
 /**
- * C2J Parser Version 2.2
+ * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-enum-auto.orig.h . . .
  * Destination-Class: gl4java_GLUEnum ! 
  */
 
 	public static final int GLU_AUTO_LOAD_MATRIX	= 100200;
+	public static final int GLU_BEGIN	= 100100;
 	public static final int GLU_CCW	= 100121;
 	public static final int GLU_CULLING	= 100201;
 	public static final int GLU_CW	= 100120;
 	public static final int GLU_DISPLAY_MODE	= 100204;
 	public static final int GLU_DOMAIN_DISTANCE	= 100217;
+	public static final int GLU_EDGE_FLAG	= 100104;
+	public static final int GLU_END	= 100102;
+	public static final int GLU_ERROR	= 100103;
 	public static final int GLU_EXTENSIONS	= 100801;
 	public static final int GLU_EXTERIOR	= 100123;
 	public static final int GLU_FALSE	= 0;
 	public static final int GLU_FILL	= 100012;
 	public static final int GLU_FLAT	= 100001;
-	public static final int GLU_INCOMPATIBLE_GL_VERSION	= 100903;
 	public static final int GLU_INSIDE	= 100021;
 	public static final int GLU_INTERIOR	= 100122;
 	public static final int GLU_INVALID_ENUM	= 100900;
+	public static final int GLU_INVALID_OPERATION	= 100904;
 	public static final int GLU_INVALID_VALUE	= 100901;
 	public static final int GLU_LINE	= 100011;
 	public static final int GLU_MAP1_TRIM_2	= 100210;
 	public static final int GLU_MAP1_TRIM_3	= 100211;
 	public static final int GLU_NONE	= 100002;
+	public static final int GLU_NURBS_BEGIN	= 100164;
+	public static final int GLU_NURBS_BEGIN_DATA	= 100170;
+	public static final int GLU_NURBS_BEGIN_DATA_EXT	= 100170;
+	public static final int GLU_NURBS_BEGIN_EXT	= 100164;
+	public static final int GLU_NURBS_COLOR	= 100167;
+	public static final int GLU_NURBS_COLOR_DATA	= 100173;
+	public static final int GLU_NURBS_COLOR_DATA_EXT	= 100173;
+	public static final int GLU_NURBS_COLOR_EXT	= 100167;
+	public static final int GLU_NURBS_END	= 100169;
+	public static final int GLU_NURBS_END_DATA	= 100175;
+	public static final int GLU_NURBS_END_DATA_EXT	= 100175;
+	public static final int GLU_NURBS_END_EXT	= 100169;
+	public static final int GLU_NURBS_ERROR	= 100103;
 	public static final int GLU_NURBS_ERROR1	= 100251;
 	public static final int GLU_NURBS_ERROR10	= 100260;
 	public static final int GLU_NURBS_ERROR11	= 100261;
@@ -85,6 +103,28 @@ public interface GLUEnum
 	public static final int GLU_NURBS_ERROR7	= 100257;
 	public static final int GLU_NURBS_ERROR8	= 100258;
 	public static final int GLU_NURBS_ERROR9	= 100259;
+	public static final int GLU_NURBS_MODE	= 100160;
+	public static final int GLU_NURBS_MODE_EXT	= 100160;
+	public static final int GLU_NURBS_NORMAL	= 100166;
+	public static final int GLU_NURBS_NORMAL_DATA	= 100172;
+	public static final int GLU_NURBS_NORMAL_DATA_EXT	= 100172;
+	public static final int GLU_NURBS_NORMAL_EXT	= 100166;
+	public static final int GLU_NURBS_RENDERER	= 100162;
+	public static final int GLU_NURBS_RENDERER_EXT	= 100162;
+	public static final int GLU_NURBS_TESSELLATOR	= 100161;
+	public static final int GLU_NURBS_TESSELLATOR_EXT	= 100161;
+	public static final int GLU_NURBS_TEXTURE_COORD	= 100168;
+	public static final int GLU_NURBS_TEXTURE_COORD_DATA	= 100174;
+	public static final int GLU_NURBS_TEX_COORD_DATA_EXT	= 100174;
+	public static final int GLU_NURBS_TEX_COORD_EXT	= 100168;
+	public static final int GLU_NURBS_VERTEX	= 100165;
+	public static final int GLU_NURBS_VERTEX_DATA	= 100171;
+	public static final int GLU_NURBS_VERTEX_DATA_EXT	= 100171;
+	public static final int GLU_NURBS_VERTEX_EXT	= 100165;
+	public static final int GLU_OBJECT_PARAMETRIC_ERROR	= 100208;
+	public static final int GLU_OBJECT_PARAMETRIC_ERROR_EXT	= 100208;
+	public static final int GLU_OBJECT_PATH_LENGTH	= 100209;
+	public static final int GLU_OBJECT_PATH_LENGTH_EXT	= 100209;
 	public static final int GLU_OUTLINE_PATCH	= 100241;
 	public static final int GLU_OUTLINE_POLYGON	= 100240;
 	public static final int GLU_OUTSIDE	= 100020;
@@ -102,6 +142,7 @@ public interface GLUEnum
 	public static final int GLU_TESS_BOUNDARY_ONLY	= 100141;
 	public static final int GLU_TESS_COMBINE	= 100105;
 	public static final int GLU_TESS_COMBINE_DATA	= 100111;
+	public static final int GLU_TESS_COORD_TOO_LARGE	= 100155;
 	public static final int GLU_TESS_EDGE_FLAG	= 100104;
 	public static final int GLU_TESS_EDGE_FLAG_DATA	= 100110;
 	public static final int GLU_TESS_END	= 100102;
@@ -116,6 +157,11 @@ public interface GLUEnum
 	public static final int GLU_TESS_ERROR7	= 100157;
 	public static final int GLU_TESS_ERROR8	= 100158;
 	public static final int GLU_TESS_ERROR_DATA	= 100109;
+	public static final int GLU_TESS_MISSING_BEGIN_CONTOUR	= 100152;
+	public static final int GLU_TESS_MISSING_BEGIN_POLYGON	= 100151;
+	public static final int GLU_TESS_MISSING_END_CONTOUR	= 100154;
+	public static final int GLU_TESS_MISSING_END_POLYGON	= 100153;
+	public static final int GLU_TESS_NEED_COMBINE_CALLBACK	= 100156;
 	public static final int GLU_TESS_TOLERANCE	= 100142;
 	public static final int GLU_TESS_VERTEX	= 100101;
 	public static final int GLU_TESS_VERTEX_DATA	= 100107;
@@ -128,13 +174,9 @@ public interface GLUEnum
 	public static final int GLU_UNKNOWN	= 100124;
 	public static final int GLU_U_STEP	= 100206;
 	public static final int GLU_VERSION	= 100800;
+	public static final int GLU_VERTEX	= 100101;
 	public static final int GLU_V_STEP	= 100207;
-	public static final int GLU_VERTEX	= GLU_TESS_VERTEX;
-	public static final int GLU_BEGIN	= GLU_TESS_BEGIN;
-	public static final int GLU_EDGE_FLAG	= GLU_TESS_EDGE_FLAG;
-	public static final int GLU_END	= GLU_TESS_END;
-	public static final int GLU_ERROR	= GLU_TESS_ERROR;
-/* C2J Parser Version 2.2:  Java program parsed successfully. */ 
+/* C2J Parser Version 3.0:  Java program parsed successfully. */ 
 
 
 }

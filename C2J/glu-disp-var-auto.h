@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 2.2
+ * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -8,10 +8,202 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluLookAt ( GLdouble eyex , GLdouble eyey , GLdouble eyez , GLdouble centerx , GLdouble centery , GLdouble centerz , GLdouble upx , GLdouble upy , GLdouble upz ) ;
+   extern void gluBeginCurve ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluBeginCurve )(GLUnurbs *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluBeginPolygon ( GLUtesselator * tess ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluBeginPolygon )(GLUtesselator *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluBeginSurface ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluBeginSurface )(GLUnurbs *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluBeginTrim ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluBeginTrim )(GLUnurbs *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild1DMipmapLevels ( GLenum target , GLint internalFormat , GLsizei width , GLenum format , GLenum type , GLint level , GLint base , GLint max , const void * data ) ;
+ * </pre> 
+ */
+	LIBAPI GLint (CALLBACK * disp__gluBuild1DMipmapLevels )(GLenum, GLint, GLsizei, GLenum, GLenum, GLint, GLint, GLint, const void *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild1DMipmaps ( GLenum target , GLint internalFormat , GLsizei width , GLenum format , GLenum type , const void * data ) ;
+ * </pre> 
+ */
+	LIBAPI GLint (CALLBACK * disp__gluBuild1DMipmaps )(GLenum, GLint, GLsizei, GLenum, GLenum, const void *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild2DMipmapLevels ( GLenum target , GLint internalFormat , GLsizei width , GLsizei height , GLenum format , GLenum type , GLint level , GLint base , GLint max , const void * data ) ;
+ * </pre> 
+ */
+	LIBAPI GLint (CALLBACK * disp__gluBuild2DMipmapLevels )(GLenum, GLint, GLsizei, GLsizei, GLenum, GLenum, GLint, GLint, GLint, const void *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild2DMipmaps ( GLenum target , GLint internalFormat , GLsizei width , GLsizei height , GLenum format , GLenum type , const void * data ) ;
+ * </pre> 
+ */
+	LIBAPI GLint (CALLBACK * disp__gluBuild2DMipmaps )(GLenum, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild3DMipmapLevels ( GLenum target , GLint internalFormat , GLsizei width , GLsizei height , GLsizei depth , GLenum format , GLenum type , GLint level , GLint base , GLint max , const void * data ) ;
+ * </pre> 
+ */
+	LIBAPI GLint (CALLBACK * disp__gluBuild3DMipmapLevels )(GLenum, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, GLint, GLint, GLint, const void *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild3DMipmaps ( GLenum target , GLint internalFormat , GLsizei width , GLsizei height , GLsizei depth , GLenum format , GLenum type , const void * data ) ;
+ * </pre> 
+ */
+	LIBAPI GLint (CALLBACK * disp__gluBuild3DMipmaps )(GLenum, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean gluCheckExtension ( const GLubyte * extName , const GLubyte * extString ) ;
+ * </pre> 
+ */
+	LIBAPI GLboolean (CALLBACK * disp__gluCheckExtension )(const GLubyte *, const GLubyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluCylinder ( GLUquadric * quad , GLdouble base , GLdouble top , GLdouble height , GLint slices , GLint stacks ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluCylinder )(GLUquadric *, GLdouble, GLdouble, GLdouble, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluDisk ( GLUquadric * quad , GLdouble inner , GLdouble outer , GLint slices , GLint loops ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluDisk )(GLUquadric *, GLdouble, GLdouble, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluEndCurve ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluEndCurve )(GLUnurbs *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluEndPolygon ( GLUtesselator * tess ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluEndPolygon )(GLUtesselator *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluEndSurface ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluEndSurface )(GLUnurbs *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluEndTrim ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluEndTrim )(GLUnurbs *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluGetNurbsProperty ( GLUnurbs * nurb , GLenum property , GLfloat * data ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluGetNurbsProperty )(GLUnurbs *, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluGetTessProperty ( GLUtesselator * tess , GLenum which , GLdouble * data ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluGetTessProperty )(GLUtesselator *, GLenum, GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluLoadSamplingMatrices ( GLUnurbs * nurb , const GLfloat * model , const GLfloat * perspective , const GLint * view ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluLoadSamplingMatrices )(GLUnurbs *, const GLfloat *, const GLfloat *, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluLookAt ( GLdouble eyeX , GLdouble eyeY , GLdouble eyeZ , GLdouble centerX , GLdouble centerY , GLdouble centerZ , GLdouble upX , GLdouble upY , GLdouble upZ ) ;
  * </pre> 
  */
 	LIBAPI void (CALLBACK * disp__gluLookAt )(GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluNextContour ( GLUtesselator * tess , GLenum type ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluNextContour )(GLUtesselator *, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluNurbsCurve ( GLUnurbs * nurb , GLint knotCount , GLfloat * knots , GLint stride , GLfloat * control , GLint order , GLenum type ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluNurbsCurve )(GLUnurbs *, GLint, GLfloat *, GLint, GLfloat *, GLint, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluNurbsProperty ( GLUnurbs * nurb , GLenum property , GLfloat value ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluNurbsProperty )(GLUnurbs *, GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluNurbsSurface ( GLUnurbs * nurb , GLint sKnotCount , GLfloat * sKnots , GLint tKnotCount , GLfloat * tKnots , GLint sStride , GLint tStride , GLfloat * control , GLint sOrder , GLint tOrder , GLenum type ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluNurbsSurface )(GLUnurbs *, GLint, GLfloat *, GLint, GLfloat *, GLint, GLint, GLfloat *, GLint, GLint, GLenum);
 
 /**
  * Original Function-Prototype :
@@ -24,6 +216,14 @@
 /**
  * Original Function-Prototype :
  * <pre> 
+   extern void gluPartialDisk ( GLUquadric * quad , GLdouble inner , GLdouble outer , GLint slices , GLint loops , GLdouble start , GLdouble sweep ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__gluPartialDisk )(GLUquadric *, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
    extern void gluPerspective ( GLdouble fovy , GLdouble aspect , GLdouble zNear , GLdouble zFar ) ;
  * </pre> 
  */
@@ -32,7 +232,7 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluPickMatrix ( GLdouble x , GLdouble y , GLdouble width , GLdouble height , GLint * viewport ) ;
+   extern void gluPickMatrix ( GLdouble x , GLdouble y , GLdouble delX , GLdouble delY , GLint * viewport ) ;
  * </pre> 
  */
 	LIBAPI void (CALLBACK * disp__gluPickMatrix )(GLdouble, GLdouble, GLdouble, GLdouble, GLint *);
@@ -40,7 +240,7 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluProject ( GLdouble objx , GLdouble objy , GLdouble objz , const GLdouble modelMatrix [ 16 ] , const GLdouble projMatrix [ 16 ] , const GLint viewport [ 4 ] , GLdouble * winx , GLdouble * winy , GLdouble * winz ) ;
+   extern GLint gluProject ( GLdouble objX , GLdouble objY , GLdouble objZ , const GLdouble * model , const GLdouble * proj , const GLint * view , GLdouble * winX , GLdouble * winY , GLdouble * winZ ) ;
  * </pre> 
  */
 	LIBAPI GLint (CALLBACK * disp__gluProject )(GLdouble, GLdouble, GLdouble, const GLdouble *, const GLdouble *, const GLint *, GLdouble *, GLdouble *, GLdouble *);
@@ -48,207 +248,63 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluUnProject ( GLdouble winx , GLdouble winy , GLdouble winz , const GLdouble modelMatrix [ 16 ] , const GLdouble projMatrix [ 16 ] , const GLint viewport [ 4 ] , GLdouble * objx , GLdouble * objy , GLdouble * objz ) ;
+   extern void gluPwlCurve ( GLUnurbs * nurb , GLint count , GLfloat * data , GLint stride , GLenum type ) ;
  * </pre> 
  */
-	LIBAPI GLint (CALLBACK * disp__gluUnProject )(GLdouble, GLdouble, GLdouble, const GLdouble *, const GLdouble *, const GLint *, GLdouble *, GLdouble *, GLdouble *);
+	LIBAPI void (CALLBACK * disp__gluPwlCurve )(GLUnurbs *, GLint, GLfloat *, GLint, GLenum);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluScaleImage ( GLenum format , GLsizei widthin , GLsizei heightin , GLenum typein , const GLbyte * datain , GLsizei widthout , GLsizei heightout , GLenum typeout , GLbyte * dataout ) ;
+   extern void gluQuadricDrawStyle ( GLUquadric * quad , GLenum draw ) ;
  * </pre> 
  */
-	LIBAPI GLint (CALLBACK * disp__gluScaleImage )(GLenum, GLsizei, GLsizei, GLenum, const GLbyte *, GLsizei, GLsizei, GLenum, GLbyte *);
+	LIBAPI void (CALLBACK * disp__gluQuadricDrawStyle )(GLUquadric *, GLenum);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluBuild1DMipmaps ( GLenum target , GLint components , GLint width , GLenum format , GLenum type , const void * data ) ;
+   extern void gluQuadricNormals ( GLUquadric * quad , GLenum normal ) ;
  * </pre> 
  */
-	LIBAPI GLint (CALLBACK * disp__gluBuild1DMipmaps )(GLenum, GLint, GLint, GLenum, GLenum, const void *);
+	LIBAPI void (CALLBACK * disp__gluQuadricNormals )(GLUquadric *, GLenum);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluBuild2DMipmaps ( GLenum target , GLint components , GLint width , GLint height , GLenum format , GLenum type , const void * data ) ;
+   extern void gluQuadricOrientation ( GLUquadric * quad , GLenum orientation ) ;
  * </pre> 
  */
-	LIBAPI GLint (CALLBACK * disp__gluBuild2DMipmaps )(GLenum, GLint, GLint, GLint, GLenum, GLenum, const void *);
+	LIBAPI void (CALLBACK * disp__gluQuadricOrientation )(GLUquadric *, GLenum);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluQuadricDrawStyle ( GLUquadricObj * quadObject , GLenum drawStyle ) ;
+   extern void gluQuadricTexture ( GLUquadric * quad , GLboolean texture ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__gluQuadricDrawStyle )(GLUquadricObj *, GLenum);
+	LIBAPI void (CALLBACK * disp__gluQuadricTexture )(GLUquadric *, GLboolean);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluQuadricOrientation ( GLUquadricObj * quadObject , GLenum orientation ) ;
+   extern GLint gluScaleImage ( GLenum format , GLsizei wIn , GLsizei hIn , GLenum typeIn , const void * dataIn , GLsizei wOut , GLsizei hOut , GLenum typeOut , GLvoid * dataOut ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__gluQuadricOrientation )(GLUquadricObj *, GLenum);
+	LIBAPI GLint (CALLBACK * disp__gluScaleImage )(GLenum, GLsizei, GLsizei, GLenum, const void *, GLsizei, GLsizei, GLenum, GLvoid *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluQuadricNormals ( GLUquadricObj * quadObject , GLenum normals ) ;
+   extern void gluSphere ( GLUquadric * quad , GLdouble radius , GLint slices , GLint stacks ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__gluQuadricNormals )(GLUquadricObj *, GLenum);
+	LIBAPI void (CALLBACK * disp__gluSphere )(GLUquadric *, GLdouble, GLint, GLint);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluQuadricTexture ( GLUquadricObj * quadObject , GLboolean textureCoords ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluQuadricTexture )(GLUquadricObj *, GLboolean);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluCylinder ( GLUquadricObj * qobj , GLdouble baseRadius , GLdouble topRadius , GLdouble height , GLint slices , GLint stacks ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluCylinder )(GLUquadricObj *, GLdouble, GLdouble, GLdouble, GLint, GLint);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluSphere ( GLUquadricObj * qobj , GLdouble radius , GLint slices , GLint stacks ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluSphere )(GLUquadricObj *, GLdouble, GLint, GLint);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluDisk ( GLUquadricObj * qobj , GLdouble innerRadius , GLdouble outerRadius , GLint slices , GLint loops ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluDisk )(GLUquadricObj *, GLdouble, GLdouble, GLint, GLint);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluPartialDisk ( GLUquadricObj * qobj , GLdouble innerRadius , GLdouble outerRadius , GLint slices , GLint loops , GLdouble startAngle , GLdouble sweepAngle ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluPartialDisk )(GLUquadricObj *, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluLoadSamplingMatrices ( GLUnurbsObj * nobj , const GLfloat modelMatrix [ 16 ] , const GLfloat projMatrix [ 16 ] , const GLint viewport [ 4 ] ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluLoadSamplingMatrices )(GLUnurbsObj *, const GLfloat *, const GLfloat *, const GLint *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluNurbsProperty ( GLUnurbsObj * nobj , GLenum property , GLfloat value ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluNurbsProperty )(GLUnurbsObj *, GLenum, GLfloat);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluGetNurbsProperty ( GLUnurbsObj * nobj , GLenum property , GLfloat * value ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluGetNurbsProperty )(GLUnurbsObj *, GLenum, GLfloat *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluBeginCurve ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluBeginCurve )(GLUnurbsObj *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluEndCurve ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluEndCurve )(GLUnurbsObj *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluNurbsCurve ( GLUnurbsObj * nobj , GLint nknots , GLfloat * knot , GLint stride , GLfloat * ctlarray , GLint order , GLenum type ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluNurbsCurve )(GLUnurbsObj *, GLint, GLfloat *, GLint, GLfloat *, GLint, GLenum);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluBeginSurface ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluBeginSurface )(GLUnurbsObj *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluEndSurface ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluEndSurface )(GLUnurbsObj *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluNurbsSurface ( GLUnurbsObj * nobj , GLint sknot_count , GLfloat * sknot , GLint tknot_count , GLfloat * tknot , GLint s_stride , GLint t_stride , GLfloat * ctlarray , GLint sorder , GLint torder , GLenum type ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluNurbsSurface )(GLUnurbsObj *, GLint, GLfloat *, GLint, GLfloat *, GLint, GLint, GLfloat *, GLint, GLint, GLenum);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluBeginTrim ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluBeginTrim )(GLUnurbsObj *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluEndTrim ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluEndTrim )(GLUnurbsObj *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluPwlCurve ( GLUnurbsObj * nobj , GLint count , GLfloat * array , GLint stride , GLenum type ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluPwlCurve )(GLUnurbsObj *, GLint, GLfloat *, GLint, GLenum);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessBeginPolygon ( GLUtesselator * tobj , void * polygon_data ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessBeginPolygon )(GLUtesselator *, void *);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessBeginContour ( GLUtesselator * tobj ) ;
+   extern void gluTessBeginContour ( GLUtesselator * tess ) ;
  * </pre> 
  */
 	LIBAPI void (CALLBACK * disp__gluTessBeginContour )(GLUtesselator *);
@@ -256,15 +312,15 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluTessVertex ( GLUtesselator * tobj , GLdouble coords [ 3 ] , void * vertex_data ) ;
+   extern void gluTessBeginPolygon ( GLUtesselator * tess , GLvoid * data ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__gluTessVertex )(GLUtesselator *, GLdouble *, void *);
+	LIBAPI void (CALLBACK * disp__gluTessBeginPolygon )(GLUtesselator *, GLvoid *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluTessEndContour ( GLUtesselator * tobj ) ;
+   extern void gluTessEndContour ( GLUtesselator * tess ) ;
  * </pre> 
  */
 	LIBAPI void (CALLBACK * disp__gluTessEndContour )(GLUtesselator *);
@@ -272,7 +328,7 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluTessEndPolygon ( GLUtesselator * tobj ) ;
+   extern void gluTessEndPolygon ( GLUtesselator * tess ) ;
  * </pre> 
  */
 	LIBAPI void (CALLBACK * disp__gluTessEndPolygon )(GLUtesselator *);
@@ -280,15 +336,7 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluTessProperty ( GLUtesselator * tobj , GLenum which , GLdouble value ) ;
- * </pre> 
- */
-	LIBAPI void (CALLBACK * disp__gluTessProperty )(GLUtesselator *, GLenum, GLdouble);
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessNormal ( GLUtesselator * tobj , GLdouble x , GLdouble y , GLdouble z ) ;
+   extern void gluTessNormal ( GLUtesselator * tess , GLdouble valueX , GLdouble valueY , GLdouble valueZ ) ;
  * </pre> 
  */
 	LIBAPI void (CALLBACK * disp__gluTessNormal )(GLUtesselator *, GLdouble, GLdouble, GLdouble);
@@ -296,33 +344,33 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluGetTessProperty ( GLUtesselator * tobj , GLenum which , GLdouble * value ) ;
+   extern void gluTessProperty ( GLUtesselator * tess , GLenum which , GLdouble data ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__gluGetTessProperty )(GLUtesselator *, GLenum, GLdouble *);
+	LIBAPI void (CALLBACK * disp__gluTessProperty )(GLUtesselator *, GLenum, GLdouble);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluBeginPolygon ( GLUtesselator * tobj ) ;
+   extern void gluTessVertex ( GLUtesselator * tess , GLdouble * location , GLvoid * data ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__gluBeginPolygon )(GLUtesselator *);
+	LIBAPI void (CALLBACK * disp__gluTessVertex )(GLUtesselator *, GLdouble *, GLvoid *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluNextContour ( GLUtesselator * tobj , GLenum type ) ;
+   extern GLint gluUnProject ( GLdouble winX , GLdouble winY , GLdouble winZ , const GLdouble * model , const GLdouble * proj , const GLint * view , GLdouble * objX , GLdouble * objY , GLdouble * objZ ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__gluNextContour )(GLUtesselator *, GLenum);
+	LIBAPI GLint (CALLBACK * disp__gluUnProject )(GLdouble, GLdouble, GLdouble, const GLdouble *, const GLdouble *, const GLint *, GLdouble *, GLdouble *, GLdouble *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluEndPolygon ( GLUtesselator * tobj ) ;
+   extern GLint gluUnProject4 ( GLdouble winX , GLdouble winY , GLdouble winZ , GLdouble clipW , const GLdouble * model , const GLdouble * proj , const GLint * view , GLdouble nearVal , GLdouble farVal , GLdouble * objX , GLdouble * objY , GLdouble * objZ , GLdouble * objW ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__gluEndPolygon )(GLUtesselator *);
+	LIBAPI GLint (CALLBACK * disp__gluUnProject4 )(GLdouble, GLdouble, GLdouble, GLdouble, const GLdouble *, const GLdouble *, const GLint *, GLdouble, GLdouble, GLdouble *, GLdouble *, GLdouble *, GLdouble *);
 
-/* C2J Parser Version 2.2:  Java program parsed successfully. */ 
+/* C2J Parser Version 3.0:  Java program parsed successfully. */ 

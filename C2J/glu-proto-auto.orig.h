@@ -1,103 +1,46 @@
-extern void  gluLookAt( GLdouble eyex, GLdouble eyey, GLdouble eyez,
-                                  GLdouble centerx, GLdouble centery,
-                                  GLdouble centerz,
-                                  GLdouble upx, GLdouble upy, GLdouble upz );
-extern void  gluOrtho2D( GLdouble left, GLdouble right,
-                                   GLdouble bottom, GLdouble top );
-extern void  gluPerspective( GLdouble fovy, GLdouble aspect,
-                                       GLdouble zNear, GLdouble zFar );
-extern void  gluPickMatrix( GLdouble x, GLdouble y,
-                                      GLdouble width, GLdouble height,
-                                      GLint *viewport );
-extern GLint  gluProject( GLdouble objx, GLdouble objy, GLdouble objz,
-                                    const GLdouble modelMatrix[16],
-                                    const GLdouble projMatrix[16],
-                                    const GLint viewport[4],
-                                    GLdouble *winx, GLdouble *winy,
-                                    GLdouble *winz );
-extern GLint  gluUnProject( GLdouble winx, GLdouble winy,
-                                      GLdouble winz,
-                                      const GLdouble modelMatrix[16],
-                                      const GLdouble projMatrix[16],
-                                      const GLint viewport[4],
-                                      GLdouble *objx, GLdouble *objy,
-                                      GLdouble *objz );
-extern GLint  gluScaleImage( GLenum format,
-                                     GLsizei widthin, GLsizei heightin,
-                                     GLenum typein, const GLbyte *datain,
-                                     GLsizei widthout, GLsizei heightout,
-                                     GLenum typeout, GLbyte *dataout );
-extern GLint  gluBuild1DMipmaps( GLenum target, GLint components,
-                                           GLint width, GLenum format,
-                                           GLenum type, const void *data );
-extern GLint  gluBuild2DMipmaps( GLenum target, GLint components,
-                                           GLint width, GLint height,
-                                           GLenum format,
-                                           GLenum type, const void *data );
-extern void  gluQuadricDrawStyle( GLUquadricObj *quadObject,
-                                            GLenum drawStyle );
-extern void  gluQuadricOrientation( GLUquadricObj *quadObject,
-                                              GLenum orientation );
-extern void  gluQuadricNormals( GLUquadricObj *quadObject,
-                                          GLenum normals );
-extern void  gluQuadricTexture( GLUquadricObj *quadObject,
-                                          GLboolean textureCoords );
-extern void  gluCylinder( GLUquadricObj *qobj,
-                                    GLdouble baseRadius,
-                                    GLdouble topRadius,
-                                    GLdouble height,
-                                    GLint slices, GLint stacks );
-extern void  gluSphere( GLUquadricObj *qobj,
-                                  GLdouble radius, GLint slices,
-                                  GLint stacks );
-extern void  gluDisk( GLUquadricObj *qobj,
-                                GLdouble innerRadius, GLdouble outerRadius,
-                                GLint slices, GLint loops );
-extern void  gluPartialDisk( GLUquadricObj *qobj, GLdouble innerRadius,
-                                       GLdouble outerRadius, GLint slices,
-                                       GLint loops, GLdouble startAngle,
-                                       GLdouble sweepAngle );
-extern void  gluLoadSamplingMatrices( GLUnurbsObj *nobj,
-                                                const GLfloat modelMatrix[16],
-                                                const GLfloat projMatrix[16],
-                                                const GLint viewport[4] );
-extern void  gluNurbsProperty( GLUnurbsObj *nobj, GLenum property,
-                                         GLfloat value );
-extern void  gluGetNurbsProperty( GLUnurbsObj *nobj, GLenum property,
-                                            GLfloat *value );
-extern void  gluBeginCurve( GLUnurbsObj *nobj );
-extern void  gluEndCurve( GLUnurbsObj * nobj );
-extern void  gluNurbsCurve( GLUnurbsObj *nobj, GLint nknots,
-                                      GLfloat *knot, GLint stride,
-                                      GLfloat *ctlarray, GLint order,
-                                      GLenum type );
-extern void  gluBeginSurface( GLUnurbsObj *nobj );
-extern void  gluEndSurface( GLUnurbsObj * nobj );
-extern void  gluNurbsSurface( GLUnurbsObj *nobj,
-                                        GLint sknot_count, GLfloat *sknot,
-                                        GLint tknot_count, GLfloat *tknot,
-                                        GLint s_stride, GLint t_stride,
-                                        GLfloat *ctlarray,
-                                        GLint sorder, GLint torder,
-                                        GLenum type );
-extern void  gluBeginTrim( GLUnurbsObj *nobj );
-extern void  gluEndTrim( GLUnurbsObj *nobj );
-extern void  gluPwlCurve( GLUnurbsObj *nobj, GLint count,
-                                    GLfloat *array, GLint stride,
-                                    GLenum type );
-extern void  gluTessBeginPolygon( GLUtesselator *tobj,
-					    void *polygon_data );
-extern void  gluTessBeginContour( GLUtesselator *tobj );
-extern void  gluTessVertex( GLUtesselator *tobj, GLdouble coords[3],
-				      void *vertex_data );
-extern void  gluTessEndContour( GLUtesselator *tobj );
-extern void  gluTessEndPolygon( GLUtesselator *tobj );
-extern void  gluTessProperty( GLUtesselator *tobj, GLenum which,
-					GLdouble value );
-extern void  gluTessNormal( GLUtesselator *tobj, GLdouble x,
-				      GLdouble y, GLdouble z );
-extern void  gluGetTessProperty( GLUtesselator *tobj, GLenum which,
-					   GLdouble *value );
-extern void  gluBeginPolygon( GLUtesselator *tobj );
-extern void  gluNextContour( GLUtesselator *tobj, GLenum type );
-extern void  gluEndPolygon( GLUtesselator *tobj );
+extern void  gluBeginCurve (GLUnurbs* nurb);
+extern void  gluBeginPolygon (GLUtesselator* tess);
+extern void  gluBeginSurface (GLUnurbs* nurb);
+extern void  gluBeginTrim (GLUnurbs* nurb);
+extern GLint  gluBuild1DMipmapLevels (GLenum target, GLint internalFormat, GLsizei width, GLenum format, GLenum type, GLint level, GLint base, GLint max, const void *data);
+extern GLint  gluBuild1DMipmaps (GLenum target, GLint internalFormat, GLsizei width, GLenum format, GLenum type, const void *data);
+extern GLint  gluBuild2DMipmapLevels (GLenum target, GLint internalFormat, GLsizei width, GLsizei height, GLenum format, GLenum type, GLint level, GLint base, GLint max, const void *data);
+extern GLint  gluBuild2DMipmaps (GLenum target, GLint internalFormat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void *data);
+extern GLint  gluBuild3DMipmapLevels (GLenum target, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLint level, GLint base, GLint max, const void *data);
+extern GLint  gluBuild3DMipmaps (GLenum target, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void *data);
+extern GLboolean  gluCheckExtension (const GLubyte *extName, const GLubyte *extString);
+extern void  gluCylinder (GLUquadric* quad, GLdouble base, GLdouble top, GLdouble height, GLint slices, GLint stacks);
+extern void  gluDisk (GLUquadric* quad, GLdouble inner, GLdouble outer, GLint slices, GLint loops);
+extern void  gluEndCurve (GLUnurbs* nurb);
+extern void  gluEndPolygon (GLUtesselator* tess);
+extern void  gluEndSurface (GLUnurbs* nurb);
+extern void  gluEndTrim (GLUnurbs* nurb);
+extern void  gluGetNurbsProperty (GLUnurbs* nurb, GLenum property, GLfloat* data);
+extern void  gluGetTessProperty (GLUtesselator* tess, GLenum which, GLdouble* data);
+extern void  gluLoadSamplingMatrices (GLUnurbs* nurb, const GLfloat *model, const GLfloat *perspective, const GLint *view);
+extern void  gluLookAt (GLdouble eyeX, GLdouble eyeY, GLdouble eyeZ, GLdouble centerX, GLdouble centerY, GLdouble centerZ, GLdouble upX, GLdouble upY, GLdouble upZ);
+extern void  gluNextContour (GLUtesselator* tess, GLenum type);
+extern void  gluNurbsCurve (GLUnurbs* nurb, GLint knotCount, GLfloat *knots, GLint stride, GLfloat *control, GLint order, GLenum type);
+extern void  gluNurbsProperty (GLUnurbs* nurb, GLenum property, GLfloat value);
+extern void  gluNurbsSurface (GLUnurbs* nurb, GLint sKnotCount, GLfloat* sKnots, GLint tKnotCount, GLfloat* tKnots, GLint sStride, GLint tStride, GLfloat* control, GLint sOrder, GLint tOrder, GLenum type);
+extern void  gluOrtho2D (GLdouble left, GLdouble right, GLdouble bottom, GLdouble top);
+extern void  gluPartialDisk (GLUquadric* quad, GLdouble inner, GLdouble outer, GLint slices, GLint loops, GLdouble start, GLdouble sweep);
+extern void  gluPerspective (GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar);
+extern void  gluPickMatrix (GLdouble x, GLdouble y, GLdouble delX, GLdouble delY, GLint *viewport);
+extern GLint  gluProject (GLdouble objX, GLdouble objY, GLdouble objZ, const GLdouble *model, const GLdouble *proj, const GLint *view, GLdouble* winX, GLdouble* winY, GLdouble* winZ);
+extern void  gluPwlCurve (GLUnurbs* nurb, GLint count, GLfloat* data, GLint stride, GLenum type);
+extern void  gluQuadricDrawStyle (GLUquadric* quad, GLenum draw);
+extern void  gluQuadricNormals (GLUquadric* quad, GLenum normal);
+extern void  gluQuadricOrientation (GLUquadric* quad, GLenum orientation);
+extern void  gluQuadricTexture (GLUquadric* quad, GLboolean texture);
+extern GLint  gluScaleImage (GLenum format, GLsizei wIn, GLsizei hIn, GLenum typeIn, const void *dataIn, GLsizei wOut, GLsizei hOut, GLenum typeOut, GLvoid* dataOut);
+extern void  gluSphere (GLUquadric* quad, GLdouble radius, GLint slices, GLint stacks);
+extern void  gluTessBeginContour (GLUtesselator* tess);
+extern void  gluTessBeginPolygon (GLUtesselator* tess, GLvoid* data);
+extern void  gluTessEndContour (GLUtesselator* tess);
+extern void  gluTessEndPolygon (GLUtesselator* tess);
+extern void  gluTessNormal (GLUtesselator* tess, GLdouble valueX, GLdouble valueY, GLdouble valueZ);
+extern void  gluTessProperty (GLUtesselator* tess, GLenum which, GLdouble data);
+extern void  gluTessVertex (GLUtesselator* tess, GLdouble *location, GLvoid* data);
+extern GLint  gluUnProject (GLdouble winX, GLdouble winY, GLdouble winZ, const GLdouble *model, const GLdouble *proj, const GLint *view, GLdouble* objX, GLdouble* objY, GLdouble* objZ);
+extern GLint  gluUnProject4 (GLdouble winX, GLdouble winY, GLdouble winZ, GLdouble clipW, const GLdouble *model, const GLdouble *proj, const GLint *view, GLdouble nearVal, GLdouble farVal, GLdouble* objX, GLdouble* objY, GLdouble* objZ, GLdouble* objW);

@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 2.2
+ * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glu-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -8,19 +8,718 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluLookAt ( GLdouble eyex , GLdouble eyey , GLdouble eyez , GLdouble centerx , GLdouble centery , GLdouble centerz , GLdouble upx , GLdouble upy , GLdouble upz ) ;
+   extern void gluBeginCurve ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	public void gluBeginCurve (
+		long nurb
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluBeginPolygon ( GLUtesselator * tess ) ;
+ * </pre> 
+ */
+	public void gluBeginPolygon (
+		long tess
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluBeginSurface ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	public void gluBeginSurface (
+		long nurb
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluBeginTrim ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	public void gluBeginTrim (
+		long nurb
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild1DMipmapLevels ( GLenum target , GLint internalFormat , GLsizei width , GLenum format , GLenum type , GLint level , GLint base , GLint max , const void * data ) ;
+ * </pre> 
+ */
+	public int gluBuild1DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		byte[] data
+	) ;
+	public int gluBuild1DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		short[] data
+	) ;
+	public int gluBuild1DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		int[] data
+	) ;
+	public int gluBuild1DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		float[] data
+	) ;
+	public int gluBuild1DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		double[] data
+	) ;
+	public int gluBuild1DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		boolean[] data
+	) ;
+	public int gluBuild1DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		long[] data
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild1DMipmaps ( GLenum target , GLint internalFormat , GLsizei width , GLenum format , GLenum type , const void * data ) ;
+ * </pre> 
+ */
+	public int gluBuild1DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		byte[] data
+	) ;
+	public int gluBuild1DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		short[] data
+	) ;
+	public int gluBuild1DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		int[] data
+	) ;
+	public int gluBuild1DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		float[] data
+	) ;
+	public int gluBuild1DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		double[] data
+	) ;
+	public int gluBuild1DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		boolean[] data
+	) ;
+	public int gluBuild1DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int format,
+		int type,
+		long[] data
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild2DMipmapLevels ( GLenum target , GLint internalFormat , GLsizei width , GLsizei height , GLenum format , GLenum type , GLint level , GLint base , GLint max , const void * data ) ;
+ * </pre> 
+ */
+	public int gluBuild2DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		byte[] data
+	) ;
+	public int gluBuild2DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		short[] data
+	) ;
+	public int gluBuild2DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		int[] data
+	) ;
+	public int gluBuild2DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		float[] data
+	) ;
+	public int gluBuild2DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		double[] data
+	) ;
+	public int gluBuild2DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		boolean[] data
+	) ;
+	public int gluBuild2DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		long[] data
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild2DMipmaps ( GLenum target , GLint internalFormat , GLsizei width , GLsizei height , GLenum format , GLenum type , const void * data ) ;
+ * </pre> 
+ */
+	public int gluBuild2DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		byte[] data
+	) ;
+	public int gluBuild2DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		short[] data
+	) ;
+	public int gluBuild2DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		int[] data
+	) ;
+	public int gluBuild2DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		float[] data
+	) ;
+	public int gluBuild2DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		double[] data
+	) ;
+	public int gluBuild2DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		boolean[] data
+	) ;
+	public int gluBuild2DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int format,
+		int type,
+		long[] data
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild3DMipmapLevels ( GLenum target , GLint internalFormat , GLsizei width , GLsizei height , GLsizei depth , GLenum format , GLenum type , GLint level , GLint base , GLint max , const void * data ) ;
+ * </pre> 
+ */
+	public int gluBuild3DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		byte[] data
+	) ;
+	public int gluBuild3DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		short[] data
+	) ;
+	public int gluBuild3DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		int[] data
+	) ;
+	public int gluBuild3DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		float[] data
+	) ;
+	public int gluBuild3DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		double[] data
+	) ;
+	public int gluBuild3DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		boolean[] data
+	) ;
+	public int gluBuild3DMipmapLevels (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		int level,
+		int base,
+		int max,
+		long[] data
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint gluBuild3DMipmaps ( GLenum target , GLint internalFormat , GLsizei width , GLsizei height , GLsizei depth , GLenum format , GLenum type , const void * data ) ;
+ * </pre> 
+ */
+	public int gluBuild3DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		byte[] data
+	) ;
+	public int gluBuild3DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		short[] data
+	) ;
+	public int gluBuild3DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		int[] data
+	) ;
+	public int gluBuild3DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		float[] data
+	) ;
+	public int gluBuild3DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		double[] data
+	) ;
+	public int gluBuild3DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		boolean[] data
+	) ;
+	public int gluBuild3DMipmaps (
+		int target,
+		int internalFormat,
+		int width,
+		int height,
+		int depth,
+		int format,
+		int type,
+		long[] data
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean gluCheckExtension ( const GLubyte * extName , const GLubyte * extString ) ;
+ * </pre> 
+ */
+	public boolean gluCheckExtension (
+		byte[] extName,
+		byte[] extString
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluCylinder ( GLUquadric * quad , GLdouble base , GLdouble top , GLdouble height , GLint slices , GLint stacks ) ;
+ * </pre> 
+ */
+	public void gluCylinder (
+		long quad,
+		double base,
+		double top,
+		double height,
+		int slices,
+		int stacks
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluDisk ( GLUquadric * quad , GLdouble inner , GLdouble outer , GLint slices , GLint loops ) ;
+ * </pre> 
+ */
+	public void gluDisk (
+		long quad,
+		double inner,
+		double outer,
+		int slices,
+		int loops
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluEndCurve ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	public void gluEndCurve (
+		long nurb
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluEndPolygon ( GLUtesselator * tess ) ;
+ * </pre> 
+ */
+	public void gluEndPolygon (
+		long tess
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluEndSurface ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	public void gluEndSurface (
+		long nurb
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluEndTrim ( GLUnurbs * nurb ) ;
+ * </pre> 
+ */
+	public void gluEndTrim (
+		long nurb
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluGetNurbsProperty ( GLUnurbs * nurb , GLenum property , GLfloat * data ) ;
+ * </pre> 
+ */
+	public void gluGetNurbsProperty (
+		long nurb,
+		int property,
+		float[] data
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluGetTessProperty ( GLUtesselator * tess , GLenum which , GLdouble * data ) ;
+ * </pre> 
+ */
+	public void gluGetTessProperty (
+		long tess,
+		int which,
+		double[] data
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluLoadSamplingMatrices ( GLUnurbs * nurb , const GLfloat * model , const GLfloat * perspective , const GLint * view ) ;
+ * </pre> 
+ */
+	public void gluLoadSamplingMatrices (
+		long nurb,
+		float[] model,
+		float[] perspective,
+		int[] view
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluLookAt ( GLdouble eyeX , GLdouble eyeY , GLdouble eyeZ , GLdouble centerX , GLdouble centerY , GLdouble centerZ , GLdouble upX , GLdouble upY , GLdouble upZ ) ;
  * </pre> 
  */
 	public void gluLookAt (
-		double eyex,
-		double eyey,
-		double eyez,
-		double centerx,
-		double centery,
-		double centerz,
-		double upx,
-		double upy,
-		double upz
+		double eyeX,
+		double eyeY,
+		double eyeZ,
+		double centerX,
+		double centerY,
+		double centerZ,
+		double upX,
+		double upY,
+		double upZ
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluNextContour ( GLUtesselator * tess , GLenum type ) ;
+ * </pre> 
+ */
+	public void gluNextContour (
+		long tess,
+		int type
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluNurbsCurve ( GLUnurbs * nurb , GLint knotCount , GLfloat * knots , GLint stride , GLfloat * control , GLint order , GLenum type ) ;
+ * </pre> 
+ */
+	public void gluNurbsCurve (
+		long nurb,
+		int knotCount,
+		float[] knots,
+		int stride,
+		float[] control,
+		int order,
+		int type
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluNurbsProperty ( GLUnurbs * nurb , GLenum property , GLfloat value ) ;
+ * </pre> 
+ */
+	public void gluNurbsProperty (
+		long nurb,
+		int property,
+		float value
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluNurbsSurface ( GLUnurbs * nurb , GLint sKnotCount , GLfloat * sKnots , GLint tKnotCount , GLfloat * tKnots , GLint sStride , GLint tStride , GLfloat * control , GLint sOrder , GLint tOrder , GLenum type ) ;
+ * </pre> 
+ */
+	public void gluNurbsSurface (
+		long nurb,
+		int sKnotCount,
+		float[] sKnots,
+		int tKnotCount,
+		float[] tKnots,
+		int sStride,
+		int tStride,
+		float[] control,
+		int sOrder,
+		int tOrder,
+		int type
 	) ;
 
 /**
@@ -39,6 +738,22 @@
 /**
  * Original Function-Prototype :
  * <pre> 
+   extern void gluPartialDisk ( GLUquadric * quad , GLdouble inner , GLdouble outer , GLint slices , GLint loops , GLdouble start , GLdouble sweep ) ;
+ * </pre> 
+ */
+	public void gluPartialDisk (
+		long quad,
+		double inner,
+		double outer,
+		int slices,
+		int loops,
+		double start,
+		double sweep
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
    extern void gluPerspective ( GLdouble fovy , GLdouble aspect , GLdouble zNear , GLdouble zFar ) ;
  * </pre> 
  */
@@ -52,271 +767,185 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluPickMatrix ( GLdouble x , GLdouble y , GLdouble width , GLdouble height , GLint * viewport ) ;
+   extern void gluPickMatrix ( GLdouble x , GLdouble y , GLdouble delX , GLdouble delY , GLint * viewport ) ;
  * </pre> 
  */
 	public void gluPickMatrix (
 		double x,
 		double y,
-		double width,
-		double height,
+		double delX,
+		double delY,
 		int[] viewport
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluProject ( GLdouble objx , GLdouble objy , GLdouble objz , const GLdouble modelMatrix [ 16 ] , const GLdouble projMatrix [ 16 ] , const GLint viewport [ 4 ] , GLdouble * winx , GLdouble * winy , GLdouble * winz ) ;
+   extern GLint gluProject ( GLdouble objX , GLdouble objY , GLdouble objZ , const GLdouble * model , const GLdouble * proj , const GLint * view , GLdouble * winX , GLdouble * winY , GLdouble * winZ ) ;
  * </pre> 
  */
 	public int gluProject (
-		double objx,
-		double objy,
-		double objz,
-		double[] modelMatrix,
-		double[] projMatrix,
-		int[] viewport,
-		double[] winx,
-		double[] winy,
-		double[] winz
+		double objX,
+		double objY,
+		double objZ,
+		double[] model,
+		double[] proj,
+		int[] view,
+		double[] winX,
+		double[] winY,
+		double[] winZ
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluUnProject ( GLdouble winx , GLdouble winy , GLdouble winz , const GLdouble modelMatrix [ 16 ] , const GLdouble projMatrix [ 16 ] , const GLint viewport [ 4 ] , GLdouble * objx , GLdouble * objy , GLdouble * objz ) ;
+   extern void gluPwlCurve ( GLUnurbs * nurb , GLint count , GLfloat * data , GLint stride , GLenum type ) ;
  * </pre> 
  */
-	public int gluUnProject (
-		double winx,
-		double winy,
-		double winz,
-		double[] modelMatrix,
-		double[] projMatrix,
-		int[] viewport,
-		double[] objx,
-		double[] objy,
-		double[] objz
+	public void gluPwlCurve (
+		long nurb,
+		int count,
+		float[] data,
+		int stride,
+		int type
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLint gluScaleImage ( GLenum format , GLsizei widthin , GLsizei heightin , GLenum typein , const GLbyte * datain , GLsizei widthout , GLsizei heightout , GLenum typeout , GLbyte * dataout ) ;
- * </pre> 
- */
-	public int gluScaleImage (
-		int format,
-		int widthin,
-		int heightin,
-		int typein,
-		byte[] datain,
-		int widthout,
-		int heightout,
-		int typeout,
-		byte[] dataout
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern GLint gluBuild1DMipmaps ( GLenum target , GLint components , GLint width , GLenum format , GLenum type , const void * data ) ;
- * </pre> 
- */
-	public int gluBuild1DMipmaps (
-		int target,
-		int components,
-		int width,
-		int format,
-		int type,
-		byte[] data
-	) ;
-	public int gluBuild1DMipmaps (
-		int target,
-		int components,
-		int width,
-		int format,
-		int type,
-		short[] data
-	) ;
-	public int gluBuild1DMipmaps (
-		int target,
-		int components,
-		int width,
-		int format,
-		int type,
-		int[] data
-	) ;
-	public int gluBuild1DMipmaps (
-		int target,
-		int components,
-		int width,
-		int format,
-		int type,
-		float[] data
-	) ;
-	public int gluBuild1DMipmaps (
-		int target,
-		int components,
-		int width,
-		int format,
-		int type,
-		double[] data
-	) ;
-	public int gluBuild1DMipmaps (
-		int target,
-		int components,
-		int width,
-		int format,
-		int type,
-		boolean[] data
-	) ;
-	public int gluBuild1DMipmaps (
-		int target,
-		int components,
-		int width,
-		int format,
-		int type,
-		long[] data
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern GLint gluBuild2DMipmaps ( GLenum target , GLint components , GLint width , GLint height , GLenum format , GLenum type , const void * data ) ;
- * </pre> 
- */
-	public int gluBuild2DMipmaps (
-		int target,
-		int components,
-		int width,
-		int height,
-		int format,
-		int type,
-		byte[] data
-	) ;
-	public int gluBuild2DMipmaps (
-		int target,
-		int components,
-		int width,
-		int height,
-		int format,
-		int type,
-		short[] data
-	) ;
-	public int gluBuild2DMipmaps (
-		int target,
-		int components,
-		int width,
-		int height,
-		int format,
-		int type,
-		int[] data
-	) ;
-	public int gluBuild2DMipmaps (
-		int target,
-		int components,
-		int width,
-		int height,
-		int format,
-		int type,
-		float[] data
-	) ;
-	public int gluBuild2DMipmaps (
-		int target,
-		int components,
-		int width,
-		int height,
-		int format,
-		int type,
-		double[] data
-	) ;
-	public int gluBuild2DMipmaps (
-		int target,
-		int components,
-		int width,
-		int height,
-		int format,
-		int type,
-		boolean[] data
-	) ;
-	public int gluBuild2DMipmaps (
-		int target,
-		int components,
-		int width,
-		int height,
-		int format,
-		int type,
-		long[] data
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluQuadricDrawStyle ( GLUquadricObj * quadObject , GLenum drawStyle ) ;
+   extern void gluQuadricDrawStyle ( GLUquadric * quad , GLenum draw ) ;
  * </pre> 
  */
 	public void gluQuadricDrawStyle (
-		long quadObject,
-		int drawStyle
+		long quad,
+		int draw
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluQuadricOrientation ( GLUquadricObj * quadObject , GLenum orientation ) ;
+   extern void gluQuadricNormals ( GLUquadric * quad , GLenum normal ) ;
+ * </pre> 
+ */
+	public void gluQuadricNormals (
+		long quad,
+		int normal
+	) ;
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void gluQuadricOrientation ( GLUquadric * quad , GLenum orientation ) ;
  * </pre> 
  */
 	public void gluQuadricOrientation (
-		long quadObject,
+		long quad,
 		int orientation
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluQuadricNormals ( GLUquadricObj * quadObject , GLenum normals ) ;
- * </pre> 
- */
-	public void gluQuadricNormals (
-		long quadObject,
-		int normals
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluQuadricTexture ( GLUquadricObj * quadObject , GLboolean textureCoords ) ;
+   extern void gluQuadricTexture ( GLUquadric * quad , GLboolean texture ) ;
  * </pre> 
  */
 	public void gluQuadricTexture (
-		long quadObject,
-		boolean textureCoords
+		long quad,
+		boolean texture
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluCylinder ( GLUquadricObj * qobj , GLdouble baseRadius , GLdouble topRadius , GLdouble height , GLint slices , GLint stacks ) ;
+   extern GLint gluScaleImage ( GLenum format , GLsizei wIn , GLsizei hIn , GLenum typeIn , const void * dataIn , GLsizei wOut , GLsizei hOut , GLenum typeOut , GLvoid * dataOut ) ;
  * </pre> 
  */
-	public void gluCylinder (
-		long qobj,
-		double baseRadius,
-		double topRadius,
-		double height,
-		int slices,
-		int stacks
+	public int gluScaleImage (
+		int format,
+		int wIn,
+		int hIn,
+		int typeIn,
+		byte[] dataIn,
+		int wOut,
+		int hOut,
+		int typeOut,
+		byte[] dataOut
+	) ;
+	public int gluScaleImage (
+		int format,
+		int wIn,
+		int hIn,
+		int typeIn,
+		short[] dataIn,
+		int wOut,
+		int hOut,
+		int typeOut,
+		short[] dataOut
+	) ;
+	public int gluScaleImage (
+		int format,
+		int wIn,
+		int hIn,
+		int typeIn,
+		int[] dataIn,
+		int wOut,
+		int hOut,
+		int typeOut,
+		int[] dataOut
+	) ;
+	public int gluScaleImage (
+		int format,
+		int wIn,
+		int hIn,
+		int typeIn,
+		float[] dataIn,
+		int wOut,
+		int hOut,
+		int typeOut,
+		float[] dataOut
+	) ;
+	public int gluScaleImage (
+		int format,
+		int wIn,
+		int hIn,
+		int typeIn,
+		double[] dataIn,
+		int wOut,
+		int hOut,
+		int typeOut,
+		double[] dataOut
+	) ;
+	public int gluScaleImage (
+		int format,
+		int wIn,
+		int hIn,
+		int typeIn,
+		boolean[] dataIn,
+		int wOut,
+		int hOut,
+		int typeOut,
+		boolean[] dataOut
+	) ;
+	public int gluScaleImage (
+		int format,
+		int wIn,
+		int hIn,
+		int typeIn,
+		long[] dataIn,
+		int wOut,
+		int hOut,
+		int typeOut,
+		long[] dataOut
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluSphere ( GLUquadricObj * qobj , GLdouble radius , GLint slices , GLint stacks ) ;
+   extern void gluSphere ( GLUquadric * quad , GLdouble radius , GLint slices , GLint stacks ) ;
  * </pre> 
  */
 	public void gluSphere (
-		long qobj,
+		long quad,
 		double radius,
 		int slices,
 		int stacks
@@ -325,353 +954,173 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluDisk ( GLUquadricObj * qobj , GLdouble innerRadius , GLdouble outerRadius , GLint slices , GLint loops ) ;
- * </pre> 
- */
-	public void gluDisk (
-		long qobj,
-		double innerRadius,
-		double outerRadius,
-		int slices,
-		int loops
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluPartialDisk ( GLUquadricObj * qobj , GLdouble innerRadius , GLdouble outerRadius , GLint slices , GLint loops , GLdouble startAngle , GLdouble sweepAngle ) ;
- * </pre> 
- */
-	public void gluPartialDisk (
-		long qobj,
-		double innerRadius,
-		double outerRadius,
-		int slices,
-		int loops,
-		double startAngle,
-		double sweepAngle
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluLoadSamplingMatrices ( GLUnurbsObj * nobj , const GLfloat modelMatrix [ 16 ] , const GLfloat projMatrix [ 16 ] , const GLint viewport [ 4 ] ) ;
- * </pre> 
- */
-	public void gluLoadSamplingMatrices (
-		long nobj,
-		float[] modelMatrix,
-		float[] projMatrix,
-		int[] viewport
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluNurbsProperty ( GLUnurbsObj * nobj , GLenum property , GLfloat value ) ;
- * </pre> 
- */
-	public void gluNurbsProperty (
-		long nobj,
-		int property,
-		float value
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluGetNurbsProperty ( GLUnurbsObj * nobj , GLenum property , GLfloat * value ) ;
- * </pre> 
- */
-	public void gluGetNurbsProperty (
-		long nobj,
-		int property,
-		float[] value
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluBeginCurve ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	public void gluBeginCurve (
-		long nobj
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluEndCurve ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	public void gluEndCurve (
-		long nobj
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluNurbsCurve ( GLUnurbsObj * nobj , GLint nknots , GLfloat * knot , GLint stride , GLfloat * ctlarray , GLint order , GLenum type ) ;
- * </pre> 
- */
-	public void gluNurbsCurve (
-		long nobj,
-		int nknots,
-		float[] knot,
-		int stride,
-		float[] ctlarray,
-		int order,
-		int type
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluBeginSurface ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	public void gluBeginSurface (
-		long nobj
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluEndSurface ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	public void gluEndSurface (
-		long nobj
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluNurbsSurface ( GLUnurbsObj * nobj , GLint sknot_count , GLfloat * sknot , GLint tknot_count , GLfloat * tknot , GLint s_stride , GLint t_stride , GLfloat * ctlarray , GLint sorder , GLint torder , GLenum type ) ;
- * </pre> 
- */
-	public void gluNurbsSurface (
-		long nobj,
-		int sknot_count,
-		float[] sknot,
-		int tknot_count,
-		float[] tknot,
-		int s_stride,
-		int t_stride,
-		float[] ctlarray,
-		int sorder,
-		int torder,
-		int type
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluBeginTrim ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	public void gluBeginTrim (
-		long nobj
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluEndTrim ( GLUnurbsObj * nobj ) ;
- * </pre> 
- */
-	public void gluEndTrim (
-		long nobj
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluPwlCurve ( GLUnurbsObj * nobj , GLint count , GLfloat * array , GLint stride , GLenum type ) ;
- * </pre> 
- */
-	public void gluPwlCurve (
-		long nobj,
-		int count,
-		float[] array,
-		int stride,
-		int type
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessBeginPolygon ( GLUtesselator * tobj , void * polygon_data ) ;
- * </pre> 
- */
-	public void gluTessBeginPolygon (
-		long tobj,
-		byte[] polygon_data
-	) ;
-	public void gluTessBeginPolygon (
-		long tobj,
-		short[] polygon_data
-	) ;
-	public void gluTessBeginPolygon (
-		long tobj,
-		int[] polygon_data
-	) ;
-	public void gluTessBeginPolygon (
-		long tobj,
-		float[] polygon_data
-	) ;
-	public void gluTessBeginPolygon (
-		long tobj,
-		double[] polygon_data
-	) ;
-	public void gluTessBeginPolygon (
-		long tobj,
-		boolean[] polygon_data
-	) ;
-	public void gluTessBeginPolygon (
-		long tobj,
-		long[] polygon_data
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessBeginContour ( GLUtesselator * tobj ) ;
+   extern void gluTessBeginContour ( GLUtesselator * tess ) ;
  * </pre> 
  */
 	public void gluTessBeginContour (
-		long tobj
+		long tess
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluTessVertex ( GLUtesselator * tobj , GLdouble coords [ 3 ] , void * vertex_data ) ;
+   extern void gluTessBeginPolygon ( GLUtesselator * tess , GLvoid * data ) ;
  * </pre> 
  */
-	public void gluTessVertex (
-		long tobj,
-		double[] coords,
-		byte[] vertex_data
+	public void gluTessBeginPolygon (
+		long tess,
+		byte[] data
 	) ;
-	public void gluTessVertex (
-		long tobj,
-		double[] coords,
-		short[] vertex_data
+	public void gluTessBeginPolygon (
+		long tess,
+		short[] data
 	) ;
-	public void gluTessVertex (
-		long tobj,
-		double[] coords,
-		int[] vertex_data
+	public void gluTessBeginPolygon (
+		long tess,
+		int[] data
 	) ;
-	public void gluTessVertex (
-		long tobj,
-		double[] coords,
-		float[] vertex_data
+	public void gluTessBeginPolygon (
+		long tess,
+		float[] data
 	) ;
-	public void gluTessVertex (
-		long tobj,
-		double[] coords,
-		double[] vertex_data
+	public void gluTessBeginPolygon (
+		long tess,
+		double[] data
 	) ;
-	public void gluTessVertex (
-		long tobj,
-		double[] coords,
-		boolean[] vertex_data
+	public void gluTessBeginPolygon (
+		long tess,
+		boolean[] data
 	) ;
-	public void gluTessVertex (
-		long tobj,
-		double[] coords,
-		long[] vertex_data
+	public void gluTessBeginPolygon (
+		long tess,
+		long[] data
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluTessEndContour ( GLUtesselator * tobj ) ;
+   extern void gluTessEndContour ( GLUtesselator * tess ) ;
  * </pre> 
  */
 	public void gluTessEndContour (
-		long tobj
+		long tess
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluTessEndPolygon ( GLUtesselator * tobj ) ;
+   extern void gluTessEndPolygon ( GLUtesselator * tess ) ;
  * </pre> 
  */
 	public void gluTessEndPolygon (
-		long tobj
+		long tess
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluTessProperty ( GLUtesselator * tobj , GLenum which , GLdouble value ) ;
- * </pre> 
- */
-	public void gluTessProperty (
-		long tobj,
-		int which,
-		double value
-	) ;
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void gluTessNormal ( GLUtesselator * tobj , GLdouble x , GLdouble y , GLdouble z ) ;
+   extern void gluTessNormal ( GLUtesselator * tess , GLdouble valueX , GLdouble valueY , GLdouble valueZ ) ;
  * </pre> 
  */
 	public void gluTessNormal (
-		long tobj,
-		double x,
-		double y,
-		double z
+		long tess,
+		double valueX,
+		double valueY,
+		double valueZ
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluGetTessProperty ( GLUtesselator * tobj , GLenum which , GLdouble * value ) ;
+   extern void gluTessProperty ( GLUtesselator * tess , GLenum which , GLdouble data ) ;
  * </pre> 
  */
-	public void gluGetTessProperty (
-		long tobj,
+	public void gluTessProperty (
+		long tess,
 		int which,
-		double[] value
+		double data
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluBeginPolygon ( GLUtesselator * tobj ) ;
+   extern void gluTessVertex ( GLUtesselator * tess , GLdouble * location , GLvoid * data ) ;
  * </pre> 
  */
-	public void gluBeginPolygon (
-		long tobj
+	public void gluTessVertex (
+		long tess,
+		double[] location,
+		byte[] data
+	) ;
+	public void gluTessVertex (
+		long tess,
+		double[] location,
+		short[] data
+	) ;
+	public void gluTessVertex (
+		long tess,
+		double[] location,
+		int[] data
+	) ;
+	public void gluTessVertex (
+		long tess,
+		double[] location,
+		float[] data
+	) ;
+	public void gluTessVertex (
+		long tess,
+		double[] location,
+		double[] data
+	) ;
+	public void gluTessVertex (
+		long tess,
+		double[] location,
+		boolean[] data
+	) ;
+	public void gluTessVertex (
+		long tess,
+		double[] location,
+		long[] data
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluNextContour ( GLUtesselator * tobj , GLenum type ) ;
+   extern GLint gluUnProject ( GLdouble winX , GLdouble winY , GLdouble winZ , const GLdouble * model , const GLdouble * proj , const GLint * view , GLdouble * objX , GLdouble * objY , GLdouble * objZ ) ;
  * </pre> 
  */
-	public void gluNextContour (
-		long tobj,
-		int type
+	public int gluUnProject (
+		double winX,
+		double winY,
+		double winZ,
+		double[] model,
+		double[] proj,
+		int[] view,
+		double[] objX,
+		double[] objY,
+		double[] objZ
 	) ;
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void gluEndPolygon ( GLUtesselator * tobj ) ;
+   extern GLint gluUnProject4 ( GLdouble winX , GLdouble winY , GLdouble winZ , GLdouble clipW , const GLdouble * model , const GLdouble * proj , const GLint * view , GLdouble nearVal , GLdouble farVal , GLdouble * objX , GLdouble * objY , GLdouble * objZ , GLdouble * objW ) ;
  * </pre> 
  */
-	public void gluEndPolygon (
-		long tobj
+	public int gluUnProject4 (
+		double winX,
+		double winY,
+		double winZ,
+		double clipW,
+		double[] model,
+		double[] proj,
+		int[] view,
+		double nearVal,
+		double farVal,
+		double[] objX,
+		double[] objY,
+		double[] objZ,
+		double[] objW
 	) ;
 
-/* C2J Parser Version 2.2:  Java program parsed successfully. */ 
+/* C2J Parser Version 3.0:  Java program parsed successfully. */ 

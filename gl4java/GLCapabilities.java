@@ -18,6 +18,9 @@ public class GLCapabilities
   private static final int STEREO_OFF = 0;
   private static final int STEREO_ON  = 1;
 
+  private static final int FULLSCREEN_OFF = 0;
+  private static final int FULLSCREEN_ON  = 1;
+
   // Boolean attributes
   // NOTE that we do not specify on- or off-screen visuals here --
   // that will be taken care of by the factory.
@@ -36,6 +39,13 @@ public class GLCapabilities
      w32: exact value
    */
   private int stereo		= STEREO_OFF;
+
+  /* x11: exact value 
+     w32: exact value
+
+     since JDK 1.4
+   */
+  private int fullscreen	= FULLSCREEN_OFF;
 
   /* x11: getting the largest regardless the value if >0, set to max
      w32: getting the best from it's max

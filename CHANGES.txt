@@ -1,12 +1,35 @@
 \begin{verbatim}
 
-Last Changes: 24th July 2001 (Version 2.8.0 - PRE-Release 1 (CVS only) )
+Last Changes: 6th Nov 2001 (Version 2.8.0 - PRE-Release 8 (CVS only) )
 Started:      July 1997 (Version 0)
 
 -----------------
 TOP  = NEW
 DOWN = OLD
 -----------------
+
+6th Nov  2001 (Version 2.8.0 - PRE-Release 8 (CVS only) )
+	o BIG merge with Kenneth's JDK 1.4's java.nio Buffer's
+
+	o Fixed C2J to handle arguments without names
+
+	o Switched to Mesa 4.0 GL/GLU Headers,
+	  therefore we are likely OpenGL 1.3 capable ;-)
+
+	o "Raw" Support for many EXTensions
+
+	o Some Bugfixes ..
+
+	o To compile: please check your symbols.mak,
+	  regarding my one "symbols.mak.linux-java2-xf86-x86-32bit"
+
+	o Windows should work ..
+
+26th Sept  2001 (Version 2.8.0 - PRE-Release 5 (CVS only) )
+	o bugfixed auto context switching
+		+ improved ThreadDebug print outs ..
+
+	o added gl4java/applet/SimpleGLApplet1.java
 
 24th July  2001 (Version 2.8.0 - PRE-Release 1 (CVS only) )
 	o Changed Kenneth's manual context switching optimization

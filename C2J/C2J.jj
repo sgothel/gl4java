@@ -57,7 +57,7 @@ import java.util.*;
 
   public class C2J{
 
-    public static final String version = "C2J Parser Version 2.2" ;
+    public static final String version = "C2J Parser Version 3.0" ;
     public static final String vendor  = "Jausoft - Sven Goethel Software Development";
 
     public static final int EXPORT_JNI_JAVA        = 1;
@@ -72,6 +72,7 @@ import java.util.*;
 
     public static final int MODIFIER_JNI_CRITICAL_ARRAY = 1;
     public static final int MODIFIER_JNI_COPY_CHECK = 2; // experimental trial ..
+    public static final int MODIFIER_JNI_DIRECT_BUFFERS = 4; // JDK 1.4 support
 
     public static int     exportMode;
     public static int     exportModifier;
@@ -127,7 +128,7 @@ import java.util.*;
         System.out.println("Usage is one of:");
         System.out.println("         java C2J [-v] [-s] [-echo] [jnic|jnijava|jnijavaf|msjava|echo] <ClassName> < inputfile");
         System.out.println("OR");
-        System.out.println("         java C2J [-v] [-s] [-echo] [-jnic-criticalarray] [-jnic-trial] [jnic|jnic-dyn|jnijava|msjava <dllname>|glfnames|gldispatch-decl|gldispatch-var|gldispatch-get] <ClassName> inputfile");
+        System.out.println("         java C2J [-v] [-s] [-echo] [-jnic-criticalarray] [-jnic-trial] [-jnic-dirbuf] [jnic|jnic-dyn|jnijava|msjava <dllname>|glfnames|gldispatch-decl|gldispatch-var|gldispatch-get] <ClassName> inputfile");
         System.out.println("     , inputfile is a C-HeaderFile (Preprocessed).");
         System.out.println("     , where <ClassName> must be full qualified with an underscore instead of an dot - if not in (any) Java-Mode.");
         System.out.println("     , where -v means verbose");
@@ -135,6 +136,7 @@ import java.util.*;
         System.out.println("     , where -echo means including the parsed C-Code in Output commentary");
         System.out.println("     , where -jnic-criticalarray includes experimental JNI-C Code");
         System.out.println("     , where -jnic-trial includes experimental JNI-C Code");
+        System.out.println("     , where -jnic-dirbuf includes direct buffer support (JDK 1.4 and greater only)");
         System.out.println("     , where jnic produces JNI-C Code (strong binding)");
         System.out.println("     , where jnic-dyn produces JNI-C Code (dynamic binding)");
         System.out.println("     , where jnijava produces JNI-Java Code (non final)");
@@ -198,6 +200,10 @@ import java.util.*;
 		else if( args[i].equals("-jnic-trial") )
 		{
 		        exportModifier |= MODIFIER_JNI_COPY_CHECK ;
+		}
+		else if( args[i].equals("-jnic-dirbuf") )
+		{
+		        exportModifier |= MODIFIER_JNI_DIRECT_BUFFERS ;
 		}
 		else if( args[i].equals("jnic") )
 		{
@@ -360,10 +366,10 @@ TOKEN : {
 	<GLuint: "GLuint"> |
 	<GLenum: "GLenum"> |
 	<GLbitfield: "GLbitfield"> |
-	<GLUquadricObj: "GLUquadricObj"> | 
-	<GLUnurbsObj: "GLUnurbsObj"> |
+	<GLUquadric: "GLUquadric"> | 
+	<GLUnurbs: "GLUnurbs"> |
 	<GLUtesselator: "GLUtesselator"> |
-	<GLUtriangulatorObj: "GLUtriangulatorObj"> 
+	<GLUtriangulator: "GLUtriangulator"> 
 }
 
 TOKEN : {
@@ -436,10 +442,10 @@ void ExternalDeclaration() :
           switch(exportMode)
 	  {
 	    case EXPORT_JNI_JAVA        :
-		System.out.println(cfunc.toJniJavaCode(false));
+		System.out.println(cfunc.toJniJavaCode(false, exportModifier));
 	    	break;
 	    case EXPORT_JNI_JAVA_FINAL  :
-		System.out.println(cfunc.toJniJavaCode(true));
+		System.out.println(cfunc.toJniJavaCode(true, exportModifier));
 	    	break;
 	    case EXPORT_JNI_C     :
 	    case EXPORT_JNI_C_DYN :
@@ -677,11 +683,11 @@ CFuncVariable TypeSpecifierGL(CFuncVariable cfvar) :
 	{ typeJava="int"; 
 	  cSrc += t.image+" ";
 	} |
-	t=<GLUquadricObj> 
+	t=<GLUquadric> 
 	{ typeJava="long"; 
 	  cSrc += t.image+" ";
 	} |
-	t=<GLUnurbsObj> 
+	t=<GLUnurbs> 
 	{ typeJava="long"; 
 	  cSrc += t.image+" ";
 	} |
@@ -689,7 +695,7 @@ CFuncVariable TypeSpecifierGL(CFuncVariable cfvar) :
 	{ typeJava="long"; 
 	  cSrc += t.image+" ";
 	} |
-	t=<GLUtriangulatorObj> 
+	t=<GLUtriangulator> 
 	{ typeJava="long"; 
 	  cSrc += t.image+" ";
 	}
@@ -946,10 +952,10 @@ void Pointer(CFuncVariable cfvar) : {}
 			 * No Pointer - These GLU Types are allready
 			 * "long" values for java -> pointer 
 			 */
-		  	if(cfvar.typeC.equals("GLUquadricObj") ||
-		  	   cfvar.typeC.equals("GLUnurbsObj") ||
+		  	if(cfvar.typeC.equals("GLUquadric") ||
+		  	   cfvar.typeC.equals("GLUnurbs") ||
 		  	   cfvar.typeC.equals("GLUtesselator") ||
-		  	   cfvar.typeC.equals("GLUtriangulatorObj")
+		  	   cfvar.typeC.equals("GLUtriangulator")
 			  )
 			{
 				cfvar.isGLUPtrObject=true;
@@ -987,7 +993,7 @@ void ParameterDeclaration(CFuncDeclaration cfunc) : {}
 {
 	DeclarationSpecifiers(cfunc) 
 	( LOOKAHEAD(Declarator(null)) Declarator(cfunc) | 
-	[ AbstractDeclarator() ] )
+	[ AbstractDeclarator(cfunc) ] )
 	{
 		if(cfunc!=null)
 		{
@@ -1059,19 +1065,39 @@ void InitializerList() : {}
 
 void TypeName() : {}
 {
-	SpecifierQualifierList(null) [ AbstractDeclarator() ]
+	SpecifierQualifierList(null) [ AbstractDeclarator(null) ]
 }
 
-void AbstractDeclarator() : {}
+void AbstractDeclarator(CFuncDeclaration cfunc) :
+{  CFuncVariable cfvar=null; }
 {
-	( LOOKAHEAD(3) Pointer(null) |
-	  [Pointer(null)] DirectAbstractDeclarator() )
+	{ if(cfunc!=null)
+	    cfvar = cfunc.getWorkingVar(); 
+	}
+
+	( LOOKAHEAD(3) Pointer(cfvar) |
+	  [Pointer(cfvar)] DirectAbstractDeclarator() )
+
+	{ 
+
+	    if(syntaxVerbose)
+	       cSrc += "/*AbstractDecl1*/ "; 
+
+	    if(cfvar==null)
+	    	return;
+
+	    //
+	    // Complete the variable declarations in the holder !
+	    // 
+	    cfvar.identifier="arg"+cfunc.getWorkingVarIdx();
+	    cfvar.complete=true;
+	  }
 }
 
 void DirectAbstractDeclarator() : {}
 {
 	( LOOKAHEAD(2) 
-	  "(" { cSrc += "( "; } AbstractDeclarator() 
+	  "(" { cSrc += "( "; } AbstractDeclarator(null) 
 	  ")" { cSrc += ") "; } |
 	  "[" { cSrc += "[ "; } [ConstantExpression()] 
 	  "]" { cSrc += "] "; } |

@@ -57,10 +57,10 @@ public interface C2JConstants {
   int GLuint = 59;
   int GLenum = 60;
   int GLbitfield = 61;
-  int GLUquadricObj = 62;
-  int GLUnurbsObj = 63;
+  int GLUquadric = 62;
+  int GLUnurbs = 63;
   int GLUtesselator = 64;
-  int GLUtriangulatorObj = 65;
+  int GLUtriangulator = 65;
   int IDENTIFIER = 66;
   int LETTER = 67;
   int DIGIT = 68;
@@ -130,10 +130,10 @@ public interface C2JConstants {
     "\"GLuint\"",
     "\"GLenum\"",
     "\"GLbitfield\"",
-    "\"GLUquadricObj\"",
-    "\"GLUnurbsObj\"",
+    "\"GLUquadric\"",
+    "\"GLUnurbs\"",
     "\"GLUtesselator\"",
-    "\"GLUtriangulatorObj\"",
+    "\"GLUtriangulator\"",
     "<IDENTIFIER>",
     "<LETTER>",
     "<DIGIT>",

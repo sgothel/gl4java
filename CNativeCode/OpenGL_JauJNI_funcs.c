@@ -71,7 +71,7 @@ Java_gl4java_GLFuncJauJNI_glGetString ( JNIEnv *env, jobject obj,
 }
 
 static const char * _gl_lib_vendor_="Jausoft - Sven Goethel Software Development";
-static const char * _gl_lib_version_="2.8.0.0";
+static const char * _gl_lib_version_="2.8.0.8";
 
 JNIEXPORT jstring JNICALL
 Java_gl4java_GLFuncJauJNI_getNativeVendor ( JNIEnv *env, jobject obj )
@@ -86,7 +86,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 }
 
 /**
- * C2J Parser Version 2.2
+ * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLFuncJauJNI ! 
@@ -6896,7 +6896,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glGetPointerv ( GLenum pname , void * * params ) ;
+   extern void glGetPointerv ( GLenum pname , GLvoid * * params ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
@@ -6916,7 +6916,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointerv (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -6941,7 +6941,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointerv (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -6966,7 +6966,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointerv (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -6991,7 +6991,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointerv (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -7016,7 +7016,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointerv (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -7041,7 +7041,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointerv (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -7066,7 +7066,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointerv (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -12441,7 +12441,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glTexImage3D ( GLenum target , GLint level , GLint internalFormat , GLsizei width , GLsizei height , GLsizei depth , GLint border , GLenum format , GLenum type , const GLvoid * pixels ) ;
+   extern void glTexImage3D ( GLenum target , GLint level , GLenum internalFormat , GLsizei width , GLsizei height , GLsizei depth , GLint border , GLenum format , GLenum type , const GLvoid * pixels ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
@@ -12469,7 +12469,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
-			(GLint) internalFormat,
+			(GLenum) internalFormat,
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLsizei) depth,
@@ -12509,7 +12509,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
-			(GLint) internalFormat,
+			(GLenum) internalFormat,
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLsizei) depth,
@@ -12549,7 +12549,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
-			(GLint) internalFormat,
+			(GLenum) internalFormat,
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLsizei) depth,
@@ -12589,7 +12589,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
-			(GLint) internalFormat,
+			(GLenum) internalFormat,
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLsizei) depth,
@@ -12629,7 +12629,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
-			(GLint) internalFormat,
+			(GLenum) internalFormat,
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLsizei) depth,
@@ -12669,7 +12669,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
-			(GLint) internalFormat,
+			(GLenum) internalFormat,
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLsizei) depth,
@@ -12709,7 +12709,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		disp__glTexImage3D (
 			(GLenum) target,
 			(GLint) level,
-			(GLint) internalFormat,
+			(GLenum) internalFormat,
 			(GLsizei) width,
 			(GLsizei) height,
 			(GLsizei) depth,
@@ -16273,6 +16273,3828 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 /**
  * Original Function-Prototype :
  * <pre> 
+   extern void glActiveTexture ( GLenum texture ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glActiveTexture (
+		JNIEnv *env, jobject obj,
+		jint texture)
+	{
+
+		if ( disp__glActiveTexture == NULL ) return;
+
+		disp__glActiveTexture (
+			(GLenum) texture
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glClientActiveTexture ( GLenum texture ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glClientActiveTexture (
+		JNIEnv *env, jobject obj,
+		jint texture)
+	{
+
+		if ( disp__glClientActiveTexture == NULL ) return;
+
+		disp__glClientActiveTexture (
+			(GLenum) texture
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexImage1D ( GLenum target , GLint level , GLenum internalformat , GLsizei width , GLint border , GLsizei imageSize , const GLvoid * data ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1D__IIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint border,
+		jint imageSize,
+		jbyteArray data)
+	{
+		jbyte *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetByteArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1D__IIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint border,
+		jint imageSize,
+		jshortArray data)
+	{
+		jshort *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetShortArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1D__IIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint border,
+		jint imageSize,
+		jintArray data)
+	{
+		jint *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetIntArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1D__IIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint border,
+		jint imageSize,
+		jfloatArray data)
+	{
+		jfloat *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetFloatArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1D__IIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint border,
+		jint imageSize,
+		jdoubleArray data)
+	{
+		jdouble *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetDoubleArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1D__IIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint border,
+		jint imageSize,
+		jbooleanArray data)
+	{
+		jboolean *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetBooleanArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1D__IIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint border,
+		jint imageSize,
+		jlongArray data)
+	{
+		jlong *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetLongArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexImage2D ( GLenum target , GLint level , GLenum internalformat , GLsizei width , GLsizei height , GLint border , GLsizei imageSize , const GLvoid * data ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2D__IIIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint border,
+		jint imageSize,
+		jbyteArray data)
+	{
+		jbyte *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr7 = (*env)->GetByteArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr7
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  data, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2D__IIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint border,
+		jint imageSize,
+		jshortArray data)
+	{
+		jshort *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr7 = (*env)->GetShortArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr7
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  data, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2D__IIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint border,
+		jint imageSize,
+		jintArray data)
+	{
+		jint *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr7 = (*env)->GetIntArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr7
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  data, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2D__IIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint border,
+		jint imageSize,
+		jfloatArray data)
+	{
+		jfloat *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr7 = (*env)->GetFloatArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr7
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  data, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2D__IIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint border,
+		jint imageSize,
+		jdoubleArray data)
+	{
+		jdouble *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr7 = (*env)->GetDoubleArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr7
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  data, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2D__IIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint border,
+		jint imageSize,
+		jbooleanArray data)
+	{
+		jboolean *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr7 = (*env)->GetBooleanArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr7
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  data, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2D__IIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint border,
+		jint imageSize,
+		jlongArray data)
+	{
+		jlong *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr7 = (*env)->GetLongArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr7
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  data, ptr7, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexImage3D ( GLenum target , GLint level , GLenum internalformat , GLsizei width , GLsizei height , GLsizei depth , GLint border , GLsizei imageSize , const GLvoid * data ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3D__IIIIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint depth,
+		jint border,
+		jint imageSize,
+		jbyteArray data)
+	{
+		jbyte *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetByteArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3D__IIIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint depth,
+		jint border,
+		jint imageSize,
+		jshortArray data)
+	{
+		jshort *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetShortArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3D__IIIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint depth,
+		jint border,
+		jint imageSize,
+		jintArray data)
+	{
+		jint *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetIntArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3D__IIIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint depth,
+		jint border,
+		jint imageSize,
+		jfloatArray data)
+	{
+		jfloat *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetFloatArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3D__IIIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint depth,
+		jint border,
+		jint imageSize,
+		jdoubleArray data)
+	{
+		jdouble *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetDoubleArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3D__IIIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint depth,
+		jint border,
+		jint imageSize,
+		jbooleanArray data)
+	{
+		jboolean *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetBooleanArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3D__IIIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint internalformat,
+		jint width,
+		jint height,
+		jint depth,
+		jint border,
+		jint imageSize,
+		jlongArray data)
+	{
+		jlong *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetLongArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLenum) internalformat,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLint) border,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexSubImage1D ( GLenum target , GLint level , GLint xoffset , GLsizei width , GLenum format , GLsizei imageSize , const GLvoid * data ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1D__IIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint width,
+		jint format,
+		jint imageSize,
+		jbyteArray data)
+	{
+		jbyte *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetByteArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLsizei) width,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1D__IIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint width,
+		jint format,
+		jint imageSize,
+		jshortArray data)
+	{
+		jshort *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetShortArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLsizei) width,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1D__IIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint width,
+		jint format,
+		jint imageSize,
+		jintArray data)
+	{
+		jint *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetIntArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLsizei) width,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1D__IIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint width,
+		jint format,
+		jint imageSize,
+		jfloatArray data)
+	{
+		jfloat *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetFloatArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLsizei) width,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1D__IIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint width,
+		jint format,
+		jint imageSize,
+		jdoubleArray data)
+	{
+		jdouble *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetDoubleArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLsizei) width,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1D__IIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint width,
+		jint format,
+		jint imageSize,
+		jbooleanArray data)
+	{
+		jboolean *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetBooleanArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLsizei) width,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1D__IIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint width,
+		jint format,
+		jint imageSize,
+		jlongArray data)
+	{
+		jlong *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr6 = (*env)->GetLongArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage1D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLsizei) width,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr6
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  data, ptr6, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexSubImage2D ( GLenum target , GLint level , GLint xoffset , GLint yoffset , GLsizei width , GLsizei height , GLenum format , GLsizei imageSize , const GLvoid * data ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2D__IIIIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint width,
+		jint height,
+		jint format,
+		jint imageSize,
+		jbyteArray data)
+	{
+		jbyte *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetByteArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2D__IIIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint width,
+		jint height,
+		jint format,
+		jint imageSize,
+		jshortArray data)
+	{
+		jshort *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetShortArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2D__IIIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint width,
+		jint height,
+		jint format,
+		jint imageSize,
+		jintArray data)
+	{
+		jint *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetIntArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2D__IIIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint width,
+		jint height,
+		jint format,
+		jint imageSize,
+		jfloatArray data)
+	{
+		jfloat *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetFloatArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2D__IIIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint width,
+		jint height,
+		jint format,
+		jint imageSize,
+		jdoubleArray data)
+	{
+		jdouble *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetDoubleArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2D__IIIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint width,
+		jint height,
+		jint format,
+		jint imageSize,
+		jbooleanArray data)
+	{
+		jboolean *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetBooleanArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2D__IIIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint width,
+		jint height,
+		jint format,
+		jint imageSize,
+		jlongArray data)
+	{
+		jlong *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr8 = (*env)->GetLongArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage2D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr8
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  data, ptr8, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexSubImage3D ( GLenum target , GLint level , GLint xoffset , GLint yoffset , GLint zoffset , GLsizei width , GLsizei height , GLsizei depth , GLenum format , GLsizei imageSize , const GLvoid * data ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3D__IIIIIIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint zoffset,
+		jint width,
+		jint height,
+		jint depth,
+		jint format,
+		jint imageSize,
+		jbyteArray data)
+	{
+		jbyte *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr10 = (*env)->GetByteArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLint) zoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr10
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  data, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3D__IIIIIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint zoffset,
+		jint width,
+		jint height,
+		jint depth,
+		jint format,
+		jint imageSize,
+		jshortArray data)
+	{
+		jshort *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr10 = (*env)->GetShortArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLint) zoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr10
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  data, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3D__IIIIIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint zoffset,
+		jint width,
+		jint height,
+		jint depth,
+		jint format,
+		jint imageSize,
+		jintArray data)
+	{
+		jint *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr10 = (*env)->GetIntArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLint) zoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr10
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  data, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3D__IIIIIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint zoffset,
+		jint width,
+		jint height,
+		jint depth,
+		jint format,
+		jint imageSize,
+		jfloatArray data)
+	{
+		jfloat *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr10 = (*env)->GetFloatArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLint) zoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr10
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  data, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3D__IIIIIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint zoffset,
+		jint width,
+		jint height,
+		jint depth,
+		jint format,
+		jint imageSize,
+		jdoubleArray data)
+	{
+		jdouble *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr10 = (*env)->GetDoubleArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLint) zoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr10
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  data, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3D__IIIIIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint zoffset,
+		jint width,
+		jint height,
+		jint depth,
+		jint format,
+		jint imageSize,
+		jbooleanArray data)
+	{
+		jboolean *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr10 = (*env)->GetBooleanArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLint) zoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr10
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  data, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3D__IIIIIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint level,
+		jint xoffset,
+		jint yoffset,
+		jint zoffset,
+		jint width,
+		jint height,
+		jint depth,
+		jint format,
+		jint imageSize,
+		jlongArray data)
+	{
+		jlong *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3D == NULL ) return;
+
+		if(data!=NULL)
+		{
+			ptr10 = (*env)->GetLongArrayElements(env, data, 0);
+		}
+		disp__glCompressedTexSubImage3D (
+			(GLenum) target,
+			(GLint) level,
+			(GLint) xoffset,
+			(GLint) yoffset,
+			(GLint) zoffset,
+			(GLsizei) width,
+			(GLsizei) height,
+			(GLsizei) depth,
+			(GLenum) format,
+			(GLsizei) imageSize,
+			(const GLvoid *) ptr10
+		);
+
+		if(data!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  data, ptr10, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCompressedTexImage ( GLenum target , GLint lod , GLvoid * img ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImage__II_3B (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint lod,
+		jbyteArray img)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImage == NULL ) return;
+
+		if(img!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, img, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImage (
+			(GLenum) target,
+			(GLint) lod,
+			(GLvoid *) ptr2
+		);
+
+		if(img!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  img, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImage__II_3S (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint lod,
+		jshortArray img)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jshort *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImage == NULL ) return;
+
+		if(img!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, img, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImage (
+			(GLenum) target,
+			(GLint) lod,
+			(GLvoid *) ptr2
+		);
+
+		if(img!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  img, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImage__II_3I (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint lod,
+		jintArray img)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImage == NULL ) return;
+
+		if(img!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, img, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImage (
+			(GLenum) target,
+			(GLint) lod,
+			(GLvoid *) ptr2
+		);
+
+		if(img!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  img, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImage__II_3F (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint lod,
+		jfloatArray img)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImage == NULL ) return;
+
+		if(img!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, img, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImage (
+			(GLenum) target,
+			(GLint) lod,
+			(GLvoid *) ptr2
+		);
+
+		if(img!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  img, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImage__II_3D (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint lod,
+		jdoubleArray img)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImage == NULL ) return;
+
+		if(img!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, img, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImage (
+			(GLenum) target,
+			(GLint) lod,
+			(GLvoid *) ptr2
+		);
+
+		if(img!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  img, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImage__II_3Z (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint lod,
+		jbooleanArray img)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImage == NULL ) return;
+
+		if(img!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, img, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImage (
+			(GLenum) target,
+			(GLint) lod,
+			(GLvoid *) ptr2
+		);
+
+		if(img!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  img, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImage__II_3J (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint lod,
+		jlongArray img)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jlong *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImage == NULL ) return;
+
+		if(img!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, img, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImage (
+			(GLenum) target,
+			(GLint) lod,
+			(GLvoid *) ptr2
+		);
+
+		if(img!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  img, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1d ( GLenum target , GLdouble s ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1d (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdouble s)
+	{
+
+		if ( disp__glMultiTexCoord1d == NULL ) return;
+
+		disp__glMultiTexCoord1d (
+			(GLenum) target,
+			(GLdouble) s
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1dv ( GLenum target , const GLdouble * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1dv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdoubleArray v)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1dv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord1dv (
+			(GLenum) target,
+			(const GLdouble *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1f ( GLenum target , GLfloat s ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1f (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloat s)
+	{
+
+		if ( disp__glMultiTexCoord1f == NULL ) return;
+
+		disp__glMultiTexCoord1f (
+			(GLenum) target,
+			(GLfloat) s
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1fv ( GLenum target , const GLfloat * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1fv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloatArray v)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1fv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord1fv (
+			(GLenum) target,
+			(const GLfloat *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1i ( GLenum target , GLint s ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1i (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint s)
+	{
+
+		if ( disp__glMultiTexCoord1i == NULL ) return;
+
+		disp__glMultiTexCoord1i (
+			(GLenum) target,
+			(GLint) s
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1iv ( GLenum target , const GLint * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1iv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jintArray v)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1iv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord1iv (
+			(GLenum) target,
+			(const GLint *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1s ( GLenum target , GLshort s ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1s (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshort s)
+	{
+
+		if ( disp__glMultiTexCoord1s == NULL ) return;
+
+		disp__glMultiTexCoord1s (
+			(GLenum) target,
+			(GLshort) s
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1sv ( GLenum target , const GLshort * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1sv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshortArray v)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1sv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord1sv (
+			(GLenum) target,
+			(const GLshort *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2d ( GLenum target , GLdouble s , GLdouble t ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2d (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdouble s,
+		jdouble t)
+	{
+
+		if ( disp__glMultiTexCoord2d == NULL ) return;
+
+		disp__glMultiTexCoord2d (
+			(GLenum) target,
+			(GLdouble) s,
+			(GLdouble) t
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2dv ( GLenum target , const GLdouble * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2dv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdoubleArray v)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2dv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord2dv (
+			(GLenum) target,
+			(const GLdouble *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2f ( GLenum target , GLfloat s , GLfloat t ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2f (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloat s,
+		jfloat t)
+	{
+
+		if ( disp__glMultiTexCoord2f == NULL ) return;
+
+		disp__glMultiTexCoord2f (
+			(GLenum) target,
+			(GLfloat) s,
+			(GLfloat) t
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2fv ( GLenum target , const GLfloat * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2fv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloatArray v)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2fv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord2fv (
+			(GLenum) target,
+			(const GLfloat *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2i ( GLenum target , GLint s , GLint t ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2i (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint s,
+		jint t)
+	{
+
+		if ( disp__glMultiTexCoord2i == NULL ) return;
+
+		disp__glMultiTexCoord2i (
+			(GLenum) target,
+			(GLint) s,
+			(GLint) t
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2iv ( GLenum target , const GLint * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2iv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jintArray v)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2iv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord2iv (
+			(GLenum) target,
+			(const GLint *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2s ( GLenum target , GLshort s , GLshort t ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2s (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshort s,
+		jshort t)
+	{
+
+		if ( disp__glMultiTexCoord2s == NULL ) return;
+
+		disp__glMultiTexCoord2s (
+			(GLenum) target,
+			(GLshort) s,
+			(GLshort) t
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2sv ( GLenum target , const GLshort * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2sv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshortArray v)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2sv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord2sv (
+			(GLenum) target,
+			(const GLshort *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3d ( GLenum target , GLdouble s , GLdouble t , GLdouble r ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3d (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdouble s,
+		jdouble t,
+		jdouble r)
+	{
+
+		if ( disp__glMultiTexCoord3d == NULL ) return;
+
+		disp__glMultiTexCoord3d (
+			(GLenum) target,
+			(GLdouble) s,
+			(GLdouble) t,
+			(GLdouble) r
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3dv ( GLenum target , const GLdouble * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3dv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdoubleArray v)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3dv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord3dv (
+			(GLenum) target,
+			(const GLdouble *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3f ( GLenum target , GLfloat s , GLfloat t , GLfloat r ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3f (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloat s,
+		jfloat t,
+		jfloat r)
+	{
+
+		if ( disp__glMultiTexCoord3f == NULL ) return;
+
+		disp__glMultiTexCoord3f (
+			(GLenum) target,
+			(GLfloat) s,
+			(GLfloat) t,
+			(GLfloat) r
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3fv ( GLenum target , const GLfloat * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3fv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloatArray v)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3fv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord3fv (
+			(GLenum) target,
+			(const GLfloat *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3i ( GLenum target , GLint s , GLint t , GLint r ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3i (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint s,
+		jint t,
+		jint r)
+	{
+
+		if ( disp__glMultiTexCoord3i == NULL ) return;
+
+		disp__glMultiTexCoord3i (
+			(GLenum) target,
+			(GLint) s,
+			(GLint) t,
+			(GLint) r
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3iv ( GLenum target , const GLint * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3iv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jintArray v)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3iv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord3iv (
+			(GLenum) target,
+			(const GLint *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3s ( GLenum target , GLshort s , GLshort t , GLshort r ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3s (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshort s,
+		jshort t,
+		jshort r)
+	{
+
+		if ( disp__glMultiTexCoord3s == NULL ) return;
+
+		disp__glMultiTexCoord3s (
+			(GLenum) target,
+			(GLshort) s,
+			(GLshort) t,
+			(GLshort) r
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3sv ( GLenum target , const GLshort * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3sv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshortArray v)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3sv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord3sv (
+			(GLenum) target,
+			(const GLshort *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4d ( GLenum target , GLdouble s , GLdouble t , GLdouble r , GLdouble q ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4d (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdouble s,
+		jdouble t,
+		jdouble r,
+		jdouble q)
+	{
+
+		if ( disp__glMultiTexCoord4d == NULL ) return;
+
+		disp__glMultiTexCoord4d (
+			(GLenum) target,
+			(GLdouble) s,
+			(GLdouble) t,
+			(GLdouble) r,
+			(GLdouble) q
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4dv ( GLenum target , const GLdouble * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4dv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdoubleArray v)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4dv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord4dv (
+			(GLenum) target,
+			(const GLdouble *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4f ( GLenum target , GLfloat s , GLfloat t , GLfloat r , GLfloat q ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4f (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloat s,
+		jfloat t,
+		jfloat r,
+		jfloat q)
+	{
+
+		if ( disp__glMultiTexCoord4f == NULL ) return;
+
+		disp__glMultiTexCoord4f (
+			(GLenum) target,
+			(GLfloat) s,
+			(GLfloat) t,
+			(GLfloat) r,
+			(GLfloat) q
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4fv ( GLenum target , const GLfloat * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4fv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloatArray v)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4fv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord4fv (
+			(GLenum) target,
+			(const GLfloat *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4i ( GLenum target , GLint s , GLint t , GLint r , GLint q ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4i (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint s,
+		jint t,
+		jint r,
+		jint q)
+	{
+
+		if ( disp__glMultiTexCoord4i == NULL ) return;
+
+		disp__glMultiTexCoord4i (
+			(GLenum) target,
+			(GLint) s,
+			(GLint) t,
+			(GLint) r,
+			(GLint) q
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4iv ( GLenum target , const GLint * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4iv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jintArray v)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4iv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord4iv (
+			(GLenum) target,
+			(const GLint *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4s ( GLenum target , GLshort s , GLshort t , GLshort r , GLshort q ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4s (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshort s,
+		jshort t,
+		jshort r,
+		jshort q)
+	{
+
+		if ( disp__glMultiTexCoord4s == NULL ) return;
+
+		disp__glMultiTexCoord4s (
+			(GLenum) target,
+			(GLshort) s,
+			(GLshort) t,
+			(GLshort) r,
+			(GLshort) q
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4sv ( GLenum target , const GLshort * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4sv (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshortArray v)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4sv == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord4sv (
+			(GLenum) target,
+			(const GLshort *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLoadTransposeMatrixd ( const GLdouble m [ 16 ] ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glLoadTransposeMatrixd (
+		JNIEnv *env, jobject obj,
+		jdoubleArray m)
+	{
+		jdouble *ptr0 = NULL;
+
+		if ( disp__glLoadTransposeMatrixd == NULL ) return;
+
+		if(m!=NULL)
+		{
+			ptr0 = (*env)->GetDoubleArrayElements(env, m, 0);
+		}
+		disp__glLoadTransposeMatrixd (
+			(const GLdouble *) ptr0
+		);
+
+		if(m!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  m, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLoadTransposeMatrixf ( const GLfloat m [ 16 ] ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glLoadTransposeMatrixf (
+		JNIEnv *env, jobject obj,
+		jfloatArray m)
+	{
+		jfloat *ptr0 = NULL;
+
+		if ( disp__glLoadTransposeMatrixf == NULL ) return;
+
+		if(m!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, m, 0);
+		}
+		disp__glLoadTransposeMatrixf (
+			(const GLfloat *) ptr0
+		);
+
+		if(m!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  m, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultTransposeMatrixd ( const GLdouble m [ 16 ] ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultTransposeMatrixd (
+		JNIEnv *env, jobject obj,
+		jdoubleArray m)
+	{
+		jdouble *ptr0 = NULL;
+
+		if ( disp__glMultTransposeMatrixd == NULL ) return;
+
+		if(m!=NULL)
+		{
+			ptr0 = (*env)->GetDoubleArrayElements(env, m, 0);
+		}
+		disp__glMultTransposeMatrixd (
+			(const GLdouble *) ptr0
+		);
+
+		if(m!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  m, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultTransposeMatrixf ( const GLfloat m [ 16 ] ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultTransposeMatrixf (
+		JNIEnv *env, jobject obj,
+		jfloatArray m)
+	{
+		jfloat *ptr0 = NULL;
+
+		if ( disp__glMultTransposeMatrixf == NULL ) return;
+
+		if(m!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, m, 0);
+		}
+		disp__glMultTransposeMatrixf (
+			(const GLfloat *) ptr0
+		);
+
+		if(m!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  m, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSampleCoverage ( GLclampf value , GLboolean invert ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSampleCoverage (
+		JNIEnv *env, jobject obj,
+		jfloat value,
+		jboolean invert)
+	{
+
+		if ( disp__glSampleCoverage == NULL ) return;
+
+		disp__glSampleCoverage (
+			(GLclampf) value,
+			(GLboolean) invert
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSamplePass ( GLenum pass ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSamplePass (
+		JNIEnv *env, jobject obj,
+		jint pass)
+	{
+
+		if ( disp__glSamplePass == NULL ) return;
+
+		disp__glSamplePass (
+			(GLenum) pass
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glActiveTextureARB ( GLenum texture ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glActiveTextureARB (
+		JNIEnv *env, jobject obj,
+		jint texture)
+	{
+
+		if ( disp__glActiveTextureARB == NULL ) return;
+
+		disp__glActiveTextureARB (
+			(GLenum) texture
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glClientActiveTextureARB ( GLenum texture ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glClientActiveTextureARB (
+		JNIEnv *env, jobject obj,
+		jint texture)
+	{
+
+		if ( disp__glClientActiveTextureARB == NULL ) return;
+
+		disp__glClientActiveTextureARB (
+			(GLenum) texture
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1dARB ( GLenum target , GLdouble s ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1dARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdouble s)
+	{
+
+		if ( disp__glMultiTexCoord1dARB == NULL ) return;
+
+		disp__glMultiTexCoord1dARB (
+			(GLenum) target,
+			(GLdouble) s
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1dvARB ( GLenum target , const GLdouble * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1dvARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdoubleArray v)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1dvARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord1dvARB (
+			(GLenum) target,
+			(const GLdouble *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1fARB ( GLenum target , GLfloat s ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1fARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloat s)
+	{
+
+		if ( disp__glMultiTexCoord1fARB == NULL ) return;
+
+		disp__glMultiTexCoord1fARB (
+			(GLenum) target,
+			(GLfloat) s
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1fvARB ( GLenum target , const GLfloat * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1fvARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloatArray v)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1fvARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord1fvARB (
+			(GLenum) target,
+			(const GLfloat *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1iARB ( GLenum target , GLint s ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1iARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint s)
+	{
+
+		if ( disp__glMultiTexCoord1iARB == NULL ) return;
+
+		disp__glMultiTexCoord1iARB (
+			(GLenum) target,
+			(GLint) s
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1ivARB ( GLenum target , const GLint * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1ivARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jintArray v)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1ivARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord1ivARB (
+			(GLenum) target,
+			(const GLint *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1sARB ( GLenum target , GLshort s ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1sARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshort s)
+	{
+
+		if ( disp__glMultiTexCoord1sARB == NULL ) return;
+
+		disp__glMultiTexCoord1sARB (
+			(GLenum) target,
+			(GLshort) s
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord1svARB ( GLenum target , const GLshort * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1svARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshortArray v)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord1svARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord1svARB (
+			(GLenum) target,
+			(const GLshort *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2dARB ( GLenum target , GLdouble s , GLdouble t ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2dARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdouble s,
+		jdouble t)
+	{
+
+		if ( disp__glMultiTexCoord2dARB == NULL ) return;
+
+		disp__glMultiTexCoord2dARB (
+			(GLenum) target,
+			(GLdouble) s,
+			(GLdouble) t
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2dvARB ( GLenum target , const GLdouble * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2dvARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdoubleArray v)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2dvARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord2dvARB (
+			(GLenum) target,
+			(const GLdouble *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2fARB ( GLenum target , GLfloat s , GLfloat t ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2fARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloat s,
+		jfloat t)
+	{
+
+		if ( disp__glMultiTexCoord2fARB == NULL ) return;
+
+		disp__glMultiTexCoord2fARB (
+			(GLenum) target,
+			(GLfloat) s,
+			(GLfloat) t
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2fvARB ( GLenum target , const GLfloat * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2fvARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloatArray v)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2fvARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord2fvARB (
+			(GLenum) target,
+			(const GLfloat *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2iARB ( GLenum target , GLint s , GLint t ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2iARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint s,
+		jint t)
+	{
+
+		if ( disp__glMultiTexCoord2iARB == NULL ) return;
+
+		disp__glMultiTexCoord2iARB (
+			(GLenum) target,
+			(GLint) s,
+			(GLint) t
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2ivARB ( GLenum target , const GLint * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2ivARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jintArray v)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2ivARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord2ivARB (
+			(GLenum) target,
+			(const GLint *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2sARB ( GLenum target , GLshort s , GLshort t ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2sARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshort s,
+		jshort t)
+	{
+
+		if ( disp__glMultiTexCoord2sARB == NULL ) return;
+
+		disp__glMultiTexCoord2sARB (
+			(GLenum) target,
+			(GLshort) s,
+			(GLshort) t
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord2svARB ( GLenum target , const GLshort * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2svARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshortArray v)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord2svARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord2svARB (
+			(GLenum) target,
+			(const GLshort *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3dARB ( GLenum target , GLdouble s , GLdouble t , GLdouble r ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3dARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdouble s,
+		jdouble t,
+		jdouble r)
+	{
+
+		if ( disp__glMultiTexCoord3dARB == NULL ) return;
+
+		disp__glMultiTexCoord3dARB (
+			(GLenum) target,
+			(GLdouble) s,
+			(GLdouble) t,
+			(GLdouble) r
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3dvARB ( GLenum target , const GLdouble * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3dvARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdoubleArray v)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3dvARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord3dvARB (
+			(GLenum) target,
+			(const GLdouble *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3fARB ( GLenum target , GLfloat s , GLfloat t , GLfloat r ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3fARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloat s,
+		jfloat t,
+		jfloat r)
+	{
+
+		if ( disp__glMultiTexCoord3fARB == NULL ) return;
+
+		disp__glMultiTexCoord3fARB (
+			(GLenum) target,
+			(GLfloat) s,
+			(GLfloat) t,
+			(GLfloat) r
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3fvARB ( GLenum target , const GLfloat * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3fvARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloatArray v)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3fvARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord3fvARB (
+			(GLenum) target,
+			(const GLfloat *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3iARB ( GLenum target , GLint s , GLint t , GLint r ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3iARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint s,
+		jint t,
+		jint r)
+	{
+
+		if ( disp__glMultiTexCoord3iARB == NULL ) return;
+
+		disp__glMultiTexCoord3iARB (
+			(GLenum) target,
+			(GLint) s,
+			(GLint) t,
+			(GLint) r
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3ivARB ( GLenum target , const GLint * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3ivARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jintArray v)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3ivARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord3ivARB (
+			(GLenum) target,
+			(const GLint *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3sARB ( GLenum target , GLshort s , GLshort t , GLshort r ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3sARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshort s,
+		jshort t,
+		jshort r)
+	{
+
+		if ( disp__glMultiTexCoord3sARB == NULL ) return;
+
+		disp__glMultiTexCoord3sARB (
+			(GLenum) target,
+			(GLshort) s,
+			(GLshort) t,
+			(GLshort) r
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3svARB ( GLenum target , const GLshort * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3svARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshortArray v)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord3svARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord3svARB (
+			(GLenum) target,
+			(const GLshort *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4dARB ( GLenum target , GLdouble s , GLdouble t , GLdouble r , GLdouble q ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4dARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdouble s,
+		jdouble t,
+		jdouble r,
+		jdouble q)
+	{
+
+		if ( disp__glMultiTexCoord4dARB == NULL ) return;
+
+		disp__glMultiTexCoord4dARB (
+			(GLenum) target,
+			(GLdouble) s,
+			(GLdouble) t,
+			(GLdouble) r,
+			(GLdouble) q
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4dvARB ( GLenum target , const GLdouble * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4dvARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jdoubleArray v)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4dvARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord4dvARB (
+			(GLenum) target,
+			(const GLdouble *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4fARB ( GLenum target , GLfloat s , GLfloat t , GLfloat r , GLfloat q ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4fARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloat s,
+		jfloat t,
+		jfloat r,
+		jfloat q)
+	{
+
+		if ( disp__glMultiTexCoord4fARB == NULL ) return;
+
+		disp__glMultiTexCoord4fARB (
+			(GLenum) target,
+			(GLfloat) s,
+			(GLfloat) t,
+			(GLfloat) r,
+			(GLfloat) q
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4fvARB ( GLenum target , const GLfloat * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4fvARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jfloatArray v)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4fvARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord4fvARB (
+			(GLenum) target,
+			(const GLfloat *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4iARB ( GLenum target , GLint s , GLint t , GLint r , GLint q ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4iARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jint s,
+		jint t,
+		jint r,
+		jint q)
+	{
+
+		if ( disp__glMultiTexCoord4iARB == NULL ) return;
+
+		disp__glMultiTexCoord4iARB (
+			(GLenum) target,
+			(GLint) s,
+			(GLint) t,
+			(GLint) r,
+			(GLint) q
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4ivARB ( GLenum target , const GLint * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4ivARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jintArray v)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4ivARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord4ivARB (
+			(GLenum) target,
+			(const GLint *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4sARB ( GLenum target , GLshort s , GLshort t , GLshort r , GLshort q ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4sARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshort s,
+		jshort t,
+		jshort r,
+		jshort q)
+	{
+
+		if ( disp__glMultiTexCoord4sARB == NULL ) return;
+
+		disp__glMultiTexCoord4sARB (
+			(GLenum) target,
+			(GLshort) s,
+			(GLshort) t,
+			(GLshort) r,
+			(GLshort) q
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4svARB ( GLenum target , const GLshort * v ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4svARB (
+		JNIEnv *env, jobject obj,
+		jint target,
+		jshortArray v)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glMultiTexCoord4svARB == NULL ) return;
+
+		if(v!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
+		}
+		disp__glMultiTexCoord4svARB (
+			(GLenum) target,
+			(const GLshort *) ptr1
+		);
+
+		if(v!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
    extern void glBlendColorEXT ( GLclampf red , GLclampf green , GLclampf blue , GLclampf alpha ) ;
  * </pre> 
  */
@@ -18231,7 +22053,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glGetPointervEXT ( GLenum pname , void * * params ) ;
+   extern void glGetPointervEXT ( GLenum pname , GLvoid * * params ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
@@ -18251,7 +22073,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointervEXT (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -18276,7 +22098,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointervEXT (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -18301,7 +22123,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointervEXT (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -18326,7 +22148,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointervEXT (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -18351,7 +22173,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointervEXT (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -18376,7 +22198,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointervEXT (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -18401,7 +22223,7 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 		}
 		disp__glGetPointervEXT (
 			(GLenum) pname,
-			(void **) ptr1
+			(GLvoid **) ptr1
 		);
 
 		if(params!=NULL)
@@ -18517,6 +22339,59 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 			ptr1 = (*env)->GetFloatArrayElements(env, params, 0);
 		}
 		disp__glPointParameterfvEXT (
+			(GLenum) pname,
+			(const GLfloat *) ptr1
+		);
+
+		if(params!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  params, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPointParameterfSGIS ( GLenum pname , GLfloat param ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPointParameterfSGIS (
+		JNIEnv *env, jobject obj,
+		jint pname,
+		jfloat param)
+	{
+
+		if ( disp__glPointParameterfSGIS == NULL ) return;
+
+		disp__glPointParameterfSGIS (
+			(GLenum) pname,
+			(GLfloat) param
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPointParameterfvSGIS ( GLenum pname , const GLfloat * params ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPointParameterfvSGIS (
+		JNIEnv *env, jobject obj,
+		jint pname,
+		jfloatArray params)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glPointParameterfvSGIS == NULL ) return;
+
+		if(params!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, params, 0);
+		}
+		disp__glPointParameterfvSGIS (
 			(GLenum) pname,
 			(const GLfloat *) ptr1
 		);
@@ -19310,220 +23185,137 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glActiveTextureARB ( GLenum texture ) ;
+   extern void glLoadTransposeMatrixfARB ( const GLfloat * ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glActiveTextureARB (
+	Java_gl4java_GLFuncJauJNI_glLoadTransposeMatrixfARB (
 		JNIEnv *env, jobject obj,
-		jint texture)
+		jfloatArray arg0)
 	{
+		jfloat *ptr0 = NULL;
 
-		if ( disp__glActiveTextureARB == NULL ) return;
+		if ( disp__glLoadTransposeMatrixfARB == NULL ) return;
 
-		disp__glActiveTextureARB (
-			(GLenum) texture
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glClientActiveTextureARB ( GLenum texture ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glClientActiveTextureARB (
-		JNIEnv *env, jobject obj,
-		jint texture)
-	{
-
-		if ( disp__glClientActiveTextureARB == NULL ) return;
-
-		disp__glClientActiveTextureARB (
-			(GLenum) texture
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord1dARB ( GLenum target , GLdouble s ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1dARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jdouble s)
-	{
-
-		if ( disp__glMultiTexCoord1dARB == NULL ) return;
-
-		disp__glMultiTexCoord1dARB (
-			(GLenum) target,
-			(GLdouble) s
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord1dvARB ( GLenum target , const GLdouble * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1dvARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jdoubleArray v)
-	{
-		jdouble *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord1dvARB == NULL ) return;
-
-		if(v!=NULL)
+		if(arg0!=NULL)
 		{
-			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
 		}
-		disp__glMultiTexCoord1dvARB (
-			(GLenum) target,
-			(const GLdouble *) ptr1
+		disp__glLoadTransposeMatrixfARB (
+			(const GLfloat *) ptr0
 		);
 
-		if(v!=NULL)
+		if(arg0!=NULL)
 		{
-			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
 		}
 	}
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glMultiTexCoord1fARB ( GLenum target , GLfloat s ) ;
+   extern void glLoadTransposeMatrixdARB ( const GLdouble * ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1fARB (
+	Java_gl4java_GLFuncJauJNI_glLoadTransposeMatrixdARB (
 		JNIEnv *env, jobject obj,
-		jint target,
-		jfloat s)
+		jdoubleArray arg0)
 	{
+		jdouble *ptr0 = NULL;
 
-		if ( disp__glMultiTexCoord1fARB == NULL ) return;
+		if ( disp__glLoadTransposeMatrixdARB == NULL ) return;
 
-		disp__glMultiTexCoord1fARB (
-			(GLenum) target,
-			(GLfloat) s
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord1fvARB ( GLenum target , const GLfloat * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1fvARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jfloatArray v)
-	{
-		jfloat *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord1fvARB == NULL ) return;
-
-		if(v!=NULL)
+		if(arg0!=NULL)
 		{
-			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+			ptr0 = (*env)->GetDoubleArrayElements(env, arg0, 0);
 		}
-		disp__glMultiTexCoord1fvARB (
-			(GLenum) target,
-			(const GLfloat *) ptr1
+		disp__glLoadTransposeMatrixdARB (
+			(const GLdouble *) ptr0
 		);
 
-		if(v!=NULL)
+		if(arg0!=NULL)
 		{
-			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+			(*env)->ReleaseDoubleArrayElements(env,  arg0, ptr0, JNI_ABORT);
 		}
 	}
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glMultiTexCoord1iARB ( GLenum target , GLint s ) ;
+   extern void glMultTransposeMatrixfARB ( const GLfloat * ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1iARB (
+	Java_gl4java_GLFuncJauJNI_glMultTransposeMatrixfARB (
 		JNIEnv *env, jobject obj,
-		jint target,
-		jint s)
+		jfloatArray arg0)
 	{
+		jfloat *ptr0 = NULL;
 
-		if ( disp__glMultiTexCoord1iARB == NULL ) return;
+		if ( disp__glMultTransposeMatrixfARB == NULL ) return;
 
-		disp__glMultiTexCoord1iARB (
-			(GLenum) target,
-			(GLint) s
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord1ivARB ( GLenum target , const GLint * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1ivARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jintArray v)
-	{
-		jint *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord1ivARB == NULL ) return;
-
-		if(v!=NULL)
+		if(arg0!=NULL)
 		{
-			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
 		}
-		disp__glMultiTexCoord1ivARB (
-			(GLenum) target,
-			(const GLint *) ptr1
+		disp__glMultTransposeMatrixfARB (
+			(const GLfloat *) ptr0
 		);
 
-		if(v!=NULL)
+		if(arg0!=NULL)
 		{
-			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
 		}
 	}
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glMultiTexCoord1sARB ( GLenum target , GLshort s ) ;
+   extern void glMultTransposeMatrixdARB ( const GLdouble * ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1sARB (
+	Java_gl4java_GLFuncJauJNI_glMultTransposeMatrixdARB (
 		JNIEnv *env, jobject obj,
-		jint target,
-		jshort s)
+		jdoubleArray arg0)
+	{
+		jdouble *ptr0 = NULL;
+
+		if ( disp__glMultTransposeMatrixdARB == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetDoubleArrayElements(env, arg0, 0);
+		}
+		disp__glMultTransposeMatrixdARB (
+			(const GLdouble *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSampleCoverageARB ( GLclampf , GLboolean ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSampleCoverageARB (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jboolean arg1)
 	{
 
-		if ( disp__glMultiTexCoord1sARB == NULL ) return;
+		if ( disp__glSampleCoverageARB == NULL ) return;
 
-		disp__glMultiTexCoord1sARB (
-			(GLenum) target,
-			(GLshort) s
+		disp__glSampleCoverageARB (
+			(GLclampf) arg0,
+			(GLboolean) arg1
 		);
 
 	}
@@ -19531,716 +23323,25313 @@ Java_gl4java_GLFuncJauJNI_getNativeVersion ( JNIEnv *env, jobject obj )
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glMultiTexCoord1svARB ( GLenum target , const GLshort * v ) ;
+   extern void glCompressedTexImage3DARB ( GLenum , GLint , GLenum , GLsizei , GLsizei , GLsizei , GLint , GLsizei , const GLvoid * ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord1svARB (
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3DARB__IIIIIIII_3B (
 		JNIEnv *env, jobject obj,
-		jint target,
-		jshortArray v)
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jbyteArray arg8)
+	{
+		jbyte *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetByteArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLint) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3DARB__IIIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jshortArray arg8)
+	{
+		jshort *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetShortArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLint) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3DARB__IIIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jintArray arg8)
+	{
+		jint *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetIntArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLint) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3DARB__IIIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jfloatArray arg8)
+	{
+		jfloat *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetFloatArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLint) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3DARB__IIIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jdoubleArray arg8)
+	{
+		jdouble *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetDoubleArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLint) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3DARB__IIIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jbooleanArray arg8)
+	{
+		jboolean *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetBooleanArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLint) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage3DARB__IIIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jlongArray arg8)
+	{
+		jlong *ptr8 = NULL;
+
+		if ( disp__glCompressedTexImage3DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetLongArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLint) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexImage2DARB ( GLenum , GLint , GLenum , GLsizei , GLsizei , GLint , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2DARB__IIIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jbyteArray arg7)
+	{
+		jbyte *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2DARB == NULL ) return;
+
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetByteArrayElements(env, arg7, 0);
+		}
+		disp__glCompressedTexImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2DARB__IIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jshortArray arg7)
+	{
+		jshort *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2DARB == NULL ) return;
+
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetShortArrayElements(env, arg7, 0);
+		}
+		disp__glCompressedTexImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2DARB__IIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jintArray arg7)
+	{
+		jint *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2DARB == NULL ) return;
+
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetIntArrayElements(env, arg7, 0);
+		}
+		disp__glCompressedTexImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2DARB__IIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jfloatArray arg7)
+	{
+		jfloat *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2DARB == NULL ) return;
+
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetFloatArrayElements(env, arg7, 0);
+		}
+		disp__glCompressedTexImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2DARB__IIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jdoubleArray arg7)
+	{
+		jdouble *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2DARB == NULL ) return;
+
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetDoubleArrayElements(env, arg7, 0);
+		}
+		disp__glCompressedTexImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2DARB__IIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jbooleanArray arg7)
+	{
+		jboolean *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2DARB == NULL ) return;
+
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetBooleanArrayElements(env, arg7, 0);
+		}
+		disp__glCompressedTexImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage2DARB__IIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jlongArray arg7)
+	{
+		jlong *ptr7 = NULL;
+
+		if ( disp__glCompressedTexImage2DARB == NULL ) return;
+
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetLongArrayElements(env, arg7, 0);
+		}
+		disp__glCompressedTexImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexImage1DARB ( GLenum , GLint , GLenum , GLsizei , GLint , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1DARB__IIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jbyteArray arg6)
+	{
+		jbyte *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetByteArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1DARB__IIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jshortArray arg6)
+	{
+		jshort *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetShortArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1DARB__IIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jintArray arg6)
+	{
+		jint *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetIntArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1DARB__IIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jfloatArray arg6)
+	{
+		jfloat *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetFloatArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1DARB__IIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jdoubleArray arg6)
+	{
+		jdouble *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetDoubleArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1DARB__IIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jbooleanArray arg6)
+	{
+		jboolean *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetBooleanArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexImage1DARB__IIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jlongArray arg6)
+	{
+		jlong *ptr6 = NULL;
+
+		if ( disp__glCompressedTexImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetLongArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexSubImage3DARB ( GLenum , GLint , GLint , GLint , GLint , GLsizei , GLsizei , GLsizei , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3DARB__IIIIIIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jbyteArray arg10)
+	{
+		jbyte *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3DARB == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetByteArrayElements(env, arg10, 0);
+		}
+		disp__glCompressedTexSubImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLenum) arg8,
+			(GLsizei) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3DARB__IIIIIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jshortArray arg10)
+	{
+		jshort *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3DARB == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetShortArrayElements(env, arg10, 0);
+		}
+		disp__glCompressedTexSubImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLenum) arg8,
+			(GLsizei) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3DARB__IIIIIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jintArray arg10)
+	{
+		jint *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3DARB == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetIntArrayElements(env, arg10, 0);
+		}
+		disp__glCompressedTexSubImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLenum) arg8,
+			(GLsizei) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3DARB__IIIIIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jfloatArray arg10)
+	{
+		jfloat *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3DARB == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetFloatArrayElements(env, arg10, 0);
+		}
+		disp__glCompressedTexSubImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLenum) arg8,
+			(GLsizei) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3DARB__IIIIIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jdoubleArray arg10)
+	{
+		jdouble *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3DARB == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetDoubleArrayElements(env, arg10, 0);
+		}
+		disp__glCompressedTexSubImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLenum) arg8,
+			(GLsizei) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3DARB__IIIIIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jbooleanArray arg10)
+	{
+		jboolean *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3DARB == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetBooleanArrayElements(env, arg10, 0);
+		}
+		disp__glCompressedTexSubImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLenum) arg8,
+			(GLsizei) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage3DARB__IIIIIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jlongArray arg10)
+	{
+		jlong *ptr10 = NULL;
+
+		if ( disp__glCompressedTexSubImage3DARB == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetLongArrayElements(env, arg10, 0);
+		}
+		disp__glCompressedTexSubImage3DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLenum) arg8,
+			(GLsizei) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexSubImage2DARB ( GLenum , GLint , GLint , GLint , GLsizei , GLsizei , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2DARB__IIIIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jbyteArray arg8)
+	{
+		jbyte *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetByteArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexSubImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2DARB__IIIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jshortArray arg8)
+	{
+		jshort *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetShortArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexSubImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2DARB__IIIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jintArray arg8)
+	{
+		jint *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetIntArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexSubImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2DARB__IIIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jfloatArray arg8)
+	{
+		jfloat *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetFloatArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexSubImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2DARB__IIIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jdoubleArray arg8)
+	{
+		jdouble *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetDoubleArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexSubImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2DARB__IIIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jbooleanArray arg8)
+	{
+		jboolean *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetBooleanArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexSubImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage2DARB__IIIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jlongArray arg8)
+	{
+		jlong *ptr8 = NULL;
+
+		if ( disp__glCompressedTexSubImage2DARB == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetLongArrayElements(env, arg8, 0);
+		}
+		disp__glCompressedTexSubImage2DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLsizei) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexSubImage1DARB ( GLenum , GLint , GLint , GLsizei , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1DARB__IIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jbyteArray arg6)
+	{
+		jbyte *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetByteArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexSubImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1DARB__IIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jshortArray arg6)
+	{
+		jshort *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetShortArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexSubImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1DARB__IIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jintArray arg6)
+	{
+		jint *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetIntArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexSubImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1DARB__IIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jfloatArray arg6)
+	{
+		jfloat *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetFloatArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexSubImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1DARB__IIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jdoubleArray arg6)
+	{
+		jdouble *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetDoubleArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexSubImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1DARB__IIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jbooleanArray arg6)
+	{
+		jboolean *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetBooleanArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexSubImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCompressedTexSubImage1DARB__IIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jlongArray arg6)
+	{
+		jlong *ptr6 = NULL;
+
+		if ( disp__glCompressedTexSubImage1DARB == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetLongArrayElements(env, arg6, 0);
+		}
+		disp__glCompressedTexSubImage1DARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLsizei) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCompressedTexImageARB ( GLenum , GLint , void * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImageARB__II_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImageARB == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImageARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImageARB__II_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jshort *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImageARB == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImageARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImageARB__II_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImageARB == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImageARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImageARB__II_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImageARB == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImageARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImageARB__II_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImageARB == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImageARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImageARB__II_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImageARB == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImageARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCompressedTexImageARB__II_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jlong *ptr2 = NULL;
+
+		if ( disp__glGetCompressedTexImageARB == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetCompressedTexImageARB (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightbvARB ( GLint , const GLbyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWeightbvARB (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyteArray arg1)
+	{
+		jbyte *ptr1 = NULL;
+
+		if ( disp__glWeightbvARB == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		disp__glWeightbvARB (
+			(GLint) arg0,
+			(const GLbyte *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightsvARB ( GLint , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWeightsvARB (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
 	{
 		jshort *ptr1 = NULL;
 
-		if ( disp__glMultiTexCoord1svARB == NULL ) return;
+		if ( disp__glWeightsvARB == NULL ) return;
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
 		}
-		disp__glMultiTexCoord1svARB (
-			(GLenum) target,
+		disp__glWeightsvARB (
+			(GLint) arg0,
 			(const GLshort *) ptr1
 		);
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
 		}
 	}
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glMultiTexCoord2dARB ( GLenum target , GLdouble s , GLdouble t ) ;
+   extern void glWeightivARB ( GLint , const GLint * ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2dARB (
+	Java_gl4java_GLFuncJauJNI_glWeightivARB (
 		JNIEnv *env, jobject obj,
-		jint target,
-		jdouble s,
-		jdouble t)
-	{
-
-		if ( disp__glMultiTexCoord2dARB == NULL ) return;
-
-		disp__glMultiTexCoord2dARB (
-			(GLenum) target,
-			(GLdouble) s,
-			(GLdouble) t
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord2dvARB ( GLenum target , const GLdouble * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2dvARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jdoubleArray v)
-	{
-		jdouble *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord2dvARB == NULL ) return;
-
-		if(v!=NULL)
-		{
-			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
-		}
-		disp__glMultiTexCoord2dvARB (
-			(GLenum) target,
-			(const GLdouble *) ptr1
-		);
-
-		if(v!=NULL)
-		{
-			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
-		}
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord2fARB ( GLenum target , GLfloat s , GLfloat t ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2fARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jfloat s,
-		jfloat t)
-	{
-
-		if ( disp__glMultiTexCoord2fARB == NULL ) return;
-
-		disp__glMultiTexCoord2fARB (
-			(GLenum) target,
-			(GLfloat) s,
-			(GLfloat) t
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord2fvARB ( GLenum target , const GLfloat * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2fvARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jfloatArray v)
-	{
-		jfloat *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord2fvARB == NULL ) return;
-
-		if(v!=NULL)
-		{
-			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
-		}
-		disp__glMultiTexCoord2fvARB (
-			(GLenum) target,
-			(const GLfloat *) ptr1
-		);
-
-		if(v!=NULL)
-		{
-			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
-		}
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord2iARB ( GLenum target , GLint s , GLint t ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2iARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jint s,
-		jint t)
-	{
-
-		if ( disp__glMultiTexCoord2iARB == NULL ) return;
-
-		disp__glMultiTexCoord2iARB (
-			(GLenum) target,
-			(GLint) s,
-			(GLint) t
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord2ivARB ( GLenum target , const GLint * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2ivARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jintArray v)
+		jint arg0,
+		jintArray arg1)
 	{
 		jint *ptr1 = NULL;
 
-		if ( disp__glMultiTexCoord2ivARB == NULL ) return;
+		if ( disp__glWeightivARB == NULL ) return;
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
 		}
-		disp__glMultiTexCoord2ivARB (
-			(GLenum) target,
+		disp__glWeightivARB (
+			(GLint) arg0,
 			(const GLint *) ptr1
 		);
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
 		}
 	}
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glMultiTexCoord2sARB ( GLenum target , GLshort s , GLshort t ) ;
+   extern void glWeightfvARB ( GLint , const GLfloat * ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2sARB (
+	Java_gl4java_GLFuncJauJNI_glWeightfvARB (
 		JNIEnv *env, jobject obj,
-		jint target,
-		jshort s,
-		jshort t)
-	{
-
-		if ( disp__glMultiTexCoord2sARB == NULL ) return;
-
-		disp__glMultiTexCoord2sARB (
-			(GLenum) target,
-			(GLshort) s,
-			(GLshort) t
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord2svARB ( GLenum target , const GLshort * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord2svARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jshortArray v)
-	{
-		jshort *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord2svARB == NULL ) return;
-
-		if(v!=NULL)
-		{
-			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
-		}
-		disp__glMultiTexCoord2svARB (
-			(GLenum) target,
-			(const GLshort *) ptr1
-		);
-
-		if(v!=NULL)
-		{
-			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
-		}
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord3dARB ( GLenum target , GLdouble s , GLdouble t , GLdouble r ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3dARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jdouble s,
-		jdouble t,
-		jdouble r)
-	{
-
-		if ( disp__glMultiTexCoord3dARB == NULL ) return;
-
-		disp__glMultiTexCoord3dARB (
-			(GLenum) target,
-			(GLdouble) s,
-			(GLdouble) t,
-			(GLdouble) r
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord3dvARB ( GLenum target , const GLdouble * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3dvARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jdoubleArray v)
-	{
-		jdouble *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord3dvARB == NULL ) return;
-
-		if(v!=NULL)
-		{
-			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
-		}
-		disp__glMultiTexCoord3dvARB (
-			(GLenum) target,
-			(const GLdouble *) ptr1
-		);
-
-		if(v!=NULL)
-		{
-			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
-		}
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord3fARB ( GLenum target , GLfloat s , GLfloat t , GLfloat r ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3fARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jfloat s,
-		jfloat t,
-		jfloat r)
-	{
-
-		if ( disp__glMultiTexCoord3fARB == NULL ) return;
-
-		disp__glMultiTexCoord3fARB (
-			(GLenum) target,
-			(GLfloat) s,
-			(GLfloat) t,
-			(GLfloat) r
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord3fvARB ( GLenum target , const GLfloat * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3fvARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jfloatArray v)
+		jint arg0,
+		jfloatArray arg1)
 	{
 		jfloat *ptr1 = NULL;
 
-		if ( disp__glMultiTexCoord3fvARB == NULL ) return;
+		if ( disp__glWeightfvARB == NULL ) return;
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
 		}
-		disp__glMultiTexCoord3fvARB (
-			(GLenum) target,
+		disp__glWeightfvARB (
+			(GLint) arg0,
 			(const GLfloat *) ptr1
 		);
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
 		}
 	}
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glMultiTexCoord3iARB ( GLenum target , GLint s , GLint t , GLint r ) ;
+   extern void glWeightdvARB ( GLint , const GLdouble * ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3iARB (
+	Java_gl4java_GLFuncJauJNI_glWeightdvARB (
 		JNIEnv *env, jobject obj,
-		jint target,
-		jint s,
-		jint t,
-		jint r)
-	{
-
-		if ( disp__glMultiTexCoord3iARB == NULL ) return;
-
-		disp__glMultiTexCoord3iARB (
-			(GLenum) target,
-			(GLint) s,
-			(GLint) t,
-			(GLint) r
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord3ivARB ( GLenum target , const GLint * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3ivARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jintArray v)
-	{
-		jint *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord3ivARB == NULL ) return;
-
-		if(v!=NULL)
-		{
-			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
-		}
-		disp__glMultiTexCoord3ivARB (
-			(GLenum) target,
-			(const GLint *) ptr1
-		);
-
-		if(v!=NULL)
-		{
-			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
-		}
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord3sARB ( GLenum target , GLshort s , GLshort t , GLshort r ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3sARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jshort s,
-		jshort t,
-		jshort r)
-	{
-
-		if ( disp__glMultiTexCoord3sARB == NULL ) return;
-
-		disp__glMultiTexCoord3sARB (
-			(GLenum) target,
-			(GLshort) s,
-			(GLshort) t,
-			(GLshort) r
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord3svARB ( GLenum target , const GLshort * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord3svARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jshortArray v)
-	{
-		jshort *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord3svARB == NULL ) return;
-
-		if(v!=NULL)
-		{
-			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
-		}
-		disp__glMultiTexCoord3svARB (
-			(GLenum) target,
-			(const GLshort *) ptr1
-		);
-
-		if(v!=NULL)
-		{
-			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
-		}
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord4dARB ( GLenum target , GLdouble s , GLdouble t , GLdouble r , GLdouble q ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4dARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jdouble s,
-		jdouble t,
-		jdouble r,
-		jdouble q)
-	{
-
-		if ( disp__glMultiTexCoord4dARB == NULL ) return;
-
-		disp__glMultiTexCoord4dARB (
-			(GLenum) target,
-			(GLdouble) s,
-			(GLdouble) t,
-			(GLdouble) r,
-			(GLdouble) q
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord4dvARB ( GLenum target , const GLdouble * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4dvARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jdoubleArray v)
+		jint arg0,
+		jdoubleArray arg1)
 	{
 		jdouble *ptr1 = NULL;
 
-		if ( disp__glMultiTexCoord4dvARB == NULL ) return;
+		if ( disp__glWeightdvARB == NULL ) return;
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			ptr1 = (*env)->GetDoubleArrayElements(env, v, 0);
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
 		}
-		disp__glMultiTexCoord4dvARB (
-			(GLenum) target,
+		disp__glWeightdvARB (
+			(GLint) arg0,
 			(const GLdouble *) ptr1
 		);
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			(*env)->ReleaseDoubleArrayElements(env,  v, ptr1, JNI_ABORT);
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
 		}
 	}
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glMultiTexCoord4fARB ( GLenum target , GLfloat s , GLfloat t , GLfloat r , GLfloat q ) ;
+   extern void glWeightubvARB ( GLint , const GLubyte * ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4fARB (
+	Java_gl4java_GLFuncJauJNI_glWeightubvARB (
 		JNIEnv *env, jobject obj,
-		jint target,
-		jfloat s,
-		jfloat t,
-		jfloat r,
-		jfloat q)
+		jint arg0,
+		jbyteArray arg1)
 	{
+		jbyte *ptr1 = NULL;
 
-		if ( disp__glMultiTexCoord4fARB == NULL ) return;
+		if ( disp__glWeightubvARB == NULL ) return;
 
-		disp__glMultiTexCoord4fARB (
-			(GLenum) target,
-			(GLfloat) s,
-			(GLfloat) t,
-			(GLfloat) r,
-			(GLfloat) q
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord4fvARB ( GLenum target , const GLfloat * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4fvARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jfloatArray v)
-	{
-		jfloat *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord4fvARB == NULL ) return;
-
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			ptr1 = (*env)->GetFloatArrayElements(env, v, 0);
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
 		}
-		disp__glMultiTexCoord4fvARB (
-			(GLenum) target,
-			(const GLfloat *) ptr1
+		disp__glWeightubvARB (
+			(GLint) arg0,
+			(const GLubyte *) ptr1
 		);
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			(*env)->ReleaseFloatArrayElements(env,  v, ptr1, JNI_ABORT);
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
 		}
 	}
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glMultiTexCoord4iARB ( GLenum target , GLint s , GLint t , GLint r , GLint q ) ;
+   extern void glWeightusvARB ( GLint , const GLushort * ) ;
  * </pre> 
  */
 	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4iARB (
+	Java_gl4java_GLFuncJauJNI_glWeightusvARB (
 		JNIEnv *env, jobject obj,
-		jint target,
-		jint s,
-		jint t,
-		jint r,
-		jint q)
-	{
-
-		if ( disp__glMultiTexCoord4iARB == NULL ) return;
-
-		disp__glMultiTexCoord4iARB (
-			(GLenum) target,
-			(GLint) s,
-			(GLint) t,
-			(GLint) r,
-			(GLint) q
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord4ivARB ( GLenum target , const GLint * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4ivARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jintArray v)
-	{
-		jint *ptr1 = NULL;
-
-		if ( disp__glMultiTexCoord4ivARB == NULL ) return;
-
-		if(v!=NULL)
-		{
-			ptr1 = (*env)->GetIntArrayElements(env, v, 0);
-		}
-		disp__glMultiTexCoord4ivARB (
-			(GLenum) target,
-			(const GLint *) ptr1
-		);
-
-		if(v!=NULL)
-		{
-			(*env)->ReleaseIntArrayElements(env,  v, ptr1, JNI_ABORT);
-		}
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord4sARB ( GLenum target , GLshort s , GLshort t , GLshort r , GLshort q ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4sARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jshort s,
-		jshort t,
-		jshort r,
-		jshort q)
-	{
-
-		if ( disp__glMultiTexCoord4sARB == NULL ) return;
-
-		disp__glMultiTexCoord4sARB (
-			(GLenum) target,
-			(GLshort) s,
-			(GLshort) t,
-			(GLshort) r,
-			(GLshort) q
-		);
-
-	}
-
-/**
- * Original Function-Prototype :
- * <pre> 
-   extern void glMultiTexCoord4svARB ( GLenum target , const GLshort * v ) ;
- * </pre> 
- */
-	JNIEXPORT void JNICALL
-	Java_gl4java_GLFuncJauJNI_glMultiTexCoord4svARB (
-		JNIEnv *env, jobject obj,
-		jint target,
-		jshortArray v)
+		jint arg0,
+		jshortArray arg1)
 	{
 		jshort *ptr1 = NULL;
 
-		if ( disp__glMultiTexCoord4svARB == NULL ) return;
+		if ( disp__glWeightusvARB == NULL ) return;
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			ptr1 = (*env)->GetShortArrayElements(env, v, 0);
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
 		}
-		disp__glMultiTexCoord4svARB (
-			(GLenum) target,
-			(const GLshort *) ptr1
+		disp__glWeightusvARB (
+			(GLint) arg0,
+			(const GLushort *) ptr1
 		);
 
-		if(v!=NULL)
+		if(arg1!=NULL)
 		{
-			(*env)->ReleaseShortArrayElements(env,  v, ptr1, JNI_ABORT);
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
 		}
 	}
 
-/* C2J Parser Version 2.2:  Java program parsed successfully. */ 
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightuivARB ( GLint , const GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWeightuivARB (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glWeightuivARB == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glWeightuivARB (
+			(GLint) arg0,
+			(const GLuint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightPointerARB ( GLint , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWeightPointerARB__III_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glWeightPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glWeightPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWeightPointerARB__III_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3)
+	{
+		jshort *ptr3 = NULL;
+
+		if ( disp__glWeightPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glWeightPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWeightPointerARB__III_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3)
+	{
+		jint *ptr3 = NULL;
+
+		if ( disp__glWeightPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glWeightPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWeightPointerARB__III_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glWeightPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glWeightPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWeightPointerARB__III_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glWeightPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glWeightPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWeightPointerARB__III_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3)
+	{
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glWeightPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glWeightPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWeightPointerARB__III_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3)
+	{
+		jlong *ptr3 = NULL;
+
+		if ( disp__glWeightPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glWeightPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexBlendARB ( GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexBlendARB (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glVertexBlendARB == NULL ) return;
+
+		disp__glVertexBlendARB (
+			(GLint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCurrentPaletteMatrixARB ( GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCurrentPaletteMatrixARB (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glCurrentPaletteMatrixARB == NULL ) return;
+
+		disp__glCurrentPaletteMatrixARB (
+			(GLint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMatrixIndexubvARB ( GLint , const GLubyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMatrixIndexubvARB (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyteArray arg1)
+	{
+		jbyte *ptr1 = NULL;
+
+		if ( disp__glMatrixIndexubvARB == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		disp__glMatrixIndexubvARB (
+			(GLint) arg0,
+			(const GLubyte *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMatrixIndexusvARB ( GLint , const GLushort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMatrixIndexusvARB (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glMatrixIndexusvARB == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glMatrixIndexusvARB (
+			(GLint) arg0,
+			(const GLushort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMatrixIndexuivARB ( GLint , const GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMatrixIndexuivARB (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glMatrixIndexuivARB == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glMatrixIndexuivARB (
+			(GLint) arg0,
+			(const GLuint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMatrixIndexPointerARB ( GLint , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMatrixIndexPointerARB__III_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glMatrixIndexPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glMatrixIndexPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMatrixIndexPointerARB__III_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3)
+	{
+		jshort *ptr3 = NULL;
+
+		if ( disp__glMatrixIndexPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glMatrixIndexPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMatrixIndexPointerARB__III_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3)
+	{
+		jint *ptr3 = NULL;
+
+		if ( disp__glMatrixIndexPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glMatrixIndexPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMatrixIndexPointerARB__III_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glMatrixIndexPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glMatrixIndexPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMatrixIndexPointerARB__III_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glMatrixIndexPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glMatrixIndexPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMatrixIndexPointerARB__III_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3)
+	{
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glMatrixIndexPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glMatrixIndexPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMatrixIndexPointerARB__III_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3)
+	{
+		jlong *ptr3 = NULL;
+
+		if ( disp__glMatrixIndexPointerARB == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glMatrixIndexPointerARB (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetTexFilterFuncSGIS ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetTexFilterFuncSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetTexFilterFuncSGIS == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetTexFilterFuncSGIS (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexFilterFuncSGIS ( GLenum , GLenum , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexFilterFuncSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glTexFilterFuncSGIS == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glTexFilterFuncSGIS (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLfloat *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexSubImage1DEXT ( GLenum , GLint , GLint , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage1DEXT__IIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jbyteArray arg6)
+	{
+		jbyte *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetByteArrayElements(env, arg6, 0);
+		}
+		disp__glTexSubImage1DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage1DEXT__IIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jshortArray arg6)
+	{
+		jshort *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetShortArrayElements(env, arg6, 0);
+		}
+		disp__glTexSubImage1DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage1DEXT__IIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jintArray arg6)
+	{
+		jint *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetIntArrayElements(env, arg6, 0);
+		}
+		disp__glTexSubImage1DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage1DEXT__IIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jfloatArray arg6)
+	{
+		jfloat *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetFloatArrayElements(env, arg6, 0);
+		}
+		disp__glTexSubImage1DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage1DEXT__IIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jdoubleArray arg6)
+	{
+		jdouble *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetDoubleArrayElements(env, arg6, 0);
+		}
+		disp__glTexSubImage1DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage1DEXT__IIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jbooleanArray arg6)
+	{
+		jboolean *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetBooleanArrayElements(env, arg6, 0);
+		}
+		disp__glTexSubImage1DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage1DEXT__IIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jlongArray arg6)
+	{
+		jlong *ptr6 = NULL;
+
+		if ( disp__glTexSubImage1DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetLongArrayElements(env, arg6, 0);
+		}
+		disp__glTexSubImage1DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexSubImage2DEXT ( GLenum , GLint , GLint , GLint , GLsizei , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage2DEXT__IIIIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jbyteArray arg8)
+	{
+		jbyte *ptr8 = NULL;
+
+		if ( disp__glTexSubImage2DEXT == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetByteArrayElements(env, arg8, 0);
+		}
+		disp__glTexSubImage2DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLenum) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage2DEXT__IIIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jshortArray arg8)
+	{
+		jshort *ptr8 = NULL;
+
+		if ( disp__glTexSubImage2DEXT == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetShortArrayElements(env, arg8, 0);
+		}
+		disp__glTexSubImage2DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLenum) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage2DEXT__IIIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jintArray arg8)
+	{
+		jint *ptr8 = NULL;
+
+		if ( disp__glTexSubImage2DEXT == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetIntArrayElements(env, arg8, 0);
+		}
+		disp__glTexSubImage2DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLenum) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage2DEXT__IIIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jfloatArray arg8)
+	{
+		jfloat *ptr8 = NULL;
+
+		if ( disp__glTexSubImage2DEXT == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetFloatArrayElements(env, arg8, 0);
+		}
+		disp__glTexSubImage2DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLenum) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage2DEXT__IIIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jdoubleArray arg8)
+	{
+		jdouble *ptr8 = NULL;
+
+		if ( disp__glTexSubImage2DEXT == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetDoubleArrayElements(env, arg8, 0);
+		}
+		disp__glTexSubImage2DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLenum) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage2DEXT__IIIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jbooleanArray arg8)
+	{
+		jboolean *ptr8 = NULL;
+
+		if ( disp__glTexSubImage2DEXT == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetBooleanArrayElements(env, arg8, 0);
+		}
+		disp__glTexSubImage2DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLenum) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage2DEXT__IIIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jlongArray arg8)
+	{
+		jlong *ptr8 = NULL;
+
+		if ( disp__glTexSubImage2DEXT == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetLongArrayElements(env, arg8, 0);
+		}
+		disp__glTexSubImage2DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLenum) arg6,
+			(GLenum) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyTexImage1DEXT ( GLenum , GLint , GLenum , GLint , GLint , GLsizei , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCopyTexImage1DEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6)
+	{
+
+		if ( disp__glCopyTexImage1DEXT == NULL ) return;
+
+		disp__glCopyTexImage1DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(GLint) arg6
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyTexImage2DEXT ( GLenum , GLint , GLenum , GLint , GLint , GLsizei , GLsizei , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCopyTexImage2DEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7)
+	{
+
+		if ( disp__glCopyTexImage2DEXT == NULL ) return;
+
+		disp__glCopyTexImage2DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLint) arg7
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyTexSubImage1DEXT ( GLenum , GLint , GLint , GLint , GLint , GLsizei ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCopyTexSubImage1DEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5)
+	{
+
+		if ( disp__glCopyTexSubImage1DEXT == NULL ) return;
+
+		disp__glCopyTexSubImage1DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLsizei) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyTexSubImage2DEXT ( GLenum , GLint , GLint , GLint , GLint , GLint , GLsizei , GLsizei ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCopyTexSubImage2DEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7)
+	{
+
+		if ( disp__glCopyTexSubImage2DEXT == NULL ) return;
+
+		disp__glCopyTexSubImage2DEXT (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetHistogramEXT ( GLenum , GLboolean , GLenum , GLenum , GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetHistogramEXT__IZII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jbyteArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jbyte *ptr4 = NULL;
+
+		if ( disp__glGetHistogramEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetByteArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetHistogramEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetHistogramEXT__IZII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jshortArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jshort *ptr4 = NULL;
+
+		if ( disp__glGetHistogramEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetShortArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetHistogramEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetHistogramEXT__IZII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jintArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jint *ptr4 = NULL;
+
+		if ( disp__glGetHistogramEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetIntArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetHistogramEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetHistogramEXT__IZII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jfloatArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jfloat *ptr4 = NULL;
+
+		if ( disp__glGetHistogramEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetFloatArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetHistogramEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetHistogramEXT__IZII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jdoubleArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jdouble *ptr4 = NULL;
+
+		if ( disp__glGetHistogramEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetDoubleArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetHistogramEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetHistogramEXT__IZII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jbooleanArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jboolean *ptr4 = NULL;
+
+		if ( disp__glGetHistogramEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetBooleanArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetHistogramEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetHistogramEXT__IZII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jlongArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jlong *ptr4 = NULL;
+
+		if ( disp__glGetHistogramEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetLongArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetHistogramEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetHistogramParameterfvEXT ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetHistogramParameterfvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetHistogramParameterfvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetHistogramParameterfvEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetHistogramParameterivEXT ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetHistogramParameterivEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetHistogramParameterivEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetHistogramParameterivEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMinmaxEXT ( GLenum , GLboolean , GLenum , GLenum , GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMinmaxEXT__IZII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jbyteArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jbyte *ptr4 = NULL;
+
+		if ( disp__glGetMinmaxEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetByteArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetMinmaxEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMinmaxEXT__IZII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jshortArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jshort *ptr4 = NULL;
+
+		if ( disp__glGetMinmaxEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetShortArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetMinmaxEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMinmaxEXT__IZII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jintArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jint *ptr4 = NULL;
+
+		if ( disp__glGetMinmaxEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetIntArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetMinmaxEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMinmaxEXT__IZII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jfloatArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jfloat *ptr4 = NULL;
+
+		if ( disp__glGetMinmaxEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetFloatArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetMinmaxEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMinmaxEXT__IZII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jdoubleArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jdouble *ptr4 = NULL;
+
+		if ( disp__glGetMinmaxEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetDoubleArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetMinmaxEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMinmaxEXT__IZII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jbooleanArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jboolean *ptr4 = NULL;
+
+		if ( disp__glGetMinmaxEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetBooleanArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetMinmaxEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMinmaxEXT__IZII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jboolean arg1,
+		jint arg2,
+		jint arg3,
+		jlongArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jlong *ptr4 = NULL;
+
+		if ( disp__glGetMinmaxEXT == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetLongArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetMinmaxEXT (
+			(GLenum) arg0,
+			(GLboolean) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMinmaxParameterfvEXT ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMinmaxParameterfvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetMinmaxParameterfvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetMinmaxParameterfvEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMinmaxParameterivEXT ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMinmaxParameterivEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetMinmaxParameterivEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetMinmaxParameterivEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glHistogramEXT ( GLenum , GLsizei , GLenum , GLboolean ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glHistogramEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jboolean arg3)
+	{
+
+		if ( disp__glHistogramEXT == NULL ) return;
+
+		disp__glHistogramEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(GLenum) arg2,
+			(GLboolean) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMinmaxEXT ( GLenum , GLenum , GLboolean ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMinmaxEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jboolean arg2)
+	{
+
+		if ( disp__glMinmaxEXT == NULL ) return;
+
+		disp__glMinmaxEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLboolean) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glResetHistogramEXT ( GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glResetHistogramEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glResetHistogramEXT == NULL ) return;
+
+		disp__glResetHistogramEXT (
+			(GLenum) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glResetMinmaxEXT ( GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glResetMinmaxEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glResetMinmaxEXT == NULL ) return;
+
+		disp__glResetMinmaxEXT (
+			(GLenum) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionFilter1DEXT ( GLenum , GLenum , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter1DEXT__IIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jbyteArray arg5)
+	{
+		jbyte *ptr5 = NULL;
+
+		if ( disp__glConvolutionFilter1DEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetByteArrayElements(env, arg5, 0);
+		}
+		disp__glConvolutionFilter1DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter1DEXT__IIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jshortArray arg5)
+	{
+		jshort *ptr5 = NULL;
+
+		if ( disp__glConvolutionFilter1DEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetShortArrayElements(env, arg5, 0);
+		}
+		disp__glConvolutionFilter1DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter1DEXT__IIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jintArray arg5)
+	{
+		jint *ptr5 = NULL;
+
+		if ( disp__glConvolutionFilter1DEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetIntArrayElements(env, arg5, 0);
+		}
+		disp__glConvolutionFilter1DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter1DEXT__IIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jfloatArray arg5)
+	{
+		jfloat *ptr5 = NULL;
+
+		if ( disp__glConvolutionFilter1DEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetFloatArrayElements(env, arg5, 0);
+		}
+		disp__glConvolutionFilter1DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter1DEXT__IIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jdoubleArray arg5)
+	{
+		jdouble *ptr5 = NULL;
+
+		if ( disp__glConvolutionFilter1DEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetDoubleArrayElements(env, arg5, 0);
+		}
+		disp__glConvolutionFilter1DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter1DEXT__IIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jbooleanArray arg5)
+	{
+		jboolean *ptr5 = NULL;
+
+		if ( disp__glConvolutionFilter1DEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetBooleanArrayElements(env, arg5, 0);
+		}
+		disp__glConvolutionFilter1DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter1DEXT__IIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jlongArray arg5)
+	{
+		jlong *ptr5 = NULL;
+
+		if ( disp__glConvolutionFilter1DEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetLongArrayElements(env, arg5, 0);
+		}
+		disp__glConvolutionFilter1DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionFilter2DEXT ( GLenum , GLenum , GLsizei , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter2DEXT__IIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jbyteArray arg6)
+	{
+		jbyte *ptr6 = NULL;
+
+		if ( disp__glConvolutionFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetByteArrayElements(env, arg6, 0);
+		}
+		disp__glConvolutionFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter2DEXT__IIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jshortArray arg6)
+	{
+		jshort *ptr6 = NULL;
+
+		if ( disp__glConvolutionFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetShortArrayElements(env, arg6, 0);
+		}
+		disp__glConvolutionFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter2DEXT__IIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jintArray arg6)
+	{
+		jint *ptr6 = NULL;
+
+		if ( disp__glConvolutionFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetIntArrayElements(env, arg6, 0);
+		}
+		disp__glConvolutionFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter2DEXT__IIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jfloatArray arg6)
+	{
+		jfloat *ptr6 = NULL;
+
+		if ( disp__glConvolutionFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetFloatArrayElements(env, arg6, 0);
+		}
+		disp__glConvolutionFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter2DEXT__IIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jdoubleArray arg6)
+	{
+		jdouble *ptr6 = NULL;
+
+		if ( disp__glConvolutionFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetDoubleArrayElements(env, arg6, 0);
+		}
+		disp__glConvolutionFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter2DEXT__IIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jbooleanArray arg6)
+	{
+		jboolean *ptr6 = NULL;
+
+		if ( disp__glConvolutionFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetBooleanArrayElements(env, arg6, 0);
+		}
+		disp__glConvolutionFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionFilter2DEXT__IIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jlongArray arg6)
+	{
+		jlong *ptr6 = NULL;
+
+		if ( disp__glConvolutionFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetLongArrayElements(env, arg6, 0);
+		}
+		disp__glConvolutionFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionParameterfEXT ( GLenum , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionParameterfEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glConvolutionParameterfEXT == NULL ) return;
+
+		disp__glConvolutionParameterfEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionParameterfvEXT ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionParameterfvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glConvolutionParameterfvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glConvolutionParameterfvEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionParameteriEXT ( GLenum , GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionParameteriEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glConvolutionParameteriEXT == NULL ) return;
+
+		disp__glConvolutionParameteriEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionParameterivEXT ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glConvolutionParameterivEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glConvolutionParameterivEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glConvolutionParameterivEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyConvolutionFilter1DEXT ( GLenum , GLenum , GLint , GLint , GLsizei ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCopyConvolutionFilter1DEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4)
+	{
+
+		if ( disp__glCopyConvolutionFilter1DEXT == NULL ) return;
+
+		disp__glCopyConvolutionFilter1DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyConvolutionFilter2DEXT ( GLenum , GLenum , GLint , GLint , GLsizei , GLsizei ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCopyConvolutionFilter2DEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5)
+	{
+
+		if ( disp__glCopyConvolutionFilter2DEXT == NULL ) return;
+
+		disp__glCopyConvolutionFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetConvolutionFilterEXT ( GLenum , GLenum , GLenum , GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetConvolutionFilterEXT__III_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glGetConvolutionFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetConvolutionFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetConvolutionFilterEXT__III_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jshort *ptr3 = NULL;
+
+		if ( disp__glGetConvolutionFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetConvolutionFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetConvolutionFilterEXT__III_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jint *ptr3 = NULL;
+
+		if ( disp__glGetConvolutionFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetConvolutionFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetConvolutionFilterEXT__III_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glGetConvolutionFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetConvolutionFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetConvolutionFilterEXT__III_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glGetConvolutionFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetConvolutionFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetConvolutionFilterEXT__III_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glGetConvolutionFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetConvolutionFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetConvolutionFilterEXT__III_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jlong *ptr3 = NULL;
+
+		if ( disp__glGetConvolutionFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetConvolutionFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetConvolutionParameterfvEXT ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetConvolutionParameterfvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetConvolutionParameterfvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetConvolutionParameterfvEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetConvolutionParameterivEXT ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetConvolutionParameterivEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetConvolutionParameterivEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetConvolutionParameterivEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetSeparableFilterEXT ( GLenum , GLenum , GLenum , GLvoid * , GLvoid * , GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetSeparableFilterEXT__III_3B_3B_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3,
+		jbyteArray arg4,
+		jbyteArray arg5)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jbyte *ptr3 = NULL;
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jbyte *ptr4 = NULL;
+		jboolean isCopiedArray5 = JNI_FALSE;
+		jbyte *ptr5 = NULL;
+
+		if ( disp__glGetSeparableFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, &isCopiedArray3);
+		}
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetByteArrayElements(env, arg4, &isCopiedArray4);
+		}
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetByteArrayElements(env, arg5, &isCopiedArray5);
+		}
+		disp__glGetSeparableFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3,
+			(GLvoid *) ptr4,
+			(GLvoid *) ptr5
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg5, ptr5, (isCopiedArray5 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetSeparableFilterEXT__III_3S_3S_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3,
+		jshortArray arg4,
+		jshortArray arg5)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jshort *ptr3 = NULL;
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jshort *ptr4 = NULL;
+		jboolean isCopiedArray5 = JNI_FALSE;
+		jshort *ptr5 = NULL;
+
+		if ( disp__glGetSeparableFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, &isCopiedArray3);
+		}
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetShortArrayElements(env, arg4, &isCopiedArray4);
+		}
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetShortArrayElements(env, arg5, &isCopiedArray5);
+		}
+		disp__glGetSeparableFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3,
+			(GLvoid *) ptr4,
+			(GLvoid *) ptr5
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg5, ptr5, (isCopiedArray5 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetSeparableFilterEXT__III_3I_3I_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3,
+		jintArray arg4,
+		jintArray arg5)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jint *ptr3 = NULL;
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jint *ptr4 = NULL;
+		jboolean isCopiedArray5 = JNI_FALSE;
+		jint *ptr5 = NULL;
+
+		if ( disp__glGetSeparableFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, &isCopiedArray3);
+		}
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetIntArrayElements(env, arg4, &isCopiedArray4);
+		}
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetIntArrayElements(env, arg5, &isCopiedArray5);
+		}
+		disp__glGetSeparableFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3,
+			(GLvoid *) ptr4,
+			(GLvoid *) ptr5
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg5, ptr5, (isCopiedArray5 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetSeparableFilterEXT__III_3F_3F_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3,
+		jfloatArray arg4,
+		jfloatArray arg5)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jfloat *ptr3 = NULL;
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jfloat *ptr4 = NULL;
+		jboolean isCopiedArray5 = JNI_FALSE;
+		jfloat *ptr5 = NULL;
+
+		if ( disp__glGetSeparableFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, &isCopiedArray3);
+		}
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetFloatArrayElements(env, arg4, &isCopiedArray4);
+		}
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetFloatArrayElements(env, arg5, &isCopiedArray5);
+		}
+		disp__glGetSeparableFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3,
+			(GLvoid *) ptr4,
+			(GLvoid *) ptr5
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg5, ptr5, (isCopiedArray5 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetSeparableFilterEXT__III_3D_3D_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3,
+		jdoubleArray arg4,
+		jdoubleArray arg5)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jdouble *ptr3 = NULL;
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jdouble *ptr4 = NULL;
+		jboolean isCopiedArray5 = JNI_FALSE;
+		jdouble *ptr5 = NULL;
+
+		if ( disp__glGetSeparableFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, &isCopiedArray3);
+		}
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetDoubleArrayElements(env, arg4, &isCopiedArray4);
+		}
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetDoubleArrayElements(env, arg5, &isCopiedArray5);
+		}
+		disp__glGetSeparableFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3,
+			(GLvoid *) ptr4,
+			(GLvoid *) ptr5
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg5, ptr5, (isCopiedArray5 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetSeparableFilterEXT__III_3Z_3Z_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3,
+		jbooleanArray arg4,
+		jbooleanArray arg5)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jboolean *ptr3 = NULL;
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jboolean *ptr4 = NULL;
+		jboolean isCopiedArray5 = JNI_FALSE;
+		jboolean *ptr5 = NULL;
+
+		if ( disp__glGetSeparableFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, &isCopiedArray3);
+		}
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetBooleanArrayElements(env, arg4, &isCopiedArray4);
+		}
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetBooleanArrayElements(env, arg5, &isCopiedArray5);
+		}
+		disp__glGetSeparableFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3,
+			(GLvoid *) ptr4,
+			(GLvoid *) ptr5
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg5, ptr5, (isCopiedArray5 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetSeparableFilterEXT__III_3J_3J_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3,
+		jlongArray arg4,
+		jlongArray arg5)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jlong *ptr3 = NULL;
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jlong *ptr4 = NULL;
+		jboolean isCopiedArray5 = JNI_FALSE;
+		jlong *ptr5 = NULL;
+
+		if ( disp__glGetSeparableFilterEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, &isCopiedArray3);
+		}
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetLongArrayElements(env, arg4, &isCopiedArray4);
+		}
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetLongArrayElements(env, arg5, &isCopiedArray5);
+		}
+		disp__glGetSeparableFilterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3,
+			(GLvoid *) ptr4,
+			(GLvoid *) ptr5
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg5, ptr5, (isCopiedArray5 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSeparableFilter2DEXT ( GLenum , GLenum , GLsizei , GLsizei , GLenum , GLenum , const GLvoid * , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSeparableFilter2DEXT__IIIIII_3B_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jbyteArray arg6,
+		jbyteArray arg7)
+	{
+		jbyte *ptr6 = NULL;
+		jbyte *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetByteArrayElements(env, arg6, 0);
+		}
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetByteArrayElements(env, arg7, 0);
+		}
+		disp__glSeparableFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSeparableFilter2DEXT__IIIIII_3S_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jshortArray arg6,
+		jshortArray arg7)
+	{
+		jshort *ptr6 = NULL;
+		jshort *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetShortArrayElements(env, arg6, 0);
+		}
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetShortArrayElements(env, arg7, 0);
+		}
+		disp__glSeparableFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSeparableFilter2DEXT__IIIIII_3I_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jintArray arg6,
+		jintArray arg7)
+	{
+		jint *ptr6 = NULL;
+		jint *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetIntArrayElements(env, arg6, 0);
+		}
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetIntArrayElements(env, arg7, 0);
+		}
+		disp__glSeparableFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSeparableFilter2DEXT__IIIIII_3F_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jfloatArray arg6,
+		jfloatArray arg7)
+	{
+		jfloat *ptr6 = NULL;
+		jfloat *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetFloatArrayElements(env, arg6, 0);
+		}
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetFloatArrayElements(env, arg7, 0);
+		}
+		disp__glSeparableFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSeparableFilter2DEXT__IIIIII_3D_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jdoubleArray arg6,
+		jdoubleArray arg7)
+	{
+		jdouble *ptr6 = NULL;
+		jdouble *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetDoubleArrayElements(env, arg6, 0);
+		}
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetDoubleArrayElements(env, arg7, 0);
+		}
+		disp__glSeparableFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSeparableFilter2DEXT__IIIIII_3Z_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jbooleanArray arg6,
+		jbooleanArray arg7)
+	{
+		jboolean *ptr6 = NULL;
+		jboolean *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetBooleanArrayElements(env, arg6, 0);
+		}
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetBooleanArrayElements(env, arg7, 0);
+		}
+		disp__glSeparableFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSeparableFilter2DEXT__IIIIII_3J_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jlongArray arg6,
+		jlongArray arg7)
+	{
+		jlong *ptr6 = NULL;
+		jlong *ptr7 = NULL;
+
+		if ( disp__glSeparableFilter2DEXT == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetLongArrayElements(env, arg6, 0);
+		}
+		if(arg7!=NULL)
+		{
+			ptr7 = (*env)->GetLongArrayElements(env, arg7, 0);
+		}
+		disp__glSeparableFilter2DEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(const GLvoid *) ptr6,
+			(const GLvoid *) ptr7
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg6, ptr6, JNI_ABORT);
+		}
+		if(arg7!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg7, ptr7, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorTableSGI ( GLenum , GLenum , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorTableSGI__IIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jbyteArray arg5)
+	{
+		jbyte *ptr5 = NULL;
+
+		if ( disp__glColorTableSGI == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetByteArrayElements(env, arg5, 0);
+		}
+		disp__glColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorTableSGI__IIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jshortArray arg5)
+	{
+		jshort *ptr5 = NULL;
+
+		if ( disp__glColorTableSGI == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetShortArrayElements(env, arg5, 0);
+		}
+		disp__glColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorTableSGI__IIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jintArray arg5)
+	{
+		jint *ptr5 = NULL;
+
+		if ( disp__glColorTableSGI == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetIntArrayElements(env, arg5, 0);
+		}
+		disp__glColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorTableSGI__IIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jfloatArray arg5)
+	{
+		jfloat *ptr5 = NULL;
+
+		if ( disp__glColorTableSGI == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetFloatArrayElements(env, arg5, 0);
+		}
+		disp__glColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorTableSGI__IIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jdoubleArray arg5)
+	{
+		jdouble *ptr5 = NULL;
+
+		if ( disp__glColorTableSGI == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetDoubleArrayElements(env, arg5, 0);
+		}
+		disp__glColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorTableSGI__IIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jbooleanArray arg5)
+	{
+		jboolean *ptr5 = NULL;
+
+		if ( disp__glColorTableSGI == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetBooleanArrayElements(env, arg5, 0);
+		}
+		disp__glColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorTableSGI__IIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jlongArray arg5)
+	{
+		jlong *ptr5 = NULL;
+
+		if ( disp__glColorTableSGI == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetLongArrayElements(env, arg5, 0);
+		}
+		disp__glColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorTableParameterfvSGI ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorTableParameterfvSGI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glColorTableParameterfvSGI == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glColorTableParameterfvSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorTableParameterivSGI ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorTableParameterivSGI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glColorTableParameterivSGI == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glColorTableParameterivSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyColorTableSGI ( GLenum , GLenum , GLint , GLint , GLsizei ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCopyColorTableSGI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4)
+	{
+
+		if ( disp__glCopyColorTableSGI == NULL ) return;
+
+		disp__glCopyColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetColorTableSGI ( GLenum , GLenum , GLenum , GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetColorTableSGI__III_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glGetColorTableSGI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetColorTableSGI__III_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jshort *ptr3 = NULL;
+
+		if ( disp__glGetColorTableSGI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetColorTableSGI__III_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jint *ptr3 = NULL;
+
+		if ( disp__glGetColorTableSGI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetColorTableSGI__III_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glGetColorTableSGI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetColorTableSGI__III_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glGetColorTableSGI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetColorTableSGI__III_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glGetColorTableSGI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetColorTableSGI__III_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jlong *ptr3 = NULL;
+
+		if ( disp__glGetColorTableSGI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetColorTableSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetColorTableParameterfvSGI ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetColorTableParameterfvSGI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetColorTableParameterfvSGI == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetColorTableParameterfvSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetColorTableParameterivSGI ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetColorTableParameterivSGI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetColorTableParameterivSGI == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetColorTableParameterivSGI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTexGenSGIX ( GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPixelTexGenSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glPixelTexGenSGIX == NULL ) return;
+
+		disp__glPixelTexGenSGIX (
+			(GLenum) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTexGenParameteriSGIS ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPixelTexGenParameteriSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glPixelTexGenParameteriSGIS == NULL ) return;
+
+		disp__glPixelTexGenParameteriSGIS (
+			(GLenum) arg0,
+			(GLint) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTexGenParameterivSGIS ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPixelTexGenParameterivSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glPixelTexGenParameterivSGIS == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glPixelTexGenParameterivSGIS (
+			(GLenum) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTexGenParameterfSGIS ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPixelTexGenParameterfSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1)
+	{
+
+		if ( disp__glPixelTexGenParameterfSGIS == NULL ) return;
+
+		disp__glPixelTexGenParameterfSGIS (
+			(GLenum) arg0,
+			(GLfloat) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTexGenParameterfvSGIS ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPixelTexGenParameterfvSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glPixelTexGenParameterfvSGIS == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glPixelTexGenParameterfvSGIS (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetPixelTexGenParameterivSGIS ( GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetPixelTexGenParameterivSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jint *ptr1 = NULL;
+
+		if ( disp__glGetPixelTexGenParameterivSGIS == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glGetPixelTexGenParameterivSGIS (
+			(GLenum) arg0,
+			(GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetPixelTexGenParameterfvSGIS ( GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetPixelTexGenParameterfvSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glGetPixelTexGenParameterfvSGIS == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glGetPixelTexGenParameterfvSGIS (
+			(GLenum) arg0,
+			(GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexImage4DSGIS ( GLenum , GLint , GLenum , GLsizei , GLsizei , GLsizei , GLsizei , GLint , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexImage4DSGIS__IIIIIIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jbyteArray arg10)
+	{
+		jbyte *ptr10 = NULL;
+
+		if ( disp__glTexImage4DSGIS == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetByteArrayElements(env, arg10, 0);
+		}
+		disp__glTexImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLint) arg7,
+			(GLenum) arg8,
+			(GLenum) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexImage4DSGIS__IIIIIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jshortArray arg10)
+	{
+		jshort *ptr10 = NULL;
+
+		if ( disp__glTexImage4DSGIS == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetShortArrayElements(env, arg10, 0);
+		}
+		disp__glTexImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLint) arg7,
+			(GLenum) arg8,
+			(GLenum) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexImage4DSGIS__IIIIIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jintArray arg10)
+	{
+		jint *ptr10 = NULL;
+
+		if ( disp__glTexImage4DSGIS == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetIntArrayElements(env, arg10, 0);
+		}
+		disp__glTexImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLint) arg7,
+			(GLenum) arg8,
+			(GLenum) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexImage4DSGIS__IIIIIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jfloatArray arg10)
+	{
+		jfloat *ptr10 = NULL;
+
+		if ( disp__glTexImage4DSGIS == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetFloatArrayElements(env, arg10, 0);
+		}
+		disp__glTexImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLint) arg7,
+			(GLenum) arg8,
+			(GLenum) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexImage4DSGIS__IIIIIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jdoubleArray arg10)
+	{
+		jdouble *ptr10 = NULL;
+
+		if ( disp__glTexImage4DSGIS == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetDoubleArrayElements(env, arg10, 0);
+		}
+		disp__glTexImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLint) arg7,
+			(GLenum) arg8,
+			(GLenum) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexImage4DSGIS__IIIIIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jbooleanArray arg10)
+	{
+		jboolean *ptr10 = NULL;
+
+		if ( disp__glTexImage4DSGIS == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetBooleanArrayElements(env, arg10, 0);
+		}
+		disp__glTexImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLint) arg7,
+			(GLenum) arg8,
+			(GLenum) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexImage4DSGIS__IIIIIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jlongArray arg10)
+	{
+		jlong *ptr10 = NULL;
+
+		if ( disp__glTexImage4DSGIS == NULL ) return;
+
+		if(arg10!=NULL)
+		{
+			ptr10 = (*env)->GetLongArrayElements(env, arg10, 0);
+		}
+		disp__glTexImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLsizei) arg5,
+			(GLsizei) arg6,
+			(GLint) arg7,
+			(GLenum) arg8,
+			(GLenum) arg9,
+			(const GLvoid *) ptr10
+		);
+
+		if(arg10!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg10, ptr10, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexSubImage4DSGIS ( GLenum , GLint , GLint , GLint , GLint , GLint , GLsizei , GLsizei , GLsizei , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage4DSGIS__IIIIIIIIIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jint arg10,
+		jint arg11,
+		jbyteArray arg12)
+	{
+		jbyte *ptr12 = NULL;
+
+		if ( disp__glTexSubImage4DSGIS == NULL ) return;
+
+		if(arg12!=NULL)
+		{
+			ptr12 = (*env)->GetByteArrayElements(env, arg12, 0);
+		}
+		disp__glTexSubImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLsizei) arg8,
+			(GLsizei) arg9,
+			(GLenum) arg10,
+			(GLenum) arg11,
+			(const GLvoid *) ptr12
+		);
+
+		if(arg12!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg12, ptr12, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage4DSGIS__IIIIIIIIIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jint arg10,
+		jint arg11,
+		jshortArray arg12)
+	{
+		jshort *ptr12 = NULL;
+
+		if ( disp__glTexSubImage4DSGIS == NULL ) return;
+
+		if(arg12!=NULL)
+		{
+			ptr12 = (*env)->GetShortArrayElements(env, arg12, 0);
+		}
+		disp__glTexSubImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLsizei) arg8,
+			(GLsizei) arg9,
+			(GLenum) arg10,
+			(GLenum) arg11,
+			(const GLvoid *) ptr12
+		);
+
+		if(arg12!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg12, ptr12, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage4DSGIS__IIIIIIIIIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jint arg10,
+		jint arg11,
+		jintArray arg12)
+	{
+		jint *ptr12 = NULL;
+
+		if ( disp__glTexSubImage4DSGIS == NULL ) return;
+
+		if(arg12!=NULL)
+		{
+			ptr12 = (*env)->GetIntArrayElements(env, arg12, 0);
+		}
+		disp__glTexSubImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLsizei) arg8,
+			(GLsizei) arg9,
+			(GLenum) arg10,
+			(GLenum) arg11,
+			(const GLvoid *) ptr12
+		);
+
+		if(arg12!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg12, ptr12, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage4DSGIS__IIIIIIIIIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jint arg10,
+		jint arg11,
+		jfloatArray arg12)
+	{
+		jfloat *ptr12 = NULL;
+
+		if ( disp__glTexSubImage4DSGIS == NULL ) return;
+
+		if(arg12!=NULL)
+		{
+			ptr12 = (*env)->GetFloatArrayElements(env, arg12, 0);
+		}
+		disp__glTexSubImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLsizei) arg8,
+			(GLsizei) arg9,
+			(GLenum) arg10,
+			(GLenum) arg11,
+			(const GLvoid *) ptr12
+		);
+
+		if(arg12!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg12, ptr12, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage4DSGIS__IIIIIIIIIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jint arg10,
+		jint arg11,
+		jdoubleArray arg12)
+	{
+		jdouble *ptr12 = NULL;
+
+		if ( disp__glTexSubImage4DSGIS == NULL ) return;
+
+		if(arg12!=NULL)
+		{
+			ptr12 = (*env)->GetDoubleArrayElements(env, arg12, 0);
+		}
+		disp__glTexSubImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLsizei) arg8,
+			(GLsizei) arg9,
+			(GLenum) arg10,
+			(GLenum) arg11,
+			(const GLvoid *) ptr12
+		);
+
+		if(arg12!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg12, ptr12, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage4DSGIS__IIIIIIIIIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jint arg10,
+		jint arg11,
+		jbooleanArray arg12)
+	{
+		jboolean *ptr12 = NULL;
+
+		if ( disp__glTexSubImage4DSGIS == NULL ) return;
+
+		if(arg12!=NULL)
+		{
+			ptr12 = (*env)->GetBooleanArrayElements(env, arg12, 0);
+		}
+		disp__glTexSubImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLsizei) arg8,
+			(GLsizei) arg9,
+			(GLenum) arg10,
+			(GLenum) arg11,
+			(const GLvoid *) ptr12
+		);
+
+		if(arg12!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg12, ptr12, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexSubImage4DSGIS__IIIIIIIIIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jint arg10,
+		jint arg11,
+		jlongArray arg12)
+	{
+		jlong *ptr12 = NULL;
+
+		if ( disp__glTexSubImage4DSGIS == NULL ) return;
+
+		if(arg12!=NULL)
+		{
+			ptr12 = (*env)->GetLongArrayElements(env, arg12, 0);
+		}
+		disp__glTexSubImage4DSGIS (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLint) arg5,
+			(GLsizei) arg6,
+			(GLsizei) arg7,
+			(GLsizei) arg8,
+			(GLsizei) arg9,
+			(GLenum) arg10,
+			(GLenum) arg11,
+			(const GLvoid *) ptr12
+		);
+
+		if(arg12!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg12, ptr12, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDetailTexFuncSGIS ( GLenum , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDetailTexFuncSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glDetailTexFuncSGIS == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glDetailTexFuncSGIS (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetDetailTexFuncSGIS ( GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetDetailTexFuncSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glGetDetailTexFuncSGIS == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glGetDetailTexFuncSGIS (
+			(GLenum) arg0,
+			(GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSharpenTexFuncSGIS ( GLenum , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSharpenTexFuncSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glSharpenTexFuncSGIS == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glSharpenTexFuncSGIS (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetSharpenTexFuncSGIS ( GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetSharpenTexFuncSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glGetSharpenTexFuncSGIS == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glGetSharpenTexFuncSGIS (
+			(GLenum) arg0,
+			(GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSampleMaskSGIS ( GLclampf , GLboolean ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSampleMaskSGIS (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jboolean arg1)
+	{
+
+		if ( disp__glSampleMaskSGIS == NULL ) return;
+
+		disp__glSampleMaskSGIS (
+			(GLclampf) arg0,
+			(GLboolean) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSamplePatternSGIS ( GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSamplePatternSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glSamplePatternSGIS == NULL ) return;
+
+		disp__glSamplePatternSGIS (
+			(GLenum) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSpriteParameterfSGIX ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSpriteParameterfSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1)
+	{
+
+		if ( disp__glSpriteParameterfSGIX == NULL ) return;
+
+		disp__glSpriteParameterfSGIX (
+			(GLenum) arg0,
+			(GLfloat) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSpriteParameterfvSGIX ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSpriteParameterfvSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glSpriteParameterfvSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glSpriteParameterfvSGIX (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSpriteParameteriSGIX ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSpriteParameteriSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glSpriteParameteriSGIX == NULL ) return;
+
+		disp__glSpriteParameteriSGIX (
+			(GLenum) arg0,
+			(GLint) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSpriteParameterivSGIX ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSpriteParameterivSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glSpriteParameterivSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glSpriteParameterivSGIX (
+			(GLenum) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPointParameterfARB ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPointParameterfARB (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1)
+	{
+
+		if ( disp__glPointParameterfARB == NULL ) return;
+
+		disp__glPointParameterfARB (
+			(GLenum) arg0,
+			(GLfloat) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPointParameterfvARB ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPointParameterfvARB (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glPointParameterfvARB == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glPointParameterfvARB (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint glGetInstrumentsSGIX ( void ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetInstrumentsSGIX (
+		JNIEnv *env, jobject obj)
+	{
+		jint ret;
+
+
+		if ( disp__glGetInstrumentsSGIX == NULL ) return 0;
+
+		ret = (jint) disp__glGetInstrumentsSGIX (
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glInstrumentsBufferSGIX ( GLsizei , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glInstrumentsBufferSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jint *ptr1 = NULL;
+
+		if ( disp__glInstrumentsBufferSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glInstrumentsBufferSGIX (
+			(GLsizei) arg0,
+			(GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint glPollInstrumentsSGIX ( GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glPollInstrumentsSGIX (
+		JNIEnv *env, jobject obj,
+		jintArray arg0)
+	{
+		jint ret;
+
+		jboolean isCopiedArray0 = JNI_FALSE;
+		jint *ptr0 = NULL;
+
+		if ( disp__glPollInstrumentsSGIX == NULL ) return 0;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, &isCopiedArray0);
+		}
+		ret = (jint) disp__glPollInstrumentsSGIX (
+			(GLint *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, (isCopiedArray0 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReadInstrumentsSGIX ( GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReadInstrumentsSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glReadInstrumentsSGIX == NULL ) return;
+
+		disp__glReadInstrumentsSGIX (
+			(GLint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glStartInstrumentsSGIX ( void ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glStartInstrumentsSGIX (
+		JNIEnv *env, jobject obj)
+	{
+
+		if ( disp__glStartInstrumentsSGIX == NULL ) return;
+
+		disp__glStartInstrumentsSGIX (
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glStopInstrumentsSGIX ( GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glStopInstrumentsSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glStopInstrumentsSGIX == NULL ) return;
+
+		disp__glStopInstrumentsSGIX (
+			(GLint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFrameZoomSGIX ( GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFrameZoomSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glFrameZoomSGIX == NULL ) return;
+
+		disp__glFrameZoomSGIX (
+			(GLint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTagSampleBufferSGIX ( void ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTagSampleBufferSGIX (
+		JNIEnv *env, jobject obj)
+	{
+
+		if ( disp__glTagSampleBufferSGIX == NULL ) return;
+
+		disp__glTagSampleBufferSGIX (
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeformationMap3dSGIX ( GLenum , GLdouble , GLdouble , GLint , GLint , GLdouble , GLdouble , GLint , GLint , GLdouble , GLdouble , GLint , GLint , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDeformationMap3dSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdouble arg1,
+		jdouble arg2,
+		jint arg3,
+		jint arg4,
+		jdouble arg5,
+		jdouble arg6,
+		jint arg7,
+		jint arg8,
+		jdouble arg9,
+		jdouble arg10,
+		jint arg11,
+		jint arg12,
+		jdoubleArray arg13)
+	{
+		jdouble *ptr13 = NULL;
+
+		if ( disp__glDeformationMap3dSGIX == NULL ) return;
+
+		if(arg13!=NULL)
+		{
+			ptr13 = (*env)->GetDoubleArrayElements(env, arg13, 0);
+		}
+		disp__glDeformationMap3dSGIX (
+			(GLenum) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLdouble) arg5,
+			(GLdouble) arg6,
+			(GLint) arg7,
+			(GLint) arg8,
+			(GLdouble) arg9,
+			(GLdouble) arg10,
+			(GLint) arg11,
+			(GLint) arg12,
+			(const GLdouble *) ptr13
+		);
+
+		if(arg13!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg13, ptr13, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeformationMap3fSGIX ( GLenum , GLfloat , GLfloat , GLint , GLint , GLfloat , GLfloat , GLint , GLint , GLfloat , GLfloat , GLint , GLint , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDeformationMap3fSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jint arg3,
+		jint arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jint arg7,
+		jint arg8,
+		jfloat arg9,
+		jfloat arg10,
+		jint arg11,
+		jint arg12,
+		jfloatArray arg13)
+	{
+		jfloat *ptr13 = NULL;
+
+		if ( disp__glDeformationMap3fSGIX == NULL ) return;
+
+		if(arg13!=NULL)
+		{
+			ptr13 = (*env)->GetFloatArrayElements(env, arg13, 0);
+		}
+		disp__glDeformationMap3fSGIX (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLint) arg3,
+			(GLint) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLint) arg7,
+			(GLint) arg8,
+			(GLfloat) arg9,
+			(GLfloat) arg10,
+			(GLint) arg11,
+			(GLint) arg12,
+			(const GLfloat *) ptr13
+		);
+
+		if(arg13!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg13, ptr13, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeformSGIX ( GLbitfield ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDeformSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glDeformSGIX == NULL ) return;
+
+		disp__glDeformSGIX (
+			(GLbitfield) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLoadIdentityDeformationMapSGIX ( GLbitfield ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glLoadIdentityDeformationMapSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glLoadIdentityDeformationMapSGIX == NULL ) return;
+
+		disp__glLoadIdentityDeformationMapSGIX (
+			(GLbitfield) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReferencePlaneSGIX ( const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReferencePlaneSGIX (
+		JNIEnv *env, jobject obj,
+		jdoubleArray arg0)
+	{
+		jdouble *ptr0 = NULL;
+
+		if ( disp__glReferencePlaneSGIX == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetDoubleArrayElements(env, arg0, 0);
+		}
+		disp__glReferencePlaneSGIX (
+			(const GLdouble *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFlushRasterSGIX ( void ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFlushRasterSGIX (
+		JNIEnv *env, jobject obj)
+	{
+
+		if ( disp__glFlushRasterSGIX == NULL ) return;
+
+		disp__glFlushRasterSGIX (
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogFuncSGIS ( GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogFuncSGIS (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glFogFuncSGIS == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glFogFuncSGIS (
+			(GLsizei) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFogFuncSGIS ( GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetFogFuncSGIS (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0)
+	{
+		jboolean isCopiedArray0 = JNI_FALSE;
+		jfloat *ptr0 = NULL;
+
+		if ( disp__glGetFogFuncSGIS == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, &isCopiedArray0);
+		}
+		disp__glGetFogFuncSGIS (
+			(GLfloat *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, (isCopiedArray0 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glImageTransformParameteriHP ( GLenum , GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glImageTransformParameteriHP (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glImageTransformParameteriHP == NULL ) return;
+
+		disp__glImageTransformParameteriHP (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glImageTransformParameterfHP ( GLenum , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glImageTransformParameterfHP (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glImageTransformParameterfHP == NULL ) return;
+
+		disp__glImageTransformParameterfHP (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glImageTransformParameterivHP ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glImageTransformParameterivHP (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glImageTransformParameterivHP == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glImageTransformParameterivHP (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glImageTransformParameterfvHP ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glImageTransformParameterfvHP (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glImageTransformParameterfvHP == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glImageTransformParameterfvHP (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetImageTransformParameterivHP ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetImageTransformParameterivHP (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetImageTransformParameterivHP == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetImageTransformParameterivHP (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetImageTransformParameterfvHP ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetImageTransformParameterfvHP (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetImageTransformParameterfvHP == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetImageTransformParameterfvHP (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyColorSubTableEXT ( GLenum , GLsizei , GLint , GLint , GLsizei ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCopyColorSubTableEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4)
+	{
+
+		if ( disp__glCopyColorSubTableEXT == NULL ) return;
+
+		disp__glCopyColorSubTableEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLsizei) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glHintPGI ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glHintPGI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glHintPGI == NULL ) return;
+
+		disp__glHintPGI (
+			(GLenum) arg0,
+			(GLint) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetListParameterfvSGIX ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetListParameterfvSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetListParameterfvSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetListParameterfvSGIX (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetListParameterivSGIX ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetListParameterivSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetListParameterivSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetListParameterivSGIX (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glListParameterfSGIX ( GLuint , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glListParameterfSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glListParameterfSGIX == NULL ) return;
+
+		disp__glListParameterfSGIX (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glListParameterfvSGIX ( GLuint , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glListParameterfvSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glListParameterfvSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glListParameterfvSGIX (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glListParameteriSGIX ( GLuint , GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glListParameteriSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glListParameteriSGIX == NULL ) return;
+
+		disp__glListParameteriSGIX (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glListParameterivSGIX ( GLuint , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glListParameterivSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glListParameterivSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glListParameterivSGIX (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glIndexMaterialEXT ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIndexMaterialEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glIndexMaterialEXT == NULL ) return;
+
+		disp__glIndexMaterialEXT (
+			(GLenum) arg0,
+			(GLenum) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glIndexFuncEXT ( GLenum , GLclampf ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIndexFuncEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1)
+	{
+
+		if ( disp__glIndexFuncEXT == NULL ) return;
+
+		disp__glIndexFuncEXT (
+			(GLenum) arg0,
+			(GLclampf) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCullParameterdvEXT ( GLenum , GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCullParameterdvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glCullParameterdvEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glCullParameterdvEXT (
+			(GLenum) arg0,
+			(GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCullParameterfvEXT ( GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCullParameterfvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glCullParameterfvEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glCullParameterfvEXT (
+			(GLenum) arg0,
+			(GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentColorMaterialSGIX ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentColorMaterialSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glFragmentColorMaterialSGIX == NULL ) return;
+
+		disp__glFragmentColorMaterialSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightfSGIX ( GLenum , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentLightfSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glFragmentLightfSGIX == NULL ) return;
+
+		disp__glFragmentLightfSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightfvSGIX ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentLightfvSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glFragmentLightfvSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glFragmentLightfvSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightiSGIX ( GLenum , GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentLightiSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glFragmentLightiSGIX == NULL ) return;
+
+		disp__glFragmentLightiSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightivSGIX ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentLightivSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glFragmentLightivSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glFragmentLightivSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightModelfSGIX ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentLightModelfSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1)
+	{
+
+		if ( disp__glFragmentLightModelfSGIX == NULL ) return;
+
+		disp__glFragmentLightModelfSGIX (
+			(GLenum) arg0,
+			(GLfloat) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightModelfvSGIX ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentLightModelfvSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glFragmentLightModelfvSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glFragmentLightModelfvSGIX (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightModeliSGIX ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentLightModeliSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glFragmentLightModeliSGIX == NULL ) return;
+
+		disp__glFragmentLightModeliSGIX (
+			(GLenum) arg0,
+			(GLint) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightModelivSGIX ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentLightModelivSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glFragmentLightModelivSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glFragmentLightModelivSGIX (
+			(GLenum) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentMaterialfSGIX ( GLenum , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentMaterialfSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glFragmentMaterialfSGIX == NULL ) return;
+
+		disp__glFragmentMaterialfSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentMaterialfvSGIX ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentMaterialfvSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glFragmentMaterialfvSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glFragmentMaterialfvSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentMaterialiSGIX ( GLenum , GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentMaterialiSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glFragmentMaterialiSGIX == NULL ) return;
+
+		disp__glFragmentMaterialiSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentMaterialivSGIX ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFragmentMaterialivSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glFragmentMaterialivSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glFragmentMaterialivSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFragmentLightfvSGIX ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetFragmentLightfvSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetFragmentLightfvSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetFragmentLightfvSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFragmentLightivSGIX ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetFragmentLightivSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetFragmentLightivSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetFragmentLightivSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFragmentMaterialfvSGIX ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetFragmentMaterialfvSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetFragmentMaterialfvSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetFragmentMaterialfvSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFragmentMaterialivSGIX ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetFragmentMaterialivSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetFragmentMaterialivSGIX == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetFragmentMaterialivSGIX (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLightEnviSGIX ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glLightEnviSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glLightEnviSGIX == NULL ) return;
+
+		disp__glLightEnviSGIX (
+			(GLenum) arg0,
+			(GLint) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDrawRangeElementsEXT ( GLenum , GLuint , GLuint , GLsizei , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDrawRangeElementsEXT__IIIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jbyteArray arg5)
+	{
+		jbyte *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElementsEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetByteArrayElements(env, arg5, 0);
+		}
+		disp__glDrawRangeElementsEXT (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDrawRangeElementsEXT__IIIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jshortArray arg5)
+	{
+		jshort *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElementsEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetShortArrayElements(env, arg5, 0);
+		}
+		disp__glDrawRangeElementsEXT (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDrawRangeElementsEXT__IIIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jintArray arg5)
+	{
+		jint *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElementsEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetIntArrayElements(env, arg5, 0);
+		}
+		disp__glDrawRangeElementsEXT (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDrawRangeElementsEXT__IIIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jfloatArray arg5)
+	{
+		jfloat *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElementsEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetFloatArrayElements(env, arg5, 0);
+		}
+		disp__glDrawRangeElementsEXT (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDrawRangeElementsEXT__IIIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jdoubleArray arg5)
+	{
+		jdouble *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElementsEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetDoubleArrayElements(env, arg5, 0);
+		}
+		disp__glDrawRangeElementsEXT (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDrawRangeElementsEXT__IIIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jbooleanArray arg5)
+	{
+		jboolean *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElementsEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetBooleanArrayElements(env, arg5, 0);
+		}
+		disp__glDrawRangeElementsEXT (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDrawRangeElementsEXT__IIIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jlongArray arg5)
+	{
+		jlong *ptr5 = NULL;
+
+		if ( disp__glDrawRangeElementsEXT == NULL ) return;
+
+		if(arg5!=NULL)
+		{
+			ptr5 = (*env)->GetLongArrayElements(env, arg5, 0);
+		}
+		disp__glDrawRangeElementsEXT (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLsizei) arg3,
+			(GLenum) arg4,
+			(const GLvoid *) ptr5
+		);
+
+		if(arg5!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg5, ptr5, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glApplyTextureEXT ( GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glApplyTextureEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glApplyTextureEXT == NULL ) return;
+
+		disp__glApplyTextureEXT (
+			(GLenum) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTextureLightEXT ( GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTextureLightEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glTextureLightEXT == NULL ) return;
+
+		disp__glTextureLightEXT (
+			(GLenum) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTextureMaterialEXT ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTextureMaterialEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glTextureMaterialEXT == NULL ) return;
+
+		disp__glTextureMaterialEXT (
+			(GLenum) arg0,
+			(GLenum) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glAsyncMarkerSGIX ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glAsyncMarkerSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glAsyncMarkerSGIX == NULL ) return;
+
+		disp__glAsyncMarkerSGIX (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint glFinishAsyncSGIX ( GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glFinishAsyncSGIX (
+		JNIEnv *env, jobject obj,
+		jintArray arg0)
+	{
+		jint ret;
+
+		jboolean isCopiedArray0 = JNI_FALSE;
+		jint *ptr0 = NULL;
+
+		if ( disp__glFinishAsyncSGIX == NULL ) return 0;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, &isCopiedArray0);
+		}
+		ret = (jint) disp__glFinishAsyncSGIX (
+			(GLuint *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, (isCopiedArray0 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint glPollAsyncSGIX ( GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glPollAsyncSGIX (
+		JNIEnv *env, jobject obj,
+		jintArray arg0)
+	{
+		jint ret;
+
+		jboolean isCopiedArray0 = JNI_FALSE;
+		jint *ptr0 = NULL;
+
+		if ( disp__glPollAsyncSGIX == NULL ) return 0;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, &isCopiedArray0);
+		}
+		ret = (jint) disp__glPollAsyncSGIX (
+			(GLuint *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, (isCopiedArray0 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glGenAsyncMarkersSGIX ( GLsizei ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glGenAsyncMarkersSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+		jint ret;
+
+
+		if ( disp__glGenAsyncMarkersSGIX == NULL ) return 0;
+
+		ret = (jint) disp__glGenAsyncMarkersSGIX (
+			(GLsizei) arg0
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteAsyncMarkersSGIX ( GLuint , GLsizei ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDeleteAsyncMarkersSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glDeleteAsyncMarkersSGIX == NULL ) return;
+
+		disp__glDeleteAsyncMarkersSGIX (
+			(GLuint) arg0,
+			(GLsizei) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsAsyncMarkerSGIX ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT jboolean JNICALL
+	Java_gl4java_GLFuncJauJNI_glIsAsyncMarkerSGIX (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+		jboolean ret;
+
+
+		if ( disp__glIsAsyncMarkerSGIX == NULL ) return 0;
+
+		ret = (jboolean) disp__glIsAsyncMarkerSGIX (
+			(GLuint) arg0
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexPointervINTEL ( GLint , GLenum , const GLvoid * * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointervINTEL__II_3_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glVertexPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glVertexPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointervINTEL__II_3_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glVertexPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glVertexPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointervINTEL__II_3_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glVertexPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glVertexPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointervINTEL__II_3_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glVertexPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glVertexPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointervINTEL__II_3_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glVertexPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glVertexPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointervINTEL__II_3_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glVertexPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glVertexPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointervINTEL__II_3_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glVertexPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glVertexPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalPointervINTEL ( GLenum , const GLvoid * * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointervINTEL__I_3_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyteArray arg1)
+	{
+		jbyte *ptr1 = NULL;
+
+		if ( disp__glNormalPointervINTEL == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		disp__glNormalPointervINTEL (
+			(GLenum) arg0,
+			(const GLvoid **) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointervINTEL__I_3_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glNormalPointervINTEL == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glNormalPointervINTEL (
+			(GLenum) arg0,
+			(const GLvoid **) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointervINTEL__I_3_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glNormalPointervINTEL == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glNormalPointervINTEL (
+			(GLenum) arg0,
+			(const GLvoid **) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointervINTEL__I_3_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glNormalPointervINTEL == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glNormalPointervINTEL (
+			(GLenum) arg0,
+			(const GLvoid **) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointervINTEL__I_3_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glNormalPointervINTEL == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glNormalPointervINTEL (
+			(GLenum) arg0,
+			(const GLvoid **) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointervINTEL__I_3_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbooleanArray arg1)
+	{
+		jboolean *ptr1 = NULL;
+
+		if ( disp__glNormalPointervINTEL == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetBooleanArrayElements(env, arg1, 0);
+		}
+		disp__glNormalPointervINTEL (
+			(GLenum) arg0,
+			(const GLvoid **) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointervINTEL__I_3_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jlongArray arg1)
+	{
+		jlong *ptr1 = NULL;
+
+		if ( disp__glNormalPointervINTEL == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetLongArrayElements(env, arg1, 0);
+		}
+		disp__glNormalPointervINTEL (
+			(GLenum) arg0,
+			(const GLvoid **) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorPointervINTEL ( GLint , GLenum , const GLvoid * * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointervINTEL__II_3_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glColorPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glColorPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointervINTEL__II_3_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glColorPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glColorPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointervINTEL__II_3_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glColorPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glColorPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointervINTEL__II_3_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glColorPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glColorPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointervINTEL__II_3_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glColorPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glColorPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointervINTEL__II_3_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glColorPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glColorPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointervINTEL__II_3_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glColorPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glColorPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoordPointervINTEL ( GLint , GLenum , const GLvoid * * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointervINTEL__II_3_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glTexCoordPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glTexCoordPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointervINTEL__II_3_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glTexCoordPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glTexCoordPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointervINTEL__II_3_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glTexCoordPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glTexCoordPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointervINTEL__II_3_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glTexCoordPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glTexCoordPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointervINTEL__II_3_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glTexCoordPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glTexCoordPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointervINTEL__II_3_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glTexCoordPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glTexCoordPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointervINTEL__II_3_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glTexCoordPointervINTEL == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glTexCoordPointervINTEL (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTransformParameteriEXT ( GLenum , GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPixelTransformParameteriEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glPixelTransformParameteriEXT == NULL ) return;
+
+		disp__glPixelTransformParameteriEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTransformParameterfEXT ( GLenum , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPixelTransformParameterfEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glPixelTransformParameterfEXT == NULL ) return;
+
+		disp__glPixelTransformParameterfEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTransformParameterivEXT ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPixelTransformParameterivEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glPixelTransformParameterivEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glPixelTransformParameterivEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTransformParameterfvEXT ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPixelTransformParameterfvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glPixelTransformParameterfvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glPixelTransformParameterfvEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3bEXT ( GLbyte , GLbyte , GLbyte ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3bEXT (
+		JNIEnv *env, jobject obj,
+		jbyte arg0,
+		jbyte arg1,
+		jbyte arg2)
+	{
+
+		if ( disp__glSecondaryColor3bEXT == NULL ) return;
+
+		disp__glSecondaryColor3bEXT (
+			(GLbyte) arg0,
+			(GLbyte) arg1,
+			(GLbyte) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3bvEXT ( const GLbyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3bvEXT (
+		JNIEnv *env, jobject obj,
+		jbyteArray arg0)
+	{
+		jbyte *ptr0 = NULL;
+
+		if ( disp__glSecondaryColor3bvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetByteArrayElements(env, arg0, 0);
+		}
+		disp__glSecondaryColor3bvEXT (
+			(const GLbyte *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3dEXT ( GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3dEXT (
+		JNIEnv *env, jobject obj,
+		jdouble arg0,
+		jdouble arg1,
+		jdouble arg2)
+	{
+
+		if ( disp__glSecondaryColor3dEXT == NULL ) return;
+
+		disp__glSecondaryColor3dEXT (
+			(GLdouble) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3dvEXT ( const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3dvEXT (
+		JNIEnv *env, jobject obj,
+		jdoubleArray arg0)
+	{
+		jdouble *ptr0 = NULL;
+
+		if ( disp__glSecondaryColor3dvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetDoubleArrayElements(env, arg0, 0);
+		}
+		disp__glSecondaryColor3dvEXT (
+			(const GLdouble *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3fEXT ( GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3fEXT (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glSecondaryColor3fEXT == NULL ) return;
+
+		disp__glSecondaryColor3fEXT (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3fvEXT ( const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3fvEXT (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0)
+	{
+		jfloat *ptr0 = NULL;
+
+		if ( disp__glSecondaryColor3fvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		disp__glSecondaryColor3fvEXT (
+			(const GLfloat *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3iEXT ( GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3iEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glSecondaryColor3iEXT == NULL ) return;
+
+		disp__glSecondaryColor3iEXT (
+			(GLint) arg0,
+			(GLint) arg1,
+			(GLint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3ivEXT ( const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3ivEXT (
+		JNIEnv *env, jobject obj,
+		jintArray arg0)
+	{
+		jint *ptr0 = NULL;
+
+		if ( disp__glSecondaryColor3ivEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		disp__glSecondaryColor3ivEXT (
+			(const GLint *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3sEXT ( GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3sEXT (
+		JNIEnv *env, jobject obj,
+		jshort arg0,
+		jshort arg1,
+		jshort arg2)
+	{
+
+		if ( disp__glSecondaryColor3sEXT == NULL ) return;
+
+		disp__glSecondaryColor3sEXT (
+			(GLshort) arg0,
+			(GLshort) arg1,
+			(GLshort) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3svEXT ( const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3svEXT (
+		JNIEnv *env, jobject obj,
+		jshortArray arg0)
+	{
+		jshort *ptr0 = NULL;
+
+		if ( disp__glSecondaryColor3svEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetShortArrayElements(env, arg0, 0);
+		}
+		disp__glSecondaryColor3svEXT (
+			(const GLshort *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3ubEXT ( GLubyte , GLubyte , GLubyte ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3ubEXT (
+		JNIEnv *env, jobject obj,
+		jbyte arg0,
+		jbyte arg1,
+		jbyte arg2)
+	{
+
+		if ( disp__glSecondaryColor3ubEXT == NULL ) return;
+
+		disp__glSecondaryColor3ubEXT (
+			(GLubyte) arg0,
+			(GLubyte) arg1,
+			(GLubyte) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3ubvEXT ( const GLubyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3ubvEXT (
+		JNIEnv *env, jobject obj,
+		jbyteArray arg0)
+	{
+		jbyte *ptr0 = NULL;
+
+		if ( disp__glSecondaryColor3ubvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetByteArrayElements(env, arg0, 0);
+		}
+		disp__glSecondaryColor3ubvEXT (
+			(const GLubyte *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3uiEXT ( GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3uiEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glSecondaryColor3uiEXT == NULL ) return;
+
+		disp__glSecondaryColor3uiEXT (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3uivEXT ( const GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3uivEXT (
+		JNIEnv *env, jobject obj,
+		jintArray arg0)
+	{
+		jint *ptr0 = NULL;
+
+		if ( disp__glSecondaryColor3uivEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		disp__glSecondaryColor3uivEXT (
+			(const GLuint *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3usEXT ( GLushort , GLushort , GLushort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3usEXT (
+		JNIEnv *env, jobject obj,
+		jshort arg0,
+		jshort arg1,
+		jshort arg2)
+	{
+
+		if ( disp__glSecondaryColor3usEXT == NULL ) return;
+
+		disp__glSecondaryColor3usEXT (
+			(GLushort) arg0,
+			(GLushort) arg1,
+			(GLushort) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3usvEXT ( const GLushort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColor3usvEXT (
+		JNIEnv *env, jobject obj,
+		jshortArray arg0)
+	{
+		jshort *ptr0 = NULL;
+
+		if ( disp__glSecondaryColor3usvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetShortArrayElements(env, arg0, 0);
+		}
+		disp__glSecondaryColor3usvEXT (
+			(const GLushort *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColorPointerEXT ( GLint , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerEXT__III_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerEXT (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerEXT__III_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3)
+	{
+		jshort *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerEXT (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerEXT__III_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3)
+	{
+		jint *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerEXT (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerEXT__III_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerEXT (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerEXT__III_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerEXT (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerEXT__III_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3)
+	{
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerEXT (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerEXT__III_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3)
+	{
+		jlong *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerEXT (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTextureNormalEXT ( GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTextureNormalEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glTextureNormalEXT == NULL ) return;
+
+		disp__glTextureNormalEXT (
+			(GLenum) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiDrawArraysEXT ( GLenum , GLint * , GLsizei * , GLsizei ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiDrawArraysEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jintArray arg2,
+		jint arg3)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jint *ptr1 = NULL;
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glMultiDrawArraysEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, &isCopiedArray1);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glMultiDrawArraysEXT (
+			(GLenum) arg0,
+			(GLint *) ptr1,
+			(GLsizei *) ptr2,
+			(GLsizei) arg3
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiDrawElementsEXT ( GLenum , const GLsizei * , GLenum , const GLvoid * * , GLsizei ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiDrawElementsEXT__I_3II_3_3BI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jint arg2,
+		jbyteArray arg3,
+		jint arg4)
+	{
+		jint *ptr1 = NULL;
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glMultiDrawElementsEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glMultiDrawElementsEXT (
+			(GLenum) arg0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiDrawElementsEXT__I_3II_3_3SI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jint arg2,
+		jshortArray arg3,
+		jint arg4)
+	{
+		jint *ptr1 = NULL;
+		jshort *ptr3 = NULL;
+
+		if ( disp__glMultiDrawElementsEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glMultiDrawElementsEXT (
+			(GLenum) arg0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiDrawElementsEXT__I_3II_3_3II (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jint arg2,
+		jintArray arg3,
+		jint arg4)
+	{
+		jint *ptr1 = NULL;
+		jint *ptr3 = NULL;
+
+		if ( disp__glMultiDrawElementsEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glMultiDrawElementsEXT (
+			(GLenum) arg0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiDrawElementsEXT__I_3II_3_3FI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jint arg2,
+		jfloatArray arg3,
+		jint arg4)
+	{
+		jint *ptr1 = NULL;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glMultiDrawElementsEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glMultiDrawElementsEXT (
+			(GLenum) arg0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiDrawElementsEXT__I_3II_3_3DI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jint arg2,
+		jdoubleArray arg3,
+		jint arg4)
+	{
+		jint *ptr1 = NULL;
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glMultiDrawElementsEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glMultiDrawElementsEXT (
+			(GLenum) arg0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiDrawElementsEXT__I_3II_3_3ZI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jint arg2,
+		jbooleanArray arg3,
+		jint arg4)
+	{
+		jint *ptr1 = NULL;
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glMultiDrawElementsEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glMultiDrawElementsEXT (
+			(GLenum) arg0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiDrawElementsEXT__I_3II_3_3JI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jint arg2,
+		jlongArray arg3,
+		jint arg4)
+	{
+		jint *ptr1 = NULL;
+		jlong *ptr3 = NULL;
+
+		if ( disp__glMultiDrawElementsEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glMultiDrawElementsEXT (
+			(GLenum) arg0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoordfEXT ( GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordfEXT (
+		JNIEnv *env, jobject obj,
+		jfloat arg0)
+	{
+
+		if ( disp__glFogCoordfEXT == NULL ) return;
+
+		disp__glFogCoordfEXT (
+			(GLfloat) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoordfvEXT ( const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordfvEXT (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0)
+	{
+		jfloat *ptr0 = NULL;
+
+		if ( disp__glFogCoordfvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		disp__glFogCoordfvEXT (
+			(const GLfloat *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoorddEXT ( GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoorddEXT (
+		JNIEnv *env, jobject obj,
+		jdouble arg0)
+	{
+
+		if ( disp__glFogCoorddEXT == NULL ) return;
+
+		disp__glFogCoorddEXT (
+			(GLdouble) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoorddvEXT ( const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoorddvEXT (
+		JNIEnv *env, jobject obj,
+		jdoubleArray arg0)
+	{
+		jdouble *ptr0 = NULL;
+
+		if ( disp__glFogCoorddvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetDoubleArrayElements(env, arg0, 0);
+		}
+		disp__glFogCoorddvEXT (
+			(const GLdouble *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoordPointerEXT ( GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerEXT__II_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerEXT__II_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerEXT__II_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerEXT__II_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerEXT__II_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerEXT__II_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerEXT__II_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3bEXT ( GLbyte , GLbyte , GLbyte ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangent3bEXT (
+		JNIEnv *env, jobject obj,
+		jbyte arg0,
+		jbyte arg1,
+		jbyte arg2)
+	{
+
+		if ( disp__glTangent3bEXT == NULL ) return;
+
+		disp__glTangent3bEXT (
+			(GLbyte) arg0,
+			(GLbyte) arg1,
+			(GLbyte) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3bvEXT ( const GLbyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangent3bvEXT (
+		JNIEnv *env, jobject obj,
+		jbyteArray arg0)
+	{
+		jbyte *ptr0 = NULL;
+
+		if ( disp__glTangent3bvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetByteArrayElements(env, arg0, 0);
+		}
+		disp__glTangent3bvEXT (
+			(const GLbyte *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3dEXT ( GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangent3dEXT (
+		JNIEnv *env, jobject obj,
+		jdouble arg0,
+		jdouble arg1,
+		jdouble arg2)
+	{
+
+		if ( disp__glTangent3dEXT == NULL ) return;
+
+		disp__glTangent3dEXT (
+			(GLdouble) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3dvEXT ( const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangent3dvEXT (
+		JNIEnv *env, jobject obj,
+		jdoubleArray arg0)
+	{
+		jdouble *ptr0 = NULL;
+
+		if ( disp__glTangent3dvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetDoubleArrayElements(env, arg0, 0);
+		}
+		disp__glTangent3dvEXT (
+			(const GLdouble *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3fEXT ( GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangent3fEXT (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glTangent3fEXT == NULL ) return;
+
+		disp__glTangent3fEXT (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3fvEXT ( const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangent3fvEXT (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0)
+	{
+		jfloat *ptr0 = NULL;
+
+		if ( disp__glTangent3fvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		disp__glTangent3fvEXT (
+			(const GLfloat *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3iEXT ( GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangent3iEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glTangent3iEXT == NULL ) return;
+
+		disp__glTangent3iEXT (
+			(GLint) arg0,
+			(GLint) arg1,
+			(GLint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3ivEXT ( const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangent3ivEXT (
+		JNIEnv *env, jobject obj,
+		jintArray arg0)
+	{
+		jint *ptr0 = NULL;
+
+		if ( disp__glTangent3ivEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		disp__glTangent3ivEXT (
+			(const GLint *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3sEXT ( GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangent3sEXT (
+		JNIEnv *env, jobject obj,
+		jshort arg0,
+		jshort arg1,
+		jshort arg2)
+	{
+
+		if ( disp__glTangent3sEXT == NULL ) return;
+
+		disp__glTangent3sEXT (
+			(GLshort) arg0,
+			(GLshort) arg1,
+			(GLshort) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3svEXT ( const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangent3svEXT (
+		JNIEnv *env, jobject obj,
+		jshortArray arg0)
+	{
+		jshort *ptr0 = NULL;
+
+		if ( disp__glTangent3svEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetShortArrayElements(env, arg0, 0);
+		}
+		disp__glTangent3svEXT (
+			(const GLshort *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3bEXT ( GLbyte , GLbyte , GLbyte ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormal3bEXT (
+		JNIEnv *env, jobject obj,
+		jbyte arg0,
+		jbyte arg1,
+		jbyte arg2)
+	{
+
+		if ( disp__glBinormal3bEXT == NULL ) return;
+
+		disp__glBinormal3bEXT (
+			(GLbyte) arg0,
+			(GLbyte) arg1,
+			(GLbyte) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3bvEXT ( const GLbyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormal3bvEXT (
+		JNIEnv *env, jobject obj,
+		jbyteArray arg0)
+	{
+		jbyte *ptr0 = NULL;
+
+		if ( disp__glBinormal3bvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetByteArrayElements(env, arg0, 0);
+		}
+		disp__glBinormal3bvEXT (
+			(const GLbyte *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3dEXT ( GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormal3dEXT (
+		JNIEnv *env, jobject obj,
+		jdouble arg0,
+		jdouble arg1,
+		jdouble arg2)
+	{
+
+		if ( disp__glBinormal3dEXT == NULL ) return;
+
+		disp__glBinormal3dEXT (
+			(GLdouble) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3dvEXT ( const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormal3dvEXT (
+		JNIEnv *env, jobject obj,
+		jdoubleArray arg0)
+	{
+		jdouble *ptr0 = NULL;
+
+		if ( disp__glBinormal3dvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetDoubleArrayElements(env, arg0, 0);
+		}
+		disp__glBinormal3dvEXT (
+			(const GLdouble *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3fEXT ( GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormal3fEXT (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glBinormal3fEXT == NULL ) return;
+
+		disp__glBinormal3fEXT (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3fvEXT ( const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormal3fvEXT (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0)
+	{
+		jfloat *ptr0 = NULL;
+
+		if ( disp__glBinormal3fvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		disp__glBinormal3fvEXT (
+			(const GLfloat *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3iEXT ( GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormal3iEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glBinormal3iEXT == NULL ) return;
+
+		disp__glBinormal3iEXT (
+			(GLint) arg0,
+			(GLint) arg1,
+			(GLint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3ivEXT ( const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormal3ivEXT (
+		JNIEnv *env, jobject obj,
+		jintArray arg0)
+	{
+		jint *ptr0 = NULL;
+
+		if ( disp__glBinormal3ivEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		disp__glBinormal3ivEXT (
+			(const GLint *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3sEXT ( GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormal3sEXT (
+		JNIEnv *env, jobject obj,
+		jshort arg0,
+		jshort arg1,
+		jshort arg2)
+	{
+
+		if ( disp__glBinormal3sEXT == NULL ) return;
+
+		disp__glBinormal3sEXT (
+			(GLshort) arg0,
+			(GLshort) arg1,
+			(GLshort) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3svEXT ( const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormal3svEXT (
+		JNIEnv *env, jobject obj,
+		jshortArray arg0)
+	{
+		jshort *ptr0 = NULL;
+
+		if ( disp__glBinormal3svEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetShortArrayElements(env, arg0, 0);
+		}
+		disp__glBinormal3svEXT (
+			(const GLshort *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangentPointerEXT ( GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangentPointerEXT__II_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glTangentPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glTangentPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangentPointerEXT__II_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glTangentPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glTangentPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangentPointerEXT__II_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glTangentPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glTangentPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangentPointerEXT__II_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glTangentPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glTangentPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangentPointerEXT__II_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glTangentPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glTangentPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangentPointerEXT__II_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glTangentPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glTangentPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTangentPointerEXT__II_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glTangentPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glTangentPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormalPointerEXT ( GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormalPointerEXT__II_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glBinormalPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glBinormalPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormalPointerEXT__II_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glBinormalPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glBinormalPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormalPointerEXT__II_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glBinormalPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glBinormalPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormalPointerEXT__II_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glBinormalPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glBinormalPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormalPointerEXT__II_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glBinormalPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glBinormalPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormalPointerEXT__II_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glBinormalPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glBinormalPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBinormalPointerEXT__II_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glBinormalPointerEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glBinormalPointerEXT (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFinishTextureSUNX ( void ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFinishTextureSUNX (
+		JNIEnv *env, jobject obj)
+	{
+
+		if ( disp__glFinishTextureSUNX == NULL ) return;
+
+		disp__glFinishTextureSUNX (
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactorbSUN ( GLbyte ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGlobalAlphaFactorbSUN (
+		JNIEnv *env, jobject obj,
+		jbyte arg0)
+	{
+
+		if ( disp__glGlobalAlphaFactorbSUN == NULL ) return;
+
+		disp__glGlobalAlphaFactorbSUN (
+			(GLbyte) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactorsSUN ( GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGlobalAlphaFactorsSUN (
+		JNIEnv *env, jobject obj,
+		jshort arg0)
+	{
+
+		if ( disp__glGlobalAlphaFactorsSUN == NULL ) return;
+
+		disp__glGlobalAlphaFactorsSUN (
+			(GLshort) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactoriSUN ( GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGlobalAlphaFactoriSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glGlobalAlphaFactoriSUN == NULL ) return;
+
+		disp__glGlobalAlphaFactoriSUN (
+			(GLint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactorfSUN ( GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGlobalAlphaFactorfSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0)
+	{
+
+		if ( disp__glGlobalAlphaFactorfSUN == NULL ) return;
+
+		disp__glGlobalAlphaFactorfSUN (
+			(GLfloat) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactordSUN ( GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGlobalAlphaFactordSUN (
+		JNIEnv *env, jobject obj,
+		jdouble arg0)
+	{
+
+		if ( disp__glGlobalAlphaFactordSUN == NULL ) return;
+
+		disp__glGlobalAlphaFactordSUN (
+			(GLdouble) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactorubSUN ( GLubyte ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGlobalAlphaFactorubSUN (
+		JNIEnv *env, jobject obj,
+		jbyte arg0)
+	{
+
+		if ( disp__glGlobalAlphaFactorubSUN == NULL ) return;
+
+		disp__glGlobalAlphaFactorubSUN (
+			(GLubyte) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactorusSUN ( GLushort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGlobalAlphaFactorusSUN (
+		JNIEnv *env, jobject obj,
+		jshort arg0)
+	{
+
+		if ( disp__glGlobalAlphaFactorusSUN == NULL ) return;
+
+		disp__glGlobalAlphaFactorusSUN (
+			(GLushort) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactoruiSUN ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGlobalAlphaFactoruiSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glGlobalAlphaFactoruiSUN == NULL ) return;
+
+		disp__glGlobalAlphaFactoruiSUN (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiSUN ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glReplacementCodeuiSUN == NULL ) return;
+
+		disp__glReplacementCodeuiSUN (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeusSUN ( GLushort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeusSUN (
+		JNIEnv *env, jobject obj,
+		jshort arg0)
+	{
+
+		if ( disp__glReplacementCodeusSUN == NULL ) return;
+
+		disp__glReplacementCodeusSUN (
+			(GLushort) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeubSUN ( GLubyte ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeubSUN (
+		JNIEnv *env, jobject obj,
+		jbyte arg0)
+	{
+
+		if ( disp__glReplacementCodeubSUN == NULL ) return;
+
+		disp__glReplacementCodeubSUN (
+			(GLubyte) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuivSUN ( const GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuivSUN (
+		JNIEnv *env, jobject obj,
+		jintArray arg0)
+	{
+		jint *ptr0 = NULL;
+
+		if ( disp__glReplacementCodeuivSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		disp__glReplacementCodeuivSUN (
+			(const GLuint *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeusvSUN ( const GLushort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeusvSUN (
+		JNIEnv *env, jobject obj,
+		jshortArray arg0)
+	{
+		jshort *ptr0 = NULL;
+
+		if ( disp__glReplacementCodeusvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetShortArrayElements(env, arg0, 0);
+		}
+		disp__glReplacementCodeusvSUN (
+			(const GLushort *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeubvSUN ( const GLubyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeubvSUN (
+		JNIEnv *env, jobject obj,
+		jbyteArray arg0)
+	{
+		jbyte *ptr0 = NULL;
+
+		if ( disp__glReplacementCodeubvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetByteArrayElements(env, arg0, 0);
+		}
+		disp__glReplacementCodeubvSUN (
+			(const GLubyte *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodePointerSUN ( GLenum , GLsizei , const GLvoid * * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodePointerSUN__II_3_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glReplacementCodePointerSUN == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodePointerSUN (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodePointerSUN__II_3_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glReplacementCodePointerSUN == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodePointerSUN (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodePointerSUN__II_3_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glReplacementCodePointerSUN == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodePointerSUN (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodePointerSUN__II_3_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glReplacementCodePointerSUN == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodePointerSUN (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodePointerSUN__II_3_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glReplacementCodePointerSUN == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodePointerSUN (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodePointerSUN__II_3_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glReplacementCodePointerSUN == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodePointerSUN (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodePointerSUN__II_3_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glReplacementCodePointerSUN == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodePointerSUN (
+			(GLenum) arg0,
+			(GLsizei) arg1,
+			(const GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4ubVertex2fSUN ( GLubyte , GLubyte , GLubyte , GLubyte , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColor4ubVertex2fSUN (
+		JNIEnv *env, jobject obj,
+		jbyte arg0,
+		jbyte arg1,
+		jbyte arg2,
+		jbyte arg3,
+		jfloat arg4,
+		jfloat arg5)
+	{
+
+		if ( disp__glColor4ubVertex2fSUN == NULL ) return;
+
+		disp__glColor4ubVertex2fSUN (
+			(GLubyte) arg0,
+			(GLubyte) arg1,
+			(GLubyte) arg2,
+			(GLubyte) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4ubVertex2fvSUN ( const GLubyte * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColor4ubVertex2fvSUN (
+		JNIEnv *env, jobject obj,
+		jbyteArray arg0,
+		jfloatArray arg1)
+	{
+		jbyte *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glColor4ubVertex2fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetByteArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glColor4ubVertex2fvSUN (
+			(const GLubyte *) ptr0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4ubVertex3fSUN ( GLubyte , GLubyte , GLubyte , GLubyte , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColor4ubVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jbyte arg0,
+		jbyte arg1,
+		jbyte arg2,
+		jbyte arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6)
+	{
+
+		if ( disp__glColor4ubVertex3fSUN == NULL ) return;
+
+		disp__glColor4ubVertex3fSUN (
+			(GLubyte) arg0,
+			(GLubyte) arg1,
+			(GLubyte) arg2,
+			(GLubyte) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4ubVertex3fvSUN ( const GLubyte * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColor4ubVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jbyteArray arg0,
+		jfloatArray arg1)
+	{
+		jbyte *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glColor4ubVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetByteArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glColor4ubVertex3fvSUN (
+			(const GLubyte *) ptr0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColor3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5)
+	{
+
+		if ( disp__glColor3fVertex3fSUN == NULL ) return;
+
+		disp__glColor3fVertex3fSUN (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor3fVertex3fvSUN ( const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColor3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glColor3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glColor3fVertex3fvSUN (
+			(const GLfloat *) ptr0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormal3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormal3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5)
+	{
+
+		if ( disp__glNormal3fVertex3fSUN == NULL ) return;
+
+		disp__glNormal3fVertex3fSUN (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormal3fVertex3fvSUN ( const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormal3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glNormal3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glNormal3fVertex3fvSUN (
+			(const GLfloat *) ptr0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4fNormal3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColor4fNormal3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jfloat arg7,
+		jfloat arg8,
+		jfloat arg9)
+	{
+
+		if ( disp__glColor4fNormal3fVertex3fSUN == NULL ) return;
+
+		disp__glColor4fNormal3fVertex3fSUN (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7,
+			(GLfloat) arg8,
+			(GLfloat) arg9
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4fNormal3fVertex3fvSUN ( const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColor4fNormal3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glColor4fNormal3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glColor4fNormal3fVertex3fvSUN (
+			(const GLfloat *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord2fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4)
+	{
+
+		if ( disp__glTexCoord2fVertex3fSUN == NULL ) return;
+
+		disp__glTexCoord2fVertex3fSUN (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fVertex3fvSUN ( const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord2fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glTexCoord2fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glTexCoord2fVertex3fvSUN (
+			(const GLfloat *) ptr0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord4fVertex4fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord4fVertex4fSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jfloat arg7)
+	{
+
+		if ( disp__glTexCoord4fVertex4fSUN == NULL ) return;
+
+		disp__glTexCoord4fVertex4fSUN (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord4fVertex4fvSUN ( const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord4fVertex4fvSUN (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glTexCoord4fVertex4fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glTexCoord4fVertex4fvSUN (
+			(const GLfloat *) ptr0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor4ubVertex3fSUN ( GLfloat , GLfloat , GLubyte , GLubyte , GLubyte , GLubyte , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord2fColor4ubVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jbyte arg2,
+		jbyte arg3,
+		jbyte arg4,
+		jbyte arg5,
+		jfloat arg6,
+		jfloat arg7,
+		jfloat arg8)
+	{
+
+		if ( disp__glTexCoord2fColor4ubVertex3fSUN == NULL ) return;
+
+		disp__glTexCoord2fColor4ubVertex3fSUN (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLubyte) arg2,
+			(GLubyte) arg3,
+			(GLubyte) arg4,
+			(GLubyte) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7,
+			(GLfloat) arg8
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor4ubVertex3fvSUN ( const GLfloat * , const GLubyte * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord2fColor4ubVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0,
+		jbyteArray arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr0 = NULL;
+		jbyte *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glTexCoord2fColor4ubVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glTexCoord2fColor4ubVertex3fvSUN (
+			(const GLfloat *) ptr0,
+			(const GLubyte *) ptr1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord2fColor3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jfloat arg7)
+	{
+
+		if ( disp__glTexCoord2fColor3fVertex3fSUN == NULL ) return;
+
+		disp__glTexCoord2fColor3fVertex3fSUN (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor3fVertex3fvSUN ( const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord2fColor3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glTexCoord2fColor3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glTexCoord2fColor3fVertex3fvSUN (
+			(const GLfloat *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fNormal3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord2fNormal3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jfloat arg7)
+	{
+
+		if ( disp__glTexCoord2fNormal3fVertex3fSUN == NULL ) return;
+
+		disp__glTexCoord2fNormal3fVertex3fSUN (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fNormal3fVertex3fvSUN ( const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord2fNormal3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glTexCoord2fNormal3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glTexCoord2fNormal3fVertex3fvSUN (
+			(const GLfloat *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor4fNormal3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord2fColor4fNormal3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jfloat arg7,
+		jfloat arg8,
+		jfloat arg9,
+		jfloat arg10,
+		jfloat arg11)
+	{
+
+		if ( disp__glTexCoord2fColor4fNormal3fVertex3fSUN == NULL ) return;
+
+		disp__glTexCoord2fColor4fNormal3fVertex3fSUN (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7,
+			(GLfloat) arg8,
+			(GLfloat) arg9,
+			(GLfloat) arg10,
+			(GLfloat) arg11
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor4fNormal3fVertex3fvSUN ( const GLfloat * , const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord2fColor4fNormal3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2,
+		jfloatArray arg3)
+	{
+		jfloat *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glTexCoord2fColor4fNormal3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glTexCoord2fColor4fNormal3fVertex3fvSUN (
+			(const GLfloat *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2,
+			(const GLfloat *) ptr3
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord4fColor4fNormal3fVertex4fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord4fColor4fNormal3fVertex4fSUN (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jfloat arg7,
+		jfloat arg8,
+		jfloat arg9,
+		jfloat arg10,
+		jfloat arg11,
+		jfloat arg12,
+		jfloat arg13,
+		jfloat arg14)
+	{
+
+		if ( disp__glTexCoord4fColor4fNormal3fVertex4fSUN == NULL ) return;
+
+		disp__glTexCoord4fColor4fNormal3fVertex4fSUN (
+			(GLfloat) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7,
+			(GLfloat) arg8,
+			(GLfloat) arg9,
+			(GLfloat) arg10,
+			(GLfloat) arg11,
+			(GLfloat) arg12,
+			(GLfloat) arg13,
+			(GLfloat) arg14
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord4fColor4fNormal3fVertex4fvSUN ( const GLfloat * , const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoord4fColor4fNormal3fVertex4fvSUN (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2,
+		jfloatArray arg3)
+	{
+		jfloat *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glTexCoord4fColor4fNormal3fVertex4fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glTexCoord4fColor4fNormal3fVertex4fvSUN (
+			(const GLfloat *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2,
+			(const GLfloat *) ptr3
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3)
+	{
+
+		if ( disp__glReplacementCodeuiVertex3fSUN == NULL ) return;
+
+		disp__glReplacementCodeuiVertex3fSUN (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiVertex3fvSUN ( const GLenum * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jfloatArray arg1)
+	{
+		jint *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glReplacementCodeuiVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glReplacementCodeuiVertex3fvSUN (
+			(const GLenum *) ptr0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor4ubVertex3fSUN ( GLenum , GLubyte , GLubyte , GLubyte , GLubyte , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiColor4ubVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyte arg1,
+		jbyte arg2,
+		jbyte arg3,
+		jbyte arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jfloat arg7)
+	{
+
+		if ( disp__glReplacementCodeuiColor4ubVertex3fSUN == NULL ) return;
+
+		disp__glReplacementCodeuiColor4ubVertex3fSUN (
+			(GLenum) arg0,
+			(GLubyte) arg1,
+			(GLubyte) arg2,
+			(GLubyte) arg3,
+			(GLubyte) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor4ubVertex3fvSUN ( const GLenum * , const GLubyte * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiColor4ubVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jbyteArray arg1,
+		jfloatArray arg2)
+	{
+		jint *ptr0 = NULL;
+		jbyte *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glReplacementCodeuiColor4ubVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodeuiColor4ubVertex3fvSUN (
+			(const GLenum *) ptr0,
+			(const GLubyte *) ptr1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor3fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiColor3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6)
+	{
+
+		if ( disp__glReplacementCodeuiColor3fVertex3fSUN == NULL ) return;
+
+		disp__glReplacementCodeuiColor3fVertex3fSUN (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor3fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiColor3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2)
+	{
+		jint *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glReplacementCodeuiColor3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodeuiColor3fVertex3fvSUN (
+			(const GLenum *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiNormal3fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiNormal3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6)
+	{
+
+		if ( disp__glReplacementCodeuiNormal3fVertex3fSUN == NULL ) return;
+
+		disp__glReplacementCodeuiNormal3fVertex3fSUN (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiNormal3fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiNormal3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2)
+	{
+		jint *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glReplacementCodeuiNormal3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodeuiNormal3fVertex3fvSUN (
+			(const GLenum *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor4fNormal3fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiColor4fNormal3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jfloat arg7,
+		jfloat arg8,
+		jfloat arg9,
+		jfloat arg10)
+	{
+
+		if ( disp__glReplacementCodeuiColor4fNormal3fVertex3fSUN == NULL ) return;
+
+		disp__glReplacementCodeuiColor4fNormal3fVertex3fSUN (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7,
+			(GLfloat) arg8,
+			(GLfloat) arg9,
+			(GLfloat) arg10
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor4fNormal3fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiColor4fNormal3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2,
+		jfloatArray arg3)
+	{
+		jint *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glReplacementCodeuiColor4fNormal3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glReplacementCodeuiColor4fNormal3fVertex3fvSUN (
+			(const GLenum *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2,
+			(const GLfloat *) ptr3
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiTexCoord2fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5)
+	{
+
+		if ( disp__glReplacementCodeuiTexCoord2fVertex3fSUN == NULL ) return;
+
+		disp__glReplacementCodeuiTexCoord2fVertex3fSUN (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiTexCoord2fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2)
+	{
+		jint *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glReplacementCodeuiTexCoord2fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glReplacementCodeuiTexCoord2fVertex3fvSUN (
+			(const GLenum *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jfloat arg7,
+		jfloat arg8)
+	{
+
+		if ( disp__glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN == NULL ) return;
+
+		disp__glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7,
+			(GLfloat) arg8
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2,
+		jfloatArray arg3)
+	{
+		jint *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN (
+			(const GLenum *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2,
+			(const GLfloat *) ptr3
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5,
+		jfloat arg6,
+		jfloat arg7,
+		jfloat arg8,
+		jfloat arg9,
+		jfloat arg10,
+		jfloat arg11,
+		jfloat arg12)
+	{
+
+		if ( disp__glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN == NULL ) return;
+
+		disp__glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5,
+			(GLfloat) arg6,
+			(GLfloat) arg7,
+			(GLfloat) arg8,
+			(GLfloat) arg9,
+			(GLfloat) arg10,
+			(GLfloat) arg11,
+			(GLfloat) arg12
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jfloatArray arg1,
+		jfloatArray arg2,
+		jfloatArray arg3,
+		jfloatArray arg4)
+	{
+		jint *ptr0 = NULL;
+		jfloat *ptr1 = NULL;
+		jfloat *ptr2 = NULL;
+		jfloat *ptr3 = NULL;
+		jfloat *ptr4 = NULL;
+
+		if ( disp__glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetFloatArrayElements(env, arg4, 0);
+		}
+		disp__glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN (
+			(const GLenum *) ptr0,
+			(const GLfloat *) ptr1,
+			(const GLfloat *) ptr2,
+			(const GLfloat *) ptr3,
+			(const GLfloat *) ptr4
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg4, ptr4, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBlendFuncSeparateEXT ( GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBlendFuncSeparateEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3)
+	{
+
+		if ( disp__glBlendFuncSeparateEXT == NULL ) return;
+
+		disp__glBlendFuncSeparateEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBlendFuncSeparateINGR ( GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBlendFuncSeparateINGR (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3)
+	{
+
+		if ( disp__glBlendFuncSeparateINGR == NULL ) return;
+
+		disp__glBlendFuncSeparateINGR (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexWeightfEXT ( GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexWeightfEXT (
+		JNIEnv *env, jobject obj,
+		jfloat arg0)
+	{
+
+		if ( disp__glVertexWeightfEXT == NULL ) return;
+
+		disp__glVertexWeightfEXT (
+			(GLfloat) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexWeightfvEXT ( const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexWeightfvEXT (
+		JNIEnv *env, jobject obj,
+		jfloatArray arg0)
+	{
+		jfloat *ptr0 = NULL;
+
+		if ( disp__glVertexWeightfvEXT == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetFloatArrayElements(env, arg0, 0);
+		}
+		disp__glVertexWeightfvEXT (
+			(const GLfloat *) ptr0
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexWeightPointerEXT ( GLsizei , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexWeightPointerEXT__III_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glVertexWeightPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glVertexWeightPointerEXT (
+			(GLsizei) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexWeightPointerEXT__III_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3)
+	{
+		jshort *ptr3 = NULL;
+
+		if ( disp__glVertexWeightPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glVertexWeightPointerEXT (
+			(GLsizei) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexWeightPointerEXT__III_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3)
+	{
+		jint *ptr3 = NULL;
+
+		if ( disp__glVertexWeightPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glVertexWeightPointerEXT (
+			(GLsizei) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexWeightPointerEXT__III_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glVertexWeightPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glVertexWeightPointerEXT (
+			(GLsizei) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexWeightPointerEXT__III_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glVertexWeightPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glVertexWeightPointerEXT (
+			(GLsizei) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexWeightPointerEXT__III_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3)
+	{
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glVertexWeightPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glVertexWeightPointerEXT (
+			(GLsizei) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexWeightPointerEXT__III_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3)
+	{
+		jlong *ptr3 = NULL;
+
+		if ( disp__glVertexWeightPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glVertexWeightPointerEXT (
+			(GLsizei) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFlushVertexArrayRangeNV ( void ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFlushVertexArrayRangeNV (
+		JNIEnv *env, jobject obj)
+	{
+
+		if ( disp__glFlushVertexArrayRangeNV == NULL ) return;
+
+		disp__glFlushVertexArrayRangeNV (
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexArrayRangeNV ( GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexArrayRangeNV__I_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyteArray arg1)
+	{
+		jbyte *ptr1 = NULL;
+
+		if ( disp__glVertexArrayRangeNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		disp__glVertexArrayRangeNV (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexArrayRangeNV__I_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVertexArrayRangeNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVertexArrayRangeNV (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexArrayRangeNV__I_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glVertexArrayRangeNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glVertexArrayRangeNV (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexArrayRangeNV__I_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glVertexArrayRangeNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glVertexArrayRangeNV (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexArrayRangeNV__I_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glVertexArrayRangeNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glVertexArrayRangeNV (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexArrayRangeNV__I_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbooleanArray arg1)
+	{
+		jboolean *ptr1 = NULL;
+
+		if ( disp__glVertexArrayRangeNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetBooleanArrayElements(env, arg1, 0);
+		}
+		disp__glVertexArrayRangeNV (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexArrayRangeNV__I_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jlongArray arg1)
+	{
+		jlong *ptr1 = NULL;
+
+		if ( disp__glVertexArrayRangeNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetLongArrayElements(env, arg1, 0);
+		}
+		disp__glVertexArrayRangeNV (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerParameterfvNV ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCombinerParameterfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glCombinerParameterfvNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glCombinerParameterfvNV (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerParameterfNV ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCombinerParameterfNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1)
+	{
+
+		if ( disp__glCombinerParameterfNV == NULL ) return;
+
+		disp__glCombinerParameterfNV (
+			(GLenum) arg0,
+			(GLfloat) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerParameterivNV ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCombinerParameterivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glCombinerParameterivNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glCombinerParameterivNV (
+			(GLenum) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerParameteriNV ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCombinerParameteriNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glCombinerParameteriNV == NULL ) return;
+
+		disp__glCombinerParameteriNV (
+			(GLenum) arg0,
+			(GLint) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerInputNV ( GLenum , GLenum , GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCombinerInputNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5)
+	{
+
+		if ( disp__glCombinerInputNV == NULL ) return;
+
+		disp__glCombinerInputNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerOutputNV ( GLenum , GLenum , GLenum , GLenum , GLenum , GLenum , GLenum , GLboolean , GLboolean , GLboolean ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCombinerOutputNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jboolean arg7,
+		jboolean arg8,
+		jboolean arg9)
+	{
+
+		if ( disp__glCombinerOutputNV == NULL ) return;
+
+		disp__glCombinerOutputNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5,
+			(GLenum) arg6,
+			(GLboolean) arg7,
+			(GLboolean) arg8,
+			(GLboolean) arg9
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFinalCombinerInputNV ( GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFinalCombinerInputNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3)
+	{
+
+		if ( disp__glFinalCombinerInputNV == NULL ) return;
+
+		disp__glFinalCombinerInputNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCombinerInputParameterfvNV ( GLenum , GLenum , GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCombinerInputParameterfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jfloatArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jfloat *ptr4 = NULL;
+
+		if ( disp__glGetCombinerInputParameterfvNV == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetFloatArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetCombinerInputParameterfvNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLfloat *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCombinerInputParameterivNV ( GLenum , GLenum , GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCombinerInputParameterivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jintArray arg4)
+	{
+		jboolean isCopiedArray4 = JNI_FALSE;
+		jint *ptr4 = NULL;
+
+		if ( disp__glGetCombinerInputParameterivNV == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetIntArrayElements(env, arg4, &isCopiedArray4);
+		}
+		disp__glGetCombinerInputParameterivNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLint *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg4, ptr4, (isCopiedArray4 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCombinerOutputParameterfvNV ( GLenum , GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCombinerOutputParameterfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glGetCombinerOutputParameterfvNV == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetCombinerOutputParameterfvNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLfloat *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCombinerOutputParameterivNV ( GLenum , GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCombinerOutputParameterivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jint *ptr3 = NULL;
+
+		if ( disp__glGetCombinerOutputParameterivNV == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetCombinerOutputParameterivNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLint *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFinalCombinerInputParameterfvNV ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetFinalCombinerInputParameterfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetFinalCombinerInputParameterfvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetFinalCombinerInputParameterfvNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFinalCombinerInputParameterivNV ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetFinalCombinerInputParameterivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetFinalCombinerInputParameterivNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetFinalCombinerInputParameterivNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiModeDrawArraysIBM ( GLenum , const GLint * , const GLsizei * , GLsizei , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiModeDrawArraysIBM (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jintArray arg2,
+		jint arg3,
+		jint arg4)
+	{
+		jint *ptr1 = NULL;
+		jint *ptr2 = NULL;
+
+		if ( disp__glMultiModeDrawArraysIBM == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glMultiModeDrawArraysIBM (
+			(GLenum) arg0,
+			(const GLint *) ptr1,
+			(const GLsizei *) ptr2,
+			(GLsizei) arg3,
+			(GLint) arg4
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiModeDrawElementsIBM ( const GLenum * , const GLsizei * , GLenum , const GLvoid * * , GLsizei , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiModeDrawElementsIBM___3I_3II_3_3BII (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jintArray arg1,
+		jint arg2,
+		jbyteArray arg3,
+		jint arg4,
+		jint arg5)
+	{
+		jint *ptr0 = NULL;
+		jint *ptr1 = NULL;
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glMultiModeDrawElementsIBM == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glMultiModeDrawElementsIBM (
+			(const GLenum *) ptr0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4,
+			(GLint) arg5
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiModeDrawElementsIBM___3I_3II_3_3SII (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jintArray arg1,
+		jint arg2,
+		jshortArray arg3,
+		jint arg4,
+		jint arg5)
+	{
+		jint *ptr0 = NULL;
+		jint *ptr1 = NULL;
+		jshort *ptr3 = NULL;
+
+		if ( disp__glMultiModeDrawElementsIBM == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glMultiModeDrawElementsIBM (
+			(const GLenum *) ptr0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4,
+			(GLint) arg5
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiModeDrawElementsIBM___3I_3II_3_3III (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jintArray arg1,
+		jint arg2,
+		jintArray arg3,
+		jint arg4,
+		jint arg5)
+	{
+		jint *ptr0 = NULL;
+		jint *ptr1 = NULL;
+		jint *ptr3 = NULL;
+
+		if ( disp__glMultiModeDrawElementsIBM == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glMultiModeDrawElementsIBM (
+			(const GLenum *) ptr0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4,
+			(GLint) arg5
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiModeDrawElementsIBM___3I_3II_3_3FII (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jintArray arg1,
+		jint arg2,
+		jfloatArray arg3,
+		jint arg4,
+		jint arg5)
+	{
+		jint *ptr0 = NULL;
+		jint *ptr1 = NULL;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glMultiModeDrawElementsIBM == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glMultiModeDrawElementsIBM (
+			(const GLenum *) ptr0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4,
+			(GLint) arg5
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiModeDrawElementsIBM___3I_3II_3_3DII (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jintArray arg1,
+		jint arg2,
+		jdoubleArray arg3,
+		jint arg4,
+		jint arg5)
+	{
+		jint *ptr0 = NULL;
+		jint *ptr1 = NULL;
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glMultiModeDrawElementsIBM == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glMultiModeDrawElementsIBM (
+			(const GLenum *) ptr0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4,
+			(GLint) arg5
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiModeDrawElementsIBM___3I_3II_3_3ZII (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jintArray arg1,
+		jint arg2,
+		jbooleanArray arg3,
+		jint arg4,
+		jint arg5)
+	{
+		jint *ptr0 = NULL;
+		jint *ptr1 = NULL;
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glMultiModeDrawElementsIBM == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glMultiModeDrawElementsIBM (
+			(const GLenum *) ptr0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4,
+			(GLint) arg5
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMultiModeDrawElementsIBM___3I_3II_3_3JII (
+		JNIEnv *env, jobject obj,
+		jintArray arg0,
+		jintArray arg1,
+		jint arg2,
+		jlongArray arg3,
+		jint arg4,
+		jint arg5)
+	{
+		jint *ptr0 = NULL;
+		jint *ptr1 = NULL;
+		jlong *ptr3 = NULL;
+
+		if ( disp__glMultiModeDrawElementsIBM == NULL ) return;
+
+		if(arg0!=NULL)
+		{
+			ptr0 = (*env)->GetIntArrayElements(env, arg0, 0);
+		}
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glMultiModeDrawElementsIBM (
+			(const GLenum *) ptr0,
+			(const GLsizei *) ptr1,
+			(GLenum) arg2,
+			(const GLvoid **) ptr3,
+			(GLsizei) arg4,
+			(GLint) arg5
+		);
+
+		if(arg0!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg0, ptr0, JNI_ABORT);
+		}
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorPointerListIBM ( GLint , GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointerListIBM__III_3_3BI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3,
+		jint arg4)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointerListIBM__III_3_3SI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3,
+		jint arg4)
+	{
+		jshort *ptr3 = NULL;
+
+		if ( disp__glColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointerListIBM__III_3_3II (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3,
+		jint arg4)
+	{
+		jint *ptr3 = NULL;
+
+		if ( disp__glColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointerListIBM__III_3_3FI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3,
+		jint arg4)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointerListIBM__III_3_3DI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3,
+		jint arg4)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointerListIBM__III_3_3ZI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3,
+		jint arg4)
+	{
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorPointerListIBM__III_3_3JI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3,
+		jint arg4)
+	{
+		jlong *ptr3 = NULL;
+
+		if ( disp__glColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColorPointerListIBM ( GLint , GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerListIBM__III_3_3BI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3,
+		jint arg4)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerListIBM__III_3_3SI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3,
+		jint arg4)
+	{
+		jshort *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerListIBM__III_3_3II (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3,
+		jint arg4)
+	{
+		jint *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerListIBM__III_3_3FI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3,
+		jint arg4)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerListIBM__III_3_3DI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3,
+		jint arg4)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerListIBM__III_3_3ZI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3,
+		jint arg4)
+	{
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSecondaryColorPointerListIBM__III_3_3JI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3,
+		jint arg4)
+	{
+		jlong *ptr3 = NULL;
+
+		if ( disp__glSecondaryColorPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glSecondaryColorPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEdgeFlagPointerListIBM ( GLint , const GLboolean * * , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glEdgeFlagPointerListIBM (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbooleanArray arg1,
+		jint arg2)
+	{
+		jboolean *ptr1 = NULL;
+
+		if ( disp__glEdgeFlagPointerListIBM == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetBooleanArrayElements(env, arg1, 0);
+		}
+		disp__glEdgeFlagPointerListIBM (
+			(GLint) arg0,
+			(const GLboolean **) ptr1,
+			(GLint) arg2
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoordPointerListIBM ( GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerListIBM__II_3_3BI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2,
+		jint arg3)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerListIBM__II_3_3SI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2,
+		jint arg3)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerListIBM__II_3_3II (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2,
+		jint arg3)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerListIBM__II_3_3FI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2,
+		jint arg3)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerListIBM__II_3_3DI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2,
+		jint arg3)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerListIBM__II_3_3ZI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2,
+		jint arg3)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFogCoordPointerListIBM__II_3_3JI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2,
+		jint arg3)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glFogCoordPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glFogCoordPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glIndexPointerListIBM ( GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIndexPointerListIBM__II_3_3BI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2,
+		jint arg3)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glIndexPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glIndexPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIndexPointerListIBM__II_3_3SI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2,
+		jint arg3)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glIndexPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glIndexPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIndexPointerListIBM__II_3_3II (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2,
+		jint arg3)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glIndexPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glIndexPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIndexPointerListIBM__II_3_3FI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2,
+		jint arg3)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glIndexPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glIndexPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIndexPointerListIBM__II_3_3DI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2,
+		jint arg3)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glIndexPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glIndexPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIndexPointerListIBM__II_3_3ZI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2,
+		jint arg3)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glIndexPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glIndexPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIndexPointerListIBM__II_3_3JI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2,
+		jint arg3)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glIndexPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glIndexPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalPointerListIBM ( GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointerListIBM__II_3_3BI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2,
+		jint arg3)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glNormalPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glNormalPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointerListIBM__II_3_3SI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2,
+		jint arg3)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glNormalPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glNormalPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointerListIBM__II_3_3II (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2,
+		jint arg3)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glNormalPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glNormalPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointerListIBM__II_3_3FI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2,
+		jint arg3)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glNormalPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glNormalPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointerListIBM__II_3_3DI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2,
+		jint arg3)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glNormalPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glNormalPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointerListIBM__II_3_3ZI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2,
+		jint arg3)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glNormalPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glNormalPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalPointerListIBM__II_3_3JI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2,
+		jint arg3)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glNormalPointerListIBM == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glNormalPointerListIBM (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(const GLvoid **) ptr2,
+			(GLint) arg3
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoordPointerListIBM ( GLint , GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointerListIBM__III_3_3BI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3,
+		jint arg4)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glTexCoordPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glTexCoordPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointerListIBM__III_3_3SI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3,
+		jint arg4)
+	{
+		jshort *ptr3 = NULL;
+
+		if ( disp__glTexCoordPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glTexCoordPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointerListIBM__III_3_3II (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3,
+		jint arg4)
+	{
+		jint *ptr3 = NULL;
+
+		if ( disp__glTexCoordPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glTexCoordPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointerListIBM__III_3_3FI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3,
+		jint arg4)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glTexCoordPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glTexCoordPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointerListIBM__III_3_3DI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3,
+		jint arg4)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glTexCoordPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glTexCoordPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointerListIBM__III_3_3ZI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3,
+		jint arg4)
+	{
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glTexCoordPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glTexCoordPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexCoordPointerListIBM__III_3_3JI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3,
+		jint arg4)
+	{
+		jlong *ptr3 = NULL;
+
+		if ( disp__glTexCoordPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glTexCoordPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexPointerListIBM ( GLint , GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointerListIBM__III_3_3BI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3,
+		jint arg4)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glVertexPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glVertexPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointerListIBM__III_3_3SI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3,
+		jint arg4)
+	{
+		jshort *ptr3 = NULL;
+
+		if ( disp__glVertexPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glVertexPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointerListIBM__III_3_3II (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3,
+		jint arg4)
+	{
+		jint *ptr3 = NULL;
+
+		if ( disp__glVertexPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glVertexPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointerListIBM__III_3_3FI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3,
+		jint arg4)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glVertexPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glVertexPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointerListIBM__III_3_3DI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3,
+		jint arg4)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glVertexPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glVertexPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointerListIBM__III_3_3ZI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3,
+		jint arg4)
+	{
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glVertexPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glVertexPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexPointerListIBM__III_3_3JI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3,
+		jint arg4)
+	{
+		jlong *ptr3 = NULL;
+
+		if ( disp__glVertexPointerListIBM == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glVertexPointerListIBM (
+			(GLint) arg0,
+			(GLenum) arg1,
+			(GLint) arg2,
+			(const GLvoid **) ptr3,
+			(GLint) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTbufferMask3DFX ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTbufferMask3DFX (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glTbufferMask3DFX == NULL ) return;
+
+		disp__glTbufferMask3DFX (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSampleMaskEXT ( GLclampf , GLboolean ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSampleMaskEXT (
+		JNIEnv *env, jobject obj,
+		jfloat arg0,
+		jboolean arg1)
+	{
+
+		if ( disp__glSampleMaskEXT == NULL ) return;
+
+		disp__glSampleMaskEXT (
+			(GLclampf) arg0,
+			(GLboolean) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSamplePatternEXT ( GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSamplePatternEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glSamplePatternEXT == NULL ) return;
+
+		disp__glSamplePatternEXT (
+			(GLenum) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTextureColorMaskSGIS ( GLboolean , GLboolean , GLboolean , GLboolean ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTextureColorMaskSGIS (
+		JNIEnv *env, jobject obj,
+		jboolean arg0,
+		jboolean arg1,
+		jboolean arg2,
+		jboolean arg3)
+	{
+
+		if ( disp__glTextureColorMaskSGIS == NULL ) return;
+
+		disp__glTextureColorMaskSGIS (
+			(GLboolean) arg0,
+			(GLboolean) arg1,
+			(GLboolean) arg2,
+			(GLboolean) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glIglooInterfaceSGIX ( GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIglooInterfaceSGIX__I_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyteArray arg1)
+	{
+		jbyte *ptr1 = NULL;
+
+		if ( disp__glIglooInterfaceSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		disp__glIglooInterfaceSGIX (
+			(GLenum) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIglooInterfaceSGIX__I_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glIglooInterfaceSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glIglooInterfaceSGIX (
+			(GLenum) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIglooInterfaceSGIX__I_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glIglooInterfaceSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glIglooInterfaceSGIX (
+			(GLenum) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIglooInterfaceSGIX__I_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glIglooInterfaceSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glIglooInterfaceSGIX (
+			(GLenum) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIglooInterfaceSGIX__I_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glIglooInterfaceSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glIglooInterfaceSGIX (
+			(GLenum) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIglooInterfaceSGIX__I_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbooleanArray arg1)
+	{
+		jboolean *ptr1 = NULL;
+
+		if ( disp__glIglooInterfaceSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetBooleanArrayElements(env, arg1, 0);
+		}
+		disp__glIglooInterfaceSGIX (
+			(GLenum) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glIglooInterfaceSGIX__I_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jlongArray arg1)
+	{
+		jlong *ptr1 = NULL;
+
+		if ( disp__glIglooInterfaceSGIX == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetLongArrayElements(env, arg1, 0);
+		}
+		disp__glIglooInterfaceSGIX (
+			(GLenum) arg0,
+			(const GLvoid *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGenFencesNV ( GLsizei , GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGenFencesNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jint *ptr1 = NULL;
+
+		if ( disp__glGenFencesNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glGenFencesNV (
+			(GLsizei) arg0,
+			(GLuint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteFencesNV ( GLsizei , const GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDeleteFencesNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glDeleteFencesNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glDeleteFencesNV (
+			(GLsizei) arg0,
+			(const GLuint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSetFenceNV ( GLuint , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetFenceNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glSetFenceNV == NULL ) return;
+
+		disp__glSetFenceNV (
+			(GLuint) arg0,
+			(GLenum) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glTestFenceNV ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT jboolean JNICALL
+	Java_gl4java_GLFuncJauJNI_glTestFenceNV (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+		jboolean ret;
+
+
+		if ( disp__glTestFenceNV == NULL ) return 0;
+
+		ret = (jboolean) disp__glTestFenceNV (
+			(GLuint) arg0
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFinishFenceNV ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glFinishFenceNV (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glFinishFenceNV == NULL ) return;
+
+		disp__glFinishFenceNV (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsFenceNV ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT jboolean JNICALL
+	Java_gl4java_GLFuncJauJNI_glIsFenceNV (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+		jboolean ret;
+
+
+		if ( disp__glIsFenceNV == NULL ) return 0;
+
+		ret = (jboolean) disp__glIsFenceNV (
+			(GLuint) arg0
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFenceivNV ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetFenceivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetFenceivNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetFenceivNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMapControlPointsNV ( GLenum , GLuint , GLenum , GLsizei , GLsizei , GLint , GLint , GLboolean , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMapControlPointsNV__IIIIIIIZ_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jboolean arg7,
+		jbyteArray arg8)
+	{
+		jbyte *ptr8 = NULL;
+
+		if ( disp__glMapControlPointsNV == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetByteArrayElements(env, arg8, 0);
+		}
+		disp__glMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLint) arg6,
+			(GLboolean) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMapControlPointsNV__IIIIIIIZ_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jboolean arg7,
+		jshortArray arg8)
+	{
+		jshort *ptr8 = NULL;
+
+		if ( disp__glMapControlPointsNV == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetShortArrayElements(env, arg8, 0);
+		}
+		disp__glMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLint) arg6,
+			(GLboolean) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMapControlPointsNV__IIIIIIIZ_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jboolean arg7,
+		jintArray arg8)
+	{
+		jint *ptr8 = NULL;
+
+		if ( disp__glMapControlPointsNV == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetIntArrayElements(env, arg8, 0);
+		}
+		disp__glMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLint) arg6,
+			(GLboolean) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMapControlPointsNV__IIIIIIIZ_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jboolean arg7,
+		jfloatArray arg8)
+	{
+		jfloat *ptr8 = NULL;
+
+		if ( disp__glMapControlPointsNV == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetFloatArrayElements(env, arg8, 0);
+		}
+		disp__glMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLint) arg6,
+			(GLboolean) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMapControlPointsNV__IIIIIIIZ_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jboolean arg7,
+		jdoubleArray arg8)
+	{
+		jdouble *ptr8 = NULL;
+
+		if ( disp__glMapControlPointsNV == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetDoubleArrayElements(env, arg8, 0);
+		}
+		disp__glMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLint) arg6,
+			(GLboolean) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMapControlPointsNV__IIIIIIIZ_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jboolean arg7,
+		jbooleanArray arg8)
+	{
+		jboolean *ptr8 = NULL;
+
+		if ( disp__glMapControlPointsNV == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetBooleanArrayElements(env, arg8, 0);
+		}
+		disp__glMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLint) arg6,
+			(GLboolean) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMapControlPointsNV__IIIIIIIZ_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jboolean arg7,
+		jlongArray arg8)
+	{
+		jlong *ptr8 = NULL;
+
+		if ( disp__glMapControlPointsNV == NULL ) return;
+
+		if(arg8!=NULL)
+		{
+			ptr8 = (*env)->GetLongArrayElements(env, arg8, 0);
+		}
+		disp__glMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLint) arg5,
+			(GLint) arg6,
+			(GLboolean) arg7,
+			(const GLvoid *) ptr8
+		);
+
+		if(arg8!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg8, ptr8, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMapParameterivNV ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMapParameterivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glMapParameterivNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glMapParameterivNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMapParameterfvNV ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glMapParameterfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glMapParameterfvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glMapParameterfvNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMapControlPointsNV ( GLenum , GLuint , GLenum , GLsizei , GLsizei , GLboolean , GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapControlPointsNV__IIIIIZ_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jboolean arg5,
+		jbyteArray arg6)
+	{
+		jboolean isCopiedArray6 = JNI_FALSE;
+		jbyte *ptr6 = NULL;
+
+		if ( disp__glGetMapControlPointsNV == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetByteArrayElements(env, arg6, &isCopiedArray6);
+		}
+		disp__glGetMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLboolean) arg5,
+			(GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg6, ptr6, (isCopiedArray6 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapControlPointsNV__IIIIIZ_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jboolean arg5,
+		jshortArray arg6)
+	{
+		jboolean isCopiedArray6 = JNI_FALSE;
+		jshort *ptr6 = NULL;
+
+		if ( disp__glGetMapControlPointsNV == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetShortArrayElements(env, arg6, &isCopiedArray6);
+		}
+		disp__glGetMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLboolean) arg5,
+			(GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg6, ptr6, (isCopiedArray6 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapControlPointsNV__IIIIIZ_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jboolean arg5,
+		jintArray arg6)
+	{
+		jboolean isCopiedArray6 = JNI_FALSE;
+		jint *ptr6 = NULL;
+
+		if ( disp__glGetMapControlPointsNV == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetIntArrayElements(env, arg6, &isCopiedArray6);
+		}
+		disp__glGetMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLboolean) arg5,
+			(GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg6, ptr6, (isCopiedArray6 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapControlPointsNV__IIIIIZ_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jboolean arg5,
+		jfloatArray arg6)
+	{
+		jboolean isCopiedArray6 = JNI_FALSE;
+		jfloat *ptr6 = NULL;
+
+		if ( disp__glGetMapControlPointsNV == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetFloatArrayElements(env, arg6, &isCopiedArray6);
+		}
+		disp__glGetMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLboolean) arg5,
+			(GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg6, ptr6, (isCopiedArray6 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapControlPointsNV__IIIIIZ_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jboolean arg5,
+		jdoubleArray arg6)
+	{
+		jboolean isCopiedArray6 = JNI_FALSE;
+		jdouble *ptr6 = NULL;
+
+		if ( disp__glGetMapControlPointsNV == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetDoubleArrayElements(env, arg6, &isCopiedArray6);
+		}
+		disp__glGetMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLboolean) arg5,
+			(GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg6, ptr6, (isCopiedArray6 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapControlPointsNV__IIIIIZ_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jboolean arg5,
+		jbooleanArray arg6)
+	{
+		jboolean isCopiedArray6 = JNI_FALSE;
+		jboolean *ptr6 = NULL;
+
+		if ( disp__glGetMapControlPointsNV == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetBooleanArrayElements(env, arg6, &isCopiedArray6);
+		}
+		disp__glGetMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLboolean) arg5,
+			(GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg6, ptr6, (isCopiedArray6 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapControlPointsNV__IIIIIZ_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jboolean arg5,
+		jlongArray arg6)
+	{
+		jboolean isCopiedArray6 = JNI_FALSE;
+		jlong *ptr6 = NULL;
+
+		if ( disp__glGetMapControlPointsNV == NULL ) return;
+
+		if(arg6!=NULL)
+		{
+			ptr6 = (*env)->GetLongArrayElements(env, arg6, &isCopiedArray6);
+		}
+		disp__glGetMapControlPointsNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLsizei) arg4,
+			(GLboolean) arg5,
+			(GLvoid *) ptr6
+		);
+
+		if(arg6!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg6, ptr6, (isCopiedArray6 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMapParameterivNV ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapParameterivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetMapParameterivNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetMapParameterivNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMapParameterfvNV ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapParameterfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetMapParameterfvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetMapParameterfvNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMapAttribParameterivNV ( GLenum , GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapAttribParameterivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jint *ptr3 = NULL;
+
+		if ( disp__glGetMapAttribParameterivNV == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetMapAttribParameterivNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLint *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMapAttribParameterfvNV ( GLenum , GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetMapAttribParameterfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glGetMapAttribParameterfvNV == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetMapAttribParameterfvNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLfloat *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEvalMapsNV ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glEvalMapsNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glEvalMapsNV == NULL ) return;
+
+		disp__glEvalMapsNV (
+			(GLenum) arg0,
+			(GLenum) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerStageParameterfvNV ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glCombinerStageParameterfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glCombinerStageParameterfvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glCombinerStageParameterfvNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCombinerStageParameterfvNV ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetCombinerStageParameterfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetCombinerStageParameterfvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetCombinerStageParameterfvNV (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBindProgramNV ( GLenum , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBindProgramNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glBindProgramNV == NULL ) return;
+
+		disp__glBindProgramNV (
+			(GLenum) arg0,
+			(GLuint) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteProgramsNV ( GLsizei , const GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDeleteProgramsNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glDeleteProgramsNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glDeleteProgramsNV (
+			(GLsizei) arg0,
+			(const GLuint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glExecuteProgramNV ( GLenum , GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glExecuteProgramNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glExecuteProgramNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glExecuteProgramNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGenProgramsNV ( GLsizei , GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGenProgramsNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jint *ptr1 = NULL;
+
+		if ( disp__glGenProgramsNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glGenProgramsNV (
+			(GLsizei) arg0,
+			(GLuint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glAreProgramsResidentNV ( GLsizei , const GLuint * , GLboolean * ) ;
+ * </pre> 
+ */
+	JNIEXPORT jboolean JNICALL
+	Java_gl4java_GLFuncJauJNI_glAreProgramsResidentNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jbooleanArray arg2)
+	{
+		jboolean ret;
+
+		jint *ptr1 = NULL;
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glAreProgramsResidentNV == NULL ) return 0;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, &isCopiedArray2);
+		}
+		ret = (jboolean) disp__glAreProgramsResidentNV (
+			(GLsizei) arg0,
+			(const GLuint *) ptr1,
+			(GLboolean *) ptr2
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glRequestResidentProgramsNV ( GLsizei , const GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glRequestResidentProgramsNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glRequestResidentProgramsNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glRequestResidentProgramsNV (
+			(GLsizei) arg0,
+			(const GLuint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetProgramParameterfvNV ( GLenum , GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetProgramParameterfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glGetProgramParameterfvNV == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetProgramParameterfvNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLfloat *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetProgramParameterdvNV ( GLenum , GLuint , GLenum , GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetProgramParameterdvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glGetProgramParameterdvNV == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetProgramParameterdvNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLdouble *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetProgramivNV ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetProgramivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetProgramivNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetProgramivNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetProgramStringNV ( GLuint , GLenum , GLubyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetProgramStringNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glGetProgramStringNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetProgramStringNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLubyte *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetTrackMatrixivNV ( GLenum , GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetTrackMatrixivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3)
+	{
+		jboolean isCopiedArray3 = JNI_FALSE;
+		jint *ptr3 = NULL;
+
+		if ( disp__glGetTrackMatrixivNV == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, &isCopiedArray3);
+		}
+		disp__glGetTrackMatrixivNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLint *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, (isCopiedArray3 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVertexAttribdvNV ( GLuint , GLenum , GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVertexAttribdvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glGetVertexAttribdvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVertexAttribdvNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLdouble *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVertexAttribfvNV ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVertexAttribfvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetVertexAttribfvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVertexAttribfvNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVertexAttribivNV ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVertexAttribivNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetVertexAttribivNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVertexAttribivNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVertexAttribPointervNV ( GLuint , GLenum , GLvoid * * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVertexAttribPointervNV__II_3_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glGetVertexAttribPointervNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVertexAttribPointervNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVertexAttribPointervNV__II_3_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jshort *ptr2 = NULL;
+
+		if ( disp__glGetVertexAttribPointervNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVertexAttribPointervNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVertexAttribPointervNV__II_3_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetVertexAttribPointervNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVertexAttribPointervNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVertexAttribPointervNV__II_3_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetVertexAttribPointervNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVertexAttribPointervNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVertexAttribPointervNV__II_3_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glGetVertexAttribPointervNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVertexAttribPointervNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVertexAttribPointervNV__II_3_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glGetVertexAttribPointervNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVertexAttribPointervNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVertexAttribPointervNV__II_3_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jlong *ptr2 = NULL;
+
+		if ( disp__glGetVertexAttribPointervNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVertexAttribPointervNV (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsProgramNV ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT jboolean JNICALL
+	Java_gl4java_GLFuncJauJNI_glIsProgramNV (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+		jboolean ret;
+
+
+		if ( disp__glIsProgramNV == NULL ) return 0;
+
+		ret = (jboolean) disp__glIsProgramNV (
+			(GLuint) arg0
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLoadProgramNV ( GLenum , GLuint , GLsizei , const GLubyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glLoadProgramNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glLoadProgramNV == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glLoadProgramNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLsizei) arg2,
+			(const GLubyte *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameter4fNV ( GLenum , GLuint , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glProgramParameter4fNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4,
+		jfloat arg5)
+	{
+
+		if ( disp__glProgramParameter4fNV == NULL ) return;
+
+		disp__glProgramParameter4fNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4,
+			(GLfloat) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameter4dNV ( GLenum , GLuint , GLdouble , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glProgramParameter4dNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdouble arg2,
+		jdouble arg3,
+		jdouble arg4,
+		jdouble arg5)
+	{
+
+		if ( disp__glProgramParameter4dNV == NULL ) return;
+
+		disp__glProgramParameter4dNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLdouble) arg2,
+			(GLdouble) arg3,
+			(GLdouble) arg4,
+			(GLdouble) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameter4dvNV ( GLenum , GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glProgramParameter4dvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glProgramParameter4dvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glProgramParameter4dvNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(const GLdouble *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameter4fvNV ( GLenum , GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glProgramParameter4fvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glProgramParameter4fvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glProgramParameter4fvNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameters4dvNV ( GLenum , GLuint , GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glProgramParameters4dvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glProgramParameters4dvNV == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glProgramParameters4dvNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(const GLdouble *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameters4fvNV ( GLenum , GLuint , GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glProgramParameters4fvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glProgramParameters4fvNV == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glProgramParameters4fvNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(const GLfloat *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTrackMatrixNV ( GLenum , GLuint , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTrackMatrixNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3)
+	{
+
+		if ( disp__glTrackMatrixNV == NULL ) return;
+
+		disp__glTrackMatrixNV (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribPointerNV ( GLuint , GLint , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribPointerNV__IIII_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jbyteArray arg4)
+	{
+		jbyte *ptr4 = NULL;
+
+		if ( disp__glVertexAttribPointerNV == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetByteArrayElements(env, arg4, 0);
+		}
+		disp__glVertexAttribPointerNV (
+			(GLuint) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(const GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg4, ptr4, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribPointerNV__IIII_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jshortArray arg4)
+	{
+		jshort *ptr4 = NULL;
+
+		if ( disp__glVertexAttribPointerNV == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetShortArrayElements(env, arg4, 0);
+		}
+		disp__glVertexAttribPointerNV (
+			(GLuint) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(const GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg4, ptr4, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribPointerNV__IIII_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jintArray arg4)
+	{
+		jint *ptr4 = NULL;
+
+		if ( disp__glVertexAttribPointerNV == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetIntArrayElements(env, arg4, 0);
+		}
+		disp__glVertexAttribPointerNV (
+			(GLuint) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(const GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg4, ptr4, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribPointerNV__IIII_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jfloatArray arg4)
+	{
+		jfloat *ptr4 = NULL;
+
+		if ( disp__glVertexAttribPointerNV == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetFloatArrayElements(env, arg4, 0);
+		}
+		disp__glVertexAttribPointerNV (
+			(GLuint) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(const GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg4, ptr4, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribPointerNV__IIII_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jdoubleArray arg4)
+	{
+		jdouble *ptr4 = NULL;
+
+		if ( disp__glVertexAttribPointerNV == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetDoubleArrayElements(env, arg4, 0);
+		}
+		disp__glVertexAttribPointerNV (
+			(GLuint) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(const GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg4, ptr4, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribPointerNV__IIII_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jbooleanArray arg4)
+	{
+		jboolean *ptr4 = NULL;
+
+		if ( disp__glVertexAttribPointerNV == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetBooleanArrayElements(env, arg4, 0);
+		}
+		disp__glVertexAttribPointerNV (
+			(GLuint) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(const GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg4, ptr4, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribPointerNV__IIII_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jlongArray arg4)
+	{
+		jlong *ptr4 = NULL;
+
+		if ( disp__glVertexAttribPointerNV == NULL ) return;
+
+		if(arg4!=NULL)
+		{
+			ptr4 = (*env)->GetLongArrayElements(env, arg4, 0);
+		}
+		disp__glVertexAttribPointerNV (
+			(GLuint) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(const GLvoid *) ptr4
+		);
+
+		if(arg4!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg4, ptr4, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1sNV ( GLuint , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib1sNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshort arg1)
+	{
+
+		if ( disp__glVertexAttrib1sNV == NULL ) return;
+
+		disp__glVertexAttrib1sNV (
+			(GLuint) arg0,
+			(GLshort) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1fNV ( GLuint , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib1fNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1)
+	{
+
+		if ( disp__glVertexAttrib1fNV == NULL ) return;
+
+		disp__glVertexAttrib1fNV (
+			(GLuint) arg0,
+			(GLfloat) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1dNV ( GLuint , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib1dNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdouble arg1)
+	{
+
+		if ( disp__glVertexAttrib1dNV == NULL ) return;
+
+		disp__glVertexAttrib1dNV (
+			(GLuint) arg0,
+			(GLdouble) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2sNV ( GLuint , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib2sNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshort arg1,
+		jshort arg2)
+	{
+
+		if ( disp__glVertexAttrib2sNV == NULL ) return;
+
+		disp__glVertexAttrib2sNV (
+			(GLuint) arg0,
+			(GLshort) arg1,
+			(GLshort) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2fNV ( GLuint , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib2fNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glVertexAttrib2fNV == NULL ) return;
+
+		disp__glVertexAttrib2fNV (
+			(GLuint) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2dNV ( GLuint , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib2dNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdouble arg1,
+		jdouble arg2)
+	{
+
+		if ( disp__glVertexAttrib2dNV == NULL ) return;
+
+		disp__glVertexAttrib2dNV (
+			(GLuint) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3sNV ( GLuint , GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib3sNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshort arg1,
+		jshort arg2,
+		jshort arg3)
+	{
+
+		if ( disp__glVertexAttrib3sNV == NULL ) return;
+
+		disp__glVertexAttrib3sNV (
+			(GLuint) arg0,
+			(GLshort) arg1,
+			(GLshort) arg2,
+			(GLshort) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3fNV ( GLuint , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib3fNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3)
+	{
+
+		if ( disp__glVertexAttrib3fNV == NULL ) return;
+
+		disp__glVertexAttrib3fNV (
+			(GLuint) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3dNV ( GLuint , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib3dNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdouble arg1,
+		jdouble arg2,
+		jdouble arg3)
+	{
+
+		if ( disp__glVertexAttrib3dNV == NULL ) return;
+
+		disp__glVertexAttrib3dNV (
+			(GLuint) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2,
+			(GLdouble) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4sNV ( GLuint , GLshort , GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib4sNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshort arg1,
+		jshort arg2,
+		jshort arg3,
+		jshort arg4)
+	{
+
+		if ( disp__glVertexAttrib4sNV == NULL ) return;
+
+		disp__glVertexAttrib4sNV (
+			(GLuint) arg0,
+			(GLshort) arg1,
+			(GLshort) arg2,
+			(GLshort) arg3,
+			(GLshort) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4fNV ( GLuint , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib4fNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4)
+	{
+
+		if ( disp__glVertexAttrib4fNV == NULL ) return;
+
+		disp__glVertexAttrib4fNV (
+			(GLuint) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4dNV ( GLuint , GLdouble , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib4dNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdouble arg1,
+		jdouble arg2,
+		jdouble arg3,
+		jdouble arg4)
+	{
+
+		if ( disp__glVertexAttrib4dNV == NULL ) return;
+
+		disp__glVertexAttrib4dNV (
+			(GLuint) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2,
+			(GLdouble) arg3,
+			(GLdouble) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4ubNV ( GLuint , GLubyte , GLubyte , GLubyte , GLubyte ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib4ubNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyte arg1,
+		jbyte arg2,
+		jbyte arg3,
+		jbyte arg4)
+	{
+
+		if ( disp__glVertexAttrib4ubNV == NULL ) return;
+
+		disp__glVertexAttrib4ubNV (
+			(GLuint) arg0,
+			(GLubyte) arg1,
+			(GLubyte) arg2,
+			(GLubyte) arg3,
+			(GLubyte) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1svNV ( GLuint , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib1svNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib1svNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib1svNV (
+			(GLuint) arg0,
+			(const GLshort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1fvNV ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib1fvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib1fvNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib1fvNV (
+			(GLuint) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1dvNV ( GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib1dvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib1dvNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib1dvNV (
+			(GLuint) arg0,
+			(const GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2svNV ( GLuint , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib2svNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib2svNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib2svNV (
+			(GLuint) arg0,
+			(const GLshort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2fvNV ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib2fvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib2fvNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib2fvNV (
+			(GLuint) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2dvNV ( GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib2dvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib2dvNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib2dvNV (
+			(GLuint) arg0,
+			(const GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3svNV ( GLuint , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib3svNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib3svNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib3svNV (
+			(GLuint) arg0,
+			(const GLshort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3fvNV ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib3fvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib3fvNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib3fvNV (
+			(GLuint) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3dvNV ( GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib3dvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib3dvNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib3dvNV (
+			(GLuint) arg0,
+			(const GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4svNV ( GLuint , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib4svNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib4svNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib4svNV (
+			(GLuint) arg0,
+			(const GLshort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4fvNV ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib4fvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib4fvNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib4fvNV (
+			(GLuint) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4dvNV ( GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib4dvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib4dvNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib4dvNV (
+			(GLuint) arg0,
+			(const GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4ubvNV ( GLuint , const GLubyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttrib4ubvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyteArray arg1)
+	{
+		jbyte *ptr1 = NULL;
+
+		if ( disp__glVertexAttrib4ubvNV == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		disp__glVertexAttrib4ubvNV (
+			(GLuint) arg0,
+			(const GLubyte *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs1svNV ( GLuint , GLsizei , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs1svNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs1svNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs1svNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLshort *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs1fvNV ( GLuint , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs1fvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs1fvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs1fvNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs1dvNV ( GLuint , GLsizei , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs1dvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs1dvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs1dvNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLdouble *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs2svNV ( GLuint , GLsizei , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs2svNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs2svNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs2svNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLshort *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs2fvNV ( GLuint , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs2fvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs2fvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs2fvNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs2dvNV ( GLuint , GLsizei , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs2dvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs2dvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs2dvNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLdouble *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs3svNV ( GLuint , GLsizei , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs3svNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs3svNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs3svNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLshort *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs3fvNV ( GLuint , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs3fvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs3fvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs3fvNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs3dvNV ( GLuint , GLsizei , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs3dvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs3dvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs3dvNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLdouble *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs4svNV ( GLuint , GLsizei , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs4svNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs4svNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs4svNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLshort *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs4fvNV ( GLuint , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs4fvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs4fvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs4fvNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs4dvNV ( GLuint , GLsizei , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs4dvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs4dvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs4dvNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLdouble *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs4ubvNV ( GLuint , GLsizei , const GLubyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexAttribs4ubvNV (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glVertexAttribs4ubvNV == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glVertexAttribs4ubvNV (
+			(GLuint) arg0,
+			(GLsizei) arg1,
+			(const GLubyte *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexBumpParameterivATI ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexBumpParameterivATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glTexBumpParameterivATI == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glTexBumpParameterivATI (
+			(GLenum) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexBumpParameterfvATI ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glTexBumpParameterfvATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glTexBumpParameterfvATI == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glTexBumpParameterfvATI (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetTexBumpParameterivATI ( GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetTexBumpParameterivATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jint *ptr1 = NULL;
+
+		if ( disp__glGetTexBumpParameterivATI == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glGetTexBumpParameterivATI (
+			(GLenum) arg0,
+			(GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetTexBumpParameterfvATI ( GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetTexBumpParameterfvATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jboolean isCopiedArray1 = JNI_FALSE;
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glGetTexBumpParameterfvATI == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, &isCopiedArray1);
+		}
+		disp__glGetTexBumpParameterfvATI (
+			(GLenum) arg0,
+			(GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, (isCopiedArray1 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glGenFragmentShadersATI ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glGenFragmentShadersATI (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+		jint ret;
+
+
+		if ( disp__glGenFragmentShadersATI == NULL ) return 0;
+
+		ret = (jint) disp__glGenFragmentShadersATI (
+			(GLuint) arg0
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBindFragmentShaderATI ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBindFragmentShaderATI (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glBindFragmentShaderATI == NULL ) return;
+
+		disp__glBindFragmentShaderATI (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteFragmentShaderATI ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDeleteFragmentShaderATI (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glDeleteFragmentShaderATI == NULL ) return;
+
+		disp__glDeleteFragmentShaderATI (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBeginFragmentShaderATI ( void ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBeginFragmentShaderATI (
+		JNIEnv *env, jobject obj)
+	{
+
+		if ( disp__glBeginFragmentShaderATI == NULL ) return;
+
+		disp__glBeginFragmentShaderATI (
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEndFragmentShaderATI ( void ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glEndFragmentShaderATI (
+		JNIEnv *env, jobject obj)
+	{
+
+		if ( disp__glEndFragmentShaderATI == NULL ) return;
+
+		disp__glEndFragmentShaderATI (
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPassTexCoordATI ( GLuint , GLuint , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPassTexCoordATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glPassTexCoordATI == NULL ) return;
+
+		disp__glPassTexCoordATI (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSampleMapATI ( GLuint , GLuint , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSampleMapATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glSampleMapATI == NULL ) return;
+
+		disp__glSampleMapATI (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorFragmentOp1ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorFragmentOp1ATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6)
+	{
+
+		if ( disp__glColorFragmentOp1ATI == NULL ) return;
+
+		disp__glColorFragmentOp1ATI (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLuint) arg3,
+			(GLuint) arg4,
+			(GLuint) arg5,
+			(GLuint) arg6
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorFragmentOp2ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorFragmentOp2ATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9)
+	{
+
+		if ( disp__glColorFragmentOp2ATI == NULL ) return;
+
+		disp__glColorFragmentOp2ATI (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLuint) arg3,
+			(GLuint) arg4,
+			(GLuint) arg5,
+			(GLuint) arg6,
+			(GLuint) arg7,
+			(GLuint) arg8,
+			(GLuint) arg9
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorFragmentOp3ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glColorFragmentOp3ATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jint arg10,
+		jint arg11,
+		jint arg12)
+	{
+
+		if ( disp__glColorFragmentOp3ATI == NULL ) return;
+
+		disp__glColorFragmentOp3ATI (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLuint) arg3,
+			(GLuint) arg4,
+			(GLuint) arg5,
+			(GLuint) arg6,
+			(GLuint) arg7,
+			(GLuint) arg8,
+			(GLuint) arg9,
+			(GLuint) arg10,
+			(GLuint) arg11,
+			(GLuint) arg12
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glAlphaFragmentOp1ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glAlphaFragmentOp1ATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5)
+	{
+
+		if ( disp__glAlphaFragmentOp1ATI == NULL ) return;
+
+		disp__glAlphaFragmentOp1ATI (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLuint) arg3,
+			(GLuint) arg4,
+			(GLuint) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glAlphaFragmentOp2ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glAlphaFragmentOp2ATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8)
+	{
+
+		if ( disp__glAlphaFragmentOp2ATI == NULL ) return;
+
+		disp__glAlphaFragmentOp2ATI (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLuint) arg3,
+			(GLuint) arg4,
+			(GLuint) arg5,
+			(GLuint) arg6,
+			(GLuint) arg7,
+			(GLuint) arg8
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glAlphaFragmentOp3ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glAlphaFragmentOp3ATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5,
+		jint arg6,
+		jint arg7,
+		jint arg8,
+		jint arg9,
+		jint arg10,
+		jint arg11)
+	{
+
+		if ( disp__glAlphaFragmentOp3ATI == NULL ) return;
+
+		disp__glAlphaFragmentOp3ATI (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLuint) arg3,
+			(GLuint) arg4,
+			(GLuint) arg5,
+			(GLuint) arg6,
+			(GLuint) arg7,
+			(GLuint) arg8,
+			(GLuint) arg9,
+			(GLuint) arg10,
+			(GLuint) arg11
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSetFragmentShaderConstantATI ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetFragmentShaderConstantATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glSetFragmentShaderConstantATI == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glSetFragmentShaderConstantATI (
+			(GLuint) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPNTrianglesiATI ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPNTrianglesiATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glPNTrianglesiATI == NULL ) return;
+
+		disp__glPNTrianglesiATI (
+			(GLenum) arg0,
+			(GLint) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPNTrianglesfATI ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glPNTrianglesfATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1)
+	{
+
+		if ( disp__glPNTrianglesfATI == NULL ) return;
+
+		disp__glPNTrianglesfATI (
+			(GLenum) arg0,
+			(GLfloat) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glNewObjectBufferATI ( GLsizei , const GLvoid * , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glNewObjectBufferATI__I_3BI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyteArray arg1,
+		jint arg2)
+	{
+		jint ret;
+
+		jbyte *ptr1 = NULL;
+
+		if ( disp__glNewObjectBufferATI == NULL ) return 0;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		ret = (jint) disp__glNewObjectBufferATI (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1,
+			(GLenum) arg2
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		return ret;
+	}
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glNewObjectBufferATI__I_3SI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1,
+		jint arg2)
+	{
+		jint ret;
+
+		jshort *ptr1 = NULL;
+
+		if ( disp__glNewObjectBufferATI == NULL ) return 0;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		ret = (jint) disp__glNewObjectBufferATI (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1,
+			(GLenum) arg2
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		return ret;
+	}
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glNewObjectBufferATI__I_3II (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1,
+		jint arg2)
+	{
+		jint ret;
+
+		jint *ptr1 = NULL;
+
+		if ( disp__glNewObjectBufferATI == NULL ) return 0;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		ret = (jint) disp__glNewObjectBufferATI (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1,
+			(GLenum) arg2
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		return ret;
+	}
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glNewObjectBufferATI__I_3FI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1,
+		jint arg2)
+	{
+		jint ret;
+
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glNewObjectBufferATI == NULL ) return 0;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		ret = (jint) disp__glNewObjectBufferATI (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1,
+			(GLenum) arg2
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		return ret;
+	}
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glNewObjectBufferATI__I_3DI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1,
+		jint arg2)
+	{
+		jint ret;
+
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glNewObjectBufferATI == NULL ) return 0;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		ret = (jint) disp__glNewObjectBufferATI (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1,
+			(GLenum) arg2
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		return ret;
+	}
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glNewObjectBufferATI__I_3ZI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbooleanArray arg1,
+		jint arg2)
+	{
+		jint ret;
+
+		jboolean *ptr1 = NULL;
+
+		if ( disp__glNewObjectBufferATI == NULL ) return 0;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetBooleanArrayElements(env, arg1, 0);
+		}
+		ret = (jint) disp__glNewObjectBufferATI (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1,
+			(GLenum) arg2
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		return ret;
+	}
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glNewObjectBufferATI__I_3JI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jlongArray arg1,
+		jint arg2)
+	{
+		jint ret;
+
+		jlong *ptr1 = NULL;
+
+		if ( disp__glNewObjectBufferATI == NULL ) return 0;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetLongArrayElements(env, arg1, 0);
+		}
+		ret = (jint) disp__glNewObjectBufferATI (
+			(GLsizei) arg0,
+			(const GLvoid *) ptr1,
+			(GLenum) arg2
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsObjectBufferATI ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT jboolean JNICALL
+	Java_gl4java_GLFuncJauJNI_glIsObjectBufferATI (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+		jboolean ret;
+
+
+		if ( disp__glIsObjectBufferATI == NULL ) return 0;
+
+		ret = (jboolean) disp__glIsObjectBufferATI (
+			(GLuint) arg0
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glUpdateObjectBufferATI ( GLuint , GLuint , GLsizei , const GLvoid * , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glUpdateObjectBufferATI__III_3BI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3,
+		jint arg4)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glUpdateObjectBufferATI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glUpdateObjectBufferATI (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3,
+			(GLenum) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glUpdateObjectBufferATI__III_3SI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3,
+		jint arg4)
+	{
+		jshort *ptr3 = NULL;
+
+		if ( disp__glUpdateObjectBufferATI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glUpdateObjectBufferATI (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3,
+			(GLenum) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glUpdateObjectBufferATI__III_3II (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3,
+		jint arg4)
+	{
+		jint *ptr3 = NULL;
+
+		if ( disp__glUpdateObjectBufferATI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glUpdateObjectBufferATI (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3,
+			(GLenum) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glUpdateObjectBufferATI__III_3FI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3,
+		jint arg4)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glUpdateObjectBufferATI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glUpdateObjectBufferATI (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3,
+			(GLenum) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glUpdateObjectBufferATI__III_3DI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3,
+		jint arg4)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glUpdateObjectBufferATI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glUpdateObjectBufferATI (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3,
+			(GLenum) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glUpdateObjectBufferATI__III_3ZI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3,
+		jint arg4)
+	{
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glUpdateObjectBufferATI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glUpdateObjectBufferATI (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3,
+			(GLenum) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glUpdateObjectBufferATI__III_3JI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3,
+		jint arg4)
+	{
+		jlong *ptr3 = NULL;
+
+		if ( disp__glUpdateObjectBufferATI == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glUpdateObjectBufferATI (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLsizei) arg2,
+			(const GLvoid *) ptr3,
+			(GLenum) arg4
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetObjectBufferfvATI ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetObjectBufferfvATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetObjectBufferfvATI == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetObjectBufferfvATI (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetObjectBufferivATI ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetObjectBufferivATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetObjectBufferivATI == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetObjectBufferivATI (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteObjectBufferATI ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDeleteObjectBufferATI (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glDeleteObjectBufferATI == NULL ) return;
+
+		disp__glDeleteObjectBufferATI (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glArrayObjectATI ( GLenum , GLint , GLenum , GLsizei , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glArrayObjectATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5)
+	{
+
+		if ( disp__glArrayObjectATI == NULL ) return;
+
+		disp__glArrayObjectATI (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLenum) arg2,
+			(GLsizei) arg3,
+			(GLuint) arg4,
+			(GLuint) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetArrayObjectfvATI ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetArrayObjectfvATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetArrayObjectfvATI == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetArrayObjectfvATI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetArrayObjectivATI ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetArrayObjectivATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetArrayObjectivATI == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetArrayObjectivATI (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantArrayObjectATI ( GLuint , GLenum , GLsizei , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantArrayObjectATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4)
+	{
+
+		if ( disp__glVariantArrayObjectATI == NULL ) return;
+
+		disp__glVariantArrayObjectATI (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLsizei) arg2,
+			(GLuint) arg3,
+			(GLuint) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantArrayObjectfvATI ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantArrayObjectfvATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetVariantArrayObjectfvATI == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantArrayObjectfvATI (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantArrayObjectivATI ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantArrayObjectivATI (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetVariantArrayObjectivATI == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantArrayObjectivATI (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBeginVertexShaderEXT ( void ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBeginVertexShaderEXT (
+		JNIEnv *env, jobject obj)
+	{
+
+		if ( disp__glBeginVertexShaderEXT == NULL ) return;
+
+		disp__glBeginVertexShaderEXT (
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEndVertexShaderEXT ( void ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glEndVertexShaderEXT (
+		JNIEnv *env, jobject obj)
+	{
+
+		if ( disp__glEndVertexShaderEXT == NULL ) return;
+
+		disp__glEndVertexShaderEXT (
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBindVertexShaderEXT ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glBindVertexShaderEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glBindVertexShaderEXT == NULL ) return;
+
+		disp__glBindVertexShaderEXT (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glGenVertexShadersEXT ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glGenVertexShadersEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+		jint ret;
+
+
+		if ( disp__glGenVertexShadersEXT == NULL ) return 0;
+
+		ret = (jint) disp__glGenVertexShadersEXT (
+			(GLuint) arg0
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteVertexShaderEXT ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDeleteVertexShaderEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glDeleteVertexShaderEXT == NULL ) return;
+
+		disp__glDeleteVertexShaderEXT (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glShaderOp1EXT ( GLenum , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glShaderOp1EXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glShaderOp1EXT == NULL ) return;
+
+		disp__glShaderOp1EXT (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glShaderOp2EXT ( GLenum , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glShaderOp2EXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3)
+	{
+
+		if ( disp__glShaderOp2EXT == NULL ) return;
+
+		disp__glShaderOp2EXT (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLuint) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glShaderOp3EXT ( GLenum , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glShaderOp3EXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4)
+	{
+
+		if ( disp__glShaderOp3EXT == NULL ) return;
+
+		disp__glShaderOp3EXT (
+			(GLenum) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2,
+			(GLuint) arg3,
+			(GLuint) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSwizzleEXT ( GLuint , GLuint , GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSwizzleEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5)
+	{
+
+		if ( disp__glSwizzleEXT == NULL ) return;
+
+		disp__glSwizzleEXT (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWriteMaskEXT ( GLuint , GLuint , GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glWriteMaskEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4,
+		jint arg5)
+	{
+
+		if ( disp__glWriteMaskEXT == NULL ) return;
+
+		disp__glWriteMaskEXT (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLenum) arg2,
+			(GLenum) arg3,
+			(GLenum) arg4,
+			(GLenum) arg5
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glInsertComponentEXT ( GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glInsertComponentEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glInsertComponentEXT == NULL ) return;
+
+		disp__glInsertComponentEXT (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glExtractComponentEXT ( GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glExtractComponentEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glExtractComponentEXT == NULL ) return;
+
+		disp__glExtractComponentEXT (
+			(GLuint) arg0,
+			(GLuint) arg1,
+			(GLuint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glGenSymbolsEXT ( GLenum , GLenum , GLenum , GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glGenSymbolsEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3)
+	{
+		jint ret;
+
+
+		if ( disp__glGenSymbolsEXT == NULL ) return 0;
+
+		ret = (jint) disp__glGenSymbolsEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2,
+			(GLuint) arg3
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSetInvariantEXT ( GLuint , GLenum , const void * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetInvariantEXT__II_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glSetInvariantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glSetInvariantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetInvariantEXT__II_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glSetInvariantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glSetInvariantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetInvariantEXT__II_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glSetInvariantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glSetInvariantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetInvariantEXT__II_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glSetInvariantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glSetInvariantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetInvariantEXT__II_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glSetInvariantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glSetInvariantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetInvariantEXT__II_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glSetInvariantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glSetInvariantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetInvariantEXT__II_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glSetInvariantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glSetInvariantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSetLocalConstantEXT ( GLuint , GLenum , const void * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetLocalConstantEXT__II_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glSetLocalConstantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, 0);
+		}
+		disp__glSetLocalConstantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetLocalConstantEXT__II_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jshort *ptr2 = NULL;
+
+		if ( disp__glSetLocalConstantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, 0);
+		}
+		disp__glSetLocalConstantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetLocalConstantEXT__II_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jint *ptr2 = NULL;
+
+		if ( disp__glSetLocalConstantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, 0);
+		}
+		disp__glSetLocalConstantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetLocalConstantEXT__II_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glSetLocalConstantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, 0);
+		}
+		disp__glSetLocalConstantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetLocalConstantEXT__II_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glSetLocalConstantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, 0);
+		}
+		disp__glSetLocalConstantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetLocalConstantEXT__II_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glSetLocalConstantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, 0);
+		}
+		disp__glSetLocalConstantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glSetLocalConstantEXT__II_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jlong *ptr2 = NULL;
+
+		if ( disp__glSetLocalConstantEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, 0);
+		}
+		disp__glSetLocalConstantEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(const void *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantbvEXT ( GLuint , const GLbyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantbvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyteArray arg1)
+	{
+		jbyte *ptr1 = NULL;
+
+		if ( disp__glVariantbvEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		disp__glVariantbvEXT (
+			(GLuint) arg0,
+			(const GLbyte *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantsvEXT ( GLuint , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantsvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVariantsvEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVariantsvEXT (
+			(GLuint) arg0,
+			(const GLshort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantivEXT ( GLuint , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantivEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glVariantivEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glVariantivEXT (
+			(GLuint) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantfvEXT ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantfvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glVariantfvEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glVariantfvEXT (
+			(GLuint) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantdvEXT ( GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantdvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glVariantdvEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glVariantdvEXT (
+			(GLuint) arg0,
+			(const GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantubvEXT ( GLuint , const GLubyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantubvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyteArray arg1)
+	{
+		jbyte *ptr1 = NULL;
+
+		if ( disp__glVariantubvEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		disp__glVariantubvEXT (
+			(GLuint) arg0,
+			(const GLubyte *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantusvEXT ( GLuint , const GLushort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantusvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVariantusvEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVariantusvEXT (
+			(GLuint) arg0,
+			(const GLushort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantuivEXT ( GLuint , const GLuint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantuivEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glVariantuivEXT == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glVariantuivEXT (
+			(GLuint) arg0,
+			(const GLuint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantPointerEXT ( GLuint , GLenum , GLuint , const void * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantPointerEXT__III_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbyteArray arg3)
+	{
+		jbyte *ptr3 = NULL;
+
+		if ( disp__glVariantPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetByteArrayElements(env, arg3, 0);
+		}
+		disp__glVariantPointerEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLuint) arg2,
+			(const void *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantPointerEXT__III_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jshortArray arg3)
+	{
+		jshort *ptr3 = NULL;
+
+		if ( disp__glVariantPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetShortArrayElements(env, arg3, 0);
+		}
+		disp__glVariantPointerEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLuint) arg2,
+			(const void *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantPointerEXT__III_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jintArray arg3)
+	{
+		jint *ptr3 = NULL;
+
+		if ( disp__glVariantPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetIntArrayElements(env, arg3, 0);
+		}
+		disp__glVariantPointerEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLuint) arg2,
+			(const void *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantPointerEXT__III_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jfloatArray arg3)
+	{
+		jfloat *ptr3 = NULL;
+
+		if ( disp__glVariantPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetFloatArrayElements(env, arg3, 0);
+		}
+		disp__glVariantPointerEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLuint) arg2,
+			(const void *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantPointerEXT__III_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jdoubleArray arg3)
+	{
+		jdouble *ptr3 = NULL;
+
+		if ( disp__glVariantPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetDoubleArrayElements(env, arg3, 0);
+		}
+		disp__glVariantPointerEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLuint) arg2,
+			(const void *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantPointerEXT__III_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jbooleanArray arg3)
+	{
+		jboolean *ptr3 = NULL;
+
+		if ( disp__glVariantPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetBooleanArrayElements(env, arg3, 0);
+		}
+		disp__glVariantPointerEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLuint) arg2,
+			(const void *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVariantPointerEXT__III_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jlongArray arg3)
+	{
+		jlong *ptr3 = NULL;
+
+		if ( disp__glVariantPointerEXT == NULL ) return;
+
+		if(arg3!=NULL)
+		{
+			ptr3 = (*env)->GetLongArrayElements(env, arg3, 0);
+		}
+		disp__glVariantPointerEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLuint) arg2,
+			(const void *) ptr3
+		);
+
+		if(arg3!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg3, ptr3, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEnableVariantClientStateEXT ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glEnableVariantClientStateEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glEnableVariantClientStateEXT == NULL ) return;
+
+		disp__glEnableVariantClientStateEXT (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDisableVariantClientStateEXT ( GLuint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glDisableVariantClientStateEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glDisableVariantClientStateEXT == NULL ) return;
+
+		disp__glDisableVariantClientStateEXT (
+			(GLuint) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glBindLightParameterEXT ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glBindLightParameterEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+		jint ret;
+
+
+		if ( disp__glBindLightParameterEXT == NULL ) return 0;
+
+		ret = (jint) disp__glBindLightParameterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glBindMaterialParameterEXT ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glBindMaterialParameterEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+		jint ret;
+
+
+		if ( disp__glBindMaterialParameterEXT == NULL ) return 0;
+
+		ret = (jint) disp__glBindMaterialParameterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glBindTexGenParameterEXT ( GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glBindTexGenParameterEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+		jint ret;
+
+
+		if ( disp__glBindTexGenParameterEXT == NULL ) return 0;
+
+		ret = (jint) disp__glBindTexGenParameterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1,
+			(GLenum) arg2
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glBindTextureUnitParameterEXT ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glBindTextureUnitParameterEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+		jint ret;
+
+
+		if ( disp__glBindTextureUnitParameterEXT == NULL ) return 0;
+
+		ret = (jint) disp__glBindTextureUnitParameterEXT (
+			(GLenum) arg0,
+			(GLenum) arg1
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glBindParameterEXT ( GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT jint JNICALL
+	Java_gl4java_GLFuncJauJNI_glBindParameterEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+		jint ret;
+
+
+		if ( disp__glBindParameterEXT == NULL ) return 0;
+
+		ret = (jint) disp__glBindParameterEXT (
+			(GLenum) arg0
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsVariantEnabledEXT ( GLuint , GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT jboolean JNICALL
+	Java_gl4java_GLFuncJauJNI_glIsVariantEnabledEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+		jboolean ret;
+
+
+		if ( disp__glIsVariantEnabledEXT == NULL ) return 0;
+
+		ret = (jboolean) disp__glIsVariantEnabledEXT (
+			(GLuint) arg0,
+			(GLenum) arg1
+		);
+
+		return ret;
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantBooleanvEXT ( GLuint , GLenum , GLboolean * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantBooleanvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glGetVariantBooleanvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantBooleanvEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLboolean *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantIntegervEXT ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantIntegervEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetVariantIntegervEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantIntegervEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantFloatvEXT ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantFloatvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetVariantFloatvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantFloatvEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantPointervEXT ( GLuint , GLenum , GLvoid * * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantPointervEXT__II_3_3B (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbyteArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jbyte *ptr2 = NULL;
+
+		if ( disp__glGetVariantPointervEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetByteArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantPointervEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantPointervEXT__II_3_3S (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jshortArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jshort *ptr2 = NULL;
+
+		if ( disp__glGetVariantPointervEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetShortArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantPointervEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantPointervEXT__II_3_3I (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetVariantPointervEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantPointervEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantPointervEXT__II_3_3F (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetVariantPointervEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantPointervEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantPointervEXT__II_3_3D (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jdoubleArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jdouble *ptr2 = NULL;
+
+		if ( disp__glGetVariantPointervEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetDoubleArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantPointervEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantPointervEXT__II_3_3Z (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glGetVariantPointervEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantPointervEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetVariantPointervEXT__II_3_3J (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jlongArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jlong *ptr2 = NULL;
+
+		if ( disp__glGetVariantPointervEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetLongArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetVariantPointervEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLvoid **) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseLongArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetInvariantBooleanvEXT ( GLuint , GLenum , GLboolean * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetInvariantBooleanvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glGetInvariantBooleanvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetInvariantBooleanvEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLboolean *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetInvariantIntegervEXT ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetInvariantIntegervEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetInvariantIntegervEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetInvariantIntegervEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetInvariantFloatvEXT ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetInvariantFloatvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetInvariantFloatvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetInvariantFloatvEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetLocalConstantBooleanvEXT ( GLuint , GLenum , GLboolean * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetLocalConstantBooleanvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jbooleanArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jboolean *ptr2 = NULL;
+
+		if ( disp__glGetLocalConstantBooleanvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetBooleanArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetLocalConstantBooleanvEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLboolean *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseBooleanArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetLocalConstantIntegervEXT ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetLocalConstantIntegervEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jintArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jint *ptr2 = NULL;
+
+		if ( disp__glGetLocalConstantIntegervEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetIntArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetLocalConstantIntegervEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLint *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetLocalConstantFloatvEXT ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glGetLocalConstantFloatvEXT (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jfloatArray arg2)
+	{
+		jboolean isCopiedArray2 = JNI_FALSE;
+		jfloat *ptr2 = NULL;
+
+		if ( disp__glGetLocalConstantFloatvEXT == NULL ) return;
+
+		if(arg2!=NULL)
+		{
+			ptr2 = (*env)->GetFloatArrayElements(env, arg2, &isCopiedArray2);
+		}
+		disp__glGetLocalConstantFloatvEXT (
+			(GLuint) arg0,
+			(GLenum) arg1,
+			(GLfloat *) ptr2
+		);
+
+		if(arg2!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg2, ptr2, (isCopiedArray2 == JNI_TRUE)?0:JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1s ( GLenum , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream1s (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshort arg1)
+	{
+
+		if ( disp__glVertexStream1s == NULL ) return;
+
+		disp__glVertexStream1s (
+			(GLenum) arg0,
+			(GLshort) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1sv ( GLenum , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream1sv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVertexStream1sv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream1sv (
+			(GLenum) arg0,
+			(const GLshort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1i ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream1i (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glVertexStream1i == NULL ) return;
+
+		disp__glVertexStream1i (
+			(GLenum) arg0,
+			(GLint) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1iv ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream1iv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glVertexStream1iv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream1iv (
+			(GLenum) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1f ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream1f (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1)
+	{
+
+		if ( disp__glVertexStream1f == NULL ) return;
+
+		disp__glVertexStream1f (
+			(GLenum) arg0,
+			(GLfloat) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1fv ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream1fv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glVertexStream1fv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream1fv (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1d ( GLenum , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream1d (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdouble arg1)
+	{
+
+		if ( disp__glVertexStream1d == NULL ) return;
+
+		disp__glVertexStream1d (
+			(GLenum) arg0,
+			(GLdouble) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1dv ( GLenum , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream1dv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glVertexStream1dv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream1dv (
+			(GLenum) arg0,
+			(const GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2s ( GLenum , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream2s (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshort arg1,
+		jshort arg2)
+	{
+
+		if ( disp__glVertexStream2s == NULL ) return;
+
+		disp__glVertexStream2s (
+			(GLenum) arg0,
+			(GLshort) arg1,
+			(GLshort) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2sv ( GLenum , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream2sv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVertexStream2sv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream2sv (
+			(GLenum) arg0,
+			(const GLshort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2i ( GLenum , GLint , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream2i (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2)
+	{
+
+		if ( disp__glVertexStream2i == NULL ) return;
+
+		disp__glVertexStream2i (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2iv ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream2iv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glVertexStream2iv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream2iv (
+			(GLenum) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2f ( GLenum , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream2f (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2)
+	{
+
+		if ( disp__glVertexStream2f == NULL ) return;
+
+		disp__glVertexStream2f (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2fv ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream2fv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glVertexStream2fv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream2fv (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2d ( GLenum , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream2d (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdouble arg1,
+		jdouble arg2)
+	{
+
+		if ( disp__glVertexStream2d == NULL ) return;
+
+		disp__glVertexStream2d (
+			(GLenum) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2dv ( GLenum , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream2dv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glVertexStream2dv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream2dv (
+			(GLenum) arg0,
+			(const GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3s ( GLenum , GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream3s (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshort arg1,
+		jshort arg2,
+		jshort arg3)
+	{
+
+		if ( disp__glVertexStream3s == NULL ) return;
+
+		disp__glVertexStream3s (
+			(GLenum) arg0,
+			(GLshort) arg1,
+			(GLshort) arg2,
+			(GLshort) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3sv ( GLenum , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream3sv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVertexStream3sv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream3sv (
+			(GLenum) arg0,
+			(const GLshort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3i ( GLenum , GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream3i (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3)
+	{
+
+		if ( disp__glVertexStream3i == NULL ) return;
+
+		disp__glVertexStream3i (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3iv ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream3iv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glVertexStream3iv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream3iv (
+			(GLenum) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3f ( GLenum , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream3f (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3)
+	{
+
+		if ( disp__glVertexStream3f == NULL ) return;
+
+		disp__glVertexStream3f (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3fv ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream3fv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glVertexStream3fv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream3fv (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3d ( GLenum , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream3d (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdouble arg1,
+		jdouble arg2,
+		jdouble arg3)
+	{
+
+		if ( disp__glVertexStream3d == NULL ) return;
+
+		disp__glVertexStream3d (
+			(GLenum) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2,
+			(GLdouble) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3dv ( GLenum , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream3dv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glVertexStream3dv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream3dv (
+			(GLenum) arg0,
+			(const GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4s ( GLenum , GLshort , GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream4s (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshort arg1,
+		jshort arg2,
+		jshort arg3,
+		jshort arg4)
+	{
+
+		if ( disp__glVertexStream4s == NULL ) return;
+
+		disp__glVertexStream4s (
+			(GLenum) arg0,
+			(GLshort) arg1,
+			(GLshort) arg2,
+			(GLshort) arg3,
+			(GLshort) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4sv ( GLenum , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream4sv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glVertexStream4sv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream4sv (
+			(GLenum) arg0,
+			(const GLshort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4i ( GLenum , GLint , GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream4i (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3,
+		jint arg4)
+	{
+
+		if ( disp__glVertexStream4i == NULL ) return;
+
+		disp__glVertexStream4i (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3,
+			(GLint) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4iv ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream4iv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glVertexStream4iv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream4iv (
+			(GLenum) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4f ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream4f (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3,
+		jfloat arg4)
+	{
+
+		if ( disp__glVertexStream4f == NULL ) return;
+
+		disp__glVertexStream4f (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3,
+			(GLfloat) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4fv ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream4fv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glVertexStream4fv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream4fv (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4d ( GLenum , GLdouble , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream4d (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdouble arg1,
+		jdouble arg2,
+		jdouble arg3,
+		jdouble arg4)
+	{
+
+		if ( disp__glVertexStream4d == NULL ) return;
+
+		disp__glVertexStream4d (
+			(GLenum) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2,
+			(GLdouble) arg3,
+			(GLdouble) arg4
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4dv ( GLenum , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexStream4dv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glVertexStream4dv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glVertexStream4dv (
+			(GLenum) arg0,
+			(const GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3b ( GLenum , GLbyte , GLbyte , GLbyte ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalStream3b (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyte arg1,
+		jbyte arg2,
+		jbyte arg3)
+	{
+
+		if ( disp__glNormalStream3b == NULL ) return;
+
+		disp__glNormalStream3b (
+			(GLenum) arg0,
+			(GLbyte) arg1,
+			(GLbyte) arg2,
+			(GLbyte) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3bv ( GLenum , const GLbyte * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalStream3bv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jbyteArray arg1)
+	{
+		jbyte *ptr1 = NULL;
+
+		if ( disp__glNormalStream3bv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetByteArrayElements(env, arg1, 0);
+		}
+		disp__glNormalStream3bv (
+			(GLenum) arg0,
+			(const GLbyte *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseByteArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3s ( GLenum , GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalStream3s (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshort arg1,
+		jshort arg2,
+		jshort arg3)
+	{
+
+		if ( disp__glNormalStream3s == NULL ) return;
+
+		disp__glNormalStream3s (
+			(GLenum) arg0,
+			(GLshort) arg1,
+			(GLshort) arg2,
+			(GLshort) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3sv ( GLenum , const GLshort * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalStream3sv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jshortArray arg1)
+	{
+		jshort *ptr1 = NULL;
+
+		if ( disp__glNormalStream3sv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetShortArrayElements(env, arg1, 0);
+		}
+		disp__glNormalStream3sv (
+			(GLenum) arg0,
+			(const GLshort *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseShortArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3i ( GLenum , GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalStream3i (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1,
+		jint arg2,
+		jint arg3)
+	{
+
+		if ( disp__glNormalStream3i == NULL ) return;
+
+		disp__glNormalStream3i (
+			(GLenum) arg0,
+			(GLint) arg1,
+			(GLint) arg2,
+			(GLint) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3iv ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalStream3iv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jintArray arg1)
+	{
+		jint *ptr1 = NULL;
+
+		if ( disp__glNormalStream3iv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetIntArrayElements(env, arg1, 0);
+		}
+		disp__glNormalStream3iv (
+			(GLenum) arg0,
+			(const GLint *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseIntArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3f ( GLenum , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalStream3f (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1,
+		jfloat arg2,
+		jfloat arg3)
+	{
+
+		if ( disp__glNormalStream3f == NULL ) return;
+
+		disp__glNormalStream3f (
+			(GLenum) arg0,
+			(GLfloat) arg1,
+			(GLfloat) arg2,
+			(GLfloat) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3fv ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalStream3fv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloatArray arg1)
+	{
+		jfloat *ptr1 = NULL;
+
+		if ( disp__glNormalStream3fv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetFloatArrayElements(env, arg1, 0);
+		}
+		disp__glNormalStream3fv (
+			(GLenum) arg0,
+			(const GLfloat *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseFloatArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3d ( GLenum , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalStream3d (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdouble arg1,
+		jdouble arg2,
+		jdouble arg3)
+	{
+
+		if ( disp__glNormalStream3d == NULL ) return;
+
+		disp__glNormalStream3d (
+			(GLenum) arg0,
+			(GLdouble) arg1,
+			(GLdouble) arg2,
+			(GLdouble) arg3
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3dv ( GLenum , const GLdouble * ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glNormalStream3dv (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jdoubleArray arg1)
+	{
+		jdouble *ptr1 = NULL;
+
+		if ( disp__glNormalStream3dv == NULL ) return;
+
+		if(arg1!=NULL)
+		{
+			ptr1 = (*env)->GetDoubleArrayElements(env, arg1, 0);
+		}
+		disp__glNormalStream3dv (
+			(GLenum) arg0,
+			(const GLdouble *) ptr1
+		);
+
+		if(arg1!=NULL)
+		{
+			(*env)->ReleaseDoubleArrayElements(env,  arg1, ptr1, JNI_ABORT);
+		}
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glClientActiveVertexStream ( GLenum ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glClientActiveVertexStream (
+		JNIEnv *env, jobject obj,
+		jint arg0)
+	{
+
+		if ( disp__glClientActiveVertexStream == NULL ) return;
+
+		disp__glClientActiveVertexStream (
+			(GLenum) arg0
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexBlendEnvi ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexBlendEnvi (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jint arg1)
+	{
+
+		if ( disp__glVertexBlendEnvi == NULL ) return;
+
+		disp__glVertexBlendEnvi (
+			(GLenum) arg0,
+			(GLint) arg1
+		);
+
+	}
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexBlendEnvf ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	JNIEXPORT void JNICALL
+	Java_gl4java_GLFuncJauJNI_glVertexBlendEnvf (
+		JNIEnv *env, jobject obj,
+		jint arg0,
+		jfloat arg1)
+	{
+
+		if ( disp__glVertexBlendEnvf == NULL ) return;
+
+		disp__glVertexBlendEnvf (
+			(GLenum) arg0,
+			(GLfloat) arg1
+		);
+
+	}
+
+/* C2J Parser Version 3.0:  Java program parsed successfully. */ 

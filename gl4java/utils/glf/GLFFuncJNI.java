@@ -51,7 +51,7 @@ protected final native int glfLoadFontNative (long fontf);
 protected final native int glfLoadBFontNative (long fontf);
 
 /**
- * C2J Parser Version 2.2
+ * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glf-proto-auto.orig.h . . .
  * Destination-Class: gl4java_utils_glf_GLF ! 
@@ -664,7 +664,7 @@ protected final native int glfLoadBFontNative (long fontf);
 		float angle
 	) ;
 
-/* C2J Parser Version 2.2:  Java program parsed successfully. */ 
+/* C2J Parser Version 3.0:  Java program parsed successfully. */ 
 
 
 }

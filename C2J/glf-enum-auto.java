@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 2.2
+ * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glf-enum-auto.orig.h . . .
  * Destination-Class: gl4java_GLFEnum ! 
@@ -27,4 +27,4 @@
 	public static final int GLF_UP	= 3;
 	public static final int GLF_DOWN	= 4;
 	public static final int GLF_CONSOLE_CURSOR	= 30;
-/* C2J Parser Version 2.2:  Java program parsed successfully. */ 
+/* C2J Parser Version 3.0:  Java program parsed successfully. */ 

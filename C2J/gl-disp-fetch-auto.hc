@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 2.2
+ * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -668,7 +668,7 @@
 	disp__glEdgeFlagPointer = (void (CALLBACK *)(GLsizei, const GLvoid *))
 	  GET_GL_PROCADDRESS ("glEdgeFlagPointer");
 
-	disp__glGetPointerv = (void (CALLBACK *)(GLenum, void **))
+	disp__glGetPointerv = (void (CALLBACK *)(GLenum, GLvoid **))
 	  GET_GL_PROCADDRESS ("glGetPointerv");
 
 	disp__glArrayElement = (void (CALLBACK *)(GLint))
@@ -1013,7 +1013,7 @@
 	disp__glDrawRangeElements = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *))
 	  GET_GL_PROCADDRESS ("glDrawRangeElements");
 
-	disp__glTexImage3D = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
+	disp__glTexImage3D = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
 	  GET_GL_PROCADDRESS ("glTexImage3D");
 
 	disp__glTexSubImage3D = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
@@ -1124,95 +1124,146 @@
 	disp__glGetSeparableFilter = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *))
 	  GET_GL_PROCADDRESS ("glGetSeparableFilter");
 
-	disp__glBlendColorEXT = (void (CALLBACK *)(GLclampf, GLclampf, GLclampf, GLclampf))
-	  GET_GL_PROCADDRESS ("glBlendColorEXT");
+	disp__glActiveTexture = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glActiveTexture");
 
-	disp__glPolygonOffsetEXT = (void (CALLBACK *)(GLfloat, GLfloat))
-	  GET_GL_PROCADDRESS ("glPolygonOffsetEXT");
+	disp__glClientActiveTexture = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glClientActiveTexture");
 
-	disp__glTexImage3DEXT = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
-	  GET_GL_PROCADDRESS ("glTexImage3DEXT");
+	disp__glCompressedTexImage1D = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexImage1D");
 
-	disp__glTexSubImage3DEXT = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-	  GET_GL_PROCADDRESS ("glTexSubImage3DEXT");
+	disp__glCompressedTexImage2D = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexImage2D");
 
-	disp__glCopyTexSubImage3DEXT = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei))
-	  GET_GL_PROCADDRESS ("glCopyTexSubImage3DEXT");
+	disp__glCompressedTexImage3D = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexImage3D");
 
-	disp__glGenTexturesEXT = (void (CALLBACK *)(GLsizei, GLuint *))
-	  GET_GL_PROCADDRESS ("glGenTexturesEXT");
+	disp__glCompressedTexSubImage1D = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexSubImage1D");
 
-	disp__glDeleteTexturesEXT = (void (CALLBACK *)(GLsizei, const GLuint *))
-	  GET_GL_PROCADDRESS ("glDeleteTexturesEXT");
+	disp__glCompressedTexSubImage2D = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexSubImage2D");
 
-	disp__glBindTextureEXT = (void (CALLBACK *)(GLenum, GLuint))
-	  GET_GL_PROCADDRESS ("glBindTextureEXT");
+	disp__glCompressedTexSubImage3D = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexSubImage3D");
 
-	disp__glPrioritizeTexturesEXT = (void (CALLBACK *)(GLsizei, const GLuint *, const GLclampf *))
-	  GET_GL_PROCADDRESS ("glPrioritizeTexturesEXT");
+	disp__glGetCompressedTexImage = (void (CALLBACK *)(GLenum, GLint, GLvoid *))
+	  GET_GL_PROCADDRESS ("glGetCompressedTexImage");
 
-	disp__glAreTexturesResidentEXT = (GLboolean (CALLBACK *)(GLsizei, const GLuint *, GLboolean *))
-	  GET_GL_PROCADDRESS ("glAreTexturesResidentEXT");
+	disp__glMultiTexCoord1d = (void (CALLBACK *)(GLenum, GLdouble))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord1d");
 
-	disp__glIsTextureEXT = (GLboolean (CALLBACK *)(GLuint))
-	  GET_GL_PROCADDRESS ("glIsTextureEXT");
+	disp__glMultiTexCoord1dv = (void (CALLBACK *)(GLenum, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord1dv");
 
-	disp__glVertexPointerEXT = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-	  GET_GL_PROCADDRESS ("glVertexPointerEXT");
+	disp__glMultiTexCoord1f = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord1f");
 
-	disp__glNormalPointerEXT = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-	  GET_GL_PROCADDRESS ("glNormalPointerEXT");
+	disp__glMultiTexCoord1fv = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord1fv");
 
-	disp__glColorPointerEXT = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-	  GET_GL_PROCADDRESS ("glColorPointerEXT");
+	disp__glMultiTexCoord1i = (void (CALLBACK *)(GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord1i");
 
-	disp__glIndexPointerEXT = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
-	  GET_GL_PROCADDRESS ("glIndexPointerEXT");
+	disp__glMultiTexCoord1iv = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord1iv");
 
-	disp__glTexCoordPointerEXT = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
-	  GET_GL_PROCADDRESS ("glTexCoordPointerEXT");
+	disp__glMultiTexCoord1s = (void (CALLBACK *)(GLenum, GLshort))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord1s");
 
-	disp__glEdgeFlagPointerEXT = (void (CALLBACK *)(GLsizei, GLsizei, const GLboolean *))
-	  GET_GL_PROCADDRESS ("glEdgeFlagPointerEXT");
+	disp__glMultiTexCoord1sv = (void (CALLBACK *)(GLenum, const GLshort *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord1sv");
 
-	disp__glGetPointervEXT = (void (CALLBACK *)(GLenum, void **))
-	  GET_GL_PROCADDRESS ("glGetPointervEXT");
+	disp__glMultiTexCoord2d = (void (CALLBACK *)(GLenum, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord2d");
 
-	disp__glArrayElementEXT = (void (CALLBACK *)(GLint))
-	  GET_GL_PROCADDRESS ("glArrayElementEXT");
+	disp__glMultiTexCoord2dv = (void (CALLBACK *)(GLenum, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord2dv");
 
-	disp__glDrawArraysEXT = (void (CALLBACK *)(GLenum, GLint, GLsizei))
-	  GET_GL_PROCADDRESS ("glDrawArraysEXT");
+	disp__glMultiTexCoord2f = (void (CALLBACK *)(GLenum, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord2f");
 
-	disp__glBlendEquationEXT = (void (CALLBACK *)(GLenum))
-	  GET_GL_PROCADDRESS ("glBlendEquationEXT");
+	disp__glMultiTexCoord2fv = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord2fv");
 
-	disp__glPointParameterfEXT = (void (CALLBACK *)(GLenum, GLfloat))
-	  GET_GL_PROCADDRESS ("glPointParameterfEXT");
+	disp__glMultiTexCoord2i = (void (CALLBACK *)(GLenum, GLint, GLint))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord2i");
 
-	disp__glPointParameterfvEXT = (void (CALLBACK *)(GLenum, const GLfloat *))
-	  GET_GL_PROCADDRESS ("glPointParameterfvEXT");
+	disp__glMultiTexCoord2iv = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord2iv");
 
-	disp__glColorTableEXT = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
-	  GET_GL_PROCADDRESS ("glColorTableEXT");
+	disp__glMultiTexCoord2s = (void (CALLBACK *)(GLenum, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord2s");
 
-	disp__glColorSubTableEXT = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
-	  GET_GL_PROCADDRESS ("glColorSubTableEXT");
+	disp__glMultiTexCoord2sv = (void (CALLBACK *)(GLenum, const GLshort *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord2sv");
 
-	disp__glGetColorTableEXT = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
-	  GET_GL_PROCADDRESS ("glGetColorTableEXT");
+	disp__glMultiTexCoord3d = (void (CALLBACK *)(GLenum, GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord3d");
 
-	disp__glGetColorTableParameterfvEXT = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
-	  GET_GL_PROCADDRESS ("glGetColorTableParameterfvEXT");
+	disp__glMultiTexCoord3dv = (void (CALLBACK *)(GLenum, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord3dv");
 
-	disp__glGetColorTableParameterivEXT = (void (CALLBACK *)(GLenum, GLenum, GLint *))
-	  GET_GL_PROCADDRESS ("glGetColorTableParameterivEXT");
+	disp__glMultiTexCoord3f = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord3f");
 
-	disp__glLockArraysEXT = (void (CALLBACK *)(GLint, GLsizei))
-	  GET_GL_PROCADDRESS ("glLockArraysEXT");
+	disp__glMultiTexCoord3fv = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord3fv");
 
-	disp__glUnlockArraysEXT = (void (CALLBACK *)(void))
-	  GET_GL_PROCADDRESS ("glUnlockArraysEXT");
+	disp__glMultiTexCoord3i = (void (CALLBACK *)(GLenum, GLint, GLint, GLint))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord3i");
+
+	disp__glMultiTexCoord3iv = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord3iv");
+
+	disp__glMultiTexCoord3s = (void (CALLBACK *)(GLenum, GLshort, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord3s");
+
+	disp__glMultiTexCoord3sv = (void (CALLBACK *)(GLenum, const GLshort *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord3sv");
+
+	disp__glMultiTexCoord4d = (void (CALLBACK *)(GLenum, GLdouble, GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord4d");
+
+	disp__glMultiTexCoord4dv = (void (CALLBACK *)(GLenum, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord4dv");
+
+	disp__glMultiTexCoord4f = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord4f");
+
+	disp__glMultiTexCoord4fv = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord4fv");
+
+	disp__glMultiTexCoord4i = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord4i");
+
+	disp__glMultiTexCoord4iv = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord4iv");
+
+	disp__glMultiTexCoord4s = (void (CALLBACK *)(GLenum, GLshort, GLshort, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord4s");
+
+	disp__glMultiTexCoord4sv = (void (CALLBACK *)(GLenum, const GLshort *))
+	  GET_GL_PROCADDRESS ("glMultiTexCoord4sv");
+
+	disp__glLoadTransposeMatrixd = (void (CALLBACK *)(const GLdouble *))
+	  GET_GL_PROCADDRESS ("glLoadTransposeMatrixd");
+
+	disp__glLoadTransposeMatrixf = (void (CALLBACK *)(const GLfloat *))
+	  GET_GL_PROCADDRESS ("glLoadTransposeMatrixf");
+
+	disp__glMultTransposeMatrixd = (void (CALLBACK *)(const GLdouble *))
+	  GET_GL_PROCADDRESS ("glMultTransposeMatrixd");
+
+	disp__glMultTransposeMatrixf = (void (CALLBACK *)(const GLfloat *))
+	  GET_GL_PROCADDRESS ("glMultTransposeMatrixf");
+
+	disp__glSampleCoverage = (void (CALLBACK *)(GLclampf, GLboolean))
+	  GET_GL_PROCADDRESS ("glSampleCoverage");
+
+	disp__glSamplePass = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glSamplePass");
 
 	disp__glActiveTextureARB = (void (CALLBACK *)(GLenum))
 	  GET_GL_PROCADDRESS ("glActiveTextureARB");
@@ -1316,4 +1367,1585 @@
 	disp__glMultiTexCoord4svARB = (void (CALLBACK *)(GLenum, const GLshort *))
 	  GET_GL_PROCADDRESS ("glMultiTexCoord4svARB");
 
-/* C2J Parser Version 2.2:  Java program parsed successfully. */ 
+	disp__glBlendColorEXT = (void (CALLBACK *)(GLclampf, GLclampf, GLclampf, GLclampf))
+	  GET_GL_PROCADDRESS ("glBlendColorEXT");
+
+	disp__glPolygonOffsetEXT = (void (CALLBACK *)(GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glPolygonOffsetEXT");
+
+	disp__glTexImage3DEXT = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glTexImage3DEXT");
+
+	disp__glTexSubImage3DEXT = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glTexSubImage3DEXT");
+
+	disp__glCopyTexSubImage3DEXT = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei))
+	  GET_GL_PROCADDRESS ("glCopyTexSubImage3DEXT");
+
+	disp__glGenTexturesEXT = (void (CALLBACK *)(GLsizei, GLuint *))
+	  GET_GL_PROCADDRESS ("glGenTexturesEXT");
+
+	disp__glDeleteTexturesEXT = (void (CALLBACK *)(GLsizei, const GLuint *))
+	  GET_GL_PROCADDRESS ("glDeleteTexturesEXT");
+
+	disp__glBindTextureEXT = (void (CALLBACK *)(GLenum, GLuint))
+	  GET_GL_PROCADDRESS ("glBindTextureEXT");
+
+	disp__glPrioritizeTexturesEXT = (void (CALLBACK *)(GLsizei, const GLuint *, const GLclampf *))
+	  GET_GL_PROCADDRESS ("glPrioritizeTexturesEXT");
+
+	disp__glAreTexturesResidentEXT = (GLboolean (CALLBACK *)(GLsizei, const GLuint *, GLboolean *))
+	  GET_GL_PROCADDRESS ("glAreTexturesResidentEXT");
+
+	disp__glIsTextureEXT = (GLboolean (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glIsTextureEXT");
+
+	disp__glVertexPointerEXT = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glVertexPointerEXT");
+
+	disp__glNormalPointerEXT = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glNormalPointerEXT");
+
+	disp__glColorPointerEXT = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glColorPointerEXT");
+
+	disp__glIndexPointerEXT = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glIndexPointerEXT");
+
+	disp__glTexCoordPointerEXT = (void (CALLBACK *)(GLint, GLenum, GLsizei, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glTexCoordPointerEXT");
+
+	disp__glEdgeFlagPointerEXT = (void (CALLBACK *)(GLsizei, GLsizei, const GLboolean *))
+	  GET_GL_PROCADDRESS ("glEdgeFlagPointerEXT");
+
+	disp__glGetPointervEXT = (void (CALLBACK *)(GLenum, GLvoid **))
+	  GET_GL_PROCADDRESS ("glGetPointervEXT");
+
+	disp__glArrayElementEXT = (void (CALLBACK *)(GLint))
+	  GET_GL_PROCADDRESS ("glArrayElementEXT");
+
+	disp__glDrawArraysEXT = (void (CALLBACK *)(GLenum, GLint, GLsizei))
+	  GET_GL_PROCADDRESS ("glDrawArraysEXT");
+
+	disp__glBlendEquationEXT = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glBlendEquationEXT");
+
+	disp__glPointParameterfEXT = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glPointParameterfEXT");
+
+	disp__glPointParameterfvEXT = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glPointParameterfvEXT");
+
+	disp__glPointParameterfSGIS = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glPointParameterfSGIS");
+
+	disp__glPointParameterfvSGIS = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glPointParameterfvSGIS");
+
+	disp__glColorTableEXT = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glColorTableEXT");
+
+	disp__glColorSubTableEXT = (void (CALLBACK *)(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glColorSubTableEXT");
+
+	disp__glGetColorTableEXT = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
+	  GET_GL_PROCADDRESS ("glGetColorTableEXT");
+
+	disp__glGetColorTableParameterfvEXT = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetColorTableParameterfvEXT");
+
+	disp__glGetColorTableParameterivEXT = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetColorTableParameterivEXT");
+
+	disp__glLockArraysEXT = (void (CALLBACK *)(GLint, GLsizei))
+	  GET_GL_PROCADDRESS ("glLockArraysEXT");
+
+	disp__glUnlockArraysEXT = (void (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glUnlockArraysEXT");
+
+	disp__glLoadTransposeMatrixfARB = (void (CALLBACK *)(const GLfloat *))
+	  GET_GL_PROCADDRESS ("glLoadTransposeMatrixfARB");
+
+	disp__glLoadTransposeMatrixdARB = (void (CALLBACK *)(const GLdouble *))
+	  GET_GL_PROCADDRESS ("glLoadTransposeMatrixdARB");
+
+	disp__glMultTransposeMatrixfARB = (void (CALLBACK *)(const GLfloat *))
+	  GET_GL_PROCADDRESS ("glMultTransposeMatrixfARB");
+
+	disp__glMultTransposeMatrixdARB = (void (CALLBACK *)(const GLdouble *))
+	  GET_GL_PROCADDRESS ("glMultTransposeMatrixdARB");
+
+	disp__glSampleCoverageARB = (void (CALLBACK *)(GLclampf, GLboolean))
+	  GET_GL_PROCADDRESS ("glSampleCoverageARB");
+
+	disp__glCompressedTexImage3DARB = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexImage3DARB");
+
+	disp__glCompressedTexImage2DARB = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexImage2DARB");
+
+	disp__glCompressedTexImage1DARB = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexImage1DARB");
+
+	disp__glCompressedTexSubImage3DARB = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexSubImage3DARB");
+
+	disp__glCompressedTexSubImage2DARB = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexSubImage2DARB");
+
+	disp__glCompressedTexSubImage1DARB = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glCompressedTexSubImage1DARB");
+
+	disp__glGetCompressedTexImageARB = (void (CALLBACK *)(GLenum, GLint, void *))
+	  GET_GL_PROCADDRESS ("glGetCompressedTexImageARB");
+
+	disp__glWeightbvARB = (void (CALLBACK *)(GLint, const GLbyte *))
+	  GET_GL_PROCADDRESS ("glWeightbvARB");
+
+	disp__glWeightsvARB = (void (CALLBACK *)(GLint, const GLshort *))
+	  GET_GL_PROCADDRESS ("glWeightsvARB");
+
+	disp__glWeightivARB = (void (CALLBACK *)(GLint, const GLint *))
+	  GET_GL_PROCADDRESS ("glWeightivARB");
+
+	disp__glWeightfvARB = (void (CALLBACK *)(GLint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glWeightfvARB");
+
+	disp__glWeightdvARB = (void (CALLBACK *)(GLint, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glWeightdvARB");
+
+	disp__glWeightubvARB = (void (CALLBACK *)(GLint, const GLubyte *))
+	  GET_GL_PROCADDRESS ("glWeightubvARB");
+
+	disp__glWeightusvARB = (void (CALLBACK *)(GLint, const GLushort *))
+	  GET_GL_PROCADDRESS ("glWeightusvARB");
+
+	disp__glWeightuivARB = (void (CALLBACK *)(GLint, const GLuint *))
+	  GET_GL_PROCADDRESS ("glWeightuivARB");
+
+	disp__glWeightPointerARB = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glWeightPointerARB");
+
+	disp__glVertexBlendARB = (void (CALLBACK *)(GLint))
+	  GET_GL_PROCADDRESS ("glVertexBlendARB");
+
+	disp__glCurrentPaletteMatrixARB = (void (CALLBACK *)(GLint))
+	  GET_GL_PROCADDRESS ("glCurrentPaletteMatrixARB");
+
+	disp__glMatrixIndexubvARB = (void (CALLBACK *)(GLint, const GLubyte *))
+	  GET_GL_PROCADDRESS ("glMatrixIndexubvARB");
+
+	disp__glMatrixIndexusvARB = (void (CALLBACK *)(GLint, const GLushort *))
+	  GET_GL_PROCADDRESS ("glMatrixIndexusvARB");
+
+	disp__glMatrixIndexuivARB = (void (CALLBACK *)(GLint, const GLuint *))
+	  GET_GL_PROCADDRESS ("glMatrixIndexuivARB");
+
+	disp__glMatrixIndexPointerARB = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glMatrixIndexPointerARB");
+
+	disp__glGetTexFilterFuncSGIS = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetTexFilterFuncSGIS");
+
+	disp__glTexFilterFuncSGIS = (void (CALLBACK *)(GLenum, GLenum, GLsizei, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glTexFilterFuncSGIS");
+
+	disp__glTexSubImage1DEXT = (void (CALLBACK *)(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glTexSubImage1DEXT");
+
+	disp__glTexSubImage2DEXT = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glTexSubImage2DEXT");
+
+	disp__glCopyTexImage1DEXT = (void (CALLBACK *)(GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint))
+	  GET_GL_PROCADDRESS ("glCopyTexImage1DEXT");
+
+	disp__glCopyTexImage2DEXT = (void (CALLBACK *)(GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint))
+	  GET_GL_PROCADDRESS ("glCopyTexImage2DEXT");
+
+	disp__glCopyTexSubImage1DEXT = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLsizei))
+	  GET_GL_PROCADDRESS ("glCopyTexSubImage1DEXT");
+
+	disp__glCopyTexSubImage2DEXT = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei))
+	  GET_GL_PROCADDRESS ("glCopyTexSubImage2DEXT");
+
+	disp__glGetHistogramEXT = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
+	  GET_GL_PROCADDRESS ("glGetHistogramEXT");
+
+	disp__glGetHistogramParameterfvEXT = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetHistogramParameterfvEXT");
+
+	disp__glGetHistogramParameterivEXT = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetHistogramParameterivEXT");
+
+	disp__glGetMinmaxEXT = (void (CALLBACK *)(GLenum, GLboolean, GLenum, GLenum, GLvoid *))
+	  GET_GL_PROCADDRESS ("glGetMinmaxEXT");
+
+	disp__glGetMinmaxParameterfvEXT = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetMinmaxParameterfvEXT");
+
+	disp__glGetMinmaxParameterivEXT = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetMinmaxParameterivEXT");
+
+	disp__glHistogramEXT = (void (CALLBACK *)(GLenum, GLsizei, GLenum, GLboolean))
+	  GET_GL_PROCADDRESS ("glHistogramEXT");
+
+	disp__glMinmaxEXT = (void (CALLBACK *)(GLenum, GLenum, GLboolean))
+	  GET_GL_PROCADDRESS ("glMinmaxEXT");
+
+	disp__glResetHistogramEXT = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glResetHistogramEXT");
+
+	disp__glResetMinmaxEXT = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glResetMinmaxEXT");
+
+	disp__glConvolutionFilter1DEXT = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glConvolutionFilter1DEXT");
+
+	disp__glConvolutionFilter2DEXT = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glConvolutionFilter2DEXT");
+
+	disp__glConvolutionParameterfEXT = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glConvolutionParameterfEXT");
+
+	disp__glConvolutionParameterfvEXT = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glConvolutionParameterfvEXT");
+
+	disp__glConvolutionParameteriEXT = (void (CALLBACK *)(GLenum, GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glConvolutionParameteriEXT");
+
+	disp__glConvolutionParameterivEXT = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glConvolutionParameterivEXT");
+
+	disp__glCopyConvolutionFilter1DEXT = (void (CALLBACK *)(GLenum, GLenum, GLint, GLint, GLsizei))
+	  GET_GL_PROCADDRESS ("glCopyConvolutionFilter1DEXT");
+
+	disp__glCopyConvolutionFilter2DEXT = (void (CALLBACK *)(GLenum, GLenum, GLint, GLint, GLsizei, GLsizei))
+	  GET_GL_PROCADDRESS ("glCopyConvolutionFilter2DEXT");
+
+	disp__glGetConvolutionFilterEXT = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
+	  GET_GL_PROCADDRESS ("glGetConvolutionFilterEXT");
+
+	disp__glGetConvolutionParameterfvEXT = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetConvolutionParameterfvEXT");
+
+	disp__glGetConvolutionParameterivEXT = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetConvolutionParameterivEXT");
+
+	disp__glGetSeparableFilterEXT = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *))
+	  GET_GL_PROCADDRESS ("glGetSeparableFilterEXT");
+
+	disp__glSeparableFilter2DEXT = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glSeparableFilter2DEXT");
+
+	disp__glColorTableSGI = (void (CALLBACK *)(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glColorTableSGI");
+
+	disp__glColorTableParameterfvSGI = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glColorTableParameterfvSGI");
+
+	disp__glColorTableParameterivSGI = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glColorTableParameterivSGI");
+
+	disp__glCopyColorTableSGI = (void (CALLBACK *)(GLenum, GLenum, GLint, GLint, GLsizei))
+	  GET_GL_PROCADDRESS ("glCopyColorTableSGI");
+
+	disp__glGetColorTableSGI = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLvoid *))
+	  GET_GL_PROCADDRESS ("glGetColorTableSGI");
+
+	disp__glGetColorTableParameterfvSGI = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetColorTableParameterfvSGI");
+
+	disp__glGetColorTableParameterivSGI = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetColorTableParameterivSGI");
+
+	disp__glPixelTexGenSGIX = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glPixelTexGenSGIX");
+
+	disp__glPixelTexGenParameteriSGIS = (void (CALLBACK *)(GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glPixelTexGenParameteriSGIS");
+
+	disp__glPixelTexGenParameterivSGIS = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glPixelTexGenParameterivSGIS");
+
+	disp__glPixelTexGenParameterfSGIS = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glPixelTexGenParameterfSGIS");
+
+	disp__glPixelTexGenParameterfvSGIS = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glPixelTexGenParameterfvSGIS");
+
+	disp__glGetPixelTexGenParameterivSGIS = (void (CALLBACK *)(GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetPixelTexGenParameterivSGIS");
+
+	disp__glGetPixelTexGenParameterfvSGIS = (void (CALLBACK *)(GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetPixelTexGenParameterfvSGIS");
+
+	disp__glTexImage4DSGIS = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glTexImage4DSGIS");
+
+	disp__glTexSubImage4DSGIS = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glTexSubImage4DSGIS");
+
+	disp__glDetailTexFuncSGIS = (void (CALLBACK *)(GLenum, GLsizei, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glDetailTexFuncSGIS");
+
+	disp__glGetDetailTexFuncSGIS = (void (CALLBACK *)(GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetDetailTexFuncSGIS");
+
+	disp__glSharpenTexFuncSGIS = (void (CALLBACK *)(GLenum, GLsizei, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glSharpenTexFuncSGIS");
+
+	disp__glGetSharpenTexFuncSGIS = (void (CALLBACK *)(GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetSharpenTexFuncSGIS");
+
+	disp__glSampleMaskSGIS = (void (CALLBACK *)(GLclampf, GLboolean))
+	  GET_GL_PROCADDRESS ("glSampleMaskSGIS");
+
+	disp__glSamplePatternSGIS = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glSamplePatternSGIS");
+
+	disp__glSpriteParameterfSGIX = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glSpriteParameterfSGIX");
+
+	disp__glSpriteParameterfvSGIX = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glSpriteParameterfvSGIX");
+
+	disp__glSpriteParameteriSGIX = (void (CALLBACK *)(GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glSpriteParameteriSGIX");
+
+	disp__glSpriteParameterivSGIX = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glSpriteParameterivSGIX");
+
+	disp__glPointParameterfARB = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glPointParameterfARB");
+
+	disp__glPointParameterfvARB = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glPointParameterfvARB");
+
+	disp__glGetInstrumentsSGIX = (GLint (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glGetInstrumentsSGIX");
+
+	disp__glInstrumentsBufferSGIX = (void (CALLBACK *)(GLsizei, GLint *))
+	  GET_GL_PROCADDRESS ("glInstrumentsBufferSGIX");
+
+	disp__glPollInstrumentsSGIX = (GLint (CALLBACK *)(GLint *))
+	  GET_GL_PROCADDRESS ("glPollInstrumentsSGIX");
+
+	disp__glReadInstrumentsSGIX = (void (CALLBACK *)(GLint))
+	  GET_GL_PROCADDRESS ("glReadInstrumentsSGIX");
+
+	disp__glStartInstrumentsSGIX = (void (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glStartInstrumentsSGIX");
+
+	disp__glStopInstrumentsSGIX = (void (CALLBACK *)(GLint))
+	  GET_GL_PROCADDRESS ("glStopInstrumentsSGIX");
+
+	disp__glFrameZoomSGIX = (void (CALLBACK *)(GLint))
+	  GET_GL_PROCADDRESS ("glFrameZoomSGIX");
+
+	disp__glTagSampleBufferSGIX = (void (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glTagSampleBufferSGIX");
+
+	disp__glDeformationMap3dSGIX = (void (CALLBACK *)(GLenum, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glDeformationMap3dSGIX");
+
+	disp__glDeformationMap3fSGIX = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glDeformationMap3fSGIX");
+
+	disp__glDeformSGIX = (void (CALLBACK *)(GLbitfield))
+	  GET_GL_PROCADDRESS ("glDeformSGIX");
+
+	disp__glLoadIdentityDeformationMapSGIX = (void (CALLBACK *)(GLbitfield))
+	  GET_GL_PROCADDRESS ("glLoadIdentityDeformationMapSGIX");
+
+	disp__glReferencePlaneSGIX = (void (CALLBACK *)(const GLdouble *))
+	  GET_GL_PROCADDRESS ("glReferencePlaneSGIX");
+
+	disp__glFlushRasterSGIX = (void (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glFlushRasterSGIX");
+
+	disp__glFogFuncSGIS = (void (CALLBACK *)(GLsizei, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glFogFuncSGIS");
+
+	disp__glGetFogFuncSGIS = (void (CALLBACK *)(GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetFogFuncSGIS");
+
+	disp__glImageTransformParameteriHP = (void (CALLBACK *)(GLenum, GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glImageTransformParameteriHP");
+
+	disp__glImageTransformParameterfHP = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glImageTransformParameterfHP");
+
+	disp__glImageTransformParameterivHP = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glImageTransformParameterivHP");
+
+	disp__glImageTransformParameterfvHP = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glImageTransformParameterfvHP");
+
+	disp__glGetImageTransformParameterivHP = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetImageTransformParameterivHP");
+
+	disp__glGetImageTransformParameterfvHP = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetImageTransformParameterfvHP");
+
+	disp__glCopyColorSubTableEXT = (void (CALLBACK *)(GLenum, GLsizei, GLint, GLint, GLsizei))
+	  GET_GL_PROCADDRESS ("glCopyColorSubTableEXT");
+
+	disp__glHintPGI = (void (CALLBACK *)(GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glHintPGI");
+
+	disp__glGetListParameterfvSGIX = (void (CALLBACK *)(GLuint, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetListParameterfvSGIX");
+
+	disp__glGetListParameterivSGIX = (void (CALLBACK *)(GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetListParameterivSGIX");
+
+	disp__glListParameterfSGIX = (void (CALLBACK *)(GLuint, GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glListParameterfSGIX");
+
+	disp__glListParameterfvSGIX = (void (CALLBACK *)(GLuint, GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glListParameterfvSGIX");
+
+	disp__glListParameteriSGIX = (void (CALLBACK *)(GLuint, GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glListParameteriSGIX");
+
+	disp__glListParameterivSGIX = (void (CALLBACK *)(GLuint, GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glListParameterivSGIX");
+
+	disp__glIndexMaterialEXT = (void (CALLBACK *)(GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glIndexMaterialEXT");
+
+	disp__glIndexFuncEXT = (void (CALLBACK *)(GLenum, GLclampf))
+	  GET_GL_PROCADDRESS ("glIndexFuncEXT");
+
+	disp__glCullParameterdvEXT = (void (CALLBACK *)(GLenum, GLdouble *))
+	  GET_GL_PROCADDRESS ("glCullParameterdvEXT");
+
+	disp__glCullParameterfvEXT = (void (CALLBACK *)(GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glCullParameterfvEXT");
+
+	disp__glFragmentColorMaterialSGIX = (void (CALLBACK *)(GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glFragmentColorMaterialSGIX");
+
+	disp__glFragmentLightfSGIX = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glFragmentLightfSGIX");
+
+	disp__glFragmentLightfvSGIX = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glFragmentLightfvSGIX");
+
+	disp__glFragmentLightiSGIX = (void (CALLBACK *)(GLenum, GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glFragmentLightiSGIX");
+
+	disp__glFragmentLightivSGIX = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glFragmentLightivSGIX");
+
+	disp__glFragmentLightModelfSGIX = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glFragmentLightModelfSGIX");
+
+	disp__glFragmentLightModelfvSGIX = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glFragmentLightModelfvSGIX");
+
+	disp__glFragmentLightModeliSGIX = (void (CALLBACK *)(GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glFragmentLightModeliSGIX");
+
+	disp__glFragmentLightModelivSGIX = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glFragmentLightModelivSGIX");
+
+	disp__glFragmentMaterialfSGIX = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glFragmentMaterialfSGIX");
+
+	disp__glFragmentMaterialfvSGIX = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glFragmentMaterialfvSGIX");
+
+	disp__glFragmentMaterialiSGIX = (void (CALLBACK *)(GLenum, GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glFragmentMaterialiSGIX");
+
+	disp__glFragmentMaterialivSGIX = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glFragmentMaterialivSGIX");
+
+	disp__glGetFragmentLightfvSGIX = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetFragmentLightfvSGIX");
+
+	disp__glGetFragmentLightivSGIX = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetFragmentLightivSGIX");
+
+	disp__glGetFragmentMaterialfvSGIX = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetFragmentMaterialfvSGIX");
+
+	disp__glGetFragmentMaterialivSGIX = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetFragmentMaterialivSGIX");
+
+	disp__glLightEnviSGIX = (void (CALLBACK *)(GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glLightEnviSGIX");
+
+	disp__glDrawRangeElementsEXT = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glDrawRangeElementsEXT");
+
+	disp__glApplyTextureEXT = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glApplyTextureEXT");
+
+	disp__glTextureLightEXT = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glTextureLightEXT");
+
+	disp__glTextureMaterialEXT = (void (CALLBACK *)(GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glTextureMaterialEXT");
+
+	disp__glAsyncMarkerSGIX = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glAsyncMarkerSGIX");
+
+	disp__glFinishAsyncSGIX = (GLint (CALLBACK *)(GLuint *))
+	  GET_GL_PROCADDRESS ("glFinishAsyncSGIX");
+
+	disp__glPollAsyncSGIX = (GLint (CALLBACK *)(GLuint *))
+	  GET_GL_PROCADDRESS ("glPollAsyncSGIX");
+
+	disp__glGenAsyncMarkersSGIX = (GLuint (CALLBACK *)(GLsizei))
+	  GET_GL_PROCADDRESS ("glGenAsyncMarkersSGIX");
+
+	disp__glDeleteAsyncMarkersSGIX = (void (CALLBACK *)(GLuint, GLsizei))
+	  GET_GL_PROCADDRESS ("glDeleteAsyncMarkersSGIX");
+
+	disp__glIsAsyncMarkerSGIX = (GLboolean (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glIsAsyncMarkerSGIX");
+
+	disp__glVertexPointervINTEL = (void (CALLBACK *)(GLint, GLenum, const GLvoid **))
+	  GET_GL_PROCADDRESS ("glVertexPointervINTEL");
+
+	disp__glNormalPointervINTEL = (void (CALLBACK *)(GLenum, const GLvoid **))
+	  GET_GL_PROCADDRESS ("glNormalPointervINTEL");
+
+	disp__glColorPointervINTEL = (void (CALLBACK *)(GLint, GLenum, const GLvoid **))
+	  GET_GL_PROCADDRESS ("glColorPointervINTEL");
+
+	disp__glTexCoordPointervINTEL = (void (CALLBACK *)(GLint, GLenum, const GLvoid **))
+	  GET_GL_PROCADDRESS ("glTexCoordPointervINTEL");
+
+	disp__glPixelTransformParameteriEXT = (void (CALLBACK *)(GLenum, GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glPixelTransformParameteriEXT");
+
+	disp__glPixelTransformParameterfEXT = (void (CALLBACK *)(GLenum, GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glPixelTransformParameterfEXT");
+
+	disp__glPixelTransformParameterivEXT = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glPixelTransformParameterivEXT");
+
+	disp__glPixelTransformParameterfvEXT = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glPixelTransformParameterfvEXT");
+
+	disp__glSecondaryColor3bEXT = (void (CALLBACK *)(GLbyte, GLbyte, GLbyte))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3bEXT");
+
+	disp__glSecondaryColor3bvEXT = (void (CALLBACK *)(const GLbyte *))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3bvEXT");
+
+	disp__glSecondaryColor3dEXT = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3dEXT");
+
+	disp__glSecondaryColor3dvEXT = (void (CALLBACK *)(const GLdouble *))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3dvEXT");
+
+	disp__glSecondaryColor3fEXT = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3fEXT");
+
+	disp__glSecondaryColor3fvEXT = (void (CALLBACK *)(const GLfloat *))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3fvEXT");
+
+	disp__glSecondaryColor3iEXT = (void (CALLBACK *)(GLint, GLint, GLint))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3iEXT");
+
+	disp__glSecondaryColor3ivEXT = (void (CALLBACK *)(const GLint *))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3ivEXT");
+
+	disp__glSecondaryColor3sEXT = (void (CALLBACK *)(GLshort, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3sEXT");
+
+	disp__glSecondaryColor3svEXT = (void (CALLBACK *)(const GLshort *))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3svEXT");
+
+	disp__glSecondaryColor3ubEXT = (void (CALLBACK *)(GLubyte, GLubyte, GLubyte))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3ubEXT");
+
+	disp__glSecondaryColor3ubvEXT = (void (CALLBACK *)(const GLubyte *))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3ubvEXT");
+
+	disp__glSecondaryColor3uiEXT = (void (CALLBACK *)(GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3uiEXT");
+
+	disp__glSecondaryColor3uivEXT = (void (CALLBACK *)(const GLuint *))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3uivEXT");
+
+	disp__glSecondaryColor3usEXT = (void (CALLBACK *)(GLushort, GLushort, GLushort))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3usEXT");
+
+	disp__glSecondaryColor3usvEXT = (void (CALLBACK *)(const GLushort *))
+	  GET_GL_PROCADDRESS ("glSecondaryColor3usvEXT");
+
+	disp__glSecondaryColorPointerEXT = (void (CALLBACK *)(GLint, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glSecondaryColorPointerEXT");
+
+	disp__glTextureNormalEXT = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glTextureNormalEXT");
+
+	disp__glMultiDrawArraysEXT = (void (CALLBACK *)(GLenum, GLint *, GLsizei *, GLsizei))
+	  GET_GL_PROCADDRESS ("glMultiDrawArraysEXT");
+
+	disp__glMultiDrawElementsEXT = (void (CALLBACK *)(GLenum, const GLsizei *, GLenum, const GLvoid **, GLsizei))
+	  GET_GL_PROCADDRESS ("glMultiDrawElementsEXT");
+
+	disp__glFogCoordfEXT = (void (CALLBACK *)(GLfloat))
+	  GET_GL_PROCADDRESS ("glFogCoordfEXT");
+
+	disp__glFogCoordfvEXT = (void (CALLBACK *)(const GLfloat *))
+	  GET_GL_PROCADDRESS ("glFogCoordfvEXT");
+
+	disp__glFogCoorddEXT = (void (CALLBACK *)(GLdouble))
+	  GET_GL_PROCADDRESS ("glFogCoorddEXT");
+
+	disp__glFogCoorddvEXT = (void (CALLBACK *)(const GLdouble *))
+	  GET_GL_PROCADDRESS ("glFogCoorddvEXT");
+
+	disp__glFogCoordPointerEXT = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glFogCoordPointerEXT");
+
+	disp__glTangent3bEXT = (void (CALLBACK *)(GLbyte, GLbyte, GLbyte))
+	  GET_GL_PROCADDRESS ("glTangent3bEXT");
+
+	disp__glTangent3bvEXT = (void (CALLBACK *)(const GLbyte *))
+	  GET_GL_PROCADDRESS ("glTangent3bvEXT");
+
+	disp__glTangent3dEXT = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glTangent3dEXT");
+
+	disp__glTangent3dvEXT = (void (CALLBACK *)(const GLdouble *))
+	  GET_GL_PROCADDRESS ("glTangent3dvEXT");
+
+	disp__glTangent3fEXT = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glTangent3fEXT");
+
+	disp__glTangent3fvEXT = (void (CALLBACK *)(const GLfloat *))
+	  GET_GL_PROCADDRESS ("glTangent3fvEXT");
+
+	disp__glTangent3iEXT = (void (CALLBACK *)(GLint, GLint, GLint))
+	  GET_GL_PROCADDRESS ("glTangent3iEXT");
+
+	disp__glTangent3ivEXT = (void (CALLBACK *)(const GLint *))
+	  GET_GL_PROCADDRESS ("glTangent3ivEXT");
+
+	disp__glTangent3sEXT = (void (CALLBACK *)(GLshort, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glTangent3sEXT");
+
+	disp__glTangent3svEXT = (void (CALLBACK *)(const GLshort *))
+	  GET_GL_PROCADDRESS ("glTangent3svEXT");
+
+	disp__glBinormal3bEXT = (void (CALLBACK *)(GLbyte, GLbyte, GLbyte))
+	  GET_GL_PROCADDRESS ("glBinormal3bEXT");
+
+	disp__glBinormal3bvEXT = (void (CALLBACK *)(const GLbyte *))
+	  GET_GL_PROCADDRESS ("glBinormal3bvEXT");
+
+	disp__glBinormal3dEXT = (void (CALLBACK *)(GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glBinormal3dEXT");
+
+	disp__glBinormal3dvEXT = (void (CALLBACK *)(const GLdouble *))
+	  GET_GL_PROCADDRESS ("glBinormal3dvEXT");
+
+	disp__glBinormal3fEXT = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glBinormal3fEXT");
+
+	disp__glBinormal3fvEXT = (void (CALLBACK *)(const GLfloat *))
+	  GET_GL_PROCADDRESS ("glBinormal3fvEXT");
+
+	disp__glBinormal3iEXT = (void (CALLBACK *)(GLint, GLint, GLint))
+	  GET_GL_PROCADDRESS ("glBinormal3iEXT");
+
+	disp__glBinormal3ivEXT = (void (CALLBACK *)(const GLint *))
+	  GET_GL_PROCADDRESS ("glBinormal3ivEXT");
+
+	disp__glBinormal3sEXT = (void (CALLBACK *)(GLshort, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glBinormal3sEXT");
+
+	disp__glBinormal3svEXT = (void (CALLBACK *)(const GLshort *))
+	  GET_GL_PROCADDRESS ("glBinormal3svEXT");
+
+	disp__glTangentPointerEXT = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glTangentPointerEXT");
+
+	disp__glBinormalPointerEXT = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glBinormalPointerEXT");
+
+	disp__glFinishTextureSUNX = (void (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glFinishTextureSUNX");
+
+	disp__glGlobalAlphaFactorbSUN = (void (CALLBACK *)(GLbyte))
+	  GET_GL_PROCADDRESS ("glGlobalAlphaFactorbSUN");
+
+	disp__glGlobalAlphaFactorsSUN = (void (CALLBACK *)(GLshort))
+	  GET_GL_PROCADDRESS ("glGlobalAlphaFactorsSUN");
+
+	disp__glGlobalAlphaFactoriSUN = (void (CALLBACK *)(GLint))
+	  GET_GL_PROCADDRESS ("glGlobalAlphaFactoriSUN");
+
+	disp__glGlobalAlphaFactorfSUN = (void (CALLBACK *)(GLfloat))
+	  GET_GL_PROCADDRESS ("glGlobalAlphaFactorfSUN");
+
+	disp__glGlobalAlphaFactordSUN = (void (CALLBACK *)(GLdouble))
+	  GET_GL_PROCADDRESS ("glGlobalAlphaFactordSUN");
+
+	disp__glGlobalAlphaFactorubSUN = (void (CALLBACK *)(GLubyte))
+	  GET_GL_PROCADDRESS ("glGlobalAlphaFactorubSUN");
+
+	disp__glGlobalAlphaFactorusSUN = (void (CALLBACK *)(GLushort))
+	  GET_GL_PROCADDRESS ("glGlobalAlphaFactorusSUN");
+
+	disp__glGlobalAlphaFactoruiSUN = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glGlobalAlphaFactoruiSUN");
+
+	disp__glReplacementCodeuiSUN = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiSUN");
+
+	disp__glReplacementCodeusSUN = (void (CALLBACK *)(GLushort))
+	  GET_GL_PROCADDRESS ("glReplacementCodeusSUN");
+
+	disp__glReplacementCodeubSUN = (void (CALLBACK *)(GLubyte))
+	  GET_GL_PROCADDRESS ("glReplacementCodeubSUN");
+
+	disp__glReplacementCodeuivSUN = (void (CALLBACK *)(const GLuint *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuivSUN");
+
+	disp__glReplacementCodeusvSUN = (void (CALLBACK *)(const GLushort *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeusvSUN");
+
+	disp__glReplacementCodeubvSUN = (void (CALLBACK *)(const GLubyte *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeubvSUN");
+
+	disp__glReplacementCodePointerSUN = (void (CALLBACK *)(GLenum, GLsizei, const GLvoid **))
+	  GET_GL_PROCADDRESS ("glReplacementCodePointerSUN");
+
+	disp__glColor4ubVertex2fSUN = (void (CALLBACK *)(GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glColor4ubVertex2fSUN");
+
+	disp__glColor4ubVertex2fvSUN = (void (CALLBACK *)(const GLubyte *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glColor4ubVertex2fvSUN");
+
+	disp__glColor4ubVertex3fSUN = (void (CALLBACK *)(GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glColor4ubVertex3fSUN");
+
+	disp__glColor4ubVertex3fvSUN = (void (CALLBACK *)(const GLubyte *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glColor4ubVertex3fvSUN");
+
+	disp__glColor3fVertex3fSUN = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glColor3fVertex3fSUN");
+
+	disp__glColor3fVertex3fvSUN = (void (CALLBACK *)(const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glColor3fVertex3fvSUN");
+
+	disp__glNormal3fVertex3fSUN = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glNormal3fVertex3fSUN");
+
+	disp__glNormal3fVertex3fvSUN = (void (CALLBACK *)(const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glNormal3fVertex3fvSUN");
+
+	disp__glColor4fNormal3fVertex3fSUN = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glColor4fNormal3fVertex3fSUN");
+
+	disp__glColor4fNormal3fVertex3fvSUN = (void (CALLBACK *)(const GLfloat *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glColor4fNormal3fVertex3fvSUN");
+
+	disp__glTexCoord2fVertex3fSUN = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glTexCoord2fVertex3fSUN");
+
+	disp__glTexCoord2fVertex3fvSUN = (void (CALLBACK *)(const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glTexCoord2fVertex3fvSUN");
+
+	disp__glTexCoord4fVertex4fSUN = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glTexCoord4fVertex4fSUN");
+
+	disp__glTexCoord4fVertex4fvSUN = (void (CALLBACK *)(const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glTexCoord4fVertex4fvSUN");
+
+	disp__glTexCoord2fColor4ubVertex3fSUN = (void (CALLBACK *)(GLfloat, GLfloat, GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glTexCoord2fColor4ubVertex3fSUN");
+
+	disp__glTexCoord2fColor4ubVertex3fvSUN = (void (CALLBACK *)(const GLfloat *, const GLubyte *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glTexCoord2fColor4ubVertex3fvSUN");
+
+	disp__glTexCoord2fColor3fVertex3fSUN = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glTexCoord2fColor3fVertex3fSUN");
+
+	disp__glTexCoord2fColor3fVertex3fvSUN = (void (CALLBACK *)(const GLfloat *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glTexCoord2fColor3fVertex3fvSUN");
+
+	disp__glTexCoord2fNormal3fVertex3fSUN = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glTexCoord2fNormal3fVertex3fSUN");
+
+	disp__glTexCoord2fNormal3fVertex3fvSUN = (void (CALLBACK *)(const GLfloat *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glTexCoord2fNormal3fVertex3fvSUN");
+
+	disp__glTexCoord2fColor4fNormal3fVertex3fSUN = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glTexCoord2fColor4fNormal3fVertex3fSUN");
+
+	disp__glTexCoord2fColor4fNormal3fVertex3fvSUN = (void (CALLBACK *)(const GLfloat *, const GLfloat *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glTexCoord2fColor4fNormal3fVertex3fvSUN");
+
+	disp__glTexCoord4fColor4fNormal3fVertex4fSUN = (void (CALLBACK *)(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glTexCoord4fColor4fNormal3fVertex4fSUN");
+
+	disp__glTexCoord4fColor4fNormal3fVertex4fvSUN = (void (CALLBACK *)(const GLfloat *, const GLfloat *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glTexCoord4fColor4fNormal3fVertex4fvSUN");
+
+	disp__glReplacementCodeuiVertex3fSUN = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiVertex3fSUN");
+
+	disp__glReplacementCodeuiVertex3fvSUN = (void (CALLBACK *)(const GLenum *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiVertex3fvSUN");
+
+	disp__glReplacementCodeuiColor4ubVertex3fSUN = (void (CALLBACK *)(GLenum, GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiColor4ubVertex3fSUN");
+
+	disp__glReplacementCodeuiColor4ubVertex3fvSUN = (void (CALLBACK *)(const GLenum *, const GLubyte *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiColor4ubVertex3fvSUN");
+
+	disp__glReplacementCodeuiColor3fVertex3fSUN = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiColor3fVertex3fSUN");
+
+	disp__glReplacementCodeuiColor3fVertex3fvSUN = (void (CALLBACK *)(const GLenum *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiColor3fVertex3fvSUN");
+
+	disp__glReplacementCodeuiNormal3fVertex3fSUN = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiNormal3fVertex3fSUN");
+
+	disp__glReplacementCodeuiNormal3fVertex3fvSUN = (void (CALLBACK *)(const GLenum *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiNormal3fVertex3fvSUN");
+
+	disp__glReplacementCodeuiColor4fNormal3fVertex3fSUN = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiColor4fNormal3fVertex3fSUN");
+
+	disp__glReplacementCodeuiColor4fNormal3fVertex3fvSUN = (void (CALLBACK *)(const GLenum *, const GLfloat *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiColor4fNormal3fVertex3fvSUN");
+
+	disp__glReplacementCodeuiTexCoord2fVertex3fSUN = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiTexCoord2fVertex3fSUN");
+
+	disp__glReplacementCodeuiTexCoord2fVertex3fvSUN = (void (CALLBACK *)(const GLenum *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiTexCoord2fVertex3fvSUN");
+
+	disp__glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN");
+
+	disp__glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN = (void (CALLBACK *)(const GLenum *, const GLfloat *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN");
+
+	disp__glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN");
+
+	disp__glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN = (void (CALLBACK *)(const GLenum *, const GLfloat *, const GLfloat *, const GLfloat *, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN");
+
+	disp__glBlendFuncSeparateEXT = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glBlendFuncSeparateEXT");
+
+	disp__glBlendFuncSeparateINGR = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glBlendFuncSeparateINGR");
+
+	disp__glVertexWeightfEXT = (void (CALLBACK *)(GLfloat))
+	  GET_GL_PROCADDRESS ("glVertexWeightfEXT");
+
+	disp__glVertexWeightfvEXT = (void (CALLBACK *)(const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexWeightfvEXT");
+
+	disp__glVertexWeightPointerEXT = (void (CALLBACK *)(GLsizei, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glVertexWeightPointerEXT");
+
+	disp__glFlushVertexArrayRangeNV = (void (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glFlushVertexArrayRangeNV");
+
+	disp__glVertexArrayRangeNV = (void (CALLBACK *)(GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glVertexArrayRangeNV");
+
+	disp__glCombinerParameterfvNV = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glCombinerParameterfvNV");
+
+	disp__glCombinerParameterfNV = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glCombinerParameterfNV");
+
+	disp__glCombinerParameterivNV = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glCombinerParameterivNV");
+
+	disp__glCombinerParameteriNV = (void (CALLBACK *)(GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glCombinerParameteriNV");
+
+	disp__glCombinerInputNV = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLenum, GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glCombinerInputNV");
+
+	disp__glCombinerOutputNV = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLenum, GLenum, GLenum, GLenum, GLboolean, GLboolean, GLboolean))
+	  GET_GL_PROCADDRESS ("glCombinerOutputNV");
+
+	disp__glFinalCombinerInputNV = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glFinalCombinerInputNV");
+
+	disp__glGetCombinerInputParameterfvNV = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetCombinerInputParameterfvNV");
+
+	disp__glGetCombinerInputParameterivNV = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetCombinerInputParameterivNV");
+
+	disp__glGetCombinerOutputParameterfvNV = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetCombinerOutputParameterfvNV");
+
+	disp__glGetCombinerOutputParameterivNV = (void (CALLBACK *)(GLenum, GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetCombinerOutputParameterivNV");
+
+	disp__glGetFinalCombinerInputParameterfvNV = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetFinalCombinerInputParameterfvNV");
+
+	disp__glGetFinalCombinerInputParameterivNV = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetFinalCombinerInputParameterivNV");
+
+	disp__glMultiModeDrawArraysIBM = (void (CALLBACK *)(GLenum, const GLint *, const GLsizei *, GLsizei, GLint))
+	  GET_GL_PROCADDRESS ("glMultiModeDrawArraysIBM");
+
+	disp__glMultiModeDrawElementsIBM = (void (CALLBACK *)(const GLenum *, const GLsizei *, GLenum, const GLvoid **, GLsizei, GLint))
+	  GET_GL_PROCADDRESS ("glMultiModeDrawElementsIBM");
+
+	disp__glColorPointerListIBM = (void (CALLBACK *)(GLint, GLenum, GLint, const GLvoid **, GLint))
+	  GET_GL_PROCADDRESS ("glColorPointerListIBM");
+
+	disp__glSecondaryColorPointerListIBM = (void (CALLBACK *)(GLint, GLenum, GLint, const GLvoid **, GLint))
+	  GET_GL_PROCADDRESS ("glSecondaryColorPointerListIBM");
+
+	disp__glEdgeFlagPointerListIBM = (void (CALLBACK *)(GLint, const GLboolean **, GLint))
+	  GET_GL_PROCADDRESS ("glEdgeFlagPointerListIBM");
+
+	disp__glFogCoordPointerListIBM = (void (CALLBACK *)(GLenum, GLint, const GLvoid **, GLint))
+	  GET_GL_PROCADDRESS ("glFogCoordPointerListIBM");
+
+	disp__glIndexPointerListIBM = (void (CALLBACK *)(GLenum, GLint, const GLvoid **, GLint))
+	  GET_GL_PROCADDRESS ("glIndexPointerListIBM");
+
+	disp__glNormalPointerListIBM = (void (CALLBACK *)(GLenum, GLint, const GLvoid **, GLint))
+	  GET_GL_PROCADDRESS ("glNormalPointerListIBM");
+
+	disp__glTexCoordPointerListIBM = (void (CALLBACK *)(GLint, GLenum, GLint, const GLvoid **, GLint))
+	  GET_GL_PROCADDRESS ("glTexCoordPointerListIBM");
+
+	disp__glVertexPointerListIBM = (void (CALLBACK *)(GLint, GLenum, GLint, const GLvoid **, GLint))
+	  GET_GL_PROCADDRESS ("glVertexPointerListIBM");
+
+	disp__glTbufferMask3DFX = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glTbufferMask3DFX");
+
+	disp__glSampleMaskEXT = (void (CALLBACK *)(GLclampf, GLboolean))
+	  GET_GL_PROCADDRESS ("glSampleMaskEXT");
+
+	disp__glSamplePatternEXT = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glSamplePatternEXT");
+
+	disp__glTextureColorMaskSGIS = (void (CALLBACK *)(GLboolean, GLboolean, GLboolean, GLboolean))
+	  GET_GL_PROCADDRESS ("glTextureColorMaskSGIS");
+
+	disp__glIglooInterfaceSGIX = (void (CALLBACK *)(GLenum, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glIglooInterfaceSGIX");
+
+	disp__glGenFencesNV = (void (CALLBACK *)(GLsizei, GLuint *))
+	  GET_GL_PROCADDRESS ("glGenFencesNV");
+
+	disp__glDeleteFencesNV = (void (CALLBACK *)(GLsizei, const GLuint *))
+	  GET_GL_PROCADDRESS ("glDeleteFencesNV");
+
+	disp__glSetFenceNV = (void (CALLBACK *)(GLuint, GLenum))
+	  GET_GL_PROCADDRESS ("glSetFenceNV");
+
+	disp__glTestFenceNV = (GLboolean (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glTestFenceNV");
+
+	disp__glFinishFenceNV = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glFinishFenceNV");
+
+	disp__glIsFenceNV = (GLboolean (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glIsFenceNV");
+
+	disp__glGetFenceivNV = (void (CALLBACK *)(GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetFenceivNV");
+
+	disp__glMapControlPointsNV = (void (CALLBACK *)(GLenum, GLuint, GLenum, GLsizei, GLsizei, GLint, GLint, GLboolean, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glMapControlPointsNV");
+
+	disp__glMapParameterivNV = (void (CALLBACK *)(GLenum, GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glMapParameterivNV");
+
+	disp__glMapParameterfvNV = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glMapParameterfvNV");
+
+	disp__glGetMapControlPointsNV = (void (CALLBACK *)(GLenum, GLuint, GLenum, GLsizei, GLsizei, GLboolean, GLvoid *))
+	  GET_GL_PROCADDRESS ("glGetMapControlPointsNV");
+
+	disp__glGetMapParameterivNV = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetMapParameterivNV");
+
+	disp__glGetMapParameterfvNV = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetMapParameterfvNV");
+
+	disp__glGetMapAttribParameterivNV = (void (CALLBACK *)(GLenum, GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetMapAttribParameterivNV");
+
+	disp__glGetMapAttribParameterfvNV = (void (CALLBACK *)(GLenum, GLuint, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetMapAttribParameterfvNV");
+
+	disp__glEvalMapsNV = (void (CALLBACK *)(GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glEvalMapsNV");
+
+	disp__glCombinerStageParameterfvNV = (void (CALLBACK *)(GLenum, GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glCombinerStageParameterfvNV");
+
+	disp__glGetCombinerStageParameterfvNV = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetCombinerStageParameterfvNV");
+
+	disp__glBindProgramNV = (void (CALLBACK *)(GLenum, GLuint))
+	  GET_GL_PROCADDRESS ("glBindProgramNV");
+
+	disp__glDeleteProgramsNV = (void (CALLBACK *)(GLsizei, const GLuint *))
+	  GET_GL_PROCADDRESS ("glDeleteProgramsNV");
+
+	disp__glExecuteProgramNV = (void (CALLBACK *)(GLenum, GLuint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glExecuteProgramNV");
+
+	disp__glGenProgramsNV = (void (CALLBACK *)(GLsizei, GLuint *))
+	  GET_GL_PROCADDRESS ("glGenProgramsNV");
+
+	disp__glAreProgramsResidentNV = (GLboolean (CALLBACK *)(GLsizei, const GLuint *, GLboolean *))
+	  GET_GL_PROCADDRESS ("glAreProgramsResidentNV");
+
+	disp__glRequestResidentProgramsNV = (void (CALLBACK *)(GLsizei, const GLuint *))
+	  GET_GL_PROCADDRESS ("glRequestResidentProgramsNV");
+
+	disp__glGetProgramParameterfvNV = (void (CALLBACK *)(GLenum, GLuint, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetProgramParameterfvNV");
+
+	disp__glGetProgramParameterdvNV = (void (CALLBACK *)(GLenum, GLuint, GLenum, GLdouble *))
+	  GET_GL_PROCADDRESS ("glGetProgramParameterdvNV");
+
+	disp__glGetProgramivNV = (void (CALLBACK *)(GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetProgramivNV");
+
+	disp__glGetProgramStringNV = (void (CALLBACK *)(GLuint, GLenum, GLubyte *))
+	  GET_GL_PROCADDRESS ("glGetProgramStringNV");
+
+	disp__glGetTrackMatrixivNV = (void (CALLBACK *)(GLenum, GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetTrackMatrixivNV");
+
+	disp__glGetVertexAttribdvNV = (void (CALLBACK *)(GLuint, GLenum, GLdouble *))
+	  GET_GL_PROCADDRESS ("glGetVertexAttribdvNV");
+
+	disp__glGetVertexAttribfvNV = (void (CALLBACK *)(GLuint, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetVertexAttribfvNV");
+
+	disp__glGetVertexAttribivNV = (void (CALLBACK *)(GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetVertexAttribivNV");
+
+	disp__glGetVertexAttribPointervNV = (void (CALLBACK *)(GLuint, GLenum, GLvoid **))
+	  GET_GL_PROCADDRESS ("glGetVertexAttribPointervNV");
+
+	disp__glIsProgramNV = (GLboolean (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glIsProgramNV");
+
+	disp__glLoadProgramNV = (void (CALLBACK *)(GLenum, GLuint, GLsizei, const GLubyte *))
+	  GET_GL_PROCADDRESS ("glLoadProgramNV");
+
+	disp__glProgramParameter4fNV = (void (CALLBACK *)(GLenum, GLuint, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glProgramParameter4fNV");
+
+	disp__glProgramParameter4dNV = (void (CALLBACK *)(GLenum, GLuint, GLdouble, GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glProgramParameter4dNV");
+
+	disp__glProgramParameter4dvNV = (void (CALLBACK *)(GLenum, GLuint, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glProgramParameter4dvNV");
+
+	disp__glProgramParameter4fvNV = (void (CALLBACK *)(GLenum, GLuint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glProgramParameter4fvNV");
+
+	disp__glProgramParameters4dvNV = (void (CALLBACK *)(GLenum, GLuint, GLuint, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glProgramParameters4dvNV");
+
+	disp__glProgramParameters4fvNV = (void (CALLBACK *)(GLenum, GLuint, GLuint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glProgramParameters4fvNV");
+
+	disp__glTrackMatrixNV = (void (CALLBACK *)(GLenum, GLuint, GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glTrackMatrixNV");
+
+	disp__glVertexAttribPointerNV = (void (CALLBACK *)(GLuint, GLint, GLenum, GLsizei, const GLvoid *))
+	  GET_GL_PROCADDRESS ("glVertexAttribPointerNV");
+
+	disp__glVertexAttrib1sNV = (void (CALLBACK *)(GLuint, GLshort))
+	  GET_GL_PROCADDRESS ("glVertexAttrib1sNV");
+
+	disp__glVertexAttrib1fNV = (void (CALLBACK *)(GLuint, GLfloat))
+	  GET_GL_PROCADDRESS ("glVertexAttrib1fNV");
+
+	disp__glVertexAttrib1dNV = (void (CALLBACK *)(GLuint, GLdouble))
+	  GET_GL_PROCADDRESS ("glVertexAttrib1dNV");
+
+	disp__glVertexAttrib2sNV = (void (CALLBACK *)(GLuint, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glVertexAttrib2sNV");
+
+	disp__glVertexAttrib2fNV = (void (CALLBACK *)(GLuint, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glVertexAttrib2fNV");
+
+	disp__glVertexAttrib2dNV = (void (CALLBACK *)(GLuint, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glVertexAttrib2dNV");
+
+	disp__glVertexAttrib3sNV = (void (CALLBACK *)(GLuint, GLshort, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glVertexAttrib3sNV");
+
+	disp__glVertexAttrib3fNV = (void (CALLBACK *)(GLuint, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glVertexAttrib3fNV");
+
+	disp__glVertexAttrib3dNV = (void (CALLBACK *)(GLuint, GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glVertexAttrib3dNV");
+
+	disp__glVertexAttrib4sNV = (void (CALLBACK *)(GLuint, GLshort, GLshort, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glVertexAttrib4sNV");
+
+	disp__glVertexAttrib4fNV = (void (CALLBACK *)(GLuint, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glVertexAttrib4fNV");
+
+	disp__glVertexAttrib4dNV = (void (CALLBACK *)(GLuint, GLdouble, GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glVertexAttrib4dNV");
+
+	disp__glVertexAttrib4ubNV = (void (CALLBACK *)(GLuint, GLubyte, GLubyte, GLubyte, GLubyte))
+	  GET_GL_PROCADDRESS ("glVertexAttrib4ubNV");
+
+	disp__glVertexAttrib1svNV = (void (CALLBACK *)(GLuint, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib1svNV");
+
+	disp__glVertexAttrib1fvNV = (void (CALLBACK *)(GLuint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib1fvNV");
+
+	disp__glVertexAttrib1dvNV = (void (CALLBACK *)(GLuint, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib1dvNV");
+
+	disp__glVertexAttrib2svNV = (void (CALLBACK *)(GLuint, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib2svNV");
+
+	disp__glVertexAttrib2fvNV = (void (CALLBACK *)(GLuint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib2fvNV");
+
+	disp__glVertexAttrib2dvNV = (void (CALLBACK *)(GLuint, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib2dvNV");
+
+	disp__glVertexAttrib3svNV = (void (CALLBACK *)(GLuint, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib3svNV");
+
+	disp__glVertexAttrib3fvNV = (void (CALLBACK *)(GLuint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib3fvNV");
+
+	disp__glVertexAttrib3dvNV = (void (CALLBACK *)(GLuint, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib3dvNV");
+
+	disp__glVertexAttrib4svNV = (void (CALLBACK *)(GLuint, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib4svNV");
+
+	disp__glVertexAttrib4fvNV = (void (CALLBACK *)(GLuint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib4fvNV");
+
+	disp__glVertexAttrib4dvNV = (void (CALLBACK *)(GLuint, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib4dvNV");
+
+	disp__glVertexAttrib4ubvNV = (void (CALLBACK *)(GLuint, const GLubyte *))
+	  GET_GL_PROCADDRESS ("glVertexAttrib4ubvNV");
+
+	disp__glVertexAttribs1svNV = (void (CALLBACK *)(GLuint, GLsizei, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs1svNV");
+
+	disp__glVertexAttribs1fvNV = (void (CALLBACK *)(GLuint, GLsizei, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs1fvNV");
+
+	disp__glVertexAttribs1dvNV = (void (CALLBACK *)(GLuint, GLsizei, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs1dvNV");
+
+	disp__glVertexAttribs2svNV = (void (CALLBACK *)(GLuint, GLsizei, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs2svNV");
+
+	disp__glVertexAttribs2fvNV = (void (CALLBACK *)(GLuint, GLsizei, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs2fvNV");
+
+	disp__glVertexAttribs2dvNV = (void (CALLBACK *)(GLuint, GLsizei, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs2dvNV");
+
+	disp__glVertexAttribs3svNV = (void (CALLBACK *)(GLuint, GLsizei, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs3svNV");
+
+	disp__glVertexAttribs3fvNV = (void (CALLBACK *)(GLuint, GLsizei, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs3fvNV");
+
+	disp__glVertexAttribs3dvNV = (void (CALLBACK *)(GLuint, GLsizei, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs3dvNV");
+
+	disp__glVertexAttribs4svNV = (void (CALLBACK *)(GLuint, GLsizei, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs4svNV");
+
+	disp__glVertexAttribs4fvNV = (void (CALLBACK *)(GLuint, GLsizei, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs4fvNV");
+
+	disp__glVertexAttribs4dvNV = (void (CALLBACK *)(GLuint, GLsizei, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs4dvNV");
+
+	disp__glVertexAttribs4ubvNV = (void (CALLBACK *)(GLuint, GLsizei, const GLubyte *))
+	  GET_GL_PROCADDRESS ("glVertexAttribs4ubvNV");
+
+	disp__glTexBumpParameterivATI = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glTexBumpParameterivATI");
+
+	disp__glTexBumpParameterfvATI = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glTexBumpParameterfvATI");
+
+	disp__glGetTexBumpParameterivATI = (void (CALLBACK *)(GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetTexBumpParameterivATI");
+
+	disp__glGetTexBumpParameterfvATI = (void (CALLBACK *)(GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetTexBumpParameterfvATI");
+
+	disp__glGenFragmentShadersATI = (GLuint (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glGenFragmentShadersATI");
+
+	disp__glBindFragmentShaderATI = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glBindFragmentShaderATI");
+
+	disp__glDeleteFragmentShaderATI = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glDeleteFragmentShaderATI");
+
+	disp__glBeginFragmentShaderATI = (void (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glBeginFragmentShaderATI");
+
+	disp__glEndFragmentShaderATI = (void (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glEndFragmentShaderATI");
+
+	disp__glPassTexCoordATI = (void (CALLBACK *)(GLuint, GLuint, GLenum))
+	  GET_GL_PROCADDRESS ("glPassTexCoordATI");
+
+	disp__glSampleMapATI = (void (CALLBACK *)(GLuint, GLuint, GLenum))
+	  GET_GL_PROCADDRESS ("glSampleMapATI");
+
+	disp__glColorFragmentOp1ATI = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glColorFragmentOp1ATI");
+
+	disp__glColorFragmentOp2ATI = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glColorFragmentOp2ATI");
+
+	disp__glColorFragmentOp3ATI = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glColorFragmentOp3ATI");
+
+	disp__glAlphaFragmentOp1ATI = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glAlphaFragmentOp1ATI");
+
+	disp__glAlphaFragmentOp2ATI = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glAlphaFragmentOp2ATI");
+
+	disp__glAlphaFragmentOp3ATI = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glAlphaFragmentOp3ATI");
+
+	disp__glSetFragmentShaderConstantATI = (void (CALLBACK *)(GLuint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glSetFragmentShaderConstantATI");
+
+	disp__glPNTrianglesiATI = (void (CALLBACK *)(GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glPNTrianglesiATI");
+
+	disp__glPNTrianglesfATI = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glPNTrianglesfATI");
+
+	disp__glNewObjectBufferATI = (GLuint (CALLBACK *)(GLsizei, const GLvoid *, GLenum))
+	  GET_GL_PROCADDRESS ("glNewObjectBufferATI");
+
+	disp__glIsObjectBufferATI = (GLboolean (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glIsObjectBufferATI");
+
+	disp__glUpdateObjectBufferATI = (void (CALLBACK *)(GLuint, GLuint, GLsizei, const GLvoid *, GLenum))
+	  GET_GL_PROCADDRESS ("glUpdateObjectBufferATI");
+
+	disp__glGetObjectBufferfvATI = (void (CALLBACK *)(GLuint, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetObjectBufferfvATI");
+
+	disp__glGetObjectBufferivATI = (void (CALLBACK *)(GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetObjectBufferivATI");
+
+	disp__glDeleteObjectBufferATI = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glDeleteObjectBufferATI");
+
+	disp__glArrayObjectATI = (void (CALLBACK *)(GLenum, GLint, GLenum, GLsizei, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glArrayObjectATI");
+
+	disp__glGetArrayObjectfvATI = (void (CALLBACK *)(GLenum, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetArrayObjectfvATI");
+
+	disp__glGetArrayObjectivATI = (void (CALLBACK *)(GLenum, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetArrayObjectivATI");
+
+	disp__glVariantArrayObjectATI = (void (CALLBACK *)(GLuint, GLenum, GLsizei, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glVariantArrayObjectATI");
+
+	disp__glGetVariantArrayObjectfvATI = (void (CALLBACK *)(GLuint, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetVariantArrayObjectfvATI");
+
+	disp__glGetVariantArrayObjectivATI = (void (CALLBACK *)(GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetVariantArrayObjectivATI");
+
+	disp__glBeginVertexShaderEXT = (void (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glBeginVertexShaderEXT");
+
+	disp__glEndVertexShaderEXT = (void (CALLBACK *)(void))
+	  GET_GL_PROCADDRESS ("glEndVertexShaderEXT");
+
+	disp__glBindVertexShaderEXT = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glBindVertexShaderEXT");
+
+	disp__glGenVertexShadersEXT = (GLuint (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glGenVertexShadersEXT");
+
+	disp__glDeleteVertexShaderEXT = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glDeleteVertexShaderEXT");
+
+	disp__glShaderOp1EXT = (void (CALLBACK *)(GLenum, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glShaderOp1EXT");
+
+	disp__glShaderOp2EXT = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glShaderOp2EXT");
+
+	disp__glShaderOp3EXT = (void (CALLBACK *)(GLenum, GLuint, GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glShaderOp3EXT");
+
+	disp__glSwizzleEXT = (void (CALLBACK *)(GLuint, GLuint, GLenum, GLenum, GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glSwizzleEXT");
+
+	disp__glWriteMaskEXT = (void (CALLBACK *)(GLuint, GLuint, GLenum, GLenum, GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glWriteMaskEXT");
+
+	disp__glInsertComponentEXT = (void (CALLBACK *)(GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glInsertComponentEXT");
+
+	disp__glExtractComponentEXT = (void (CALLBACK *)(GLuint, GLuint, GLuint))
+	  GET_GL_PROCADDRESS ("glExtractComponentEXT");
+
+	disp__glGenSymbolsEXT = (GLuint (CALLBACK *)(GLenum, GLenum, GLenum, GLuint))
+	  GET_GL_PROCADDRESS ("glGenSymbolsEXT");
+
+	disp__glSetInvariantEXT = (void (CALLBACK *)(GLuint, GLenum, const void *))
+	  GET_GL_PROCADDRESS ("glSetInvariantEXT");
+
+	disp__glSetLocalConstantEXT = (void (CALLBACK *)(GLuint, GLenum, const void *))
+	  GET_GL_PROCADDRESS ("glSetLocalConstantEXT");
+
+	disp__glVariantbvEXT = (void (CALLBACK *)(GLuint, const GLbyte *))
+	  GET_GL_PROCADDRESS ("glVariantbvEXT");
+
+	disp__glVariantsvEXT = (void (CALLBACK *)(GLuint, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVariantsvEXT");
+
+	disp__glVariantivEXT = (void (CALLBACK *)(GLuint, const GLint *))
+	  GET_GL_PROCADDRESS ("glVariantivEXT");
+
+	disp__glVariantfvEXT = (void (CALLBACK *)(GLuint, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVariantfvEXT");
+
+	disp__glVariantdvEXT = (void (CALLBACK *)(GLuint, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVariantdvEXT");
+
+	disp__glVariantubvEXT = (void (CALLBACK *)(GLuint, const GLubyte *))
+	  GET_GL_PROCADDRESS ("glVariantubvEXT");
+
+	disp__glVariantusvEXT = (void (CALLBACK *)(GLuint, const GLushort *))
+	  GET_GL_PROCADDRESS ("glVariantusvEXT");
+
+	disp__glVariantuivEXT = (void (CALLBACK *)(GLuint, const GLuint *))
+	  GET_GL_PROCADDRESS ("glVariantuivEXT");
+
+	disp__glVariantPointerEXT = (void (CALLBACK *)(GLuint, GLenum, GLuint, const void *))
+	  GET_GL_PROCADDRESS ("glVariantPointerEXT");
+
+	disp__glEnableVariantClientStateEXT = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glEnableVariantClientStateEXT");
+
+	disp__glDisableVariantClientStateEXT = (void (CALLBACK *)(GLuint))
+	  GET_GL_PROCADDRESS ("glDisableVariantClientStateEXT");
+
+	disp__glBindLightParameterEXT = (GLuint (CALLBACK *)(GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glBindLightParameterEXT");
+
+	disp__glBindMaterialParameterEXT = (GLuint (CALLBACK *)(GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glBindMaterialParameterEXT");
+
+	disp__glBindTexGenParameterEXT = (GLuint (CALLBACK *)(GLenum, GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glBindTexGenParameterEXT");
+
+	disp__glBindTextureUnitParameterEXT = (GLuint (CALLBACK *)(GLenum, GLenum))
+	  GET_GL_PROCADDRESS ("glBindTextureUnitParameterEXT");
+
+	disp__glBindParameterEXT = (GLuint (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glBindParameterEXT");
+
+	disp__glIsVariantEnabledEXT = (GLboolean (CALLBACK *)(GLuint, GLenum))
+	  GET_GL_PROCADDRESS ("glIsVariantEnabledEXT");
+
+	disp__glGetVariantBooleanvEXT = (void (CALLBACK *)(GLuint, GLenum, GLboolean *))
+	  GET_GL_PROCADDRESS ("glGetVariantBooleanvEXT");
+
+	disp__glGetVariantIntegervEXT = (void (CALLBACK *)(GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetVariantIntegervEXT");
+
+	disp__glGetVariantFloatvEXT = (void (CALLBACK *)(GLuint, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetVariantFloatvEXT");
+
+	disp__glGetVariantPointervEXT = (void (CALLBACK *)(GLuint, GLenum, GLvoid **))
+	  GET_GL_PROCADDRESS ("glGetVariantPointervEXT");
+
+	disp__glGetInvariantBooleanvEXT = (void (CALLBACK *)(GLuint, GLenum, GLboolean *))
+	  GET_GL_PROCADDRESS ("glGetInvariantBooleanvEXT");
+
+	disp__glGetInvariantIntegervEXT = (void (CALLBACK *)(GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetInvariantIntegervEXT");
+
+	disp__glGetInvariantFloatvEXT = (void (CALLBACK *)(GLuint, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetInvariantFloatvEXT");
+
+	disp__glGetLocalConstantBooleanvEXT = (void (CALLBACK *)(GLuint, GLenum, GLboolean *))
+	  GET_GL_PROCADDRESS ("glGetLocalConstantBooleanvEXT");
+
+	disp__glGetLocalConstantIntegervEXT = (void (CALLBACK *)(GLuint, GLenum, GLint *))
+	  GET_GL_PROCADDRESS ("glGetLocalConstantIntegervEXT");
+
+	disp__glGetLocalConstantFloatvEXT = (void (CALLBACK *)(GLuint, GLenum, GLfloat *))
+	  GET_GL_PROCADDRESS ("glGetLocalConstantFloatvEXT");
+
+	disp__glVertexStream1s = (void (CALLBACK *)(GLenum, GLshort))
+	  GET_GL_PROCADDRESS ("glVertexStream1s");
+
+	disp__glVertexStream1sv = (void (CALLBACK *)(GLenum, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexStream1sv");
+
+	disp__glVertexStream1i = (void (CALLBACK *)(GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glVertexStream1i");
+
+	disp__glVertexStream1iv = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glVertexStream1iv");
+
+	disp__glVertexStream1f = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glVertexStream1f");
+
+	disp__glVertexStream1fv = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexStream1fv");
+
+	disp__glVertexStream1d = (void (CALLBACK *)(GLenum, GLdouble))
+	  GET_GL_PROCADDRESS ("glVertexStream1d");
+
+	disp__glVertexStream1dv = (void (CALLBACK *)(GLenum, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexStream1dv");
+
+	disp__glVertexStream2s = (void (CALLBACK *)(GLenum, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glVertexStream2s");
+
+	disp__glVertexStream2sv = (void (CALLBACK *)(GLenum, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexStream2sv");
+
+	disp__glVertexStream2i = (void (CALLBACK *)(GLenum, GLint, GLint))
+	  GET_GL_PROCADDRESS ("glVertexStream2i");
+
+	disp__glVertexStream2iv = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glVertexStream2iv");
+
+	disp__glVertexStream2f = (void (CALLBACK *)(GLenum, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glVertexStream2f");
+
+	disp__glVertexStream2fv = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexStream2fv");
+
+	disp__glVertexStream2d = (void (CALLBACK *)(GLenum, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glVertexStream2d");
+
+	disp__glVertexStream2dv = (void (CALLBACK *)(GLenum, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexStream2dv");
+
+	disp__glVertexStream3s = (void (CALLBACK *)(GLenum, GLshort, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glVertexStream3s");
+
+	disp__glVertexStream3sv = (void (CALLBACK *)(GLenum, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexStream3sv");
+
+	disp__glVertexStream3i = (void (CALLBACK *)(GLenum, GLint, GLint, GLint))
+	  GET_GL_PROCADDRESS ("glVertexStream3i");
+
+	disp__glVertexStream3iv = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glVertexStream3iv");
+
+	disp__glVertexStream3f = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glVertexStream3f");
+
+	disp__glVertexStream3fv = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexStream3fv");
+
+	disp__glVertexStream3d = (void (CALLBACK *)(GLenum, GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glVertexStream3d");
+
+	disp__glVertexStream3dv = (void (CALLBACK *)(GLenum, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexStream3dv");
+
+	disp__glVertexStream4s = (void (CALLBACK *)(GLenum, GLshort, GLshort, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glVertexStream4s");
+
+	disp__glVertexStream4sv = (void (CALLBACK *)(GLenum, const GLshort *))
+	  GET_GL_PROCADDRESS ("glVertexStream4sv");
+
+	disp__glVertexStream4i = (void (CALLBACK *)(GLenum, GLint, GLint, GLint, GLint))
+	  GET_GL_PROCADDRESS ("glVertexStream4i");
+
+	disp__glVertexStream4iv = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glVertexStream4iv");
+
+	disp__glVertexStream4f = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glVertexStream4f");
+
+	disp__glVertexStream4fv = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glVertexStream4fv");
+
+	disp__glVertexStream4d = (void (CALLBACK *)(GLenum, GLdouble, GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glVertexStream4d");
+
+	disp__glVertexStream4dv = (void (CALLBACK *)(GLenum, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glVertexStream4dv");
+
+	disp__glNormalStream3b = (void (CALLBACK *)(GLenum, GLbyte, GLbyte, GLbyte))
+	  GET_GL_PROCADDRESS ("glNormalStream3b");
+
+	disp__glNormalStream3bv = (void (CALLBACK *)(GLenum, const GLbyte *))
+	  GET_GL_PROCADDRESS ("glNormalStream3bv");
+
+	disp__glNormalStream3s = (void (CALLBACK *)(GLenum, GLshort, GLshort, GLshort))
+	  GET_GL_PROCADDRESS ("glNormalStream3s");
+
+	disp__glNormalStream3sv = (void (CALLBACK *)(GLenum, const GLshort *))
+	  GET_GL_PROCADDRESS ("glNormalStream3sv");
+
+	disp__glNormalStream3i = (void (CALLBACK *)(GLenum, GLint, GLint, GLint))
+	  GET_GL_PROCADDRESS ("glNormalStream3i");
+
+	disp__glNormalStream3iv = (void (CALLBACK *)(GLenum, const GLint *))
+	  GET_GL_PROCADDRESS ("glNormalStream3iv");
+
+	disp__glNormalStream3f = (void (CALLBACK *)(GLenum, GLfloat, GLfloat, GLfloat))
+	  GET_GL_PROCADDRESS ("glNormalStream3f");
+
+	disp__glNormalStream3fv = (void (CALLBACK *)(GLenum, const GLfloat *))
+	  GET_GL_PROCADDRESS ("glNormalStream3fv");
+
+	disp__glNormalStream3d = (void (CALLBACK *)(GLenum, GLdouble, GLdouble, GLdouble))
+	  GET_GL_PROCADDRESS ("glNormalStream3d");
+
+	disp__glNormalStream3dv = (void (CALLBACK *)(GLenum, const GLdouble *))
+	  GET_GL_PROCADDRESS ("glNormalStream3dv");
+
+	disp__glClientActiveVertexStream = (void (CALLBACK *)(GLenum))
+	  GET_GL_PROCADDRESS ("glClientActiveVertexStream");
+
+	disp__glVertexBlendEnvi = (void (CALLBACK *)(GLenum, GLint))
+	  GET_GL_PROCADDRESS ("glVertexBlendEnvi");
+
+	disp__glVertexBlendEnvf = (void (CALLBACK *)(GLenum, GLfloat))
+	  GET_GL_PROCADDRESS ("glVertexBlendEnvf");
+
+/* C2J Parser Version 3.0:  Java program parsed successfully. */ 

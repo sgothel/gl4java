@@ -100,12 +100,12 @@ CNATIVEDIR  		= CNativeCode
 LIBMAJOR		= 2
 LIBMINOR		= 8
 LIBBUGFIX		= 0
-RELEASE                 = 5
+RELEASE                 = 8
 
 #
 # The demo release number
 #
-DEMORELEASE		= 4
+DEMORELEASE		= 8
 
 LIBBASENAME1 		= GL4JavaJauGljJNI
 LIBNAME1 		= lib$(LIBBASENAME1)
@@ -119,13 +119,27 @@ LIBBASENAME3 		= GL4JavaJauGljJNI13
 LIBNAME3 		= lib$(LIBBASENAME3)
 LIBRARY3 		= $(LIBNAME3).so
 
-LIBBASENAME4 		= GL4JavaJauGljJNI13nf
+LIBBASENAME4 		= GL4JavaJauGljJNI14
 LIBNAME4 		= lib$(LIBBASENAME4)
 LIBRARY4 		= $(LIBNAME4).so
 
-LIBBASENAME5 		= GL4JavaJauGljJNI13tst
-LIBNAME5 		= lib$(LIBBASENAME5)
-LIBRARY5 		= $(LIBNAME5).so
+LIBBASENAME3_NF 	= GL4JavaJauGljJNI13nf
+LIBNAME3_NF 		= lib$(LIBBASENAME3_NF)
+LIBRARY3_NF 		= $(LIBNAME3_NF).so
+
+LIBBASENAME3_TST 	= GL4JavaJauGljJNI13tst
+LIBNAME3_TST 		= lib$(LIBBASENAME3_TST)
+LIBRARY3_TST 		= $(LIBNAME3_TST).so
+
+ifdef JAVAC_14
+	LIB4JDK14=$(HOME_LIB_DIR)/$(LIBRARY4)
+	LIBRARY4JDK14=$(LIBRARY4)
+	LIBNAME4JDK14=$(LIBNAME4)
+else
+	LIBRARY4JDK14=
+	LIBNAME4JDK14=
+	LIB4JDK14=
+endif
 
 # the name of the package has to match the name of the subdirectory that
 # the java source and java class files sit in
@@ -171,32 +185,93 @@ MK_GL4JAVA_JAR		= ( cd $(DEST_CLASSES_DIR) ; \
 
 # classes which rely on native methods
 #
-#lib GLContext
-JAVA_C_MAP1_FILE 	= GLContext.java
+FILES_WITH_NATIVES_13 = \
+	$(PACKAGEDIR)/GLContext.java \
+	$(PACKAGEDIR)/GLFuncJauJNI.java \
+	$(PACKAGEDIR)/GLFuncJauJNInf.java \
+	$(PACKAGEDIR)/GLUFuncJauJNI.java \
+	$(PACKAGEDIR)/GLUFuncJauJNInf.java \
+	$(PACKAGEDIR)/utils/glf/GLFFuncJNI.java \
+	$(PACKAGEDIR)/utils/Tool.java
 
-#lib GLFunc - 1
-JAVA_C_MAP2_FILE 	= GLFuncJauJNI.java
+# Add on JDK 1.4 files if JAVAC_14 is available
+ifdef JAVAC_14
+FILES_WITH_NATIVES_14 = \
+	$(PACKAGEDIR)/GLFunc14JauJNI.java \
+	$(PACKAGEDIR)/GLUFunc14JauJNI.java
+else
+FILES_WITH_NATIVES_14 = 
+endif
 
-#lib GLUFunc - 1
-JAVA_C_MAP3_FILE 	= GLUFuncJauJNI.java
+# Platform-dependent .java files with natives
+FILES_WITH_NATIVES_MAC = $(PACKAGEDIR)/drawable/MacSunJDK13GLDrawableFactory.java
+FILES_WITH_NATIVES_W32 = $(PACKAGEDIR)/drawable/Win32SunJDK13GLDrawableFactory.java
+FILES_WITH_NATIVES_X11 = $(PACKAGEDIR)/drawable/X11SunJDK13GLDrawableFactory.java
 
-#lib GLFunc - 2
-JAVA_C_MAP4_FILE 	= GLFuncJauJNInf.java
+# Other Platform-dependent .java files (can only be compiled with JDK
+# 1.3 and earlier)
+ifdef JAVAC_13
+FILES_MAC_JDK13   = $(PACKAGEDIR)/jau/awt/macintosh/MacHandleAccess.java
+FILES_W32_JDK13   = $(PACKAGEDIR)/jau/awt/windows/Win32HandleAccess.java
+FILES_X11_JDK13   = $(PACKAGEDIR)/jau/awt/motif/X11HandleAccess.java
+HAVE_JAVAC_13     = 1
+endif
 
-#lib GLUFunc - 2
-JAVA_C_MAP5_FILE 	= GLUFuncJauJNInf.java
+# Determination of which is necessary.
+# Note that we add all of them for targets such as "cleanall" which
+# use an rm -f and therefore won't fail if the file is not found.
+ifeq ($(MAKECMDGOALS),mac)
+FILES_WITH_NATIVES_13 += $(FILES_WITH_NATIVES_MAC)
+FILES_JDK13 = $(FILES_MAC_JDK13)
+else
+ ifeq ($(MAKECMDGOALS),w32)
+  FILES_WITH_NATIVES_13 += $(FILES_WITH_NATIVES_W32)
+  FILES_JDK13 = $(FILES_W32_JDK13)
+ else
+  ifeq ($(MAKECMDGOALS),x11)
+   FILES_WITH_NATIVES_13 += $(FILES_WITH_NATIVES_X11)
+   FILES_JDK13 = $(FILES_X11_JDK13)
+  else
+   FILES_WITH_NATIVES_13 += $(FILES_WITH_NATIVES_MAC) $(FILES_WITH_NATIVES_W32) $(FILES_WITH_NATIVES_X11)
+   FILES_JDK13 = $(FILES_MAC_JDK13) $(FILES_W32_JDK13) $(FILES_X11_JDK13)
+   SUPPRESS_JDK13_RULES = 1
+  endif
+ endif
+ ifdef HAVE_JAVAC_13
+  FILES_JDK13.class = $(patsubst %,$(DEST_CLASSES_DIR)/%,${FILES_JDK13:.java=.class})
+  ifndef SUPPRESS_JDK13_RULES
+$(FILES_JDK13.class): $(FILES_JDK13)
+	$(JAVAC_13) -O -deprecation -d $(DEST_CLASSES_DIR) $^ | tee -a errors
+  endif
+ endif
+endif
 
-JAVA_C_MAP6_X11_FILE 	= X11SunJDK13GLDrawableFactory.java
+#
+# Header files from above
+#
+FILES_WITH_NATIVES_13.class = $(patsubst %,$(DEST_CLASSES_DIR)/%,$(FILES_WITH_NATIVES_13:.java=.class))
+FILES_WITH_NATIVES_14.class = $(patsubst %,$(DEST_CLASSES_DIR)/%,$(FILES_WITH_NATIVES_14:.java=.class))
+FILES_WITH_NATIVES.names = $(subst /,.,$(FILES_WITH_NATIVES_13:.java=)) \
+                           $(subst /,.,$(FILES_WITH_NATIVES_14:.java=))
+FILES.gen = $(patsubst %,$(CHEADERDIR)/%,$(subst /,_,$(FILES_WITH_NATIVES_13:.java=.h))) \
+	    $(patsubst %,$(CHEADERDIR)/%,$(subst /,_,$(FILES_WITH_NATIVES_14:.java=.h)))
 
-JAVA_C_MAP6_WIN32_FILE 	= Win32SunJDK13GLDrawableFactory.java
+#
+# This is the stuff for the MS-JVM
+#
+ifdef MSJAVAC
+FILES_MSW32       = $(PACKAGEDIR)/system/GljMSJDirect.java \
+		    $(PACKAGEDIR)/jau/awt/windows/MSWin32HandleAccess.java
+FILES_MSW32.class = $(FILES_MSW32:.java=.class)
+$(FILES_MSW32.class): $(FILES_MSW32)
+	$(MSJAVAC) -O -cp:p .. $^ 2>&1 | tee -a errors
+	mkdir -p $(DEST_CLASSES_DIR)/${@D}
+	cp ${@D}/*.class $(DEST_CLASSES_DIR)/${@D}
+endif
 
-JAVA_C_MAP6_MAC_FILE 	= MacSunJDK13GLDrawableFactory.java
-
-#lib GLFFunc 
-JAVA_C_MAP7_FILE 	= GLFFuncJNI.java
-
-#lib Tool 
-JAVA_C_MAP8_FILE 	= Tool.java
+#
+# Files in all targets
+#
 
 FILES_GLUT_FONT.java = \
 		  $(PACKAGEDIR)/utils/glut/fonts/GLUTBitmapFont.java \
@@ -218,9 +293,7 @@ FILES_GLUT_FONT.java = \
 		  $(PACKAGEDIR)/utils/glut/fonts/data/glutStrokeRoman.java \
 		  $(PACKAGEDIR)/utils/glut/fonts/GLUTFuncLightImplWithFonts.java
 
-FILES_GLUT_FONT.class = ${FILES_GLUT_FONT.java:.java=.class}
-
-FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
+FILES_13.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/jau/awt/WinHandleAccess.java \
 		  $(PACKAGEDIR)/GL4JavaReflections.java \
 		  $(PACKAGEDIR)/GLCapabilities.java \
@@ -229,12 +302,7 @@ FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/GLUEnum.java \
 		  $(PACKAGEDIR)/GLFunc.java \
 		  $(PACKAGEDIR)/GLUFunc.java \
-	          $(PACKAGEDIR)/$(JAVA_C_MAP1_FILE) \
-	          $(PACKAGEDIR)/$(JAVA_C_MAP2_FILE) \
-	          $(PACKAGEDIR)/$(JAVA_C_MAP3_FILE) \
-	          $(PACKAGEDIR)/$(JAVA_C_MAP4_FILE) \
-	          $(PACKAGEDIR)/$(JAVA_C_MAP5_FILE) \
-		  $(PACKAGEDIR)/utils/$(JAVA_C_MAP8_FILE) \
+		  $(FILES_WITH_NATIVES_13) \
 		  $(PACKAGEDIR)/utils/Test.java \
 		  $(PACKAGEDIR)/awt/GLCanvas.java   \
 		  $(PACKAGEDIR)/awt/GLAnimCanvas.java \
@@ -245,7 +313,6 @@ FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/swing/GLAnimJPanel.java \
 		  $(PACKAGEDIR)/swing/SimpleGLJApplet1.java \
 		  $(PACKAGEDIR)/utils/glf/GLFEnum.java \
-		  $(PACKAGEDIR)/utils/glf/$(JAVA_C_MAP7_FILE) \
 		  $(PACKAGEDIR)/utils/glf/GLF.java \
 		  $(PACKAGEDIR)/utils/glut/GLUTEnum.java \
 		  $(PACKAGEDIR)/utils/glut/GLUTFunc.java \
@@ -267,28 +334,15 @@ FILES.java 	= $(PACKAGEDIR)/GL4JavaInitException.java \
 		  $(PACKAGEDIR)/drawable/DummyGLDrawableFactory.java \
 		  $(PACKAGEDIR)/drawable/SunJDK13GLDrawableFactory.java
 
-FILES.class 		= ${FILES.java:.java=.class}
+FILES_14.java 	= $(PACKAGEDIR)/GLFunc14.java \
+		  $(PACKAGEDIR)/GLUFunc14.java \
+		  $(FILES_WITH_NATIVES_14)
 
-FILES_mac.java		= gl4java/jau/awt/macintosh/MacHandleAccess.java \
-		          gl4java/drawable/$(JAVA_C_MAP6_MAC_FILE)
+FILES_13.class 		= $(patsubst %,$(DEST_CLASSES_DIR)/%,${FILES_13.java:.java=.class})
 
-FILES_mac.class 	= ${FILES_mac.java:.java=.class}
+FILES_14.class 		= $(patsubst %,$(DEST_CLASSES_DIR)/%,${FILES_14.java:.java=.class})
 
-FILES_w32.java		= gl4java/jau/awt/windows/Win32HandleAccess.java \
-		          gl4java/drawable/$(JAVA_C_MAP6_WIN32_FILE)
-
-FILES_w32.class 	= ${FILES_w32.java:.java=.class}
-
-FILES_msw32.java	= $(PACKAGEDIR)/system/GljMSJDirect.java \
-			  gl4java/jau/awt/windows/MSWin32HandleAccess.java
-
-FILES_msw32.class 	= ${FILES_msw32.java:.java=.class}
-
-FILES_x11.java		= gl4java/jau/awt/motif/X11HandleAccess.java \
-		          gl4java/drawable/$(JAVA_C_MAP6_X11_FILE)
-
-FILES_x11.class 	= ${FILES_x11.java:.java=.class}
-
+FILES.class		= $(FILES_13.class) $(FILES_14.class)
 
 #lib GLContext
 FILES1.c 		= $(CNATIVEDIR)/OpenGL_X11.c		 \
@@ -349,13 +403,32 @@ FILES4.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/jni12tools.c	         \
 			  $(CNATIVEDIR)/Tool_JNI12_funcs.c       \
 			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
+			  $(CNATIVEDIR)/OpenGL_JauJNI12_funcs.c  \
+			  $(CNATIVEDIR)/OpenGLU_JauJNI12_funcs.c \
+			  $(CNATIVEDIR)/OpenGL_JauJNI14_funcs.c  \
+			  $(CNATIVEDIR)/OpenGLU_JauJNI14_funcs.c \
+			  $(CNATIVEDIR)/glf.c                    \
+			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
+			  $(CNATIVEDIR)/GLUCallbackJNI.c
+
+FILES3_NF.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
+			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
+			  $(CNATIVEDIR)/glcaps.c	         \
+			  $(CNATIVEDIR)/gltool.c	         \
+			  $(CNATIVEDIR)/glxtool.c	         \
+			  $(CNATIVEDIR)/jawt_misc.c		 \
+			  $(CNATIVEDIR)/GLDrawableFactory_X11_SunJDK13.c \
+			  $(CNATIVEDIR)/OpenGL_misc.c		 \
+			  $(CNATIVEDIR)/jni12tools.c	         \
+			  $(CNATIVEDIR)/Tool_JNI12_funcs.c       \
+			  $(CNATIVEDIR)/GLCallbackHelperJNI.c    \
 			  $(CNATIVEDIR)/OpenGL_JauJNI12nf_funcs.c  \
 			  $(CNATIVEDIR)/OpenGLU_JauJNI12nf_funcs.c \
 			  $(CNATIVEDIR)/glf.c                    \
 			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
-FILES5.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
+FILES3_TST.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/OpenGL_X11_common.c      \
 			  $(CNATIVEDIR)/glcaps.c	         \
 			  $(CNATIVEDIR)/gltool.c	         \
@@ -372,61 +445,18 @@ FILES5.c 		= $(CNATIVEDIR)/OpenGL_X11_jawt.c        \
 			  $(CNATIVEDIR)/GLF_JNI12_funcs.c        \
 			  $(CNATIVEDIR)/GLUCallbackJNI.c
 
-
 FILES1.o 		= ${FILES1.c:.c=.o}
 FILES2.o 		= ${FILES2.c:.c=.o}
 FILES3.o 		= ${FILES3.c:.c=.o}
 FILES4.o 		= ${FILES4.c:.c=.o}
-FILES5.o 		= ${FILES5.c:.c=.o}
-
-#lib GLContext
-FILE.gen1.h 	= $(CHEADERDIR)/$(PACKAGEDIR)_${JAVA_C_MAP1_FILE:.java=.h}
-
-#lib GLFunc - 1
-FILE.gen2.h 	= $(CHEADERDIR)/$(PACKAGEDIR)_${JAVA_C_MAP2_FILE:.java=.h}
-
-#lib GLUFunc - 1
-FILE.gen3.h 	= $(CHEADERDIR)/$(PACKAGEDIR)_${JAVA_C_MAP3_FILE:.java=.h}
-
-#lib GLFunc - 2
-FILE.gen4.h 	= $(CHEADERDIR)/$(PACKAGEDIR)_${JAVA_C_MAP4_FILE:.java=.h}
-
-#lib GLUFunc - 2
-FILE.gen5.h 	= $(CHEADERDIR)/$(PACKAGEDIR)_${JAVA_C_MAP5_FILE:.java=.h}
-
-FILE.gen6.x11.h = $(CHEADERDIR)/$(PACKAGEDIR)_drawable_${JAVA_C_MAP6_X11_FILE:.java=.h}
-
-FILE.gen6.win32.h = $(CHEADERDIR)/$(PACKAGEDIR)_drawable_${JAVA_C_MAP6_WIN32_FILE:.java=.h}
-
-FILE.gen6.mac.h = $(CHEADERDIR)/$(PACKAGEDIR)_drawable_${JAVA_C_MAP6_MAC_FILE:.java=.h}
-
-FILE.gen7.h     = $(CHEADERDIR)/$(PACKAGEDIR)_utils_glf_${JAVA_C_MAP7_FILE:.java=.h}
-
-FILE.gen8.h     = $(CHEADERDIR)/$(PACKAGEDIR)_utils_${JAVA_C_MAP8_FILE:.java=.h}
-
-FILES.gen   		= $(FILE.gen1.h) \
-			  $(FILE.gen2.h) \
-			  $(FILE.gen3.h) \
-			  $(FILE.gen4.h) \
-			  $(FILE.gen5.h) \
-			  $(FILE.gen7.h) \
-			  $(FILE.gen8.h)
+FILES3_NF.o 		= ${FILES3_NF.c:.c=.o}
+FILES3_TST.o 		= ${FILES3_TST.c:.c=.o}
 
 ######################################################################
 # SPECIFY ALL SUFFIX-RULES
 ######################################################################
 
-.SUFFIXES 		: .java .class .h .c .o
-
-#.class.h:
-#	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${<F:.class=} 2>&1 \
-#	| tee -a $(THISDIR)/errors
-
-.java.class:    
-	cd ${<D}; $(JAVAC) -O -deprecation ${<F} 2>&1 \
-                  | tee -a $(THISDIR)/errors
-	mkdir -p $(DEST_CLASSES_DIR)/${@D}
-	cp ${@D}/*.class $(DEST_CLASSES_DIR)/${@D}
+.SUFFIXES 		: .c .o
 
 .c.o:
 	$(CC) $(CC_OPTS) -o $@ $< 2>&1 | tee -a $(THISDIR)/errors
@@ -435,46 +465,50 @@ FILES.gen   		= $(FILE.gen1.h) \
 # SPECIFY ALL TARGETS -- MAIN TARGETS
 ######################################################################
 
-classes			: $(FILES.class) $(FILES_x11.class) \
-			  $(DEST_CLASSES_DIR)/gl4java.jar 
+# Main build rule
+$(FILES_13.class)           : $(FILES_13.java)
+	$(JAVAC_13) -O -deprecation -d $(DEST_CLASSES_DIR) $(FILES_13.java)
+
+$(FILES_14.class)           : $(FILES_14.java)
+	$(JAVAC_14) -O -deprecation -d $(DEST_CLASSES_DIR) $(FILES_14.java)
 
 x11			: cleanup gljni \
-	                  $(FILES.class) $(FILES_x11.class) \
+	                  $(FILES_13.class) $(FILES_14.class) \
+			  $(FILES_JDK13.class) \
 			  $(DEST_CLASSES_DIR)/gl4java.jar \
 			  $(FILES.gen) \
-			  $(FILE.gen6.x11.h) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY1) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY2) \
 		 	  $(HOME_LIB_DIR)/$(LIBRARY3) \
-		 	  $(HOME_LIB_DIR)/$(LIBRARY4) \
-			  $(HOME_LIB_DIR)/$(LIBRARY5) \
+		 	  $(LIB4JDK14) \
+		 	  $(HOME_LIB_DIR)/$(LIBRARY3_NF) \
+			  $(HOME_LIB_DIR)/$(LIBRARY3_TST) \
 			  invokejvm
 
 x11strip		:
 	strip ${HOME_LIB_DIR}/${LIBRARY1}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
 	strip ${HOME_LIB_DIR}/${LIBRARY2}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
 	strip ${HOME_LIB_DIR}/${LIBRARY3}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
+	strip ${HOME_LIB_DIR}/${LIBRARY3_NF}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
+	strip ${HOME_LIB_DIR}/${LIBRARY3_TST}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
 	strip ${HOME_LIB_DIR}/${LIBRARY4}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
-	strip ${HOME_LIB_DIR}/${LIBRARY5}.$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX)
 
 mac			: cleanup gljni \
-	                  $(FILES.class) $(FILES_mac.class) \
+	                  $(FILES_13.class) $(FILES_14.class) \
+			  $(FILES_JDK13.class) \
 			  makeJar \
 			  $(FILES.gen) \
-			  $(FILE.gen6.mac.h) \
                           $(CNATIVEDIR)/winstuff.h 
 
 
 w32			: cleanup gljni \
-	                  $(FILES_w32.class) \
-	                  $(FILES_msw32.class) \
-			  $(FILES.class) \
+	                  $(FILES_13.class) $(FILES_14.class) \
+			  $(FILES_JDK13.class) \
+	                  $(FILES_MSW32.class) \
 			  $(DEST_CLASSES_DIR)/gl4java.jar \
 			  $(FILES.gen) \
-			  $(FILE.gen6.win32.h) \
                           $(CNATIVEDIR)/winstuff.h 
 
-#gljni			: tools gl2j gl2c
 gljni			: gl2j gl2c
 
 
@@ -519,12 +553,20 @@ $(HOME_LIB_DIR)/$(LIBRARY4): $(FILES4.o)
 	         $(FILES4.o) $(LIBS) -L$(JAVAOSLIB) \
 		 -ljawt
 
-$(HOME_LIB_DIR)/$(LIBRARY5): $(FILES5.o)
-	rm -f ${HOME_LIB_DIR}/${LIBNAME5}.*
-	$(MKEXP) $(LIBNAME5) $(FILES5.o)
+$(HOME_LIB_DIR)/$(LIBRARY3_NF): $(FILES3_NF.o)
+	rm -f ${HOME_LIB_DIR}/${LIBNAME3_NF}.*
+	$(MKEXP) $(LIBNAME3_NF) $(FILES3_NF.o)
 	$(MKLIB) $(HOME_LIB_DIR) \
-	         $(LIBNAME5) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
-	         $(FILES5.o) $(LIBS) -L$(JAVAOSLIB) \
+	         $(LIBNAME3_NF) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
+	         $(FILES3_NF.o) $(LIBS) -L$(JAVAOSLIB) \
+		 -ljawt
+
+$(HOME_LIB_DIR)/$(LIBRARY3_TST): $(FILES3_TST.o)
+	rm -f ${HOME_LIB_DIR}/${LIBNAME3_TST}.*
+	$(MKEXP) $(LIBNAME3_TST) $(FILES3_TST.o)
+	$(MKLIB) $(HOME_LIB_DIR) \
+	         $(LIBNAME3_TST) $(LIBMAJOR) $(LIBMINOR) $(LIBBUGFIX) \
+	         $(FILES3_TST.o) $(LIBS) -L$(JAVAOSLIB) \
 		 -ljawt
 
 ######################################################################
@@ -554,14 +596,15 @@ $(CNATIVEDIR)/winstuff.h: makefile $(CNATIVEDIR)/winstuff.h.skel
 		> $(CNATIVEDIR)/winstuff.h
 
 #lib GLContext
-$(CNATIVEDIR)/OpenGL_X11.o: ${FILE.gen1.h}
+$(CNATIVEDIR)/OpenGL_X11.o: ${FILES.gen}
+$(CNATIVEDIR)/OpenGL_misc.o: ${FILES.gen}
 
-$(CNATIVEDIR)/OpenGL_misc.o: ${FILE.gen1.h}
-
-$(FILE.gen1.h): $(PACKAGEDIR)/${JAVA_C_MAP1_FILE:.java=.class}
-	rm -f $(FILE.gen1.h)
-	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP1_FILE:.java=} 2>&1 \
-	| tee -a $(THISDIR)/errors
+#
+# Generated header files
+#
+$(FILES.gen): $(FILES_WITH_NATIVES_13.class) $(FILES_WITH_NATIVES_14.class)
+	rm -f $(FILES.gen)
+	$(JAVAH) -jni -d $(CHEADERDIR) $(FILES_WITH_NATIVES.names) 2>&1 | tee -a $(THISDIR)/errors
 
 $(CNATIVEDIR)/OpenGL_misc.o: $(CNATIVEDIR)/OpenGL_misc.c makefile
 	$(CC) $(CC_OPTS) \
@@ -569,83 +612,32 @@ $(CNATIVEDIR)/OpenGL_misc.o: $(CNATIVEDIR)/OpenGL_misc.c makefile
 	      -o $@ $< 2>&1 | tee -a $(THISDIR)/errors
 
 #lib GLFunc - 1
-$(CNATIVEDIR)/OpenGL_JauJNI_funcs.o: ${FILE.gen2.h} \
+$(CNATIVEDIR)/OpenGL_JauJNI_funcs.o: ${FILES.gen} \
                                         $(CNATIVEDIR)/jnitools.h \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
-
-$(FILE.gen2.h): $(PACKAGEDIR)/${JAVA_C_MAP2_FILE:.java=.class}
-	rm -f $(FILE.gen2.h)
-	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP2_FILE:.java=} 2>&1 \
-	| tee -a $(THISDIR)/errors
-
 
 #lib GLUFunc - 1
-$(CNATIVEDIR)/OpenGLU_JauJNI_funcs.o: ${FILE.gen3.h} \
+$(CNATIVEDIR)/OpenGLU_JauJNI_funcs.o: ${FILES.gen} \
                                         $(CNATIVEDIR)/jnitools.h \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
-
-$(FILE.gen3.h): $(PACKAGEDIR)/${JAVA_C_MAP3_FILE:.java=.class}
-	rm -f $(FILE.gen3.h)
-	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP3_FILE:.java=} 2>&1 \
-	| tee -a $(THISDIR)/errors
 
 #lib GLFunc - 2
-$(CNATIVEDIR)/OpenGL_JauJNInf_funcs.o: ${FILE.gen4.h} \
+$(CNATIVEDIR)/OpenGL_JauJNInf_funcs.o: ${FILES.gen} \
                                         $(CNATIVEDIR)/jnitools.h \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
-
-$(FILE.gen4.h): $(PACKAGEDIR)/${JAVA_C_MAP4_FILE:.java=.class}
-	rm -f $(FILE.gen4.h)
-	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP4_FILE:.java=} 2>&1 \
-	| tee -a $(THISDIR)/errors
 
 #lib GLUFunc - 2
-$(CNATIVEDIR)/OpenGLU_JauJNInf_funcs.o: ${FILE.gen5.h} \
+$(CNATIVEDIR)/OpenGLU_JauJNInf_funcs.o: ${FILES.gen} \
                                         $(CNATIVEDIR)/jnitools.h \
 				        $(CNATIVEDIR)/GLCallbackHelperJNI.h
 
-$(FILE.gen5.h): $(PACKAGEDIR)/${JAVA_C_MAP5_FILE:.java=.class}
-	rm -f $(FILE.gen5.h)
-	$(JAVAH) -jni -d $(CHEADERDIR) $(PACKAGEDIR).${JAVA_C_MAP5_FILE:.java=} 2>&1 \
-	| tee -a $(THISDIR)/errors
+$(CNATIVEDIR)/GLF_JNI12_funcs.o: ${FILES.gen}
 
-$(FILE.gen6.x11.h): $(PACKAGEDIR)/drawable/${JAVA_C_MAP6_X11_FILE:.java=.class}
-	rm -f $(FILE.gen6.x11.h)
-	$(JAVAH) -jni -d $(CHEADERDIR) \
-	      $(PACKAGEDIR).drawable.${JAVA_C_MAP6_X11_FILE:.java=} 2>&1 \
-	| tee -a $(THISDIR)/errors
+$(CNATIVEDIR)/GLF_JNI_funcs.o: ${FILES.gen}
 
-$(FILE.gen6.win32.h): $(PACKAGEDIR)/drawable/${JAVA_C_MAP6_WIN32_FILE:.java=.class}
-	rm -f $(FILE.gen6.win32.h)
-	$(JAVAH) -jni -d $(CHEADERDIR) \
-	      $(PACKAGEDIR).drawable.${JAVA_C_MAP6_WIN32_FILE:.java=} 2>&1 \
-	| tee -a $(THISDIR)/errors
+$(CNATIVEDIR)/Tool_JNI12_funcs.o: ${FILES.gen}
 
-$(FILE.gen6.mac.h): $(PACKAGEDIR)/drawable/${JAVA_C_MAP6_MAC_FILE:.java=.class}
-	rm -f $(FILE.gen6.mac.h)
-	$(JAVAH) -jni -d $(CHEADERDIR) \
-	      $(PACKAGEDIR).drawable.${JAVA_C_MAP6_MAC_FILE:.java=} 2>&1 \
-	| tee -a $(THISDIR)/errors
-
-$(CNATIVEDIR)/GLF_JNI12_funcs.o: ${FILE.gen7.h}
-
-$(CNATIVEDIR)/GLF_JNI_funcs.o: ${FILE.gen7.h}
-
-$(CNATIVEDIR)/Tool_JNI12_funcs.o: ${FILE.gen8.h}
-
-$(CNATIVEDIR)/Tool_JNI_funcs.o: ${FILE.gen8.h}
-
-$(FILE.gen7.h): $(PACKAGEDIR)/utils/glf/${JAVA_C_MAP7_FILE:.java=.class}
-	rm -f $(FILE.gen7.h)
-	$(JAVAH) -jni -d $(CHEADERDIR) \
-	      $(PACKAGEDIR).utils.glf.${JAVA_C_MAP7_FILE:.java=} 2>&1 \
-	| tee -a $(THISDIR)/errors
-
-$(FILE.gen8.h): $(PACKAGEDIR)/utils/${JAVA_C_MAP8_FILE:.java=.class}
-	rm -f $(FILE.gen8.h)
-	$(JAVAH) -jni -d $(CHEADERDIR) \
-	      $(PACKAGEDIR).utils.${JAVA_C_MAP8_FILE:.java=} 2>&1 \
-	| tee -a $(THISDIR)/errors
+$(CNATIVEDIR)/Tool_JNI_funcs.o: ${FILES.gen}
 
 $(CNATIVEDIR)/gltool.o:  $(CNATIVEDIR)/gltool.h \
                       $(CNATIVEDIR)/glxtool.h $(CNATIVEDIR)/glcaps.h \
@@ -660,19 +652,6 @@ $(CNATIVEDIR)/glxtool.o: $(CNATIVEDIR)/gltool.h \
 $(CNATIVEDIR)/glxtool.h: $(CNATIVEDIR)/glx-disp-var.h
 
 $(CNATIVEDIR)/gltool.h:  $(CNATIVEDIR)/gl-disp-var.h $(CNATIVEDIR)/glu-disp-var.h
-
-#
-# This is the stuff for the MS-JVM
-#
-$(PACKAGEDIR)/system/GljMSJDirect.class: $(PACKAGEDIR)/system/GljMSJDirect.java
-	$(MSJAVAC) -O -cp:p .. $< 2>&1 | tee -a errors
-	mkdir -p $(DEST_CLASSES_DIR)/${@D}
-	cp ${@D}/*.class $(DEST_CLASSES_DIR)/${@D}
-
-gl4java/jau/awt/windows/MSWin32HandleAccess.class: gl4java/jau/awt/windows/MSWin32HandleAccess.java
-	$(MSJAVAC) -O -cp:p .. $< 2>&1 | tee -a errors
-	mkdir -p $(DEST_CLASSES_DIR)/${@D}
-	cp ${@D}/*.class $(DEST_CLASSES_DIR)/${@D}
 
 #
 # This is the stuff general
@@ -715,11 +694,11 @@ $(CHEADERDIR):
 cleannative:
 	rm -f `find . -name \*~ -o -name \*.swp -o -name \*.bak -o -name \*.obj -o -name \*.o` \
 	      $(FILES1.o) $(FILES2.o) \
-	      $(FILES3.o) $(FILES4.o) $(FILES5.o)  \
+	      $(FILES3.o) $(FILES4.o) $(FILES3_NF.o) $(FILES3_TST.o)  \
 	      errors gl4java/*~ CNativeCode/*~ \
 	      $(HOME_LIB_DIR)/${LIBNAME1}.* $(HOME_LIB_DIR)/${LIBNAME2}.* \
-	      $(HOME_LIB_DIR)/${LIBNAME3}.* $(HOME_LIB_DIR)/${LIBNAME4}.* \
-	      $(HOME_LIB_DIR)/${LIBNAME5}.* \
+	      $(HOME_LIB_DIR)/${LIBNAME3}.* $(HOME_LIB_DIR)/${LIBNAME3_NF}.* \
+	      $(HOME_LIB_DIR)/${LIBNAME3_TST}.* \
 	      $(CNATIVEDIR)/winstuff.h
 	cd demos/natives/x11 ; make clean
 
@@ -728,8 +707,7 @@ clean: cleannative cleanupw32 cleanhtmldoc cleantemp
 
 cleantemp:
 	rm -f $(CHEADERDIR)/* errors gl4java/*~ CNativeCode/*~ \
-	      $(FILE.gen1.h) $(FILE.gen2.h) \
-	      $(FILE.gen3.h) $(FILE.gen4.h) $(FILE.gen5.h)
+	      $(FILES.gen)
 	rm -f `find . -name \*.class`
 	rm -f `find . -name discrete.log`
 	cd demos ; make clean
@@ -740,10 +718,7 @@ cleanhtmldoc:
 	rm -f docs/*.ps
 
 cleanall: clean cleanhtmldoc
-	rm -f $(FILES.class) 
-	rm -f $(FILES_x11.class) 
-	rm -f $(FILES_w32.class) 
-	rm -f $(FILES_mac.class) 
+	rm -f $(FILES.class) $(FILES_JDK13.class) $(FILES_MSW32.class) 
 	rm -f archive/GL4Java*
 	for i in $$(find . -name \*.class) ; do \
 		rm -f $$i ; \
@@ -871,7 +846,7 @@ java2binpkg: pbinpkg
 		GL4Java/Installer/GL4JInstaller.jar \
 		GL4Java/Installer/install*.sh \
 		GL4Java/Installer/install*.bat
-		
+
 installer2binpkg: pbinpkg
 	rm -f binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-installer.zip
 	zip -9r $(THISDIR)/binpkg/gl4java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-installer.zip \
@@ -882,13 +857,13 @@ unix2binpkg: pbinpkg java2binpkg
 	rm -f binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).zip
 	cd $(HOME_LIB_DIR) ; \
 	zip -9 $(THISDIR)/binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).zip \
-		$(LIBRARY1) $(LIBRARY2) $(LIBRARY3) 
+		$(LIBRARY1) $(LIBRARY2) $(LIBRARY3) $(LIBRARY4JDK14)
 	rm -f binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).tar.gz
 	cd $(HOME_LIB_DIR) ; \
 	tar cf $(THISDIR)/binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).tar \
 		$(LIBNAME1).* $(LIBNAME2).* \
-		$(LIBNAME3).* \
-		$(LIBNAME4).* $(LIBNAME5).* 
+		$(LIBNAME3).* $$(find . -iname $(LIBNAME4JDK14).so\*) \
+		$(LIBNAME3_NF).* $(LIBNAME3_TST).* 
 	cd binpkg ; gzip -9 libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(UNIXTYPE).tar
 
 win2binpkg: pbinpkg java2binpkg
@@ -896,7 +871,7 @@ win2binpkg: pbinpkg java2binpkg
 	cd Win32VC6/libs ; zip -9 ../../binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(WIN32TYPE).zip \
 		GL4JavaGljMSJDirect.dll \
 		GL4JavaJauGljJNI.dll GL4JavaJauGljJNI12.dll \
-		GL4JavaJauGljJNI13.dll 
+		GL4JavaJauGljJNI13.dll GL4JavaJauGljJNI14.dll
 
 	rm -f binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(WIN32TYPE)-tst.zip
 	cd Win32VC6/libs ; zip -9 ../../binpkg/libGL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-$(WIN32TYPE)-tst.zip \
@@ -918,7 +893,7 @@ archivdemos:
 	cd ..; \
 	zip -9r GL4Java/archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-demosV$(DEMORELEASE).zip \
 		GL4Java/*.txt GL4Java/demos.html GL4Java/demos
-	
+
 archivsrc: archivclean
 	rm -f archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-src.*
 	cd ..; \
@@ -937,14 +912,13 @@ archivsrc: archivclean
 
 	cd archive; \
 	        $(GZIP) -9 GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-src.tar
-	
+
 
 archivdoc:
 	rm -f archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-doc.zip
 	cd ..; \
 	zip -9r GL4Java/archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-doc.zip \
 		GL4Java/docs GL4Java/doxygens GL4Java/*.txt
-	
 
 archiv: archivdemos archivsrc archivdoc
 

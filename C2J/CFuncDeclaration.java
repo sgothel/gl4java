@@ -121,6 +121,11 @@ public class CFuncDeclaration
 		return getBuildState()==FUNC_OK;
 	}
 
+	public int getWorkingVarIdx()
+	{
+		return argList.size()-1;
+	}
+
 	public CFuncVariable getWorkingVar()
 	{
 		int state = getBuildState();
@@ -280,10 +285,13 @@ public class CFuncDeclaration
 	 * @arg which      the Void-Pointer number within the arg-vector, 
 	 *                 or "-1" for all Void-Pointer
 	 *                 E.g.: "0" for ther first occurence of a Void-Pointer
+	 * @arg directBuffers whether arrays should be implemented with direct
+         *                 buffers (JDK 1.4 and greater only)
 	 * @return         The changed clone of THIS
 	 */
 	protected CFuncDeclaration getChangedVoidPtr2CustomPtrClone
-					(String customType, int which)
+					(String customType, int which,
+                                         boolean directBuffers)
 	{
 		CFuncDeclaration tmp = null;
 
@@ -306,8 +314,17 @@ public class CFuncDeclaration
 			{
 				if(which==n || which<0)
 				{
-					cfvar.typeJava=customType;
-					cfvar.isVoid=isNewTypeVoid;
+                                  // Can only support single-dimensional arrays with direct buffers
+                                  if (directBuffers) {
+                                    if (cfvar.arrayNumber != 1) return null; // Bailout
+                                    cfvar.typeJava = customType;
+                                    cfvar.isDirectBuffer = true;
+                                    cfvar.arrayNumber = 0;
+                                    cfvar.isVoid = false;
+                                  } else {
+                                    cfvar.typeJava=customType;
+                                    cfvar.isVoid=isNewTypeVoid;
+                                  }
 				}
 				if(which==n)
 					break; /* job done - leave loop */
@@ -379,6 +396,8 @@ public class CFuncDeclaration
 				res+="D";
 			else if(cfvar.typeJava.equals("String"))
 				res+="Ljava_lang_String_2";
+			else if(cfvar.isDirectBuffer)
+				res+="Ljava_nio_Buffer_2";
 		}
 		return res;
 	}
@@ -408,7 +427,7 @@ public class CFuncDeclaration
 		return res;
 	}
 
-	public String toJniJavaCode(boolean isFinal)
+	public String toJniJavaCode(boolean isFinal, int modifier)
 	{
 		int numberOfVoidPointerArgs = getNumberOfVoidPointerArgs();
 
@@ -420,26 +439,31 @@ public class CFuncDeclaration
 		CFuncDeclaration tmp = null;
 		String res = new String();
 
-		tmp=getChangedVoidPtr2CustomPtrClone("byte", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("byte", -1, false);
 		if(tmp!=null) res+=tmp.__toJniJavaCode(isFinal);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("short", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("short", -1, false);
 		if(tmp!=null) res+=tmp.__toJniJavaCode(isFinal);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("int", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("int", -1, false);
 		if(tmp!=null) res+=tmp.__toJniJavaCode(isFinal);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("float", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("float", -1, false);
 		if(tmp!=null) res+=tmp.__toJniJavaCode(isFinal);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("double", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("double", -1, false);
 		if(tmp!=null) res+=tmp.__toJniJavaCode(isFinal);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("boolean", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("boolean", -1, false);
 		if(tmp!=null) res+=tmp.__toJniJavaCode(isFinal);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("long", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("long", -1, false);
 		if(tmp!=null) res+=tmp.__toJniJavaCode(isFinal);
+
+                if ((modifier & C2J.MODIFIER_JNI_DIRECT_BUFFERS) != 0) {
+                  tmp=getChangedVoidPtr2CustomPtrClone("object", -1, true);
+                  if(tmp!=null) res+=tmp.__toJniJavaCode(isFinal);
+                }
 
 		return res;
 	}
@@ -486,7 +510,7 @@ public class CFuncDeclaration
 
 		//
 		// Adding the JNI access Methods 
-		// for Arrays ...
+		// for Arrays and Direct Buffers ...
 		// THE VARABLE DEFINITIONS
 		//
 		for (i=0;  i<argList.size() ; i++ )
@@ -518,6 +542,11 @@ public class CFuncDeclaration
 			    //
 			    res += "\t\tstatic int isWarned"+i+" = 0;\n";
 		    }
+		  } else if( cfvar.isDirectBuffer )
+		  {
+		    res += "\t\t" + 
+				"void *ptr" + i + 
+				" = NULL;\n";
 		  }
 		}
 
@@ -533,6 +562,48 @@ public class CFuncDeclaration
 			if(funcSpec.typeJava.equals("void")==false)
 				res += " 0";
 			res += ";\n\n";
+		}
+
+		//
+		// Adding the JNI access Methods 
+		// for Direct Buffers ...
+		// THE ARGUMENT ACCESS
+                // NOTE: this is done before any of the array setup so
+                // we can throw IllegalArgumentException and return if
+                // the passed object is not a direct buffer, without
+                // having to perform any ReleasePrimitiveArrayCritical
+                // (or similar) calls.
+		//
+		for (i=0;  i<argList.size() ; i++ )
+		{
+		  cfvar = (CFuncVariable) argList.elementAt(i);
+
+		  if(cfvar.isDirectBuffer)
+                  {
+		    res += "\t\tif("+cfvar.identifier+"!=NULL)\n";
+		    res += "\t\t{\n";
+
+                    res += "\t\t\t" + 
+                      "ptr" + i + " = " +
+                      "(*env)->GetDirectBufferAddress" +
+                      "(env, " + cfvar.identifier + ");\n";
+
+                    res += "\t\t\t" +
+                      "if (ptr" + i + " == NULL) {\n" +
+                      "\t\t\t\t" +
+                      "(*env)->ThrowNew(env, (*env)->FindClass(env, \"java/lang/IllegalArgumentException\"),\n" +
+                      "\t\t\t\t\t\"Argument " + i + " was not a direct buffer\");\n" +
+                      "\t\t\t\t" +
+                      "return ";
+                    
+                    if (!funcSpec.typeJava.equals("void")) {
+                      res += "0";
+                    }
+
+                    res += ";\n";
+		    res += "\t\t\t}\n";
+		    res += "\t\t}\n";
+		  }
 		}
 
 		//
@@ -635,7 +706,7 @@ public class CFuncDeclaration
 		    //
 		    res += "\t\t\t(" + cfvar.getCTypeString() +") ";
 
-		    if( cfvar.arrayNumber>0 )
+		    if( cfvar.arrayNumber>0 || cfvar.isDirectBuffer )
 			res += "ptr"+i;
 		    else 
 			res += cfvar.identifier;
@@ -744,26 +815,31 @@ public class CFuncDeclaration
 		CFuncDeclaration tmp = null;
 		String res = new String();
 
-		tmp=getChangedVoidPtr2CustomPtrClone("byte", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("byte", -1, false);
 		if(tmp!=null) res+=tmp.__toJniCCode(clazzName, exportMode, modifier, true);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("short", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("short", -1, false);
 		if(tmp!=null) res+=tmp.__toJniCCode(clazzName, exportMode, modifier, true);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("int", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("int", -1, false);
 		if(tmp!=null) res+=tmp.__toJniCCode(clazzName, exportMode, modifier, true);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("float", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("float", -1, false);
 		if(tmp!=null) res+=tmp.__toJniCCode(clazzName, exportMode, modifier, true);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("double", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("double", -1, false);
 		if(tmp!=null) res+=tmp.__toJniCCode(clazzName, exportMode, modifier, true);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("boolean", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("boolean", -1, false);
 		if(tmp!=null) res+=tmp.__toJniCCode(clazzName, exportMode, modifier, true);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("long", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("long", -1, false);
 		if(tmp!=null) res+=tmp.__toJniCCode(clazzName, exportMode, modifier, true);
+
+                if ((modifier & C2J.MODIFIER_JNI_DIRECT_BUFFERS) != 0) {
+                  tmp=getChangedVoidPtr2CustomPtrClone("object", -1, true);
+                  if(tmp!=null) res+=tmp.__toJniCCode(clazzName, exportMode, modifier, true);
+                }
 
 		return res;
 	}
@@ -845,25 +921,25 @@ public class CFuncDeclaration
 		CFuncDeclaration tmp = null;
 		String res = new String();
 
-		tmp=getChangedVoidPtr2CustomPtrClone("byte", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("byte", -1, false);
 		if(tmp!=null) res+=tmp.__toMsJDirectCode(dllname);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("short", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("short", -1, false);
 		if(tmp!=null) res+=tmp.__toMsJDirectCode(dllname);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("int", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("int", -1, false);
 		if(tmp!=null) res+=tmp.__toMsJDirectCode(dllname);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("float", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("float", -1, false);
 		if(tmp!=null) res+=tmp.__toMsJDirectCode(dllname);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("double", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("double", -1, false);
 		if(tmp!=null) res+=tmp.__toMsJDirectCode(dllname);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("boolean", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("boolean", -1, false);
 		if(tmp!=null) res+=tmp.__toMsJDirectCode(dllname);
 
-		tmp=getChangedVoidPtr2CustomPtrClone("long", -1);
+		tmp=getChangedVoidPtr2CustomPtrClone("long", -1, false);
 		if(tmp!=null) res+=tmp.__toMsJDirectCode(dllname);
 
 		return res;
@@ -929,8 +1005,8 @@ public class CFuncDeclaration
 
 		System.out.println("after all:"+cfunc);
 		System.out.println("\n\nTEST JNI JAVA (!final && final):");
-		System.out.println(cfunc.toJniJavaCode(false));
-		System.out.println(cfunc.toJniJavaCode(true));
+		System.out.println(cfunc.toJniJavaCode(false, 0));
+		System.out.println(cfunc.toJniJavaCode(true, 0));
 		System.out.println("\n\nTEST MS-JDirect Java:");
 		System.out.println(cfunc.toMsJDirectCode("OPENGL32"));
 		System.out.println("\n\nTEST JNI C:");
@@ -941,8 +1017,8 @@ public class CFuncDeclaration
 		cfvar.isConst=true;
 
 		System.out.println("\n\nTEST JNI JAVA (!final && final):");
-		System.out.println(cfunc.toJniJavaCode(false));
-		System.out.println(cfunc.toJniJavaCode(true));
+		System.out.println(cfunc.toJniJavaCode(false, 0));
+		System.out.println(cfunc.toJniJavaCode(true, 0));
 		System.out.println("\n\nTEST MS-JDirect Java:");
 		System.out.println(cfunc.toMsJDirectCode("GLU32"));
 		System.out.println("\n\nTEST JNI C:");

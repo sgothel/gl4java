@@ -6,7 +6,7 @@
 
 	LIBAPI const GLubyte *(CALLBACK * disp__glGetString )( GLenum name );
 /**
- * C2J Parser Version 2.2
+ * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: gl-proto-auto.orig.h . . .
  * Destination-Class: gl4java_GLUFuncJauJNI ! 
@@ -1783,10 +1783,10 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glGetPointerv ( GLenum pname , void * * params ) ;
+   extern void glGetPointerv ( GLenum pname , GLvoid * * params ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glGetPointerv )(GLenum, void **);
+	LIBAPI void (CALLBACK * disp__glGetPointerv )(GLenum, GLvoid **);
 
 /**
  * Original Function-Prototype :
@@ -2703,10 +2703,10 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glTexImage3D ( GLenum target , GLint level , GLint internalFormat , GLsizei width , GLsizei height , GLsizei depth , GLint border , GLenum format , GLenum type , const GLvoid * pixels ) ;
+   extern void glTexImage3D ( GLenum target , GLint level , GLenum internalFormat , GLsizei width , GLsizei height , GLsizei depth , GLint border , GLenum format , GLenum type , const GLvoid * pixels ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glTexImage3D )(GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *);
+	LIBAPI void (CALLBACK * disp__glTexImage3D )(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *);
 
 /**
  * Original Function-Prototype :
@@ -2999,242 +2999,378 @@
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glBlendColorEXT ( GLclampf red , GLclampf green , GLclampf blue , GLclampf alpha ) ;
+   extern void glActiveTexture ( GLenum texture ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glBlendColorEXT )(GLclampf, GLclampf, GLclampf, GLclampf);
+	LIBAPI void (CALLBACK * disp__glActiveTexture )(GLenum);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glPolygonOffsetEXT ( GLfloat factor , GLfloat bias ) ;
+   extern void glClientActiveTexture ( GLenum texture ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glPolygonOffsetEXT )(GLfloat, GLfloat);
+	LIBAPI void (CALLBACK * disp__glClientActiveTexture )(GLenum);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glTexImage3DEXT ( GLenum target , GLint level , GLenum internalFormat , GLsizei width , GLsizei height , GLsizei depth , GLint border , GLenum format , GLenum type , const GLvoid * pixels ) ;
+   extern void glCompressedTexImage1D ( GLenum target , GLint level , GLenum internalformat , GLsizei width , GLint border , GLsizei imageSize , const GLvoid * data ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glTexImage3DEXT )(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *);
+	LIBAPI void (CALLBACK * disp__glCompressedTexImage1D )(GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, const GLvoid *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glTexSubImage3DEXT ( GLenum target , GLint level , GLint xoffset , GLint yoffset , GLint zoffset , GLsizei width , GLsizei height , GLsizei depth , GLenum format , GLenum type , const GLvoid * pixels ) ;
+   extern void glCompressedTexImage2D ( GLenum target , GLint level , GLenum internalformat , GLsizei width , GLsizei height , GLint border , GLsizei imageSize , const GLvoid * data ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glTexSubImage3DEXT )(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *);
+	LIBAPI void (CALLBACK * disp__glCompressedTexImage2D )(GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, const GLvoid *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glCopyTexSubImage3DEXT ( GLenum target , GLint level , GLint xoffset , GLint yoffset , GLint zoffset , GLint x , GLint y , GLsizei width , GLsizei height ) ;
+   extern void glCompressedTexImage3D ( GLenum target , GLint level , GLenum internalformat , GLsizei width , GLsizei height , GLsizei depth , GLint border , GLsizei imageSize , const GLvoid * data ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glCopyTexSubImage3DEXT )(GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei);
+	LIBAPI void (CALLBACK * disp__glCompressedTexImage3D )(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, const GLvoid *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glGenTexturesEXT ( GLsizei n , GLuint * textures ) ;
+   extern void glCompressedTexSubImage1D ( GLenum target , GLint level , GLint xoffset , GLsizei width , GLenum format , GLsizei imageSize , const GLvoid * data ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glGenTexturesEXT )(GLsizei, GLuint *);
+	LIBAPI void (CALLBACK * disp__glCompressedTexSubImage1D )(GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, const GLvoid *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glDeleteTexturesEXT ( GLsizei n , const GLuint * textures ) ;
+   extern void glCompressedTexSubImage2D ( GLenum target , GLint level , GLint xoffset , GLint yoffset , GLsizei width , GLsizei height , GLenum format , GLsizei imageSize , const GLvoid * data ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glDeleteTexturesEXT )(GLsizei, const GLuint *);
+	LIBAPI void (CALLBACK * disp__glCompressedTexSubImage2D )(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const GLvoid *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glBindTextureEXT ( GLenum target , GLuint texture ) ;
+   extern void glCompressedTexSubImage3D ( GLenum target , GLint level , GLint xoffset , GLint yoffset , GLint zoffset , GLsizei width , GLsizei height , GLsizei depth , GLenum format , GLsizei imageSize , const GLvoid * data ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glBindTextureEXT )(GLenum, GLuint);
+	LIBAPI void (CALLBACK * disp__glCompressedTexSubImage3D )(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const GLvoid *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glPrioritizeTexturesEXT ( GLsizei n , const GLuint * textures , const GLclampf * priorities ) ;
+   extern void glGetCompressedTexImage ( GLenum target , GLint lod , GLvoid * img ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glPrioritizeTexturesEXT )(GLsizei, const GLuint *, const GLclampf *);
+	LIBAPI void (CALLBACK * disp__glGetCompressedTexImage )(GLenum, GLint, GLvoid *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLboolean glAreTexturesResidentEXT ( GLsizei n , const GLuint * textures , GLboolean * residences ) ;
+   extern void glMultiTexCoord1d ( GLenum target , GLdouble s ) ;
  * </pre> 
  */
-	LIBAPI GLboolean (CALLBACK * disp__glAreTexturesResidentEXT )(GLsizei, const GLuint *, GLboolean *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord1d )(GLenum, GLdouble);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern GLboolean glIsTextureEXT ( GLuint texture ) ;
+   extern void glMultiTexCoord1dv ( GLenum target , const GLdouble * v ) ;
  * </pre> 
  */
-	LIBAPI GLboolean (CALLBACK * disp__glIsTextureEXT )(GLuint);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord1dv )(GLenum, const GLdouble *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glVertexPointerEXT ( GLint size , GLenum type , GLsizei stride , GLsizei count , const GLvoid * ptr ) ;
+   extern void glMultiTexCoord1f ( GLenum target , GLfloat s ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glVertexPointerEXT )(GLint, GLenum, GLsizei, GLsizei, const GLvoid *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord1f )(GLenum, GLfloat);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glNormalPointerEXT ( GLenum type , GLsizei stride , GLsizei count , const GLvoid * ptr ) ;
+   extern void glMultiTexCoord1fv ( GLenum target , const GLfloat * v ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glNormalPointerEXT )(GLenum, GLsizei, GLsizei, const GLvoid *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord1fv )(GLenum, const GLfloat *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glColorPointerEXT ( GLint size , GLenum type , GLsizei stride , GLsizei count , const GLvoid * ptr ) ;
+   extern void glMultiTexCoord1i ( GLenum target , GLint s ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glColorPointerEXT )(GLint, GLenum, GLsizei, GLsizei, const GLvoid *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord1i )(GLenum, GLint);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glIndexPointerEXT ( GLenum type , GLsizei stride , GLsizei count , const GLvoid * ptr ) ;
+   extern void glMultiTexCoord1iv ( GLenum target , const GLint * v ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glIndexPointerEXT )(GLenum, GLsizei, GLsizei, const GLvoid *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord1iv )(GLenum, const GLint *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glTexCoordPointerEXT ( GLint size , GLenum type , GLsizei stride , GLsizei count , const GLvoid * ptr ) ;
+   extern void glMultiTexCoord1s ( GLenum target , GLshort s ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glTexCoordPointerEXT )(GLint, GLenum, GLsizei, GLsizei, const GLvoid *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord1s )(GLenum, GLshort);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glEdgeFlagPointerEXT ( GLsizei stride , GLsizei count , const GLboolean * ptr ) ;
+   extern void glMultiTexCoord1sv ( GLenum target , const GLshort * v ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glEdgeFlagPointerEXT )(GLsizei, GLsizei, const GLboolean *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord1sv )(GLenum, const GLshort *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glGetPointervEXT ( GLenum pname , void * * params ) ;
+   extern void glMultiTexCoord2d ( GLenum target , GLdouble s , GLdouble t ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glGetPointervEXT )(GLenum, void **);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord2d )(GLenum, GLdouble, GLdouble);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glArrayElementEXT ( GLint i ) ;
+   extern void glMultiTexCoord2dv ( GLenum target , const GLdouble * v ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glArrayElementEXT )(GLint);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord2dv )(GLenum, const GLdouble *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glDrawArraysEXT ( GLenum mode , GLint first , GLsizei count ) ;
+   extern void glMultiTexCoord2f ( GLenum target , GLfloat s , GLfloat t ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glDrawArraysEXT )(GLenum, GLint, GLsizei);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord2f )(GLenum, GLfloat, GLfloat);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glBlendEquationEXT ( GLenum mode ) ;
+   extern void glMultiTexCoord2fv ( GLenum target , const GLfloat * v ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glBlendEquationEXT )(GLenum);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord2fv )(GLenum, const GLfloat *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glPointParameterfEXT ( GLenum pname , GLfloat param ) ;
+   extern void glMultiTexCoord2i ( GLenum target , GLint s , GLint t ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glPointParameterfEXT )(GLenum, GLfloat);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord2i )(GLenum, GLint, GLint);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glPointParameterfvEXT ( GLenum pname , const GLfloat * params ) ;
+   extern void glMultiTexCoord2iv ( GLenum target , const GLint * v ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glPointParameterfvEXT )(GLenum, const GLfloat *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord2iv )(GLenum, const GLint *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glColorTableEXT ( GLenum target , GLenum internalformat , GLsizei width , GLenum format , GLenum type , const GLvoid * table ) ;
+   extern void glMultiTexCoord2s ( GLenum target , GLshort s , GLshort t ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glColorTableEXT )(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord2s )(GLenum, GLshort, GLshort);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glColorSubTableEXT ( GLenum target , GLsizei start , GLsizei count , GLenum format , GLenum type , const GLvoid * data ) ;
+   extern void glMultiTexCoord2sv ( GLenum target , const GLshort * v ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glColorSubTableEXT )(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord2sv )(GLenum, const GLshort *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glGetColorTableEXT ( GLenum target , GLenum format , GLenum type , GLvoid * table ) ;
+   extern void glMultiTexCoord3d ( GLenum target , GLdouble s , GLdouble t , GLdouble r ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glGetColorTableEXT )(GLenum, GLenum, GLenum, GLvoid *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord3d )(GLenum, GLdouble, GLdouble, GLdouble);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glGetColorTableParameterfvEXT ( GLenum target , GLenum pname , GLfloat * params ) ;
+   extern void glMultiTexCoord3dv ( GLenum target , const GLdouble * v ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glGetColorTableParameterfvEXT )(GLenum, GLenum, GLfloat *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord3dv )(GLenum, const GLdouble *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glGetColorTableParameterivEXT ( GLenum target , GLenum pname , GLint * params ) ;
+   extern void glMultiTexCoord3f ( GLenum target , GLfloat s , GLfloat t , GLfloat r ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glGetColorTableParameterivEXT )(GLenum, GLenum, GLint *);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord3f )(GLenum, GLfloat, GLfloat, GLfloat);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glLockArraysEXT ( GLint first , GLsizei count ) ;
+   extern void glMultiTexCoord3fv ( GLenum target , const GLfloat * v ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glLockArraysEXT )(GLint, GLsizei);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord3fv )(GLenum, const GLfloat *);
 
 /**
  * Original Function-Prototype :
  * <pre> 
-   extern void glUnlockArraysEXT ( void ) ;
+   extern void glMultiTexCoord3i ( GLenum target , GLint s , GLint t , GLint r ) ;
  * </pre> 
  */
-	LIBAPI void (CALLBACK * disp__glUnlockArraysEXT )(void);
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord3i )(GLenum, GLint, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3iv ( GLenum target , const GLint * v ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord3iv )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3s ( GLenum target , GLshort s , GLshort t , GLshort r ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord3s )(GLenum, GLshort, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord3sv ( GLenum target , const GLshort * v ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord3sv )(GLenum, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4d ( GLenum target , GLdouble s , GLdouble t , GLdouble r , GLdouble q ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord4d )(GLenum, GLdouble, GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4dv ( GLenum target , const GLdouble * v ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord4dv )(GLenum, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4f ( GLenum target , GLfloat s , GLfloat t , GLfloat r , GLfloat q ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord4f )(GLenum, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4fv ( GLenum target , const GLfloat * v ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord4fv )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4i ( GLenum target , GLint s , GLint t , GLint r , GLint q ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord4i )(GLenum, GLint, GLint, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4iv ( GLenum target , const GLint * v ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord4iv )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4s ( GLenum target , GLshort s , GLshort t , GLshort r , GLshort q ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord4s )(GLenum, GLshort, GLshort, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiTexCoord4sv ( GLenum target , const GLshort * v ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiTexCoord4sv )(GLenum, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLoadTransposeMatrixd ( const GLdouble m [ 16 ] ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glLoadTransposeMatrixd )(const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLoadTransposeMatrixf ( const GLfloat m [ 16 ] ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glLoadTransposeMatrixf )(const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultTransposeMatrixd ( const GLdouble m [ 16 ] ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultTransposeMatrixd )(const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultTransposeMatrixf ( const GLfloat m [ 16 ] ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultTransposeMatrixf )(const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSampleCoverage ( GLclampf value , GLboolean invert ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSampleCoverage )(GLclampf, GLboolean);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSamplePass ( GLenum pass ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSamplePass )(GLenum);
 
 /**
  * Original Function-Prototype :
@@ -3508,4 +3644,4220 @@
  */
 	LIBAPI void (CALLBACK * disp__glMultiTexCoord4svARB )(GLenum, const GLshort *);
 
-/* C2J Parser Version 2.2:  Java program parsed successfully. */ 
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBlendColorEXT ( GLclampf red , GLclampf green , GLclampf blue , GLclampf alpha ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBlendColorEXT )(GLclampf, GLclampf, GLclampf, GLclampf);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPolygonOffsetEXT ( GLfloat factor , GLfloat bias ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPolygonOffsetEXT )(GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexImage3DEXT ( GLenum target , GLint level , GLenum internalFormat , GLsizei width , GLsizei height , GLsizei depth , GLint border , GLenum format , GLenum type , const GLvoid * pixels ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexImage3DEXT )(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexSubImage3DEXT ( GLenum target , GLint level , GLint xoffset , GLint yoffset , GLint zoffset , GLsizei width , GLsizei height , GLsizei depth , GLenum format , GLenum type , const GLvoid * pixels ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexSubImage3DEXT )(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyTexSubImage3DEXT ( GLenum target , GLint level , GLint xoffset , GLint yoffset , GLint zoffset , GLint x , GLint y , GLsizei width , GLsizei height ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCopyTexSubImage3DEXT )(GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGenTexturesEXT ( GLsizei n , GLuint * textures ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGenTexturesEXT )(GLsizei, GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteTexturesEXT ( GLsizei n , const GLuint * textures ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDeleteTexturesEXT )(GLsizei, const GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBindTextureEXT ( GLenum target , GLuint texture ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBindTextureEXT )(GLenum, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPrioritizeTexturesEXT ( GLsizei n , const GLuint * textures , const GLclampf * priorities ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPrioritizeTexturesEXT )(GLsizei, const GLuint *, const GLclampf *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glAreTexturesResidentEXT ( GLsizei n , const GLuint * textures , GLboolean * residences ) ;
+ * </pre> 
+ */
+	LIBAPI GLboolean (CALLBACK * disp__glAreTexturesResidentEXT )(GLsizei, const GLuint *, GLboolean *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsTextureEXT ( GLuint texture ) ;
+ * </pre> 
+ */
+	LIBAPI GLboolean (CALLBACK * disp__glIsTextureEXT )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexPointerEXT ( GLint size , GLenum type , GLsizei stride , GLsizei count , const GLvoid * ptr ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexPointerEXT )(GLint, GLenum, GLsizei, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalPointerEXT ( GLenum type , GLsizei stride , GLsizei count , const GLvoid * ptr ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalPointerEXT )(GLenum, GLsizei, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorPointerEXT ( GLint size , GLenum type , GLsizei stride , GLsizei count , const GLvoid * ptr ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorPointerEXT )(GLint, GLenum, GLsizei, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glIndexPointerEXT ( GLenum type , GLsizei stride , GLsizei count , const GLvoid * ptr ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glIndexPointerEXT )(GLenum, GLsizei, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoordPointerEXT ( GLint size , GLenum type , GLsizei stride , GLsizei count , const GLvoid * ptr ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoordPointerEXT )(GLint, GLenum, GLsizei, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEdgeFlagPointerEXT ( GLsizei stride , GLsizei count , const GLboolean * ptr ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glEdgeFlagPointerEXT )(GLsizei, GLsizei, const GLboolean *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetPointervEXT ( GLenum pname , GLvoid * * params ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetPointervEXT )(GLenum, GLvoid **);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glArrayElementEXT ( GLint i ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glArrayElementEXT )(GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDrawArraysEXT ( GLenum mode , GLint first , GLsizei count ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDrawArraysEXT )(GLenum, GLint, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBlendEquationEXT ( GLenum mode ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBlendEquationEXT )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPointParameterfEXT ( GLenum pname , GLfloat param ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPointParameterfEXT )(GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPointParameterfvEXT ( GLenum pname , const GLfloat * params ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPointParameterfvEXT )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPointParameterfSGIS ( GLenum pname , GLfloat param ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPointParameterfSGIS )(GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPointParameterfvSGIS ( GLenum pname , const GLfloat * params ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPointParameterfvSGIS )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorTableEXT ( GLenum target , GLenum internalformat , GLsizei width , GLenum format , GLenum type , const GLvoid * table ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorTableEXT )(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorSubTableEXT ( GLenum target , GLsizei start , GLsizei count , GLenum format , GLenum type , const GLvoid * data ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorSubTableEXT )(GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetColorTableEXT ( GLenum target , GLenum format , GLenum type , GLvoid * table ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetColorTableEXT )(GLenum, GLenum, GLenum, GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetColorTableParameterfvEXT ( GLenum target , GLenum pname , GLfloat * params ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetColorTableParameterfvEXT )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetColorTableParameterivEXT ( GLenum target , GLenum pname , GLint * params ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetColorTableParameterivEXT )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLockArraysEXT ( GLint first , GLsizei count ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glLockArraysEXT )(GLint, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glUnlockArraysEXT ( void ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glUnlockArraysEXT )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLoadTransposeMatrixfARB ( const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glLoadTransposeMatrixfARB )(const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLoadTransposeMatrixdARB ( const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glLoadTransposeMatrixdARB )(const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultTransposeMatrixfARB ( const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultTransposeMatrixfARB )(const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultTransposeMatrixdARB ( const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultTransposeMatrixdARB )(const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSampleCoverageARB ( GLclampf , GLboolean ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSampleCoverageARB )(GLclampf, GLboolean);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexImage3DARB ( GLenum , GLint , GLenum , GLsizei , GLsizei , GLsizei , GLint , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCompressedTexImage3DARB )(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexImage2DARB ( GLenum , GLint , GLenum , GLsizei , GLsizei , GLint , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCompressedTexImage2DARB )(GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexImage1DARB ( GLenum , GLint , GLenum , GLsizei , GLint , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCompressedTexImage1DARB )(GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexSubImage3DARB ( GLenum , GLint , GLint , GLint , GLint , GLsizei , GLsizei , GLsizei , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCompressedTexSubImage3DARB )(GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexSubImage2DARB ( GLenum , GLint , GLint , GLint , GLsizei , GLsizei , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCompressedTexSubImage2DARB )(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCompressedTexSubImage1DARB ( GLenum , GLint , GLint , GLsizei , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCompressedTexSubImage1DARB )(GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCompressedTexImageARB ( GLenum , GLint , void * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetCompressedTexImageARB )(GLenum, GLint, void *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightbvARB ( GLint , const GLbyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glWeightbvARB )(GLint, const GLbyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightsvARB ( GLint , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glWeightsvARB )(GLint, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightivARB ( GLint , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glWeightivARB )(GLint, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightfvARB ( GLint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glWeightfvARB )(GLint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightdvARB ( GLint , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glWeightdvARB )(GLint, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightubvARB ( GLint , const GLubyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glWeightubvARB )(GLint, const GLubyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightusvARB ( GLint , const GLushort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glWeightusvARB )(GLint, const GLushort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightuivARB ( GLint , const GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glWeightuivARB )(GLint, const GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWeightPointerARB ( GLint , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glWeightPointerARB )(GLint, GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexBlendARB ( GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexBlendARB )(GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCurrentPaletteMatrixARB ( GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCurrentPaletteMatrixARB )(GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMatrixIndexubvARB ( GLint , const GLubyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMatrixIndexubvARB )(GLint, const GLubyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMatrixIndexusvARB ( GLint , const GLushort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMatrixIndexusvARB )(GLint, const GLushort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMatrixIndexuivARB ( GLint , const GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMatrixIndexuivARB )(GLint, const GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMatrixIndexPointerARB ( GLint , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMatrixIndexPointerARB )(GLint, GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetTexFilterFuncSGIS ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetTexFilterFuncSGIS )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexFilterFuncSGIS ( GLenum , GLenum , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexFilterFuncSGIS )(GLenum, GLenum, GLsizei, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexSubImage1DEXT ( GLenum , GLint , GLint , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexSubImage1DEXT )(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexSubImage2DEXT ( GLenum , GLint , GLint , GLint , GLsizei , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexSubImage2DEXT )(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyTexImage1DEXT ( GLenum , GLint , GLenum , GLint , GLint , GLsizei , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCopyTexImage1DEXT )(GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyTexImage2DEXT ( GLenum , GLint , GLenum , GLint , GLint , GLsizei , GLsizei , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCopyTexImage2DEXT )(GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyTexSubImage1DEXT ( GLenum , GLint , GLint , GLint , GLint , GLsizei ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCopyTexSubImage1DEXT )(GLenum, GLint, GLint, GLint, GLint, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyTexSubImage2DEXT ( GLenum , GLint , GLint , GLint , GLint , GLint , GLsizei , GLsizei ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCopyTexSubImage2DEXT )(GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetHistogramEXT ( GLenum , GLboolean , GLenum , GLenum , GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetHistogramEXT )(GLenum, GLboolean, GLenum, GLenum, GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetHistogramParameterfvEXT ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetHistogramParameterfvEXT )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetHistogramParameterivEXT ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetHistogramParameterivEXT )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMinmaxEXT ( GLenum , GLboolean , GLenum , GLenum , GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetMinmaxEXT )(GLenum, GLboolean, GLenum, GLenum, GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMinmaxParameterfvEXT ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetMinmaxParameterfvEXT )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMinmaxParameterivEXT ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetMinmaxParameterivEXT )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glHistogramEXT ( GLenum , GLsizei , GLenum , GLboolean ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glHistogramEXT )(GLenum, GLsizei, GLenum, GLboolean);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMinmaxEXT ( GLenum , GLenum , GLboolean ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMinmaxEXT )(GLenum, GLenum, GLboolean);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glResetHistogramEXT ( GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glResetHistogramEXT )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glResetMinmaxEXT ( GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glResetMinmaxEXT )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionFilter1DEXT ( GLenum , GLenum , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glConvolutionFilter1DEXT )(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionFilter2DEXT ( GLenum , GLenum , GLsizei , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glConvolutionFilter2DEXT )(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionParameterfEXT ( GLenum , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glConvolutionParameterfEXT )(GLenum, GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionParameterfvEXT ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glConvolutionParameterfvEXT )(GLenum, GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionParameteriEXT ( GLenum , GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glConvolutionParameteriEXT )(GLenum, GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glConvolutionParameterivEXT ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glConvolutionParameterivEXT )(GLenum, GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyConvolutionFilter1DEXT ( GLenum , GLenum , GLint , GLint , GLsizei ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCopyConvolutionFilter1DEXT )(GLenum, GLenum, GLint, GLint, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyConvolutionFilter2DEXT ( GLenum , GLenum , GLint , GLint , GLsizei , GLsizei ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCopyConvolutionFilter2DEXT )(GLenum, GLenum, GLint, GLint, GLsizei, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetConvolutionFilterEXT ( GLenum , GLenum , GLenum , GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetConvolutionFilterEXT )(GLenum, GLenum, GLenum, GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetConvolutionParameterfvEXT ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetConvolutionParameterfvEXT )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetConvolutionParameterivEXT ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetConvolutionParameterivEXT )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetSeparableFilterEXT ( GLenum , GLenum , GLenum , GLvoid * , GLvoid * , GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetSeparableFilterEXT )(GLenum, GLenum, GLenum, GLvoid *, GLvoid *, GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSeparableFilter2DEXT ( GLenum , GLenum , GLsizei , GLsizei , GLenum , GLenum , const GLvoid * , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSeparableFilter2DEXT )(GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorTableSGI ( GLenum , GLenum , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorTableSGI )(GLenum, GLenum, GLsizei, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorTableParameterfvSGI ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorTableParameterfvSGI )(GLenum, GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorTableParameterivSGI ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorTableParameterivSGI )(GLenum, GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyColorTableSGI ( GLenum , GLenum , GLint , GLint , GLsizei ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCopyColorTableSGI )(GLenum, GLenum, GLint, GLint, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetColorTableSGI ( GLenum , GLenum , GLenum , GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetColorTableSGI )(GLenum, GLenum, GLenum, GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetColorTableParameterfvSGI ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetColorTableParameterfvSGI )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetColorTableParameterivSGI ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetColorTableParameterivSGI )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTexGenSGIX ( GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPixelTexGenSGIX )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTexGenParameteriSGIS ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPixelTexGenParameteriSGIS )(GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTexGenParameterivSGIS ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPixelTexGenParameterivSGIS )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTexGenParameterfSGIS ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPixelTexGenParameterfSGIS )(GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTexGenParameterfvSGIS ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPixelTexGenParameterfvSGIS )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetPixelTexGenParameterivSGIS ( GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetPixelTexGenParameterivSGIS )(GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetPixelTexGenParameterfvSGIS ( GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetPixelTexGenParameterfvSGIS )(GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexImage4DSGIS ( GLenum , GLint , GLenum , GLsizei , GLsizei , GLsizei , GLsizei , GLint , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexImage4DSGIS )(GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexSubImage4DSGIS ( GLenum , GLint , GLint , GLint , GLint , GLint , GLsizei , GLsizei , GLsizei , GLsizei , GLenum , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexSubImage4DSGIS )(GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDetailTexFuncSGIS ( GLenum , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDetailTexFuncSGIS )(GLenum, GLsizei, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetDetailTexFuncSGIS ( GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetDetailTexFuncSGIS )(GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSharpenTexFuncSGIS ( GLenum , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSharpenTexFuncSGIS )(GLenum, GLsizei, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetSharpenTexFuncSGIS ( GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetSharpenTexFuncSGIS )(GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSampleMaskSGIS ( GLclampf , GLboolean ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSampleMaskSGIS )(GLclampf, GLboolean);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSamplePatternSGIS ( GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSamplePatternSGIS )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSpriteParameterfSGIX ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSpriteParameterfSGIX )(GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSpriteParameterfvSGIX ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSpriteParameterfvSGIX )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSpriteParameteriSGIX ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSpriteParameteriSGIX )(GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSpriteParameterivSGIX ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSpriteParameterivSGIX )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPointParameterfARB ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPointParameterfARB )(GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPointParameterfvARB ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPointParameterfvARB )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint glGetInstrumentsSGIX ( void ) ;
+ * </pre> 
+ */
+	LIBAPI GLint (CALLBACK * disp__glGetInstrumentsSGIX )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glInstrumentsBufferSGIX ( GLsizei , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glInstrumentsBufferSGIX )(GLsizei, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint glPollInstrumentsSGIX ( GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI GLint (CALLBACK * disp__glPollInstrumentsSGIX )(GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReadInstrumentsSGIX ( GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReadInstrumentsSGIX )(GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glStartInstrumentsSGIX ( void ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glStartInstrumentsSGIX )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glStopInstrumentsSGIX ( GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glStopInstrumentsSGIX )(GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFrameZoomSGIX ( GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFrameZoomSGIX )(GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTagSampleBufferSGIX ( void ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTagSampleBufferSGIX )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeformationMap3dSGIX ( GLenum , GLdouble , GLdouble , GLint , GLint , GLdouble , GLdouble , GLint , GLint , GLdouble , GLdouble , GLint , GLint , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDeformationMap3dSGIX )(GLenum, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeformationMap3fSGIX ( GLenum , GLfloat , GLfloat , GLint , GLint , GLfloat , GLfloat , GLint , GLint , GLfloat , GLfloat , GLint , GLint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDeformationMap3fSGIX )(GLenum, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeformSGIX ( GLbitfield ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDeformSGIX )(GLbitfield);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLoadIdentityDeformationMapSGIX ( GLbitfield ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glLoadIdentityDeformationMapSGIX )(GLbitfield);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReferencePlaneSGIX ( const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReferencePlaneSGIX )(const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFlushRasterSGIX ( void ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFlushRasterSGIX )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogFuncSGIS ( GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFogFuncSGIS )(GLsizei, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFogFuncSGIS ( GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetFogFuncSGIS )(GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glImageTransformParameteriHP ( GLenum , GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glImageTransformParameteriHP )(GLenum, GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glImageTransformParameterfHP ( GLenum , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glImageTransformParameterfHP )(GLenum, GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glImageTransformParameterivHP ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glImageTransformParameterivHP )(GLenum, GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glImageTransformParameterfvHP ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glImageTransformParameterfvHP )(GLenum, GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetImageTransformParameterivHP ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetImageTransformParameterivHP )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetImageTransformParameterfvHP ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetImageTransformParameterfvHP )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCopyColorSubTableEXT ( GLenum , GLsizei , GLint , GLint , GLsizei ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCopyColorSubTableEXT )(GLenum, GLsizei, GLint, GLint, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glHintPGI ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glHintPGI )(GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetListParameterfvSGIX ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetListParameterfvSGIX )(GLuint, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetListParameterivSGIX ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetListParameterivSGIX )(GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glListParameterfSGIX ( GLuint , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glListParameterfSGIX )(GLuint, GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glListParameterfvSGIX ( GLuint , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glListParameterfvSGIX )(GLuint, GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glListParameteriSGIX ( GLuint , GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glListParameteriSGIX )(GLuint, GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glListParameterivSGIX ( GLuint , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glListParameterivSGIX )(GLuint, GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glIndexMaterialEXT ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glIndexMaterialEXT )(GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glIndexFuncEXT ( GLenum , GLclampf ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glIndexFuncEXT )(GLenum, GLclampf);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCullParameterdvEXT ( GLenum , GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCullParameterdvEXT )(GLenum, GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCullParameterfvEXT ( GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCullParameterfvEXT )(GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentColorMaterialSGIX ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentColorMaterialSGIX )(GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightfSGIX ( GLenum , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentLightfSGIX )(GLenum, GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightfvSGIX ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentLightfvSGIX )(GLenum, GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightiSGIX ( GLenum , GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentLightiSGIX )(GLenum, GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightivSGIX ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentLightivSGIX )(GLenum, GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightModelfSGIX ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentLightModelfSGIX )(GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightModelfvSGIX ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentLightModelfvSGIX )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightModeliSGIX ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentLightModeliSGIX )(GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentLightModelivSGIX ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentLightModelivSGIX )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentMaterialfSGIX ( GLenum , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentMaterialfSGIX )(GLenum, GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentMaterialfvSGIX ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentMaterialfvSGIX )(GLenum, GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentMaterialiSGIX ( GLenum , GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentMaterialiSGIX )(GLenum, GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFragmentMaterialivSGIX ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFragmentMaterialivSGIX )(GLenum, GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFragmentLightfvSGIX ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetFragmentLightfvSGIX )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFragmentLightivSGIX ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetFragmentLightivSGIX )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFragmentMaterialfvSGIX ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetFragmentMaterialfvSGIX )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFragmentMaterialivSGIX ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetFragmentMaterialivSGIX )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLightEnviSGIX ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glLightEnviSGIX )(GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDrawRangeElementsEXT ( GLenum , GLuint , GLuint , GLsizei , GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDrawRangeElementsEXT )(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glApplyTextureEXT ( GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glApplyTextureEXT )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTextureLightEXT ( GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTextureLightEXT )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTextureMaterialEXT ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTextureMaterialEXT )(GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glAsyncMarkerSGIX ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glAsyncMarkerSGIX )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint glFinishAsyncSGIX ( GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI GLint (CALLBACK * disp__glFinishAsyncSGIX )(GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLint glPollAsyncSGIX ( GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI GLint (CALLBACK * disp__glPollAsyncSGIX )(GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glGenAsyncMarkersSGIX ( GLsizei ) ;
+ * </pre> 
+ */
+	LIBAPI GLuint (CALLBACK * disp__glGenAsyncMarkersSGIX )(GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteAsyncMarkersSGIX ( GLuint , GLsizei ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDeleteAsyncMarkersSGIX )(GLuint, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsAsyncMarkerSGIX ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI GLboolean (CALLBACK * disp__glIsAsyncMarkerSGIX )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexPointervINTEL ( GLint , GLenum , const GLvoid * * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexPointervINTEL )(GLint, GLenum, const GLvoid **);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalPointervINTEL ( GLenum , const GLvoid * * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalPointervINTEL )(GLenum, const GLvoid **);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorPointervINTEL ( GLint , GLenum , const GLvoid * * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorPointervINTEL )(GLint, GLenum, const GLvoid **);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoordPointervINTEL ( GLint , GLenum , const GLvoid * * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoordPointervINTEL )(GLint, GLenum, const GLvoid **);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTransformParameteriEXT ( GLenum , GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPixelTransformParameteriEXT )(GLenum, GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTransformParameterfEXT ( GLenum , GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPixelTransformParameterfEXT )(GLenum, GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTransformParameterivEXT ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPixelTransformParameterivEXT )(GLenum, GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPixelTransformParameterfvEXT ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPixelTransformParameterfvEXT )(GLenum, GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3bEXT ( GLbyte , GLbyte , GLbyte ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3bEXT )(GLbyte, GLbyte, GLbyte);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3bvEXT ( const GLbyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3bvEXT )(const GLbyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3dEXT ( GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3dEXT )(GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3dvEXT ( const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3dvEXT )(const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3fEXT ( GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3fEXT )(GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3fvEXT ( const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3fvEXT )(const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3iEXT ( GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3iEXT )(GLint, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3ivEXT ( const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3ivEXT )(const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3sEXT ( GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3sEXT )(GLshort, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3svEXT ( const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3svEXT )(const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3ubEXT ( GLubyte , GLubyte , GLubyte ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3ubEXT )(GLubyte, GLubyte, GLubyte);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3ubvEXT ( const GLubyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3ubvEXT )(const GLubyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3uiEXT ( GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3uiEXT )(GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3uivEXT ( const GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3uivEXT )(const GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3usEXT ( GLushort , GLushort , GLushort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3usEXT )(GLushort, GLushort, GLushort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColor3usvEXT ( const GLushort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColor3usvEXT )(const GLushort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColorPointerEXT ( GLint , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColorPointerEXT )(GLint, GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTextureNormalEXT ( GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTextureNormalEXT )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiDrawArraysEXT ( GLenum , GLint * , GLsizei * , GLsizei ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiDrawArraysEXT )(GLenum, GLint *, GLsizei *, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiDrawElementsEXT ( GLenum , const GLsizei * , GLenum , const GLvoid * * , GLsizei ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiDrawElementsEXT )(GLenum, const GLsizei *, GLenum, const GLvoid **, GLsizei);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoordfEXT ( GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFogCoordfEXT )(GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoordfvEXT ( const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFogCoordfvEXT )(const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoorddEXT ( GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFogCoorddEXT )(GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoorddvEXT ( const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFogCoorddvEXT )(const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoordPointerEXT ( GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFogCoordPointerEXT )(GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3bEXT ( GLbyte , GLbyte , GLbyte ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangent3bEXT )(GLbyte, GLbyte, GLbyte);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3bvEXT ( const GLbyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangent3bvEXT )(const GLbyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3dEXT ( GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangent3dEXT )(GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3dvEXT ( const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangent3dvEXT )(const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3fEXT ( GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangent3fEXT )(GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3fvEXT ( const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangent3fvEXT )(const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3iEXT ( GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangent3iEXT )(GLint, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3ivEXT ( const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangent3ivEXT )(const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3sEXT ( GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangent3sEXT )(GLshort, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangent3svEXT ( const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangent3svEXT )(const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3bEXT ( GLbyte , GLbyte , GLbyte ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormal3bEXT )(GLbyte, GLbyte, GLbyte);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3bvEXT ( const GLbyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormal3bvEXT )(const GLbyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3dEXT ( GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormal3dEXT )(GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3dvEXT ( const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormal3dvEXT )(const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3fEXT ( GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormal3fEXT )(GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3fvEXT ( const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormal3fvEXT )(const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3iEXT ( GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormal3iEXT )(GLint, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3ivEXT ( const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormal3ivEXT )(const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3sEXT ( GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormal3sEXT )(GLshort, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormal3svEXT ( const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormal3svEXT )(const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTangentPointerEXT ( GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTangentPointerEXT )(GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBinormalPointerEXT ( GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBinormalPointerEXT )(GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFinishTextureSUNX ( void ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFinishTextureSUNX )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactorbSUN ( GLbyte ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGlobalAlphaFactorbSUN )(GLbyte);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactorsSUN ( GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGlobalAlphaFactorsSUN )(GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactoriSUN ( GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGlobalAlphaFactoriSUN )(GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactorfSUN ( GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGlobalAlphaFactorfSUN )(GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactordSUN ( GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGlobalAlphaFactordSUN )(GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactorubSUN ( GLubyte ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGlobalAlphaFactorubSUN )(GLubyte);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactorusSUN ( GLushort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGlobalAlphaFactorusSUN )(GLushort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGlobalAlphaFactoruiSUN ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGlobalAlphaFactoruiSUN )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiSUN ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiSUN )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeusSUN ( GLushort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeusSUN )(GLushort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeubSUN ( GLubyte ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeubSUN )(GLubyte);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuivSUN ( const GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuivSUN )(const GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeusvSUN ( const GLushort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeusvSUN )(const GLushort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeubvSUN ( const GLubyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeubvSUN )(const GLubyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodePointerSUN ( GLenum , GLsizei , const GLvoid * * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodePointerSUN )(GLenum, GLsizei, const GLvoid **);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4ubVertex2fSUN ( GLubyte , GLubyte , GLubyte , GLubyte , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColor4ubVertex2fSUN )(GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4ubVertex2fvSUN ( const GLubyte * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColor4ubVertex2fvSUN )(const GLubyte *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4ubVertex3fSUN ( GLubyte , GLubyte , GLubyte , GLubyte , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColor4ubVertex3fSUN )(GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4ubVertex3fvSUN ( const GLubyte * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColor4ubVertex3fvSUN )(const GLubyte *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColor3fVertex3fSUN )(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor3fVertex3fvSUN ( const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColor3fVertex3fvSUN )(const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormal3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormal3fVertex3fSUN )(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormal3fVertex3fvSUN ( const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormal3fVertex3fvSUN )(const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4fNormal3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColor4fNormal3fVertex3fSUN )(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColor4fNormal3fVertex3fvSUN ( const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColor4fNormal3fVertex3fvSUN )(const GLfloat *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord2fVertex3fSUN )(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fVertex3fvSUN ( const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord2fVertex3fvSUN )(const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord4fVertex4fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord4fVertex4fSUN )(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord4fVertex4fvSUN ( const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord4fVertex4fvSUN )(const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor4ubVertex3fSUN ( GLfloat , GLfloat , GLubyte , GLubyte , GLubyte , GLubyte , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord2fColor4ubVertex3fSUN )(GLfloat, GLfloat, GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor4ubVertex3fvSUN ( const GLfloat * , const GLubyte * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord2fColor4ubVertex3fvSUN )(const GLfloat *, const GLubyte *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord2fColor3fVertex3fSUN )(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor3fVertex3fvSUN ( const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord2fColor3fVertex3fvSUN )(const GLfloat *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fNormal3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord2fNormal3fVertex3fSUN )(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fNormal3fVertex3fvSUN ( const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord2fNormal3fVertex3fvSUN )(const GLfloat *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor4fNormal3fVertex3fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord2fColor4fNormal3fVertex3fSUN )(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord2fColor4fNormal3fVertex3fvSUN ( const GLfloat * , const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord2fColor4fNormal3fVertex3fvSUN )(const GLfloat *, const GLfloat *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord4fColor4fNormal3fVertex4fSUN ( GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord4fColor4fNormal3fVertex4fSUN )(GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoord4fColor4fNormal3fVertex4fvSUN ( const GLfloat * , const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoord4fColor4fNormal3fVertex4fvSUN )(const GLfloat *, const GLfloat *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiVertex3fSUN )(GLenum, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiVertex3fvSUN ( const GLenum * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiVertex3fvSUN )(const GLenum *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor4ubVertex3fSUN ( GLenum , GLubyte , GLubyte , GLubyte , GLubyte , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiColor4ubVertex3fSUN )(GLenum, GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor4ubVertex3fvSUN ( const GLenum * , const GLubyte * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiColor4ubVertex3fvSUN )(const GLenum *, const GLubyte *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor3fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiColor3fVertex3fSUN )(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor3fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiColor3fVertex3fvSUN )(const GLenum *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiNormal3fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiNormal3fVertex3fSUN )(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiNormal3fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiNormal3fVertex3fvSUN )(const GLenum *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor4fNormal3fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiColor4fNormal3fVertex3fSUN )(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiColor4fNormal3fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiColor4fNormal3fVertex3fvSUN )(const GLenum *, const GLfloat *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiTexCoord2fVertex3fSUN )(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiTexCoord2fVertex3fvSUN )(const GLenum *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN )(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN )(const GLenum *, const GLfloat *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN )(GLenum, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN ( const GLenum * , const GLfloat * , const GLfloat * , const GLfloat * , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN )(const GLenum *, const GLfloat *, const GLfloat *, const GLfloat *, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBlendFuncSeparateEXT ( GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBlendFuncSeparateEXT )(GLenum, GLenum, GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBlendFuncSeparateINGR ( GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBlendFuncSeparateINGR )(GLenum, GLenum, GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexWeightfEXT ( GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexWeightfEXT )(GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexWeightfvEXT ( const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexWeightfvEXT )(const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexWeightPointerEXT ( GLsizei , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexWeightPointerEXT )(GLsizei, GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFlushVertexArrayRangeNV ( void ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFlushVertexArrayRangeNV )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexArrayRangeNV ( GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexArrayRangeNV )(GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerParameterfvNV ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCombinerParameterfvNV )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerParameterfNV ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCombinerParameterfNV )(GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerParameterivNV ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCombinerParameterivNV )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerParameteriNV ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCombinerParameteriNV )(GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerInputNV ( GLenum , GLenum , GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCombinerInputNV )(GLenum, GLenum, GLenum, GLenum, GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerOutputNV ( GLenum , GLenum , GLenum , GLenum , GLenum , GLenum , GLenum , GLboolean , GLboolean , GLboolean ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCombinerOutputNV )(GLenum, GLenum, GLenum, GLenum, GLenum, GLenum, GLenum, GLboolean, GLboolean, GLboolean);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFinalCombinerInputNV ( GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFinalCombinerInputNV )(GLenum, GLenum, GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCombinerInputParameterfvNV ( GLenum , GLenum , GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetCombinerInputParameterfvNV )(GLenum, GLenum, GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCombinerInputParameterivNV ( GLenum , GLenum , GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetCombinerInputParameterivNV )(GLenum, GLenum, GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCombinerOutputParameterfvNV ( GLenum , GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetCombinerOutputParameterfvNV )(GLenum, GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCombinerOutputParameterivNV ( GLenum , GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetCombinerOutputParameterivNV )(GLenum, GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFinalCombinerInputParameterfvNV ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetFinalCombinerInputParameterfvNV )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFinalCombinerInputParameterivNV ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetFinalCombinerInputParameterivNV )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiModeDrawArraysIBM ( GLenum , const GLint * , const GLsizei * , GLsizei , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiModeDrawArraysIBM )(GLenum, const GLint *, const GLsizei *, GLsizei, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMultiModeDrawElementsIBM ( const GLenum * , const GLsizei * , GLenum , const GLvoid * * , GLsizei , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMultiModeDrawElementsIBM )(const GLenum *, const GLsizei *, GLenum, const GLvoid **, GLsizei, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorPointerListIBM ( GLint , GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorPointerListIBM )(GLint, GLenum, GLint, const GLvoid **, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSecondaryColorPointerListIBM ( GLint , GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSecondaryColorPointerListIBM )(GLint, GLenum, GLint, const GLvoid **, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEdgeFlagPointerListIBM ( GLint , const GLboolean * * , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glEdgeFlagPointerListIBM )(GLint, const GLboolean **, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFogCoordPointerListIBM ( GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFogCoordPointerListIBM )(GLenum, GLint, const GLvoid **, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glIndexPointerListIBM ( GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glIndexPointerListIBM )(GLenum, GLint, const GLvoid **, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalPointerListIBM ( GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalPointerListIBM )(GLenum, GLint, const GLvoid **, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexCoordPointerListIBM ( GLint , GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexCoordPointerListIBM )(GLint, GLenum, GLint, const GLvoid **, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexPointerListIBM ( GLint , GLenum , GLint , const GLvoid * * , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexPointerListIBM )(GLint, GLenum, GLint, const GLvoid **, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTbufferMask3DFX ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTbufferMask3DFX )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSampleMaskEXT ( GLclampf , GLboolean ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSampleMaskEXT )(GLclampf, GLboolean);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSamplePatternEXT ( GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSamplePatternEXT )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTextureColorMaskSGIS ( GLboolean , GLboolean , GLboolean , GLboolean ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTextureColorMaskSGIS )(GLboolean, GLboolean, GLboolean, GLboolean);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glIglooInterfaceSGIX ( GLenum , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glIglooInterfaceSGIX )(GLenum, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGenFencesNV ( GLsizei , GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGenFencesNV )(GLsizei, GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteFencesNV ( GLsizei , const GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDeleteFencesNV )(GLsizei, const GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSetFenceNV ( GLuint , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSetFenceNV )(GLuint, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glTestFenceNV ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI GLboolean (CALLBACK * disp__glTestFenceNV )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glFinishFenceNV ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glFinishFenceNV )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsFenceNV ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI GLboolean (CALLBACK * disp__glIsFenceNV )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetFenceivNV ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetFenceivNV )(GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMapControlPointsNV ( GLenum , GLuint , GLenum , GLsizei , GLsizei , GLint , GLint , GLboolean , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMapControlPointsNV )(GLenum, GLuint, GLenum, GLsizei, GLsizei, GLint, GLint, GLboolean, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMapParameterivNV ( GLenum , GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMapParameterivNV )(GLenum, GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glMapParameterfvNV ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glMapParameterfvNV )(GLenum, GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMapControlPointsNV ( GLenum , GLuint , GLenum , GLsizei , GLsizei , GLboolean , GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetMapControlPointsNV )(GLenum, GLuint, GLenum, GLsizei, GLsizei, GLboolean, GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMapParameterivNV ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetMapParameterivNV )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMapParameterfvNV ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetMapParameterfvNV )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMapAttribParameterivNV ( GLenum , GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetMapAttribParameterivNV )(GLenum, GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetMapAttribParameterfvNV ( GLenum , GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetMapAttribParameterfvNV )(GLenum, GLuint, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEvalMapsNV ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glEvalMapsNV )(GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glCombinerStageParameterfvNV ( GLenum , GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glCombinerStageParameterfvNV )(GLenum, GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetCombinerStageParameterfvNV ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetCombinerStageParameterfvNV )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBindProgramNV ( GLenum , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBindProgramNV )(GLenum, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteProgramsNV ( GLsizei , const GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDeleteProgramsNV )(GLsizei, const GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glExecuteProgramNV ( GLenum , GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glExecuteProgramNV )(GLenum, GLuint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGenProgramsNV ( GLsizei , GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGenProgramsNV )(GLsizei, GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glAreProgramsResidentNV ( GLsizei , const GLuint * , GLboolean * ) ;
+ * </pre> 
+ */
+	LIBAPI GLboolean (CALLBACK * disp__glAreProgramsResidentNV )(GLsizei, const GLuint *, GLboolean *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glRequestResidentProgramsNV ( GLsizei , const GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glRequestResidentProgramsNV )(GLsizei, const GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetProgramParameterfvNV ( GLenum , GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetProgramParameterfvNV )(GLenum, GLuint, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetProgramParameterdvNV ( GLenum , GLuint , GLenum , GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetProgramParameterdvNV )(GLenum, GLuint, GLenum, GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetProgramivNV ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetProgramivNV )(GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetProgramStringNV ( GLuint , GLenum , GLubyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetProgramStringNV )(GLuint, GLenum, GLubyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetTrackMatrixivNV ( GLenum , GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetTrackMatrixivNV )(GLenum, GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVertexAttribdvNV ( GLuint , GLenum , GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetVertexAttribdvNV )(GLuint, GLenum, GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVertexAttribfvNV ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetVertexAttribfvNV )(GLuint, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVertexAttribivNV ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetVertexAttribivNV )(GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVertexAttribPointervNV ( GLuint , GLenum , GLvoid * * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetVertexAttribPointervNV )(GLuint, GLenum, GLvoid **);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsProgramNV ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI GLboolean (CALLBACK * disp__glIsProgramNV )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glLoadProgramNV ( GLenum , GLuint , GLsizei , const GLubyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glLoadProgramNV )(GLenum, GLuint, GLsizei, const GLubyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameter4fNV ( GLenum , GLuint , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glProgramParameter4fNV )(GLenum, GLuint, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameter4dNV ( GLenum , GLuint , GLdouble , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glProgramParameter4dNV )(GLenum, GLuint, GLdouble, GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameter4dvNV ( GLenum , GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glProgramParameter4dvNV )(GLenum, GLuint, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameter4fvNV ( GLenum , GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glProgramParameter4fvNV )(GLenum, GLuint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameters4dvNV ( GLenum , GLuint , GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glProgramParameters4dvNV )(GLenum, GLuint, GLuint, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glProgramParameters4fvNV ( GLenum , GLuint , GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glProgramParameters4fvNV )(GLenum, GLuint, GLuint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTrackMatrixNV ( GLenum , GLuint , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTrackMatrixNV )(GLenum, GLuint, GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribPointerNV ( GLuint , GLint , GLenum , GLsizei , const GLvoid * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribPointerNV )(GLuint, GLint, GLenum, GLsizei, const GLvoid *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1sNV ( GLuint , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib1sNV )(GLuint, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1fNV ( GLuint , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib1fNV )(GLuint, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1dNV ( GLuint , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib1dNV )(GLuint, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2sNV ( GLuint , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib2sNV )(GLuint, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2fNV ( GLuint , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib2fNV )(GLuint, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2dNV ( GLuint , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib2dNV )(GLuint, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3sNV ( GLuint , GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib3sNV )(GLuint, GLshort, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3fNV ( GLuint , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib3fNV )(GLuint, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3dNV ( GLuint , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib3dNV )(GLuint, GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4sNV ( GLuint , GLshort , GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib4sNV )(GLuint, GLshort, GLshort, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4fNV ( GLuint , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib4fNV )(GLuint, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4dNV ( GLuint , GLdouble , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib4dNV )(GLuint, GLdouble, GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4ubNV ( GLuint , GLubyte , GLubyte , GLubyte , GLubyte ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib4ubNV )(GLuint, GLubyte, GLubyte, GLubyte, GLubyte);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1svNV ( GLuint , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib1svNV )(GLuint, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1fvNV ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib1fvNV )(GLuint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib1dvNV ( GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib1dvNV )(GLuint, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2svNV ( GLuint , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib2svNV )(GLuint, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2fvNV ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib2fvNV )(GLuint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib2dvNV ( GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib2dvNV )(GLuint, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3svNV ( GLuint , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib3svNV )(GLuint, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3fvNV ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib3fvNV )(GLuint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib3dvNV ( GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib3dvNV )(GLuint, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4svNV ( GLuint , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib4svNV )(GLuint, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4fvNV ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib4fvNV )(GLuint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4dvNV ( GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib4dvNV )(GLuint, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttrib4ubvNV ( GLuint , const GLubyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttrib4ubvNV )(GLuint, const GLubyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs1svNV ( GLuint , GLsizei , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs1svNV )(GLuint, GLsizei, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs1fvNV ( GLuint , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs1fvNV )(GLuint, GLsizei, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs1dvNV ( GLuint , GLsizei , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs1dvNV )(GLuint, GLsizei, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs2svNV ( GLuint , GLsizei , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs2svNV )(GLuint, GLsizei, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs2fvNV ( GLuint , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs2fvNV )(GLuint, GLsizei, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs2dvNV ( GLuint , GLsizei , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs2dvNV )(GLuint, GLsizei, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs3svNV ( GLuint , GLsizei , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs3svNV )(GLuint, GLsizei, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs3fvNV ( GLuint , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs3fvNV )(GLuint, GLsizei, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs3dvNV ( GLuint , GLsizei , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs3dvNV )(GLuint, GLsizei, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs4svNV ( GLuint , GLsizei , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs4svNV )(GLuint, GLsizei, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs4fvNV ( GLuint , GLsizei , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs4fvNV )(GLuint, GLsizei, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs4dvNV ( GLuint , GLsizei , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs4dvNV )(GLuint, GLsizei, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexAttribs4ubvNV ( GLuint , GLsizei , const GLubyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexAttribs4ubvNV )(GLuint, GLsizei, const GLubyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexBumpParameterivATI ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexBumpParameterivATI )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glTexBumpParameterfvATI ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glTexBumpParameterfvATI )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetTexBumpParameterivATI ( GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetTexBumpParameterivATI )(GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetTexBumpParameterfvATI ( GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetTexBumpParameterfvATI )(GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glGenFragmentShadersATI ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI GLuint (CALLBACK * disp__glGenFragmentShadersATI )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBindFragmentShaderATI ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBindFragmentShaderATI )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteFragmentShaderATI ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDeleteFragmentShaderATI )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBeginFragmentShaderATI ( void ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBeginFragmentShaderATI )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEndFragmentShaderATI ( void ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glEndFragmentShaderATI )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPassTexCoordATI ( GLuint , GLuint , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPassTexCoordATI )(GLuint, GLuint, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSampleMapATI ( GLuint , GLuint , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSampleMapATI )(GLuint, GLuint, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorFragmentOp1ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorFragmentOp1ATI )(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorFragmentOp2ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorFragmentOp2ATI )(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glColorFragmentOp3ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glColorFragmentOp3ATI )(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glAlphaFragmentOp1ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glAlphaFragmentOp1ATI )(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glAlphaFragmentOp2ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glAlphaFragmentOp2ATI )(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glAlphaFragmentOp3ATI ( GLenum , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glAlphaFragmentOp3ATI )(GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSetFragmentShaderConstantATI ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSetFragmentShaderConstantATI )(GLuint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPNTrianglesiATI ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPNTrianglesiATI )(GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glPNTrianglesfATI ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glPNTrianglesfATI )(GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glNewObjectBufferATI ( GLsizei , const GLvoid * , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI GLuint (CALLBACK * disp__glNewObjectBufferATI )(GLsizei, const GLvoid *, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsObjectBufferATI ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI GLboolean (CALLBACK * disp__glIsObjectBufferATI )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glUpdateObjectBufferATI ( GLuint , GLuint , GLsizei , const GLvoid * , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glUpdateObjectBufferATI )(GLuint, GLuint, GLsizei, const GLvoid *, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetObjectBufferfvATI ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetObjectBufferfvATI )(GLuint, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetObjectBufferivATI ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetObjectBufferivATI )(GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteObjectBufferATI ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDeleteObjectBufferATI )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glArrayObjectATI ( GLenum , GLint , GLenum , GLsizei , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glArrayObjectATI )(GLenum, GLint, GLenum, GLsizei, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetArrayObjectfvATI ( GLenum , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetArrayObjectfvATI )(GLenum, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetArrayObjectivATI ( GLenum , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetArrayObjectivATI )(GLenum, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantArrayObjectATI ( GLuint , GLenum , GLsizei , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVariantArrayObjectATI )(GLuint, GLenum, GLsizei, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantArrayObjectfvATI ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetVariantArrayObjectfvATI )(GLuint, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantArrayObjectivATI ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetVariantArrayObjectivATI )(GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBeginVertexShaderEXT ( void ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBeginVertexShaderEXT )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEndVertexShaderEXT ( void ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glEndVertexShaderEXT )(void);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glBindVertexShaderEXT ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glBindVertexShaderEXT )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glGenVertexShadersEXT ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI GLuint (CALLBACK * disp__glGenVertexShadersEXT )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDeleteVertexShaderEXT ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDeleteVertexShaderEXT )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glShaderOp1EXT ( GLenum , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glShaderOp1EXT )(GLenum, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glShaderOp2EXT ( GLenum , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glShaderOp2EXT )(GLenum, GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glShaderOp3EXT ( GLenum , GLuint , GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glShaderOp3EXT )(GLenum, GLuint, GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSwizzleEXT ( GLuint , GLuint , GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSwizzleEXT )(GLuint, GLuint, GLenum, GLenum, GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glWriteMaskEXT ( GLuint , GLuint , GLenum , GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glWriteMaskEXT )(GLuint, GLuint, GLenum, GLenum, GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glInsertComponentEXT ( GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glInsertComponentEXT )(GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glExtractComponentEXT ( GLuint , GLuint , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glExtractComponentEXT )(GLuint, GLuint, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glGenSymbolsEXT ( GLenum , GLenum , GLenum , GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI GLuint (CALLBACK * disp__glGenSymbolsEXT )(GLenum, GLenum, GLenum, GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSetInvariantEXT ( GLuint , GLenum , const void * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSetInvariantEXT )(GLuint, GLenum, const void *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glSetLocalConstantEXT ( GLuint , GLenum , const void * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glSetLocalConstantEXT )(GLuint, GLenum, const void *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantbvEXT ( GLuint , const GLbyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVariantbvEXT )(GLuint, const GLbyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantsvEXT ( GLuint , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVariantsvEXT )(GLuint, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantivEXT ( GLuint , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVariantivEXT )(GLuint, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantfvEXT ( GLuint , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVariantfvEXT )(GLuint, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantdvEXT ( GLuint , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVariantdvEXT )(GLuint, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantubvEXT ( GLuint , const GLubyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVariantubvEXT )(GLuint, const GLubyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantusvEXT ( GLuint , const GLushort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVariantusvEXT )(GLuint, const GLushort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantuivEXT ( GLuint , const GLuint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVariantuivEXT )(GLuint, const GLuint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVariantPointerEXT ( GLuint , GLenum , GLuint , const void * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVariantPointerEXT )(GLuint, GLenum, GLuint, const void *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glEnableVariantClientStateEXT ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glEnableVariantClientStateEXT )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glDisableVariantClientStateEXT ( GLuint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glDisableVariantClientStateEXT )(GLuint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glBindLightParameterEXT ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI GLuint (CALLBACK * disp__glBindLightParameterEXT )(GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glBindMaterialParameterEXT ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI GLuint (CALLBACK * disp__glBindMaterialParameterEXT )(GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glBindTexGenParameterEXT ( GLenum , GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI GLuint (CALLBACK * disp__glBindTexGenParameterEXT )(GLenum, GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glBindTextureUnitParameterEXT ( GLenum , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI GLuint (CALLBACK * disp__glBindTextureUnitParameterEXT )(GLenum, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLuint glBindParameterEXT ( GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI GLuint (CALLBACK * disp__glBindParameterEXT )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern GLboolean glIsVariantEnabledEXT ( GLuint , GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI GLboolean (CALLBACK * disp__glIsVariantEnabledEXT )(GLuint, GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantBooleanvEXT ( GLuint , GLenum , GLboolean * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetVariantBooleanvEXT )(GLuint, GLenum, GLboolean *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantIntegervEXT ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetVariantIntegervEXT )(GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantFloatvEXT ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetVariantFloatvEXT )(GLuint, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetVariantPointervEXT ( GLuint , GLenum , GLvoid * * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetVariantPointervEXT )(GLuint, GLenum, GLvoid **);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetInvariantBooleanvEXT ( GLuint , GLenum , GLboolean * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetInvariantBooleanvEXT )(GLuint, GLenum, GLboolean *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetInvariantIntegervEXT ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetInvariantIntegervEXT )(GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetInvariantFloatvEXT ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetInvariantFloatvEXT )(GLuint, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetLocalConstantBooleanvEXT ( GLuint , GLenum , GLboolean * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetLocalConstantBooleanvEXT )(GLuint, GLenum, GLboolean *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetLocalConstantIntegervEXT ( GLuint , GLenum , GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetLocalConstantIntegervEXT )(GLuint, GLenum, GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glGetLocalConstantFloatvEXT ( GLuint , GLenum , GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glGetLocalConstantFloatvEXT )(GLuint, GLenum, GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1s ( GLenum , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream1s )(GLenum, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1sv ( GLenum , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream1sv )(GLenum, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1i ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream1i )(GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1iv ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream1iv )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1f ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream1f )(GLenum, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1fv ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream1fv )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1d ( GLenum , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream1d )(GLenum, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream1dv ( GLenum , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream1dv )(GLenum, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2s ( GLenum , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream2s )(GLenum, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2sv ( GLenum , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream2sv )(GLenum, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2i ( GLenum , GLint , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream2i )(GLenum, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2iv ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream2iv )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2f ( GLenum , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream2f )(GLenum, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2fv ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream2fv )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2d ( GLenum , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream2d )(GLenum, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream2dv ( GLenum , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream2dv )(GLenum, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3s ( GLenum , GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream3s )(GLenum, GLshort, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3sv ( GLenum , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream3sv )(GLenum, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3i ( GLenum , GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream3i )(GLenum, GLint, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3iv ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream3iv )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3f ( GLenum , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream3f )(GLenum, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3fv ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream3fv )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3d ( GLenum , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream3d )(GLenum, GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream3dv ( GLenum , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream3dv )(GLenum, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4s ( GLenum , GLshort , GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream4s )(GLenum, GLshort, GLshort, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4sv ( GLenum , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream4sv )(GLenum, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4i ( GLenum , GLint , GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream4i )(GLenum, GLint, GLint, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4iv ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream4iv )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4f ( GLenum , GLfloat , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream4f )(GLenum, GLfloat, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4fv ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream4fv )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4d ( GLenum , GLdouble , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream4d )(GLenum, GLdouble, GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexStream4dv ( GLenum , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexStream4dv )(GLenum, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3b ( GLenum , GLbyte , GLbyte , GLbyte ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalStream3b )(GLenum, GLbyte, GLbyte, GLbyte);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3bv ( GLenum , const GLbyte * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalStream3bv )(GLenum, const GLbyte *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3s ( GLenum , GLshort , GLshort , GLshort ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalStream3s )(GLenum, GLshort, GLshort, GLshort);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3sv ( GLenum , const GLshort * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalStream3sv )(GLenum, const GLshort *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3i ( GLenum , GLint , GLint , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalStream3i )(GLenum, GLint, GLint, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3iv ( GLenum , const GLint * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalStream3iv )(GLenum, const GLint *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3f ( GLenum , GLfloat , GLfloat , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalStream3f )(GLenum, GLfloat, GLfloat, GLfloat);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3fv ( GLenum , const GLfloat * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalStream3fv )(GLenum, const GLfloat *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3d ( GLenum , GLdouble , GLdouble , GLdouble ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalStream3d )(GLenum, GLdouble, GLdouble, GLdouble);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glNormalStream3dv ( GLenum , const GLdouble * ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glNormalStream3dv )(GLenum, const GLdouble *);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glClientActiveVertexStream ( GLenum ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glClientActiveVertexStream )(GLenum);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexBlendEnvi ( GLenum , GLint ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexBlendEnvi )(GLenum, GLint);
+
+/**
+ * Original Function-Prototype :
+ * <pre> 
+   extern void glVertexBlendEnvf ( GLenum , GLfloat ) ;
+ * </pre> 
+ */
+	LIBAPI void (CALLBACK * disp__glVertexBlendEnvf )(GLenum, GLfloat);
+
+/* C2J Parser Version 3.0:  Java program parsed successfully. */ 

@@ -24,6 +24,8 @@ public class CFuncVariable
 
 	public int     arrayNumber;
 
+        public boolean isDirectBuffer; // JDK 1.4 only
+
 	public boolean isGLUPtrObject;
 
 	/**
@@ -133,7 +135,11 @@ public class CFuncVariable
 		int j;
 		String res = new String();
 
-		res+=typeJava;
+                if (isDirectBuffer) {
+                  res+="Buffer";
+                } else {
+                  res+=typeJava;
+                }
 
 		if(typeJava.equals("String"))
 			j=1;
@@ -193,10 +199,14 @@ public class CFuncVariable
 
 		res+=typeC;
 
-		if(arrayNumber>0 || isGLUPtrObject)
+		if(arrayNumber>0 || isDirectBuffer || isGLUPtrObject)
 			res+=" ";
 		for(j=0; j<arrayNumber; j++)
 			res+="*";
+                if (isDirectBuffer)
+                {
+                  res += "*";
+                }
 		if(isGLUPtrObject)
 		{
 			if(usePointerHolderCast)

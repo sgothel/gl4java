@@ -19,10 +19,12 @@ public interface GLDrawable
     /** Remove a GLEventListener from this drawable. */
     public void removeGLEventListener(GLEventListener listener);
 
-    /** Gets the GL functions used by this drawable. */
+    /** Gets the GL functions used by this drawable. When running on
+        JDK 1.4 this will return a {@link gl4java.GLFunc14}. */
     public GLFunc getGL();
 
-    /** Gets the GLU functions used by this drawable. */
+    /** Gets the GLU functions used by this drawable. When running on
+        JDK 1.4 this will return a {@link gl4java.GLUFunc14}. */
     public GLUFunc getGLU();
 
     /**

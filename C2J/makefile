@@ -21,10 +21,14 @@ gl2j: \
      ../gl4java/GLUEnum.java \
      ../gl4java/utils/glf/GLFEnum.java \
      ../gl4java/GLFunc.java \
+     ../gl4java/GLFunc14.java \
      ../gl4java/GLFuncJauJNI.java \
+     ../gl4java/GLFunc14JauJNI.java \
      ../gl4java/GLFuncJauJNInf.java \
      ../gl4java/GLUFunc.java \
+     ../gl4java/GLUFunc14.java \
      ../gl4java/GLUFuncJauJNI.java \
+     ../gl4java/GLUFunc14JauJNI.java \
      ../gl4java/GLUFuncJauJNInf.java \
      ../gl4java/utils/glf/GLFFuncJNI.java
 
@@ -45,10 +49,12 @@ gl2c: \
      ../CNativeCode/OpenGL_JauJNI12_funcs.c \
      ../CNativeCode/OpenGL_JauJNI12nf_funcs.c \
      ../CNativeCode/OpenGL_JauJNI12tst_funcs.c \
+     ../CNativeCode/OpenGL_JauJNI14_funcs.c \
      ../CNativeCode/OpenGLU_JauJNI_funcs.c \
      ../CNativeCode/OpenGLU_JauJNI12_funcs.c \
      ../CNativeCode/OpenGLU_JauJNI12nf_funcs.c \
      ../CNativeCode/OpenGLU_JauJNI12tst_funcs.c \
+     ../CNativeCode/OpenGLU_JauJNI14_funcs.c \
      ../CNativeCode/GLF_JNI_funcs.c \
      ../CNativeCode/GLF_JNI12_funcs.c 
 
@@ -235,6 +241,10 @@ gl-proto-auto.java: gl-proto-auto.orig.h C2J.class
 	java C2J -echo jnijavaf gl4java_GLFuncJauJNI gl-proto-auto.orig.h \
 	> gl-proto-auto.java
 
+gl-proto-auto-14.java: gl-proto-auto.orig.h C2J.class
+	java C2J -echo -jnic-dirbuf jnijavaf gl4java_GLFuncJauJNI gl-proto-auto.orig.h \
+	> gl-proto-auto-14.java
+
 #
 # Common for gl4java.GLUFuncJauJNI and gl4java.GLUFuncJauJNInf
 # Here we create the final part !
@@ -242,6 +252,10 @@ gl-proto-auto.java: gl-proto-auto.orig.h C2J.class
 glu-proto-auto.java: glu-proto-auto.orig.h C2J.class
 	java C2J -echo jnijavaf gl4java_GLUFuncJauJNI glu-proto-auto.orig.h \
 	> glu-proto-auto.java
+
+glu-proto-auto-14.java: glu-proto-auto.orig.h C2J.class
+	java C2J -jnic-dirbuf -echo jnijavaf gl4java_GLUFuncJauJNI glu-proto-auto.orig.h \
+	> glu-proto-auto-14.java
 
 #
 # for java interface gl4java.GLFunc
@@ -254,18 +268,39 @@ gl-protoVirt-auto.java: gl-proto-auto.java
 	cat gl-proto-auto.java | \
 	sed -e 's/final native //g' > gl-protoVirt-auto.java
 
+gl-protoVirt-auto-14.java: gl-proto-auto-14.java
+	cat gl-proto-auto-14.java | \
+	sed -e 's/final native //g' > gl-protoVirt-auto-14.java
+
 ../gl4java/GLFunc.java: warning.skel				\
 			manual/gl-manualCodedVirt1.java 	\
+			manual/gl-manualCodedVirt1-xx.java 	\
 			manual/gl-manualCodedVirt2.java 	\
 			gl-funcnames.skel \
 			gl-protoVirt-auto.java			
 	cat warning.skel 			\
 	    manual/gl-manualCodedVirt1.java 	\
+	    manual/gl-manualCodedVirt1-xx.java 	\
 	    gl-funcnames.skel                   \
 	    manual/gl-manualCodedVirt2.java 	\
 	    gl-protoVirt-auto.java 		\
 	    > ../gl4java/GLFunc.java
 	printf "\n\n}\n\n" >> ../gl4java/GLFunc.java
+
+../gl4java/GLFunc14.java: warning.skel				\
+			manual/gl-manualCodedVirt1-14.java 	\
+			manual/gl-manualCodedVirt1-xx.java 	\
+			manual/gl-manualCodedVirt2.java 	\
+			gl-funcnames.skel \
+			gl-protoVirt-auto-14.java			
+	cat warning.skel 			\
+	    manual/gl-manualCodedVirt1-14.java 	\
+	    manual/gl-manualCodedVirt1-xx.java 	\
+	    gl-funcnames.skel                   \
+	    manual/gl-manualCodedVirt2.java     \
+	    gl-protoVirt-auto-14.java 		\
+	    > ../gl4java/GLFunc14.java
+	printf "\n\n}\n\n" >> ../gl4java/GLFunc14.java
 
 #
 # for java interface gl4java.GLUFunc
@@ -274,14 +309,31 @@ glu-protoVirt-auto.java: glu-proto-auto.java
 	cat glu-proto-auto.java | \
 	sed -e 's/final native //g' > glu-protoVirt-auto.java
 
+glu-protoVirt-auto-14.java: glu-proto-auto-14.java
+	cat glu-proto-auto-14.java | \
+	sed -e 's/final native //g' > glu-protoVirt-auto-14.java
+
 ../gl4java/GLUFunc.java: warning.skel				\
 			 manual/glu-manualCodedVirt.java 	\
+			 manual/glu-manualCodedVirt-xx.java 	\
 			 glu-protoVirt-auto.java			
 	cat warning.skel 			\
 	    manual/glu-manualCodedVirt.java 	\
+	    manual/glu-manualCodedVirt-xx.java 	\
 	    glu-protoVirt-auto.java 		\
 	    > ../gl4java/GLUFunc.java
 	printf "\n\n}\n\n" >> ../gl4java/GLUFunc.java
+
+../gl4java/GLUFunc14.java: warning.skel				\
+			 manual/glu-manualCodedVirt-14.java 	\
+			 manual/glu-manualCodedVirt-xx.java 	\
+			 glu-protoVirt-auto-14.java			
+	cat warning.skel 			\
+	    manual/glu-manualCodedVirt-14.java 	\
+	    manual/glu-manualCodedVirt-xx.java 	\
+	    glu-protoVirt-auto-14.java 		\
+	    > ../gl4java/GLUFunc14.java
+	printf "\n\n}\n\n" >> ../gl4java/GLUFunc14.java
 
 #
 # for java class gl4java.GLFuncJauJNI
@@ -298,6 +350,17 @@ glu-protoVirt-auto.java: glu-proto-auto.java
 	    gl-proto-auto.java	 		\
 	    > ../gl4java/GLFuncJauJNI.java
 	printf "\n\n}\n\n" >> ../gl4java/GLFuncJauJNI.java
+
+../gl4java/GLFunc14JauJNI.java: warning.skel				\
+			      manual/gl-manualCodedImplJNI1-14.java 	\
+			      manual/gl-manualCodedImplJNI2.java 	\
+			      gl-proto-auto-14.java			
+	cat warning.skel 			\
+	    manual/gl-manualCodedImplJNI1-14.java\
+	    manual/gl-manualCodedImplJNI2.java 	\
+	    gl-proto-auto-14.java 		\
+	    > ../gl4java/GLFunc14JauJNI.java
+	printf "\n\n}\n\n" >> ../gl4java/GLFunc14JauJNI.java
 
 #
 # for java class gl4java.GLFuncJauJNInf
@@ -334,6 +397,17 @@ glu-protoVirt-auto.java: glu-proto-auto.java
 	    glu-proto-auto.java	 		\
 	    > ../gl4java/GLUFuncJauJNI.java
 	printf "\n\n}\n\n" >> ../gl4java/GLUFuncJauJNI.java
+
+../gl4java/GLUFunc14JauJNI.java: warning.skel				\
+			 manual/glu-manualCodedImplJNI1-14.java 	\
+			 manual/glu-manualCodedImplJNI2.java 	\
+			 glu-proto-auto-14.java			
+	cat warning.skel 			\
+	    manual/glu-manualCodedImplJNI1-14.java 	\
+	    manual/glu-manualCodedImplJNI2.java 	\
+	    glu-proto-auto-14.java	 		\
+	    > ../gl4java/GLUFunc14JauJNI.java
+	printf "\n\n}\n\n" >> ../gl4java/GLUFunc14JauJNI.java
 
 #
 # for java class gl4java.utils.glf.GLFFuncJNI
@@ -418,6 +492,20 @@ gl-proto-dynauto-tst-jni12.c: gl-proto-auto.orig.h C2J.class
 	    gl-proto-dynauto-tst-jni12.c 			\
 	    > ../CNativeCode/OpenGL_JauJNI12tst_funcs.c
 
+gl-proto-dynauto-jni14.c: gl-proto-auto.orig.h C2J.class
+	java C2J -echo -jnic-dirbuf -jnic-criticalarray jnic-dyn gl4java_GLFunc14JauJNI gl-proto-auto.orig.h \
+	> gl-proto-dynauto-jni14.c
+
+../CNativeCode/OpenGL_JauJNI14_funcs.c: warning.skel			 \
+			              ../CNativeCode/OpenGL_funcs14.c.skel \
+			              manual/gl-manualCodedImplJNI14.c     \
+			              gl-proto-dynauto-jni14.c
+	cat warning.skel 			\
+	    ../CNativeCode/OpenGL_funcs14.c.skel 	\
+	    manual/gl-manualCodedImplJNI14.c 		\
+	    gl-proto-dynauto-jni14.c 			\
+	    > ../CNativeCode/OpenGL_JauJNI14_funcs.c
+
 glu-proto-auto.c: glu-proto-auto.orig.h C2J.class
 	java C2J -echo jnic-dyn gl4java_GLUFuncJauJNI glu-proto-auto.orig.h \
 	> glu-proto-auto.c
@@ -462,6 +550,21 @@ glu-proto-auto-tst-jni12.c: glu-proto-auto.orig.h C2J.class
 	    manual/glu-manualCodedImplJNI.c	\
 	    glu-proto-auto-tst-jni12.c 			\
 	    > ../CNativeCode/OpenGLU_JauJNI12tst_funcs.c
+
+glu-proto-auto-jni14.c: glu-proto-auto.orig.h C2J.class
+	java C2J -echo -jnic-dirbuf -jnic-criticalarray jnic-dyn gl4java_GLUFunc14JauJNI glu-proto-auto.orig.h \
+	> glu-proto-auto-jni14.c
+
+../CNativeCode/OpenGLU_JauJNI14_funcs.c: C2J.class 			   \
+			               warning.skel			   \
+			               ../CNativeCode/OpenGLU_funcs14.c.skel \
+			               manual/glu-manualCodedImplJNI14.c   \
+			               glu-proto-auto-jni14.c
+	cat warning.skel 			\
+	    ../CNativeCode/OpenGLU_funcs14.c.skel \
+	    manual/glu-manualCodedImplJNI14.c	\
+	    glu-proto-auto-jni14.c		\
+	    > ../CNativeCode/OpenGLU_JauJNI14_funcs.c
 
 glf-proto-auto-jni.c: glf-proto-auto.orig.h C2J.class
 	java C2J -echo jnic gl4java_utils_glf_GLFFuncJNI glf-proto-auto.orig.h \
@@ -532,7 +635,11 @@ cleangl2j: clean
 	     glu-enum-auto.java \
 	     glu-protoVirt-auto.java \
 	     glf-enum-auto.java \
-	     glf-proto-auto.java
+	     glf-proto-auto.java \
+	     gl-proto-auto-14.java \
+	     gl-protoVirt-auto-14.java \
+	     glu-proto-auto-14.java \
+	     glu-protoVirt-auto-14.java
 
 
 cleangl2c: clean

@@ -1,5 +1,5 @@
 /**
- * C2J Parser Version 2.2
+ * C2J Parser Version 3.0
  * Jausoft - Sven Goethel Software Development
  * Reading from file: glf-proto-auto.orig.h . . .
  * Destination-Class: gl4java_utils_glf_GLFFuncJNI ! 
@@ -1269,4 +1269,4 @@
 
 	}
 
-/* C2J Parser Version 2.2:  Java program parsed successfully. */ 
+/* C2J Parser Version 3.0:  Java program parsed successfully. */ 

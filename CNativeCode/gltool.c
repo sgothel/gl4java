@@ -539,7 +539,7 @@ void LIBAPIENTRY fetch_GL_FUNCS (const char * libGLName,
   if(!loadGLLibrary (libGLName, libGLUName))
   	return;
 
-  #define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (libGLName, libGLUName, (a), NULL, 1, 0);
+  #define GET_GL_PROCADDRESS(a) getGLProcAddressHelper (libGLName, libGLUName, (a), NULL, 0, 0);
 
   #include "gl-disp-fetch.hc"
   #include "glu-disp-fetch.hc"
