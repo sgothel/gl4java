@@ -24,8 +24,6 @@ public class MachineCtrl
     public Button buttonFileNatives = null;
     public TextField tf_browser_classes = null;
     public TextField tf_browser_natives = null;
-    private Choice glVendorChoice = null;
-    public String glVendor = null;
     public boolean installGLUTFontSupport = true;
     private Checkbox checkboxInstallGLUTFontSupport = null;
 
@@ -40,7 +38,6 @@ public class MachineCtrl
     public String  jvmVersion = null;
     public int     jvmVersionMajor = 1; // min. defaults
     public int     jvmVersionMinor = 1; // min. defaults
-    public String  jvmHome = null;
 	    public boolean isNetscapeJvm = false;
 	    public boolean isSunJvm = false;
 	    public boolean isMacJvm = false;
@@ -85,7 +82,6 @@ public class MachineCtrl
 
         // Query Java VM vendor and operating system.
         jvmVendor = java.lang.System.getProperty("java.vendor").toLowerCase();
-        jvmHome   = java.lang.System.getProperty("java.home");
         jvmVersion = java.lang.System.getProperty("java.version").toLowerCase();
 
 	int i0 = 0;
@@ -153,6 +149,7 @@ public class MachineCtrl
             else if (osName.indexOf("hp-ux") >= 0)
                 unixFlavor = unixFlavor_HPUX;
         }
+
 	System.out.println("Machine Info:");
 	System.out.println("\tosName: "+osName);
 	System.out.println("\tosVersion: "+osVersion);
@@ -162,7 +159,6 @@ public class MachineCtrl
 	System.out.println("jvmVersion: "+jvmVersion+
 	                   "( major "+jvmVersionMajor+
 			   ", minor "+jvmVersionMinor+")");
-	System.out.println("jvmHome: "+jvmHome);
 	System.out.println("");
 	System.out.println("pathsep: "+pathsep);
 	System.out.println("filesep: "+filesep);
@@ -607,6 +603,9 @@ public class MachineCtrl
                     }
                 }
             }
+
+    	    String  jvmHome = java.lang.System.getProperty("java.home");
+
             if ( (isWin32) || (isUnix) || (isMacOs) )
             {
 	        if(DEBUG)
@@ -732,6 +731,7 @@ public class MachineCtrl
 	applet = _applet;
 
 	dialog  = new Frame (title);
+        dialog.setBackground(new Color(230, 230, 255));
 	dialog.setLayout(new BorderLayout());
 
 	if(headerText!=null && headerText.length>0)
@@ -819,19 +819,6 @@ public class MachineCtrl
 		cb1.setEnabled(false);
 		panOSUnix.add(cb1);
 		panMain.add(panOSUnix);
-
-		if(unixFlavor==unixFlavor_Linux)
-		{
-			panFlow = new Panel();
-			panFlow.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
-			panFlow.add(new Label("OpenGL Vendor:"));
-			glVendorChoice = new Choice();
-			glVendorChoice.addItemListener(this);
-			glVendor = "generic";
-			glVendorChoice.add(glVendor);
-			panFlow.add(glVendorChoice);
-			panMain.add(panFlow);
-		}
 	}
 
 	if(jvmVendor!=null)
@@ -1088,21 +1075,7 @@ public class MachineCtrl
 
     public void itemStateChanged(ItemEvent e)
     {
-    	if(glVendorChoice!=null &&
-	   glVendorChoice.equals(e.getItemSelectable()) &&
-	   e.getStateChange()==ItemEvent.SELECTED
-	  )
-	{
-		Object item = e.getItem();
-
-		// System.out.println("selected ITEM:"+item.getClass()+", "+item);
-
-		if(item instanceof String)
-		{
-			String str = (String)item;
-			glVendor = str;
-		}
-	} else if(checkboxInstallGLUTFontSupport.equals(e.getItemSelectable()))
+	if(checkboxInstallGLUTFontSupport.equals(e.getItemSelectable()))
 	{
 		installGLUTFontSupport = 
 			checkboxInstallGLUTFontSupport.getState();

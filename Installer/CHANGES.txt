@@ -12,12 +12,27 @@ This CHANGES starts with version 2.00 !
 
 GL4Java Installer 2.00 is based upon version 1.05, by Ron Cemer !
 
-Last Changes: 21. November 2000 (Version 2.05b)
+Last Changes: 31. Dezember 2000 (Version 2.06a)
 
 -----------------
 TOP  = new
 DOWN = old
 -----------------
+
+Dezember 31, 2000 (Version 2.06a):
+
+	- Added a ProgressBar to the main Applet Panel !
+	  Thanxs to Andrea Fasce for his Idea of the overloaded
+	  BufferedInputStream, which counts the read bytes !
+
+	- Removed the GLVendor stuff for Unices,
+	  because it is no more needed since a long time.
+
+	- Changed the Background color ;-)
+
+Dezember 28, 2000 (Version 2.05c):
+
+	- Fixed security bug, while fetching the property "java.home" !
 
 November 21, 2000 (Version 2.05b):
 

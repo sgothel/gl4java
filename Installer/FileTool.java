@@ -242,7 +242,8 @@ public class FileTool
     public static final boolean copyFilesFromZip 
     					(MachineCtrl mctrl, 
 					 URL zipURL, String targetDirs[],
-					 TextArea statustextarea
+					 TextArea statustextarea,
+					 ProgressBar bar
 					)
     {
         int i, j;
@@ -309,18 +310,29 @@ public class FileTool
 	}
 
         ZipInputStream zis = null;
+        CountedBufferedInputStream cis = null;
+	int totalLength = 0;
 
         // Open the archive.
         try
         {
-            zis = new ZipInputStream(zipURL.openStream());
+	    URLConnection conn = zipURL.openConnection();
+	    conn.connect();
+	    totalLength = conn.getContentLength();
+	    bar.setMin(0);
+	    bar.setMax(totalLength);
+            cis = new CountedBufferedInputStream(zipURL.openStream());
+            zis = new ZipInputStream(cis);
         }
         catch (Exception e0)
         {
 		if(statustextarea!=null)
+		{
 		 statustextarea.setText
 		    (statustextarea.getText() +
 		     "Cannot open file: " + zipURL + "\n");
+		 statustextarea.setCaretPosition(Integer.MAX_VALUE);
+		}
                 return false;   // Should never happen!
         }
 
@@ -362,9 +374,12 @@ public class FileTool
 				fos[i] = null;
 
 				if(statustextarea!=null)
+				{
 				 statustextarea.setText
 				    (statustextarea.getText() +
 				     "Cannot create file: " + destFiles[i] + "\n");
+				 statustextarea.setCaretPosition(Integer.MAX_VALUE);
+				}
 				ok= false;
 				break; // breaks the beast ...
 			    }
@@ -372,9 +387,12 @@ public class FileTool
 
 		    if(ok)
 			    if(statustextarea!=null)
+			    {
 			      statustextarea.setText
 				(statustextarea.getText() +
 				"Installing source file: " + srcFile );
+			      statustextarea.setCaretPosition(Integer.MAX_VALUE);
+			    }
 
                     try
                     {
@@ -393,19 +411,21 @@ public class FileTool
                                     if (fos[i] != null)
                                         fos[i].write(buf,0,bytesread);
                                 }
-			        if(statustextarea!=null)
-			          statustextarea.setText
-				    (statustextarea.getText() + ".");
+				if(bar!=null)
+					bar.setValue(cis.getReadTotalLen());
                             }
                             catch (Exception e0)
                             {
                                 // We got a write error.
 
 				if(statustextarea!=null)
+				{
                                   statustextarea.setText
                                     (statustextarea.getText() +
                                      "\nCannot write file: " + destFiles[i] +
                                         "\n");
+				  statustextarea.setCaretPosition(Integer.MAX_VALUE);
+				}
 
 				ok = false;
 			        continue; // breaks the beast ...
@@ -416,8 +436,11 @@ public class FileTool
                     { }     // Should never happen!
 
 		    if(statustextarea!=null)
+		    {
 			  statustextarea.setText
 			    (statustextarea.getText() + "\n");
+			  statustextarea.setCaretPosition(Integer.MAX_VALUE);
+		    }
 
 	            for (j = 0; j < i; j++)
 	            {
@@ -457,10 +480,13 @@ public class FileTool
 	if(!ok)
 	{
 		if(statustextarea!=null)
+		{
                   statustextarea.setText
                     (statustextarea.getText() +
                      "INSTALLATION INCOMPLETE !!\n"+
 		     "Please check this log files for reasons !\n");
+		  statustextarea.setCaretPosition(Integer.MAX_VALUE);
+		}
 		return false;
         }
 

@@ -24,7 +24,7 @@ public class GL4JInst
     static private final String gl4javaWWW = 
     			"http://www.jausoft.com/Files/Java/1.1.X/GL4Java/Installer";
 
-    static private final String version = "2.05b";
+    static private final String version = "2.06a";
 
     static private final String cannot_install_title =
         "Cannot install GL4Java";
@@ -40,6 +40,9 @@ public class GL4JInst
     private Button errorokbutton = null;
 
     Button bFinish = null;
+    ProgressBar bar = null;
+    Color jauBackgr = new Color(230, 230, 255);
+    Color jauForegr = new Color(0, 0, 255);
 
         // Misc:
     private Thread myThread = null;
@@ -78,19 +81,33 @@ public class GL4JInst
 
     public void init()
     {
+	setBackground(jauBackgr);
         // Create the status text area.
         setLayout(new BorderLayout());
         statustextarea = new TextArea();
+	statustextarea.setBackground(jauBackgr);
         statustextarea.setEditable(false);
         statustextarea.setLocation(0,0);
-        statustextarea.setSize(getSize().width,getSize().height);
-        add("Center", statustextarea);
+        statustextarea.setSize(getSize().width,getSize().height*2/3);
+	System.out.println("textarea size: "+statustextarea.getSize());
+        add(statustextarea, BorderLayout.CENTER);
+
+	bar = new ProgressBar();
+        bar.setSize(getSize().width,getSize().height*1/10);
+	System.out.println("bar size: "+bar.getSize());
+	bar.setMin(0);
+	bar.setMax(1000);
+	bar.setValue(0);
+	bar.setBackground(jauBackgr);
+	bar.setForeground(jauBackgr.darker().darker());
+        add(bar,BorderLayout.NORTH);
+
 	if(!isAnApplet)
 	{
 		bFinish = new Button("Quit");
 		bFinish.setActionCommand("quit");
 		bFinish.addActionListener(this);
-		add("South", bFinish);
+		add(bFinish, BorderLayout.SOUTH);
 		try {
                   String current_dir = System.getProperty("user.dir");
 		  if(current_dir!=null)
@@ -118,6 +135,7 @@ public class GL4JInst
 		errstr=mctrl.errstr;
 		statustextarea.setText
 		    (statustextarea.getText() + errstr +"\n");
+		statustextarea.setCaretPosition(Integer.MAX_VALUE);
 		return;
 	}
     }
@@ -129,6 +147,7 @@ public class GL4JInst
         {
 		statustextarea.setText
 		    (statustextarea.getText() + mctrl.errstr +"\n");
+		statustextarea.setCaretPosition(Integer.MAX_VALUE);
             return;
         }
 	    mctrl.enablePrivilege();
@@ -136,6 +155,7 @@ public class GL4JInst
 	    {
 		statustextarea.setText
 		    (statustextarea.getText() + mctrl.errstr +"\n");
+		statustextarea.setCaretPosition(Integer.MAX_VALUE);
 	        mctrl.clearError();
 	    }
 	    mctrl.fetchPrivilegedInfos();
@@ -143,6 +163,7 @@ public class GL4JInst
 	    {
 		statustextarea.setText
 		    (statustextarea.getText() + mctrl.errstr +"\n");
+		statustextarea.setCaretPosition(Integer.MAX_VALUE);
 	        mctrl.clearError();
 	    }
             osFileLists = FilelistTool.GetMyInstance(mctrl);
@@ -154,6 +175,7 @@ public class GL4JInst
                      "Java VM vendor is: " + mctrl.jvmVendor + "\n" +
 		     "OS: "+
 		     mctrl.osName+" "+mctrl.osVersion+" "+mctrl.osArch+"\n");
+		statustextarea.setCaretPosition(Integer.MAX_VALUE);
 	    	ok=false;
 	    } else {
 
@@ -170,6 +192,7 @@ public class GL4JInst
 	      {
 		statustextarea.setText
 		    (statustextarea.getText() + mctrl.errstr +"\n");
+		statustextarea.setCaretPosition(Integer.MAX_VALUE);
 	        mctrl.clearError();
 	      }
 	    }
@@ -181,6 +204,7 @@ public class GL4JInst
         {
 		statustextarea.setText
 		    (statustextarea.getText() + mctrl.errstr +"\n");
+		statustextarea.setCaretPosition(Integer.MAX_VALUE);
             return;
         }
         osFileLists = FilelistTool.GetMyInstance(mctrl);
@@ -192,6 +216,7 @@ public class GL4JInst
                      "Java VM vendor is: " + mctrl.jvmVendor + "\n" +
 		     "OS: "+
 		     mctrl.osName+" "+mctrl.osVersion+" "+mctrl.osArch+"\n");
+		statustextarea.setCaretPosition(Integer.MAX_VALUE);
 	    	ok=false;
 	}
         myThread = new Thread(this);
@@ -254,6 +279,7 @@ public class GL4JInst
 	    	"GL4Java Installer Version "+ getAppletInfo()+"\n"+
 		"GL4Java Classes     Version "+FilelistGL4JClasses.version+"\n"+
 		"GL4Java Native-Libs Version "+osFileLists.getVersion()+"\n\n");
+		statustextarea.setCaretPosition(Integer.MAX_VALUE);
 
                 // Check for existence of GL and GLU libraries.
             String fixstring = "";
@@ -340,6 +366,7 @@ public class GL4JInst
                              "the OpenGL library:\n" +
                              "    " + gl_lib + "\n" +
                              "cannot be found." + fixstring);
+		        statustextarea.setCaretPosition(Integer.MAX_VALUE);
                         return;
                     }
                 }
@@ -364,6 +391,7 @@ public class GL4JInst
                              "the GLU library:\n" +
                              "    " + glu_lib + "\n" +
                              "cannot be found." + fixstring);
+			statustextarea.setCaretPosition(Integer.MAX_VALUE);
                         return;
                     }
                 }
@@ -387,6 +415,7 @@ public class GL4JInst
                     (statustextarea.getText() +
                      "Native libraries will be installed to: " + 
 		        mctrl.browser_natives +"\n");
+		statustextarea.setCaretPosition(Integer.MAX_VALUE);
 
                 if (mctrl.isWin32)
                 {
@@ -424,6 +453,7 @@ public class GL4JInst
 			    statustextarea.setText
 			       (statustextarea.getText() +
 			       "Getting File(s): OpenGL for Win95\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 
                             ok = FileTool.copyFileFromDir(mctrl,
     					         gl4javaURL,
@@ -435,6 +465,7 @@ public class GL4JInst
 			    statustextarea.setText
 			       (statustextarea.getText() +
 			       "Install OpenGL for Win95\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 			    try
 			    {
 				sourceURL = new URL(codeBase,opengl_archive);
@@ -445,6 +476,7 @@ public class GL4JInst
 				statustextarea.setText
 				    (statustextarea.getText() +
 				     "File does not exist: "+codeBase+","+opengl_archive+" !\n");
+				statustextarea.setCaretPosition(Integer.MAX_VALUE);
 			    }
 		    }
 		    if(ok)
@@ -452,7 +484,7 @@ public class GL4JInst
 			    targetDirs = new String[1];
 			    targetDirs[0] = mctrl.os_lib_dir;
 			    ok = FileTool.copyFilesFromZip 
-					(mctrl, sourceURL, targetDirs, statustextarea);
+					(mctrl, sourceURL, targetDirs, statustextarea, bar);
 		    }
                 }
         
@@ -467,6 +499,7 @@ public class GL4JInst
 			    statustextarea.setText
 			       (statustextarea.getText() +
 			       "Getting File(s): GL4Java Java Classes\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 
                             ok = FileTool.copyFileFromDir(mctrl,
     					         gl4javaURL,
@@ -478,6 +511,7 @@ public class GL4JInst
 			    statustextarea.setText
 			       (statustextarea.getText() +
 			       "Install GL4Java Java Classes\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 			    try
 			    {
 				sourceURL = new URL(codeBase,gl4j_archive);
@@ -488,6 +522,7 @@ public class GL4JInst
 				statustextarea.setText
 				    (statustextarea.getText() +
 				     "File does not exist: "+codeBase+","+gl4j_archive+" !\n");
+			        statustextarea.setCaretPosition(Integer.MAX_VALUE);
 			    }
 		    }
 		    if(ok)
@@ -495,7 +530,7 @@ public class GL4JInst
 			    targetDirs = new String[1];
 			    targetDirs[0] = mctrl.browser_classes;
 			    ok = FileTool.copyFilesFromZip 
-					(mctrl, sourceURL, targetDirs,statustextarea);
+					(mctrl, sourceURL, targetDirs,statustextarea, bar);
 		    }
 		}
 
@@ -509,6 +544,7 @@ public class GL4JInst
 			    statustextarea.setText
 			       (statustextarea.getText() +
 			       "Getting File(s): GL4Java GLUT-FONT Java Classes\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 
                             ok = FileTool.copyFileFromDir(mctrl,
     					         gl4javaURL,
@@ -520,6 +556,7 @@ public class GL4JInst
 			    statustextarea.setText
 			       (statustextarea.getText() +
 			       "Install GL4Java GLUT-FONT Java Classes\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 			    try
 			    {
 				sourceURL = new URL(codeBase,glutfont_archive);
@@ -530,6 +567,7 @@ public class GL4JInst
 				statustextarea.setText
 				    (statustextarea.getText() +
 				     "File does not exist: "+codeBase+","+glutfont_archive+" !\n");
+			        statustextarea.setCaretPosition(Integer.MAX_VALUE);
 			    }
 		    }
 		    if(ok)
@@ -537,7 +575,7 @@ public class GL4JInst
 			    targetDirs = new String[1];
 			    targetDirs[0] = mctrl.browser_classes;
 			    ok = FileTool.copyFilesFromZip 
-					(mctrl, sourceURL, targetDirs,statustextarea);
+					(mctrl, sourceURL, targetDirs,statustextarea, bar);
 		    }
 		}
 
@@ -550,6 +588,7 @@ public class GL4JInst
 			    statustextarea.setText
 			       (statustextarea.getText() +
 			       "Getting File(s): PNG Java Classes\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 
                             ok = FileTool.copyFileFromDir(mctrl,
     					         gl4javaURL,
@@ -561,6 +600,7 @@ public class GL4JInst
 			    statustextarea.setText
 			       (statustextarea.getText() +
 			       "Install PNG Java Classes\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 			    try
 			    {
 				sourceURL = new URL(codeBase,png_archive);
@@ -571,6 +611,7 @@ public class GL4JInst
 				statustextarea.setText
 				    (statustextarea.getText() +
 				     "File does not exist: "+codeBase+","+png_archive+" !\n");
+			  	statustextarea.setCaretPosition(Integer.MAX_VALUE);
 			    }
 		    }
 		    if(ok)
@@ -578,7 +619,7 @@ public class GL4JInst
 			    targetDirs = new String[1];
 			    targetDirs[0] = mctrl.browser_classes;
 			    ok = FileTool.copyFilesFromZip 
-					(mctrl, sourceURL, targetDirs,statustextarea);
+					(mctrl, sourceURL, targetDirs,statustextarea, bar);
 		    }
 		}
 
@@ -591,6 +632,7 @@ public class GL4JInst
 			    statustextarea.setText
 			       (statustextarea.getText() +
 			       "Getting File(s): GL4Java Native Libs\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 
                             ok = FileTool.copyFileFromDir(mctrl,
     					         gl4javaURL,
@@ -602,6 +644,7 @@ public class GL4JInst
 			    statustextarea.setText
 			       (statustextarea.getText() +
 			       "Install GL4Java Native Libs\n");
+			    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 			    try
 			    {
 				sourceURL = new URL(codeBase,archive);
@@ -612,6 +655,7 @@ public class GL4JInst
 				statustextarea.setText
 				    (statustextarea.getText() +
 				     "File does not exist: "+codeBase+","+archive+" !\n");
+				statustextarea.setCaretPosition(Integer.MAX_VALUE);
 			    }
 		    }
 		    if(ok)
@@ -619,7 +663,7 @@ public class GL4JInst
 			    targetDirs = new String[1];
 			    targetDirs[0] = mctrl.browser_natives;
 			    ok = FileTool.copyFilesFromZip 
-					(mctrl, sourceURL, targetDirs,statustextarea);
+					(mctrl, sourceURL, targetDirs,statustextarea, bar);
 		    }
 		}
 	} else {
@@ -633,11 +677,13 @@ public class GL4JInst
                  "Operating system: " + mctrl.osName + "\n" +
                  "Java VM vendor..: " + mctrl.jvmVendor + "\n" +
                  gl4java_not_installed_string);
+	    statustextarea.setCaretPosition(Integer.MAX_VALUE);
         }
 
         statustextarea.setText
             (statustextarea.getText() +
              (ok==false ? "*** INSTALLATION FAILED ***\n" : "done.\n"));
+	statustextarea.setCaretPosition(Integer.MAX_VALUE);
 
         if (ok)
         {
@@ -651,6 +697,7 @@ public class GL4JInst
                  "\n" +
                  "You should now be able to run 3D web\n" +
                  "applets which use GL4Java.");
+	    statustextarea.setCaretPosition(Integer.MAX_VALUE);
 	    if(isAnApplet)
 	    	showStatus("Installation complete! Please restart your browser!");
         } else if(isAnApplet)

@@ -23,11 +23,11 @@ cp ~/.netscape/cert7.db .
 
 rm -f *.class GL4JInst_ns.jar
 javac -classpath ".;..\\capsapi_classes.zip" *.java
-rm -rf META-INF
 
 . versionundef.sh
 
-signtool -d . -e .class -k GL4JInst204 -Z GL4JInst_ns.jar -c9 --norecurse .
+rm -rf META-INF
+signtool -d . -e .class -k GL4JInst205 -Z GL4JInst_ns.jar -c9 --norecurse .
 rm -rf META-INF
 
-#rm -f key3.db cert7.db *.class
+rm -f key3.db cert7.db *.class

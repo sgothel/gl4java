@@ -25,21 +25,9 @@ public class FilelistTool
 		      mctrl.osArch.indexOf("i386")>=0
 		     )
 		   {
-			System.out.println("GLVendor: "+mctrl.glVendor);
-			if(mctrl.glVendor!=null)
-			{
-			   if(mctrl.glVendor.indexOf("generic")>=0)
-				return new FilelistLinuxI386GlibcXF86();
-			}
 			return new FilelistLinuxI386GlibcXF86();
 		    } else if(mctrl.osArch.indexOf("ppc")>=0)
 		    {
-			System.out.println("GLVendor: "+mctrl.glVendor);
-			if(mctrl.glVendor!=null)
-			{
-			   if(mctrl.glVendor.indexOf("generic")>=0)
-				return new FilelistLinuxPPCGlibcXF86();
-			}
 			return new FilelistLinuxPPCGlibcXF86();
 		    }
 		} else if(mctrl.unixFlavor==mctrl.unixFlavor_Solaris)
