@@ -95,7 +95,7 @@ jawt_unload ()
   if ( libHandleJAWT != NULL )
   {
 	  JAWT_GetAWT_fn = NULL;
-	  dlClose(libHandleJAWT);
+	  dlclose(libHandleJAWT);
 	  libHandleJAWT = NULL;
   }
 

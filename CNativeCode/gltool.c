@@ -40,7 +40,6 @@ static int _glLibsLoaded = 0;
 #endif
 
 #ifdef _X11_
-  static void *libHandleGLX=0;
   static void *libHandleGL=0;
   static void *libHandleGLU=0;
 #endif
@@ -165,11 +164,6 @@ int LIBAPIENTRY unloadGLLibrary ()
 	      dlclose (libHandleGLU);
 	      libHandleGLU = NULL;
       }
-      if(libHandleGLX!=NULL)
-      {
-	      dlclose (libHandleGLX);
-	      libHandleGLX = NULL;
-      }
 #endif
 
 #ifdef _MAC_OS9_
@@ -254,14 +248,6 @@ int LIBAPIENTRY loadGLLibrary (const char * libGLName, const char * libGLUName,
       printf ("GLERROR: cannot access GLU library %s\n", libGLUName);
       fflush (NULL);
       return 0;
-  }
-
-  libHandleGLX = dlopen ("libglx.so", RTLD_LAZY | RTLD_GLOBAL);
-  if (libHandleGLX == NULL)
-  {
-      if(verbose)
-	      printf ("GLINFO: cannot access GLX library libglx.so directly ...\n");
-      fflush (NULL);
   }
 
 #endif
@@ -397,43 +383,6 @@ void * LIBAPIENTRY getGLProcAddressHelper
 	printf
 	  ("GLINFO: cannot find glXGetProcAddress* in OpenGL library %s\n", libGLName);
 	fflush (NULL);
-	if (libHandleGLX != NULL)
-	{
-	  disp__glXGetProcAddress = dlsym (libHandleGLX, "glXGetProcAddressARB");
-
-	  if (disp__glXGetProcAddress != NULL && verbose)
-	  {
-	    printf ("GLINFO: found glXGetProcAddressARB in libglx.so\n");
-	    fflush (NULL);
-	  }
-
-	  if (disp__glXGetProcAddress == NULL)
-	  {
-	    disp__glXGetProcAddress = dlsym (libHandleGLX, "glXGetProcAddressEXT");
-
-	    if (disp__glXGetProcAddress != NULL && verbose)
-	    {
-	      printf ("GLINFO: found glXGetProcAddressEXT in libglx.so\n");
-	      fflush (NULL);
-	    }
-	  }
-
-	  if (disp__glXGetProcAddress == NULL)
-	  {
-	    disp__glXGetProcAddress = dlsym (libHandleGLX, "glXGetProcAddress");
-
-	    if (disp__glXGetProcAddress != NULL && verbose)
-	    {
-	      printf ("GLINFO: found glXGetProcAddress in libglx.so\n");
-	      fflush (NULL);
-	    }
-	  }
-	  if (disp__glXGetProcAddress == NULL)
-	  {
-	    printf ("GLINFO: cannot find glXGetProcAddress* in GLX library libglx.so\n");
-	    fflush (NULL);
-	  }
-	}
       }
   }
   __firstAccess = 0;
