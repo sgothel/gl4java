@@ -1,0 +1,44 @@
+/*
+ * Leo Chan -- 1995
+ * lchan@cgl.uwaterloo.ca
+ *
+ * This mammoth C file takes care of all the native implementation for the
+ * bulk of OpenGL commands
+ * ---------------
+ *
+ * Sven Goethel
+ *
+ * September 1997
+ */
+
+/* 
+ * need to include the JAVA internal header files for macros and function
+ * prototypes required to maipulated JAVA data structures and functions
+ *
+ * StubPreamble.h includes the structure and macro definitions neede to
+ * convert JAVA data structures into C data structures.
+ *
+ */
+
+#include "OpenGL_misc.h"
+
+/*
+ * the next thing to include are special headers that were created by
+ * JAVAH.  They include the C structure definitions for the JAVA classes
+ */
+#include "gl4java_GLFunc14JauJNI.h"
+
+/*--------------------------------------------------------------------------
+ * here on in is just regular apple pie C
+ */
+
+#ifndef LIBAPIENTRY
+	#define LIBAPIENTRY
+#endif
+#ifndef LIBAPI
+	#define LIBAPI
+#endif
+
+#ifndef CALLBACK
+	#define CALLBACK
+#endif

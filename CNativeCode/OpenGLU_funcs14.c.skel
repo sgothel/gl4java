@@ -1,0 +1,29 @@
+/*
+ * Leo Chan -- 1995
+ *
+ * This C file takes care of all the native implementation for the
+ * OpenGL utility commands
+ * ---------------
+ *
+ * Sven Goethel
+ *
+ * September 1997
+ */
+
+
+/*--------------------------------------------------------------------------
+ * here on in is just regular apple pie C
+ */
+
+#include "OpenGL_misc.h"
+
+#include "gl4java_GLUFunc14JauJNI.h"
+
+#include "GLCallbackHelperJNI.h"
+#include "GLUCallbackJNI.h"
+#include "jnitools.h"
+
+/**
+ * herein lies the native JAVA methods for the OpenGL functions.  
+ */
+
