@@ -28,6 +28,8 @@ public class FilelistTool
 		{
 		    if(mctrl.isOsArchSPARC)
 			return new FilelistSUNSolaris26Sparc();
+		    else if(mctrl.isOsArchX86)
+			return new FilelistSUNSolaris26I386();
 		} else if(mctrl.unixFlavor==mctrl.unixFlavor_Irix)
 		{
 		    if(mctrl.isOsArchMIPS)

@@ -1,6 +1,6 @@
 MAJV=2
 MINV=8
-BUGV=1
+BUGV=2
 RELV=0
 
 echo creating installer for version $MAJV.$MINV.$BUGV.$RELV !

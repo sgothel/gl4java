@@ -104,7 +104,7 @@ CNATIVEDIR  		= CNativeCode
 
 LIBMAJOR		= 2
 LIBMINOR		= 8
-LIBBUGFIX		= 1
+LIBBUGFIX		= 2
 RELEASE                 = 0
 
 #
@@ -736,7 +736,7 @@ cleantemp:
 	cd demos ; make clean
 
 cleanhtmldoc:
-	rm -rf docs/doxygens/html
+	rm -rf doxygens/html
 	rm -rf docs/html
 	rm -f docs/*.ps
 	rm -f docs/*.pdf
@@ -772,7 +772,7 @@ makeJar:
 # Document Section
 #
 
-htmldoc: cleanhtmldoc javadoc doxygendoc latexdoc 
+htmldoc: cleanhtmldoc javadoc latexdoc 
 	cp -Rf docs-src/images docs/html/.
 
 htmldocw32: latexdoc javadocw32

@@ -12,12 +12,16 @@ This CHANGES starts with version 2.00 !
 
 GL4Java Installer 2.00 is based upon version 1.05, by Ron Cemer !
 
-Last Changes: 6th Dezember 2001 (Version 2.07)
+Last Changes: Dezember 11, 2001 (Version 2.82)
 
 -----------------
 TOP  = new
 DOWN = old
 -----------------
+
+Dezember 11, 2001 (Version 2.82):
+	o Installer added SunOS intel x86 support (jau)
+	o little bugfixes (jau)
 
 Dezember 6, 2001 (Version 2.07):
 

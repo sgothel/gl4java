@@ -627,6 +627,26 @@ public class GLJPanel extends JPanel
 	    	    size=super.getSize();
 		    gr.drawImage(offImage, 0, 0, size.width, size.height, this);
 	    }
+	    /**
+	     *
+	     * This one is done by Toshiyuki
+	     * It solves the problem of the upside-down 
+	     * problem, but i am affraid it is too slow ..
+	     *
+		    Graphics2D gr2d = (Graphics2D) gr;
+		     if(!customOffScrnSize) {
+			 gr2d.drawImage(offImage, 
+			  new AffineTransform(1, 0, 0, -1, 0, offImage.getHeight()),
+			  this);
+		     }
+		     else {
+		      size=super.getSize();
+		      gr2d.drawImage(offImage, 
+		       new AffineTransform(1, 0, 0, -1, 0, offImage.getHeight()), 
+		       this);
+		     }
+	     *
+	     */
 	     
 	    _f_dur_total = System.currentTimeMillis()-_s;
 	    if(GLContext.gljClassDebug)

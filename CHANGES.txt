@@ -1,12 +1,24 @@
 \begin{verbatim}
 
-Last Changes: 6th Dec 2001 (Version 2.8.1 - ReleaseCandidate 0 (2.8.1.0) )
+Last Changes: 11th Dec  2001 (Version 2.8.2 - ReleaseCandidate 1 - 2.8.2.0)
 Started:      July 1997 (Version 0)
 
 -----------------
 TOP  = NEW
 DOWN = OLD
 -----------------
+
+kbr = Kenneth B. Russel
+jau = Sven Goethel
+
+11th Dec  2001 (Version 2.8.2 - ReleaseCandidate 1 - 2.8.2.0)
+	o Added dynamic binding/loading of jawt (kbr)
+
+	o little bugfixes with Installer (jau)
+
+	o Installer added SunOS intel x86 support (jau)
+
+	o added SunOS binaries (kbr)
 
 6th Dec  2001 (Version 2.8.1 - ReleaseCandidate 0 - 2.8.1.0)
 

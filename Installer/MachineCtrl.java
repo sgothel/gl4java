@@ -665,6 +665,7 @@ public class MachineCtrl
 	            if(DEBUG)
 			System.out.println("> added java2 lib/ext classpath ...");
 		}
+
                 if (classpath != null)
                 {
                     while ( (classpath != null) && (classpath.length() > 0) )
@@ -722,31 +723,36 @@ public class MachineCtrl
 
     				    FileTool.MkdirWithParents(this, thisfile);
 
-                                    if (isUnix)
-                                    {
-                                        switch (unixFlavor)
-                                        {
-                                            case unixFlavor_Linux:
-                                                os_natives = new String("/usr/lib");
-                                                break;
-                                            case unixFlavor_Solaris:
-                                                os_natives = new String("/usr/lib");
-                                                break;
-                                            case unixFlavor_Aix:
-                                                os_natives = new String("/usr/lib");
-                                                break;
-                                            case unixFlavor_Irix:
-                                                os_natives = new String("/usr/lib");
-                                                break;
-                                        }
-                                    }
-                                    else if(os_natives==null||os_natives.length()==0)
-                                        os_natives = thispath.substring(0,thispath.length()-7) + "bin";
                                     break;
                                 }
                             }
                         }
                     }
+
+		    if(os_natives==null||os_natives.length()==0)
+		    {
+			    if (isUnix)
+			    {
+				switch (unixFlavor)
+				{
+				    case unixFlavor_Linux:
+					os_natives = new String("/usr/lib");
+					break;
+				    case unixFlavor_Solaris:
+					os_natives = new String("/usr/lib");
+					break;
+				    case unixFlavor_Aix:
+					os_natives = new String("/usr/lib");
+					break;
+				    case unixFlavor_Irix:
+					os_natives = new String("/usr/lib");
+					break;
+				}
+			    } else {
+			   	os_natives = jvmHome+"/bin";
+			    }
+		    }
+
 		    if(jvmHome!=null && jvmHome!="null")
 		    {
 		        if(isWin32)
@@ -823,7 +829,7 @@ public class MachineCtrl
             {
             }
 	    */
-        }   // if (isNetscapeJvm)
+        }   // if (isNetscapeJvm || isSunJvm)
 
 	return true;
     }
@@ -1137,6 +1143,9 @@ public class MachineCtrl
 			tf_browser_natives.requestFocus();
 			tf_browser_natives.getToolkit().beep();
 		}
+	    } else {
+		browser_natives = null;
+		System.out.println("Set Browser-Native-Dir to: null");
 	    }
 	} catch (Exception ex) {
 			ex.printStackTrace();
@@ -1181,6 +1190,9 @@ public class MachineCtrl
 			tf_os_natives.requestFocus();
 			tf_os_natives.getToolkit().beep();
 		}
+	    } else {
+		os_natives = null;
+		System.out.println("Set OS-Native-Dir to: null");
 	    }
 	} catch (Exception ex) {
 			ex.printStackTrace();
@@ -1228,6 +1240,9 @@ public class MachineCtrl
 	{
 	    checkTextFields();
 	} else if(src.equals(tf_browser_natives)) 
+	{
+	    checkTextFields();
+	} else if(src.equals(tf_os_natives)) 
 	{
 	    checkTextFields();
 	} else if(src.equals(buttonFileClasses)) 
