@@ -1,11 +1,37 @@
 \begin{verbatim}
 
-WHERE DO YOU GET the actual version of GL4Java ?
+WHERE DO YOU GET the current version of GL4Java ?
 ================================================
 
-  Unix, Windows, ...
-  ===================
-	http://jausoft.goethel.de/Files/Java/1.1.X/GL4Java/
+  Installer
+  ==========
+  	http://www.jausoft.com/Files/Java/1.1.X/GL4Java/Installer
+
+	If you use the JRE >= 1.3 plugin 
+	within you Web-Browser or appletviewer to:
+	
+		- Install GL4Java
+	
+		- Run the demo's from the GL4Java Website
+	
+	you must add privileges to your 
+	
+		jre/lib/security/java.policy
+	
+	file.
+	
+	Here are the privileges for this purpose:
+	
+		http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/gl4java.policy
+	
+	or from this directory:
+	
+		demos/gl4java.policy
+	
+
+  Manually for Unix, Windows, ...
+  ================================
+	http://www.jausoft.com/Files/Java/1.1.X/GL4Java/
 
 	binpkg/png-1.0a-jar.zip	      	               (the PNG-JAR file)
 	binpkg/gl4javaX.Y.Z.R-jar.zip	               (the JAR file)
@@ -33,7 +59,7 @@ Just download the file 'GL4JavaX.Y.Z-doc.tgz' and un-gzip and un-tar it
 (Windows users may use WinZip here :-)
 
 Now you can read the HTML-Documentation with:
-	<YourHtmlBrowser> GL4Java/docs/html/GL4Java.html
+	<YourHtmlBrowser> GL4Java/docs/index.html
 
 Or you can read the Postscript version with:
 	<YourPostScriptViewer> GL4Java/docs/GL4Java.ps
@@ -93,8 +119,8 @@ YOU MUST ALLREADY HAVE THE FOLLOWING INSTALLED:
               OR WinZip (can extract tar-files ;-)
 
 
-Installation procedure for UNIX/WINDOWs BINARY DISTRIBUTION: 
-============================================================
+Manual Installation procedure for UNIX/WINDOWs BINARY DISTRIBUTION: 
+===================================================================
 
         UNICE and WINDOWs USERS JAVA ARCHIVE
         =====================================
@@ -142,13 +168,14 @@ o download the native libraries, which is zipped in
 o change to a directory which is within your LD_LIBRARY_PATH
   environment variable !
   (Look at 'echo $LD_LIBRARY_PATH').
+  Usual /usr/lib !
 
 o unpack the downloaded libGL4JavaX.Y.Z.R-<UNIX-TYPE>.tar.gz,
   this will result some files called libGL4Java*.so* !
   If you want to copy the extracted library files,
   be sure to use 'cp -a' to keep the symbolic links alive !
 
-o If you use JAVA2, JAVA2-Plug-In or JRE - copy the libs to :
+o If you use JAVA2, JAVA2-Plug-In or JRE - you _can_ copy the libs to :
 		  ./jre/lib/<machine>/.
 	e.g. linux:
 		  ./jre/lib/i386/.
@@ -180,7 +207,7 @@ o Then copy the libraries
 
   You can also copy the files (better) to /java2/jre/bin if using java2 !
 
-o If you use JAVA2, JAVA2-Plug-In or JRE - copy the libs also to :
+o If you use JAVA2, JAVA2-Plug-In or JRE - you _can_ copy the libs also to :
 		  ./jre/bin/.
 
 o If you want to use Netscape 4.5 or above,

@@ -98,7 +98,7 @@ CNATIVEDIR  		= CNativeCode
 LIBMAJOR		= 2
 LIBMINOR		= 6
 LIBBUGFIX		= 0
-RELEASE                 = 0
+RELEASE                 = 1
 
 #
 # The demo release number
@@ -754,14 +754,12 @@ cleannative:
 clean: cleannative
 	rm -f $(CHEADERDIR)/* errors gl4java/*~ CNativeCode/*~ \
 	      $(FILE.gen1.h) $(FILE.gen2.h) \
-	      $(FILE.gen3.h) $(FILE.gen4.h) $(FILE.gen5.h) \
-	      gl4java/GLContext.java 
+	      $(FILE.gen3.h) $(FILE.gen4.h) $(FILE.gen5.h)
 	rm -f `find . -name \*.class`
 	cd demos ; make clean
 
 cleanhtmldoc:
-	rm -f docs/html/*.html docs/html/*.css docs/html/*.gif 
-	rm -f docs/html/gl4java
+	rm -rf docs/html
 	rm -f docs/*.ps
 
 cleanall: clean cleanhtmldoc
@@ -795,12 +793,12 @@ $(DEST_CLASSES_DIR)/gl4java.jar: $(FILES.class)
 makeJar:
 	$(MK_GL4JAVA_JAR)
 
-htmldoc: latexdoc javadoc
+htmldoc: cleanhtmldoc javadoc latexdoc 
 	cp -Rf docs-src/images docs/html/.
 
 htmldocw32: latexdoc javadocw32
 
-latexdoc: cleanhtmldoc
+latexdoc: 
 	cd docs-src; UpdateHtml
 
 javadoc:
@@ -934,13 +932,13 @@ archivclean: pbinpkg
 	make clean
 
 archivdemos:
-	rm -f GL4Java/archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-demosV$(DEMORELEASE).zip
+	rm -f archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-demosV$(DEMORELEASE).zip
 	cd ..; \
 	zip -9r GL4Java/archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-demosV$(DEMORELEASE).zip \
 		GL4Java/*.txt GL4Java/demos.html GL4Java/demos
 	
 archivsrc: archivclean
-	rm -f GL4Java/archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-src.*
+	rm -f archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-src.*
 	cd ..; \
 	tar cf GL4Java/archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-src.tar \
 		GL4Java/*.txt GL4Java/symbols.mak.*  GL4Java/makefile  \
@@ -959,8 +957,8 @@ archivsrc: archivclean
 	        $(GZIP) -9 GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-src.tar
 	
 
-archivdoc: archivclean
-	rm -f GL4Java/archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-doc.zip
+archivdoc:
+	rm -f archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-doc.zip
 	cd ..; \
 	zip -9r GL4Java/archive/GL4Java$(LIBMAJOR).$(LIBMINOR).$(LIBBUGFIX).$(RELEASE)-doc.zip \
 		GL4Java/docs GL4Java/*.txt

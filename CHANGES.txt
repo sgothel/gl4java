@@ -39,7 +39,7 @@ DOWN = OLD
 	  GraphicsConfiguration is currently missing ...
 
 	o Introducing the new GLDrawable/GLEventListener model
-	  initiated by Kenneth B Russel.
+	  initiated by Kenneth B Russell.
 	  This includes usage of new Factories, see above !
 
 	  Have a look at the gl4java.drawable package !
@@ -64,7 +64,7 @@ DOWN = OLD
 
 	  This feature is used within the "GL4JavaJauGljJNI13"
 	  native library, which is used dynamically if JVM >= 1.3 !
-	  Many thanxs to Kenneth B. Russel for motivations: 
+	  Many thanxs to Kenneth B. Russell for motivations: 
 	  	JDK 1.4 will no more support the old 
 	  	illegal style of fetching the native window handle !
 

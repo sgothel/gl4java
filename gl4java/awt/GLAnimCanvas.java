@@ -557,7 +557,6 @@ public class GLAnimCanvas extends GLCanvas
         private long    fps_start=0;      // milli-secs
         private long    fps_frames =0;    // number of frames
         private boolean fps_isCounting =true; // shall i count
-        private boolean verboseFps =false; // shall i be verbose
 
         /**
          * resets the Fps Counter
@@ -592,7 +591,7 @@ public class GLAnimCanvas extends GLCanvas
          * run, if the thread is suspended via setSuspended(true)
          * <p>
          * All data's are print out on System.out 
-         * if verboseFps is set !
+         * if GLContext.gljClassDebug is set !
          *
          * @see gl4java.awt.GLAnimCanvas#run
          * @see gl4java.awt.GLAnimCanvas#setSuspended
@@ -613,7 +612,7 @@ public class GLAnimCanvas extends GLCanvas
                 fps  = ((double)fps_frames)/timed ;     
                 fps_isCounting=false;
            }
-           if(verboseFps)
+           if(GLContext.gljClassDebug)
            {
                 System.out.println("\nfps    = "+String.valueOf(fps));
                 System.out.println("time   = "+String.valueOf(fps_duration)+" ms");
@@ -627,7 +626,7 @@ public class GLAnimCanvas extends GLCanvas
          * sets if the Fps data shall be printed to System.out
          * while stopFpsCounter is called !
          * <p>
-         * verboseFps is set to true by default !
+         * GLContext.gljClassDebug is set to true by default !
          *
          * @see gl4java.awt.GLAnimCanvas#run
          * @see gl4java.awt.GLAnimCanvas#setSuspended
@@ -637,10 +636,14 @@ public class GLAnimCanvas extends GLCanvas
          * @see gl4java.awt.GLAnimCanvas#getFpsDuration
          * @see gl4java.awt.GLAnimCanvas#getFpsFrames
          * @see gl4java.awt.GLAnimCanvas#setVerboseFps
+	 *
+	 * @deprecated Now GLContext.gljClassDebug is used !
+	 * calculated, no pre-sync needed.
+         * @see gl4java.GLContext#gljClassDebug
          */
         public void setVerboseFps(boolean v)
         {
-                verboseFps=v;
+		System.out.println("GLAnimCanvas.setVerboseFps(boolean) is deprecated and without functionality. Please set gl4java.GLContext.gljClassDebug instead for verbose output !");
         }
 
         /**
@@ -715,7 +718,7 @@ public class GLAnimCanvas extends GLCanvas
         {
 		FramesPerSec=fps;
 	        mSecPerFrame = (long) ( (1.0/FramesPerSec) * 1000.0 ) ;
-                if(verboseFps)
+                if(GLContext.gljClassDebug)
                 {
 			System.out.println("\nset fps    := "+
 			                   String.valueOf(fps)+

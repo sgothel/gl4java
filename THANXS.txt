@@ -34,8 +34,10 @@ I want to THANK :
 	o Pontus Lidman (Mathcore) for adding
 	  GLUT Font support for GL4Java !
 
-	o www.desys.com for paying me a fee,
-	  to support offscreen rendering and swing integration !
+	o DESYS, www.desys.com, for: 
+		- Paying me a fee, 
+		  to support offscreen rendering and swing integration !
+		- Being most patient, while I work for this product !
 
 	o Max Gilead, for maintaining the FAQ and answering so many
 	  questions in the mailinglist, and ...
@@ -47,6 +49,13 @@ I want to THANK :
 	o E3Futura & TeatreSoft for inviting me to the 
 	  www.campus-party.org (2k)
 	  and makes my appearance to it possible.
+
+	o Moises Ferrer Ramirez, for creating the 
+	  Logo for OpenGL[tm] for Java[TM]
+
+	o Kenneth B. Russell, for motivating and participate
+	      - Implementing JDK's 1.3 JAWT feature
+	      - Implementing the new GLDrawable/GLEventListener model
 
 	o And all the many others, who are not named here ...
 

@@ -75,6 +75,7 @@ public class SimpleGLAnimApplet1 extends Applet
 	buttonReStart.addMouseListener(this);
 	buttonFps.addMouseListener(this);
         canvas.addMouseListener(this);
+	textFps.addActionListener(this);
 
 	canvas.setVisible(true);
 	canvas.repaint();

@@ -13,12 +13,35 @@ The Web-Installer works for:
 	- MS-IE Explorer 
 	- JDK-Appletviewer 
 	- Hotjava-Browser
+	- JRE >= 1.3 Plug-In
 
-	For the two last ones, 
+	For the three last ones, 
 	make sure, if you use Java2, 
 	you have to edit the jre/lib/security/java.policy file
 	- or you should allow your JDK 1.1.X appletviewer to have
 	full system access !
+
+	If you use the JRE >= 1.3 plugin 
+	within you Web-Browser or appletviewer to:
+	
+		- Install GL4Java
+	
+		- Run the demo's from the GL4Java Website
+	
+	you must add privileges to your 
+	
+		jre/lib/security/java.policy
+	
+	file.
+	
+	Here are the privileges for this purpose:
+	
+		http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/gl4java.policy
+	
+	or from this directory:
+	
+		demos/gl4java.policy
+	
 
 Sven Goethel !
 

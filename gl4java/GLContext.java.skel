@@ -883,8 +883,10 @@ public class GLContext extends Object
 	}
     }
 		
+    public static String getJVMVersion() { return jvmVersion; }
     public static int getJVMVersionMajor() { return jvmVersionMajor; }
     public static int getJVMVersionMinor() { return jvmVersionMinor; }
+
     public static String getJVMVendor() { return jvmVendor; }
     public static boolean isNetscapeJVM() { return isNetscapeJvm; }
     public static boolean isMicrosoftJVM() { return isMicrosoftJvm; }
@@ -2458,9 +2460,9 @@ public class GLContext extends Object
       if(libsLoaded==false || gl==null || glu==null || !gljIsInit())
       	return null;
 
-      String jvmstr = "Java Virtual Machine: Version "+ getJVMVersionMajor()+
-	             "." + getJVMVersionMinor() +", Vendor: "+ 
-                     getJVMVendor() + "\n" ;
+      String jvmstr = "Java Virtual Machine: Version "+ getJVMVersion() +
+                     " ("+getJVMVersionMajor()+"."+getJVMVersionMinor()+")"+
+		     ", Vendor: "+ getJVMVendor() + "\n" ;
 
       String info1= "GL4Java - LGPL-Version"                       + "\n" +
       	            "-------------------------------------------------\n" +

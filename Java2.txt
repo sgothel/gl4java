@@ -1,9 +1,50 @@
 \begin{verbatim}
 
-With GL4Java Version 2.0.0 Release 1, 
+Since GL4Java Version 2.0.0 Release 1, 
 GL4Java do supports the Java2 plattform !
 
 Please read INSTALL.txt first !
+
+You may have many Java2 installation's, e.g.:
+
+	under unix, e.g.:
+
+	/jdk1.3
+	/usr/lib/jre1.3
+
+	or under window, e.g.:
+
+	c:/jdk1.3
+	c:/Programme/JavaSoft/JRE
+
+If you want to use both java installations,
+you have to install it in both directories !
+
+E.g. the first one is for you development usage,
+where the secound one is for your java jre 1.3 plugin usage
+within your web browser.
+
+If you use the JRE >= 1.3 plugin within you Web-Browser or appletviewer to:
+
+	- Install GL4Java
+
+	- Run the demo's from the GL4Java Website
+
+you must add privileges to your 
+
+	jre/lib/security/java.policy
+
+file.
+
+Here are the privileges for this purpose:
+
+	http://www.jausoft.com/Files/Java/1.1.X/GL4Java/demos/gl4java.policy
+
+or from this directory:
+
+	demos/gl4java.policy
+
+
 
 Prerequisites
 ==============
@@ -14,26 +55,48 @@ Be sure to have:
 		  ./jre/lib/ext/gl4java-glutfonts.jar : for Java2 or JRE
 	          ./jre/lib/ext/png.jar          : for Java2 or JRE 
 
-		  For Windows32: Java2-Plug-In, Java2, JRE
+		  For Windows32: Java2-Plug-In, Java2, JRE (prefered)
 
-			  ./jre/bin/GL4JavaJauGljJNI.dll
+			  c:/windows/system/GL4JavaGljMSJDirect.dll
+			  c:/windows/system/GL4JavaJauGLJNI.dll
+			  c:/windows/system/GL4JavaJauGLJNI12.dll
+			  c:/windows/system/GL4JavaJauGLUJNI.dll
+			  c:/windows/system/GL4JavaJauGLUJNI12.dll
+			  c:/windows/system/GL4JavaJauGljJNI.dll
+			  c:/windows/system/GL4JavaJauGljJNI12.dll
+			  c:/windows/system/GL4JavaJauGljJNI13.dll
+
+		  or 
+
+			  ./jre/bin/GL4JavaGljMSJDirect.dll
 			  ./jre/bin/GL4JavaJauGLJNI.dll
+			  ./jre/bin/GL4JavaJauGLJNI12.dll
 			  ./jre/bin/GL4JavaJauGLUJNI.dll
+			  ./jre/bin/GL4JavaJauGLUJNI12.dll
+			  ./jre/bin/GL4JavaJauGljJNI.dll
+			  ./jre/bin/GL4JavaJauGljJNI12.dll
+			  ./jre/bin/GL4JavaJauGljJNI13.dll
 
-		  For Unix: Java2-Plug-In, Java2, JRE
+		  For Unix: Java2-Plug-In, Java2, JRE (prefered)
 
-			  ./jre/lib/<machine>/libGL4JavaJauGljJNI.so*
-			  ./jre/lib/<machine>/libGL4JavaJauGLJNI.so*
-			  ./jre/lib/<machine>/libGL4JavaJauGLUJNI.so*
+			  /usr/lib/libGL4JavaJauGLJNI12.so*
+			  /usr/lib/libGL4JavaJauGLUJNI12.so*
+			  /usr/lib/libGL4JavaJauGljJNI12.so*
+			  /usr/lib/libGL4JavaJauGljJNI13.so*
+
+		  or
+
+			  ./jre/lib/<machine>/libGL4JavaJauGLJNI12.so*
+			  ./jre/lib/<machine>/libGL4JavaJauGLUJNI12.so*
+			  ./jre/lib/<machine>/libGL4JavaJauGljJNI12.so*
+			  ./jre/lib/<machine>/libGL4JavaJauGljJNI13.so*
 
 			  * => all symbolic links and the file itself,
 			       use "cp -a" to keep the symbolic links alive !
 
-			  e.g. linux:
-
-				  ./jre/lib/i386/green-threads/.
-
 			  Be sure to copy the linked lib-files also !
+
+			  After installation you may do a "ldconfig" call as root !
 
 
 Java2-Plug-In, Appletviewer, Security:

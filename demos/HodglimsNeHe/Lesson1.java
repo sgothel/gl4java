@@ -83,6 +83,46 @@ public class Lesson1 extends Applet
     }
     
 
+	public static void main( String args[] ) {
+		Lesson1 applet = 
+		         new Lesson1();
+
+		Frame f = new Frame("Lesson1");
+
+		GLContext.gljNativeDebug = true;
+		GLContext.gljThreadDebug = false;
+		GLContext.gljClassDebug = true;
+
+		f.addWindowListener( new WindowAdapter()
+				{
+					public void windowClosed(WindowEvent e)
+					{
+						System.exit(0);
+					}
+					public void windowClosing(WindowEvent e)
+					{
+						windowClosed(e);
+					}
+				}
+			);
+
+		f.setLayout(new BorderLayout());
+		f.add("Center", applet);
+		applet.setSize(500,300);
+		applet.init();
+		applet.start();
+		Dimension ps = applet.getPreferredSize();
+		f.setBounds(-100,-100,99,99);
+		f.setVisible(true);
+		f.setVisible(false);
+		f.setVisible(true);
+		Insets i = f.getInsets();
+		f.setBounds(0,0,
+			    ps.width+i.left+i.right, 
+		            ps.height+i.top+i.bottom);
+		f.setVisible(true);
+	}
+	
 
     private class renderCanvas extends GLAnimCanvas
     	implements KeyListener, MouseListener
