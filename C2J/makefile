@@ -51,8 +51,8 @@ htmldoc: C2J.html
 #
 # for java class gl4java.GLEnum
 #
-gl-enum-auto.java: gl-enum-auto.orig C2J.class
-	java C2J jnijava gl4java_GLEnum gl-enum-auto.orig > gl-enum-auto.java
+gl-enum-auto.java: gl-enum-auto.orig.h C2J.class
+	java C2J jnijava gl4java_GLEnum gl-enum-auto.orig.h > gl-enum-auto.java
 
 ../gl4java/GLEnum.java: warning.skel			     \
 			gl-enum-auto.java 		     \
@@ -66,8 +66,8 @@ gl-enum-auto.java: gl-enum-auto.orig C2J.class
 #
 # for java class gl4java.GLUEnum
 #
-glu-enum-auto.java: glu-enum-auto.orig C2J.class
-	java C2J jnijava gl4java_GLUEnum glu-enum-auto.orig > glu-enum-auto.java
+glu-enum-auto.java: glu-enum-auto.orig.h C2J.class
+	java C2J jnijava gl4java_GLUEnum glu-enum-auto.orig.h > glu-enum-auto.java
 
 ../gl4java/GLUEnum.java: warning.skel				\
 			 glu-enum-auto.java 		        \
@@ -82,23 +82,23 @@ glu-enum-auto.java: glu-enum-auto.orig C2J.class
 # Common for gl4java.GLFuncJauJNI and gl4java.GLFuncJauJNInf
 # Here we create the final part !
 #
-gl-proto-auto.java: gl-proto-auto.orig C2J.class
-	java C2J -echo jnijavaf gl4java_GLFuncJauJNI gl-proto-auto.orig \
+gl-proto-auto.java: gl-proto-auto.orig.h C2J.class
+	java C2J -echo jnijavaf gl4java_GLFuncJauJNI gl-proto-auto.orig.h \
 	> gl-proto-auto.java
 
 #
 # Common for gl4java.GLUFuncJauJNI and gl4java.GLUFuncJauJNInf
 # Here we create the final part !
 #
-glu-proto-auto.java: glu-proto-auto.orig C2J.class
-	java C2J -echo jnijavaf gl4java_GLUFuncJauJNI glu-proto-auto.orig \
+glu-proto-auto.java: glu-proto-auto.orig.h C2J.class
+	java C2J -echo jnijavaf gl4java_GLUFuncJauJNI glu-proto-auto.orig.h \
 	> glu-proto-auto.java
 
 #
 # for java interface gl4java.GLFunc
 #
-gl-funcnames.skel: gl-proto-auto.orig C2J.class
-	java C2J glfnames gl4java_GLFuncJauJNI gl-proto-auto.orig \
+gl-funcnames.skel: gl-proto-auto.orig.h C2J.class
+	java C2J glfnames gl4java_GLFuncJauJNI gl-proto-auto.orig.h \
 	> gl-funcnames.skel
 
 gl-protoVirt-auto.java: gl-proto-auto.java
@@ -209,8 +209,8 @@ glu-protoVirt-auto.java: glu-proto-auto.java
 #
 # for native library gl4javaJauJNI[32]
 #
-gl-proto-dynauto.c: gl-proto-auto.orig C2J.class
-	java C2J -echo jnic-dyn gl4java_GLFuncJauJNI gl-proto-auto.orig \
+gl-proto-dynauto.c: gl-proto-auto.orig.h C2J.class
+	java C2J -echo jnic-dyn gl4java_GLFuncJauJNI gl-proto-auto.orig.h \
 	> gl-proto-dynauto.c
 
 ../CNativeCode/OpenGL_JauJNI_dynfuncs.c: warning.skel			 \
@@ -223,8 +223,8 @@ gl-proto-dynauto.c: gl-proto-auto.orig C2J.class
 	    gl-proto-dynauto.c 			\
 	    > ../CNativeCode/OpenGL_JauJNI_dynfuncs.c
 
-gl-proto-dynauto-tst.c: gl-proto-auto.orig C2J.class
-	java C2J -echo -jnic-trial jnic-dyn gl4java_GLFuncJauJNI gl-proto-auto.orig \
+gl-proto-dynauto-tst.c: gl-proto-auto.orig.h C2J.class
+	java C2J -echo -jnic-trial jnic-dyn gl4java_GLFuncJauJNI gl-proto-auto.orig.h \
 	> gl-proto-dynauto-tst.c
 
 ../CNativeCode/OpenGL_JauJNItst_dynfuncs.c: warning.skel		 \
@@ -237,8 +237,8 @@ gl-proto-dynauto-tst.c: gl-proto-auto.orig C2J.class
 	    gl-proto-dynauto-tst.c 			\
 	    > ../CNativeCode/OpenGL_JauJNItst_dynfuncs.c
 
-gl-proto-dynauto-jni12.c: gl-proto-auto.orig C2J.class
-	java C2J -echo -jnic-criticalarray jnic-dyn gl4java_GLFuncJauJNI gl-proto-auto.orig \
+gl-proto-dynauto-jni12.c: gl-proto-auto.orig.h C2J.class
+	java C2J -echo -jnic-criticalarray jnic-dyn gl4java_GLFuncJauJNI gl-proto-auto.orig.h \
 	> gl-proto-dynauto-jni12.c
 
 ../CNativeCode/OpenGL_JauJNI12_dynfuncs.c: warning.skel			 \
@@ -251,8 +251,8 @@ gl-proto-dynauto-jni12.c: gl-proto-auto.orig C2J.class
 	    gl-proto-dynauto-jni12.c 			\
 	    > ../CNativeCode/OpenGL_JauJNI12_dynfuncs.c
 
-gl-proto-dynauto-tst-jni12.c: gl-proto-auto.orig C2J.class
-	java C2J -echo -jnic-criticalarray -jnic-trial jnic-dyn gl4java_GLFuncJauJNI gl-proto-auto.orig \
+gl-proto-dynauto-tst-jni12.c: gl-proto-auto.orig.h C2J.class
+	java C2J -echo -jnic-criticalarray -jnic-trial jnic-dyn gl4java_GLFuncJauJNI gl-proto-auto.orig.h \
 	> gl-proto-dynauto-tst-jni12.c
 
 ../CNativeCode/OpenGL_JauJNI12tst_dynfuncs.c: warning.skel		 \
@@ -265,8 +265,8 @@ gl-proto-dynauto-tst-jni12.c: gl-proto-auto.orig C2J.class
 	    gl-proto-dynauto-tst-jni12.c 			\
 	    > ../CNativeCode/OpenGL_JauJNI12tst_dynfuncs.c
 
-glu-proto-auto.c: glu-proto-auto.orig C2J.class
-	java C2J -echo jnic gl4java_GLUFuncJauJNI glu-proto-auto.orig \
+glu-proto-auto.c: glu-proto-auto.orig.h C2J.class
+	java C2J -echo jnic gl4java_GLUFuncJauJNI glu-proto-auto.orig.h \
 	> glu-proto-auto.c
 
 ../CNativeCode/OpenGLU_JauJNI_funcs.c: C2J.class 			   \
@@ -280,8 +280,8 @@ glu-proto-auto.c: glu-proto-auto.orig C2J.class
 	    glu-proto-auto.c 			\
 	    > ../CNativeCode/OpenGLU_JauJNI_funcs.c
 
-glu-proto-auto-tst.c: glu-proto-auto.orig C2J.class
-	java C2J -echo -jnic-trial jnic gl4java_GLUFuncJauJNI glu-proto-auto.orig \
+glu-proto-auto-tst.c: glu-proto-auto.orig.h C2J.class
+	java C2J -echo -jnic-trial jnic gl4java_GLUFuncJauJNI glu-proto-auto.orig.h \
 	> glu-proto-auto-tst.c
 
 ../CNativeCode/OpenGLU_JauJNItst_funcs.c: C2J.class 			   \
@@ -296,8 +296,8 @@ glu-proto-auto-tst.c: glu-proto-auto.orig C2J.class
 	    > ../CNativeCode/OpenGLU_JauJNItst_funcs.c
 
 
-glu-proto-auto-jni12.c: glu-proto-auto.orig C2J.class
-	java C2J -echo -jnic-criticalarray jnic gl4java_GLUFuncJauJNI glu-proto-auto.orig \
+glu-proto-auto-jni12.c: glu-proto-auto.orig.h C2J.class
+	java C2J -echo -jnic-criticalarray jnic gl4java_GLUFuncJauJNI glu-proto-auto.orig.h \
 	> glu-proto-auto-jni12.c
 
 ../CNativeCode/OpenGLU_JauJNI12_funcs.c: C2J.class 			   \
@@ -311,8 +311,8 @@ glu-proto-auto-jni12.c: glu-proto-auto.orig C2J.class
 	    glu-proto-auto-jni12.c 			\
 	    > ../CNativeCode/OpenGLU_JauJNI12_funcs.c
 
-glu-proto-auto-tst-jni12.c: glu-proto-auto.orig C2J.class
-	java C2J -echo -jnic-criticalarray -jnic-trial jnic gl4java_GLUFuncJauJNI glu-proto-auto.orig \
+glu-proto-auto-tst-jni12.c: glu-proto-auto.orig.h C2J.class
+	java C2J -echo -jnic-criticalarray -jnic-trial jnic gl4java_GLUFuncJauJNI glu-proto-auto.orig.h \
 	> glu-proto-auto-tst-jni12.c
 
 ../CNativeCode/OpenGLU_JauJNI12tst_funcs.c: C2J.class 			   \
