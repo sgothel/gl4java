@@ -1,0 +1,21 @@
+#
+# Using just gl4java.drawable.SunJDK13GLDrawableFactory's
+# getGraphicsConfiguration method, if avaiable !
+# If avaiable, the fetched GraphicsConfiguration is used
+# for the GL*Canvas creation ..
+#
+demos/gltestperf.java            /* the gl performance test, 
+			            try argument --help */
+demos/MiscDemos/alpha3D.java     /* the alpha value is set here .. */
+demos/HodglimsNeHe/Lesson8.java
+demos/RonsDemos/dinoshade.java
+demos/RonsDemos/shadowvol.java
+
+#
+# Implementing the new GLEventListener
+# The above feature is done automatically ..
+#
+demos/MiscDemos/gears.java
+demos/MiscDemos/stencil.java     /* the stencil value is set here .. */
+demos/MiscDemos/TestListener.java
+demos/MiscDemos/TriangleRotate.java
