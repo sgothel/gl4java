@@ -19,7 +19,7 @@ rendering *GL4Java* effectively *JOGL's* predecessor.  A few of the concepts reu
 - WinHandleAccess -> NativeWindow
 - GLDrawableFactory, GLDrawable, GLContext, GLEvenListener
 
-See [JogAmp History & Milestones](https://jogamp.org/cgit/gl4java.git/about/#jogamp-history--milestones).
+See [JogAmp History & Milestones](https://jogamp.org/cgit/jogl.git/about/#jogamp-history--milestones).
 
 ## Index of text files
 - [CHANGES.txt](./CHANGES.txt) 
