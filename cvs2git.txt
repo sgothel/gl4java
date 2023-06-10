@@ -1,0 +1,5 @@
+# Import from a local CVSROOT copy
+git cvsimport -v -a -k -d /usr/local/projects/JogAmp/temp/gl4java/gl4java_cvs -C gl4java.git -A /usr/local/projects/JogAmp/temp/gl4java/authors.txt GL4Java
+# Then git reset --hard to last GL4Java commit 2003-06-27 20:41:43
+# Then making the 'funny' GL4Java subdir the new root dir
+git filter-repo --force --replace-refs update-no-add --subdirectory-filter GL4Java
