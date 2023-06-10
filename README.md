@@ -11,8 +11,8 @@ The [*OpenGL™ for Java™ (GL4Java)*](https://jausoft.com/gl4java/docs/) is an
 *GL4Java* was developed [from March 1997](https://jausoft.com/gl4java/docs/overview/history.html) 
 until [March 2003](https://jogamp.org/cgit/gl4java.git/log/).
 
-Its many concepts were reused in the subsequently launched [JOGL project](https://jogamp.org/jogl/www/),
-initially lead by Sun Microsystems and later run by [myself and the JogAmp community](https://jogamp.org/), 
+Its many concepts were reused in the subsequently launched [JOGL project](https://jogamp.org/jogl/www/),    
+initially [lead by Sun Microsystems](https://jogamp.org/cgit/gl4java.git/about/#gluegen-joal-and-jogl-at-sun-microsystems) and later run by [myself and the JogAmp community](https://jogamp.org/),    
 rendering *GL4Java* effectively *JOGL's* predecessor.    
 A few of the concepts reused were:
 - C-Header Compiler to JNI glue code: C2J -> GlueGen
@@ -23,6 +23,8 @@ A few of the concepts reused were:
 - GLContext
 - GLEvenListener
 - etc
+
+See [JogAmp History & Milestones](https://jogamp.org/cgit/gl4java.git/about/#jogamp-history--milestones).
 
 ## Index of text files
 - [CHANGES.txt](./CHANGES.txt) 
