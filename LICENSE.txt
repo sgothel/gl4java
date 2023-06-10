@@ -2,7 +2,7 @@
 
 GL4Java - A OpenGL language mapping to Java
 
-Copyright (C) 1999  Sven Goethel
+Copyright (C) 1997 - 2023  Sven Gothel, Göthel Software e.K.
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Library General Public
@@ -24,10 +24,10 @@ in the internet at http://www.gnu.org/copyleft/lgpl.html !
 
 If you like to contact the author use:
 
-Sven Goethel
-email: sgoethel@jausoft.com
-web  : http://www.jausoft.com
+Sven Gothel
+mail: sgothel [@] jausoft.com
+web : http://www.jausoft.com
 
-Sven Goethel, 15 January 1999, 27.06.2003, ..
+Sven Goethel, 15 January 1999, 27.06.2003, 10.06.2023, ..
 
 \end{verbatim}
