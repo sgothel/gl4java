@@ -1,4 +1,4 @@
-# GL4Java, a native OpenGL mapping to Java™
+# *OpenGL™ for Java™ (GL4Java)*, a native OpenGL mapping to Java™
 
 [Original document location](https://jogamp.org/cgit/gl4java.git/about/)
 
